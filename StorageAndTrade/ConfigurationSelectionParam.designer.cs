@@ -222,7 +222,7 @@
             this.MinimizeBox = false;
             this.Name = "ConfigurationSelectionParam";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Параметри";
+            this.Text = "Зберігання та Торгівля - Параметри";
             this.Load += new System.EventHandler(this.ConfigurationSelectionParam_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
