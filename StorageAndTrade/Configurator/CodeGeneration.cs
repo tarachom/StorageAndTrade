@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 07.09.2021 17:34:19
+ * Дата конфігурації: 07.09.2021 18:42:52
  *
  */
 
@@ -4219,6 +4219,246 @@ namespace StorageAndTrade_1_0.Довідники
    
     #endregion
     
+    #region DIRECTORY "СтаттяРухуКоштів"
+    
+    class СтаттяРухуКоштів_Objest : DirectoryObject
+    {
+        public СтаттяРухуКоштів_Objest() : base(Config.Kernel, "tab_a45",
+             new string[] { "col_i7", "col_i8", "col_i9", "col_j1", "col_j2" }) 
+        {
+            Назва = "";
+            Код = "";
+            КореспондуючийРахунок = "";
+            Опис = "";
+            ВидРухуКоштів = 0;
+            
+            //Табличні частини
+            ГосподарськіОперації_TablePart = new СтаттяРухуКоштів_ГосподарськіОперації_TablePart(this);
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                Назва = base.FieldValue["col_i7"].ToString();
+                Код = base.FieldValue["col_i8"].ToString();
+                КореспондуючийРахунок = base.FieldValue["col_i9"].ToString();
+                Опис = base.FieldValue["col_j1"].ToString();
+                ВидРухуКоштів = (base.FieldValue["col_j2"] != DBNull.Value) ? (Перелічення.ВидиРухуКоштів)base.FieldValue["col_j2"] : 0;
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_i7"] = Назва;
+            base.FieldValue["col_i8"] = Код;
+            base.FieldValue["col_i9"] = КореспондуючийРахунок;
+            base.FieldValue["col_j1"] = Опис;
+            base.FieldValue["col_j2"] = (int)ВидРухуКоштів;
+            
+            BaseSave();
+			
+        }
+
+        public string Serialize(string root = "СтаттяРухуКоштів")
+        {
+            return 
+            "<" + root + ">" +
+               "<uid>" + base.UnigueID.ToString() + "</uid>" +
+               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
+               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
+               "<КореспондуючийРахунок>" + "<![CDATA[" + КореспондуючийРахунок + "]]>" + "</КореспондуючийРахунок>"  +
+               "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
+               "<ВидРухуКоштів>" + ((int)ВидРухуКоштів).ToString() + "</ВидРухуКоштів>"  +
+               "</" + root + ">";
+        }
+
+        public void Delete()
+        {
+            
+			base.BaseDelete();
+        }
+        
+        public СтаттяРухуКоштів_Pointer GetDirectoryPointer()
+        {
+            СтаттяРухуКоштів_Pointer directoryPointer = new СтаттяРухуКоштів_Pointer(UnigueID.UGuid);
+            return directoryPointer;
+        }
+        
+        public string Назва { get; set; }
+        public string Код { get; set; }
+        public string КореспондуючийРахунок { get; set; }
+        public string Опис { get; set; }
+        public Перелічення.ВидиРухуКоштів ВидРухуКоштів { get; set; }
+        
+        //Табличні частини
+        public СтаттяРухуКоштів_ГосподарськіОперації_TablePart ГосподарськіОперації_TablePart { get; set; }
+        
+    }
+    
+    
+    class СтаттяРухуКоштів_Pointer : DirectoryPointer
+    {
+        public СтаттяРухуКоштів_Pointer(object uid = null) : base(Config.Kernel, "tab_a45")
+        {
+            base.Init(new UnigueID(uid), null);
+        }
+        
+        public СтаттяРухуКоштів_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a45")
+        {
+            base.Init(uid, fields);
+        }
+        
+        public СтаттяРухуКоштів_Objest GetDirectoryObject()
+        {
+            СтаттяРухуКоштів_Objest СтаттяРухуКоштівObjestItem = new СтаттяРухуКоштів_Objest();
+            return СтаттяРухуКоштівObjestItem.Read(base.UnigueID) ? СтаттяРухуКоштівObjestItem : null;
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] { "col_i7" }
+			);
+        }
+		
+        public СтаттяРухуКоштів_Pointer GetEmptyPointer()
+        {
+            return new СтаттяРухуКоштів_Pointer();
+        }
+    }
+    
+    
+    class СтаттяРухуКоштів_Select : DirectorySelect, IDisposable
+    {
+        public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45",
+            new string[] { "col_i7", "col_i8", "col_i9", "col_j1", "col_j2" },
+            new string[] { "Назва", "Код", "КореспондуючийРахунок", "Опис", "ВидРухуКоштів" }) { }
+        
+        public const string Назва = "col_i7";
+        public const string Код = "col_i8";
+        public const string КореспондуючийРахунок = "col_i9";
+        public const string Опис = "col_j1";
+        public const string ВидРухуКоштів = "col_j2";
+        
+        public bool Select() { return base.BaseSelect(); }
+        
+        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
+        
+        public bool MoveNext() { if (MoveToPosition()) { Current = new СтаттяРухуКоштів_Pointer(base.DirectoryPointerPosition.UnigueID, base.DirectoryPointerPosition.Fields); return true; } else { Current = null; return false; } }
+
+        public СтаттяРухуКоштів_Pointer Current { get; private set; }
+        
+        public СтаттяРухуКоштів_Pointer FindByField(string name, object value)
+        {
+            СтаттяРухуКоштів_Pointer itemPointer = new СтаттяРухуКоштів_Pointer();
+            DirectoryPointer directoryPointer = base.BaseFindByField(name, value);
+            if (!directoryPointer.IsEmpty()) itemPointer.Init(directoryPointer.UnigueID);
+            return itemPointer;
+        }
+        
+        public List<СтаттяРухуКоштів_Pointer> FindListByField(string name, object value, int limit = 0, int offset = 0)
+        {
+            List<СтаттяРухуКоштів_Pointer> directoryPointerList = new List<СтаттяРухуКоштів_Pointer>();
+            foreach (DirectoryPointer directoryPointer in base.BaseFindListByField(name, value, limit, offset)) 
+                directoryPointerList.Add(new СтаттяРухуКоштів_Pointer(directoryPointer.UnigueID));
+            return directoryPointerList;
+        }
+    }
+    
+      
+    class СтаттяРухуКоштів_ГосподарськіОперації_TablePart : DirectoryTablePart
+    {
+        public СтаттяРухуКоштів_ГосподарськіОперації_TablePart(СтаттяРухуКоштів_Objest owner) : base(Config.Kernel, "tab_a46",
+             new string[] { "col_j3" }) 
+        {
+            if (owner == null) throw new Exception("owner null");
+            
+            Owner = owner;
+            Records = new List<Record>();
+        }
+        
+        public СтаттяРухуКоштів_Objest Owner { get; private set; }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            base.BaseRead(Owner.UnigueID);
+
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+                
+                record.ГосподарськаОперація = (fieldValue["col_j3"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)fieldValue["col_j3"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(bool clear_all_before_save /*= true*/) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete(Owner.UnigueID);
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_j3", record.ГосподарськаОперація);
+                    
+                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+        
+        public void Delete()
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
+        }
+        
+        
+        public class Record : DirectoryTablePartRecord
+        {
+            public Record()
+            {
+                ГосподарськаОперація = 0;
+                
+            }
+        
+            
+            public Record(
+                Перелічення.ГосподарськіОперації _ГосподарськаОперація = 0)
+            {
+                ГосподарськаОперація = _ГосподарськаОперація;
+                
+            }
+            public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+            
+        }
+    }
+      
+   
+    #endregion
+    
 }
 
 namespace StorageAndTrade_1_0.Перелічення
@@ -4338,6 +4578,26 @@ namespace StorageAndTrade_1_0.Перелічення
          ДоЗабезпечення = 2,
          ДоВідгрузки = 3,
          Закритий = 4
+    }
+    #endregion
+    
+    #region ENUM "СтатусиРеалізаціїТоварівТаПослуг"
+    
+    public enum СтатусиРеалізаціїТоварівТаПослуг
+    {
+         ДоОплати = 1,
+         ВДорозі = 2,
+         Відгружено = 3
+    }
+    #endregion
+    
+    #region ENUM "ВидиРухуКоштів"
+    
+    public enum ВидиРухуКоштів
+    {
+         ОплатаПраці = 1,
+         ПодатокНаПрибуток = 2,
+         ОплатаОборотнихАктивів = 3
     }
     #endregion
     
@@ -5304,6 +5564,1037 @@ namespace StorageAndTrade_1_0.Документи
     
     #endregion
     
+    #region DOCUMENT "РеалізаціяТоварівТаПослуг"
+    
+    
+    class РеалізаціяТоварівТаПослуг_Objest : DocumentObject
+    {
+        public РеалізаціяТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a36",
+             new string[] { "col_c9", "col_d1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_d2" }) 
+        {
+            ДатаДок = DateTime.MinValue;
+            НомерДок = 0;
+            Організація = new Довідники.Організації_Pointer();
+            Валюта = new Довідники.Валюти_Pointer();
+            БанківськийРахунокОрганізації = new Довідники.БанківськіРахункиОрганізацій_Pointer();
+            БанківськийРахунокКонтрагента = new Довідники.БанківськіРахункиКонтрагентів_Pointer();
+            ДатаОплати = DateTime.MinValue;
+            ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
+            Контрагент = new Довідники.Контрагенти_Pointer();
+            СумаДокументу = 0;
+            Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
+            Склад = new Довідники.Склади_Pointer();
+            Коментар = "";
+            ФормаОплати = 0;
+            ГосподарськаОперація = 0;
+            Каса = new Довідники.Каси_Pointer();
+            Договір = new Довідники.ДоговориКонтрагентів_Pointer();
+            Основа = "";
+            Статус = 0;
+            Автор = new Довідники.Користувачі_Pointer();
+            СумаПередоплати = 0;
+            СумаПередоплатиЗаТару = 0;
+            СпосібДоставки = 0;
+            ЧасДоставкиЗ = DateTime.MinValue.TimeOfDay;
+            ЧасДоставкиДо = DateTime.MinValue.TimeOfDay;
+            ПовернутиТару = false;
+            ДатаПоверненняТари = DateTime.MinValue;
+            Курс = 0;
+            Кратність = 0;
+            
+            //Табличні частини
+            Товари_TablePart = new РеалізаціяТоварівТаПослуг_Товари_TablePart(this);
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                ДатаДок = (base.FieldValue["col_c9"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_c9"].ToString()) : DateTime.MinValue;
+                НомерДок = (base.FieldValue["col_d1"] != DBNull.Value) ? (int)base.FieldValue["col_d1"] : 0;
+                Організація = new Довідники.Організації_Pointer(base.FieldValue["col_a1"]);
+                Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_a2"]);
+                БанківськийРахунокОрганізації = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_a3"]);
+                БанківськийРахунокКонтрагента = new Довідники.БанківськіРахункиКонтрагентів_Pointer(base.FieldValue["col_a4"]);
+                ДатаОплати = (base.FieldValue["col_a5"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_a5"].ToString()) : DateTime.MinValue;
+                ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(base.FieldValue["col_a6"]);
+                Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_a7"]);
+                СумаДокументу = (base.FieldValue["col_a8"] != DBNull.Value) ? (decimal)base.FieldValue["col_a8"] : 0;
+                Підрозділ = new Довідники.СтруктураПідприємства_Pointer(base.FieldValue["col_a9"]);
+                Склад = new Довідники.Склади_Pointer(base.FieldValue["col_b1"]);
+                Коментар = base.FieldValue["col_b2"].ToString();
+                ФормаОплати = (base.FieldValue["col_b3"] != DBNull.Value) ? (Перелічення.ФормаОплати)base.FieldValue["col_b3"] : 0;
+                ГосподарськаОперація = (base.FieldValue["col_b4"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_b4"] : 0;
+                Каса = new Довідники.Каси_Pointer(base.FieldValue["col_b5"]);
+                Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_b6"]);
+                Основа = base.FieldValue["col_b7"].ToString();
+                Статус = (base.FieldValue["col_b8"] != DBNull.Value) ? (Перелічення.СтатусиРеалізаціїТоварівТаПослуг)base.FieldValue["col_b8"] : 0;
+                Автор = new Довідники.Користувачі_Pointer(base.FieldValue["col_b9"]);
+                СумаПередоплати = (base.FieldValue["col_c1"] != DBNull.Value) ? (decimal)base.FieldValue["col_c1"] : 0;
+                СумаПередоплатиЗаТару = (base.FieldValue["col_c2"] != DBNull.Value) ? (decimal)base.FieldValue["col_c2"] : 0;
+                СпосібДоставки = (base.FieldValue["col_c3"] != DBNull.Value) ? (Перелічення.СпособиДоставки)base.FieldValue["col_c3"] : 0;
+                ЧасДоставкиЗ = (base.FieldValue["col_c4"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_c4"].ToString()) : DateTime.MinValue.TimeOfDay;
+                ЧасДоставкиДо = (base.FieldValue["col_c5"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_c5"].ToString()) : DateTime.MinValue.TimeOfDay;
+                ПовернутиТару = (base.FieldValue["col_c6"] != DBNull.Value) ? bool.Parse(base.FieldValue["col_c6"].ToString()) : false;
+                ДатаПоверненняТари = (base.FieldValue["col_c7"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_c7"].ToString()) : DateTime.MinValue;
+                Курс = (base.FieldValue["col_c8"] != DBNull.Value) ? (decimal)base.FieldValue["col_c8"] : 0;
+                Кратність = (base.FieldValue["col_d2"] != DBNull.Value) ? (int)base.FieldValue["col_d2"] : 0;
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_c9"] = ДатаДок;
+            base.FieldValue["col_d1"] = НомерДок;
+            base.FieldValue["col_a1"] = Організація.ToString();
+            base.FieldValue["col_a2"] = Валюта.ToString();
+            base.FieldValue["col_a3"] = БанківськийРахунокОрганізації.ToString();
+            base.FieldValue["col_a4"] = БанківськийРахунокКонтрагента.ToString();
+            base.FieldValue["col_a5"] = ДатаОплати;
+            base.FieldValue["col_a6"] = ЗамовленняКлієнта.ToString();
+            base.FieldValue["col_a7"] = Контрагент.ToString();
+            base.FieldValue["col_a8"] = СумаДокументу;
+            base.FieldValue["col_a9"] = Підрозділ.ToString();
+            base.FieldValue["col_b1"] = Склад.ToString();
+            base.FieldValue["col_b2"] = Коментар;
+            base.FieldValue["col_b3"] = (int)ФормаОплати;
+            base.FieldValue["col_b4"] = (int)ГосподарськаОперація;
+            base.FieldValue["col_b5"] = Каса.ToString();
+            base.FieldValue["col_b6"] = Договір.ToString();
+            base.FieldValue["col_b7"] = Основа;
+            base.FieldValue["col_b8"] = (int)Статус;
+            base.FieldValue["col_b9"] = Автор.ToString();
+            base.FieldValue["col_c1"] = СумаПередоплати;
+            base.FieldValue["col_c2"] = СумаПередоплатиЗаТару;
+            base.FieldValue["col_c3"] = (int)СпосібДоставки;
+            base.FieldValue["col_c4"] = ЧасДоставкиЗ;
+            base.FieldValue["col_c5"] = ЧасДоставкиДо;
+            base.FieldValue["col_c6"] = ПовернутиТару;
+            base.FieldValue["col_c7"] = ДатаПоверненняТари;
+            base.FieldValue["col_c8"] = Курс;
+            base.FieldValue["col_d2"] = Кратність;
+            
+            BaseSave();
+        }
+        
+        public void Delete()
+        {
+            base.BaseDelete();
+        }
+        
+        public РеалізаціяТоварівТаПослуг_Pointer GetDocumentPointer()
+        {
+            РеалізаціяТоварівТаПослуг_Pointer directoryPointer = new РеалізаціяТоварівТаПослуг_Pointer(UnigueID.UGuid);
+            return directoryPointer;
+        }
+        
+        public DateTime ДатаДок { get; set; }
+        public int НомерДок { get; set; }
+        public Довідники.Організації_Pointer Організація { get; set; }
+        public Довідники.Валюти_Pointer Валюта { get; set; }
+        public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунокОрганізації { get; set; }
+        public Довідники.БанківськіРахункиКонтрагентів_Pointer БанківськийРахунокКонтрагента { get; set; }
+        public DateTime ДатаОплати { get; set; }
+        public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+        public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+        public decimal СумаДокументу { get; set; }
+        public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
+        public Довідники.Склади_Pointer Склад { get; set; }
+        public string Коментар { get; set; }
+        public Перелічення.ФормаОплати ФормаОплати { get; set; }
+        public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+        public Довідники.Каси_Pointer Каса { get; set; }
+        public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
+        public string Основа { get; set; }
+        public Перелічення.СтатусиРеалізаціїТоварівТаПослуг Статус { get; set; }
+        public Довідники.Користувачі_Pointer Автор { get; set; }
+        public decimal СумаПередоплати { get; set; }
+        public decimal СумаПередоплатиЗаТару { get; set; }
+        public Перелічення.СпособиДоставки СпосібДоставки { get; set; }
+        public TimeSpan ЧасДоставкиЗ { get; set; }
+        public TimeSpan ЧасДоставкиДо { get; set; }
+        public bool ПовернутиТару { get; set; }
+        public DateTime ДатаПоверненняТари { get; set; }
+        public decimal Курс { get; set; }
+        public int Кратність { get; set; }
+        
+        //Табличні частини
+        public РеалізаціяТоварівТаПослуг_Товари_TablePart Товари_TablePart { get; set; }
+        
+    }
+    
+    
+    class РеалізаціяТоварівТаПослуг_Pointer : DocumentPointer
+    {
+        public РеалізаціяТоварівТаПослуг_Pointer(object uid = null) : base(Config.Kernel, "tab_a36")
+        {
+            base.Init(new UnigueID(uid), null);
+        }
+        
+        public РеалізаціяТоварівТаПослуг_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a36")
+        {
+            base.Init(uid, fields);
+        } 
+        
+        public РеалізаціяТоварівТаПослуг_Objest GetDocumentObject()
+        {
+            РеалізаціяТоварівТаПослуг_Objest РеалізаціяТоварівТаПослугObjestItem = new РеалізаціяТоварівТаПослуг_Objest();
+            РеалізаціяТоварівТаПослугObjestItem.Read(base.UnigueID);
+            return РеалізаціяТоварівТаПослугObjestItem;
+        }
+    }
+    
+    
+    class РеалізаціяТоварівТаПослуг_Select : DocumentSelect, IDisposable
+    {
+        public РеалізаціяТоварівТаПослуг_Select() : base(Config.Kernel, "tab_a36") { }
+        
+        public bool Select() { return base.BaseSelect(); }
+        
+        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
+        
+        public bool MoveNext() { if (MoveToPosition()) { Current = new РеалізаціяТоварівТаПослуг_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
+        
+        public РеалізаціяТоварівТаПослуг_Pointer Current { get; private set; }
+    }
+    
+      
+    class РеалізаціяТоварівТаПослуг_Товари_TablePart : DocumentTablePart
+    {
+        public РеалізаціяТоварівТаПослуг_Товари_TablePart(РеалізаціяТоварівТаПослуг_Objest owner) : base(Config.Kernel, "tab_a37",
+             new string[] { "col_d2", "col_d3", "col_d4", "col_d5", "col_d6", "col_d7", "col_d8", "col_d9", "col_e1", "col_e2", "col_e3" }) 
+        {
+            if (owner == null) throw new Exception("owner null");
+            
+            Owner = owner;
+            Records = new List<Record>();
+        }
+        
+        public РеалізаціяТоварівТаПослуг_Objest Owner { get; private set; }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            base.BaseRead(Owner.UnigueID);
+
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+                
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_d2"]);
+                record.Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_d3"]);
+                record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_d4"]);
+                record.КількістьУпаковок = (fieldValue["col_d5"] != DBNull.Value) ? (int)fieldValue["col_d5"] : 0;
+                record.Кількість = (fieldValue["col_d6"] != DBNull.Value) ? (int)fieldValue["col_d6"] : 0;
+                record.ВидЦіни = new Довідники.ВидиЦін_Pointer(fieldValue["col_d7"]);
+                record.Ціна = (fieldValue["col_d8"] != DBNull.Value) ? (decimal)fieldValue["col_d8"] : 0;
+                record.Сума = (fieldValue["col_d9"] != DBNull.Value) ? (decimal)fieldValue["col_d9"] : 0;
+                record.Склад = new Довідники.Склади_Pointer(fieldValue["col_e1"]);
+                record.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(fieldValue["col_e2"]);
+                record.Скидка = (fieldValue["col_e3"] != DBNull.Value) ? (decimal)fieldValue["col_e3"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(bool clear_all_before_save /*= true*/) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete(Owner.UnigueID);
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_d2", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_d3", record.Характеристика.UnigueID.UGuid);
+                    fieldValue.Add("col_d4", record.Пакування.UnigueID.UGuid);
+                    fieldValue.Add("col_d5", record.КількістьУпаковок);
+                    fieldValue.Add("col_d6", record.Кількість);
+                    fieldValue.Add("col_d7", record.ВидЦіни.UnigueID.UGuid);
+                    fieldValue.Add("col_d8", record.Ціна);
+                    fieldValue.Add("col_d9", record.Сума);
+                    fieldValue.Add("col_e1", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_e2", record.ЗамовленняКлієнта.UnigueID.UGuid);
+                    fieldValue.Add("col_e3", record.Скидка);
+                    
+                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+        
+        public void Delete()
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
+        }
+        
+        
+        public class Record : DocumentTablePartRecord
+        {
+            public Record()
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+                КількістьУпаковок = 0;
+                Кількість = 0;
+                ВидЦіни = new Довідники.ВидиЦін_Pointer();
+                Ціна = 0;
+                Сума = 0;
+                Склад = new Довідники.Склади_Pointer();
+                ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
+                Скидка = 0;
+                
+            }
+        
+            
+            public Record(
+                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _Характеристика = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, Довідники.ВидиЦін_Pointer _ВидЦіни = null, decimal _Ціна = 0, decimal _Сума = 0, Довідники.Склади_Pointer _Склад = null, Документи.ЗамовленняКлієнта_Pointer _ЗамовленняКлієнта = null, decimal _Скидка = 0)
+            {
+                Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
+                Характеристика = _Характеристика ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Пакування = _Пакування ?? new Довідники.ПакуванняОдиниціВиміру_Pointer();
+                КількістьУпаковок = _КількістьУпаковок;
+                Кількість = _Кількість;
+                ВидЦіни = _ВидЦіни ?? new Довідники.ВидиЦін_Pointer();
+                Ціна = _Ціна;
+                Сума = _Сума;
+                Склад = _Склад ?? new Довідники.Склади_Pointer();
+                ЗамовленняКлієнта = _ЗамовленняКлієнта ?? new Документи.ЗамовленняКлієнта_Pointer();
+                Скидка = _Скидка;
+                
+            }
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
+            public int КількістьУпаковок { get; set; }
+            public int Кількість { get; set; }
+            public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
+            public decimal Ціна { get; set; }
+            public decimal Сума { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+            public decimal Скидка { get; set; }
+            
+        }
+    }
+      
+    
+    #endregion
+    
+    #region DOCUMENT "ВстановленняЦінНоменклатури"
+    
+    
+    class ВстановленняЦінНоменклатури_Objest : DocumentObject
+    {
+        public ВстановленняЦінНоменклатури_Objest() : base(Config.Kernel, "tab_a42",
+             new string[] { "col_g7", "col_g8", "col_g9" }) 
+        {
+            ДатаДок = DateTime.MinValue;
+            НомерДок = 0;
+            Коментар = "";
+            
+            //Табличні частини
+            Товари_TablePart = new ВстановленняЦінНоменклатури_Товари_TablePart(this);
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                ДатаДок = (base.FieldValue["col_g7"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_g7"].ToString()) : DateTime.MinValue;
+                НомерДок = (base.FieldValue["col_g8"] != DBNull.Value) ? (int)base.FieldValue["col_g8"] : 0;
+                Коментар = base.FieldValue["col_g9"].ToString();
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_g7"] = ДатаДок;
+            base.FieldValue["col_g8"] = НомерДок;
+            base.FieldValue["col_g9"] = Коментар;
+            
+            BaseSave();
+        }
+        
+        public void Delete()
+        {
+            base.BaseDelete();
+        }
+        
+        public ВстановленняЦінНоменклатури_Pointer GetDocumentPointer()
+        {
+            ВстановленняЦінНоменклатури_Pointer directoryPointer = new ВстановленняЦінНоменклатури_Pointer(UnigueID.UGuid);
+            return directoryPointer;
+        }
+        
+        public DateTime ДатаДок { get; set; }
+        public int НомерДок { get; set; }
+        public string Коментар { get; set; }
+        
+        //Табличні частини
+        public ВстановленняЦінНоменклатури_Товари_TablePart Товари_TablePart { get; set; }
+        
+    }
+    
+    
+    class ВстановленняЦінНоменклатури_Pointer : DocumentPointer
+    {
+        public ВстановленняЦінНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a42")
+        {
+            base.Init(new UnigueID(uid), null);
+        }
+        
+        public ВстановленняЦінНоменклатури_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a42")
+        {
+            base.Init(uid, fields);
+        } 
+        
+        public ВстановленняЦінНоменклатури_Objest GetDocumentObject()
+        {
+            ВстановленняЦінНоменклатури_Objest ВстановленняЦінНоменклатуриObjestItem = new ВстановленняЦінНоменклатури_Objest();
+            ВстановленняЦінНоменклатуриObjestItem.Read(base.UnigueID);
+            return ВстановленняЦінНоменклатуриObjestItem;
+        }
+    }
+    
+    
+    class ВстановленняЦінНоменклатури_Select : DocumentSelect, IDisposable
+    {
+        public ВстановленняЦінНоменклатури_Select() : base(Config.Kernel, "tab_a42") { }
+        
+        public bool Select() { return base.BaseSelect(); }
+        
+        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
+        
+        public bool MoveNext() { if (MoveToPosition()) { Current = new ВстановленняЦінНоменклатури_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
+        
+        public ВстановленняЦінНоменклатури_Pointer Current { get; private set; }
+    }
+    
+      
+    class ВстановленняЦінНоменклатури_Товари_TablePart : DocumentTablePart
+    {
+        public ВстановленняЦінНоменклатури_Товари_TablePart(ВстановленняЦінНоменклатури_Objest owner) : base(Config.Kernel, "tab_a43",
+             new string[] { "col_h1", "col_h2", "col_h3", "col_h4", "col_h5" }) 
+        {
+            if (owner == null) throw new Exception("owner null");
+            
+            Owner = owner;
+            Records = new List<Record>();
+        }
+        
+        public ВстановленняЦінНоменклатури_Objest Owner { get; private set; }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            base.BaseRead(Owner.UnigueID);
+
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+                
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_h1"]);
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_h2"]);
+                record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_h3"]);
+                record.ВидЦіни = new Довідники.ВидиЦін_Pointer(fieldValue["col_h4"]);
+                record.Ціна = (fieldValue["col_h5"] != DBNull.Value) ? (decimal)fieldValue["col_h5"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(bool clear_all_before_save /*= true*/) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete(Owner.UnigueID);
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_h1", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_h2", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_h3", record.Пакування.UnigueID.UGuid);
+                    fieldValue.Add("col_h4", record.ВидЦіни.UnigueID.UGuid);
+                    fieldValue.Add("col_h5", record.Ціна);
+                    
+                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+        
+        public void Delete()
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
+        }
+        
+        
+        public class Record : DocumentTablePartRecord
+        {
+            public Record()
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+                ВидЦіни = new Довідники.ВидиЦін_Pointer();
+                Ціна = 0;
+                
+            }
+        
+            
+            public Record(
+                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, Довідники.ВидиЦін_Pointer _ВидЦіни = null, decimal _Ціна = 0)
+            {
+                Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
+                ХарактеристикаНоменклатури = _ХарактеристикаНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Пакування = _Пакування ?? new Довідники.ПакуванняОдиниціВиміру_Pointer();
+                ВидЦіни = _ВидЦіни ?? new Довідники.ВидиЦін_Pointer();
+                Ціна = _Ціна;
+                
+            }
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
+            public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
+            public decimal Ціна { get; set; }
+            
+        }
+    }
+      
+    
+    #endregion
+    
+    #region DOCUMENT "ПрихіднийКасовийОрдер"
+    
+    
+    class ПрихіднийКасовийОрдер_Objest : DocumentObject
+    {
+        public ПрихіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a44",
+             new string[] { "col_h6", "col_h7", "col_h8", "col_h9", "col_i1", "col_i2", "col_i3", "col_i4", "col_i5", "col_i6", "col_a1", "col_a2", "col_a3" }) 
+        {
+            ДатаДок = DateTime.MinValue;
+            НомерДок = 0;
+            Організація = new Довідники.Організації_Pointer();
+            Каса = new Довідники.Каси_Pointer();
+            СумаДокументу = 0;
+            ГосподарськаОперація = 0;
+            Основа = "";
+            Контрагент = new Довідники.Контрагенти_Pointer();
+            БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer();
+            Валюта = new Довідники.Валюти_Pointer();
+            СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
+            КасаВідправник = new Довідники.Каси_Pointer();
+            Коментар = "";
+            
+            //Табличні частини
+            РозшифруванняПлатежу_TablePart = new ПрихіднийКасовийОрдер_РозшифруванняПлатежу_TablePart(this);
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                ДатаДок = (base.FieldValue["col_h6"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_h6"].ToString()) : DateTime.MinValue;
+                НомерДок = (base.FieldValue["col_h7"] != DBNull.Value) ? (int)base.FieldValue["col_h7"] : 0;
+                Організація = new Довідники.Організації_Pointer(base.FieldValue["col_h8"]);
+                Каса = new Довідники.Каси_Pointer(base.FieldValue["col_h9"]);
+                СумаДокументу = (base.FieldValue["col_i1"] != DBNull.Value) ? (decimal)base.FieldValue["col_i1"] : 0;
+                ГосподарськаОперація = (base.FieldValue["col_i2"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_i2"] : 0;
+                Основа = base.FieldValue["col_i3"].ToString();
+                Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_i4"]);
+                БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_i5"]);
+                Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_i6"]);
+                СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_a1"]);
+                КасаВідправник = new Довідники.Каси_Pointer(base.FieldValue["col_a2"]);
+                Коментар = base.FieldValue["col_a3"].ToString();
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_h6"] = ДатаДок;
+            base.FieldValue["col_h7"] = НомерДок;
+            base.FieldValue["col_h8"] = Організація.ToString();
+            base.FieldValue["col_h9"] = Каса.ToString();
+            base.FieldValue["col_i1"] = СумаДокументу;
+            base.FieldValue["col_i2"] = (int)ГосподарськаОперація;
+            base.FieldValue["col_i3"] = Основа;
+            base.FieldValue["col_i4"] = Контрагент.ToString();
+            base.FieldValue["col_i5"] = БанківськийРахунок.ToString();
+            base.FieldValue["col_i6"] = Валюта.ToString();
+            base.FieldValue["col_a1"] = СтаттяРухуКоштів.ToString();
+            base.FieldValue["col_a2"] = КасаВідправник.ToString();
+            base.FieldValue["col_a3"] = Коментар;
+            
+            BaseSave();
+        }
+        
+        public void Delete()
+        {
+            base.BaseDelete();
+        }
+        
+        public ПрихіднийКасовийОрдер_Pointer GetDocumentPointer()
+        {
+            ПрихіднийКасовийОрдер_Pointer directoryPointer = new ПрихіднийКасовийОрдер_Pointer(UnigueID.UGuid);
+            return directoryPointer;
+        }
+        
+        public DateTime ДатаДок { get; set; }
+        public int НомерДок { get; set; }
+        public Довідники.Організації_Pointer Організація { get; set; }
+        public Довідники.Каси_Pointer Каса { get; set; }
+        public decimal СумаДокументу { get; set; }
+        public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+        public string Основа { get; set; }
+        public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+        public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунок { get; set; }
+        public Довідники.Валюти_Pointer Валюта { get; set; }
+        public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
+        public Довідники.Каси_Pointer КасаВідправник { get; set; }
+        public string Коментар { get; set; }
+        
+        //Табличні частини
+        public ПрихіднийКасовийОрдер_РозшифруванняПлатежу_TablePart РозшифруванняПлатежу_TablePart { get; set; }
+        
+    }
+    
+    
+    class ПрихіднийКасовийОрдер_Pointer : DocumentPointer
+    {
+        public ПрихіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a44")
+        {
+            base.Init(new UnigueID(uid), null);
+        }
+        
+        public ПрихіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a44")
+        {
+            base.Init(uid, fields);
+        } 
+        
+        public ПрихіднийКасовийОрдер_Objest GetDocumentObject()
+        {
+            ПрихіднийКасовийОрдер_Objest ПрихіднийКасовийОрдерObjestItem = new ПрихіднийКасовийОрдер_Objest();
+            ПрихіднийКасовийОрдерObjestItem.Read(base.UnigueID);
+            return ПрихіднийКасовийОрдерObjestItem;
+        }
+    }
+    
+    
+    class ПрихіднийКасовийОрдер_Select : DocumentSelect, IDisposable
+    {
+        public ПрихіднийКасовийОрдер_Select() : base(Config.Kernel, "tab_a44") { }
+        
+        public bool Select() { return base.BaseSelect(); }
+        
+        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
+        
+        public bool MoveNext() { if (MoveToPosition()) { Current = new ПрихіднийКасовийОрдер_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
+        
+        public ПрихіднийКасовийОрдер_Pointer Current { get; private set; }
+    }
+    
+      
+    class ПрихіднийКасовийОрдер_РозшифруванняПлатежу_TablePart : DocumentTablePart
+    {
+        public ПрихіднийКасовийОрдер_РозшифруванняПлатежу_TablePart(ПрихіднийКасовийОрдер_Objest owner) : base(Config.Kernel, "tab_a47",
+             new string[] { "col_j4", "col_j5", "col_j6", "col_j7", "col_j8" }) 
+        {
+            if (owner == null) throw new Exception("owner null");
+            
+            Owner = owner;
+            Records = new List<Record>();
+        }
+        
+        public ПрихіднийКасовийОрдер_Objest Owner { get; private set; }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            base.BaseRead(Owner.UnigueID);
+
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+                
+                record.Замовлення = fieldValue["col_j4"].ToString();
+                record.Сума = (fieldValue["col_j5"] != DBNull.Value) ? (decimal)fieldValue["col_j5"] : 0;
+                record.Підрозділ = new Довідники.СтруктураПідприємства_Pointer(fieldValue["col_j6"]);
+                record.ВалютаВзаєморозрахунків = new Довідники.Валюти_Pointer(fieldValue["col_j7"]);
+                record.Організація = new Довідники.Організації_Pointer(fieldValue["col_j8"]);
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(bool clear_all_before_save /*= true*/) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete(Owner.UnigueID);
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_j4", record.Замовлення);
+                    fieldValue.Add("col_j5", record.Сума);
+                    fieldValue.Add("col_j6", record.Підрозділ.UnigueID.UGuid);
+                    fieldValue.Add("col_j7", record.ВалютаВзаєморозрахунків.UnigueID.UGuid);
+                    fieldValue.Add("col_j8", record.Організація.UnigueID.UGuid);
+                    
+                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+        
+        public void Delete()
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
+        }
+        
+        
+        public class Record : DocumentTablePartRecord
+        {
+            public Record()
+            {
+                Замовлення = "";
+                Сума = 0;
+                Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
+                ВалютаВзаєморозрахунків = new Довідники.Валюти_Pointer();
+                Організація = new Довідники.Організації_Pointer();
+                
+            }
+        
+            
+            public Record(
+                string _Замовлення = "", decimal _Сума = 0, Довідники.СтруктураПідприємства_Pointer _Підрозділ = null, Довідники.Валюти_Pointer _ВалютаВзаєморозрахунків = null, Довідники.Організації_Pointer _Організація = null)
+            {
+                Замовлення = _Замовлення;
+                Сума = _Сума;
+                Підрозділ = _Підрозділ ?? new Довідники.СтруктураПідприємства_Pointer();
+                ВалютаВзаєморозрахунків = _ВалютаВзаєморозрахунків ?? new Довідники.Валюти_Pointer();
+                Організація = _Організація ?? new Довідники.Організації_Pointer();
+                
+            }
+            public string Замовлення { get; set; }
+            public decimal Сума { get; set; }
+            public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
+            public Довідники.Валюти_Pointer ВалютаВзаєморозрахунків { get; set; }
+            public Довідники.Організації_Pointer Організація { get; set; }
+            
+        }
+    }
+      
+    
+    #endregion
+    
+    #region DOCUMENT "РозхіднийКасовийОрдер"
+    
+    
+    class РозхіднийКасовийОрдер_Objest : DocumentObject
+    {
+        public РозхіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a48",
+             new string[] { "col_j9", "col_k1", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_k8", "col_k9", "col_l1", "col_l2", "col_l3" }) 
+        {
+            ДатаДок = DateTime.MinValue;
+            НомерДок = 0;
+            Організація = new Довідники.Організації_Pointer();
+            Каса = new Довідники.Каси_Pointer();
+            ОрганізаціяОтримувач = new Довідники.Організації_Pointer();
+            ГосподарськаОперація = 0;
+            КасаОтримувач = new Довідники.Каси_Pointer();
+            Контрагент = new Довідники.Контрагенти_Pointer();
+            БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer();
+            Валюта = new Довідники.Валюти_Pointer();
+            Коментар = "";
+            СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
+            Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
+            
+            //Табличні частини
+            РозшифровкаПлатежу_TablePart = new РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart(this);
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                ДатаДок = (base.FieldValue["col_j9"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_j9"].ToString()) : DateTime.MinValue;
+                НомерДок = (base.FieldValue["col_k1"] != DBNull.Value) ? (int)base.FieldValue["col_k1"] : 0;
+                Організація = new Довідники.Організації_Pointer(base.FieldValue["col_k2"]);
+                Каса = new Довідники.Каси_Pointer(base.FieldValue["col_k3"]);
+                ОрганізаціяОтримувач = new Довідники.Організації_Pointer(base.FieldValue["col_k4"]);
+                ГосподарськаОперація = (base.FieldValue["col_k5"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_k5"] : 0;
+                КасаОтримувач = new Довідники.Каси_Pointer(base.FieldValue["col_k6"]);
+                Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_k7"]);
+                БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_k8"]);
+                Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_k9"]);
+                Коментар = base.FieldValue["col_l1"].ToString();
+                СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_l2"]);
+                Підрозділ = new Довідники.СтруктураПідприємства_Pointer(base.FieldValue["col_l3"]);
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_j9"] = ДатаДок;
+            base.FieldValue["col_k1"] = НомерДок;
+            base.FieldValue["col_k2"] = Організація.ToString();
+            base.FieldValue["col_k3"] = Каса.ToString();
+            base.FieldValue["col_k4"] = ОрганізаціяОтримувач.ToString();
+            base.FieldValue["col_k5"] = (int)ГосподарськаОперація;
+            base.FieldValue["col_k6"] = КасаОтримувач.ToString();
+            base.FieldValue["col_k7"] = Контрагент.ToString();
+            base.FieldValue["col_k8"] = БанківськийРахунок.ToString();
+            base.FieldValue["col_k9"] = Валюта.ToString();
+            base.FieldValue["col_l1"] = Коментар;
+            base.FieldValue["col_l2"] = СтаттяРухуКоштів.ToString();
+            base.FieldValue["col_l3"] = Підрозділ.ToString();
+            
+            BaseSave();
+        }
+        
+        public void Delete()
+        {
+            base.BaseDelete();
+        }
+        
+        public РозхіднийКасовийОрдер_Pointer GetDocumentPointer()
+        {
+            РозхіднийКасовийОрдер_Pointer directoryPointer = new РозхіднийКасовийОрдер_Pointer(UnigueID.UGuid);
+            return directoryPointer;
+        }
+        
+        public DateTime ДатаДок { get; set; }
+        public int НомерДок { get; set; }
+        public Довідники.Організації_Pointer Організація { get; set; }
+        public Довідники.Каси_Pointer Каса { get; set; }
+        public Довідники.Організації_Pointer ОрганізаціяОтримувач { get; set; }
+        public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+        public Довідники.Каси_Pointer КасаОтримувач { get; set; }
+        public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+        public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунок { get; set; }
+        public Довідники.Валюти_Pointer Валюта { get; set; }
+        public string Коментар { get; set; }
+        public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
+        public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
+        
+        //Табличні частини
+        public РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart РозшифровкаПлатежу_TablePart { get; set; }
+        
+    }
+    
+    
+    class РозхіднийКасовийОрдер_Pointer : DocumentPointer
+    {
+        public РозхіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a48")
+        {
+            base.Init(new UnigueID(uid), null);
+        }
+        
+        public РозхіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a48")
+        {
+            base.Init(uid, fields);
+        } 
+        
+        public РозхіднийКасовийОрдер_Objest GetDocumentObject()
+        {
+            РозхіднийКасовийОрдер_Objest РозхіднийКасовийОрдерObjestItem = new РозхіднийКасовийОрдер_Objest();
+            РозхіднийКасовийОрдерObjestItem.Read(base.UnigueID);
+            return РозхіднийКасовийОрдерObjestItem;
+        }
+    }
+    
+    
+    class РозхіднийКасовийОрдер_Select : DocumentSelect, IDisposable
+    {
+        public РозхіднийКасовийОрдер_Select() : base(Config.Kernel, "tab_a48") { }
+        
+        public bool Select() { return base.BaseSelect(); }
+        
+        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
+        
+        public bool MoveNext() { if (MoveToPosition()) { Current = new РозхіднийКасовийОрдер_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
+        
+        public РозхіднийКасовийОрдер_Pointer Current { get; private set; }
+    }
+    
+      
+    class РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart : DocumentTablePart
+    {
+        public РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart(РозхіднийКасовийОрдер_Objest owner) : base(Config.Kernel, "tab_a49",
+             new string[] { "col_l4", "col_l5", "col_l6", "col_l7", "col_l8", "col_l9" }) 
+        {
+            if (owner == null) throw new Exception("owner null");
+            
+            Owner = owner;
+            Records = new List<Record>();
+        }
+        
+        public РозхіднийКасовийОрдер_Objest Owner { get; private set; }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            base.BaseRead(Owner.UnigueID);
+
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+                
+                record.Замовлення = fieldValue["col_l4"].ToString();
+                record.Сума = (fieldValue["col_l5"] != DBNull.Value) ? (decimal)fieldValue["col_l5"] : 0;
+                record.ВалютаВзаєморозрахунків = new Довідники.Валюти_Pointer(fieldValue["col_l6"]);
+                record.Підрозділ = new Довідники.СтруктураПідприємства_Pointer(fieldValue["col_l7"]);
+                record.Коментар = fieldValue["col_l8"].ToString();
+                record.Організація = new Довідники.Організації_Pointer(fieldValue["col_l9"]);
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(bool clear_all_before_save /*= true*/) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete(Owner.UnigueID);
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_l4", record.Замовлення);
+                    fieldValue.Add("col_l5", record.Сума);
+                    fieldValue.Add("col_l6", record.ВалютаВзаєморозрахунків.UnigueID.UGuid);
+                    fieldValue.Add("col_l7", record.Підрозділ.UnigueID.UGuid);
+                    fieldValue.Add("col_l8", record.Коментар);
+                    fieldValue.Add("col_l9", record.Організація.UnigueID.UGuid);
+                    
+                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+        
+        public void Delete()
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
+        }
+        
+        
+        public class Record : DocumentTablePartRecord
+        {
+            public Record()
+            {
+                Замовлення = "";
+                Сума = 0;
+                ВалютаВзаєморозрахунків = new Довідники.Валюти_Pointer();
+                Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
+                Коментар = "";
+                Організація = new Довідники.Організації_Pointer();
+                
+            }
+        
+            
+            public Record(
+                string _Замовлення = "", decimal _Сума = 0, Довідники.Валюти_Pointer _ВалютаВзаєморозрахунків = null, Довідники.СтруктураПідприємства_Pointer _Підрозділ = null, string _Коментар = "", Довідники.Організації_Pointer _Організація = null)
+            {
+                Замовлення = _Замовлення;
+                Сума = _Сума;
+                ВалютаВзаєморозрахунків = _ВалютаВзаєморозрахунків ?? new Довідники.Валюти_Pointer();
+                Підрозділ = _Підрозділ ?? new Довідники.СтруктураПідприємства_Pointer();
+                Коментар = _Коментар;
+                Організація = _Організація ?? new Довідники.Організації_Pointer();
+                
+            }
+            public string Замовлення { get; set; }
+            public decimal Сума { get; set; }
+            public Довідники.Валюти_Pointer ВалютаВзаєморозрахунків { get; set; }
+            public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
+            public string Коментар { get; set; }
+            public Довідники.Організації_Pointer Організація { get; set; }
+            
+        }
+    }
+      
+    
+    #endregion
+    
 }
 
 namespace StorageAndTrade_1_0.Журнали
@@ -5314,10 +6605,581 @@ namespace StorageAndTrade_1_0.Журнали
 namespace StorageAndTrade_1_0.РегістриВідомостей
 {
     
+    #region REGISTER "ЦіниНоменклатури"
+    
+    
+    class ЦіниНоменклатури_RecordsSet : RegisterInformationRecordsSet
+    {
+        public ЦіниНоменклатури_RecordsSet() : base(Config.Kernel, "tab_a40",
+             new string[] { "col_f5", "col_f6", "col_f7", "col_f8", "col_f9", "col_g2" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.Номенклатура != null)
+            {
+                base.BaseFilter.Add(new Where("col_f5", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.Характеристика != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f6", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_f6", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.ВидЦіни != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f7", Comparison.EQ, Filter.ВидЦіни.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_f7", Comparison.EQ, Filter.ВидЦіни.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                
+                record.UID = (Guid)fieldValue["uid"];
+                  
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_f5"]);
+                record.Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_f6"]);
+                record.ВидЦіни = new Довідники.ВидиЦін_Pointer(fieldValue["col_f7"]);
+                record.Ціна = (fieldValue["col_f8"] != DBNull.Value) ? (decimal)fieldValue["col_f8"] : 0;
+                record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_f9"]);
+                record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_g2"]);
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(bool clear_all_before_save = true) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_f5", record.Номенклатура.ToString());
+                    fieldValue.Add("col_f6", record.Характеристика.ToString());
+                    fieldValue.Add("col_f7", record.ВидЦіни.ToString());
+                    fieldValue.Add("col_f8", record.Ціна);
+                    fieldValue.Add("col_f9", record.Пакування.ToString());
+                    fieldValue.Add("col_g2", record.Валюта.ToString());
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+        
+        public void Delete()
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete();
+            base.BaseCommitTransaction();
+        }
+        
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                ВидЦіни = new Довідники.ВидиЦін_Pointer();
+                Ціна = 0;
+                Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+                Валюта = new Довідники.Валюти_Pointer();
+                
+            }
+        
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
+            public decimal Ціна { get; set; }
+            public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
+            public Довідники.Валюти_Pointer Валюта { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Номенклатура = null;
+                 Характеристика = null;
+                 ВидЦіни = null;
+                 
+            }
+        
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
 }
 
 namespace StorageAndTrade_1_0.РегістриНакопичення
 {
     
+    #region REGISTER "ТовариНаСкладах"
+    
+    
+    class ТовариНаСкладах_RecordsSet : RegisterAccumulationRecordsSet
+    {
+        public ТовариНаСкладах_RecordsSet() : base(Config.Kernel, "tab_a38",
+             new string[] { "col_e4", "col_e5", "col_e6", "col_e7", "col_e8" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.Номенклатура != null)
+            {
+                base.BaseFilter.Add(new Where("col_e4", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.Характеристика != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e5", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_e5", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.Склад != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e6", Comparison.EQ, Filter.Склад.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_e6", Comparison.EQ, Filter.Склад.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Income = (bool)fieldValue["income"];
+                record.Owner = (Guid)fieldValue["owner"];
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_e4"]);
+                record.Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_e5"]);
+                record.Склад = new Довідники.Склади_Pointer(fieldValue["col_e6"]);
+                record.ВНявсності = (fieldValue["col_e7"] != DBNull.Value) ? (decimal)fieldValue["col_e7"] : 0;
+                record.ДоВідвантаження = (fieldValue["col_e8"] != DBNull.Value) ? (decimal)fieldValue["col_e8"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                base.BaseDelete(owner);
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_e4", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_e5", record.Характеристика.UnigueID.UGuid);
+                    fieldValue.Add("col_e6", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_e7", record.ВНявсності);
+                    fieldValue.Add("col_e8", record.ДоВідвантаження);
+                    
+                    base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Склад = new Довідники.Склади_Pointer();
+                ВНявсності = 0;
+                ДоВідвантаження = 0;
+                
+            }
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            public decimal ВНявсності { get; set; }
+            public decimal ДоВідвантаження { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Номенклатура = null;
+                 Характеристика = null;
+                 Склад = null;
+                 
+            }
+        
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "ТовариОрганізацій"
+    
+    
+    class ТовариОрганізацій_RecordsSet : RegisterAccumulationRecordsSet
+    {
+        public ТовариОрганізацій_RecordsSet() : base(Config.Kernel, "tab_a39",
+             new string[] { "col_e9", "col_f2", "col_f3", "col_f1", "col_f4" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.Організація != null)
+            {
+                base.BaseFilter.Add(new Where("col_e9", Comparison.EQ, Filter.Організація.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.Номенклатура != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f2", Comparison.EQ, Filter.Номенклатура, false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_f2", Comparison.EQ, Filter.Номенклатура, false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.ХарактеристикаНоменклатури != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Income = (bool)fieldValue["income"];
+                record.Owner = (Guid)fieldValue["owner"];
+                record.Організація = new Довідники.Організації_Pointer(fieldValue["col_e9"]);
+                record.Номенклатура = fieldValue["col_f2"].ToString();
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_f3"]);
+                record.Кількість = (fieldValue["col_f1"] != DBNull.Value) ? (int)fieldValue["col_f1"] : 0;
+                record.ГосподарськаОперація = (fieldValue["col_f4"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)fieldValue["col_f4"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                base.BaseDelete(owner);
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_e9", record.Організація.UnigueID.UGuid);
+                    fieldValue.Add("col_f2", record.Номенклатура);
+                    fieldValue.Add("col_f3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_f1", record.Кількість);
+                    fieldValue.Add("col_f4", record.ГосподарськаОперація);
+                    
+                    base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Організація = new Довідники.Організації_Pointer();
+                Номенклатура = "";
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Кількість = 0;
+                ГосподарськаОперація = 0;
+                
+            }
+            public Довідники.Організації_Pointer Організація { get; set; }
+            public string Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public int Кількість { get; set; }
+            public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Організація = null;
+                 Номенклатура = null;
+                 ХарактеристикаНоменклатури = null;
+                 
+            }
+        
+            public Довідники.Організації_Pointer Організація { get; set; }
+            public string Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "РухТоварів"
+    
+    
+    class РухТоварів_RecordsSet : RegisterAccumulationRecordsSet
+    {
+        public РухТоварів_RecordsSet() : base(Config.Kernel, "tab_a41",
+             new string[] { "col_g3", "col_g4", "col_g5", "col_g6" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.Номенклатура != null)
+            {
+                base.BaseFilter.Add(new Where("col_g3", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.ХарактеристикаНоменклатури != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.Склад != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g5", Comparison.EQ, Filter.Склад.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_g5", Comparison.EQ, Filter.Склад.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Income = (bool)fieldValue["income"];
+                record.Owner = (Guid)fieldValue["owner"];
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_g3"]);
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_g4"]);
+                record.Склад = new Довідники.Склади_Pointer(fieldValue["col_g5"]);
+                record.Кількість = (fieldValue["col_g6"] != DBNull.Value) ? (decimal)fieldValue["col_g6"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                base.BaseDelete(owner);
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_g3", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_g4", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_g5", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_g6", record.Кількість);
+                    
+                    base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Склад = new Довідники.Склади_Pointer();
+                Кількість = 0;
+                
+            }
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            public decimal Кількість { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Номенклатура = null;
+                 ХарактеристикаНоменклатури = null;
+                 Склад = null;
+                 
+            }
+        
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
 }
   
