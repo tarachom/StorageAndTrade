@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>07.09.2021 20:32:05</DateTimeSave>
+  <DateTimeSave>07.09.2021 20:46:45</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -1367,6 +1367,15 @@
           <NameInTable>col_a1</NameInTable>
           <Type>pointer</Type>
           <Pointer>Довідники.СтруктураПідприємства</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Валюта</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Валюти</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>

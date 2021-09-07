@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormAddCash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddCash.designer.cs">
+      <DependentUpon>FormAddCash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCash.designer.cs">
+      <DependentUpon>FormCash.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormStorageAndTrade.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +98,12 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAddCash.resx">
+      <DependentUpon>FormAddCash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCash.resx">
+      <DependentUpon>FormCash.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormStorageAndTrade.resx">
       <DependentUpon>FormStorageAndTrade.cs</DependentUpon>
     </EmbeddedResource>
@@ -97,6 +115,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -111,7 +130,69 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\blog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookmark_folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coins.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\data.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doc_text_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\drawer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\layers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\money.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\page_white_text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\photo_album.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textfield.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

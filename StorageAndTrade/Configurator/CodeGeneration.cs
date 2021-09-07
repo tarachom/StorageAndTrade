@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 07.09.2021 20:32:05
+ * Дата конфігурації: 07.09.2021 20:46:45
  *
  */
 
@@ -3546,11 +3546,12 @@ namespace StorageAndTrade_1_0.Довідники
     class Каси_Objest : DirectoryObject
     {
         public Каси_Objest() : base(Config.Kernel, "tab_a26",
-             new string[] { "col_k8", "col_k9", "col_a1" }) 
+             new string[] { "col_k8", "col_k9", "col_a1", "col_a2" }) 
         {
             Назва = "";
             Код = "";
             Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
+            Валюта = new Довідники.Валюти_Pointer();
             
         }
         
@@ -3561,6 +3562,7 @@ namespace StorageAndTrade_1_0.Довідники
                 Назва = base.FieldValue["col_k8"].ToString();
                 Код = base.FieldValue["col_k9"].ToString();
                 Підрозділ = new Довідники.СтруктураПідприємства_Pointer(base.FieldValue["col_a1"]);
+                Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_a2"]);
                 
                 BaseClear();
                 return true;
@@ -3574,6 +3576,7 @@ namespace StorageAndTrade_1_0.Довідники
             base.FieldValue["col_k8"] = Назва;
             base.FieldValue["col_k9"] = Код;
             base.FieldValue["col_a1"] = Підрозділ.UnigueID.UGuid;
+            base.FieldValue["col_a2"] = Валюта.UnigueID.UGuid;
             
             BaseSave();
 			
@@ -3587,6 +3590,7 @@ namespace StorageAndTrade_1_0.Довідники
                "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
                "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
                "<Підрозділ>" + Підрозділ.ToString() + "</Підрозділ>"  +
+               "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
                "</" + root + ">";
         }
 
@@ -3605,6 +3609,7 @@ namespace StorageAndTrade_1_0.Довідники
         public string Назва { get; set; }
         public string Код { get; set; }
         public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
+        public Довідники.Валюти_Pointer Валюта { get; set; }
         
     }
     
@@ -3644,12 +3649,13 @@ namespace StorageAndTrade_1_0.Довідники
     class Каси_Select : DirectorySelect, IDisposable
     {
         public Каси_Select() : base(Config.Kernel, "tab_a26",
-            new string[] { "col_k8", "col_k9", "col_a1" },
-            new string[] { "Назва", "Код", "Підрозділ" }) { }
+            new string[] { "col_k8", "col_k9", "col_a1", "col_a2" },
+            new string[] { "Назва", "Код", "Підрозділ", "Валюта" }) { }
         
         public const string Назва = "col_k8";
         public const string Код = "col_k9";
         public const string Підрозділ = "col_a1";
+        public const string Валюта = "col_a2";
         
         public bool Select() { return base.BaseSelect(); }
         
