@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Name>Зберігання та Торгівля</Name>
+  <NameSpace>StorageAndTrade_1_0</NameSpace>
+  <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
+  <DateTimeSave>07.09.2021 13:54:22</DateTimeSave>
+  <ConstantsBlocks />
+  <Directories />
+  <Enums />
+  <Documents />
+  <RegistersInformation />
+  <RegistersAccumulation />
+</Configuration>

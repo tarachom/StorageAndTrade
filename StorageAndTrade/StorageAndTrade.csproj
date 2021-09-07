@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bin\Debug\CodeGeneration.cs" />
     <Compile Include="ConfigurationSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +61,7 @@
     <Compile Include="ConfigurationSelectionParam.designer.cs">
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
     <Compile Include="DirectoryControl.cs">
       <SubType>UserControl</SubType>
@@ -126,6 +126,11 @@ copy %25conf_folder%25\Configurator.exe.config           %25st_folder%25\Configu
 
 copy %25conf_folder_code%25\CodeGeneration.xslt                    %25st_folder%25\CodeGeneration.xslt
 copy %25conf_folder_code%25\Comparison.xslt                          %25st_folder%25\Comparison.xslt
-copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\ComparisonAnalize.xslt</PostBuildEvent>
+copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\ComparisonAnalize.xslt
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
 </Project>
