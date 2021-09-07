@@ -3,8 +3,79 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>07.09.2021 18:42:52</DateTimeSave>
-  <ConstantsBlocks />
+  <DateTimeSave>07.09.2021 20:32:05</DateTimeSave>
+  <ConstantsBlocks>
+    <ConstantsBlock>
+      <Name>ЗначенняПоЗамовчуванню</Name>
+      <Desc>
+      </Desc>
+      <Constants>
+        <Constant>
+          <Name>ОсновнаОрганізація</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Організації</Pointer>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ОснонийСклад</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Склади</Pointer>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ОсновнаВалюта</Name>
+          <NameInTable>col_a3</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Валюти</Pointer>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ОсновнийПостачальник</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Контрагенти</Pointer>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ОсновнийПокупець</Name>
+          <NameInTable>col_a5</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Контрагенти</Pointer>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ОсновнаКаса</Name>
+          <NameInTable>col_a6</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Каси</Pointer>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ОсновнаОдиницяПакування</Name>
+          <NameInTable>col_a7</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
+          <TabularParts />
+        </Constant>
+      </Constants>
+    </ConstantsBlock>
+  </ConstantsBlocks>
   <Directories>
     <Directory>
       <Name>Організації</Name>

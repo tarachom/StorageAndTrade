@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 07.09.2021 18:42:52
+ * Дата конфігурації: 07.09.2021 20:32:05
  *
  */
 
@@ -42,6 +42,7 @@ namespace StorageAndTrade_1_0
 		
         public static void ReadAllConstants()
         {
+            Константи.ЗначенняПоЗамовчуванню.ReadAll();
             
         }
     }
@@ -49,6 +50,111 @@ namespace StorageAndTrade_1_0
 
 namespace StorageAndTrade_1_0.Константи
 {
+    
+	#region CONSTANTS BLOCK "ЗначенняПоЗамовчуванню"
+    static class ЗначенняПоЗамовчуванню
+    {
+        public static void ReadAll()
+        {
+            
+            Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+            bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7" }, fieldValue);
+            
+            if (IsSelect)
+            {
+                m_ОсновнаОрганізація_Const = new Довідники.Організації_Pointer(fieldValue["col_a1"]);
+                m_ОснонийСклад_Const = new Довідники.Склади_Pointer(fieldValue["col_a2"]);
+                m_ОсновнаВалюта_Const = new Довідники.Валюти_Pointer(fieldValue["col_a3"]);
+                m_ОсновнийПостачальник_Const = new Довідники.Контрагенти_Pointer(fieldValue["col_a4"]);
+                m_ОсновнийПокупець_Const = new Довідники.Контрагенти_Pointer(fieldValue["col_a5"]);
+                m_ОсновнаКаса_Const = new Довідники.Каси_Pointer(fieldValue["col_a6"]);
+                m_ОсновнаОдиницяПакування_Const = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_a7"]);
+                
+            }
+			
+        }
+        
+        
+        static Довідники.Організації_Pointer m_ОсновнаОрганізація_Const = new Довідники.Організації_Pointer();
+        public static Довідники.Організації_Pointer ОсновнаОрганізація_Const
+        {
+            get { return m_ОсновнаОрганізація_Const; }
+            set
+            {
+                m_ОсновнаОрганізація_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a1", m_ОсновнаОрганізація_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.Склади_Pointer m_ОснонийСклад_Const = new Довідники.Склади_Pointer();
+        public static Довідники.Склади_Pointer ОснонийСклад_Const
+        {
+            get { return m_ОснонийСклад_Const; }
+            set
+            {
+                m_ОснонийСклад_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a2", m_ОснонийСклад_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.Валюти_Pointer m_ОсновнаВалюта_Const = new Довідники.Валюти_Pointer();
+        public static Довідники.Валюти_Pointer ОсновнаВалюта_Const
+        {
+            get { return m_ОсновнаВалюта_Const; }
+            set
+            {
+                m_ОсновнаВалюта_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a3", m_ОсновнаВалюта_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.Контрагенти_Pointer m_ОсновнийПостачальник_Const = new Довідники.Контрагенти_Pointer();
+        public static Довідники.Контрагенти_Pointer ОсновнийПостачальник_Const
+        {
+            get { return m_ОсновнийПостачальник_Const; }
+            set
+            {
+                m_ОсновнийПостачальник_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a4", m_ОсновнийПостачальник_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.Контрагенти_Pointer m_ОсновнийПокупець_Const = new Довідники.Контрагенти_Pointer();
+        public static Довідники.Контрагенти_Pointer ОсновнийПокупець_Const
+        {
+            get { return m_ОсновнийПокупець_Const; }
+            set
+            {
+                m_ОсновнийПокупець_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a5", m_ОсновнийПокупець_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.Каси_Pointer m_ОсновнаКаса_Const = new Довідники.Каси_Pointer();
+        public static Довідники.Каси_Pointer ОсновнаКаса_Const
+        {
+            get { return m_ОсновнаКаса_Const; }
+            set
+            {
+                m_ОсновнаКаса_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a6", m_ОсновнаКаса_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.ПакуванняОдиниціВиміру_Pointer m_ОсновнаОдиницяПакування_Const = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+        public static Довідники.ПакуванняОдиниціВиміру_Pointer ОсновнаОдиницяПакування_Const
+        {
+            get { return m_ОсновнаОдиницяПакування_Const; }
+            set
+            {
+                m_ОсновнаОдиницяПакування_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a7", m_ОсновнаОдиницяПакування_Const.UnigueID.UGuid);
+            }
+        }
+             
+    }
+    #endregion
     
 }
 
