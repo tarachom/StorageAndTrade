@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 07.09.2021 20:46:45
+ * Дата конфігурації: 08.09.2021 20:18:47
  *
  */
 
@@ -233,6 +233,22 @@ namespace StorageAndTrade_1_0.Довідники
                "<СвідоцтвоСеріяНомер>" + "<![CDATA[" + СвідоцтвоСеріяНомер + "]]>" + "</СвідоцтвоСеріяНомер>"  +
                "<СвідоцтвоДатаВидачі>" + "<![CDATA[" + СвідоцтвоДатаВидачі + "]]>" + "</СвідоцтвоДатаВидачі>"  +
                "</" + root + ">";
+        }
+
+        public Організації_Objest Copy()
+        {
+            Організації_Objest newCopy = new Організації_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.НазваПовна = НазваПовна;
+			newCopy.НазваСкорочена = НазваСкорочена;
+			newCopy.ДатаРеєстрації = ДатаРеєстрації;
+			newCopy.КраїнаРеєстрації = КраїнаРеєстрації;
+			newCopy.СвідоцтвоСеріяНомер = СвідоцтвоСеріяНомер;
+			newCopy.СвідоцтвоДатаВидачі = СвідоцтвоДатаВидачі;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -534,6 +550,24 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public Номенклатура_Objest Copy()
+        {
+            Номенклатура_Objest newCopy = new Номенклатура_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Артикул = Артикул;
+			newCopy.НазваПовна = НазваПовна;
+			newCopy.ТипНоменклатури = ТипНоменклатури;
+			newCopy.Опис = Опис;
+			newCopy.Виробник = Виробник;
+			newCopy.ВидНоменклатури = ВидНоменклатури;
+			newCopy.ОдиницяВиміру = ОдиницяВиміру;
+			newCopy.Папка = Папка;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -687,6 +721,16 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public Виробники_Objest Copy()
+        {
+            Виробники_Objest newCopy = new Виробники_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -830,6 +874,19 @@ namespace StorageAndTrade_1_0.Довідники
                "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
                "<ОдиницяВиміру>" + ОдиницяВиміру.ToString() + "</ОдиницяВиміру>"  +
                "</" + root + ">";
+        }
+
+        public ВидиНоменклатури_Objest Copy()
+        {
+            ВидиНоменклатури_Objest newCopy = new ВидиНоменклатури_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.ТипНоменклатури = ТипНоменклатури;
+			newCopy.Опис = Опис;
+			newCopy.ОдиницяВиміру = ОдиницяВиміру;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -979,6 +1036,18 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public ПакуванняОдиниціВиміру_Objest Copy()
+        {
+            ПакуванняОдиниціВиміру_Objest newCopy = new ПакуванняОдиниціВиміру_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.НазваПовна = НазваПовна;
+			newCopy.КількістьУпаковок = КількістьУпаковок;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -1114,6 +1183,16 @@ namespace StorageAndTrade_1_0.Довідники
                "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
                "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
                "</" + root + ">";
+        }
+
+        public Валюти_Objest Copy()
+        {
+            Валюти_Objest newCopy = new Валюти_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -1262,6 +1341,19 @@ namespace StorageAndTrade_1_0.Довідники
                "<РеєстраційнийНомер>" + "<![CDATA[" + РеєстраційнийНомер + "]]>" + "</РеєстраційнийНомер>"  +
                "<Папка>" + "<![CDATA[" + Папка + "]]>" + "</Папка>"  +
                "</" + root + ">";
+        }
+
+        public Контрагенти_Objest Copy()
+        {
+            Контрагенти_Objest newCopy = new Контрагенти_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.НазваПовна = НазваПовна;
+			newCopy.РеєстраційнийНомер = РеєстраційнийНомер;
+			newCopy.Папка = Папка;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -1542,6 +1634,21 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public Склади_Objest Copy()
+        {
+            Склади_Objest newCopy = new Склади_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.ТипСкладу = ТипСкладу;
+			newCopy.Відповідальний = Відповідальний;
+			newCopy.ВидЦін = ВидЦін;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.Папка = Папка;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -1805,6 +1912,17 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public ВидиЦін_Objest Copy()
+        {
+            ВидиЦін_Objest newCopy = new ВидиЦін_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Валюта = Валюта;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -1942,6 +2060,17 @@ namespace StorageAndTrade_1_0.Довідники
                "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
                "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
                "</" + root + ">";
+        }
+
+        public ВидиЦінПостачальників_Objest Copy()
+        {
+            ВидиЦінПостачальників_Objest newCopy = new ВидиЦінПостачальників_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Валюта = Валюта;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -2088,6 +2217,18 @@ namespace StorageAndTrade_1_0.Довідники
                "<Коментар>" + "<![CDATA[" + Коментар + "]]>" + "</Коментар>"  +
                "<ФізичнаОсоба>" + ФізичнаОсоба.ToString() + "</ФізичнаОсоба>"  +
                "</" + root + ">";
+        }
+
+        public Користувачі_Objest Copy()
+        {
+            Користувачі_Objest newCopy = new Користувачі_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Коментар = Коментар;
+			newCopy.ФізичнаОсоба = ФізичнаОсоба;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -2358,6 +2499,19 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public ФізичніОсоби_Objest Copy()
+        {
+            ФізичніОсоби_Objest newCopy = new ФізичніОсоби_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.ДатаНародження = ДатаНародження;
+			newCopy.Стать = Стать;
+			newCopy.ІПН = ІПН;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -2617,6 +2771,17 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public СтруктураПідприємства_Objest Copy()
+        {
+            СтруктураПідприємства_Objest newCopy = new СтруктураПідприємства_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Керівник = Керівник;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -2756,6 +2921,17 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public КраїниСвіту_Objest Copy()
+        {
+            КраїниСвіту_Objest newCopy = new КраїниСвіту_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.НазваПовна = НазваПовна;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -2889,6 +3065,16 @@ namespace StorageAndTrade_1_0.Довідники
                "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
                "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
                "</" + root + ">";
+        }
+
+        public Файли_Objest Copy()
+        {
+            Файли_Objest newCopy = new Файли_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -3032,6 +3218,18 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public ХарактеристикиНоменклатури_Objest Copy()
+        {
+            ХарактеристикиНоменклатури_Objest newCopy = new ХарактеристикиНоменклатури_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.НазваПовна = НазваПовна;
+			newCopy.Номенклатура = Номенклатура;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -3173,6 +3371,17 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public Номенклатура_Папки_Objest Copy()
+        {
+            Номенклатура_Папки_Objest newCopy = new Номенклатура_Папки_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Родич = Родич;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -3312,6 +3521,17 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public Контрагенти_Папки_Objest Copy()
+        {
+            Контрагенти_Папки_Objest newCopy = new Контрагенти_Папки_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Родич = Родич;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -3449,6 +3669,17 @@ namespace StorageAndTrade_1_0.Довідники
                "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
                "<Родич>" + Родич.ToString() + "</Родич>"  +
                "</" + root + ">";
+        }
+
+        public Склади_Папки_Objest Copy()
+        {
+            Склади_Папки_Objest newCopy = new Склади_Папки_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Родич = Родич;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -3592,6 +3823,18 @@ namespace StorageAndTrade_1_0.Довідники
                "<Підрозділ>" + Підрозділ.ToString() + "</Підрозділ>"  +
                "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
                "</" + root + ">";
+        }
+
+        public Каси_Objest Copy()
+        {
+            Каси_Objest newCopy = new Каси_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.Валюта = Валюта;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -3773,6 +4016,27 @@ namespace StorageAndTrade_1_0.Довідники
                "<Закритий>" + (Закритий == true ? "1" : "0") + "</Закритий>"  +
                "<Організація>" + Організація.ToString() + "</Організація>"  +
                "</" + root + ">";
+        }
+
+        public БанківськіРахункиОрганізацій_Objest Copy()
+        {
+            БанківськіРахункиОрганізацій_Objest newCopy = new БанківськіРахункиОрганізацій_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.Валюта = Валюта;
+			newCopy.Банк = Банк;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.НазваБанку = НазваБанку;
+			newCopy.НомерРахунку = НомерРахунку;
+			newCopy.АдресаБанку = АдресаБанку;
+			newCopy.МістоБанку = МістоБанку;
+			newCopy.КореспонденськийРахунокБанку = КореспонденськийРахунокБанку;
+			newCopy.ТелефониБанку = ТелефониБанку;
+			newCopy.Закритий = Закритий;
+			newCopy.Організація = Організація;
+			
+			return newCopy;
         }
 
         public void Delete()
@@ -3998,6 +4262,33 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public ДоговориКонтрагентів_Objest Copy()
+        {
+            ДоговориКонтрагентів_Objest newCopy = new ДоговориКонтрагентів_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.БанківськийРахунок = БанківськийРахунок;
+			newCopy.БанківськийРахунокКонтрагента = БанківськийРахунокКонтрагента;
+			newCopy.ВалютаВзаєморозрахунків = ВалютаВзаєморозрахунків;
+			newCopy.Коментар = Коментар;
+			newCopy.ДатаПочаткуДії = ДатаПочаткуДії;
+			newCopy.ДатаЗакінченняДії = ДатаЗакінченняДії;
+			newCopy.Організація = Організація;
+			newCopy.Контрагент = Контрагент;
+			newCopy.Дата = Дата;
+			newCopy.Номер = Номер;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.Узгоджений = Узгоджений;
+			newCopy.Статус = Статус;
+			newCopy.ГосподарськаОперація = ГосподарськаОперація;
+			newCopy.ТипДоговору = ТипДоговору;
+			newCopy.ДопустимаСумаЗаборгованості = ДопустимаСумаЗаборгованості;
+			newCopy.Сума = Сума;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -4217,6 +4508,29 @@ namespace StorageAndTrade_1_0.Довідники
                "</" + root + ">";
         }
 
+        public БанківськіРахункиКонтрагентів_Objest Copy()
+        {
+            БанківськіРахункиКонтрагентів_Objest newCopy = new БанківськіРахункиКонтрагентів_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.НомерРахунку = НомерРахунку;
+			newCopy.Банк = Банк;
+			newCopy.БанкДляРозрахунків = БанкДляРозрахунків;
+			newCopy.ТекстКореспондента = ТекстКореспондента;
+			newCopy.ТекстПризначення = ТекстПризначення;
+			newCopy.Валюта = Валюта;
+			newCopy.НазваБанку = НазваБанку;
+			newCopy.КорРахунокБанку = КорРахунокБанку;
+			newCopy.МістоБанку = МістоБанку;
+			newCopy.АдресаБанку = АдресаБанку;
+			newCopy.ТелефониБанку = ТелефониБанку;
+			newCopy.Закрито = Закрито;
+			newCopy.Контрагент = Контрагент;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             
@@ -4389,6 +4703,19 @@ namespace StorageAndTrade_1_0.Довідники
                "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
                "<ВидРухуКоштів>" + ((int)ВидРухуКоштів).ToString() + "</ВидРухуКоштів>"  +
                "</" + root + ">";
+        }
+
+        public СтаттяРухуКоштів_Objest Copy()
+        {
+            СтаттяРухуКоштів_Objest newCopy = new СтаттяРухуКоштів_Objest();
+			newCopy.New();
+            newCopy.Назва = Назва;
+			newCopy.Код = Код;
+			newCopy.КореспондуючийРахунок = КореспондуючийРахунок;
+			newCopy.Опис = Опис;
+			newCopy.ВидРухуКоштів = ВидРухуКоштів;
+			
+			return newCopy;
         }
 
         public void Delete()

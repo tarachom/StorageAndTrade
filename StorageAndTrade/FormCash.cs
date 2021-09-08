@@ -208,14 +208,10 @@ namespace StorageAndTrade
                     Довідники.Каси_Objest каси_Objest = new Довідники.Каси_Objest();
                     if (каси_Objest.Read(new UnigueID(uid)))
                     {
-                        Довідники.Каси_Objest каси_Objest_Новий = new Довідники.Каси_Objest();
-                        каси_Objest_Новий.New();
-						каси_Objest_Новий.Назва = "(Копія) - " + каси_Objest.Назва;
-						каси_Objest_Новий.Валюта = каси_Objest.Валюта;
-						каси_Objest_Новий.Код = каси_Objest.Код;
-						каси_Objest_Новий.Підрозділ = каси_Objest.Підрозділ;
-						каси_Objest_Новий.Save();
-                    }
+						Довідники.Каси_Objest каси_Новий_Objest = каси_Objest.Copy();
+						каси_Новий_Objest.Назва = "Копія - " + каси_Новий_Objest.Назва;
+						каси_Новий_Objest.Save();
+					}
                     else
                     {
                         MessageBox.Show("Error read");
