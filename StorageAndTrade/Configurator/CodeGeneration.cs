@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 08.09.2021 20:18:47
+ * Дата конфігурації: 08.09.2021 20:53:02
  *
  */
 
@@ -316,9 +316,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     class Організації_Select : DirectorySelect, IDisposable
     {
-        public Організації_Select() : base(Config.Kernel, "tab_a01",
-            new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8" },
-            new string[] { "Назва", "Код", "НазваПовна", "НазваСкорочена", "ДатаРеєстрації", "КраїнаРеєстрації", "СвідоцтвоСеріяНомер", "СвідоцтвоДатаВидачі" }) { }
+        public Організації_Select() : base(Config.Kernel, "tab_a01") { }
         
         public const string Назва = "col_a1";
         public const string Код = "col_a2";
@@ -632,9 +630,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     class Номенклатура_Select : DirectorySelect, IDisposable
     {
-        public Номенклатура_Select() : base(Config.Kernel, "tab_a03",
-            new string[] { "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5" },
-            new string[] { "Назва", "Код", "Артикул", "НазваПовна", "ТипНоменклатури", "Опис", "Виробник", "ВидНоменклатури", "ОдиницяВиміру", "Папка" }) { }
+        public Номенклатура_Select() : base(Config.Kernel, "tab_a03") { }
         
         public const string Назва = "col_b1";
         public const string Код = "col_b2";
@@ -783,9 +779,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Виробники_Select : DirectorySelect, IDisposable
     {
-        public Виробники_Select() : base(Config.Kernel, "tab_a04",
-            new string[] { "col_b6", "col_b7" },
-            new string[] { "Назва", "Код" }) { }
+        public Виробники_Select() : base(Config.Kernel, "tab_a04") { }
         
         public const string Назва = "col_b6";
         public const string Код = "col_b7";
@@ -944,9 +938,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class ВидиНоменклатури_Select : DirectorySelect, IDisposable
     {
-        public ВидиНоменклатури_Select() : base(Config.Kernel, "tab_a05",
-            new string[] { "col_b8", "col_b9", "col_a1", "col_a2", "col_a4" },
-            new string[] { "Назва", "Код", "ТипНоменклатури", "Опис", "ОдиницяВиміру" }) { }
+        public ВидиНоменклатури_Select() : base(Config.Kernel, "tab_a05") { }
         
         public const string Назва = "col_b8";
         public const string Код = "col_b9";
@@ -1102,9 +1094,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class ПакуванняОдиниціВиміру_Select : DirectorySelect, IDisposable
     {
-        public ПакуванняОдиниціВиміру_Select() : base(Config.Kernel, "tab_a06",
-            new string[] { "col_c1", "col_c2", "col_c3", "col_c4" },
-            new string[] { "Назва", "Код", "НазваПовна", "КількістьУпаковок" }) { }
+        public ПакуванняОдиниціВиміру_Select() : base(Config.Kernel, "tab_a06") { }
         
         public const string Назва = "col_c1";
         public const string Код = "col_c2";
@@ -1247,9 +1237,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Валюти_Select : DirectorySelect, IDisposable
     {
-        public Валюти_Select() : base(Config.Kernel, "tab_a07",
-            new string[] { "col_c5", "col_c6" },
-            new string[] { "Назва", "Код" }) { }
+        public Валюти_Select() : base(Config.Kernel, "tab_a07") { }
         
         public const string Назва = "col_c5";
         public const string Код = "col_c6";
@@ -1414,9 +1402,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Контрагенти_Select : DirectorySelect, IDisposable
     {
-        public Контрагенти_Select() : base(Config.Kernel, "tab_a08",
-            new string[] { "col_c7", "col_c8", "col_c9", "col_d1", "col_a1" },
-            new string[] { "Назва", "Код", "НазваПовна", "РеєстраційнийНомер", "Папка" }) { }
+        public Контрагенти_Select() : base(Config.Kernel, "tab_a08") { }
         
         public const string Назва = "col_c7";
         public const string Код = "col_c8";
@@ -1709,9 +1695,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Склади_Select : DirectorySelect, IDisposable
     {
-        public Склади_Select() : base(Config.Kernel, "tab_a10",
-            new string[] { "col_d9", "col_e1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5" },
-            new string[] { "Назва", "Код", "ТипСкладу", "Відповідальний", "ВидЦін", "Підрозділ", "Папка" }) { }
+        public Склади_Select() : base(Config.Kernel, "tab_a10") { }
         
         public const string Назва = "col_d9";
         public const string Код = "col_e1";
@@ -1976,9 +1960,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class ВидиЦін_Select : DirectorySelect, IDisposable
     {
-        public ВидиЦін_Select() : base(Config.Kernel, "tab_a12",
-            new string[] { "col_e9", "col_f1", "col_f2" },
-            new string[] { "Назва", "Код", "Валюта" }) { }
+        public ВидиЦін_Select() : base(Config.Kernel, "tab_a12") { }
         
         public const string Назва = "col_e9";
         public const string Код = "col_f1";
@@ -2126,9 +2108,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class ВидиЦінПостачальників_Select : DirectorySelect, IDisposable
     {
-        public ВидиЦінПостачальників_Select() : base(Config.Kernel, "tab_a13",
-            new string[] { "col_f3", "col_f4", "col_f5" },
-            new string[] { "Назва", "Код", "Валюта" }) { }
+        public ВидиЦінПостачальників_Select() : base(Config.Kernel, "tab_a13") { }
         
         public const string Назва = "col_f3";
         public const string Код = "col_f4";
@@ -2288,9 +2268,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Користувачі_Select : DirectorySelect, IDisposable
     {
-        public Користувачі_Select() : base(Config.Kernel, "tab_a14",
-            new string[] { "col_f6", "col_f7", "col_g6", "col_a1" },
-            new string[] { "Назва", "Код", "Коментар", "ФізичнаОсоба" }) { }
+        public Користувачі_Select() : base(Config.Kernel, "tab_a14") { }
         
         public const string Назва = "col_f6";
         public const string Код = "col_f7";
@@ -2570,9 +2548,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class ФізичніОсоби_Select : DirectorySelect, IDisposable
     {
-        public ФізичніОсоби_Select() : base(Config.Kernel, "tab_a16",
-            new string[] { "col_g7", "col_g8", "col_g9", "col_a1", "col_a2" },
-            new string[] { "Назва", "Код", "ДатаНародження", "Стать", "ІПН" }) { }
+        public ФізичніОсоби_Select() : base(Config.Kernel, "tab_a16") { }
         
         public const string Назва = "col_g7";
         public const string Код = "col_g8";
@@ -2835,9 +2811,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class СтруктураПідприємства_Select : DirectorySelect, IDisposable
     {
-        public СтруктураПідприємства_Select() : base(Config.Kernel, "tab_a18",
-            new string[] { "col_h8", "col_h9", "col_i1" },
-            new string[] { "Назва", "Код", "Керівник" }) { }
+        public СтруктураПідприємства_Select() : base(Config.Kernel, "tab_a18") { }
         
         public const string Назва = "col_h8";
         public const string Код = "col_h9";
@@ -2985,9 +2959,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class КраїниСвіту_Select : DirectorySelect, IDisposable
     {
-        public КраїниСвіту_Select() : base(Config.Kernel, "tab_a19",
-            new string[] { "col_i2", "col_i3", "col_i4" },
-            new string[] { "Назва", "Код", "НазваПовна" }) { }
+        public КраїниСвіту_Select() : base(Config.Kernel, "tab_a19") { }
         
         public const string Назва = "col_i2";
         public const string Код = "col_i3";
@@ -3129,9 +3101,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Файли_Select : DirectorySelect, IDisposable
     {
-        public Файли_Select() : base(Config.Kernel, "tab_a20",
-            new string[] { "col_i5", "col_i6" },
-            new string[] { "Назва", "Код" }) { }
+        public Файли_Select() : base(Config.Kernel, "tab_a20") { }
         
         public const string Назва = "col_i5";
         public const string Код = "col_i6";
@@ -3284,9 +3254,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class ХарактеристикиНоменклатури_Select : DirectorySelect, IDisposable
     {
-        public ХарактеристикиНоменклатури_Select() : base(Config.Kernel, "tab_a21",
-            new string[] { "col_i7", "col_i8", "col_i9", "col_a1" },
-            new string[] { "Назва", "Код", "НазваПовна", "Номенклатура" }) { }
+        public ХарактеристикиНоменклатури_Select() : base(Config.Kernel, "tab_a21") { }
         
         public const string Назва = "col_i7";
         public const string Код = "col_i8";
@@ -3435,9 +3403,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Номенклатура_Папки_Select : DirectorySelect, IDisposable
     {
-        public Номенклатура_Папки_Select() : base(Config.Kernel, "tab_a22",
-            new string[] { "col_j1", "col_j2", "col_j3" },
-            new string[] { "Назва", "Код", "Родич" }) { }
+        public Номенклатура_Папки_Select() : base(Config.Kernel, "tab_a22") { }
         
         public const string Назва = "col_j1";
         public const string Код = "col_j2";
@@ -3585,9 +3551,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Контрагенти_Папки_Select : DirectorySelect, IDisposable
     {
-        public Контрагенти_Папки_Select() : base(Config.Kernel, "tab_a23",
-            new string[] { "col_j4", "col_j5", "col_j6" },
-            new string[] { "Назва", "Код", "Родич" }) { }
+        public Контрагенти_Папки_Select() : base(Config.Kernel, "tab_a23") { }
         
         public const string Назва = "col_j4";
         public const string Код = "col_j5";
@@ -3735,9 +3699,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Склади_Папки_Select : DirectorySelect, IDisposable
     {
-        public Склади_Папки_Select() : base(Config.Kernel, "tab_a24",
-            new string[] { "col_j7", "col_j8", "col_a1" },
-            new string[] { "Назва", "Код", "Родич" }) { }
+        public Склади_Папки_Select() : base(Config.Kernel, "tab_a24") { }
         
         public const string Назва = "col_j7";
         public const string Код = "col_j8";
@@ -3891,9 +3853,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class Каси_Select : DirectorySelect, IDisposable
     {
-        public Каси_Select() : base(Config.Kernel, "tab_a26",
-            new string[] { "col_k8", "col_k9", "col_a1", "col_a2" },
-            new string[] { "Назва", "Код", "Підрозділ", "Валюта" }) { }
+        public Каси_Select() : base(Config.Kernel, "tab_a26") { }
         
         public const string Назва = "col_k8";
         public const string Код = "col_k9";
@@ -4102,9 +4062,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class БанківськіРахункиОрганізацій_Select : DirectorySelect, IDisposable
     {
-        public БанківськіРахункиОрганізацій_Select() : base(Config.Kernel, "tab_a27",
-            new string[] { "col_l1", "col_l2", "col_l3", "col_l4", "col_l5", "col_l6", "col_l7", "col_l8", "col_l9", "col_n1", "col_n2", "col_n3", "col_a1" },
-            new string[] { "Назва", "Код", "Валюта", "Банк", "Підрозділ", "НазваБанку", "НомерРахунку", "АдресаБанку", "МістоБанку", "КореспонденськийРахунокБанку", "ТелефониБанку", "Закритий", "Організація" }) { }
+        public БанківськіРахункиОрганізацій_Select() : base(Config.Kernel, "tab_a27") { }
         
         public const string Назва = "col_l1";
         public const string Код = "col_l2";
@@ -4358,9 +4316,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class ДоговориКонтрагентів_Select : DirectorySelect, IDisposable
     {
-        public ДоговориКонтрагентів_Select() : base(Config.Kernel, "tab_a28",
-            new string[] { "col_n4", "col_n5", "col_n6", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7" },
-            new string[] { "Назва", "Код", "БанківськийРахунок", "БанківськийРахунокКонтрагента", "ВалютаВзаєморозрахунків", "Коментар", "ДатаПочаткуДії", "ДатаЗакінченняДії", "Організація", "Контрагент", "Дата", "Номер", "Підрозділ", "Узгоджений", "Статус", "ГосподарськаОперація", "ТипДоговору", "ДопустимаСумаЗаборгованості", "Сума" }) { }
+        public ДоговориКонтрагентів_Select() : base(Config.Kernel, "tab_a28") { }
         
         public const string Назва = "col_n4";
         public const string Код = "col_n5";
@@ -4596,9 +4552,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class БанківськіРахункиКонтрагентів_Select : DirectorySelect, IDisposable
     {
-        public БанківськіРахункиКонтрагентів_Select() : base(Config.Kernel, "tab_a29",
-            new string[] { "col_n7", "col_n8", "col_n9", "col_m1", "col_m2", "col_m3", "col_m4", "col_m5", "col_m6", "col_m7", "col_m8", "col_m9", "col_o1", "col_o2", "col_o3" },
-            new string[] { "Назва", "Код", "НомерРахунку", "Банк", "БанкДляРозрахунків", "ТекстКореспондента", "ТекстПризначення", "Валюта", "НазваБанку", "КорРахунокБанку", "МістоБанку", "АдресаБанку", "ТелефониБанку", "Закрито", "Контрагент" }) { }
+        public БанківськіРахункиКонтрагентів_Select() : base(Config.Kernel, "tab_a29") { }
         
         public const string Назва = "col_n7";
         public const string Код = "col_n8";
@@ -4776,9 +4730,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     class СтаттяРухуКоштів_Select : DirectorySelect, IDisposable
     {
-        public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45",
-            new string[] { "col_i7", "col_i8", "col_i9", "col_j1", "col_j2" },
-            new string[] { "Назва", "Код", "КореспондуючийРахунок", "Опис", "ВидРухуКоштів" }) { }
+        public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45") { }
         
         public const string Назва = "col_i7";
         public const string Код = "col_i8";
@@ -5139,7 +5091,36 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
         }
-        
+
+        public ЗамовленняПостачальнику_Objest Copy()
+        {
+            ЗамовленняПостачальнику_Objest newCopy = new ЗамовленняПостачальнику_Objest();
+			newCopy.New();
+            newCopy.ДатаДок = ДатаДок;
+			newCopy.НомерДок = НомерДок;
+			newCopy.Контрагент = Контрагент;
+			newCopy.Організація = Організація;
+			newCopy.Склад = Склад;
+			newCopy.Валюта = Валюта;
+			newCopy.СумаДокументу = СумаДокументу;
+			newCopy.Каса = Каса;
+			newCopy.БанківськийРахунок = БанківськийРахунок;
+			newCopy.Коментар = Коментар;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.Договір = Договір;
+			newCopy.Автор = Автор;
+			newCopy.ДатаПоступлення = ДатаПоступлення;
+			newCopy.АдресаДоставкиДляПостачальника = АдресаДоставкиДляПостачальника;
+			newCopy.ПовернутиТару = ПовернутиТару;
+			newCopy.СпосібДоставки = СпосібДоставки;
+			newCopy.ЧасДоставкиЗ = ЧасДоставкиЗ;
+			newCopy.ЧасДоставкиДо = ЧасДоставкиДо;
+			newCopy.АдресаДоставки = АдресаДоставки;
+			newCopy.ГосподарськаОперація = ГосподарськаОперація;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             base.BaseDelete();
@@ -5462,7 +5443,42 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
         }
-        
+
+        public ПоступленняТоварівТаПослуг_Objest Copy()
+        {
+            ПоступленняТоварівТаПослуг_Objest newCopy = new ПоступленняТоварівТаПослуг_Objest();
+			newCopy.New();
+            newCopy.ДатаДок = ДатаДок;
+			newCopy.НомерДок = НомерДок;
+			newCopy.Валюта = Валюта;
+			newCopy.ГосподарськаОперація = ГосподарськаОперація;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.Склад = Склад;
+			newCopy.Контрагент = Контрагент;
+			newCopy.СумаДокументу = СумаДокументу;
+			newCopy.ЗамовленняПостачальнику = ЗамовленняПостачальнику;
+			newCopy.Коментар = Коментар;
+			newCopy.ДатаОплати = ДатаОплати;
+			newCopy.ФормаОплати = ФормаОплати;
+			newCopy.Узгоджений = Узгоджений;
+			newCopy.БанківськийрахунокОрганізації = БанківськийрахунокОрганізації;
+			newCopy.НомерВхідногоДокументу = НомерВхідногоДокументу;
+			newCopy.ДатаВхідногоДокументу = ДатаВхідногоДокументу;
+			newCopy.БанківськийрахунокКонтрагента = БанківськийрахунокКонтрагента;
+			newCopy.Договір = Договір;
+			newCopy.Автор = Автор;
+			newCopy.ВернутиТару = ВернутиТару;
+			newCopy.ДатаПоверненняТари = ДатаПоверненняТари;
+			newCopy.СпосібДоставки = СпосібДоставки;
+			newCopy.Організація = Організація;
+			newCopy.Курс = Курс;
+			newCopy.Кратність = Кратність;
+			newCopy.ЧасДоставкиЗ = ЧасДоставкиЗ;
+			newCopy.ЧасДоставкиДо = ЧасДоставкиДо;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             base.BaseDelete();
@@ -5791,7 +5807,42 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
         }
-        
+
+        public ЗамовленняКлієнта_Objest Copy()
+        {
+            ЗамовленняКлієнта_Objest newCopy = new ЗамовленняКлієнта_Objest();
+			newCopy.New();
+            newCopy.ДатаДок = ДатаДок;
+			newCopy.НомерДок = НомерДок;
+			newCopy.Контрагент = Контрагент;
+			newCopy.Організація = Організація;
+			newCopy.Валюта = Валюта;
+			newCopy.СумаДокументу = СумаДокументу;
+			newCopy.Склад = Склад;
+			newCopy.Статус = Статус;
+			newCopy.Узгоджений = Узгоджений;
+			newCopy.ФормаОплати = ФормаОплати;
+			newCopy.БанківськийРахунок = БанківськийРахунок;
+			newCopy.БанківськийРахунокКонтрагента = БанківськийРахунокКонтрагента;
+			newCopy.Каса = Каса;
+			newCopy.СумаАвансуДоЗабезпечення = СумаАвансуДоЗабезпечення;
+			newCopy.СумаПередоплатиДоВідгрузки = СумаПередоплатиДоВідгрузки;
+			newCopy.ДатаВідгрузки = ДатаВідгрузки;
+			newCopy.АдресаДоставки = АдресаДоставки;
+			newCopy.ГосподарськаОперація = ГосподарськаОперація;
+			newCopy.Коментар = Коментар;
+			newCopy.Договір = Договір;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.Автор = Автор;
+			newCopy.СпосібДоставки = СпосібДоставки;
+			newCopy.ЧасДоставкиЗ = ЧасДоставкиЗ;
+			newCopy.ЧасДоставкиДо = ЧасДоставкиДо;
+			newCopy.ПовернутиТару = ПовернутиТару;
+			newCopy.ДатаПоверненняТари = ДатаПоверненняТари;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             base.BaseDelete();
@@ -6121,7 +6172,44 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
         }
-        
+
+        public РеалізаціяТоварівТаПослуг_Objest Copy()
+        {
+            РеалізаціяТоварівТаПослуг_Objest newCopy = new РеалізаціяТоварівТаПослуг_Objest();
+			newCopy.New();
+            newCopy.ДатаДок = ДатаДок;
+			newCopy.НомерДок = НомерДок;
+			newCopy.Організація = Організація;
+			newCopy.Валюта = Валюта;
+			newCopy.БанківськийРахунокОрганізації = БанківськийРахунокОрганізації;
+			newCopy.БанківськийРахунокКонтрагента = БанківськийРахунокКонтрагента;
+			newCopy.ДатаОплати = ДатаОплати;
+			newCopy.ЗамовленняКлієнта = ЗамовленняКлієнта;
+			newCopy.Контрагент = Контрагент;
+			newCopy.СумаДокументу = СумаДокументу;
+			newCopy.Підрозділ = Підрозділ;
+			newCopy.Склад = Склад;
+			newCopy.Коментар = Коментар;
+			newCopy.ФормаОплати = ФормаОплати;
+			newCopy.ГосподарськаОперація = ГосподарськаОперація;
+			newCopy.Каса = Каса;
+			newCopy.Договір = Договір;
+			newCopy.Основа = Основа;
+			newCopy.Статус = Статус;
+			newCopy.Автор = Автор;
+			newCopy.СумаПередоплати = СумаПередоплати;
+			newCopy.СумаПередоплатиЗаТару = СумаПередоплатиЗаТару;
+			newCopy.СпосібДоставки = СпосібДоставки;
+			newCopy.ЧасДоставкиЗ = ЧасДоставкиЗ;
+			newCopy.ЧасДоставкиДо = ЧасДоставкиДо;
+			newCopy.ПовернутиТару = ПовернутиТару;
+			newCopy.ДатаПоверненняТари = ДатаПоверненняТари;
+			newCopy.Курс = Курс;
+			newCopy.Кратність = Кратність;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             base.BaseDelete();
@@ -6380,7 +6468,18 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
         }
-        
+
+        public ВстановленняЦінНоменклатури_Objest Copy()
+        {
+            ВстановленняЦінНоменклатури_Objest newCopy = new ВстановленняЦінНоменклатури_Objest();
+			newCopy.New();
+            newCopy.ДатаДок = ДатаДок;
+			newCopy.НомерДок = НомерДок;
+			newCopy.Коментар = Коментар;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             base.BaseDelete();
@@ -6613,7 +6712,28 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
         }
-        
+
+        public ПрихіднийКасовийОрдер_Objest Copy()
+        {
+            ПрихіднийКасовийОрдер_Objest newCopy = new ПрихіднийКасовийОрдер_Objest();
+			newCopy.New();
+            newCopy.ДатаДок = ДатаДок;
+			newCopy.НомерДок = НомерДок;
+			newCopy.Організація = Організація;
+			newCopy.Каса = Каса;
+			newCopy.СумаДокументу = СумаДокументу;
+			newCopy.ГосподарськаОперація = ГосподарськаОперація;
+			newCopy.Основа = Основа;
+			newCopy.Контрагент = Контрагент;
+			newCopy.БанківськийРахунок = БанківськийРахунок;
+			newCopy.Валюта = Валюта;
+			newCopy.СтаттяРухуКоштів = СтаттяРухуКоштів;
+			newCopy.КасаВідправник = КасаВідправник;
+			newCopy.Коментар = Коментар;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             base.BaseDelete();
@@ -6856,7 +6976,28 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
         }
-        
+
+        public РозхіднийКасовийОрдер_Objest Copy()
+        {
+            РозхіднийКасовийОрдер_Objest newCopy = new РозхіднийКасовийОрдер_Objest();
+			newCopy.New();
+            newCopy.ДатаДок = ДатаДок;
+			newCopy.НомерДок = НомерДок;
+			newCopy.Організація = Організація;
+			newCopy.Каса = Каса;
+			newCopy.ОрганізаціяОтримувач = ОрганізаціяОтримувач;
+			newCopy.ГосподарськаОперація = ГосподарськаОперація;
+			newCopy.КасаОтримувач = КасаОтримувач;
+			newCopy.Контрагент = Контрагент;
+			newCopy.БанківськийРахунок = БанківськийРахунок;
+			newCopy.Валюта = Валюта;
+			newCopy.Коментар = Коментар;
+			newCopy.СтаттяРухуКоштів = СтаттяРухуКоштів;
+			newCopy.Підрозділ = Підрозділ;
+			
+			return newCopy;
+        }
+
         public void Delete()
         {
             base.BaseDelete();
