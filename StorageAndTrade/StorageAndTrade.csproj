@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Form_Користувачі.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_Користувачі.designer.cs">
+      <DependentUpon>Form_Користувачі.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Form_КористувачіЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_КористувачіЕлемент.designer.cs">
+      <DependentUpon>Form_КористувачіЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\Form_ФізичніОсоби.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +205,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_Користувачі.resx">
+      <DependentUpon>Form_Користувачі.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_КористувачіЕлемент.resx">
+      <DependentUpon>Form_КористувачіЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_ФізичніОсоби.resx">
       <DependentUpon>Form_ФізичніОсоби.cs</DependentUpon>

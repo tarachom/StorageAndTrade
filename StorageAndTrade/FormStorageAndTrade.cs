@@ -82,5 +82,11 @@ namespace StorageAndTrade
             Form_ФізичніОсоби form_ФізичніОсоби = new Form_ФізичніОсоби();
             form_ФізичніОсоби.Show();
         }
+
+        private void користувачіToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Користувачі form_Користувачі = new Form_Користувачі();
+            form_Користувачі.Show();
+        }
     }
 }
