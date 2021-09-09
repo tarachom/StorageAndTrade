@@ -39,6 +39,8 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунокКонтрагента = new StorageAndTrade.DirectoryControl();
             this.label4 = new System.Windows.Forms.Label();
             this.directoryControl_Підрозділ = new StorageAndTrade.DirectoryControl();
+            this.label5 = new System.Windows.Forms.Label();
+            this.directoryControl_Контрагент = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -131,11 +133,31 @@ namespace StorageAndTrade
             this.directoryControl_Підрозділ.Size = new System.Drawing.Size(438, 27);
             this.directoryControl_Підрозділ.TabIndex = 39;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(17, 142);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "Контрагент:";
+            // 
+            // directoryControl_Контрагент
+            // 
+            this.directoryControl_Контрагент.CallBack = null;
+            this.directoryControl_Контрагент.DirectoryPointerItem = null;
+            this.directoryControl_Контрагент.Location = new System.Drawing.Point(110, 135);
+            this.directoryControl_Контрагент.Name = "directoryControl_Контрагент";
+            this.directoryControl_Контрагент.Size = new System.Drawing.Size(438, 27);
+            this.directoryControl_Контрагент.TabIndex = 41;
+            // 
             // Form_ДоговориКонтрагентівЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 279);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.directoryControl_Контрагент);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.directoryControl_Підрозділ);
             this.Controls.Add(this.label3);
@@ -168,5 +190,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_БанківськийРахунокКонтрагента;
         private System.Windows.Forms.Label label4;
         private DirectoryControl directoryControl_Підрозділ;
+        private System.Windows.Forms.Label label5;
+        private DirectoryControl directoryControl_Контрагент;
     }
 }

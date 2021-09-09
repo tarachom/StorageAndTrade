@@ -87,11 +87,20 @@ namespace StorageAndTrade
 			form_СтруктураПідприємства.ShowDialog();
 		}
 
+		public void CallBack_Контрагент(DirectoryPointer directoryPointerItem)
+		{
+			Form_Контрагенти form_Контрагенти = new Form_Контрагенти();
+			form_Контрагенти.DirectoryPointerItem = directoryPointerItem;
+			form_Контрагенти.DirectoryControlItem = directoryControl_Контрагент;
+			form_Контрагенти.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			directoryControl_БанківськийРахунок.CallBack = CallBack_БанківськийРахунок;
 			directoryControl_БанківськийРахунокКонтрагента.CallBack = CallBack_БанківськийРахунокКонтрагента;
 			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
+			directoryControl_Контрагент.CallBack = CallBack_Контрагент;
 
 			if (IsNew.HasValue)
 			{
@@ -103,6 +112,7 @@ namespace StorageAndTrade
 					directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer();
 					directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer();
 					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
+					directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer();
 				}
 				else
 				{
@@ -114,6 +124,7 @@ namespace StorageAndTrade
 						directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer(договориКонтрагентів_Objest.БанківськийРахунок.UnigueID);
 						directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer(договориКонтрагентів_Objest.БанківськийРахунокКонтрагента.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(договориКонтрагентів_Objest.Підрозділ.UnigueID);
+						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(договориКонтрагентів_Objest.Контрагент.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -134,6 +145,7 @@ namespace StorageAndTrade
 					договориКонтрагентів_Objest.БанківськийРахунок = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
 					договориКонтрагентів_Objest.БанківськийРахунокКонтрагента = (Довідники.БанківськіРахункиКонтрагентів_Pointer)directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+					договориКонтрагентів_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Save();
 				}
 				catch (Exception exp)
