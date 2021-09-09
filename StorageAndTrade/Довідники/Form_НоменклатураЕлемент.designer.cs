@@ -35,11 +35,13 @@ namespace StorageAndTrade
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.directoryControl_Виробник = new StorageAndTrade.DirectoryControl();
+            this.label3 = new System.Windows.Forms.Label();
+            this.directoryControl_ВидНоменклатури = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 129);
+            this.buttonClose.Location = new System.Drawing.Point(364, 300);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -49,7 +51,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(88, 129);
+            this.buttonSave.Location = new System.Drawing.Point(67, 300);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -91,11 +93,31 @@ namespace StorageAndTrade
             this.directoryControl_Виробник.Size = new System.Drawing.Size(465, 27);
             this.directoryControl_Виробник.TabIndex = 23;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Вид номенклатури:";
+            // 
+            // directoryControl_ВидНоменклатури
+            // 
+            this.directoryControl_ВидНоменклатури.CallBack = null;
+            this.directoryControl_ВидНоменклатури.DirectoryPointerItem = null;
+            this.directoryControl_ВидНоменклатури.Location = new System.Drawing.Point(126, 69);
+            this.directoryControl_ВидНоменклатури.Name = "directoryControl_ВидНоменклатури";
+            this.directoryControl_ВидНоменклатури.Size = new System.Drawing.Size(422, 27);
+            this.directoryControl_ВидНоменклатури.TabIndex = 25;
+            // 
             // Form_НоменклатураЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 164);
+            this.ClientSize = new System.Drawing.Size(565, 346);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.directoryControl_ВидНоменклатури);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.directoryControl_Виробник);
             this.Controls.Add(this.textBoxName);
@@ -120,5 +142,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DirectoryControl directoryControl_Виробник;
+        private System.Windows.Forms.Label label3;
+        private DirectoryControl directoryControl_ВидНоменклатури;
     }
 }

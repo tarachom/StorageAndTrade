@@ -69,6 +69,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 			dataGridViewRecords.Columns["Виробник"].Width = 100;
 
+			dataGridViewRecords.Columns["ВидНоменклатури"].Width = 100;
+			dataGridViewRecords.Columns["ВидНоменклатури"].HeaderText = "Вид";
+
 			LoadRecords();
 		}
 
@@ -91,6 +94,13 @@ namespace StorageAndTrade
 			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join1"));
 			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.Виробник, номенклатура_Select.QuerySelect.Table));
 
+			//JOIN 2
+			JoinTable = Конфа.Config.Kernel.Conf.Directories["ВидиНоменклатури"].Table;
+			ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ВидиНоменклатури"].Fields["Назва"].NameInTable;
+
+			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join2"));
+			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.ВидНоменклатури, номенклатура_Select.QuerySelect.Table));
+
 			//ORDER
 			номенклатура_Select.QuerySelect.Order.Add(Довідники.Номенклатура_Select.Назва, SelectOrder.ASC);
 
@@ -102,7 +112,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи(
 					cur.UnigueID.ToString(),
 					cur.Fields[Довідники.Номенклатура_Select.Назва].ToString(),
-					cur.Fields["join1"].ToString()
+					cur.Fields["join1"].ToString(),
+					cur.Fields["join2"].ToString()
 					));
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -122,16 +133,17 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва, string _Виробник)
+			public Записи(string _id, string _Назва, string _Виробник, string _ВидНоменклатури)
 			{
 				ID = _id;
 				Назва = _Назва;
 				Виробник = _Виробник;
+				ВидНоменклатури = _ВидНоменклатури;
 			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
-
 			public string Виробник { get; set; }
+			public string ВидНоменклатури { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

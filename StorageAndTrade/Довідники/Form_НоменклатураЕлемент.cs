@@ -71,9 +71,18 @@ namespace StorageAndTrade
 			form_Виробники.ShowDialog();
 		}
 
+		public void CallBack_ВидНоменклатури(DirectoryPointer directoryPointerItem)
+		{
+			Form_ВидиНоменклатури form_ВидиНоменклатури = new Form_ВидиНоменклатури();
+			form_ВидиНоменклатури.DirectoryPointerItem = directoryPointerItem;
+			form_ВидиНоменклатури.DirectoryControlItem = directoryControl_ВидНоменклатури;
+			form_ВидиНоменклатури.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			directoryControl_Виробник.CallBack = CallBack_Виробник;
+			directoryControl_ВидНоменклатури.CallBack = CallBack_ВидНоменклатури;
 
 			if (IsNew.HasValue)
 			{
@@ -83,6 +92,7 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий запис";
 					directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer();
+					directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer();
 				}
 				else
 				{
@@ -92,6 +102,7 @@ namespace StorageAndTrade
 
 						textBoxName.Text = номенклатура_Objest.Назва;
 						directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer(номенклатура_Objest.Виробник.UnigueID);
+						directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer(номенклатура_Objest.ВидНоменклатури.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -110,6 +121,7 @@ namespace StorageAndTrade
 				{
 					номенклатура_Objest.Назва = textBoxName.Text;
 					номенклатура_Objest.Виробник = (Довідники.Виробники_Pointer)directoryControl_Виробник.DirectoryPointerItem;
+					номенклатура_Objest.ВидНоменклатури = (Довідники.ВидиНоменклатури_Pointer)directoryControl_ВидНоменклатури.DirectoryPointerItem;
 					номенклатура_Objest.Save();
 				}
 				catch (Exception exp)
