@@ -43,6 +43,8 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунок = new StorageAndTrade.DirectoryControl();
             this.comboBox_Статус = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboBox_ГосподарськаОперація = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -171,11 +173,31 @@ namespace StorageAndTrade
             this.label6.TabIndex = 43;
             this.label6.Text = "Статус:";
             // 
+            // comboBox_ГосподарськаОперація
+            // 
+            this.comboBox_ГосподарськаОперація.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ГосподарськаОперація.FormattingEnabled = true;
+            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(176, 195);
+            this.comboBox_ГосподарськаОперація.Name = "comboBox_ГосподарськаОперація";
+            this.comboBox_ГосподарськаОперація.Size = new System.Drawing.Size(257, 21);
+            this.comboBox_ГосподарськаОперація.TabIndex = 46;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 198);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(129, 13);
+            this.label7.TabIndex = 45;
+            this.label7.Text = "Господарська операція:";
+            // 
             // Form_ДоговориКонтрагентівЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 279);
+            this.Controls.Add(this.comboBox_ГосподарськаОперація);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBox_Статус);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -216,5 +238,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Контрагент;
         private System.Windows.Forms.ComboBox comboBox_Статус;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboBox_ГосподарськаОперація;
+        private System.Windows.Forms.Label label7;
     }
 }
