@@ -63,8 +63,22 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Склади_Objest склади_Objest { get; set; }
 
+		public void CallBack_Відповідальний(DirectoryPointer directoryPointerItem)
+		{
+			Form_ФізичніОсоби form_ФізичніОсоби = new Form_ФізичніОсоби();
+			form_ФізичніОсоби.DirectoryPointerItem = directoryPointerItem;
+			form_ФізичніОсоби.DirectoryControlItem = directoryControl_Відповідальний;
+			form_ФізичніОсоби.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			//Заповнення елементів перелічення - ТипСкладу
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиСкладів"].Fields.Values)
+				comboBox_ТипСкладу.Items.Add((Перелічення.ТипиСкладів)field.Value);
+
+			directoryControl_Відповідальний.CallBack = CallBack_Відповідальний;
+
 			if (IsNew.HasValue)
 			{
 				склади_Objest = new Довідники.Склади_Objest();
@@ -72,6 +86,8 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					comboBox_ТипСкладу.SelectedIndex = 0;
+					directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer();
 				}
 				else
 				{
@@ -79,7 +95,9 @@ namespace StorageAndTrade
 					{
 						this.Text += " - Редагування запису - " + склади_Objest.Назва;
 
-						textBoxName.Text = склади_Objest.Назва;
+						textBoxНазва.Text = склади_Objest.Назва;
+						comboBox_ТипСкладу.SelectedItem = склади_Objest.ТипСкладу;
+						directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(склади_Objest.Відповідальний.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -96,7 +114,9 @@ namespace StorageAndTrade
 
 				try
 				{
-					склади_Objest.Назва = textBoxName.Text;
+					склади_Objest.Назва = textBoxНазва.Text;
+					склади_Objest.ТипСкладу = comboBox_ТипСкладу.SelectedItem != null ? (Перелічення.ТипиСкладів)comboBox_ТипСкладу.SelectedItem : 0;
+					склади_Objest.Відповідальний = (Довідники.ФізичніОсоби_Pointer)directoryControl_Відповідальний.DirectoryPointerItem;
 					склади_Objest.Save();
 				}
 				catch (Exception exp)

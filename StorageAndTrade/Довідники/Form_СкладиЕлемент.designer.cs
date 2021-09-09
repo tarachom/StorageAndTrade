@@ -31,8 +31,12 @@ namespace StorageAndTrade
         {
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxНазва = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.comboBox_ТипСкладу = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.directoryControl_Відповідальний = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -55,12 +59,13 @@ namespace StorageAndTrade
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBoxName
+            // textBoxНазва
             // 
-            this.textBoxName.Location = new System.Drawing.Point(88, 12);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(461, 20);
-            this.textBoxName.TabIndex = 20;
+            this.textBoxНазва.AcceptsTab = true;
+            this.textBoxНазва.Location = new System.Drawing.Point(88, 12);
+            this.textBoxНазва.Name = "textBoxНазва";
+            this.textBoxНазва.Size = new System.Drawing.Size(461, 20);
+            this.textBoxНазва.TabIndex = 20;
             // 
             // label2
             // 
@@ -71,12 +76,52 @@ namespace StorageAndTrade
             this.label2.TabIndex = 19;
             this.label2.Text = "Назва:";
             // 
+            // comboBox_ТипСкладу
+            // 
+            this.comboBox_ТипСкладу.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ТипСкладу.FormattingEnabled = true;
+            this.comboBox_ТипСкладу.Location = new System.Drawing.Point(88, 38);
+            this.comboBox_ТипСкладу.Name = "comboBox_ТипСкладу";
+            this.comboBox_ТипСкладу.Size = new System.Drawing.Size(257, 21);
+            this.comboBox_ТипСкладу.TabIndex = 32;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(40, 41);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(29, 13);
+            this.label5.TabIndex = 31;
+            this.label5.Text = "Тип:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 13);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Відповідальний:";
+            // 
+            // directoryControl_Відповідальний
+            // 
+            this.directoryControl_Відповідальний.CallBack = null;
+            this.directoryControl_Відповідальний.DirectoryPointerItem = null;
+            this.directoryControl_Відповідальний.Location = new System.Drawing.Point(110, 69);
+            this.directoryControl_Відповідальний.Name = "directoryControl_Відповідальний";
+            this.directoryControl_Відповідальний.Size = new System.Drawing.Size(438, 27);
+            this.directoryControl_Відповідальний.TabIndex = 33;
+            // 
             // Form_СкладиЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 164);
-            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.directoryControl_Відповідальний);
+            this.Controls.Add(this.comboBox_ТипСкладу);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBoxНазва);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
@@ -94,7 +139,11 @@ namespace StorageAndTrade
 
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxНазва;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox_ТипСкладу;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label1;
+        private DirectoryControl directoryControl_Відповідальний;
     }
 }

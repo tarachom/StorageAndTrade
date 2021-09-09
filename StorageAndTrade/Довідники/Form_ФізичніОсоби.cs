@@ -126,7 +126,7 @@ namespace StorageAndTrade
 
 				if (DirectoryControlItem != null)
 				{
-					DirectoryControlItem.DirectoryPointerItem = new Довідники.Валюти_Pointer(new UnigueID(Uid));
+					DirectoryControlItem.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(new UnigueID(Uid));
 					this.Close();
 				}
 				else

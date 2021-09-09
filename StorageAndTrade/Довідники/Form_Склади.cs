@@ -68,6 +68,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
+			dataGridViewRecords.Columns["ТипСкладу"].Width = 50;
+			dataGridViewRecords.Columns["ТипСкладу"].HeaderText = "Тип";
+
 			LoadRecords();
 		}
 
@@ -82,6 +85,7 @@ namespace StorageAndTrade
 
 			Довідники.Склади_Select склади_Select = new Довідники.Склади_Select();
 			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Select.Назва);
+			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Select.ТипСкладу);
 
 			//ORDER
 			склади_Select.QuerySelect.Order.Add(Довідники.Склади_Select.Назва, SelectOrder.ASC);
@@ -94,7 +98,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Склади_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.Склади_Select.Назва].ToString(),
+					ТипСкладу = ((Перелічення.ТипиСкладів)cur.Fields[Довідники.Склади_Select.ТипСкладу]).ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -116,6 +121,7 @@ namespace StorageAndTrade
 		{
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string ТипСкладу { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
