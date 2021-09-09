@@ -67,17 +67,17 @@ namespace StorageAndTrade
 		/// Зворотня функція для вибору із списку
 		/// </summary>
 		/// <param name="directoryPointerItem"></param>
-		public void CallBack_DirectoryControl_Open_FormCurrency(DirectoryPointer directoryPointerItem)
+		public void CallBack_Валюта(DirectoryPointer directoryPointerItem)
 		{
 			Form_Валюти form_Валюти = new Form_Валюти();
 			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.DirectoryControlItem = directoryControl1;
+			form_Валюти.DirectoryControlItem = directoryControl_Валюта;
 			form_Валюти.ShowDialog();
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
-			directoryControl1.CallBack = CallBack_DirectoryControl_Open_FormCurrency;
+			directoryControl_Валюта.CallBack = CallBack_Валюта;
 
 			if (IsNew.HasValue)
 			{
@@ -87,7 +87,7 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий запис";
 
-					directoryControl1.DirectoryPointerItem = new Довідники.Валюти_Pointer();
+					directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer();
 				}
 				else
 				{
@@ -96,7 +96,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + каси_Objest.Назва;
 
 						textBoxName.Text = каси_Objest.Назва;
-						directoryControl1.DirectoryPointerItem = new Довідники.Валюти_Pointer(каси_Objest.Валюта.UnigueID);
+						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(каси_Objest.Валюта.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -114,7 +114,7 @@ namespace StorageAndTrade
 				try
 				{
 					каси_Objest.Назва = textBoxName.Text;
-					каси_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl1.DirectoryPointerItem;
+					каси_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					каси_Objest.Save();
 				}
 				catch (Exception exp)

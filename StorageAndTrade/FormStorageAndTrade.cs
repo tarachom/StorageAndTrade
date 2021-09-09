@@ -106,5 +106,11 @@ namespace StorageAndTrade
             Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
             form_СтруктураПідприємства.Show();
         }
+
+        private void банківськіРахункиОрганізаційToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_БанківськіРахункиОрганізацій form_БанківськіРахункиОрганізацій = new Form_БанківськіРахункиОрганізацій();
+            form_БанківськіРахункиОрганізацій.Show();
+        }
     }
 }
