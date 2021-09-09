@@ -35,6 +35,7 @@ namespace StorageAndTrade
             this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пакуванняОдиниціВиміруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оганізаціїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.номенклатураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,7 +55,8 @@ namespace StorageAndTrade
             this.касиToolStripMenuItem,
             this.валютиToolStripMenuItem,
             this.пакуванняОдиниціВиміруToolStripMenuItem,
-            this.оганізаціїToolStripMenuItem});
+            this.оганізаціїToolStripMenuItem,
+            this.номенклатураToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -91,6 +93,14 @@ namespace StorageAndTrade
             this.оганізаціїToolStripMenuItem.Text = "Оганізації";
             this.оганізаціїToolStripMenuItem.Click += new System.EventHandler(this.оганізаціїToolStripMenuItem_Click);
             // 
+            // номенклатураToolStripMenuItem
+            // 
+            this.номенклатураToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.photo_album;
+            this.номенклатураToolStripMenuItem.Name = "номенклатураToolStripMenuItem";
+            this.номенклатураToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.номенклатураToolStripMenuItem.Text = "Номенклатура";
+            this.номенклатураToolStripMenuItem.Click += new System.EventHandler(this.номенклатураToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -116,6 +126,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пакуванняОдиниціВиміруToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem оганізаціїToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem номенклатураToolStripMenuItem;
     }
 }
 

@@ -52,5 +52,11 @@ namespace StorageAndTrade
             Form_Організації form_Організації = new Form_Організації();
             form_Організації.Show();
         }
+
+        private void номенклатураToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
+            form_Номенклатура.Show();
+        }
     }
 }
