@@ -71,6 +71,14 @@ namespace StorageAndTrade
 			form_ФізичніОсоби.ShowDialog();
 		}
 
+		public void CallBack_ВидЦін(DirectoryPointer directoryPointerItem)
+		{
+			Form_ВидиЦін form_ВидиЦін = new Form_ВидиЦін();
+			form_ВидиЦін.DirectoryPointerItem = directoryPointerItem;
+			form_ВидиЦін.DirectoryControlItem = directoryControl_ВидЦін;
+			form_ВидиЦін.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//Заповнення елементів перелічення - ТипСкладу
@@ -78,6 +86,7 @@ namespace StorageAndTrade
 				comboBox_ТипСкладу.Items.Add((Перелічення.ТипиСкладів)field.Value);
 
 			directoryControl_Відповідальний.CallBack = CallBack_Відповідальний;
+			directoryControl_ВидЦін.CallBack = CallBack_ВидЦін;
 
 			if (IsNew.HasValue)
 			{
@@ -88,6 +97,7 @@ namespace StorageAndTrade
 					this.Text += " - Новий запис";
 					comboBox_ТипСкладу.SelectedIndex = 0;
 					directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer();
+					directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer();
 				}
 				else
 				{
@@ -98,6 +108,7 @@ namespace StorageAndTrade
 						textBoxНазва.Text = склади_Objest.Назва;
 						comboBox_ТипСкладу.SelectedItem = склади_Objest.ТипСкладу;
 						directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(склади_Objest.Відповідальний.UnigueID);
+						directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer(склади_Objest.ВидЦін.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -117,6 +128,7 @@ namespace StorageAndTrade
 					склади_Objest.Назва = textBoxНазва.Text;
 					склади_Objest.ТипСкладу = comboBox_ТипСкладу.SelectedItem != null ? (Перелічення.ТипиСкладів)comboBox_ТипСкладу.SelectedItem : 0;
 					склади_Objest.Відповідальний = (Довідники.ФізичніОсоби_Pointer)directoryControl_Відповідальний.DirectoryPointerItem;
+					склади_Objest.ВидЦін = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦін.DirectoryPointerItem;
 					склади_Objest.Save();
 				}
 				catch (Exception exp)
