@@ -93,6 +93,18 @@
     <Compile Include="Довідники\Form_БанківськіРахункиОрганізаційЕлемент.designer.cs">
       <DependentUpon>Form_БанківськіРахункиОрганізаційЕлемент.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Form_ХарактеристикиНоменклатури.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_ХарактеристикиНоменклатури.designer.cs">
+      <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Form_ХарактеристикиНоменклатуриЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_ХарактеристикиНоменклатуриЕлемент.designer.cs">
+      <DependentUpon>Form_ХарактеристикиНоменклатуриЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\Form_ДоговориКонтрагентів.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -289,6 +301,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_БанківськіРахункиОрганізаційЕлемент.resx">
       <DependentUpon>Form_БанківськіРахункиОрганізаційЕлемент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_ХарактеристикиНоменклатури.resx">
+      <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_ХарактеристикиНоменклатуриЕлемент.resx">
+      <DependentUpon>Form_ХарактеристикиНоменклатуриЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_ДоговориКонтрагентів.resx">
       <DependentUpon>Form_ДоговориКонтрагентів.cs</DependentUpon>
