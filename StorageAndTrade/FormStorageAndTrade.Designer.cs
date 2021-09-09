@@ -41,6 +41,7 @@ namespace StorageAndTrade
             this.видиЦінToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.фізичніОсобиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.користувачіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.виробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +67,8 @@ namespace StorageAndTrade
             this.складиToolStripMenuItem,
             this.видиЦінToolStripMenuItem,
             this.фізичніОсобиToolStripMenuItem,
-            this.користувачіToolStripMenuItem});
+            this.користувачіToolStripMenuItem,
+            this.виробникиToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -151,6 +153,14 @@ namespace StorageAndTrade
             this.користувачіToolStripMenuItem.Text = "Користувачі";
             this.користувачіToolStripMenuItem.Click += new System.EventHandler(this.користувачіToolStripMenuItem_Click);
             // 
+            // виробникиToolStripMenuItem
+            // 
+            this.виробникиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
+            this.виробникиToolStripMenuItem.Name = "виробникиToolStripMenuItem";
+            this.виробникиToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.виробникиToolStripMenuItem.Text = "Виробники";
+            this.виробникиToolStripMenuItem.Click += new System.EventHandler(this.виробникиToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +192,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem фізичніОсобиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem користувачіToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem виробникиToolStripMenuItem;
     }
 }
 

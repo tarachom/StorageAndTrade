@@ -88,5 +88,11 @@ namespace StorageAndTrade
             Form_Користувачі form_Користувачі = new Form_Користувачі();
             form_Користувачі.Show();
         }
+
+        private void виробникиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Виробники form_Виробники = new Form_Виробники();
+            form_Виробники.Show();
+        }
     }
 }
