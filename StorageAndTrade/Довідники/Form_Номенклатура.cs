@@ -67,6 +67,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Виробник"].Width = 100;
 
 			LoadRecords();
 		}
@@ -83,6 +84,13 @@ namespace StorageAndTrade
 			Довідники.Номенклатура_Select номенклатура_Select = new Довідники.Номенклатура_Select();
 			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Select.Назва);
 
+			//JOIN 1
+			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Виробники"].Table;
+			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Виробники"].Fields["Назва"].NameInTable;
+
+			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join1"));
+			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.Виробник, номенклатура_Select.QuerySelect.Table));
+
 			//ORDER
 			номенклатура_Select.QuerySelect.Order.Add(Довідники.Номенклатура_Select.Назва, SelectOrder.ASC);
 
@@ -93,7 +101,8 @@ namespace StorageAndTrade
 
 				RecordsBindingList.Add(new Записи(
 					cur.UnigueID.ToString(),
-					cur.Fields[Довідники.Номенклатура_Select.Назва].ToString()
+					cur.Fields[Довідники.Номенклатура_Select.Назва].ToString(),
+					cur.Fields["join1"].ToString()
 					));
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -113,13 +122,16 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва)
+			public Записи(string _id, string _Назва, string _Виробник)
 			{
 				ID = _id;
 				Назва = _Назва;
+				Виробник = _Виробник;
 			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
+
+			public string Виробник { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

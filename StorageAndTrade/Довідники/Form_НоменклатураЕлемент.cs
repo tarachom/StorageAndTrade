@@ -63,8 +63,18 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Номенклатура_Objest номенклатура_Objest { get; set; }
 
+		public void CallBack_Виробник(DirectoryPointer directoryPointerItem)
+		{
+			Form_Виробники form_Виробники = new Form_Виробники();
+			form_Виробники.DirectoryPointerItem = directoryPointerItem;
+			form_Виробники.DirectoryControlItem = directoryControl_Виробник;
+			form_Виробники.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			directoryControl_Виробник.CallBack = CallBack_Виробник;
+
 			if (IsNew.HasValue)
 			{
 				номенклатура_Objest = new Довідники.Номенклатура_Objest();
@@ -72,6 +82,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer();
 				}
 				else
 				{
@@ -80,6 +91,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + номенклатура_Objest.Назва;
 
 						textBoxName.Text = номенклатура_Objest.Назва;
+						directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer(номенклатура_Objest.Виробник.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -97,6 +109,7 @@ namespace StorageAndTrade
 				try
 				{
 					номенклатура_Objest.Назва = textBoxName.Text;
+					номенклатура_Objest.Виробник = (Довідники.Виробники_Pointer)directoryControl_Виробник.DirectoryPointerItem;
 					номенклатура_Objest.Save();
 				}
 				catch (Exception exp)
