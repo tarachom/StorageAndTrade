@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Контрагенти.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Контрагенти.designer.cs">
+      <DependentUpon>Form_Контрагенти.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_КонтрагентиЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_КонтрагентиЕлемент.designer.cs">
+      <DependentUpon>Form_КонтрагентиЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Номенклатура.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +157,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Контрагенти.resx">
+      <DependentUpon>Form_Контрагенти.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_КонтрагентиЕлемент.resx">
+      <DependentUpon>Form_КонтрагентиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Номенклатура.resx">
       <DependentUpon>Form_Номенклатура.cs</DependentUpon>

@@ -29,12 +29,6 @@ namespace StorageAndTrade
             Application.Exit();
         }
 
-        private void касиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_Каси formCash = new Form_Каси();
-            formCash.Show();
-        }
-
         private void валютиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Валюти form_Валюти = new Form_Валюти();
@@ -57,6 +51,18 @@ namespace StorageAndTrade
         {
             Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
             form_Номенклатура.Show();
+        }
+
+        private void контрагентиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Контрагенти form_Контрагенти = new Form_Контрагенти();
+            form_Контрагенти.Show();
+        }
+
+        private void касиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form_Каси formCash = new Form_Каси();
+            formCash.Show();
         }
     }
 }
