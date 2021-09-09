@@ -79,10 +79,19 @@ namespace StorageAndTrade
 			form_ВидиНоменклатури.ShowDialog();
 		}
 
+		public void CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
+		{
+			Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
+			form_ПакуванняОдиниціВиміру.DirectoryPointerItem = directoryPointerItem;
+			form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl_ОдиницяВиміру;
+			form_ПакуванняОдиниціВиміру.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			directoryControl_Виробник.CallBack = CallBack_Виробник;
 			directoryControl_ВидНоменклатури.CallBack = CallBack_ВидНоменклатури;
+			directoryControl_ОдиницяВиміру.CallBack = CallBack_ОдиницяВиміру;
 
 			if (IsNew.HasValue)
 			{
@@ -93,6 +102,7 @@ namespace StorageAndTrade
 					this.Text += " - Новий запис";
 					directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer();
 					directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer();
+					directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer();
 				}
 				else
 				{
@@ -103,6 +113,7 @@ namespace StorageAndTrade
 						textBoxName.Text = номенклатура_Objest.Назва;
 						directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer(номенклатура_Objest.Виробник.UnigueID);
 						directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer(номенклатура_Objest.ВидНоменклатури.UnigueID);
+						directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(номенклатура_Objest.ОдиницяВиміру.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -122,6 +133,7 @@ namespace StorageAndTrade
 					номенклатура_Objest.Назва = textBoxName.Text;
 					номенклатура_Objest.Виробник = (Довідники.Виробники_Pointer)directoryControl_Виробник.DirectoryPointerItem;
 					номенклатура_Objest.ВидНоменклатури = (Довідники.ВидиНоменклатури_Pointer)directoryControl_ВидНоменклатури.DirectoryPointerItem;
+					номенклатура_Objest.ОдиницяВиміру = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяВиміру.DirectoryPointerItem;
 					номенклатура_Objest.Save();
 				}
 				catch (Exception exp)

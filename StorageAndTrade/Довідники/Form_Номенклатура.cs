@@ -72,6 +72,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ВидНоменклатури"].Width = 100;
 			dataGridViewRecords.Columns["ВидНоменклатури"].HeaderText = "Вид";
 
+			dataGridViewRecords.Columns["ОдиницяВиміру"].Width = 50;
+			dataGridViewRecords.Columns["ОдиницяВиміру"].HeaderText = "Од.";
+
 			LoadRecords();
 		}
 
@@ -101,6 +104,13 @@ namespace StorageAndTrade
 			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join2"));
 			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.ВидНоменклатури, номенклатура_Select.QuerySelect.Table));
 
+			//JOIN 3
+			JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
+			ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Fields["Назва"].NameInTable;
+
+			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join3"));
+			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.ОдиницяВиміру, номенклатура_Select.QuerySelect.Table));
+
 			//ORDER
 			номенклатура_Select.QuerySelect.Order.Add(Довідники.Номенклатура_Select.Назва, SelectOrder.ASC);
 
@@ -113,7 +123,8 @@ namespace StorageAndTrade
 					cur.UnigueID.ToString(),
 					cur.Fields[Довідники.Номенклатура_Select.Назва].ToString(),
 					cur.Fields["join1"].ToString(),
-					cur.Fields["join2"].ToString()
+					cur.Fields["join2"].ToString(),
+					cur.Fields["join3"].ToString()
 					));
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -133,17 +144,19 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва, string _Виробник, string _ВидНоменклатури)
+			public Записи(string _id, string _Назва, string _Виробник, string _ВидНоменклатури, string _ОдиницяВиміру)
 			{
 				ID = _id;
 				Назва = _Назва;
 				Виробник = _Виробник;
 				ВидНоменклатури = _ВидНоменклатури;
+				ОдиницяВиміру = _ОдиницяВиміру;
 			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Виробник { get; set; }
 			public string ВидНоменклатури { get; set; }
+			public string ОдиницяВиміру { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

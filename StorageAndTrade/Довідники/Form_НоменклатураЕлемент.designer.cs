@@ -34,9 +34,11 @@ namespace StorageAndTrade
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.directoryControl_Виробник = new StorageAndTrade.DirectoryControl();
             this.label3 = new System.Windows.Forms.Label();
             this.directoryControl_ВидНоменклатури = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Виробник = new StorageAndTrade.DirectoryControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.directoryControl_ОдиницяВиміру = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -84,15 +86,6 @@ namespace StorageAndTrade
             this.label1.TabIndex = 24;
             this.label1.Text = "Виробник:";
             // 
-            // directoryControl_Виробник
-            // 
-            this.directoryControl_Виробник.CallBack = null;
-            this.directoryControl_Виробник.DirectoryPointerItem = null;
-            this.directoryControl_Виробник.Location = new System.Drawing.Point(84, 38);
-            this.directoryControl_Виробник.Name = "directoryControl_Виробник";
-            this.directoryControl_Виробник.Size = new System.Drawing.Size(465, 27);
-            this.directoryControl_Виробник.TabIndex = 23;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -111,11 +104,40 @@ namespace StorageAndTrade
             this.directoryControl_ВидНоменклатури.Size = new System.Drawing.Size(422, 27);
             this.directoryControl_ВидНоменклатури.TabIndex = 25;
             // 
+            // directoryControl_Виробник
+            // 
+            this.directoryControl_Виробник.CallBack = null;
+            this.directoryControl_Виробник.DirectoryPointerItem = null;
+            this.directoryControl_Виробник.Location = new System.Drawing.Point(84, 38);
+            this.directoryControl_Виробник.Name = "directoryControl_Виробник";
+            this.directoryControl_Виробник.Size = new System.Drawing.Size(465, 27);
+            this.directoryControl_Виробник.TabIndex = 23;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 109);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 13);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "Одиниця виміру:";
+            // 
+            // directoryControl_ОдиницяВиміру
+            // 
+            this.directoryControl_ОдиницяВиміру.CallBack = null;
+            this.directoryControl_ОдиницяВиміру.DirectoryPointerItem = null;
+            this.directoryControl_ОдиницяВиміру.Location = new System.Drawing.Point(127, 102);
+            this.directoryControl_ОдиницяВиміру.Name = "directoryControl_ОдиницяВиміру";
+            this.directoryControl_ОдиницяВиміру.Size = new System.Drawing.Size(422, 27);
+            this.directoryControl_ОдиницяВиміру.TabIndex = 27;
+            // 
             // Form_НоменклатураЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 346);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.directoryControl_ОдиницяВиміру);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.directoryControl_ВидНоменклатури);
             this.Controls.Add(this.label1);
@@ -144,5 +166,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Виробник;
         private System.Windows.Forms.Label label3;
         private DirectoryControl directoryControl_ВидНоменклатури;
+        private System.Windows.Forms.Label label4;
+        private DirectoryControl directoryControl_ОдиницяВиміру;
     }
 }
