@@ -64,5 +64,11 @@ namespace StorageAndTrade
             Form_Каси formCash = new Form_Каси();
             formCash.Show();
         }
+
+        private void складиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Склади form_Склади = new Form_Склади();
+            form_Склади.Show();
+        }
     }
 }
