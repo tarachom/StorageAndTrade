@@ -69,6 +69,9 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_ЗамовленняКлієнта.designer.cs">
+      <DependentUpon>Form_ЗамовленняКлієнта.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\Form_БанківськіРахункиКонтрагентів.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +293,9 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_ЗамовленняКлієнта.resx">
+      <DependentUpon>Form_ЗамовленняКлієнта.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_БанківськіРахункиКонтрагентів.resx">
       <DependentUpon>Form_БанківськіРахункиКонтрагентів.cs</DependentUpon>
     </EmbeddedResource>
@@ -404,6 +410,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Form_ЗамовленняКлієнта.cs">
+      <SubType>Form</SubType>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

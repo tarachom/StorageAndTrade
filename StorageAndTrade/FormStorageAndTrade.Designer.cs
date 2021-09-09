@@ -48,13 +48,16 @@ namespace StorageAndTrade
             this.договориКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.банківськіРахункиКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.характеристикиНоменклатуриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.документиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.замовленняКлієнтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.довідникиToolStripMenuItem});
+            this.довідникиToolStripMenuItem,
+            this.документиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1040, 24);
@@ -221,6 +224,22 @@ namespace StorageAndTrade
             this.характеристикиНоменклатуриToolStripMenuItem.Text = "Характеристики номенклатури";
             this.характеристикиНоменклатуриToolStripMenuItem.Click += new System.EventHandler(this.характеристикиНоменклатуриToolStripMenuItem_Click);
             // 
+            // документиToolStripMenuItem
+            // 
+            this.документиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.замовленняКлієнтаToolStripMenuItem});
+            this.документиToolStripMenuItem.Name = "документиToolStripMenuItem";
+            this.документиToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.документиToolStripMenuItem.Text = "Документи";
+            // 
+            // замовленняКлієнтаToolStripMenuItem
+            // 
+            this.замовленняКлієнтаToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
+            this.замовленняКлієнтаToolStripMenuItem.Name = "замовленняКлієнтаToolStripMenuItem";
+            this.замовленняКлієнтаToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
+            this.замовленняКлієнтаToolStripMenuItem.Text = "Замовлення клієнта";
+            this.замовленняКлієнтаToolStripMenuItem.Click += new System.EventHandler(this.замовленняКлієнтаToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +278,8 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem договориКонтрагентівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem банківськіРахункиКонтрагентівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem характеристикиНоменклатуриToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem документиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem замовленняКлієнтаToolStripMenuItem;
     }
 }
 

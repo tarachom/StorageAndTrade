@@ -29,6 +29,8 @@ namespace StorageAndTrade
             Application.Exit();
         }
 
+        #region Довідники
+
         private void валютиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Валюти form_Валюти = new Form_Валюти();
@@ -130,5 +132,17 @@ namespace StorageAndTrade
             Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
             form_ХарактеристикиНоменклатури.Show();
         }
+
+        #endregion
+
+        #region Документи
+
+        private void замовленняКлієнтаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ЗамовленняКлієнта form_ЗамовленняКлієнта = new Form_ЗамовленняКлієнта();
+            form_ЗамовленняКлієнта.Show();
+        }
+
+        #endregion
     }
 }
