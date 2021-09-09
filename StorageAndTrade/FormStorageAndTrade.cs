@@ -94,5 +94,11 @@ namespace StorageAndTrade
             Form_Виробники form_Виробники = new Form_Виробники();
             form_Виробники.Show();
         }
+
+        private void видиНоменклатуриToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ВидиНоменклатури form_ВидиНоменклатури = new Form_ВидиНоменклатури();
+            form_ВидиНоменклатури.Show();
+        }
     }
 }
