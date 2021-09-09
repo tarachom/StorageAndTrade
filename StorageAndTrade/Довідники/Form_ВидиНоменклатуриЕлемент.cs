@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
-using Конфа = StorageAndTrade;
+using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
@@ -73,6 +73,10 @@ namespace StorageAndTrade
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			//Заповнення елементів перелічення - ТипНоменклатури
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
+				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
+
 			directoryControl_ОдиницяВиміру.CallBack = CallBack_ОдиницяВиміру;
 
 			if (IsNew.HasValue)
@@ -83,6 +87,7 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий запис";
 					directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+					comboBox_ТипНоменклатури.SelectedIndex = 0;
 				}
 				else
 				{
@@ -92,6 +97,7 @@ namespace StorageAndTrade
 
 						textBoxName.Text = видиНоменклатури_Objest.Назва;
 						directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(видиНоменклатури_Objest.ОдиницяВиміру.UnigueID);
+						comboBox_ТипНоменклатури.SelectedItem = видиНоменклатури_Objest.ТипНоменклатури;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -110,6 +116,7 @@ namespace StorageAndTrade
 				{
 					видиНоменклатури_Objest.Назва = textBoxName.Text;
 					видиНоменклатури_Objest.ОдиницяВиміру = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяВиміру.DirectoryPointerItem;
+					видиНоменклатури_Objest.ТипНоменклатури = comboBox_ТипНоменклатури.SelectedItem != null ? (Перелічення.ТипиНоменклатури)comboBox_ТипНоменклатури.SelectedItem : 0;
 					видиНоменклатури_Objest.Save();
 				}
 				catch (Exception exp)

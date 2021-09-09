@@ -85,6 +85,7 @@ namespace StorageAndTrade
 
 			Довідники.ВидиНоменклатури_Select видиНоменклатури_Select = new Довідники.ВидиНоменклатури_Select();
 			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Select.Назва);
+			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Select.ТипНоменклатури);
 
 			//JOIN 1
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
@@ -105,7 +106,8 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ВидиНоменклатури_Select.Назва].ToString(),
-					ОдиницяВиміру = cur.Fields["join1"].ToString()
+					ОдиницяВиміру = cur.Fields["join1"].ToString(),
+					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.ВидиНоменклатури_Select.ТипНоменклатури]).ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -128,6 +130,7 @@ namespace StorageAndTrade
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string ОдиницяВиміру { get; set; }
+			public string ТипНоменклатури { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

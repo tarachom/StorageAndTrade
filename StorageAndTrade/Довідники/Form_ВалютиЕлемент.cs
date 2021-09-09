@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
-using Конфа = StorageAndTrade;
+using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
