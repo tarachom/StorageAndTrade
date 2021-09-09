@@ -34,6 +34,7 @@ namespace StorageAndTrade
             this.касиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пакуванняОдиниціВиміруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оганізаціїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,8 @@ namespace StorageAndTrade
             this.довідникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.касиToolStripMenuItem,
             this.валютиToolStripMenuItem,
-            this.пакуванняОдиниціВиміруToolStripMenuItem});
+            this.пакуванняОдиниціВиміруToolStripMenuItem,
+            this.оганізаціїToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -81,6 +83,14 @@ namespace StorageAndTrade
             this.пакуванняОдиниціВиміруToolStripMenuItem.Text = "Пакування одиниці виміру";
             this.пакуванняОдиниціВиміруToolStripMenuItem.Click += new System.EventHandler(this.пакуванняОдиниціВиміруToolStripMenuItem_Click);
             // 
+            // оганізаціїToolStripMenuItem
+            // 
+            this.оганізаціїToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.user;
+            this.оганізаціїToolStripMenuItem.Name = "оганізаціїToolStripMenuItem";
+            this.оганізаціїToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.оганізаціїToolStripMenuItem.Text = "Оганізації";
+            this.оганізаціїToolStripMenuItem.Click += new System.EventHandler(this.оганізаціїToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -105,6 +115,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem касиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem пакуванняОдиниціВиміруToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оганізаціїToolStripMenuItem;
     }
 }
 

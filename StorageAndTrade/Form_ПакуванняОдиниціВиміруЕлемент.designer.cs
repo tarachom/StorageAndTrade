@@ -71,7 +71,7 @@ namespace StorageAndTrade
             this.label2.TabIndex = 19;
             this.label2.Text = "Назва:";
             // 
-            // Form_ВалютиЕлемент
+            // Form_ПакуванняОдиниціВиміруЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -81,9 +81,9 @@ namespace StorageAndTrade
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form_ВалютиЕлемент";
+            this.Name = "Form_ПакуванняОдиниціВиміруЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Валюти";
+            this.Text = "Пакування одиниці виміру";
             this.Load += new System.EventHandler(this.FormAddCash_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

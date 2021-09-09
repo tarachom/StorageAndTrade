@@ -46,5 +46,11 @@ namespace StorageAndTrade
             Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
             form_ПакуванняОдиниціВиміру.Show();
         }
+
+        private void оганізаціїToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Організації form_Організації = new Form_Організації();
+            form_Організації.Show();
+        }
     }
 }
