@@ -82,6 +82,10 @@ namespace StorageAndTrade
 
 						textBox_НомерДок.Text = замовленняКлієнта_Objest.НомерДок;
 						dateTimePicker_ДатаДок.Value = замовленняКлієнта_Objest.ДатаДок;
+
+						замовленняКлієнта_Objest.Товари_TablePart.Records.Add(new Документи.ЗамовленняКлієнта_Товари_TablePart.Record());
+						замовленняКлієнта_Objest.Товари_TablePart.Save(false);
+
 					}
 					else
 						MessageBox.Show("Error read");

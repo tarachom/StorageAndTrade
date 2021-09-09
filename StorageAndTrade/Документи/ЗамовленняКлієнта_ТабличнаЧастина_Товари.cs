@@ -35,8 +35,6 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Номенклатура"].Width = 100;
-
-			//LoadRecords();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }

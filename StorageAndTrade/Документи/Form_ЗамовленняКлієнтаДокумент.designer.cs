@@ -37,8 +37,8 @@ namespace StorageAndTrade
             this.dateTimePicker_ДатаДок = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.замовленняКлієнта_ТабличнаЧастина_Товари = new StorageAndTrade.ЗамовленняКлієнта_ТабличнаЧастина_Товари();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.замовленняКлієнта_ТабличнаЧастина_Товари = new StorageAndTrade.ЗамовленняКлієнта_ТабличнаЧастина_Товари();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -98,6 +98,8 @@ namespace StorageAndTrade
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.dateTimePicker_ДатаДок);
             this.panel1.Controls.Add(this.textBox_НомерДок);
@@ -109,11 +111,25 @@ namespace StorageAndTrade
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.замовленняКлієнта_ТабличнаЧастина_Товари);
             this.panel2.Location = new System.Drawing.Point(3, 244);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(965, 310);
             this.panel2.TabIndex = 24;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.buttonClose);
+            this.panel3.Controls.Add(this.buttonSave);
+            this.panel3.Location = new System.Drawing.Point(3, 560);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(965, 47);
+            this.panel3.TabIndex = 25;
             // 
             // замовленняКлієнта_ТабличнаЧастина_Товари
             // 
@@ -124,15 +140,6 @@ namespace StorageAndTrade
             this.замовленняКлієнта_ТабличнаЧастина_Товари.TabIndex = 0;
             this.замовленняКлієнта_ТабличнаЧастина_Товари.ЗамовленняКлієнта_Objest = null;
             // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.buttonClose);
-            this.panel3.Controls.Add(this.buttonSave);
-            this.panel3.Location = new System.Drawing.Point(3, 560);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(965, 47);
-            this.panel3.TabIndex = 25;
-            // 
             // Form_ЗамовленняКлієнтаДокумент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -141,7 +148,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form_ЗамовленняКлієнтаДокумент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Валюти";
