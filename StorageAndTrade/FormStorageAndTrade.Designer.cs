@@ -32,6 +32,7 @@ namespace StorageAndTrade
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.довідникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.касиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,8 @@ namespace StorageAndTrade
             // довідникиToolStripMenuItem
             // 
             this.довідникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.касиToolStripMenuItem});
+            this.касиToolStripMenuItem,
+            this.валютиToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -60,6 +62,14 @@ namespace StorageAndTrade
             this.касиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.касиToolStripMenuItem.Text = "Каси";
             this.касиToolStripMenuItem.Click += new System.EventHandler(this.касиToolStripMenuItem_Click);
+            // 
+            // валютиToolStripMenuItem
+            // 
+            this.валютиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
+            this.валютиToolStripMenuItem.Name = "валютиToolStripMenuItem";
+            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.валютиToolStripMenuItem.Text = "Валюти";
+            this.валютиToolStripMenuItem.Click += new System.EventHandler(this.валютиToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -83,6 +93,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem довідникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem касиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
     }
 }
 

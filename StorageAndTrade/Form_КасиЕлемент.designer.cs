@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class FormAddCash
+    partial class Form_КасиЕлемент
     {
         /// <summary>
         /// Required designer variable.

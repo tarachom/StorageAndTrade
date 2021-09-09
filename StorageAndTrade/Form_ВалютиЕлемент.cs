@@ -36,9 +36,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class FormAddCash : Form
+    public partial class Form_ВалютиЕлемент : Form
     {
-        public FormAddCash()
+        public Form_ВалютиЕлемент()
         {
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace StorageAndTrade
 		/// <summary>
 		/// Форма списку
 		/// </summary>
-        public FormCash OwnerForm { get; set; }
+        public Form_Валюти OwnerForm { get; set; }
         
 		/// <summary>
 		/// Чи це новий
@@ -61,43 +61,25 @@ namespace StorageAndTrade
 		/// <summary>
 		/// Обєкт запису
 		/// </summary>
-        private Довідники.Каси_Objest каси_Objest { get; set; }
-
-		/// <summary>
-		/// Зворотня функція для вибору із списку
-		/// </summary>
-		/// <param name="directoryPointerItem"></param>
-		public void CallBack_DirectoryControl_Open_FormCurrency(DirectoryPointer directoryPointerItem)
-		{
-			//FormCurrency formCurrency = new FormCurrency();
-			//formCurrency.DirectoryPointerItem = directoryPointerItem;
-			//formCurrency.DirectoryControlItem = directoryControl1;
-			//formCurrency.ShowDialog();
-		}
-
+        private Довідники.Валюти_Objest валюти_Objest { get; set; }
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
-			directoryControl1.CallBack = CallBack_DirectoryControl_Open_FormCurrency;
-
 			if (IsNew.HasValue)
 			{
-				каси_Objest = new Довідники.Каси_Objest();
+				валюти_Objest = new Довідники.Валюти_Objest();
 
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-
-					directoryControl1.DirectoryPointerItem = new Довідники.Валюти_Pointer();
 				}
 				else
 				{
-					if (каси_Objest.Read(new UnigueID(Uid)))
+					if (валюти_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + каси_Objest.Назва;
+						this.Text += " - Редагування запису - " + валюти_Objest.Назва;
 
-						textBoxName.Text = каси_Objest.Назва;
-						directoryControl1.DirectoryPointerItem = new Довідники.Валюти_Pointer(каси_Objest.Валюта.UnigueID);
+						textBoxName.Text = валюти_Objest.Назва;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -110,13 +92,12 @@ namespace StorageAndTrade
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
-					каси_Objest.New();
+					валюти_Objest.New();
 
 				try
 				{
-					каси_Objest.Назва = textBoxName.Text;
-					каси_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl1.DirectoryPointerItem;
-					каси_Objest.Save();
+					валюти_Objest.Назва = textBoxName.Text;
+					валюти_Objest.Save();
 				}
 				catch (Exception exp)
 				{

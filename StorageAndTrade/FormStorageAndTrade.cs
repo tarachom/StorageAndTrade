@@ -31,8 +31,14 @@ namespace StorageAndTrade
 
         private void касиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCash formCash = new FormCash();
+            Form_Каси formCash = new Form_Каси();
             formCash.Show();
+        }
+
+        private void валютиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Валюти form_Валюти = new Form_Валюти();
+            form_Валюти.Show();
         }
     }
 }

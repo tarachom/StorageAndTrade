@@ -19,13 +19,6 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 
@@ -65,10 +58,14 @@ namespace StorageAndTrade
 			}
 		}
 
+		/// <summary>
+		/// Функція викликає функцію ссилки довідника GetPresentation()
+		/// </summary>
 		private void ReadPresentation()
-        {
-			textBoxControl.Text = mDirectoryPointerItem.GetType().InvokeMember(
-				"GetPresentation", BindingFlags.InvokeMethod, null, mDirectoryPointerItem, new object[] { }).ToString();
+		{
+			if (mDirectoryPointerItem.GetType().GetMember("GetPresentation").Length == 1)
+				textBoxControl.Text = mDirectoryPointerItem.GetType().InvokeMember(
+					"GetPresentation", BindingFlags.InvokeMethod, null, mDirectoryPointerItem, new object[] { }).ToString();
 		}
 
 		private void buttonOpen_Click(object sender, EventArgs e)
@@ -79,7 +76,8 @@ namespace StorageAndTrade
 
         private void buttonClear_Click(object sender, EventArgs e)
         {
-			DirectoryPointerItem = null;
+			DirectoryPointerItem.Init(new UnigueID(Guid.Empty));
+			ReadPresentation();
 		}
     }
 }

@@ -36,14 +36,14 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class FormCash : Form
+    public partial class Form_Валюти : Form
     {
-        public FormCash()
+        public Form_Валюти()
         {
             InitializeComponent();
         }
 
-		#region DirectoryControl Open Form
+		#region DirectoryControl OpenForm
 
 		/// <summary>
 		/// Ссилка на елемент довідника
@@ -80,46 +80,20 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
-			Довідники.Каси_Select каси_Select = new Довідники.Каси_Select();
-
-			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Select.Назва);
-			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Select.Валюта);
-			каси_Select.QuerySelect.Order.Add(Довідники.Каси_Select.Назва, SelectOrder.ASC);
-
-			//Створення тимчасової таблиці
-			каси_Select.QuerySelect.CreateTempTable = true;
-			каси_Select.Select();
-
-			Dictionary<string, string> dictionaryCurrency = new Dictionary<string, string>();
-
 			Довідники.Валюти_Select валюти_Select = new Довідники.Валюти_Select();
 			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Select.Назва);
-			валюти_Select.QuerySelect.Where.Add(new Where("uid", Comparison.IN, "SELECT DISTINCT " + Довідники.Каси_Select.Валюта + " FROM " + каси_Select.QuerySelect.TempTable, true));
-			валюти_Select.Select();
 
+			//ORDER
+			валюти_Select.QuerySelect.Order.Add(Довідники.Валюти_Select.Назва, SelectOrder.ASC);
+
+			валюти_Select.Select();
 			while (валюти_Select.MoveNext())
 			{
 				Довідники.Валюти_Pointer cur = валюти_Select.Current;
-				dictionaryCurrency.Add(cur.UnigueID.ToString(), cur.Fields[Довідники.Валюти_Select.Назва].ToString());
-			}
-
-			//Видалення тимчасової таблиці
-			каси_Select.DeleteTempTable();
-
-			//Нормальна вибірка даних
-			каси_Select.Select();
-
-			while (каси_Select.MoveNext())
-			{
-				Довідники.Каси_Pointer cur = каси_Select.Current;
-
-				Довідники.Валюти_Pointer Валюта = new Довідники.Валюти_Pointer(new UnigueID(cur.Fields[Довідники.Каси_Select.Валюта].ToString()));
-				string ВалютаПредставлення = (!Валюта.IsEmpty() && dictionaryCurrency.ContainsKey(Валюта.UnigueID.ToString())) ? dictionaryCurrency[Валюта.UnigueID.ToString()] : "";
 
 				RecordsBindingList.Add(new Записи(
 					cur.UnigueID.ToString(),
-					cur.Fields[Довідники.Каси_Select.Назва].ToString(),
-					ВалютаПредставлення
+					cur.Fields[Довідники.Валюти_Select.Назва].ToString()
 					));
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -139,15 +113,13 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва, string _Валюта)
+			public Записи(string _id, string _Назва)
 			{
 				ID = _id;
 				Назва = _Назва;
-				Валюта = _Валюта;
 			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
-			public string Валюта { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -158,7 +130,7 @@ namespace StorageAndTrade
 
 				if (DirectoryControlItem != null)
 				{
-					DirectoryControlItem.DirectoryPointerItem = new Довідники.Каси_Pointer(new UnigueID(Uid));
+					DirectoryControlItem.DirectoryPointerItem = new Довідники.Валюти_Pointer(new UnigueID(Uid));
 					this.Close();
 				}
 				else
@@ -170,10 +142,10 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            FormAddCash formAddCash = new FormAddCash();
-            formAddCash.IsNew = true;
-            formAddCash.OwnerForm = this;
-            formAddCash.ShowDialog();
+			Form_ВалютиЕлемент form_ВалютиЕлемент = new Form_ВалютиЕлемент();
+			form_ВалютиЕлемент.IsNew = true;
+			form_ВалютиЕлемент.OwnerForm = this;
+			form_ВалютиЕлемент.ShowDialog();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -182,12 +154,12 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-                FormAddCash formAddCash = new FormAddCash();
-                formAddCash.OwnerForm = this;
-                formAddCash.IsNew = false;
-                formAddCash.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
-                formAddCash.ShowDialog();
-            }			
+				Form_ВалютиЕлемент form_ВалютиЕлемент = new Form_ВалютиЕлемент();
+				form_ВалютиЕлемент.IsNew = false;
+				form_ВалютиЕлемент.OwnerForm = this;
+				form_ВалютиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ВалютиЕлемент.ShowDialog();
+			}			
 		}
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
@@ -205,12 +177,12 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells[0].Value.ToString();
 
-                    Довідники.Каси_Objest каси_Objest = new Довідники.Каси_Objest();
-                    if (каси_Objest.Read(new UnigueID(uid)))
+                    Довідники.Валюти_Objest валюти_Objest = new Довідники.Валюти_Objest();
+                    if (валюти_Objest.Read(new UnigueID(uid)))
                     {
-						Довідники.Каси_Objest каси_Новий_Objest = каси_Objest.Copy();
-						каси_Новий_Objest.Назва = "Копія - " + каси_Новий_Objest.Назва;
-						каси_Новий_Objest.Save();
+						Довідники.Валюти_Objest валюти_Objest_Новий = валюти_Objest.Copy();
+						валюти_Objest_Новий.Назва = "Копія - " + валюти_Objest_Новий.Назва;
+						валюти_Objest_Новий.Save();
 					}
                     else
                     {
@@ -233,10 +205,10 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells[0].Value.ToString();
 
-                    Довідники.Каси_Objest каси_Objest = new Довідники.Каси_Objest();
-                    if (каси_Objest.Read(new UnigueID(uid)))
+                    Довідники.Валюти_Objest валюти_Objest = new Довідники.Валюти_Objest();
+                    if (валюти_Objest.Read(new UnigueID(uid)))
                     {
-						каси_Objest.Delete();
+						валюти_Objest.Delete();
                     }
                     else
                     {

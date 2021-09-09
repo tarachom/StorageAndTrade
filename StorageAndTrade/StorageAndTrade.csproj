@@ -69,17 +69,29 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddCash.cs">
+    <Compile Include="Form_ВалютиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormAddCash.designer.cs">
-      <DependentUpon>FormAddCash.cs</DependentUpon>
+    <Compile Include="Form_ВалютиЕлемент.designer.cs">
+      <DependentUpon>Form_ВалютиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCash.cs">
+    <Compile Include="Form_КасиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCash.designer.cs">
-      <DependentUpon>FormCash.cs</DependentUpon>
+    <Compile Include="Form_КасиЕлемент.designer.cs">
+      <DependentUpon>Form_КасиЕлемент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Валюти.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Валюти.designer.cs">
+      <DependentUpon>Form_Валюти.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Каси.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Каси.designer.cs">
+      <DependentUpon>Form_Каси.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStorageAndTrade.cs">
       <SubType>Form</SubType>
@@ -98,11 +110,17 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormAddCash.resx">
-      <DependentUpon>FormAddCash.cs</DependentUpon>
+    <EmbeddedResource Include="Form_ВалютиЕлемент.resx">
+      <DependentUpon>Form_ВалютиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCash.resx">
-      <DependentUpon>FormCash.cs</DependentUpon>
+    <EmbeddedResource Include="Form_КасиЕлемент.resx">
+      <DependentUpon>Form_КасиЕлемент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Валюти.resx">
+      <DependentUpon>Form_Валюти.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Каси.resx">
+      <DependentUpon>Form_Каси.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStorageAndTrade.resx">
       <DependentUpon>FormStorageAndTrade.cs</DependentUpon>
