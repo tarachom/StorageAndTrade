@@ -65,6 +65,10 @@ namespace StorageAndTrade
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			//Заповнення елементів перелічення - Стать
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатьФізичноїОсоби"].Fields.Values)
+				comboBox_Стать.Items.Add((Перелічення.СтатьФізичноїОсоби)field.Value);
+
 			if (IsNew.HasValue)
 			{
 				фізичніОсоби_Objest = new Довідники.ФізичніОсоби_Objest();
@@ -72,6 +76,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					comboBox_Стать.SelectedIndex = 0;
 				}
 				else
 				{
@@ -80,6 +85,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + фізичніОсоби_Objest.Назва;
 
 						textBoxName.Text = фізичніОсоби_Objest.Назва;
+						comboBox_Стать.SelectedItem = фізичніОсоби_Objest.Стать;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -97,6 +103,7 @@ namespace StorageAndTrade
 				try
 				{
 					фізичніОсоби_Objest.Назва = textBoxName.Text;
+					фізичніОсоби_Objest.Стать = comboBox_Стать.SelectedItem != null ? (Перелічення.СтатьФізичноїОсоби)comboBox_Стать.SelectedItem : 0;
 					фізичніОсоби_Objest.Save();
 				}
 				catch (Exception exp)
