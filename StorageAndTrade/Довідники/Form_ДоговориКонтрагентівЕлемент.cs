@@ -79,10 +79,19 @@ namespace StorageAndTrade
 			form_БанківськіРахункиКонтрагентів.ShowDialog();
 		}
 
+		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		{
+			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
+			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
+			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
+			form_СтруктураПідприємства.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			directoryControl_БанківськийРахунок.CallBack = CallBack_БанківськийРахунок;
 			directoryControl_БанківськийРахунокКонтрагента.CallBack = CallBack_БанківськийРахунокКонтрагента;
+			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
 
 			if (IsNew.HasValue)
 			{
@@ -93,6 +102,7 @@ namespace StorageAndTrade
 					this.Text += " - Новий запис";
 					directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer();
 					directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer();
+					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
 				}
 				else
 				{
@@ -103,6 +113,7 @@ namespace StorageAndTrade
 						textBoxName.Text = договориКонтрагентів_Objest.Назва;
 						directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer(договориКонтрагентів_Objest.БанківськийРахунок.UnigueID);
 						directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer(договориКонтрагентів_Objest.БанківськийРахунокКонтрагента.UnigueID);
+						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(договориКонтрагентів_Objest.Підрозділ.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -122,6 +133,7 @@ namespace StorageAndTrade
 					договориКонтрагентів_Objest.Назва = textBoxName.Text;
 					договориКонтрагентів_Objest.БанківськийРахунок = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
 					договориКонтрагентів_Objest.БанківськийРахунокКонтрагента = (Довідники.БанківськіРахункиКонтрагентів_Pointer)directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem;
+					договориКонтрагентів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Save();
 				}
 				catch (Exception exp)

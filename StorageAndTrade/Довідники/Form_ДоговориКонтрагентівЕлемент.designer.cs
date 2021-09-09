@@ -37,11 +37,13 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунок = new StorageAndTrade.DirectoryControl();
             this.label3 = new System.Windows.Forms.Label();
             this.directoryControl_БанківськийРахунокКонтрагента = new StorageAndTrade.DirectoryControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.directoryControl_Підрозділ = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 129);
+            this.buttonClose.Location = new System.Drawing.Point(384, 244);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -51,7 +53,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(88, 129);
+            this.buttonSave.Location = new System.Drawing.Point(87, 244);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -111,11 +113,31 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунокКонтрагента.Size = new System.Drawing.Size(343, 27);
             this.directoryControl_БанківськийРахунокКонтрагента.TabIndex = 37;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 109);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Підрозділ:";
+            // 
+            // directoryControl_Підрозділ
+            // 
+            this.directoryControl_Підрозділ.CallBack = null;
+            this.directoryControl_Підрозділ.DirectoryPointerItem = null;
+            this.directoryControl_Підрозділ.Location = new System.Drawing.Point(110, 102);
+            this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
+            this.directoryControl_Підрозділ.Size = new System.Drawing.Size(438, 27);
+            this.directoryControl_Підрозділ.TabIndex = 39;
+            // 
             // Form_ДоговориКонтрагентівЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 164);
+            this.ClientSize = new System.Drawing.Size(565, 279);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.directoryControl_Підрозділ);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.directoryControl_БанківськийРахунокКонтрагента);
             this.Controls.Add(this.label1);
@@ -144,5 +166,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_БанківськийРахунок;
         private System.Windows.Forms.Label label3;
         private DirectoryControl directoryControl_БанківськийРахунокКонтрагента;
+        private System.Windows.Forms.Label label4;
+        private DirectoryControl directoryControl_Підрозділ;
     }
 }
