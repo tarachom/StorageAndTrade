@@ -97,6 +97,10 @@ namespace StorageAndTrade
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			//Заповнення елементів перелічення - Статус
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиДоговорівКонтрагентів"].Fields.Values)
+				comboBox_Статус.Items.Add((Перелічення.СтатусиДоговорівКонтрагентів)field.Value);
+
 			directoryControl_БанківськийРахунок.CallBack = CallBack_БанківськийРахунок;
 			directoryControl_БанківськийРахунокКонтрагента.CallBack = CallBack_БанківськийРахунокКонтрагента;
 			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
@@ -113,6 +117,7 @@ namespace StorageAndTrade
 					directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer();
 					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
 					directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer();
+					comboBox_Статус.SelectedIndex = 0;
 				}
 				else
 				{
@@ -125,6 +130,7 @@ namespace StorageAndTrade
 						directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer(договориКонтрагентів_Objest.БанківськийРахунокКонтрагента.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(договориКонтрагентів_Objest.Підрозділ.UnigueID);
 						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(договориКонтрагентів_Objest.Контрагент.UnigueID);
+						comboBox_Статус.SelectedItem = договориКонтрагентів_Objest.Статус;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -146,6 +152,7 @@ namespace StorageAndTrade
 					договориКонтрагентів_Objest.БанківськийРахунокКонтрагента = (Довідники.БанківськіРахункиКонтрагентів_Pointer)directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+					договориКонтрагентів_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиДоговорівКонтрагентів)comboBox_Статус.SelectedItem : 0;
 					договориКонтрагентів_Objest.Save();
 				}
 				catch (Exception exp)
