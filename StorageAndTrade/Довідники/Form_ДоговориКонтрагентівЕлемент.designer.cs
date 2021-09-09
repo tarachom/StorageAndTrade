@@ -35,6 +35,8 @@ namespace StorageAndTrade
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.directoryControl_БанківськийРахунок = new StorageAndTrade.DirectoryControl();
+            this.label3 = new System.Windows.Forms.Label();
+            this.directoryControl_БанківськийРахунокКонтрагента = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -91,11 +93,31 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(409, 27);
             this.directoryControl_БанківськийРахунок.TabIndex = 35;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(17, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(182, 13);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Банківський рахунок контрагента:";
+            // 
+            // directoryControl_БанківськийРахунокКонтрагента
+            // 
+            this.directoryControl_БанківськийРахунокКонтрагента.CallBack = null;
+            this.directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = null;
+            this.directoryControl_БанківськийРахунокКонтрагента.Location = new System.Drawing.Point(205, 69);
+            this.directoryControl_БанківськийРахунокКонтрагента.Name = "directoryControl_БанківськийРахунокКонтрагента";
+            this.directoryControl_БанківськийРахунокКонтрагента.Size = new System.Drawing.Size(343, 27);
+            this.directoryControl_БанківськийРахунокКонтрагента.TabIndex = 37;
+            // 
             // Form_ДоговориКонтрагентівЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 164);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.directoryControl_БанківськийРахунокКонтрагента);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.directoryControl_БанківськийРахунок);
             this.Controls.Add(this.textBoxName);
@@ -120,5 +142,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DirectoryControl directoryControl_БанківськийРахунок;
+        private System.Windows.Forms.Label label3;
+        private DirectoryControl directoryControl_БанківськийРахунокКонтрагента;
     }
 }
