@@ -71,9 +71,18 @@ namespace StorageAndTrade
 			form_Валюти.ShowDialog();
 		}
 
+		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		{
+			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
+			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
+			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
+			form_СтруктураПідприємства.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			directoryControl_Валюта.CallBack = CallBack_Валюта;
+			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
 
 			if (IsNew.HasValue)
 			{
@@ -84,6 +93,7 @@ namespace StorageAndTrade
 					this.Text += " - Новий запис";
 
 					directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer();
+					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
 				}
 				else
 				{
@@ -93,6 +103,7 @@ namespace StorageAndTrade
 
 						textBoxName.Text = банківськіРахункиОрганізацій_Objest.Назва;
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(банківськіРахункиОрганізацій_Objest.Валюта.UnigueID);
+						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(банківськіРахункиОрганізацій_Objest.Підрозділ.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -111,6 +122,7 @@ namespace StorageAndTrade
 				{
 					банківськіРахункиОрганізацій_Objest.Назва = textBoxName.Text;
 					банківськіРахункиОрганізацій_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+					банківськіРахункиОрганізацій_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					банківськіРахункиОрганізацій_Objest.Save();
 				}
 				catch (Exception exp)

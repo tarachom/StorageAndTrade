@@ -35,6 +35,8 @@ namespace StorageAndTrade
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.directoryControl_Валюта = new StorageAndTrade.DirectoryControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.directoryControl_Підрозділ = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -59,15 +61,15 @@ namespace StorageAndTrade
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(88, 12);
+            this.textBoxName.Location = new System.Drawing.Point(84, 12);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(461, 20);
+            this.textBoxName.Size = new System.Drawing.Size(465, 20);
             this.textBoxName.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 15);
+            this.label2.Location = new System.Drawing.Point(33, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 19;
@@ -91,11 +93,31 @@ namespace StorageAndTrade
             this.directoryControl_Валюта.Size = new System.Drawing.Size(465, 27);
             this.directoryControl_Валюта.TabIndex = 23;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 76);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 40;
+            this.label4.Text = "Підрозділ:";
+            // 
+            // directoryControl_Підрозділ
+            // 
+            this.directoryControl_Підрозділ.CallBack = null;
+            this.directoryControl_Підрозділ.DirectoryPointerItem = null;
+            this.directoryControl_Підрозділ.Location = new System.Drawing.Point(84, 69);
+            this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
+            this.directoryControl_Підрозділ.Size = new System.Drawing.Size(464, 27);
+            this.directoryControl_Підрозділ.TabIndex = 39;
+            // 
             // Form_БанківськіРахункиОрганізаційЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 164);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.directoryControl_Підрозділ);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.directoryControl_Валюта);
             this.Controls.Add(this.textBoxName);
@@ -120,5 +142,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private DirectoryControl directoryControl_Валюта;
+        private System.Windows.Forms.Label label4;
+        private DirectoryControl directoryControl_Підрозділ;
     }
 }
