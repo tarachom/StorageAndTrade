@@ -31,6 +31,7 @@ namespace StorageAndTrade
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.довідникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пакуванняОдиниціВиміруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оганізаціїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.номенклатураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +44,8 @@ namespace StorageAndTrade
             this.виробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видиНоменклатуриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.структураПідприємстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.банківськіРахункиОрганізаційToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.договориКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,10 +75,19 @@ namespace StorageAndTrade
             this.виробникиToolStripMenuItem,
             this.видиНоменклатуриToolStripMenuItem,
             this.структураПідприємстваToolStripMenuItem,
-            this.банківськіРахункиОрганізаційToolStripMenuItem});
+            this.банківськіРахункиОрганізаційToolStripMenuItem,
+            this.договориКонтрагентівToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
+            // 
+            // валютиToolStripMenuItem
+            // 
+            this.валютиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
+            this.валютиToolStripMenuItem.Name = "валютиToolStripMenuItem";
+            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.валютиToolStripMenuItem.Text = "Валюти";
+            this.валютиToolStripMenuItem.Click += new System.EventHandler(this.валютиToolStripMenuItem_Click);
             // 
             // пакуванняОдиниціВиміруToolStripMenuItem
             // 
@@ -175,14 +185,6 @@ namespace StorageAndTrade
             this.структураПідприємстваToolStripMenuItem.Text = "Структура підприємства";
             this.структураПідприємстваToolStripMenuItem.Click += new System.EventHandler(this.структураПідприємстваToolStripMenuItem_Click);
             // 
-            // валютиToolStripMenuItem
-            // 
-            this.валютиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
-            this.валютиToolStripMenuItem.Name = "валютиToolStripMenuItem";
-            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
-            this.валютиToolStripMenuItem.Text = "Валюти";
-            this.валютиToolStripMenuItem.Click += new System.EventHandler(this.валютиToolStripMenuItem_Click);
-            // 
             // банківськіРахункиОрганізаційToolStripMenuItem
             // 
             this.банківськіРахункиОрганізаційToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
@@ -190,6 +192,14 @@ namespace StorageAndTrade
             this.банківськіРахункиОрганізаційToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.банківськіРахункиОрганізаційToolStripMenuItem.Text = "Банківські рахунки організацій";
             this.банківськіРахункиОрганізаційToolStripMenuItem.Click += new System.EventHandler(this.банківськіРахункиОрганізаційToolStripMenuItem_Click);
+            // 
+            // договориКонтрагентівToolStripMenuItem
+            // 
+            this.договориКонтрагентівToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
+            this.договориКонтрагентівToolStripMenuItem.Name = "договориКонтрагентівToolStripMenuItem";
+            this.договориКонтрагентівToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.договориКонтрагентівToolStripMenuItem.Text = "Договори контрагентів";
+            this.договориКонтрагентівToolStripMenuItem.Click += new System.EventHandler(this.договориКонтрагентівToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -226,6 +236,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem структураПідприємстваToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem банківськіРахункиОрганізаційToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem договориКонтрагентівToolStripMenuItem;
     }
 }
 

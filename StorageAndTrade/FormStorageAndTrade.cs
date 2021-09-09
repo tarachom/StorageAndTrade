@@ -112,5 +112,11 @@ namespace StorageAndTrade
             Form_БанківськіРахункиОрганізацій form_БанківськіРахункиОрганізацій = new Form_БанківськіРахункиОрганізацій();
             form_БанківськіРахункиОрганізацій.Show();
         }
+
+        private void договориКонтрагентівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ДоговориКонтрагентів form_ДоговориКонтрагентів = new Form_ДоговориКонтрагентів();
+            form_ДоговориКонтрагентів.Show();
+        }
     }
 }

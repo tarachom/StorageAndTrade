@@ -81,6 +81,18 @@
     <Compile Include="Довідники\Form_БанківськіРахункиОрганізаційЕлемент.designer.cs">
       <DependentUpon>Form_БанківськіРахункиОрганізаційЕлемент.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Form_ДоговориКонтрагентів.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_ДоговориКонтрагентів.designer.cs">
+      <DependentUpon>Form_ДоговориКонтрагентів.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Form_ДоговориКонтрагентівЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_ДоговориКонтрагентівЕлемент.designer.cs">
+      <DependentUpon>Form_ДоговориКонтрагентівЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\Form_СтруктураПідприємства.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -259,6 +271,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_БанківськіРахункиОрганізаційЕлемент.resx">
       <DependentUpon>Form_БанківськіРахункиОрганізаційЕлемент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_ДоговориКонтрагентів.resx">
+      <DependentUpon>Form_ДоговориКонтрагентів.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_ДоговориКонтрагентівЕлемент.resx">
+      <DependentUpon>Form_ДоговориКонтрагентівЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_СтруктураПідприємства.resx">
       <DependentUpon>Form_СтруктураПідприємства.cs</DependentUpon>
