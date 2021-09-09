@@ -70,5 +70,11 @@ namespace StorageAndTrade
             Form_Склади form_Склади = new Form_Склади();
             form_Склади.Show();
         }
+
+        private void видиЦінToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ВидиЦін form_ВидиЦін = new Form_ВидиЦін();
+            form_ВидиЦін.Show();
+        }
     }
 }

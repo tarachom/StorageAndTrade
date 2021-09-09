@@ -38,6 +38,7 @@ namespace StorageAndTrade
             this.контрагентиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.касиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.складиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.видиЦінToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,7 +61,8 @@ namespace StorageAndTrade
             this.номенклатураToolStripMenuItem,
             this.контрагентиToolStripMenuItem,
             this.касиToolStripMenuItem1,
-            this.складиToolStripMenuItem});
+            this.складиToolStripMenuItem,
+            this.видиЦінToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -121,6 +123,14 @@ namespace StorageAndTrade
             this.складиToolStripMenuItem.Text = "Склади";
             this.складиToolStripMenuItem.Click += new System.EventHandler(this.складиToolStripMenuItem_Click);
             // 
+            // видиЦінToolStripMenuItem
+            // 
+            this.видиЦінToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.data;
+            this.видиЦінToolStripMenuItem.Name = "видиЦінToolStripMenuItem";
+            this.видиЦінToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.видиЦінToolStripMenuItem.Text = "Види цін";
+            this.видиЦінToolStripMenuItem.Click += new System.EventHandler(this.видиЦінToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,6 +159,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem контрагентиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem касиToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem складиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem видиЦінToolStripMenuItem;
     }
 }
 
