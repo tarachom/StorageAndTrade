@@ -40,5 +40,11 @@ namespace StorageAndTrade
             Form_Валюти form_Валюти = new Form_Валюти();
             form_Валюти.Show();
         }
+
+        private void пакуванняОдиниціВиміруToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
+            form_ПакуванняОдиниціВиміру.Show();
+        }
     }
 }

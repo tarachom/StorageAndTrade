@@ -33,6 +33,7 @@ namespace StorageAndTrade
             this.довідникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.касиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.пакуванняОдиниціВиміруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,7 +51,8 @@ namespace StorageAndTrade
             // 
             this.довідникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.касиToolStripMenuItem,
-            this.валютиToolStripMenuItem});
+            this.валютиToolStripMenuItem,
+            this.пакуванняОдиниціВиміруToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -59,7 +61,7 @@ namespace StorageAndTrade
             // 
             this.касиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
             this.касиToolStripMenuItem.Name = "касиToolStripMenuItem";
-            this.касиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.касиToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.касиToolStripMenuItem.Text = "Каси";
             this.касиToolStripMenuItem.Click += new System.EventHandler(this.касиToolStripMenuItem_Click);
             // 
@@ -67,9 +69,17 @@ namespace StorageAndTrade
             // 
             this.валютиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
             this.валютиToolStripMenuItem.Name = "валютиToolStripMenuItem";
-            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.валютиToolStripMenuItem.Text = "Валюти";
             this.валютиToolStripMenuItem.Click += new System.EventHandler(this.валютиToolStripMenuItem_Click);
+            // 
+            // пакуванняОдиниціВиміруToolStripMenuItem
+            // 
+            this.пакуванняОдиниціВиміруToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.drawer;
+            this.пакуванняОдиниціВиміруToolStripMenuItem.Name = "пакуванняОдиниціВиміруToolStripMenuItem";
+            this.пакуванняОдиниціВиміруToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.пакуванняОдиниціВиміруToolStripMenuItem.Text = "Пакування одиниці виміру";
+            this.пакуванняОдиниціВиміруToolStripMenuItem.Click += new System.EventHandler(this.пакуванняОдиниціВиміруToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -94,6 +104,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem довідникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem касиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem пакуванняОдиниціВиміруToolStripMenuItem;
     }
 }
 

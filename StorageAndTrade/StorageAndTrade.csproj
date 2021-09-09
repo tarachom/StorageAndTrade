@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_ПакуванняОдиниціВиміру.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ПакуванняОдиниціВиміру.designer.cs">
+      <DependentUpon>Form_ПакуванняОдиниціВиміру.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ПакуванняОдиниціВиміруЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ПакуванняОдиниціВиміруЕлемент.designer.cs">
+      <DependentUpon>Form_ПакуванняОдиниціВиміруЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_ВалютиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ПакуванняОдиниціВиміру.resx">
+      <DependentUpon>Form_ПакуванняОдиниціВиміру.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ПакуванняОдиниціВиміруЕлемент.resx">
+      <DependentUpon>Form_ПакуванняОдиниціВиміруЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_ВалютиЕлемент.resx">
       <DependentUpon>Form_ВалютиЕлемент.cs</DependentUpon>
