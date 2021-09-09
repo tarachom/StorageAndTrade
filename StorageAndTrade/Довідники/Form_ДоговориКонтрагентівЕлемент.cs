@@ -105,6 +105,10 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
 				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
 
+			//ТипДоговорів
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипДоговорів"].Fields.Values)
+				comboBox_ТипДоговору.Items.Add((Перелічення.ТипДоговорів)field.Value);
+
 			directoryControl_БанківськийРахунок.CallBack = CallBack_БанківськийРахунок;
 			directoryControl_БанківськийРахунокКонтрагента.CallBack = CallBack_БанківськийРахунокКонтрагента;
 			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
@@ -123,6 +127,7 @@ namespace StorageAndTrade
 					directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer();
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
+					comboBox_ТипДоговору.SelectedIndex = 0;
 				}
 				else
 				{
@@ -137,6 +142,7 @@ namespace StorageAndTrade
 						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(договориКонтрагентів_Objest.Контрагент.UnigueID);
 						comboBox_Статус.SelectedItem = договориКонтрагентів_Objest.Статус;
 						comboBox_ГосподарськаОперація.SelectedItem = договориКонтрагентів_Objest.ГосподарськаОперація;
+						comboBox_ТипДоговору.SelectedItem = договориКонтрагентів_Objest.ТипДоговору;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -160,6 +166,7 @@ namespace StorageAndTrade
 					договориКонтрагентів_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиДоговорівКонтрагентів)comboBox_Статус.SelectedItem : 0;
 					договориКонтрагентів_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+					договориКонтрагентів_Objest.ТипДоговору = comboBox_ТипДоговору.SelectedItem != null ? (Перелічення.ТипДоговорів)comboBox_ТипДоговору.SelectedItem : 0;
 					договориКонтрагентів_Objest.Save();
 				}
 				catch (Exception exp)
