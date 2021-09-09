@@ -68,6 +68,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
+			dataGridViewRecords.Columns["ОдиницяВиміру"].Width = 100;
+			dataGridViewRecords.Columns["ОдиницяВиміру"].HeaderText = "Од.";
+
 			LoadRecords();
 		}
 
@@ -83,6 +86,13 @@ namespace StorageAndTrade
 			Довідники.ВидиНоменклатури_Select видиНоменклатури_Select = new Довідники.ВидиНоменклатури_Select();
 			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Select.Назва);
 
+			//JOIN 1
+			string JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
+			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Fields["Назва"].NameInTable;
+
+			видиНоменклатури_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join1"));
+			видиНоменклатури_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.ВидиНоменклатури_Select.ОдиницяВиміру, видиНоменклатури_Select.QuerySelect.Table));
+
 			//ORDER
 			видиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ВидиНоменклатури_Select.Назва, SelectOrder.ASC);
 
@@ -91,10 +101,11 @@ namespace StorageAndTrade
 			{
 				Довідники.ВидиНоменклатури_Pointer cur = видиНоменклатури_Select.Current;
 
-				RecordsBindingList.Add(new Записи(
-					cur.UnigueID.ToString(),
-					cur.Fields[Довідники.ВидиНоменклатури_Select.Назва].ToString()
-					));
+				RecordsBindingList.Add(new Записи{
+					ID = cur.UnigueID.ToString(),
+					Назва = cur.Fields[Довідники.ВидиНоменклатури_Select.Назва].ToString(),
+					ОдиницяВиміру = cur.Fields["join1"].ToString()
+				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
@@ -113,13 +124,9 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва)
-			{
-				ID = _id;
-				Назва = _Назва;
-			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string ОдиницяВиміру { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

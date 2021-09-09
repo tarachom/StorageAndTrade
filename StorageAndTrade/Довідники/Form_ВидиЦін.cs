@@ -100,11 +100,11 @@ namespace StorageAndTrade
 			{
 				Довідники.ВидиЦін_Pointer cur = видиЦін_Select.Current;
 
-				RecordsBindingList.Add(new Записи(
-					cur.UnigueID.ToString(),
-					cur.Fields[Довідники.ВидиЦін_Select.Назва].ToString(),
-					cur.Fields["field2"].ToString()
-					));
+				RecordsBindingList.Add(new Записи {
+					ID = cur.UnigueID.ToString(),
+					Назва = cur.Fields[Довідники.ВидиЦін_Select.Назва].ToString(),
+					Валюта = cur.Fields["field2"].ToString()
+				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
@@ -123,12 +123,6 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва, string _Валюта)
-			{
-				ID = _id;
-				Назва = _Назва;
-				Валюта = _Валюта;
-			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Валюта { get; set; }

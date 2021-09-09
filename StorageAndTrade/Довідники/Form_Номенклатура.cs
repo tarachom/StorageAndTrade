@@ -119,13 +119,13 @@ namespace StorageAndTrade
 			{
 				Довідники.Номенклатура_Pointer cur = номенклатура_Select.Current;
 
-				RecordsBindingList.Add(new Записи(
-					cur.UnigueID.ToString(),
-					cur.Fields[Довідники.Номенклатура_Select.Назва].ToString(),
-					cur.Fields["join1"].ToString(),
-					cur.Fields["join2"].ToString(),
-					cur.Fields["join3"].ToString()
-					));
+				RecordsBindingList.Add(new Записи {
+					ID = cur.UnigueID.ToString(),
+					Назва = cur.Fields[Довідники.Номенклатура_Select.Назва].ToString(),
+					Виробник = cur.Fields["join1"].ToString(),
+					ВидНоменклатури = cur.Fields["join2"].ToString(),
+					ОдиницяВиміру = cur.Fields["join3"].ToString()
+			    });
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
@@ -144,14 +144,6 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва, string _Виробник, string _ВидНоменклатури, string _ОдиницяВиміру)
-			{
-				ID = _id;
-				Назва = _Назва;
-				Виробник = _Виробник;
-				ВидНоменклатури = _ВидНоменклатури;
-				ОдиницяВиміру = _ОдиницяВиміру;
-			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Виробник { get; set; }
