@@ -100,5 +100,11 @@ namespace StorageAndTrade
             Form_ВидиНоменклатури form_ВидиНоменклатури = new Form_ВидиНоменклатури();
             form_ВидиНоменклатури.Show();
         }
+
+        private void структураПідприємстваToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
+            form_СтруктураПідприємства.Show();
+        }
     }
 }

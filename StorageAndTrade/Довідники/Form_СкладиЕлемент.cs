@@ -79,6 +79,14 @@ namespace StorageAndTrade
 			form_ВидиЦін.ShowDialog();
 		}
 
+		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		{
+			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
+			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
+			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
+			form_СтруктураПідприємства.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//Заповнення елементів перелічення - ТипСкладу
@@ -87,6 +95,7 @@ namespace StorageAndTrade
 
 			directoryControl_Відповідальний.CallBack = CallBack_Відповідальний;
 			directoryControl_ВидЦін.CallBack = CallBack_ВидЦін;
+			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
 
 			if (IsNew.HasValue)
 			{
@@ -98,6 +107,7 @@ namespace StorageAndTrade
 					comboBox_ТипСкладу.SelectedIndex = 0;
 					directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer();
 					directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer();
+					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
 				}
 				else
 				{
@@ -109,6 +119,7 @@ namespace StorageAndTrade
 						comboBox_ТипСкладу.SelectedItem = склади_Objest.ТипСкладу;
 						directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(склади_Objest.Відповідальний.UnigueID);
 						directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer(склади_Objest.ВидЦін.UnigueID);
+						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(склади_Objest.Підрозділ.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -129,6 +140,7 @@ namespace StorageAndTrade
 					склади_Objest.ТипСкладу = comboBox_ТипСкладу.SelectedItem != null ? (Перелічення.ТипиСкладів)comboBox_ТипСкладу.SelectedItem : 0;
 					склади_Objest.Відповідальний = (Довідники.ФізичніОсоби_Pointer)directoryControl_Відповідальний.DirectoryPointerItem;
 					склади_Objest.ВидЦін = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦін.DirectoryPointerItem;
+					склади_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					склади_Objest.Save();
 				}
 				catch (Exception exp)

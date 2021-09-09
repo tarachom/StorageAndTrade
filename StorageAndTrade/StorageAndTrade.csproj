@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Form_СтруктураПідприємства.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_СтруктураПідприємства.designer.cs">
+      <DependentUpon>Form_СтруктураПідприємства.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Form_СтруктураПідприємстваЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_СтруктураПідприємстваЕлемент.designer.cs">
+      <DependentUpon>Form_СтруктураПідприємстваЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\Form_ВидиНоменклатури.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +241,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_СтруктураПідприємства.resx">
+      <DependentUpon>Form_СтруктураПідприємства.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_СтруктураПідприємстваЕлемент.resx">
+      <DependentUpon>Form_СтруктураПідприємстваЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_ВидиНоменклатури.resx">
       <DependentUpon>Form_ВидиНоменклатури.cs</DependentUpon>

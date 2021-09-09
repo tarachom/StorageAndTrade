@@ -31,6 +31,7 @@ namespace StorageAndTrade
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.довідникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пакуванняОдиниціВиміруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оганізаціїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.номенклатураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,8 +42,8 @@ namespace StorageAndTrade
             this.фізичніОсобиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.користувачіToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.виробникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.видиНоменклатуриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.структураПідприємстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,10 +71,19 @@ namespace StorageAndTrade
             this.фізичніОсобиToolStripMenuItem,
             this.користувачіToolStripMenuItem,
             this.виробникиToolStripMenuItem,
-            this.видиНоменклатуриToolStripMenuItem});
+            this.видиНоменклатуриToolStripMenuItem,
+            this.структураПідприємстваToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
+            // 
+            // валютиToolStripMenuItem
+            // 
+            this.валютиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
+            this.валютиToolStripMenuItem.Name = "валютиToolStripMenuItem";
+            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.валютиToolStripMenuItem.Text = "Валюти";
+            this.валютиToolStripMenuItem.Click += new System.EventHandler(this.валютиToolStripMenuItem_Click);
             // 
             // пакуванняОдиниціВиміруToolStripMenuItem
             // 
@@ -155,14 +165,6 @@ namespace StorageAndTrade
             this.виробникиToolStripMenuItem.Text = "Виробники";
             this.виробникиToolStripMenuItem.Click += new System.EventHandler(this.виробникиToolStripMenuItem_Click);
             // 
-            // валютиToolStripMenuItem
-            // 
-            this.валютиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
-            this.валютиToolStripMenuItem.Name = "валютиToolStripMenuItem";
-            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
-            this.валютиToolStripMenuItem.Text = "Валюти";
-            this.валютиToolStripMenuItem.Click += new System.EventHandler(this.валютиToolStripMenuItem_Click);
-            // 
             // видиНоменклатуриToolStripMenuItem
             // 
             this.видиНоменклатуриToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
@@ -170,6 +172,14 @@ namespace StorageAndTrade
             this.видиНоменклатуриToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.видиНоменклатуриToolStripMenuItem.Text = "Види номенклатури";
             this.видиНоменклатуриToolStripMenuItem.Click += new System.EventHandler(this.видиНоменклатуриToolStripMenuItem_Click);
+            // 
+            // структураПідприємстваToolStripMenuItem
+            // 
+            this.структураПідприємстваToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.cog;
+            this.структураПідприємстваToolStripMenuItem.Name = "структураПідприємстваToolStripMenuItem";
+            this.структураПідприємстваToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.структураПідприємстваToolStripMenuItem.Text = "Структура підприємства";
+            this.структураПідприємстваToolStripMenuItem.Click += new System.EventHandler(this.структураПідприємстваToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -204,6 +214,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem виробникиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem видиНоменклатуриToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem структураПідприємстваToolStripMenuItem;
     }
 }
 

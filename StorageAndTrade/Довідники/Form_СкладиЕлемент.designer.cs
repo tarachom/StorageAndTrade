@@ -39,6 +39,8 @@ namespace StorageAndTrade
             this.directoryControl_Відповідальний = new StorageAndTrade.DirectoryControl();
             this.label3 = new System.Windows.Forms.Label();
             this.directoryControl_ВидЦін = new StorageAndTrade.DirectoryControl();
+            this.label4 = new System.Windows.Forms.Label();
+            this.directoryControl_Підрозділ = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -132,11 +134,31 @@ namespace StorageAndTrade
             this.directoryControl_ВидЦін.Size = new System.Drawing.Size(438, 27);
             this.directoryControl_ВидЦін.TabIndex = 35;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(17, 142);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Підрозділ:";
+            // 
+            // directoryControl_Підрозділ
+            // 
+            this.directoryControl_Підрозділ.CallBack = null;
+            this.directoryControl_Підрозділ.DirectoryPointerItem = null;
+            this.directoryControl_Підрозділ.Location = new System.Drawing.Point(110, 135);
+            this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
+            this.directoryControl_Підрозділ.Size = new System.Drawing.Size(438, 27);
+            this.directoryControl_Підрозділ.TabIndex = 37;
+            // 
             // Form_СкладиЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 278);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.directoryControl_Підрозділ);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.directoryControl_ВидЦін);
             this.Controls.Add(this.label1);
@@ -169,5 +191,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Відповідальний;
         private System.Windows.Forms.Label label3;
         private DirectoryControl directoryControl_ВидЦін;
+        private System.Windows.Forms.Label label4;
+        private DirectoryControl directoryControl_Підрозділ;
     }
 }
