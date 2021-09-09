@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 09.09.2021 16:54:06
+ * Дата конфігурації: 09.09.2021 17:09:01
  *
  */
 
@@ -5756,7 +5756,7 @@ namespace StorageAndTrade_1_0.Документи
              new string[] { "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9" }) 
         {
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Контрагент = new Довідники.Контрагенти_Pointer();
             Організація = new Довідники.Організації_Pointer();
             Валюта = new Довідники.Валюти_Pointer();
@@ -5793,7 +5793,7 @@ namespace StorageAndTrade_1_0.Документи
             if (BaseRead(uid))
             {
                 ДатаДок = (base.FieldValue["col_b2"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_b2"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_b3"] != DBNull.Value) ? (int)base.FieldValue["col_b3"] : 0;
+                НомерДок = base.FieldValue["col_b3"].ToString();
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_b4"]);
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_b5"]);
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_b6"]);
@@ -5907,7 +5907,7 @@ namespace StorageAndTrade_1_0.Документи
         }
         
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.Валюти_Pointer Валюта { get; set; }
