@@ -79,10 +79,19 @@ namespace StorageAndTrade
 			form_СтруктураПідприємства.ShowDialog();
 		}
 
+		public void CallBack_Організація(DirectoryPointer directoryPointerItem)
+		{
+			Form_Організації form_Організації = new Form_Організації();
+			form_Організації.DirectoryPointerItem = directoryPointerItem;
+			form_Організації.DirectoryControlItem = directoryControl_Організація;
+			form_Організації.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			directoryControl_Валюта.CallBack = CallBack_Валюта;
 			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
+			directoryControl_Організація.CallBack = CallBack_Організація;
 
 			if (IsNew.HasValue)
 			{
@@ -94,6 +103,7 @@ namespace StorageAndTrade
 
 					directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer();
 					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
+					directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer();
 				}
 				else
 				{
@@ -104,6 +114,7 @@ namespace StorageAndTrade
 						textBoxName.Text = банківськіРахункиОрганізацій_Objest.Назва;
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(банківськіРахункиОрганізацій_Objest.Валюта.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(банківськіРахункиОрганізацій_Objest.Підрозділ.UnigueID);
+						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(банківськіРахункиОрганізацій_Objest.Організація.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -123,6 +134,7 @@ namespace StorageAndTrade
 					банківськіРахункиОрганізацій_Objest.Назва = textBoxName.Text;
 					банківськіРахункиОрганізацій_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					банківськіРахункиОрганізацій_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+					банківськіРахункиОрганізацій_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 					банківськіРахункиОрганізацій_Objest.Save();
 				}
 				catch (Exception exp)
