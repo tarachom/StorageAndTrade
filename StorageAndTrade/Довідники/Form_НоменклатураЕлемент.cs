@@ -29,7 +29,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
-using Конфа = StorageAndTrade;
+using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
@@ -89,6 +89,10 @@ namespace StorageAndTrade
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			//Заповнення елементів перелічення - ТипНоменклатури
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
+				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
+
 			directoryControl_Виробник.CallBack = CallBack_Виробник;
 			directoryControl_ВидНоменклатури.CallBack = CallBack_ВидНоменклатури;
 			directoryControl_ОдиницяВиміру.CallBack = CallBack_ОдиницяВиміру;
@@ -103,6 +107,7 @@ namespace StorageAndTrade
 					directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer();
 					directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer();
 					directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+					comboBox_ТипНоменклатури.SelectedIndex = 0;
 				}
 				else
 				{
@@ -110,10 +115,14 @@ namespace StorageAndTrade
 					{
 						this.Text += " - Редагування запису - " + номенклатура_Objest.Назва;
 
-						textBoxName.Text = номенклатура_Objest.Назва;
+						textBox_Назва.Text = номенклатура_Objest.Назва;
 						directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer(номенклатура_Objest.Виробник.UnigueID);
 						directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer(номенклатура_Objest.ВидНоменклатури.UnigueID);
 						directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(номенклатура_Objest.ОдиницяВиміру.UnigueID);
+						comboBox_ТипНоменклатури.SelectedItem = номенклатура_Objest.ТипНоменклатури;
+						textBox_Артикул.Text = номенклатура_Objest.Артикул;
+						textBox_НазваПовна.Text = номенклатура_Objest.НазваПовна;
+						textBox_Опис.Text = номенклатура_Objest.Опис;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -130,10 +139,14 @@ namespace StorageAndTrade
 
 				try
 				{
-					номенклатура_Objest.Назва = textBoxName.Text;
+					номенклатура_Objest.Назва = textBox_Назва.Text;
 					номенклатура_Objest.Виробник = (Довідники.Виробники_Pointer)directoryControl_Виробник.DirectoryPointerItem;
 					номенклатура_Objest.ВидНоменклатури = (Довідники.ВидиНоменклатури_Pointer)directoryControl_ВидНоменклатури.DirectoryPointerItem;
 					номенклатура_Objest.ОдиницяВиміру = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяВиміру.DirectoryPointerItem;
+					номенклатура_Objest.ТипНоменклатури = comboBox_ТипНоменклатури.SelectedItem != null ? (Перелічення.ТипиНоменклатури)comboBox_ТипНоменклатури.SelectedItem : 0;
+					номенклатура_Objest.Артикул = textBox_Артикул.Text;
+					номенклатура_Objest.НазваПовна = textBox_НазваПовна.Text;
+					номенклатура_Objest.Опис = textBox_Опис.Text;
 					номенклатура_Objest.Save();
 				}
 				catch (Exception exp)
