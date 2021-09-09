@@ -27,14 +27,13 @@ namespace StorageAndTrade
 
         private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
         {
-			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+			//dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
 			dataGridViewRecords.Columns["ID"].Visible = false;
-			dataGridViewRecords.Columns["Номенклатура"].Width = 100;
+			dataGridViewRecords.Columns["Номенклатура"].Width = 300;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -52,7 +51,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = record.UID.ToString(),
-					Номенклатура = record.Номенклатура.UnigueID.ToString()
+					Номенклатура = record.Номенклатура.UnigueID.ToString(),
+					Кількість = (uint)record.Кількість
 				});
 			}
 
@@ -67,6 +67,7 @@ namespace StorageAndTrade
         {
             public string ID { get; set; }
             public string Номенклатура { get; set; }
+			public uint Кількість { get; set; }
         }
     }
 }
