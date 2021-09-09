@@ -91,7 +91,8 @@ namespace StorageAndTrade
 			{
 				Довідники.Валюти_Pointer cur = валюти_Select.Current;
 
-				RecordsBindingList.Add(new Записи {
+				RecordsBindingList.Add(new Записи
+				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Валюти_Select.Назва].ToString()
 				});

@@ -100,7 +100,8 @@ namespace StorageAndTrade
 			{
 				Довідники.Каси_Pointer cur = каси_Select.Current;
 
-				RecordsBindingList.Add(new Записи {
+				RecordsBindingList.Add(new Записи
+				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Каси_Select.Назва].ToString(),
 					Валюта = cur.Fields["field2"].ToString()

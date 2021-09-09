@@ -91,7 +91,8 @@ namespace StorageAndTrade
 			{
 				Довідники.ПакуванняОдиниціВиміру_Pointer cur = пакуванняОдиниціВиміру_Select.Current;
 
-				RecordsBindingList.Add(new Записи {
+				RecordsBindingList.Add(new Записи
+				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.Назва].ToString()
 				});

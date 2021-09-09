@@ -75,6 +75,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ОдиницяВиміру"].Width = 50;
 			dataGridViewRecords.Columns["ОдиницяВиміру"].HeaderText = "Од.";
 
+			dataGridViewRecords.Columns["ТипНоменклатури"].Width = 50;
+			dataGridViewRecords.Columns["ТипНоменклатури"].HeaderText = "Тип";
+
 			LoadRecords();
 		}
 
@@ -89,6 +92,7 @@ namespace StorageAndTrade
 
 			Довідники.Номенклатура_Select номенклатура_Select = new Довідники.Номенклатура_Select();
 			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Select.Назва);
+			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Select.ТипНоменклатури);
 
 			//JOIN 1
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Виробники"].Table;
@@ -119,13 +123,15 @@ namespace StorageAndTrade
 			{
 				Довідники.Номенклатура_Pointer cur = номенклатура_Select.Current;
 
-				RecordsBindingList.Add(new Записи {
+				RecordsBindingList.Add(new Записи
+				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Номенклатура_Select.Назва].ToString(),
 					Виробник = cur.Fields["join1"].ToString(),
 					ВидНоменклатури = cur.Fields["join2"].ToString(),
-					ОдиницяВиміру = cur.Fields["join3"].ToString()
-			    });
+					ОдиницяВиміру = cur.Fields["join3"].ToString(),
+					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.Номенклатура_Select.ТипНоменклатури]).ToString()
+				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
@@ -149,6 +155,7 @@ namespace StorageAndTrade
 			public string Виробник { get; set; }
 			public string ВидНоменклатури { get; set; }
 			public string ОдиницяВиміру { get; set; }
+			public string ТипНоменклатури { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

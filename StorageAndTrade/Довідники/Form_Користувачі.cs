@@ -91,7 +91,8 @@ namespace StorageAndTrade
 			{
 				Довідники.Користувачі_Pointer cur = користувачі_Select.Current;
 
-				RecordsBindingList.Add(new Записи {
+				RecordsBindingList.Add(new Записи
+				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Користувачі_Select.Назва].ToString()
 				});

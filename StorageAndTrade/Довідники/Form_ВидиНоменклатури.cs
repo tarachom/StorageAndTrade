@@ -101,7 +101,8 @@ namespace StorageAndTrade
 			{
 				Довідники.ВидиНоменклатури_Pointer cur = видиНоменклатури_Select.Current;
 
-				RecordsBindingList.Add(new Записи{
+				RecordsBindingList.Add(new Записи
+				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ВидиНоменклатури_Select.Назва].ToString(),
 					ОдиницяВиміру = cur.Fields["join1"].ToString()

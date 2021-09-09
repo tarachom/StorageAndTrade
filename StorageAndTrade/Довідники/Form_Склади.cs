@@ -91,7 +91,8 @@ namespace StorageAndTrade
 			{
 				Довідники.Склади_Pointer cur = склади_Select.Current;
 
-				RecordsBindingList.Add(new Записи {
+				RecordsBindingList.Add(new Записи
+				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Склади_Select.Назва].ToString()
 				});
