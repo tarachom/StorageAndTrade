@@ -69,112 +69,112 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ФізичніОсоби.cs">
+    <Compile Include="Довідники\Form_ФізичніОсоби.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ФізичніОсоби.designer.cs">
+    <Compile Include="Довідники\Form_ФізичніОсоби.designer.cs">
       <DependentUpon>Form_ФізичніОсоби.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ФізичніОсобиЕлемент.cs">
+    <Compile Include="Довідники\Form_ФізичніОсобиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ФізичніОсобиЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_ФізичніОсобиЕлемент.designer.cs">
       <DependentUpon>Form_ФізичніОсобиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ВидиЦін.cs">
+    <Compile Include="Довідники\Form_ВидиЦін.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ВидиЦін.designer.cs">
+    <Compile Include="Довідники\Form_ВидиЦін.designer.cs">
       <DependentUpon>Form_ВидиЦін.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ВидиЦінЕлемент.cs">
+    <Compile Include="Довідники\Form_ВидиЦінЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ВидиЦінЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_ВидиЦінЕлемент.designer.cs">
       <DependentUpon>Form_ВидиЦінЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Склади.cs">
+    <Compile Include="Довідники\Form_Склади.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Склади.designer.cs">
+    <Compile Include="Довідники\Form_Склади.designer.cs">
       <DependentUpon>Form_Склади.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_СкладиЕлемент.cs">
+    <Compile Include="Довідники\Form_СкладиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_СкладиЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_СкладиЕлемент.designer.cs">
       <DependentUpon>Form_СкладиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Контрагенти.cs">
+    <Compile Include="Довідники\Form_Контрагенти.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Контрагенти.designer.cs">
+    <Compile Include="Довідники\Form_Контрагенти.designer.cs">
       <DependentUpon>Form_Контрагенти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_КонтрагентиЕлемент.cs">
+    <Compile Include="Довідники\Form_КонтрагентиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_КонтрагентиЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_КонтрагентиЕлемент.designer.cs">
       <DependentUpon>Form_КонтрагентиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Номенклатура.cs">
+    <Compile Include="Довідники\Form_Номенклатура.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Номенклатура.designer.cs">
+    <Compile Include="Довідники\Form_Номенклатура.designer.cs">
       <DependentUpon>Form_Номенклатура.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_НоменклатураЕлемент.cs">
+    <Compile Include="Довідники\Form_НоменклатураЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_НоменклатураЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_НоменклатураЕлемент.designer.cs">
       <DependentUpon>Form_НоменклатураЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Організації.cs">
+    <Compile Include="Довідники\Form_Організації.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Організації.designer.cs">
+    <Compile Include="Довідники\Form_Організації.designer.cs">
       <DependentUpon>Form_Організації.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ОрганізаціїЕлемент.cs">
+    <Compile Include="Довідники\Form_ОрганізаціїЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ОрганізаціїЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_ОрганізаціїЕлемент.designer.cs">
       <DependentUpon>Form_ОрганізаціїЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ПакуванняОдиниціВиміру.cs">
+    <Compile Include="Довідники\Form_ПакуванняОдиниціВиміру.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ПакуванняОдиниціВиміру.designer.cs">
+    <Compile Include="Довідники\Form_ПакуванняОдиниціВиміру.designer.cs">
       <DependentUpon>Form_ПакуванняОдиниціВиміру.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ПакуванняОдиниціВиміруЕлемент.cs">
+    <Compile Include="Довідники\Form_ПакуванняОдиниціВиміруЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ПакуванняОдиниціВиміруЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_ПакуванняОдиниціВиміруЕлемент.designer.cs">
       <DependentUpon>Form_ПакуванняОдиниціВиміруЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_ВалютиЕлемент.cs">
+    <Compile Include="Довідники\Form_ВалютиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_ВалютиЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_ВалютиЕлемент.designer.cs">
       <DependentUpon>Form_ВалютиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_КасиЕлемент.cs">
+    <Compile Include="Довідники\Form_КасиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_КасиЕлемент.designer.cs">
+    <Compile Include="Довідники\Form_КасиЕлемент.designer.cs">
       <DependentUpon>Form_КасиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Валюти.cs">
+    <Compile Include="Довідники\Form_Валюти.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Валюти.designer.cs">
+    <Compile Include="Довідники\Form_Валюти.designer.cs">
       <DependentUpon>Form_Валюти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Каси.cs">
+    <Compile Include="Довідники\Form_Каси.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Каси.designer.cs">
+    <Compile Include="Довідники\Form_Каси.designer.cs">
       <DependentUpon>Form_Каси.cs</DependentUpon>
     </Compile>
     <Compile Include="FormStorageAndTrade.cs">
@@ -194,58 +194,58 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ФізичніОсоби.resx">
+    <EmbeddedResource Include="Довідники\Form_ФізичніОсоби.resx">
       <DependentUpon>Form_ФізичніОсоби.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ФізичніОсобиЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_ФізичніОсобиЕлемент.resx">
       <DependentUpon>Form_ФізичніОсобиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ВидиЦін.resx">
+    <EmbeddedResource Include="Довідники\Form_ВидиЦін.resx">
       <DependentUpon>Form_ВидиЦін.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ВидиЦінЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_ВидиЦінЕлемент.resx">
       <DependentUpon>Form_ВидиЦінЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Склади.resx">
+    <EmbeddedResource Include="Довідники\Form_Склади.resx">
       <DependentUpon>Form_Склади.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_СкладиЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_СкладиЕлемент.resx">
       <DependentUpon>Form_СкладиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Контрагенти.resx">
+    <EmbeddedResource Include="Довідники\Form_Контрагенти.resx">
       <DependentUpon>Form_Контрагенти.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_КонтрагентиЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_КонтрагентиЕлемент.resx">
       <DependentUpon>Form_КонтрагентиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Номенклатура.resx">
+    <EmbeddedResource Include="Довідники\Form_Номенклатура.resx">
       <DependentUpon>Form_Номенклатура.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_НоменклатураЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_НоменклатураЕлемент.resx">
       <DependentUpon>Form_НоменклатураЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Організації.resx">
+    <EmbeddedResource Include="Довідники\Form_Організації.resx">
       <DependentUpon>Form_Організації.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ОрганізаціїЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_ОрганізаціїЕлемент.resx">
       <DependentUpon>Form_ОрганізаціїЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ПакуванняОдиниціВиміру.resx">
+    <EmbeddedResource Include="Довідники\Form_ПакуванняОдиниціВиміру.resx">
       <DependentUpon>Form_ПакуванняОдиниціВиміру.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ПакуванняОдиниціВиміруЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_ПакуванняОдиниціВиміруЕлемент.resx">
       <DependentUpon>Form_ПакуванняОдиниціВиміруЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_ВалютиЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_ВалютиЕлемент.resx">
       <DependentUpon>Form_ВалютиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_КасиЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Form_КасиЕлемент.resx">
       <DependentUpon>Form_КасиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Валюти.resx">
+    <EmbeddedResource Include="Довідники\Form_Валюти.resx">
       <DependentUpon>Form_Валюти.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Каси.resx">
+    <EmbeddedResource Include="Довідники\Form_Каси.resx">
       <DependentUpon>Form_Каси.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStorageAndTrade.resx">
