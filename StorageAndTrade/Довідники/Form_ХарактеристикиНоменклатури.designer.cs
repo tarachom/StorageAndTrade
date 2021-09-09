@@ -137,16 +137,16 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
-            // Form_Валюти
+            // Form_ХарактеристикиНоменклатури
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(921, 407);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form_Валюти";
+            this.Name = "Form_ХарактеристикиНоменклатури";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Валюти";
+            this.Text = "Характеристики номенклатури";
             this.Load += new System.EventHandler(this.FormCash_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

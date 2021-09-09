@@ -47,6 +47,7 @@ namespace StorageAndTrade
             this.банківськіРахункиОрганізаційToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.договориКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.банківськіРахункиКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.характеристикиНоменклатуриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,7 +79,8 @@ namespace StorageAndTrade
             this.структураПідприємстваToolStripMenuItem,
             this.банківськіРахункиОрганізаційToolStripMenuItem,
             this.договориКонтрагентівToolStripMenuItem,
-            this.банківськіРахункиКонтрагентівToolStripMenuItem});
+            this.банківськіРахункиКонтрагентівToolStripMenuItem,
+            this.характеристикиНоменклатуриToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -211,6 +213,14 @@ namespace StorageAndTrade
             this.банківськіРахункиКонтрагентівToolStripMenuItem.Text = "Банківські рахунки контрагентів";
             this.банківськіРахункиКонтрагентівToolStripMenuItem.Click += new System.EventHandler(this.банківськіРахункиКонтрагентівToolStripMenuItem_Click);
             // 
+            // характеристикиНоменклатуриToolStripMenuItem
+            // 
+            this.характеристикиНоменклатуриToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.page_refresh;
+            this.характеристикиНоменклатуриToolStripMenuItem.Name = "характеристикиНоменклатуриToolStripMenuItem";
+            this.характеристикиНоменклатуриToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.характеристикиНоменклатуриToolStripMenuItem.Text = "Характеристики номенклатури";
+            this.характеристикиНоменклатуриToolStripMenuItem.Click += new System.EventHandler(this.характеристикиНоменклатуриToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,6 +258,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem банківськіРахункиОрганізаційToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem договориКонтрагентівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem банківськіРахункиКонтрагентівToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem характеристикиНоменклатуриToolStripMenuItem;
     }
 }
 
