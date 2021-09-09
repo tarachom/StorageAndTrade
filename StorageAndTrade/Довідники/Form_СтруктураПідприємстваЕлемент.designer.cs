@@ -33,6 +33,8 @@ namespace StorageAndTrade
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.directoryControl_Керівник = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -71,11 +73,31 @@ namespace StorageAndTrade
             this.label2.TabIndex = 19;
             this.label2.Text = "Назва:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 45);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 36;
+            this.label1.Text = "Керівник:";
+            // 
+            // directoryControl_Керівник
+            // 
+            this.directoryControl_Керівник.CallBack = null;
+            this.directoryControl_Керівник.DirectoryPointerItem = null;
+            this.directoryControl_Керівник.Location = new System.Drawing.Point(111, 38);
+            this.directoryControl_Керівник.Name = "directoryControl_Керівник";
+            this.directoryControl_Керівник.Size = new System.Drawing.Size(438, 27);
+            this.directoryControl_Керівник.TabIndex = 35;
+            // 
             // Form_СтруктураПідприємстваЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 164);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.directoryControl_Керівник);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
@@ -96,5 +118,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private DirectoryControl directoryControl_Керівник;
     }
 }

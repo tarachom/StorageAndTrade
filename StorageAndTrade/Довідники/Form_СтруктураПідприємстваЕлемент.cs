@@ -63,8 +63,18 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.СтруктураПідприємства_Objest структураПідприємства_Objest { get; set; }
 
+		public void CallBack_Керівник(DirectoryPointer directoryPointerItem)
+		{
+			Form_ФізичніОсоби form_ФізичніОсоби = new Form_ФізичніОсоби();
+			form_ФізичніОсоби.DirectoryPointerItem = directoryPointerItem;
+			form_ФізичніОсоби.DirectoryControlItem = directoryControl_Керівник;
+			form_ФізичніОсоби.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			directoryControl_Керівник.CallBack = CallBack_Керівник;
+
 			if (IsNew.HasValue)
 			{
 				структураПідприємства_Objest = new Довідники.СтруктураПідприємства_Objest();
@@ -72,6 +82,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					directoryControl_Керівник.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer();
 				}
 				else
 				{
@@ -79,6 +90,7 @@ namespace StorageAndTrade
 					{
 						this.Text += " - Редагування запису - " + структураПідприємства_Objest.Назва;
 						textBoxName.Text = структураПідприємства_Objest.Назва;
+						directoryControl_Керівник.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(структураПідприємства_Objest.Керівник.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -96,6 +108,7 @@ namespace StorageAndTrade
 				try
 				{
 					структураПідприємства_Objest.Назва = textBoxName.Text;
+					структураПідприємства_Objest.Керівник = (Довідники.ФізичніОсоби_Pointer)directoryControl_Керівник.DirectoryPointerItem;
 					структураПідприємства_Objest.Save();
 				}
 				catch (Exception exp)
