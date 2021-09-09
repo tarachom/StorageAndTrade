@@ -37,9 +37,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_ЗамовленняКлієнтаЕлемент : Form
+    public partial class Form_ЗамовленняКлієнтаДокумент : Form
     {
-        public Form_ЗамовленняКлієнтаЕлемент()
+        public Form_ЗамовленняКлієнтаДокумент()
         {
             InitializeComponent();
         }
@@ -47,7 +47,7 @@ namespace StorageAndTrade
 		/// <summary>
 		/// Форма списку
 		/// </summary>
-        public Form_ЗамовленняКлієнта OwnerForm { get; set; }
+        public Form_ЗамовленняКлієнтаЖурнал OwnerForm { get; set; }
         
 		/// <summary>
 		/// Чи це новий

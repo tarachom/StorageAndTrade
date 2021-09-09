@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class Form_ЗамовленняКлієнтаЕлемент
+    partial class Form_ЗамовленняКлієнтаДокумент
     {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(309, 307);
+            this.buttonClose.Location = new System.Drawing.Point(309, 477);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -49,7 +49,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(12, 307);
+            this.buttonSave.Location = new System.Drawing.Point(12, 477);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -89,11 +89,11 @@ namespace StorageAndTrade
             this.dateTimePicker_ДатаДок.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker_ДатаДок.TabIndex = 22;
             // 
-            // Form_ЗамовленняКлієнтаЕлемент
+            // Form_ЗамовленняКлієнтаДокумент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 342);
+            this.ClientSize = new System.Drawing.Size(971, 512);
             this.Controls.Add(this.dateTimePicker_ДатаДок);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox_НомерДок);
@@ -101,7 +101,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form_ЗамовленняКлієнтаЕлемент";
+            this.Name = "Form_ЗамовленняКлієнтаДокумент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Валюти";
             this.Load += new System.EventHandler(this.FormAddCash_Load);

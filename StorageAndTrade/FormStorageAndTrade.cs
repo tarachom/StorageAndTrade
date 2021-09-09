@@ -139,8 +139,8 @@ namespace StorageAndTrade
 
         private void замовленняКлієнтаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form_ЗамовленняКлієнта form_ЗамовленняКлієнта = new Form_ЗамовленняКлієнта();
-            form_ЗамовленняКлієнта.Show();
+            Form_ЗамовленняКлієнтаЖурнал form_ЗамовленняКлієнтаЖурнал = new Form_ЗамовленняКлієнтаЖурнал();
+            form_ЗамовленняКлієнтаЖурнал.Show();
         }
 
         #endregion

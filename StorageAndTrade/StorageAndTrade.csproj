@@ -69,8 +69,8 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\Form_ЗамовленняКлієнта.designer.cs">
-      <DependentUpon>Form_ЗамовленняКлієнта.cs</DependentUpon>
+    <Compile Include="Документи\Form_ЗамовленняКлієнтаЖурнал.designer.cs">
+      <DependentUpon>Form_ЗамовленняКлієнтаЖурнал.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\Form_БанківськіРахункиКонтрагентів.cs">
       <SubType>Form</SubType>
@@ -96,11 +96,11 @@
     <Compile Include="Довідники\Form_БанківськіРахункиОрганізаційЕлемент.designer.cs">
       <DependentUpon>Form_БанківськіРахункиОрганізаційЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\Form_ЗамовленняКлієнтаЕлемент.cs">
+    <Compile Include="Документи\Form_ЗамовленняКлієнтаДокумент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Документи\Form_ЗамовленняКлієнтаЕлемент.designer.cs">
-      <DependentUpon>Form_ЗамовленняКлієнтаЕлемент.cs</DependentUpon>
+    <Compile Include="Документи\Form_ЗамовленняКлієнтаДокумент.designer.cs">
+      <DependentUpon>Form_ЗамовленняКлієнтаДокумент.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\Form_ХарактеристикиНоменклатури.cs">
       <SubType>Form</SubType>
@@ -299,8 +299,8 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Документи\Form_ЗамовленняКлієнта.resx">
-      <DependentUpon>Form_ЗамовленняКлієнта.cs</DependentUpon>
+    <EmbeddedResource Include="Документи\Form_ЗамовленняКлієнтаЖурнал.resx">
+      <DependentUpon>Form_ЗамовленняКлієнтаЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_БанківськіРахункиКонтрагентів.resx">
       <DependentUpon>Form_БанківськіРахункиКонтрагентів.cs</DependentUpon>
@@ -314,8 +314,8 @@
     <EmbeddedResource Include="Довідники\Form_БанківськіРахункиОрганізаційЕлемент.resx">
       <DependentUpon>Form_БанківськіРахункиОрганізаційЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Документи\Form_ЗамовленняКлієнтаЕлемент.resx">
-      <DependentUpon>Form_ЗамовленняКлієнтаЕлемент.cs</DependentUpon>
+    <EmbeddedResource Include="Документи\Form_ЗамовленняКлієнтаДокумент.resx">
+      <DependentUpon>Form_ЗамовленняКлієнтаДокумент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_ХарактеристикиНоменклатури.resx">
       <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
@@ -420,7 +420,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Документи\Form_ЗамовленняКлієнта.cs">
+    <Compile Include="Документи\Form_ЗамовленняКлієнтаЖурнал.cs">
       <SubType>Form</SubType>
     </Compile>
     <None Include="Properties\Settings.settings">

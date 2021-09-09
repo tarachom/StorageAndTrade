@@ -36,9 +36,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_ЗамовленняКлієнта : Form
+    public partial class Form_ЗамовленняКлієнтаЖурнал : Form
     {
-        public Form_ЗамовленняКлієнта()
+        public Form_ЗамовленняКлієнтаЖурнал()
         {
             InitializeComponent();
         }
@@ -143,10 +143,10 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-			Form_ЗамовленняКлієнтаЕлемент form_ЗамовленняКлієнтаЕлемент = new Form_ЗамовленняКлієнтаЕлемент();
-			form_ЗамовленняКлієнтаЕлемент.IsNew = true;
-			form_ЗамовленняКлієнтаЕлемент.OwnerForm = this;
-			form_ЗамовленняКлієнтаЕлемент.ShowDialog();
+			Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+			form_ЗамовленняКлієнтаДокумент.IsNew = true;
+			form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+			form_ЗамовленняКлієнтаДокумент.ShowDialog();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -155,11 +155,11 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				Form_ЗамовленняКлієнтаЕлемент form_ЗамовленняКлієнтаЕлемент = new Form_ЗамовленняКлієнтаЕлемент();
-				form_ЗамовленняКлієнтаЕлемент.IsNew = false;
-				form_ЗамовленняКлієнтаЕлемент.OwnerForm = this;
-				form_ЗамовленняКлієнтаЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
-				form_ЗамовленняКлієнтаЕлемент.ShowDialog();
+				Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+				form_ЗамовленняКлієнтаДокумент.IsNew = false;
+				form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+				form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ЗамовленняКлієнтаДокумент.ShowDialog();
 			}			
 		}
 
