@@ -63,8 +63,18 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ВидиНоменклатури_Objest видиНоменклатури_Objest { get; set; }
 
+		public void CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
+		{
+			Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
+			form_ПакуванняОдиниціВиміру.DirectoryPointerItem = directoryPointerItem;
+			form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl_ОдиницяВиміру;
+			form_ПакуванняОдиниціВиміру.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			directoryControl_ОдиницяВиміру.CallBack = CallBack_ОдиницяВиміру;
+
 			if (IsNew.HasValue)
 			{
 				видиНоменклатури_Objest = new Довідники.ВидиНоменклатури_Objest();
@@ -72,6 +82,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer();
 				}
 				else
 				{
@@ -80,6 +91,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + видиНоменклатури_Objest.Назва;
 
 						textBoxName.Text = видиНоменклатури_Objest.Назва;
+						directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(видиНоменклатури_Objest.ОдиницяВиміру.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -97,6 +109,7 @@ namespace StorageAndTrade
 				try
 				{
 					видиНоменклатури_Objest.Назва = textBoxName.Text;
+					видиНоменклатури_Objest.ОдиницяВиміру = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяВиміру.DirectoryPointerItem;
 					видиНоменклатури_Objest.Save();
 				}
 				catch (Exception exp)
