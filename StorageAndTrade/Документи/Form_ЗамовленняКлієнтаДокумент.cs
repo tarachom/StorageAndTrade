@@ -86,6 +86,9 @@ namespace StorageAndTrade
 					else
 						MessageBox.Show("Error read");
 				}
+
+				замовленняКлієнта_ТабличнаЧастина_Товари.ЗамовленняКлієнта_Objest = замовленняКлієнта_Objest;
+				замовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
 			}
 		}
 

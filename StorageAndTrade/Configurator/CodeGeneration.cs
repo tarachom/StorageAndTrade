@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 09.09.2021 17:25:01
+ * Дата конфігурації: 09.09.2021 18:02:49
  *
  */
 
@@ -36,7 +36,7 @@ using AccountingSoftware;
 
 namespace StorageAndTrade_1_0
 {
-    static class Config
+    public static class Config
     {
         public static Kernel Kernel { get; set; }
 		
@@ -52,7 +52,7 @@ namespace StorageAndTrade_1_0.Константи
 {
     
 	#region CONSTANTS BLOCK "ЗначенняПоЗамовчуванню"
-    static class ЗначенняПоЗамовчуванню
+    public static class ЗначенняПоЗамовчуванню
     {
         public static void ReadAll()
         {
@@ -165,7 +165,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Юридичні особи та підприємці нашої організації.
     ///</summary>
-    class Організації_Objest : DirectoryObject
+    public class Організації_Objest : DirectoryObject
     {
         public Організації_Objest() : base(Config.Kernel, "tab_a01",
              new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8" }) 
@@ -280,7 +280,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Юридичні особи та підприємці нашої організації.
     ///</summary>
-    class Організації_Pointer : DirectoryPointer
+    public class Організації_Pointer : DirectoryPointer
     {
         public Організації_Pointer(object uid = null) : base(Config.Kernel, "tab_a01")
         {
@@ -314,7 +314,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Юридичні особи та підприємці нашої організації.
     ///</summary>
-    class Організації_Select : DirectorySelect, IDisposable
+    public class Організації_Select : DirectorySelect, IDisposable
     {
         public Організації_Select() : base(Config.Kernel, "tab_a01") { }
         
@@ -353,7 +353,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
       
-    class Організації_Контакти_TablePart : DirectoryTablePart
+    public class Організації_Контакти_TablePart : DirectoryTablePart
     {
         public Організації_Контакти_TablePart(Організації_Objest owner) : base(Config.Kernel, "tab_a02",
              new string[] { "col_a9", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
@@ -473,7 +473,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Товари та послуги.
     ///</summary>
-    class Номенклатура_Objest : DirectoryObject
+    public class Номенклатура_Objest : DirectoryObject
     {
         public Номенклатура_Objest() : base(Config.Kernel, "tab_a03",
              new string[] { "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5" }) 
@@ -594,7 +594,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Товари та послуги.
     ///</summary>
-    class Номенклатура_Pointer : DirectoryPointer
+    public class Номенклатура_Pointer : DirectoryPointer
     {
         public Номенклатура_Pointer(object uid = null) : base(Config.Kernel, "tab_a03")
         {
@@ -628,7 +628,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Товари та послуги.
     ///</summary>
-    class Номенклатура_Select : DirectorySelect, IDisposable
+    public class Номенклатура_Select : DirectorySelect, IDisposable
     {
         public Номенклатура_Select() : base(Config.Kernel, "tab_a03") { }
         
@@ -674,7 +674,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Виробники"
     
-    class Виробники_Objest : DirectoryObject
+    public class Виробники_Objest : DirectoryObject
     {
         public Виробники_Objest() : base(Config.Kernel, "tab_a04",
              new string[] { "col_b6", "col_b7" }) 
@@ -745,7 +745,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Виробники_Pointer : DirectoryPointer
+    public class Виробники_Pointer : DirectoryPointer
     {
         public Виробники_Pointer(object uid = null) : base(Config.Kernel, "tab_a04")
         {
@@ -777,7 +777,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Виробники_Select : DirectorySelect, IDisposable
+    public class Виробники_Select : DirectorySelect, IDisposable
     {
         public Виробники_Select() : base(Config.Kernel, "tab_a04") { }
         
@@ -815,7 +815,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ВидиНоменклатури"
     
-    class ВидиНоменклатури_Objest : DirectoryObject
+    public class ВидиНоменклатури_Objest : DirectoryObject
     {
         public ВидиНоменклатури_Objest() : base(Config.Kernel, "tab_a05",
              new string[] { "col_b8", "col_b9", "col_a1", "col_a2", "col_a4" }) 
@@ -904,7 +904,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ВидиНоменклатури_Pointer : DirectoryPointer
+    public class ВидиНоменклатури_Pointer : DirectoryPointer
     {
         public ВидиНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a05")
         {
@@ -936,7 +936,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ВидиНоменклатури_Select : DirectorySelect, IDisposable
+    public class ВидиНоменклатури_Select : DirectorySelect, IDisposable
     {
         public ВидиНоменклатури_Select() : base(Config.Kernel, "tab_a05") { }
         
@@ -977,7 +977,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ПакуванняОдиниціВиміру"
     
-    class ПакуванняОдиниціВиміру_Objest : DirectoryObject
+    public class ПакуванняОдиниціВиміру_Objest : DirectoryObject
     {
         public ПакуванняОдиниціВиміру_Objest() : base(Config.Kernel, "tab_a06",
              new string[] { "col_c1", "col_c2", "col_c3", "col_c4" }) 
@@ -1060,7 +1060,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ПакуванняОдиниціВиміру_Pointer : DirectoryPointer
+    public class ПакуванняОдиниціВиміру_Pointer : DirectoryPointer
     {
         public ПакуванняОдиниціВиміру_Pointer(object uid = null) : base(Config.Kernel, "tab_a06")
         {
@@ -1092,7 +1092,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ПакуванняОдиниціВиміру_Select : DirectorySelect, IDisposable
+    public class ПакуванняОдиниціВиміру_Select : DirectorySelect, IDisposable
     {
         public ПакуванняОдиниціВиміру_Select() : base(Config.Kernel, "tab_a06") { }
         
@@ -1132,7 +1132,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Валюти"
     
-    class Валюти_Objest : DirectoryObject
+    public class Валюти_Objest : DirectoryObject
     {
         public Валюти_Objest() : base(Config.Kernel, "tab_a07",
              new string[] { "col_c5", "col_c6" }) 
@@ -1203,7 +1203,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Валюти_Pointer : DirectoryPointer
+    public class Валюти_Pointer : DirectoryPointer
     {
         public Валюти_Pointer(object uid = null) : base(Config.Kernel, "tab_a07")
         {
@@ -1235,7 +1235,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Валюти_Select : DirectorySelect, IDisposable
+    public class Валюти_Select : DirectorySelect, IDisposable
     {
         public Валюти_Select() : base(Config.Kernel, "tab_a07") { }
         
@@ -1273,7 +1273,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Контрагенти"
     
-    class Контрагенти_Objest : DirectoryObject
+    public class Контрагенти_Objest : DirectoryObject
     {
         public Контрагенти_Objest() : base(Config.Kernel, "tab_a08",
              new string[] { "col_c7", "col_c8", "col_c9", "col_d1", "col_a1" }) 
@@ -1368,7 +1368,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Контрагенти_Pointer : DirectoryPointer
+    public class Контрагенти_Pointer : DirectoryPointer
     {
         public Контрагенти_Pointer(object uid = null) : base(Config.Kernel, "tab_a08")
         {
@@ -1400,7 +1400,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Контрагенти_Select : DirectorySelect, IDisposable
+    public class Контрагенти_Select : DirectorySelect, IDisposable
     {
         public Контрагенти_Select() : base(Config.Kernel, "tab_a08") { }
         
@@ -1436,7 +1436,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
       
-    class Контрагенти_Контакти_TablePart : DirectoryTablePart
+    public class Контрагенти_Контакти_TablePart : DirectoryTablePart
     {
         public Контрагенти_Контакти_TablePart(Контрагенти_Objest owner) : base(Config.Kernel, "tab_a09",
              new string[] { "col_d2", "col_d3", "col_d4", "col_d5", "col_d6", "col_d7", "col_d8" }) 
@@ -1554,7 +1554,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Склади"
     
-    class Склади_Objest : DirectoryObject
+    public class Склади_Objest : DirectoryObject
     {
         public Склади_Objest() : base(Config.Kernel, "tab_a10",
              new string[] { "col_d9", "col_e1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5" }) 
@@ -1661,7 +1661,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Склади_Pointer : DirectoryPointer
+    public class Склади_Pointer : DirectoryPointer
     {
         public Склади_Pointer(object uid = null) : base(Config.Kernel, "tab_a10")
         {
@@ -1693,7 +1693,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Склади_Select : DirectorySelect, IDisposable
+    public class Склади_Select : DirectorySelect, IDisposable
     {
         public Склади_Select() : base(Config.Kernel, "tab_a10") { }
         
@@ -1731,7 +1731,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
       
-    class Склади_Контакти_TablePart : DirectoryTablePart
+    public class Склади_Контакти_TablePart : DirectoryTablePart
     {
         public Склади_Контакти_TablePart(Склади_Objest owner) : base(Config.Kernel, "tab_a11",
              new string[] { "col_e2", "col_e3", "col_e4", "col_e5", "col_e6", "col_e7", "col_e8" }) 
@@ -1849,7 +1849,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ВидиЦін"
     
-    class ВидиЦін_Objest : DirectoryObject
+    public class ВидиЦін_Objest : DirectoryObject
     {
         public ВидиЦін_Objest() : base(Config.Kernel, "tab_a12",
              new string[] { "col_e9", "col_f1", "col_f2" }) 
@@ -1926,7 +1926,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ВидиЦін_Pointer : DirectoryPointer
+    public class ВидиЦін_Pointer : DirectoryPointer
     {
         public ВидиЦін_Pointer(object uid = null) : base(Config.Kernel, "tab_a12")
         {
@@ -1958,7 +1958,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ВидиЦін_Select : DirectorySelect, IDisposable
+    public class ВидиЦін_Select : DirectorySelect, IDisposable
     {
         public ВидиЦін_Select() : base(Config.Kernel, "tab_a12") { }
         
@@ -1997,7 +1997,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ВидиЦінПостачальників"
     
-    class ВидиЦінПостачальників_Objest : DirectoryObject
+    public class ВидиЦінПостачальників_Objest : DirectoryObject
     {
         public ВидиЦінПостачальників_Objest() : base(Config.Kernel, "tab_a13",
              new string[] { "col_f3", "col_f4", "col_f5" }) 
@@ -2074,7 +2074,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ВидиЦінПостачальників_Pointer : DirectoryPointer
+    public class ВидиЦінПостачальників_Pointer : DirectoryPointer
     {
         public ВидиЦінПостачальників_Pointer(object uid = null) : base(Config.Kernel, "tab_a13")
         {
@@ -2106,7 +2106,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ВидиЦінПостачальників_Select : DirectorySelect, IDisposable
+    public class ВидиЦінПостачальників_Select : DirectorySelect, IDisposable
     {
         public ВидиЦінПостачальників_Select() : base(Config.Kernel, "tab_a13") { }
         
@@ -2145,7 +2145,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Користувачі"
     
-    class Користувачі_Objest : DirectoryObject
+    public class Користувачі_Objest : DirectoryObject
     {
         public Користувачі_Objest() : base(Config.Kernel, "tab_a14",
              new string[] { "col_f6", "col_f7", "col_g6", "col_a1" }) 
@@ -2234,7 +2234,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Користувачі_Pointer : DirectoryPointer
+    public class Користувачі_Pointer : DirectoryPointer
     {
         public Користувачі_Pointer(object uid = null) : base(Config.Kernel, "tab_a14")
         {
@@ -2266,7 +2266,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Користувачі_Select : DirectorySelect, IDisposable
+    public class Користувачі_Select : DirectorySelect, IDisposable
     {
         public Користувачі_Select() : base(Config.Kernel, "tab_a14") { }
         
@@ -2301,7 +2301,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
       
-    class Користувачі_Контакти_TablePart : DirectoryTablePart
+    public class Користувачі_Контакти_TablePart : DirectoryTablePart
     {
         public Користувачі_Контакти_TablePart(Користувачі_Objest owner) : base(Config.Kernel, "tab_a15",
              new string[] { "col_f8", "col_f9", "col_g1", "col_g2", "col_g3", "col_g4", "col_g5" }) 
@@ -2419,7 +2419,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ФізичніОсоби"
     
-    class ФізичніОсоби_Objest : DirectoryObject
+    public class ФізичніОсоби_Objest : DirectoryObject
     {
         public ФізичніОсоби_Objest() : base(Config.Kernel, "tab_a16",
              new string[] { "col_g7", "col_g8", "col_g9", "col_a1", "col_a2" }) 
@@ -2514,7 +2514,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ФізичніОсоби_Pointer : DirectoryPointer
+    public class ФізичніОсоби_Pointer : DirectoryPointer
     {
         public ФізичніОсоби_Pointer(object uid = null) : base(Config.Kernel, "tab_a16")
         {
@@ -2546,7 +2546,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ФізичніОсоби_Select : DirectorySelect, IDisposable
+    public class ФізичніОсоби_Select : DirectorySelect, IDisposable
     {
         public ФізичніОсоби_Select() : base(Config.Kernel, "tab_a16") { }
         
@@ -2582,7 +2582,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
       
-    class ФізичніОсоби_Контакти_TablePart : DirectoryTablePart
+    public class ФізичніОсоби_Контакти_TablePart : DirectoryTablePart
     {
         public ФізичніОсоби_Контакти_TablePart(ФізичніОсоби_Objest owner) : base(Config.Kernel, "tab_a17",
              new string[] { "col_h1", "col_h2", "col_h3", "col_h4", "col_h5", "col_h6", "col_h7" }) 
@@ -2700,7 +2700,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "СтруктураПідприємства"
     
-    class СтруктураПідприємства_Objest : DirectoryObject
+    public class СтруктураПідприємства_Objest : DirectoryObject
     {
         public СтруктураПідприємства_Objest() : base(Config.Kernel, "tab_a18",
              new string[] { "col_h8", "col_h9", "col_i1" }) 
@@ -2777,7 +2777,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class СтруктураПідприємства_Pointer : DirectoryPointer
+    public class СтруктураПідприємства_Pointer : DirectoryPointer
     {
         public СтруктураПідприємства_Pointer(object uid = null) : base(Config.Kernel, "tab_a18")
         {
@@ -2809,7 +2809,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class СтруктураПідприємства_Select : DirectorySelect, IDisposable
+    public class СтруктураПідприємства_Select : DirectorySelect, IDisposable
     {
         public СтруктураПідприємства_Select() : base(Config.Kernel, "tab_a18") { }
         
@@ -2848,7 +2848,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "КраїниСвіту"
     
-    class КраїниСвіту_Objest : DirectoryObject
+    public class КраїниСвіту_Objest : DirectoryObject
     {
         public КраїниСвіту_Objest() : base(Config.Kernel, "tab_a19",
              new string[] { "col_i2", "col_i3", "col_i4" }) 
@@ -2925,7 +2925,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class КраїниСвіту_Pointer : DirectoryPointer
+    public class КраїниСвіту_Pointer : DirectoryPointer
     {
         public КраїниСвіту_Pointer(object uid = null) : base(Config.Kernel, "tab_a19")
         {
@@ -2957,7 +2957,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class КраїниСвіту_Select : DirectorySelect, IDisposable
+    public class КраїниСвіту_Select : DirectorySelect, IDisposable
     {
         public КраїниСвіту_Select() : base(Config.Kernel, "tab_a19") { }
         
@@ -2996,7 +2996,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Файли"
     
-    class Файли_Objest : DirectoryObject
+    public class Файли_Objest : DirectoryObject
     {
         public Файли_Objest() : base(Config.Kernel, "tab_a20",
              new string[] { "col_i5", "col_i6" }) 
@@ -3067,7 +3067,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Файли_Pointer : DirectoryPointer
+    public class Файли_Pointer : DirectoryPointer
     {
         public Файли_Pointer(object uid = null) : base(Config.Kernel, "tab_a20")
         {
@@ -3099,7 +3099,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Файли_Select : DirectorySelect, IDisposable
+    public class Файли_Select : DirectorySelect, IDisposable
     {
         public Файли_Select() : base(Config.Kernel, "tab_a20") { }
         
@@ -3137,7 +3137,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ХарактеристикиНоменклатури"
     
-    class ХарактеристикиНоменклатури_Objest : DirectoryObject
+    public class ХарактеристикиНоменклатури_Objest : DirectoryObject
     {
         public ХарактеристикиНоменклатури_Objest() : base(Config.Kernel, "tab_a21",
              new string[] { "col_i7", "col_i8", "col_i9", "col_a1" }) 
@@ -3220,7 +3220,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ХарактеристикиНоменклатури_Pointer : DirectoryPointer
+    public class ХарактеристикиНоменклатури_Pointer : DirectoryPointer
     {
         public ХарактеристикиНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a21")
         {
@@ -3252,7 +3252,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ХарактеристикиНоменклатури_Select : DirectorySelect, IDisposable
+    public class ХарактеристикиНоменклатури_Select : DirectorySelect, IDisposable
     {
         public ХарактеристикиНоменклатури_Select() : base(Config.Kernel, "tab_a21") { }
         
@@ -3292,7 +3292,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Номенклатура_Папки"
     
-    class Номенклатура_Папки_Objest : DirectoryObject
+    public class Номенклатура_Папки_Objest : DirectoryObject
     {
         public Номенклатура_Папки_Objest() : base(Config.Kernel, "tab_a22",
              new string[] { "col_j1", "col_j2", "col_j3" }) 
@@ -3369,7 +3369,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Номенклатура_Папки_Pointer : DirectoryPointer
+    public class Номенклатура_Папки_Pointer : DirectoryPointer
     {
         public Номенклатура_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a22")
         {
@@ -3401,7 +3401,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Номенклатура_Папки_Select : DirectorySelect, IDisposable
+    public class Номенклатура_Папки_Select : DirectorySelect, IDisposable
     {
         public Номенклатура_Папки_Select() : base(Config.Kernel, "tab_a22") { }
         
@@ -3440,7 +3440,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Контрагенти_Папки"
     
-    class Контрагенти_Папки_Objest : DirectoryObject
+    public class Контрагенти_Папки_Objest : DirectoryObject
     {
         public Контрагенти_Папки_Objest() : base(Config.Kernel, "tab_a23",
              new string[] { "col_j4", "col_j5", "col_j6" }) 
@@ -3517,7 +3517,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Контрагенти_Папки_Pointer : DirectoryPointer
+    public class Контрагенти_Папки_Pointer : DirectoryPointer
     {
         public Контрагенти_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a23")
         {
@@ -3549,7 +3549,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Контрагенти_Папки_Select : DirectorySelect, IDisposable
+    public class Контрагенти_Папки_Select : DirectorySelect, IDisposable
     {
         public Контрагенти_Папки_Select() : base(Config.Kernel, "tab_a23") { }
         
@@ -3588,7 +3588,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Склади_Папки"
     
-    class Склади_Папки_Objest : DirectoryObject
+    public class Склади_Папки_Objest : DirectoryObject
     {
         public Склади_Папки_Objest() : base(Config.Kernel, "tab_a24",
              new string[] { "col_j7", "col_j8", "col_a1" }) 
@@ -3665,7 +3665,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Склади_Папки_Pointer : DirectoryPointer
+    public class Склади_Папки_Pointer : DirectoryPointer
     {
         public Склади_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a24")
         {
@@ -3697,7 +3697,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Склади_Папки_Select : DirectorySelect, IDisposable
+    public class Склади_Папки_Select : DirectorySelect, IDisposable
     {
         public Склади_Папки_Select() : base(Config.Kernel, "tab_a24") { }
         
@@ -3736,7 +3736,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "Каси"
     
-    class Каси_Objest : DirectoryObject
+    public class Каси_Objest : DirectoryObject
     {
         public Каси_Objest() : base(Config.Kernel, "tab_a26",
              new string[] { "col_k8", "col_k9", "col_a1", "col_a2" }) 
@@ -3819,7 +3819,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Каси_Pointer : DirectoryPointer
+    public class Каси_Pointer : DirectoryPointer
     {
         public Каси_Pointer(object uid = null) : base(Config.Kernel, "tab_a26")
         {
@@ -3851,7 +3851,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class Каси_Select : DirectorySelect, IDisposable
+    public class Каси_Select : DirectorySelect, IDisposable
     {
         public Каси_Select() : base(Config.Kernel, "tab_a26") { }
         
@@ -3891,7 +3891,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "БанківськіРахункиОрганізацій"
     
-    class БанківськіРахункиОрганізацій_Objest : DirectoryObject
+    public class БанківськіРахункиОрганізацій_Objest : DirectoryObject
     {
         public БанківськіРахункиОрганізацій_Objest() : base(Config.Kernel, "tab_a27",
              new string[] { "col_l1", "col_l2", "col_l3", "col_l4", "col_l5", "col_l6", "col_l7", "col_l8", "col_l9", "col_n1", "col_n2", "col_n3", "col_a1" }) 
@@ -4028,7 +4028,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class БанківськіРахункиОрганізацій_Pointer : DirectoryPointer
+    public class БанківськіРахункиОрганізацій_Pointer : DirectoryPointer
     {
         public БанківськіРахункиОрганізацій_Pointer(object uid = null) : base(Config.Kernel, "tab_a27")
         {
@@ -4060,7 +4060,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class БанківськіРахункиОрганізацій_Select : DirectorySelect, IDisposable
+    public class БанківськіРахункиОрганізацій_Select : DirectorySelect, IDisposable
     {
         public БанківськіРахункиОрганізацій_Select() : base(Config.Kernel, "tab_a27") { }
         
@@ -4109,7 +4109,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ДоговориКонтрагентів"
     
-    class ДоговориКонтрагентів_Objest : DirectoryObject
+    public class ДоговориКонтрагентів_Objest : DirectoryObject
     {
         public ДоговориКонтрагентів_Objest() : base(Config.Kernel, "tab_a28",
              new string[] { "col_n4", "col_n5", "col_n6", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7" }) 
@@ -4282,7 +4282,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ДоговориКонтрагентів_Pointer : DirectoryPointer
+    public class ДоговориКонтрагентів_Pointer : DirectoryPointer
     {
         public ДоговориКонтрагентів_Pointer(object uid = null) : base(Config.Kernel, "tab_a28")
         {
@@ -4314,7 +4314,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class ДоговориКонтрагентів_Select : DirectorySelect, IDisposable
+    public class ДоговориКонтрагентів_Select : DirectorySelect, IDisposable
     {
         public ДоговориКонтрагентів_Select() : base(Config.Kernel, "tab_a28") { }
         
@@ -4369,7 +4369,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "БанківськіРахункиКонтрагентів"
     
-    class БанківськіРахункиКонтрагентів_Objest : DirectoryObject
+    public class БанківськіРахункиКонтрагентів_Objest : DirectoryObject
     {
         public БанківськіРахункиКонтрагентів_Objest() : base(Config.Kernel, "tab_a29",
              new string[] { "col_n7", "col_n8", "col_n9", "col_m1", "col_m2", "col_m3", "col_m4", "col_m5", "col_m6", "col_m7", "col_m8", "col_m9", "col_o1", "col_o2", "col_o3" }) 
@@ -4518,7 +4518,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class БанківськіРахункиКонтрагентів_Pointer : DirectoryPointer
+    public class БанківськіРахункиКонтрагентів_Pointer : DirectoryPointer
     {
         public БанківськіРахункиКонтрагентів_Pointer(object uid = null) : base(Config.Kernel, "tab_a29")
         {
@@ -4550,7 +4550,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class БанківськіРахункиКонтрагентів_Select : DirectorySelect, IDisposable
+    public class БанківськіРахункиКонтрагентів_Select : DirectorySelect, IDisposable
     {
         public БанківськіРахункиКонтрагентів_Select() : base(Config.Kernel, "tab_a29") { }
         
@@ -4601,7 +4601,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "СтаттяРухуКоштів"
     
-    class СтаттяРухуКоштів_Objest : DirectoryObject
+    public class СтаттяРухуКоштів_Objest : DirectoryObject
     {
         public СтаттяРухуКоштів_Objest() : base(Config.Kernel, "tab_a45",
              new string[] { "col_i7", "col_i8", "col_i9", "col_j1", "col_j2" }) 
@@ -4696,7 +4696,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class СтаттяРухуКоштів_Pointer : DirectoryPointer
+    public class СтаттяРухуКоштів_Pointer : DirectoryPointer
     {
         public СтаттяРухуКоштів_Pointer(object uid = null) : base(Config.Kernel, "tab_a45")
         {
@@ -4728,7 +4728,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    class СтаттяРухуКоштів_Select : DirectorySelect, IDisposable
+    public class СтаттяРухуКоштів_Select : DirectorySelect, IDisposable
     {
         public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45") { }
         
@@ -4764,7 +4764,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
       
-    class СтаттяРухуКоштів_ГосподарськіОперації_TablePart : DirectoryTablePart
+    public class СтаттяРухуКоштів_ГосподарськіОперації_TablePart : DirectoryTablePart
     {
         public СтаттяРухуКоштів_ГосподарськіОперації_TablePart(СтаттяРухуКоштів_Objest owner) : base(Config.Kernel, "tab_a46",
              new string[] { "col_j3" }) 
@@ -5000,7 +5000,7 @@ namespace StorageAndTrade_1_0.Документи
     #region DOCUMENT "ЗамовленняПостачальнику"
     
     
-    class ЗамовленняПостачальнику_Objest : DocumentObject
+    public class ЗамовленняПостачальнику_Objest : DocumentObject
     {
         public ЗамовленняПостачальнику_Objest() : base(Config.Kernel, "tab_a25",
              new string[] { "col_j9", "col_k1", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_a6" }) 
@@ -5162,7 +5162,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ЗамовленняПостачальнику_Pointer : DocumentPointer
+    public class ЗамовленняПостачальнику_Pointer : DocumentPointer
     {
         public ЗамовленняПостачальнику_Pointer(object uid = null) : base(Config.Kernel, "tab_a25")
         {
@@ -5183,7 +5183,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ЗамовленняПостачальнику_Select : DocumentSelect, IDisposable
+    public class ЗамовленняПостачальнику_Select : DocumentSelect, IDisposable
     {
         
         public const string ДатаДок = "col_j9";
@@ -5220,7 +5220,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    class ЗамовленняПостачальнику_Товари_TablePart : DocumentTablePart
+    public class ЗамовленняПостачальнику_Товари_TablePart : DocumentTablePart
     {
         public ЗамовленняПостачальнику_Товари_TablePart(ЗамовленняПостачальнику_Objest owner) : base(Config.Kernel, "tab_a30",
              new string[] { "col_o4", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1" }) 
@@ -5359,7 +5359,7 @@ namespace StorageAndTrade_1_0.Документи
     #region DOCUMENT "ПоступленняТоварівТаПослуг"
     
     
-    class ПоступленняТоварівТаПослуг_Objest : DocumentObject
+    public class ПоступленняТоварівТаПослуг_Objest : DocumentObject
     {
         public ПоступленняТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a32",
              new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9" }) 
@@ -5551,7 +5551,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ПоступленняТоварівТаПослуг_Pointer : DocumentPointer
+    public class ПоступленняТоварівТаПослуг_Pointer : DocumentPointer
     {
         public ПоступленняТоварівТаПослуг_Pointer(object uid = null) : base(Config.Kernel, "tab_a32")
         {
@@ -5572,7 +5572,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ПоступленняТоварівТаПослуг_Select : DocumentSelect, IDisposable
+    public class ПоступленняТоварівТаПослуг_Select : DocumentSelect, IDisposable
     {
         
         public const string ДатаДок = "col_a1";
@@ -5615,7 +5615,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    class ПоступленняТоварівТаПослуг_Товари_TablePart : DocumentTablePart
+    public class ПоступленняТоварівТаПослуг_Товари_TablePart : DocumentTablePart
     {
         public ПоступленняТоварівТаПослуг_Товари_TablePart(ПоступленняТоварівТаПослуг_Objest owner) : base(Config.Kernel, "tab_a33",
              new string[] { "col_a9", "col_b1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b2" }) 
@@ -5754,7 +5754,7 @@ namespace StorageAndTrade_1_0.Документи
     #region DOCUMENT "ЗамовленняКлієнта"
     
     
-    class ЗамовленняКлієнта_Objest : DocumentObject
+    public class ЗамовленняКлієнта_Objest : DocumentObject
     {
         public ЗамовленняКлієнта_Objest() : base(Config.Kernel, "tab_a34",
              new string[] { "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9" }) 
@@ -5946,7 +5946,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ЗамовленняКлієнта_Pointer : DocumentPointer
+    public class ЗамовленняКлієнта_Pointer : DocumentPointer
     {
         public ЗамовленняКлієнта_Pointer(object uid = null) : base(Config.Kernel, "tab_a34")
         {
@@ -5967,7 +5967,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ЗамовленняКлієнта_Select : DocumentSelect, IDisposable
+    public class ЗамовленняКлієнта_Select : DocumentSelect, IDisposable
     {
         
         public const string ДатаДок = "col_b2";
@@ -6010,7 +6010,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    class ЗамовленняКлієнта_Товари_TablePart : DocumentTablePart
+    public class ЗамовленняКлієнта_Товари_TablePart : DocumentTablePart
     {
         public ЗамовленняКлієнта_Товари_TablePart(ЗамовленняКлієнта_Objest owner) : base(Config.Kernel, "tab_a35",
              new string[] { "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_a1" }) 
@@ -6144,7 +6144,7 @@ namespace StorageAndTrade_1_0.Документи
     #region DOCUMENT "РеалізаціяТоварівТаПослуг"
     
     
-    class РеалізаціяТоварівТаПослуг_Objest : DocumentObject
+    public class РеалізаціяТоварівТаПослуг_Objest : DocumentObject
     {
         public РеалізаціяТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a36",
              new string[] { "col_c9", "col_d1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_d2" }) 
@@ -6346,7 +6346,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class РеалізаціяТоварівТаПослуг_Pointer : DocumentPointer
+    public class РеалізаціяТоварівТаПослуг_Pointer : DocumentPointer
     {
         public РеалізаціяТоварівТаПослуг_Pointer(object uid = null) : base(Config.Kernel, "tab_a36")
         {
@@ -6367,7 +6367,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class РеалізаціяТоварівТаПослуг_Select : DocumentSelect, IDisposable
+    public class РеалізаціяТоварівТаПослуг_Select : DocumentSelect, IDisposable
     {
         
         public const string ДатаДок = "col_c9";
@@ -6412,7 +6412,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    class РеалізаціяТоварівТаПослуг_Товари_TablePart : DocumentTablePart
+    public class РеалізаціяТоварівТаПослуг_Товари_TablePart : DocumentTablePart
     {
         public РеалізаціяТоварівТаПослуг_Товари_TablePart(РеалізаціяТоварівТаПослуг_Objest owner) : base(Config.Kernel, "tab_a37",
              new string[] { "col_d2", "col_d3", "col_d4", "col_d5", "col_d6", "col_d7", "col_d8", "col_d9", "col_e1", "col_e2", "col_e3" }) 
@@ -6551,7 +6551,7 @@ namespace StorageAndTrade_1_0.Документи
     #region DOCUMENT "ВстановленняЦінНоменклатури"
     
     
-    class ВстановленняЦінНоменклатури_Objest : DocumentObject
+    public class ВстановленняЦінНоменклатури_Objest : DocumentObject
     {
         public ВстановленняЦінНоменклатури_Objest() : base(Config.Kernel, "tab_a42",
              new string[] { "col_g7", "col_g8", "col_g9" }) 
@@ -6623,7 +6623,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ВстановленняЦінНоменклатури_Pointer : DocumentPointer
+    public class ВстановленняЦінНоменклатури_Pointer : DocumentPointer
     {
         public ВстановленняЦінНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a42")
         {
@@ -6644,7 +6644,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ВстановленняЦінНоменклатури_Select : DocumentSelect, IDisposable
+    public class ВстановленняЦінНоменклатури_Select : DocumentSelect, IDisposable
     {
         
         public const string ДатаДок = "col_g7";
@@ -6663,7 +6663,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    class ВстановленняЦінНоменклатури_Товари_TablePart : DocumentTablePart
+    public class ВстановленняЦінНоменклатури_Товари_TablePart : DocumentTablePart
     {
         public ВстановленняЦінНоменклатури_Товари_TablePart(ВстановленняЦінНоменклатури_Objest owner) : base(Config.Kernel, "tab_a43",
              new string[] { "col_h1", "col_h2", "col_h3", "col_h4", "col_h5" }) 
@@ -6772,7 +6772,7 @@ namespace StorageAndTrade_1_0.Документи
     #region DOCUMENT "ПрихіднийКасовийОрдер"
     
     
-    class ПрихіднийКасовийОрдер_Objest : DocumentObject
+    public class ПрихіднийКасовийОрдер_Objest : DocumentObject
     {
         public ПрихіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a44",
              new string[] { "col_h6", "col_h7", "col_h8", "col_h9", "col_i1", "col_i2", "col_i3", "col_i4", "col_i5", "col_i6", "col_a1", "col_a2", "col_a3" }) 
@@ -6894,7 +6894,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ПрихіднийКасовийОрдер_Pointer : DocumentPointer
+    public class ПрихіднийКасовийОрдер_Pointer : DocumentPointer
     {
         public ПрихіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a44")
         {
@@ -6915,7 +6915,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class ПрихіднийКасовийОрдер_Select : DocumentSelect, IDisposable
+    public class ПрихіднийКасовийОрдер_Select : DocumentSelect, IDisposable
     {
         
         public const string ДатаДок = "col_h6";
@@ -6944,7 +6944,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    class ПрихіднийКасовийОрдер_РозшифруванняПлатежу_TablePart : DocumentTablePart
+    public class ПрихіднийКасовийОрдер_РозшифруванняПлатежу_TablePart : DocumentTablePart
     {
         public ПрихіднийКасовийОрдер_РозшифруванняПлатежу_TablePart(ПрихіднийКасовийОрдер_Objest owner) : base(Config.Kernel, "tab_a47",
              new string[] { "col_j4", "col_j5", "col_j6", "col_j7", "col_j8" }) 
@@ -7053,7 +7053,7 @@ namespace StorageAndTrade_1_0.Документи
     #region DOCUMENT "РозхіднийКасовийОрдер"
     
     
-    class РозхіднийКасовийОрдер_Objest : DocumentObject
+    public class РозхіднийКасовийОрдер_Objest : DocumentObject
     {
         public РозхіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a48",
              new string[] { "col_j9", "col_k1", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_k8", "col_k9", "col_l1", "col_l2", "col_l3" }) 
@@ -7175,7 +7175,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class РозхіднийКасовийОрдер_Pointer : DocumentPointer
+    public class РозхіднийКасовийОрдер_Pointer : DocumentPointer
     {
         public РозхіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a48")
         {
@@ -7196,7 +7196,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    class РозхіднийКасовийОрдер_Select : DocumentSelect, IDisposable
+    public class РозхіднийКасовийОрдер_Select : DocumentSelect, IDisposable
     {
         
         public const string ДатаДок = "col_j9";
@@ -7225,7 +7225,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    class РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart : DocumentTablePart
+    public class РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart : DocumentTablePart
     {
         public РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart(РозхіднийКасовийОрдер_Objest owner) : base(Config.Kernel, "tab_a49",
              new string[] { "col_l4", "col_l5", "col_l6", "col_l7", "col_l8", "col_l9" }) 
@@ -7349,7 +7349,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
     #region REGISTER "ЦіниНоменклатури"
     
     
-    class ЦіниНоменклатури_RecordsSet : RegisterInformationRecordsSet
+    public class ЦіниНоменклатури_RecordsSet : RegisterInformationRecordsSet
     {
         public ЦіниНоменклатури_RecordsSet() : base(Config.Kernel, "tab_a40",
              new string[] { "col_f5", "col_f6", "col_f7", "col_f8", "col_f9", "col_g2" }) 
@@ -7503,7 +7503,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     #region REGISTER "ТовариНаСкладах"
     
     
-    class ТовариНаСкладах_RecordsSet : RegisterAccumulationRecordsSet
+    public class ТовариНаСкладах_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ТовариНаСкладах_RecordsSet() : base(Config.Kernel, "tab_a38",
              new string[] { "col_e4", "col_e5", "col_e6", "col_e7", "col_e8" }) 
@@ -7645,7 +7645,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     #region REGISTER "ТовариОрганізацій"
     
     
-    class ТовариОрганізацій_RecordsSet : RegisterAccumulationRecordsSet
+    public class ТовариОрганізацій_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ТовариОрганізацій_RecordsSet() : base(Config.Kernel, "tab_a39",
              new string[] { "col_e9", "col_f2", "col_f3", "col_f1", "col_f4" }) 
@@ -7787,7 +7787,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     #region REGISTER "РухТоварів"
     
     
-    class РухТоварів_RecordsSet : RegisterAccumulationRecordsSet
+    public class РухТоварів_RecordsSet : RegisterAccumulationRecordsSet
     {
         public РухТоварів_RecordsSet() : base(Config.Kernel, "tab_a41",
              new string[] { "col_g3", "col_g4", "col_g5", "col_g6" }) 
