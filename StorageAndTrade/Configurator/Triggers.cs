@@ -56,3 +56,24 @@ namespace StorageAndTrade_1_0.Довідники
 	//	}
 	//}
 }
+
+namespace StorageAndTrade_1_0.Документи
+{
+	class Записи_Triggers
+    {
+		public static void ЗамовленняКлієнта_BeforeRecording(ЗамовленняКлієнта_Objest запис)
+        {
+
+        }
+
+		public static void ЗамовленняКлієнта_AfterRecording(ЗамовленняКлієнта_Objest запис)
+		{
+
+		}
+
+		public static void ЗамовленняКлієнта_BeforeDelete(ЗамовленняКлієнта_Objest запис)
+		{
+
+		}
+	}
+}

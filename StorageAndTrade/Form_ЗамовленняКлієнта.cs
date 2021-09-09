@@ -143,10 +143,10 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-			//Form_ВалютиЕлемент form_ВалютиЕлемент = new Form_ВалютиЕлемент();
-			//form_ВалютиЕлемент.IsNew = true;
-			//form_ВалютиЕлемент.OwnerForm = this;
-			//form_ВалютиЕлемент.ShowDialog();
+			Form_ЗамовленняКлієнтаЕлемент form_ЗамовленняКлієнтаЕлемент = new Form_ЗамовленняКлієнтаЕлемент();
+			form_ЗамовленняКлієнтаЕлемент.IsNew = true;
+			form_ЗамовленняКлієнтаЕлемент.OwnerForm = this;
+			form_ЗамовленняКлієнтаЕлемент.ShowDialog();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -155,11 +155,11 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				//Form_ВалютиЕлемент form_ВалютиЕлемент = new Form_ВалютиЕлемент();
-				//form_ВалютиЕлемент.IsNew = false;
-				//form_ВалютиЕлемент.OwnerForm = this;
-				//form_ВалютиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
-				//form_ВалютиЕлемент.ShowDialog();
+				Form_ЗамовленняКлієнтаЕлемент form_ЗамовленняКлієнтаЕлемент = new Form_ЗамовленняКлієнтаЕлемент();
+				form_ЗамовленняКлієнтаЕлемент.IsNew = false;
+				form_ЗамовленняКлієнтаЕлемент.OwnerForm = this;
+				form_ЗамовленняКлієнтаЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ЗамовленняКлієнтаЕлемент.ShowDialog();
 			}			
 		}
 

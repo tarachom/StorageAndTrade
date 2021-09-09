@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 09.09.2021 17:09:01
+ * Дата конфігурації: 09.09.2021 17:25:01
  *
  */
 
@@ -5069,17 +5069,17 @@ namespace StorageAndTrade_1_0.Документи
         {
             base.FieldValue["col_j9"] = ДатаДок;
             base.FieldValue["col_k1"] = НомерДок;
-            base.FieldValue["col_k2"] = Контрагент.ToString();
-            base.FieldValue["col_k3"] = Організація.ToString();
-            base.FieldValue["col_k4"] = Склад.ToString();
-            base.FieldValue["col_k5"] = Валюта.ToString();
+            base.FieldValue["col_k2"] = Контрагент.UnigueID.UGuid;
+            base.FieldValue["col_k3"] = Організація.UnigueID.UGuid;
+            base.FieldValue["col_k4"] = Склад.UnigueID.UGuid;
+            base.FieldValue["col_k5"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_k6"] = СумаДокументу;
-            base.FieldValue["col_k7"] = Каса.ToString();
-            base.FieldValue["col_a1"] = БанківськийРахунок.ToString();
+            base.FieldValue["col_k7"] = Каса.UnigueID.UGuid;
+            base.FieldValue["col_a1"] = БанківськийРахунок.UnigueID.UGuid;
             base.FieldValue["col_a2"] = Коментар;
-            base.FieldValue["col_a3"] = Підрозділ.ToString();
-            base.FieldValue["col_a4"] = Договір.ToString();
-            base.FieldValue["col_a5"] = Автор.ToString();
+            base.FieldValue["col_a3"] = Підрозділ.UnigueID.UGuid;
+            base.FieldValue["col_a4"] = Договір.UnigueID.UGuid;
+            base.FieldValue["col_a5"] = Автор.UnigueID.UGuid;
             base.FieldValue["col_a7"] = ДатаПоступлення;
             base.FieldValue["col_a8"] = АдресаДоставкиДляПостачальника;
             base.FieldValue["col_a9"] = ПовернутиТару;
@@ -5090,6 +5090,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_a6"] = (int)ГосподарськаОперація;
             
             BaseSave();
+			
         }
 
         public ЗамовленняПостачальнику_Objest Copy()
@@ -5123,6 +5124,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
+		    
             base.BaseDelete();
         }
         
@@ -5438,33 +5440,34 @@ namespace StorageAndTrade_1_0.Документи
         {
             base.FieldValue["col_a1"] = ДатаДок;
             base.FieldValue["col_a2"] = НомерДок;
-            base.FieldValue["col_a3"] = Валюта.ToString();
+            base.FieldValue["col_a3"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_a4"] = (int)ГосподарськаОперація;
-            base.FieldValue["col_a5"] = Підрозділ.ToString();
-            base.FieldValue["col_a6"] = Склад.ToString();
-            base.FieldValue["col_a7"] = Контрагент.ToString();
+            base.FieldValue["col_a5"] = Підрозділ.UnigueID.UGuid;
+            base.FieldValue["col_a6"] = Склад.UnigueID.UGuid;
+            base.FieldValue["col_a7"] = Контрагент.UnigueID.UGuid;
             base.FieldValue["col_a8"] = СумаДокументу;
-            base.FieldValue["col_a9"] = ЗамовленняПостачальнику.ToString();
+            base.FieldValue["col_a9"] = ЗамовленняПостачальнику.UnigueID.UGuid;
             base.FieldValue["col_b1"] = Коментар;
             base.FieldValue["col_b2"] = ДатаОплати;
             base.FieldValue["col_b3"] = (int)ФормаОплати;
             base.FieldValue["col_b4"] = Узгоджений;
-            base.FieldValue["col_b5"] = БанківськийрахунокОрганізації.ToString();
+            base.FieldValue["col_b5"] = БанківськийрахунокОрганізації.UnigueID.UGuid;
             base.FieldValue["col_b6"] = НомерВхідногоДокументу;
             base.FieldValue["col_b7"] = ДатаВхідногоДокументу;
-            base.FieldValue["col_b8"] = БанківськийрахунокКонтрагента.ToString();
-            base.FieldValue["col_b9"] = Договір.ToString();
-            base.FieldValue["col_c1"] = Автор.ToString();
+            base.FieldValue["col_b8"] = БанківськийрахунокКонтрагента.UnigueID.UGuid;
+            base.FieldValue["col_b9"] = Договір.UnigueID.UGuid;
+            base.FieldValue["col_c1"] = Автор.UnigueID.UGuid;
             base.FieldValue["col_c2"] = ВернутиТару;
             base.FieldValue["col_c3"] = ДатаПоверненняТари;
             base.FieldValue["col_c4"] = (int)СпосібДоставки;
-            base.FieldValue["col_c5"] = Організація.ToString();
+            base.FieldValue["col_c5"] = Організація.UnigueID.UGuid;
             base.FieldValue["col_c6"] = Курс;
             base.FieldValue["col_c7"] = Кратність;
             base.FieldValue["col_c8"] = ЧасДоставкиЗ;
             base.FieldValue["col_c9"] = ЧасДоставкиДо;
             
             BaseSave();
+			
         }
 
         public ПоступленняТоварівТаПослуг_Objest Copy()
@@ -5504,6 +5507,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
+		    
             base.BaseDelete();
         }
         
@@ -5831,33 +5835,34 @@ namespace StorageAndTrade_1_0.Документи
         {
             base.FieldValue["col_b2"] = ДатаДок;
             base.FieldValue["col_b3"] = НомерДок;
-            base.FieldValue["col_b4"] = Контрагент.ToString();
-            base.FieldValue["col_b5"] = Організація.ToString();
-            base.FieldValue["col_b6"] = Валюта.ToString();
+            base.FieldValue["col_b4"] = Контрагент.UnigueID.UGuid;
+            base.FieldValue["col_b5"] = Організація.UnigueID.UGuid;
+            base.FieldValue["col_b6"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_b7"] = СумаДокументу;
-            base.FieldValue["col_b8"] = Склад.ToString();
+            base.FieldValue["col_b8"] = Склад.UnigueID.UGuid;
             base.FieldValue["col_a1"] = (int)Статус;
             base.FieldValue["col_a2"] = Узгоджений;
             base.FieldValue["col_a3"] = (int)ФормаОплати;
-            base.FieldValue["col_a4"] = БанківськийРахунок.ToString();
-            base.FieldValue["col_a5"] = БанківськийРахунокКонтрагента.ToString();
-            base.FieldValue["col_a6"] = Каса.ToString();
+            base.FieldValue["col_a4"] = БанківськийРахунок.UnigueID.UGuid;
+            base.FieldValue["col_a5"] = БанківськийРахунокКонтрагента.UnigueID.UGuid;
+            base.FieldValue["col_a6"] = Каса.UnigueID.UGuid;
             base.FieldValue["col_a7"] = СумаАвансуДоЗабезпечення;
             base.FieldValue["col_a8"] = СумаПередоплатиДоВідгрузки;
             base.FieldValue["col_b1"] = ДатаВідгрузки;
             base.FieldValue["col_a9"] = АдресаДоставки;
             base.FieldValue["col_b9"] = (int)ГосподарськаОперація;
             base.FieldValue["col_c1"] = Коментар;
-            base.FieldValue["col_c2"] = Договір.ToString();
-            base.FieldValue["col_c3"] = Підрозділ.ToString();
-            base.FieldValue["col_c4"] = Автор.ToString();
+            base.FieldValue["col_c2"] = Договір.UnigueID.UGuid;
+            base.FieldValue["col_c3"] = Підрозділ.UnigueID.UGuid;
+            base.FieldValue["col_c4"] = Автор.UnigueID.UGuid;
             base.FieldValue["col_c5"] = (int)СпосібДоставки;
             base.FieldValue["col_c6"] = ЧасДоставкиЗ;
             base.FieldValue["col_c7"] = ЧасДоставкиДо;
             base.FieldValue["col_c8"] = ПовернутиТару;
             base.FieldValue["col_c9"] = ДатаПоверненняТари;
-            
+            Записи_Triggers.ЗамовленняКлієнта_BeforeRecording(this);
             BaseSave();
+			Записи_Triggers.ЗамовленняКлієнта_AfterRecording(this);
         }
 
         public ЗамовленняКлієнта_Objest Copy()
@@ -5897,6 +5902,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
+		    Записи_Triggers.ЗамовленняКлієнта_BeforeDelete(this);
             base.BaseDelete();
         }
         
@@ -6223,24 +6229,24 @@ namespace StorageAndTrade_1_0.Документи
         {
             base.FieldValue["col_c9"] = ДатаДок;
             base.FieldValue["col_d1"] = НомерДок;
-            base.FieldValue["col_a1"] = Організація.ToString();
-            base.FieldValue["col_a2"] = Валюта.ToString();
-            base.FieldValue["col_a3"] = БанківськийРахунокОрганізації.ToString();
-            base.FieldValue["col_a4"] = БанківськийРахунокКонтрагента.ToString();
+            base.FieldValue["col_a1"] = Організація.UnigueID.UGuid;
+            base.FieldValue["col_a2"] = Валюта.UnigueID.UGuid;
+            base.FieldValue["col_a3"] = БанківськийРахунокОрганізації.UnigueID.UGuid;
+            base.FieldValue["col_a4"] = БанківськийРахунокКонтрагента.UnigueID.UGuid;
             base.FieldValue["col_a5"] = ДатаОплати;
-            base.FieldValue["col_a6"] = ЗамовленняКлієнта.ToString();
-            base.FieldValue["col_a7"] = Контрагент.ToString();
+            base.FieldValue["col_a6"] = ЗамовленняКлієнта.UnigueID.UGuid;
+            base.FieldValue["col_a7"] = Контрагент.UnigueID.UGuid;
             base.FieldValue["col_a8"] = СумаДокументу;
-            base.FieldValue["col_a9"] = Підрозділ.ToString();
-            base.FieldValue["col_b1"] = Склад.ToString();
+            base.FieldValue["col_a9"] = Підрозділ.UnigueID.UGuid;
+            base.FieldValue["col_b1"] = Склад.UnigueID.UGuid;
             base.FieldValue["col_b2"] = Коментар;
             base.FieldValue["col_b3"] = (int)ФормаОплати;
             base.FieldValue["col_b4"] = (int)ГосподарськаОперація;
-            base.FieldValue["col_b5"] = Каса.ToString();
-            base.FieldValue["col_b6"] = Договір.ToString();
+            base.FieldValue["col_b5"] = Каса.UnigueID.UGuid;
+            base.FieldValue["col_b6"] = Договір.UnigueID.UGuid;
             base.FieldValue["col_b7"] = Основа;
             base.FieldValue["col_b8"] = (int)Статус;
-            base.FieldValue["col_b9"] = Автор.ToString();
+            base.FieldValue["col_b9"] = Автор.UnigueID.UGuid;
             base.FieldValue["col_c1"] = СумаПередоплати;
             base.FieldValue["col_c2"] = СумаПередоплатиЗаТару;
             base.FieldValue["col_c3"] = (int)СпосібДоставки;
@@ -6252,6 +6258,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_d2"] = Кратність;
             
             BaseSave();
+			
         }
 
         public РеалізаціяТоварівТаПослуг_Objest Copy()
@@ -6293,6 +6300,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
+		    
             base.BaseDelete();
         }
         
@@ -6579,6 +6587,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_g9"] = Коментар;
             
             BaseSave();
+			
         }
 
         public ВстановленняЦінНоменклатури_Objest Copy()
@@ -6594,6 +6603,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
+		    
             base.BaseDelete();
         }
         
@@ -6815,19 +6825,20 @@ namespace StorageAndTrade_1_0.Документи
         {
             base.FieldValue["col_h6"] = ДатаДок;
             base.FieldValue["col_h7"] = НомерДок;
-            base.FieldValue["col_h8"] = Організація.ToString();
-            base.FieldValue["col_h9"] = Каса.ToString();
+            base.FieldValue["col_h8"] = Організація.UnigueID.UGuid;
+            base.FieldValue["col_h9"] = Каса.UnigueID.UGuid;
             base.FieldValue["col_i1"] = СумаДокументу;
             base.FieldValue["col_i2"] = (int)ГосподарськаОперація;
             base.FieldValue["col_i3"] = Основа;
-            base.FieldValue["col_i4"] = Контрагент.ToString();
-            base.FieldValue["col_i5"] = БанківськийРахунок.ToString();
-            base.FieldValue["col_i6"] = Валюта.ToString();
-            base.FieldValue["col_a1"] = СтаттяРухуКоштів.ToString();
-            base.FieldValue["col_a2"] = КасаВідправник.ToString();
+            base.FieldValue["col_i4"] = Контрагент.UnigueID.UGuid;
+            base.FieldValue["col_i5"] = БанківськийРахунок.UnigueID.UGuid;
+            base.FieldValue["col_i6"] = Валюта.UnigueID.UGuid;
+            base.FieldValue["col_a1"] = СтаттяРухуКоштів.UnigueID.UGuid;
+            base.FieldValue["col_a2"] = КасаВідправник.UnigueID.UGuid;
             base.FieldValue["col_a3"] = Коментар;
             
             BaseSave();
+			
         }
 
         public ПрихіднийКасовийОрдер_Objest Copy()
@@ -6853,6 +6864,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
+		    
             base.BaseDelete();
         }
         
@@ -7094,19 +7106,20 @@ namespace StorageAndTrade_1_0.Документи
         {
             base.FieldValue["col_j9"] = ДатаДок;
             base.FieldValue["col_k1"] = НомерДок;
-            base.FieldValue["col_k2"] = Організація.ToString();
-            base.FieldValue["col_k3"] = Каса.ToString();
-            base.FieldValue["col_k4"] = ОрганізаціяОтримувач.ToString();
+            base.FieldValue["col_k2"] = Організація.UnigueID.UGuid;
+            base.FieldValue["col_k3"] = Каса.UnigueID.UGuid;
+            base.FieldValue["col_k4"] = ОрганізаціяОтримувач.UnigueID.UGuid;
             base.FieldValue["col_k5"] = (int)ГосподарськаОперація;
-            base.FieldValue["col_k6"] = КасаОтримувач.ToString();
-            base.FieldValue["col_k7"] = Контрагент.ToString();
-            base.FieldValue["col_k8"] = БанківськийРахунок.ToString();
-            base.FieldValue["col_k9"] = Валюта.ToString();
+            base.FieldValue["col_k6"] = КасаОтримувач.UnigueID.UGuid;
+            base.FieldValue["col_k7"] = Контрагент.UnigueID.UGuid;
+            base.FieldValue["col_k8"] = БанківськийРахунок.UnigueID.UGuid;
+            base.FieldValue["col_k9"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_l1"] = Коментар;
-            base.FieldValue["col_l2"] = СтаттяРухуКоштів.ToString();
-            base.FieldValue["col_l3"] = Підрозділ.ToString();
+            base.FieldValue["col_l2"] = СтаттяРухуКоштів.UnigueID.UGuid;
+            base.FieldValue["col_l3"] = Підрозділ.UnigueID.UGuid;
             
             BaseSave();
+			
         }
 
         public РозхіднийКасовийОрдер_Objest Copy()
@@ -7132,6 +7145,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
+		    
             base.BaseDelete();
         }
         
