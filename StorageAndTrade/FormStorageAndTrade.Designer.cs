@@ -46,6 +46,7 @@ namespace StorageAndTrade
             this.структураПідприємстваToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.банківськіРахункиОрганізаційToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.договориКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.банківськіРахункиКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +77,8 @@ namespace StorageAndTrade
             this.видиНоменклатуриToolStripMenuItem,
             this.структураПідприємстваToolStripMenuItem,
             this.банківськіРахункиОрганізаційToolStripMenuItem,
-            this.договориКонтрагентівToolStripMenuItem});
+            this.договориКонтрагентівToolStripMenuItem,
+            this.банківськіРахункиКонтрагентівToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -85,7 +87,7 @@ namespace StorageAndTrade
             // 
             this.валютиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
             this.валютиToolStripMenuItem.Name = "валютиToolStripMenuItem";
-            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.валютиToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.валютиToolStripMenuItem.Text = "Валюти";
             this.валютиToolStripMenuItem.Click += new System.EventHandler(this.валютиToolStripMenuItem_Click);
             // 
@@ -93,7 +95,7 @@ namespace StorageAndTrade
             // 
             this.пакуванняОдиниціВиміруToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.drawer;
             this.пакуванняОдиниціВиміруToolStripMenuItem.Name = "пакуванняОдиниціВиміруToolStripMenuItem";
-            this.пакуванняОдиниціВиміруToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.пакуванняОдиниціВиміруToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.пакуванняОдиниціВиміруToolStripMenuItem.Text = "Пакування одиниці виміру";
             this.пакуванняОдиниціВиміруToolStripMenuItem.Click += new System.EventHandler(this.пакуванняОдиниціВиміруToolStripMenuItem_Click);
             // 
@@ -101,7 +103,7 @@ namespace StorageAndTrade
             // 
             this.оганізаціїToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.user;
             this.оганізаціїToolStripMenuItem.Name = "оганізаціїToolStripMenuItem";
-            this.оганізаціїToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.оганізаціїToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.оганізаціїToolStripMenuItem.Text = "Оганізації";
             this.оганізаціїToolStripMenuItem.Click += new System.EventHandler(this.оганізаціїToolStripMenuItem_Click);
             // 
@@ -109,7 +111,7 @@ namespace StorageAndTrade
             // 
             this.номенклатураToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.photo_album;
             this.номенклатураToolStripMenuItem.Name = "номенклатураToolStripMenuItem";
-            this.номенклатураToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.номенклатураToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.номенклатураToolStripMenuItem.Text = "Номенклатура";
             this.номенклатураToolStripMenuItem.Click += new System.EventHandler(this.номенклатураToolStripMenuItem_Click);
             // 
@@ -117,7 +119,7 @@ namespace StorageAndTrade
             // 
             this.контрагентиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.user;
             this.контрагентиToolStripMenuItem.Name = "контрагентиToolStripMenuItem";
-            this.контрагентиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.контрагентиToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.контрагентиToolStripMenuItem.Text = "Контрагенти";
             this.контрагентиToolStripMenuItem.Click += new System.EventHandler(this.контрагентиToolStripMenuItem_Click);
             // 
@@ -125,7 +127,7 @@ namespace StorageAndTrade
             // 
             this.касиToolStripMenuItem1.Image = global::StorageAndTrade.Properties.Resources.blog;
             this.касиToolStripMenuItem1.Name = "касиToolStripMenuItem1";
-            this.касиToolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
+            this.касиToolStripMenuItem1.Size = new System.Drawing.Size(250, 22);
             this.касиToolStripMenuItem1.Text = "Каси";
             this.касиToolStripMenuItem1.Click += new System.EventHandler(this.касиToolStripMenuItem1_Click);
             // 
@@ -133,7 +135,7 @@ namespace StorageAndTrade
             // 
             this.складиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.bookmark_folder;
             this.складиToolStripMenuItem.Name = "складиToolStripMenuItem";
-            this.складиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.складиToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.складиToolStripMenuItem.Text = "Склади";
             this.складиToolStripMenuItem.Click += new System.EventHandler(this.складиToolStripMenuItem_Click);
             // 
@@ -141,7 +143,7 @@ namespace StorageAndTrade
             // 
             this.видиЦінToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.data;
             this.видиЦінToolStripMenuItem.Name = "видиЦінToolStripMenuItem";
-            this.видиЦінToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.видиЦінToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.видиЦінToolStripMenuItem.Text = "Види цін";
             this.видиЦінToolStripMenuItem.Click += new System.EventHandler(this.видиЦінToolStripMenuItem_Click);
             // 
@@ -149,7 +151,7 @@ namespace StorageAndTrade
             // 
             this.фізичніОсобиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
             this.фізичніОсобиToolStripMenuItem.Name = "фізичніОсобиToolStripMenuItem";
-            this.фізичніОсобиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.фізичніОсобиToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.фізичніОсобиToolStripMenuItem.Text = "Фізичні особи";
             this.фізичніОсобиToolStripMenuItem.Click += new System.EventHandler(this.фізичніОсобиToolStripMenuItem_Click);
             // 
@@ -157,7 +159,7 @@ namespace StorageAndTrade
             // 
             this.користувачіToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.user;
             this.користувачіToolStripMenuItem.Name = "користувачіToolStripMenuItem";
-            this.користувачіToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.користувачіToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.користувачіToolStripMenuItem.Text = "Користувачі";
             this.користувачіToolStripMenuItem.Click += new System.EventHandler(this.користувачіToolStripMenuItem_Click);
             // 
@@ -165,7 +167,7 @@ namespace StorageAndTrade
             // 
             this.виробникиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
             this.виробникиToolStripMenuItem.Name = "виробникиToolStripMenuItem";
-            this.виробникиToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.виробникиToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.виробникиToolStripMenuItem.Text = "Виробники";
             this.виробникиToolStripMenuItem.Click += new System.EventHandler(this.виробникиToolStripMenuItem_Click);
             // 
@@ -173,7 +175,7 @@ namespace StorageAndTrade
             // 
             this.видиНоменклатуриToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
             this.видиНоменклатуриToolStripMenuItem.Name = "видиНоменклатуриToolStripMenuItem";
-            this.видиНоменклатуриToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.видиНоменклатуриToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.видиНоменклатуриToolStripMenuItem.Text = "Види номенклатури";
             this.видиНоменклатуриToolStripMenuItem.Click += new System.EventHandler(this.видиНоменклатуриToolStripMenuItem_Click);
             // 
@@ -181,7 +183,7 @@ namespace StorageAndTrade
             // 
             this.структураПідприємстваToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.cog;
             this.структураПідприємстваToolStripMenuItem.Name = "структураПідприємстваToolStripMenuItem";
-            this.структураПідприємстваToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.структураПідприємстваToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.структураПідприємстваToolStripMenuItem.Text = "Структура підприємства";
             this.структураПідприємстваToolStripMenuItem.Click += new System.EventHandler(this.структураПідприємстваToolStripMenuItem_Click);
             // 
@@ -189,7 +191,7 @@ namespace StorageAndTrade
             // 
             this.банківськіРахункиОрганізаційToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.coins;
             this.банківськіРахункиОрганізаційToolStripMenuItem.Name = "банківськіРахункиОрганізаційToolStripMenuItem";
-            this.банківськіРахункиОрганізаційToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.банківськіРахункиОрганізаційToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.банківськіРахункиОрганізаційToolStripMenuItem.Text = "Банківські рахунки організацій";
             this.банківськіРахункиОрганізаційToolStripMenuItem.Click += new System.EventHandler(this.банківськіРахункиОрганізаційToolStripMenuItem_Click);
             // 
@@ -197,9 +199,17 @@ namespace StorageAndTrade
             // 
             this.договориКонтрагентівToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
             this.договориКонтрагентівToolStripMenuItem.Name = "договориКонтрагентівToolStripMenuItem";
-            this.договориКонтрагентівToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
+            this.договориКонтрагентівToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
             this.договориКонтрагентівToolStripMenuItem.Text = "Договори контрагентів";
             this.договориКонтрагентівToolStripMenuItem.Click += new System.EventHandler(this.договориКонтрагентівToolStripMenuItem_Click);
+            // 
+            // банківськіРахункиКонтрагентівToolStripMenuItem
+            // 
+            this.банківськіРахункиКонтрагентівToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
+            this.банківськіРахункиКонтрагентівToolStripMenuItem.Name = "банківськіРахункиКонтрагентівToolStripMenuItem";
+            this.банківськіРахункиКонтрагентівToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.банківськіРахункиКонтрагентівToolStripMenuItem.Text = "Банківські рахунки контрагентів";
+            this.банківськіРахункиКонтрагентівToolStripMenuItem.Click += new System.EventHandler(this.банківськіРахункиКонтрагентівToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -237,6 +247,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem валютиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem банківськіРахункиОрганізаційToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem договориКонтрагентівToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem банківськіРахункиКонтрагентівToolStripMenuItem;
     }
 }
 
