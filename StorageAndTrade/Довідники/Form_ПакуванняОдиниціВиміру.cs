@@ -91,10 +91,10 @@ namespace StorageAndTrade
 			{
 				Довідники.ПакуванняОдиниціВиміру_Pointer cur = пакуванняОдиниціВиміру_Select.Current;
 
-				RecordsBindingList.Add(new Записи(
-					cur.UnigueID.ToString(),
-					cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.Назва].ToString()
-					));
+				RecordsBindingList.Add(new Записи {
+					ID = cur.UnigueID.ToString(),
+					Назва = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.Назва].ToString()
+				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
@@ -113,11 +113,6 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва)
-			{
-				ID = _id;
-				Назва = _Назва;
-			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
 		}
