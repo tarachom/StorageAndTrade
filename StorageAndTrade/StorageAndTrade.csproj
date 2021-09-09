@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Організації.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Організації.designer.cs">
+      <DependentUpon>Form_Організації.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ОрганізаціїЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ОрганізаціїЕлемент.designer.cs">
+      <DependentUpon>Form_ОрганізаціїЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_ПакуванняОдиниціВиміру.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +133,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Організації.resx">
+      <DependentUpon>Form_Організації.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ОрганізаціїЕлемент.resx">
+      <DependentUpon>Form_ОрганізаціїЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_ПакуванняОдиниціВиміру.resx">
       <DependentUpon>Form_ПакуванняОдиниціВиміру.cs</DependentUpon>
