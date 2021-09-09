@@ -76,5 +76,11 @@ namespace StorageAndTrade
             Form_ВидиЦін form_ВидиЦін = new Form_ВидиЦін();
             form_ВидиЦін.Show();
         }
+
+        private void фізичніОсобиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ФізичніОсоби form_ФізичніОсоби = new Form_ФізичніОсоби();
+            form_ФізичніОсоби.Show();
+        }
     }
 }

@@ -36,14 +36,14 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_Каси : Form
+    public partial class Form_ФізичніОсоби : Form
     {
-        public Form_Каси()
+        public Form_ФізичніОсоби()
         {
             InitializeComponent();
         }
 
-		#region DirectoryControl Open Form
+		#region DirectoryControl OpenForm
 
 		/// <summary>
 		/// Ссилка на елемент довідника
@@ -80,30 +80,20 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
-			Довідники.Каси_Select каси_Select = new Довідники.Каси_Select();
-
-			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Select.Назва);
-			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Select.Валюта);
-			
-			//JOIN
-			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Валюти"].Table;
-			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Валюти"].Fields["Назва"].NameInTable;
-
-			каси_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "field2"));
-			каси_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Каси_Select.Валюта, каси_Select.QuerySelect.Table));
+			Довідники.ФізичніОсоби_Select фізичніОсоби_Select = new Довідники.ФізичніОсоби_Select();
+			фізичніОсоби_Select.QuerySelect.Field.Add(Довідники.ФізичніОсоби_Select.Назва);
 
 			//ORDER
-			каси_Select.QuerySelect.Order.Add(Довідники.Каси_Select.Назва, SelectOrder.ASC);
+			фізичніОсоби_Select.QuerySelect.Order.Add(Довідники.ФізичніОсоби_Select.Назва, SelectOrder.ASC);
 
-			каси_Select.Select();
-			while (каси_Select.MoveNext())
+			фізичніОсоби_Select.Select();
+			while (фізичніОсоби_Select.MoveNext())
 			{
-				Довідники.Каси_Pointer cur = каси_Select.Current;
+				Довідники.ФізичніОсоби_Pointer cur = фізичніОсоби_Select.Current;
 
 				RecordsBindingList.Add(new Записи(
 					cur.UnigueID.ToString(),
-					cur.Fields[Довідники.Каси_Select.Назва].ToString(),
-					cur.Fields["field2"].ToString()
+					cur.Fields[Довідники.ФізичніОсоби_Select.Назва].ToString()
 					));
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -123,15 +113,13 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
-			public Записи(string _id, string _Назва, string _Валюта)
+			public Записи(string _id, string _Назва)
 			{
 				ID = _id;
 				Назва = _Назва;
-				Валюта = _Валюта;
 			}
 			public string ID { get; set; }
 			public string Назва { get; set; }
-			public string Валюта { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -142,7 +130,7 @@ namespace StorageAndTrade
 
 				if (DirectoryControlItem != null)
 				{
-					DirectoryControlItem.DirectoryPointerItem = new Довідники.Каси_Pointer(new UnigueID(Uid));
+					DirectoryControlItem.DirectoryPointerItem = new Довідники.Валюти_Pointer(new UnigueID(Uid));
 					this.Close();
 				}
 				else
@@ -154,10 +142,10 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            Form_КасиЕлемент form_КасиЕлемент = new Form_КасиЕлемент();
-			form_КасиЕлемент.IsNew = true;
-			form_КасиЕлемент.OwnerForm = this;
-			form_КасиЕлемент.ShowDialog();
+			Form_ФізичніОсобиЕлемент form_ФізичніОсобиЕлемент = new Form_ФізичніОсобиЕлемент();
+			form_ФізичніОсобиЕлемент.IsNew = true;
+			form_ФізичніОсобиЕлемент.OwnerForm = this;
+			form_ФізичніОсобиЕлемент.ShowDialog();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -166,12 +154,12 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-                Form_КасиЕлемент form_КасиЕлемент = new Form_КасиЕлемент();
-				form_КасиЕлемент.OwnerForm = this;
-				form_КасиЕлемент.IsNew = false;
-				form_КасиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
-				form_КасиЕлемент.ShowDialog();
-            }			
+				Form_ФізичніОсобиЕлемент form_ФізичніОсобиЕлемент = new Form_ФізичніОсобиЕлемент();
+				form_ФізичніОсобиЕлемент.IsNew = false;
+				form_ФізичніОсобиЕлемент.OwnerForm = this;
+				form_ФізичніОсобиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ФізичніОсобиЕлемент.ShowDialog();
+			}			
 		}
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
@@ -189,12 +177,12 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells[0].Value.ToString();
 
-                    Довідники.Каси_Objest каси_Objest = new Довідники.Каси_Objest();
-                    if (каси_Objest.Read(new UnigueID(uid)))
+                    Довідники.ФізичніОсоби_Objest фізичніОсоби_Objest = new Довідники.ФізичніОсоби_Objest();
+                    if (фізичніОсоби_Objest.Read(new UnigueID(uid)))
                     {
-						Довідники.Каси_Objest каси_Новий_Objest = каси_Objest.Copy();
-						каси_Новий_Objest.Назва = "Копія - " + каси_Новий_Objest.Назва;
-						каси_Новий_Objest.Save();
+						Довідники.ФізичніОсоби_Objest фізичніОсоби_Objest_Новий = фізичніОсоби_Objest.Copy();
+						фізичніОсоби_Objest_Новий.Назва = "Копія - " + фізичніОсоби_Objest_Новий.Назва;
+						фізичніОсоби_Objest_Новий.Save();
 					}
                     else
                     {
@@ -217,10 +205,10 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells[0].Value.ToString();
 
-                    Довідники.Каси_Objest каси_Objest = new Довідники.Каси_Objest();
-                    if (каси_Objest.Read(new UnigueID(uid)))
+                    Довідники.ФізичніОсоби_Objest фізичніОсоби_Objest = new Довідники.ФізичніОсоби_Objest();
+                    if (фізичніОсоби_Objest.Read(new UnigueID(uid)))
                     {
-						каси_Objest.Delete();
+						фізичніОсоби_Objest.Delete();
                     }
                     else
                     {

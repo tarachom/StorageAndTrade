@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_ФізичніОсоби.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ФізичніОсоби.designer.cs">
+      <DependentUpon>Form_ФізичніОсоби.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_ФізичніОсобиЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_ФізичніОсобиЕлемент.designer.cs">
+      <DependentUpon>Form_ФізичніОсобиЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_ВидиЦін.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +193,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ФізичніОсоби.resx">
+      <DependentUpon>Form_ФізичніОсоби.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_ФізичніОсобиЕлемент.resx">
+      <DependentUpon>Form_ФізичніОсобиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_ВидиЦін.resx">
       <DependentUpon>Form_ВидиЦін.cs</DependentUpon>
