@@ -146,7 +146,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.panel1);
             this.Name = "Form_ЗамовленняКлієнтаЖурнал";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Валюти";
+            this.Text = "Замовлення клієнтів - Журнал";
             this.Load += new System.EventHandler(this.FormCash_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
