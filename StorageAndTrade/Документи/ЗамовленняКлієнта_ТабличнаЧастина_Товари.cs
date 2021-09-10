@@ -56,6 +56,13 @@ namespace StorageAndTrade
 			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "name1"));
 			querySelect.Joins.Add(new Join(JoinTable, Документи.ЗамовленняКлієнта_Товари_TablePart.Номенклатура, querySelect.Table));
 
+			//JOIN 2
+			JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
+			ParentField = JoinTable + "." + Довідники.ПакуванняОдиниціВиміру_Select.Назва;
+
+			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "name2"));
+			querySelect.Joins.Add(new Join(JoinTable, Документи.ЗамовленняКлієнта_Товари_TablePart.Пакування, querySelect.Table));
+
 			ЗамовленняКлієнта_Objest.Товари_TablePart.Read();
 
 			Dictionary<string, Dictionary<string, string>> listD = ЗамовленняКлієнта_Objest.Товари_TablePart.JoinFieldValueListD;
@@ -68,6 +75,7 @@ namespace StorageAndTrade
 					Номенклатура = record.Номенклатура.UnigueID.ToString(),
 					НоменклатураНазва = listD[record.UID.ToString()]["name1"],
 					Пакування = record.Пакування.UnigueID.ToString(),
+					ПакуванняНазва = listD[record.UID.ToString()]["name2"],
 					Кількість = (uint)record.Кількість
 				}); ;
 			}
@@ -85,6 +93,7 @@ namespace StorageAndTrade
 			public string Номенклатура { get; set; }
             public string НоменклатураНазва { get; set; }
 			public string Пакування { get; set; }
+			public string ПакуванняНазва { get; set; }
 			public uint Кількість { get; set; }
         }
 

@@ -84,9 +84,12 @@ namespace StorageAndTrade
 						dateTimePicker_ДатаДок.Value = замовленняКлієнта_Objest.ДатаДок;
 
 						Довідники.Номенклатура_Select номенклатура_Select = new Довідники.Номенклатура_Select();
-						Довідники.Номенклатура_Pointer номенклатура_Pointer = номенклатура_Select.FindByField(Довідники.Номенклатура_Select.Назва, "test");
+						Довідники.Номенклатура_Pointer номенклатура_Pointer = номенклатура_Select.FindByField(Довідники.Номенклатура_Select.Назва, "Товар");
 
-						замовленняКлієнта_Objest.Товари_TablePart.Records.Add(new Документи.ЗамовленняКлієнта_Товари_TablePart.Record(номенклатура_Pointer));
+						Довідники.ПакуванняОдиниціВиміру_Select пакуванняОдиниціВиміру_Select = new Довідники.ПакуванняОдиниціВиміру_Select();
+						Довідники.ПакуванняОдиниціВиміру_Pointer пакуванняОдиниціВиміру_Pointer = пакуванняОдиниціВиміру_Select.FindByField(Довідники.ПакуванняОдиниціВиміру_Select.Назва, "шт.");
+
+						замовленняКлієнта_Objest.Товари_TablePart.Records.Add(new Документи.ЗамовленняКлієнта_Товари_TablePart.Record(номенклатура_Pointer, null, пакуванняОдиниціВиміру_Pointer));
 						замовленняКлієнта_Objest.Товари_TablePart.Save(false);
 
 						замовленняКлієнта_ТабличнаЧастина_Товари.ЗамовленняКлієнта_Objest = замовленняКлієнта_Objest;
@@ -95,8 +98,6 @@ namespace StorageAndTrade
 					else
 						MessageBox.Show("Error read");
 				}
-
-				
 			}
 		}
 
