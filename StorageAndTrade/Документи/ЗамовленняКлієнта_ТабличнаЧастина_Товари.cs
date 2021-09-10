@@ -47,16 +47,29 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
+			Query querySelect = ЗамовленняКлієнта_Objest.Товари_TablePart.QuerySelect;
+
+			//JOIN 1
+			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Table;
+			string ParentField = JoinTable + "." + Довідники.Номенклатура_Select.Назва;
+
+			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "name1"));
+			querySelect.Joins.Add(new Join(JoinTable, Документи.ЗамовленняКлієнта_Товари_TablePart.Номенклатура, querySelect.Table));
+
 			ЗамовленняКлієнта_Objest.Товари_TablePart.Read();
+
+			Dictionary<string, Dictionary<string, string>> listD = ЗамовленняКлієнта_Objest.Товари_TablePart.JoinFieldValueListD;
+
 			foreach (Документи.ЗамовленняКлієнта_Товари_TablePart.Record record in ЗамовленняКлієнта_Objest.Товари_TablePart.Records)
 			{
 				RecordsBindingList.Add(new Записи
 				{
 					ID = record.UID.ToString(),
 					Номенклатура = record.Номенклатура.UnigueID.ToString(),
+					НоменклатураНазва = listD[record.UID.ToString()]["name1"],
 					Пакування = record.Пакування.UnigueID.ToString(),
 					Кількість = (uint)record.Кількість
-				});
+				}); ;
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
@@ -69,7 +82,8 @@ namespace StorageAndTrade
 		private class Записи
         {
             public string ID { get; set; }
-            public string Номенклатура { get; set; }
+			public string Номенклатура { get; set; }
+            public string НоменклатураНазва { get; set; }
 			public string Пакування { get; set; }
 			public uint Кількість { get; set; }
         }

@@ -83,16 +83,20 @@ namespace StorageAndTrade
 						textBox_НомерДок.Text = замовленняКлієнта_Objest.НомерДок;
 						dateTimePicker_ДатаДок.Value = замовленняКлієнта_Objest.ДатаДок;
 
-						замовленняКлієнта_Objest.Товари_TablePart.Records.Add(new Документи.ЗамовленняКлієнта_Товари_TablePart.Record());
+						Довідники.Номенклатура_Select номенклатура_Select = new Довідники.Номенклатура_Select();
+						Довідники.Номенклатура_Pointer номенклатура_Pointer = номенклатура_Select.FindByField(Довідники.Номенклатура_Select.Назва, "test");
+
+						замовленняКлієнта_Objest.Товари_TablePart.Records.Add(new Документи.ЗамовленняКлієнта_Товари_TablePart.Record(номенклатура_Pointer));
 						замовленняКлієнта_Objest.Товари_TablePart.Save(false);
 
+						замовленняКлієнта_ТабличнаЧастина_Товари.ЗамовленняКлієнта_Objest = замовленняКлієнта_Objest;
+						замовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
 				}
 
-				замовленняКлієнта_ТабличнаЧастина_Товари.ЗамовленняКлієнта_Objest = замовленняКлієнта_Objest;
-				замовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
+				
 			}
 		}
 

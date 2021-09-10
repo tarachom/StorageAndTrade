@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 09.09.2021 18:02:49
+ * Дата конфігурації: 10.09.2021 11:50:53
  *
  */
 
@@ -5231,6 +5231,18 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string Номенклатура = "col_o4";
+        public const string ХарактеристикаНоменклатури = "col_a1";
+        public const string Пакування = "col_a2";
+        public const string КількістьУпаковок = "col_a3";
+        public const string Кількість = "col_a4";
+        public const string ДатаПоступлення = "col_a5";
+        public const string Ціна = "col_a6";
+        public const string Сума = "col_a7";
+        public const string Скидка = "col_a8";
+        public const string Склад = "col_a9";
+        public const string Підрозділ = "col_b1";
+
         public ЗамовленняПостачальнику_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
@@ -5626,6 +5638,18 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string Номенклатура = "col_a9";
+        public const string ХарактеристикаНоменклатури = "col_b1";
+        public const string Пакування = "col_a1";
+        public const string КількістьУпаковок = "col_a2";
+        public const string Кількість = "col_a3";
+        public const string Ціна = "col_a4";
+        public const string Сума = "col_a5";
+        public const string Склад = "col_a6";
+        public const string ЗамовленняПостачальнику = "col_a7";
+        public const string Скидка = "col_a8";
+        public const string Підрозділ = "col_b2";
+
         public ПоступленняТоварівТаПослуг_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
@@ -6021,6 +6045,17 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string Номенклатура = "col_b9";
+        public const string ХарактеристикаНоменклатури = "col_c1";
+        public const string Пакування = "col_c2";
+        public const string КількістьУпаковок = "col_c3";
+        public const string Кількість = "col_c4";
+        public const string ВидЦіни = "col_c5";
+        public const string Ціна = "col_c6";
+        public const string Сума = "col_c7";
+        public const string Скидка = "col_c8";
+        public const string Склад = "col_a1";
+
         public ЗамовленняКлієнта_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
@@ -6423,6 +6458,18 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string Номенклатура = "col_d2";
+        public const string Характеристика = "col_d3";
+        public const string Пакування = "col_d4";
+        public const string КількістьУпаковок = "col_d5";
+        public const string Кількість = "col_d6";
+        public const string ВидЦіни = "col_d7";
+        public const string Ціна = "col_d8";
+        public const string Сума = "col_d9";
+        public const string Склад = "col_e1";
+        public const string ЗамовленняКлієнта = "col_e2";
+        public const string Скидка = "col_e3";
+
         public РеалізаціяТоварівТаПослуг_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
@@ -6674,6 +6721,12 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string Номенклатура = "col_h1";
+        public const string ХарактеристикаНоменклатури = "col_h2";
+        public const string Пакування = "col_h3";
+        public const string ВидЦіни = "col_h4";
+        public const string Ціна = "col_h5";
+
         public ВстановленняЦінНоменклатури_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
@@ -6955,6 +7008,12 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string Замовлення = "col_j4";
+        public const string Сума = "col_j5";
+        public const string Підрозділ = "col_j6";
+        public const string ВалютаВзаєморозрахунків = "col_j7";
+        public const string Організація = "col_j8";
+
         public ПрихіднийКасовийОрдер_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
@@ -7236,6 +7295,13 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string Замовлення = "col_l4";
+        public const string Сума = "col_l5";
+        public const string ВалютаВзаєморозрахунків = "col_l6";
+        public const string Підрозділ = "col_l7";
+        public const string Коментар = "col_l8";
+        public const string Організація = "col_l9";
+
         public РозхіднийКасовийОрдер_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
