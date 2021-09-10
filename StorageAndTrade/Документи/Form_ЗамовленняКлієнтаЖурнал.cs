@@ -67,7 +67,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
-			dataGridViewRecords.Columns["ДатаДок"].Width = 100;
+			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
+			dataGridViewRecords.Columns["Назва"].Width = 300;
 
 			LoadRecords();
 		}
@@ -84,6 +85,7 @@ namespace StorageAndTrade
 			Документи.ЗамовленняКлієнта_Select замовленняКлієнта_Select = new Документи.ЗамовленняКлієнта_Select();
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.НомерДок);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.ДатаДок);
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.СумаДокументу);
 
 			//ORDER
 			замовленняКлієнта_Select.QuerySelect.Order.Add(Документи.ЗамовленняКлієнта_Select.ДатаДок, SelectOrder.ASC);
@@ -97,8 +99,11 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
+					Назва = "Замовлення клієнта №" + cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString() + " від " + 
+					         DateTime.Parse(cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString()).ToShortDateString(),
 					НомерДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString(),
-					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString()
+					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString(),
+					Сума = (decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу]
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) //??
@@ -119,8 +124,10 @@ namespace StorageAndTrade
 		private class Записи
 		{
 			public string ID { get; set; }
+			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
+			public decimal Сума { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
