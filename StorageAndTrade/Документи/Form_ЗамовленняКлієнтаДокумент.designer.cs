@@ -39,9 +39,13 @@ namespace StorageAndTrade
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.замовленняКлієнта_ТабличнаЧастина_Товари = new StorageAndTrade.ЗамовленняКлієнта_ТабличнаЧастина_Товари();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -114,7 +118,7 @@ namespace StorageAndTrade
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.замовленняКлієнта_ТабличнаЧастина_Товари);
+            this.panel2.Controls.Add(this.tabControl1);
             this.panel2.Location = new System.Drawing.Point(3, 244);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(965, 310);
@@ -134,11 +138,32 @@ namespace StorageAndTrade
             // замовленняКлієнта_ТабличнаЧастина_Товари
             // 
             this.замовленняКлієнта_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.замовленняКлієнта_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(0, 0);
+            this.замовленняКлієнта_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
             this.замовленняКлієнта_ТабличнаЧастина_Товари.Name = "замовленняКлієнта_ТабличнаЧастина_Товари";
-            this.замовленняКлієнта_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(965, 310);
+            this.замовленняКлієнта_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(951, 278);
             this.замовленняКлієнта_ТабличнаЧастина_Товари.TabIndex = 0;
             this.замовленняКлієнта_ТабличнаЧастина_Товари.Документ = null;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(965, 310);
+            this.tabControl1.TabIndex = 1;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.замовленняКлієнта_ТабличнаЧастина_Товари);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(957, 284);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Товари";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // Form_ЗамовленняКлієнтаДокумент
             // 
@@ -157,6 +182,8 @@ namespace StorageAndTrade
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -173,5 +200,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private ЗамовленняКлієнта_ТабличнаЧастина_Товари замовленняКлієнта_ТабличнаЧастина_Товари;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
     }
 }
