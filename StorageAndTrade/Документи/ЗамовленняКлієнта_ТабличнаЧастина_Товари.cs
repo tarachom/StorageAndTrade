@@ -39,7 +39,10 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Пакування"].Visible = false;
 
 			dataGridViewRecords.Columns["НоменклатураНазва"].Width = 300;
+			dataGridViewRecords.Columns["НоменклатураНазва"].ReadOnly = true;
+
 			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 300;
+			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -103,8 +106,77 @@ namespace StorageAndTrade
 			public decimal Сума { get; set; }
         }
 
+		private void CopyMenuItem_Click(object sender, EventArgs e)
+		{
+			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
+
+			MessageBox.Show(copyMenuItem.Name + " | " + copyMenuItem.Tag);
+
+			
+		}
+
+		private void CopyMenuItem_Click1(object sender, EventArgs e)
+		{
+			Console.WriteLine("Find menu");
+		}
+
+		private void ToolStripTextBox_TextChanged(object sender, EventArgs e)
+		{
+			ToolStripTextBox findMenuItem = (ToolStripTextBox)sender;
+			Console.WriteLine(findMenuItem.Text);
+
+			foreach(ToolStripItem toolStripItem in contextMenuStrip1.Items.Find("find", false))
+				contextMenuStrip1.Items.Remove(toolStripItem);
+
+			ToolStripItem[] mas = new ToolStripItem[10];
+
+			for (int i = 0; i < 10; i++)
+			{
+				mas[i] = new ToolStripMenuItem("Варіанти: " + findMenuItem.Text, Properties.Resources.page_white_text, CopyMenuItem_Click1, "find");
+			}
+
+			contextMenuStrip1.Items.AddRange(mas);
+		}
+
+        
+
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
+
+			string[] allowColumn = new string[] { "НоменклатураНазва", "ПакуванняНазва" };
+
+			contextMenuStrip1.Items.Clear();
+
+			if (allowColumn.Contains(columnName))
+            {
+				ToolStripTextBox toolStripTextBox = new ToolStripTextBox();
+				toolStripTextBox.ToolTipText = "Пошук";
+				toolStripTextBox.Size = new Size(300, 22);
+                toolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
+				contextMenuStrip1.Items.Add(toolStripTextBox);
+
+				ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Вибрати із списку");
+				copyMenuItem.Image = Properties.Resources.data;
+				copyMenuItem.Name = columnName;
+				copyMenuItem.Tag = "";
+				copyMenuItem.Click += CopyMenuItem_Click;
+
+				contextMenuStrip1.Items.Add(copyMenuItem);
+
+
+				Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+				rectangle.Offset(0, dataGridViewRecords.Rows[e.RowIndex].Height);
+
+				Point point = dataGridViewRecords.PointToScreen(rectangle.Location);
+
+				contextMenuStrip1.Show(point);
+			}
+
+			
+
+			
+
 			//string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
 
 			//if (columnName == "Номенклатура")
@@ -127,7 +199,7 @@ namespace StorageAndTrade
 			//			dataGridViewRecords.Rows.Add();
 
 			//		dataGridViewRecords.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = directoryControl.DirectoryPointerItem.ToString();
-					
+
 			//	}
 
 
@@ -154,8 +226,12 @@ namespace StorageAndTrade
 
 
 			//}
+
+
+
 		}
 
+       
         private void dataGridViewRecords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
 			
@@ -163,10 +239,17 @@ namespace StorageAndTrade
 
         private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+			return;
+
 			Console.WriteLine(dataGridViewRecords.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
 			Console.WriteLine(RecordsBindingList.Count);
 
-			ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Копировать");
+			ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Вибрати із списку");
+			copyMenuItem.Image = Properties.Resources.data;
+			copyMenuItem.Name = "Номенклатура";
+			copyMenuItem.Tag = "";
+			copyMenuItem.Click += CopyMenuItem_Click;
+
 			ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Вставить");
 
 			contextMenuStrip1.Items.Clear();
@@ -182,6 +265,8 @@ namespace StorageAndTrade
 			
 		}
 
+		
+
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
 
@@ -190,6 +275,11 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			RecordsBindingList.AddNew();
+		}
+
+        private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+			
 		}
     }
 }

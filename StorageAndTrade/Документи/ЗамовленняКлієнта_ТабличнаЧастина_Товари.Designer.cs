@@ -66,6 +66,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.Size = new System.Drawing.Size(733, 219);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewRecords_CellBeginEdit);
+            this.dataGridViewRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellClick);
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellEndEdit);
             // 
