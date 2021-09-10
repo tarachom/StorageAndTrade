@@ -114,6 +114,10 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ФормаОплати"].Fields.Values)
 				comboBox_ФормаОплати.Items.Add((Перелічення.ФормаОплати)field.Value);
 
+			//ГосподарськіОперації
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
+				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
+
 			directoryControl_Контрагент.CallBack = CallBack_Контрагент;
 			directoryControl_Організація.CallBack = CallBack_Організація;
 			directoryControl_Валюта.CallBack = CallBack_Валюта;
@@ -135,6 +139,7 @@ namespace StorageAndTrade
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ФормаОплати.SelectedIndex = 0;
 					directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer();
+					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -151,6 +156,7 @@ namespace StorageAndTrade
 						comboBox_Статус.SelectedItem = замовленняКлієнта_Objest.Статус;
 						comboBox_ФормаОплати.SelectedItem = замовленняКлієнта_Objest.ФормаОплати;
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(замовленняКлієнта_Objest.Каса.UnigueID);
+						comboBox_ГосподарськаОперація.SelectedItem = замовленняКлієнта_Objest.ГосподарськаОперація;
 
 						замовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -178,6 +184,7 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиЗамовленьКлієнтів)comboBox_Статус.SelectedItem : 0;
 					замовленняКлієнта_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
 					замовленняКлієнта_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+					замовленняКлієнта_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 
 					замовленняКлієнта_Objest.Save();
 					замовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
