@@ -35,8 +35,6 @@ namespace StorageAndTrade
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -83,8 +81,6 @@ namespace StorageAndTrade
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonAdd,
-            this.toolStripButtonEdit,
-            this.toolStripButtonRefresh,
             this.toolStripButtonCopy,
             this.toolStripButtonDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -102,23 +98,6 @@ namespace StorageAndTrade
             this.toolStripButtonAdd.Text = "Додати";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
-            // toolStripButtonEdit
-            // 
-            this.toolStripButtonEdit.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
-            this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEdit.Name = "toolStripButtonEdit";
-            this.toolStripButtonEdit.Size = new System.Drawing.Size(87, 22);
-            this.toolStripButtonEdit.Text = "Редагувати";
-            // 
-            // toolStripButtonRefresh
-            // 
-            this.toolStripButtonRefresh.Image = global::StorageAndTrade.Properties.Resources.page_refresh;
-            this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
-            this.toolStripButtonRefresh.Size = new System.Drawing.Size(82, 22);
-            this.toolStripButtonRefresh.Text = "Обновити";
-            this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
-            // 
             // toolStripButtonCopy
             // 
             this.toolStripButtonCopy.Image = global::StorageAndTrade.Properties.Resources.page_copy;
@@ -126,6 +105,7 @@ namespace StorageAndTrade
             this.toolStripButtonCopy.Name = "toolStripButtonCopy";
             this.toolStripButtonCopy.Size = new System.Drawing.Size(85, 22);
             this.toolStripButtonCopy.Text = "Копіювати";
+            this.toolStripButtonCopy.Click += new System.EventHandler(this.toolStripButtonCopy_Click);
             // 
             // toolStripButtonDelete
             // 
@@ -134,6 +114,7 @@ namespace StorageAndTrade
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 22);
             this.toolStripButtonDelete.Text = "Видалити";
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
             // contextMenuStrip1
             // 
@@ -166,8 +147,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
-        private System.Windows.Forms.ToolStripButton toolStripButtonEdit;
-        private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

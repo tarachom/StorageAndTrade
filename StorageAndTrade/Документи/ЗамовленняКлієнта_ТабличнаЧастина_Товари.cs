@@ -24,12 +24,10 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
-		public Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest { get; set; }
+		public Документи.ЗамовленняКлієнта_Objest Документ { get; set; }
 
         private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
         {
-			//dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
@@ -54,7 +52,7 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
-			Query querySelect = ЗамовленняКлієнта_Objest.Товари_TablePart.QuerySelect;
+			Query querySelect = Документ.Товари_TablePart.QuerySelect;
 
 			//JOIN 1
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Table;
@@ -70,11 +68,11 @@ namespace StorageAndTrade
 			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "pak_name"));
 			querySelect.Joins.Add(new Join(JoinTable, Документи.ЗамовленняКлієнта_Товари_TablePart.Пакування, querySelect.Table));
 
-			ЗамовленняКлієнта_Objest.Товари_TablePart.Read();
+			Документ.Товари_TablePart.Read();
 
-			Dictionary<string, Dictionary<string, string>> JoinValue = ЗамовленняКлієнта_Objest.Товари_TablePart.JoinValue;
+			Dictionary<string, Dictionary<string, string>> JoinValue = Документ.Товари_TablePart.JoinValue;
 
-			foreach (Документи.ЗамовленняКлієнта_Товари_TablePart.Record record in ЗамовленняКлієнта_Objest.Товари_TablePart.Records)
+			foreach (Документи.ЗамовленняКлієнта_Товари_TablePart.Record record in Документ.Товари_TablePart.Records)
 			{
 				RecordsBindingList.Add(new Записи
 				{
@@ -98,7 +96,7 @@ namespace StorageAndTrade
 
 		public void SaveRecords()
         {
-			ЗамовленняКлієнта_Objest.Товари_TablePart.Records.Clear();
+			Документ.Товари_TablePart.Records.Clear();
 
 			foreach (Записи запис in RecordsBindingList)
             {
@@ -112,10 +110,10 @@ namespace StorageAndTrade
 				record.Кількість = (int)запис.Кількість;
 				record.Сума = запис.Сума;
 
-				ЗамовленняКлієнта_Objest.Товари_TablePart.Records.Add(record);
+				Документ.Товари_TablePart.Records.Add(record);
 			}
 
-			ЗамовленняКлієнта_Objest.Товари_TablePart.Save(true);
+			Документ.Товари_TablePart.Save(true);
 		}
 
 		private class Записи
@@ -127,6 +125,20 @@ namespace StorageAndTrade
 			public string ПакуванняНазва { get; set; }
 			public uint Кількість { get; set; }
 			public decimal Сума { get; set; }
+
+			public static Записи Clone(Записи запис)
+            {
+				return new Записи
+				{
+					ID = Guid.Empty.ToString(),
+					Номенклатура = запис.Номенклатура,
+					НоменклатураНазва = запис.НоменклатураНазва,
+					Пакування = запис.Пакування,
+					ПакуванняНазва = запис.ПакуванняНазва,
+					Кількість = запис.Кількість,
+					Сума = запис.Сума
+				};
+            }
         }
 
 		private void CopyMenuItem_ClickFind(object sender, EventArgs e)
@@ -152,59 +164,9 @@ namespace StorageAndTrade
 			contextMenuStrip1.Items.AddRange(mas);
 		}
 
-		private void CopyMenuItem_Click(object sender, EventArgs e)
-		{
-			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
-			Записи запис = (Записи)copyMenuItem.Tag;
+        #region Контекстне меню вибору із списку
 
-			Console.WriteLine(copyMenuItem.Name);
-
-			switch(copyMenuItem.Name)
-            {
-				case "НоменклатураНазва":
-                    {
-                        DirectoryControl directoryControl = new DirectoryControl();
-
-                        Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
-                        form_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(запис.Номенклатура));
-                        form_Номенклатура.DirectoryControlItem = directoryControl;
-                        form_Номенклатура.ShowDialog();
-
-                        if (directoryControl.DirectoryPointerItem != null)
-                        {
-							Довідники.Номенклатура_Pointer номенклатура_Pointer = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
-
-							запис.Номенклатура = номенклатура_Pointer.ToString();
-							запис.НоменклатураНазва = номенклатура_Pointer.GetPresentation();
-						}
-
-                        break;
-                    }
-				case "ПакуванняНазва":
-					{
-                        DirectoryControl directoryControl = new DirectoryControl();
-
-                        Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
-                        form_ПакуванняОдиниціВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(запис.Пакування));
-                        form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl;
-                        form_ПакуванняОдиниціВиміру.ShowDialog();
-
-                        if (directoryControl.DirectoryPointerItem != null)
-                        {
-							Довідники.ПакуванняОдиниціВиміру_Pointer пакуванняОдиниціВиміру_Pointer = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl.DirectoryPointerItem;
-
-							запис.Пакування = пакуванняОдиниціВиміру_Pointer.ToString();
-							запис.ПакуванняНазва = пакуванняОдиниціВиміру_Pointer.GetPresentation();
-						}
-
-                        break;
-					}
-				default:
-					break;
-            }
-		}
-
-		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
 
@@ -214,29 +176,81 @@ namespace StorageAndTrade
 
 			if (allowColumn.Contains(columnName))
             {
-				ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Вибрати із списку");
-				copyMenuItem.Image = Properties.Resources.data;
-				copyMenuItem.Name = columnName;
-				copyMenuItem.Tag = RecordsBindingList[e.RowIndex];
-				copyMenuItem.Click += CopyMenuItem_Click;
-				contextMenuStrip1.Items.Add(copyMenuItem);
+				ToolStripMenuItem selectMenuItem = new ToolStripMenuItem("Вибрати із списку");
+				selectMenuItem.Image = Properties.Resources.data;
+				selectMenuItem.Name = columnName;
+				selectMenuItem.Tag = RecordsBindingList[e.RowIndex];
+				selectMenuItem.Click += SelectMenuItem_Click;
+				contextMenuStrip1.Items.Add(selectMenuItem);
 
-				ToolStripTextBox toolStripTextBox = new ToolStripTextBox();
-				toolStripTextBox.ToolTipText = "Пошук";
-				toolStripTextBox.Size = new Size(300, 0);
-				toolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
-				contextMenuStrip1.Items.Add(toolStripTextBox);
+				ToolStripTextBox findToolStripTextBox = new ToolStripTextBox();
+				findToolStripTextBox.ToolTipText = "Пошук";
+				findToolStripTextBox.Size = new Size(300, 0);
+				findToolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
+				contextMenuStrip1.Items.Add(findToolStripTextBox);
 
 				Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
 				rectangle.Offset(0, dataGridViewRecords.Rows[e.RowIndex].Height);
-
 				Point point = dataGridViewRecords.PointToScreen(rectangle.Location);
 
 				contextMenuStrip1.Show(point);
 			}
 		}
 
-       
+		private void SelectMenuItem_Click(object sender, EventArgs e)
+		{
+			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
+			Записи запис = (Записи)copyMenuItem.Tag;
+
+			Console.WriteLine(copyMenuItem.Name);
+
+			switch (copyMenuItem.Name)
+			{
+				case "НоменклатураНазва":
+					{
+						DirectoryControl directoryControl = new DirectoryControl();
+
+						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
+						form_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(запис.Номенклатура));
+						form_Номенклатура.DirectoryControlItem = directoryControl;
+						form_Номенклатура.ShowDialog();
+
+						if (directoryControl.DirectoryPointerItem != null)
+						{
+							Довідники.Номенклатура_Pointer номенклатура_Pointer = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
+
+							запис.Номенклатура = номенклатура_Pointer.ToString();
+							запис.НоменклатураНазва = номенклатура_Pointer.GetPresentation();
+						}
+
+						break;
+					}
+				case "ПакуванняНазва":
+					{
+						DirectoryControl directoryControl = new DirectoryControl();
+
+						Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
+						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(запис.Пакування));
+						form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl;
+						form_ПакуванняОдиниціВиміру.ShowDialog();
+
+						if (directoryControl.DirectoryPointerItem != null)
+						{
+							Довідники.ПакуванняОдиниціВиміру_Pointer пакуванняОдиниціВиміру_Pointer = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl.DirectoryPointerItem;
+
+							запис.Пакування = пакуванняОдиниціВиміру_Pointer.ToString();
+							запис.ПакуванняНазва = пакуванняОдиниціВиміру_Pointer.GetPresentation();
+						}
+
+						break;
+					}
+				default:
+					break;
+			}
+		}
+
+        #endregion
+
         private void dataGridViewRecords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
 			
@@ -244,47 +258,53 @@ namespace StorageAndTrade
 
         private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-			return;
-
-			Console.WriteLine(dataGridViewRecords.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
-			Console.WriteLine(RecordsBindingList.Count);
-
-			ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Вибрати із списку");
-			copyMenuItem.Image = Properties.Resources.data;
-			copyMenuItem.Name = "Номенклатура";
-			copyMenuItem.Tag = "";
-			copyMenuItem.Click += CopyMenuItem_Click;
-
-			ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Вставить");
-
-			contextMenuStrip1.Items.Clear();
-			contextMenuStrip1.Items.Add(copyMenuItem);
-			contextMenuStrip1.Items.Add(pasteMenuItem);
-
-			Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-			rectangle.Offset(0, dataGridViewRecords.Rows[e.RowIndex].Height);
-
-			Point point = dataGridViewRecords.PointToScreen(rectangle.Location);
-
-			contextMenuStrip1.Show(point);
-			
-		}
-
-		
-
-        private void toolStripButtonRefresh_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButtonAdd_Click(object sender, EventArgs e)
-        {
-			RecordsBindingList.AddNew();
+						
 		}
 
         private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 			
+		}
+
+		private void toolStripButtonAdd_Click(object sender, EventArgs e)
+		{
+			RecordsBindingList.AddNew();
+		}
+
+        private void toolStripButtonDelete_Click(object sender, EventArgs e)
+        {
+			if (dataGridViewRecords.SelectedCells.Count > 0)
+			{
+				List<int> deleteRowIndex = new List<int>();
+
+				for (int i = 0; i < dataGridViewRecords.SelectedCells.Count; i++)
+					if (!deleteRowIndex.Contains(dataGridViewRecords.SelectedCells[i].RowIndex) &&
+						!dataGridViewRecords.Rows[dataGridViewRecords.SelectedCells[i].RowIndex].IsNewRow)
+						deleteRowIndex.Add(dataGridViewRecords.SelectedCells[i].RowIndex);
+
+				deleteRowIndex.Sort();
+
+				foreach (int rowIndex in deleteRowIndex.Reverse<int>())
+					RecordsBindingList.RemoveAt(rowIndex);
+			}
+        }
+
+		private void toolStripButtonCopy_Click(object sender, EventArgs e)
+		{
+			if (dataGridViewRecords.SelectedCells.Count > 0)
+			{
+				List<int> rowIndexList = new List<int>();
+
+				for (int i = 0; i < dataGridViewRecords.SelectedCells.Count; i++)
+					if (!rowIndexList.Contains(dataGridViewRecords.SelectedCells[i].RowIndex) &&
+						!dataGridViewRecords.Rows[dataGridViewRecords.SelectedCells[i].RowIndex].IsNewRow)
+						rowIndexList.Add(dataGridViewRecords.SelectedCells[i].RowIndex);
+
+				rowIndexList.Sort();
+
+				foreach (int rowIndex in rowIndexList)
+					RecordsBindingList.Add(Записи.Clone(RecordsBindingList[rowIndex]));
+			}
 		}
     }
 }

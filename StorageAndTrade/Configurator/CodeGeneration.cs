@@ -6111,7 +6111,7 @@ namespace StorageAndTrade_1_0.Документи
                     fieldValue.Add("col_c8", record.Скидка);
                     fieldValue.Add("col_a1", record.Склад.UnigueID.UGuid);
 
-                    Console.WriteLine(record.UID);
+                    //Console.WriteLine(record.UID);
 
                     base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
                 }
