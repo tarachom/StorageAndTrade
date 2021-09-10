@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 10.09.2021 11:50:53
+ * Дата конфігурації: 10.09.2021 20:44:53
  *
  */
 
@@ -6037,7 +6037,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ЗамовленняКлієнта_Товари_TablePart : DocumentTablePart
     {
         public ЗамовленняКлієнта_Товари_TablePart(ЗамовленняКлієнта_Objest owner) : base(Config.Kernel, "tab_a35",
-             new string[] { "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_a1" }) 
+             new string[] { "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_a1", "col_a2" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -6055,6 +6055,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Сума = "col_c7";
         public const string Скидка = "col_c8";
         public const string Склад = "col_a1";
+        public const string НомерРядка = "col_a2";
 
         public ЗамовленняКлієнта_Objest Owner { get; private set; }
         
@@ -6080,6 +6081,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.Сума = (fieldValue["col_c7"] != DBNull.Value) ? (decimal)fieldValue["col_c7"] : 0;
                 record.Скидка = (fieldValue["col_c8"] != DBNull.Value) ? (decimal)fieldValue["col_c8"] : 0;
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a1"]);
+                record.НомерРядка = (fieldValue["col_a2"] != DBNull.Value) ? (int)fieldValue["col_a2"] : 0;
                 
                 Records.Add(record);
             }
@@ -6110,9 +6112,8 @@ namespace StorageAndTrade_1_0.Документи
                     fieldValue.Add("col_c7", record.Сума);
                     fieldValue.Add("col_c8", record.Скидка);
                     fieldValue.Add("col_a1", record.Склад.UnigueID.UGuid);
-
-                    //Console.WriteLine(record.UID);
-
+                    fieldValue.Add("col_a2", record.НомерРядка);
+                    
                     base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
                 }
                 
@@ -6142,12 +6143,13 @@ namespace StorageAndTrade_1_0.Документи
                 Сума = 0;
                 Скидка = 0;
                 Склад = new Довідники.Склади_Pointer();
+                НомерРядка = 0;
                 
             }
         
             
             public Record(
-                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, Довідники.ВидиЦін_Pointer _ВидЦіни = null, decimal _Ціна = 0, decimal _Сума = 0, decimal _Скидка = 0, Довідники.Склади_Pointer _Склад = null)
+                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, Довідники.ВидиЦін_Pointer _ВидЦіни = null, decimal _Ціна = 0, decimal _Сума = 0, decimal _Скидка = 0, Довідники.Склади_Pointer _Склад = null, int _НомерРядка = 0)
             {
                 Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = _ХарактеристикаНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
@@ -6159,6 +6161,7 @@ namespace StorageAndTrade_1_0.Документи
                 Сума = _Сума;
                 Скидка = _Скидка;
                 Склад = _Склад ?? new Довідники.Склади_Pointer();
+                НомерРядка = _НомерРядка;
                 
             }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
@@ -6171,6 +6174,7 @@ namespace StorageAndTrade_1_0.Документи
             public decimal Сума { get; set; }
             public decimal Скидка { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
+            public int НомерРядка { get; set; }
             
         }
     }

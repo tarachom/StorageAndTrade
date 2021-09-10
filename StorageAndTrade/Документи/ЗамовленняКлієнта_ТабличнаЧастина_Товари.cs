@@ -32,7 +32,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
-
+			dataGridViewRecords.Columns["НомерРядка"].Visible = false;
 			dataGridViewRecords.Columns["Номенклатура"].Visible = false;
 			dataGridViewRecords.Columns["Пакування"].Visible = false;
 
@@ -41,6 +41,9 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 300;
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
+
+			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -68,6 +71,9 @@ namespace StorageAndTrade
 			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "pak_name"));
 			querySelect.Joins.Add(new Join(JoinTable, Документи.ЗамовленняКлієнта_Товари_TablePart.Пакування, querySelect.Table));
 
+			//ORDER
+			querySelect.Order.Add(Документи.ЗамовленняКлієнта_Товари_TablePart.НомерРядка, SelectOrder.ASC);
+
 			Документ.Товари_TablePart.Read();
 
 			Dictionary<string, Dictionary<string, string>> JoinValue = Документ.Товари_TablePart.JoinValue;
@@ -77,11 +83,13 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = record.UID.ToString(),
-					Номенклатура = record.Номенклатура.UnigueID.ToString(),
+					НомерРядка = record.НомерРядка,
+					Номенклатура = record.Номенклатура,
 					НоменклатураНазва = JoinValue[record.UID.ToString()]["tovar_name"],
-					Пакування = record.Пакування.UnigueID.ToString(),
+					Пакування = record.Пакування,
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
 					Кількість = (uint)record.Кількість,
+					Ціна = record.Ціна,
 					Сума = record.Сума
 				});
 			}
@@ -98,15 +106,20 @@ namespace StorageAndTrade
         {
 			Документ.Товари_TablePart.Records.Clear();
 
+			int sequenceNumber = 0;
+
 			foreach (Записи запис in RecordsBindingList)
             {
+				sequenceNumber++;
+
 				Документи.ЗамовленняКлієнта_Товари_TablePart.Record record = new Документи.ЗамовленняКлієнта_Товари_TablePart.Record();
 
 				if (!String.IsNullOrEmpty(запис.ID))
 					record.UID = Guid.Parse(запис.ID);
 
-				record.Номенклатура = new Довідники.Номенклатура_Pointer(new UnigueID(запис.Номенклатура));
-				record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(запис.Пакування));
+				record.НомерРядка = sequenceNumber;
+				record.Номенклатура = запис.Номенклатура;
+				record.Пакування = запис.Пакування;
 				record.Кількість = (int)запис.Кількість;
 				record.Сума = запис.Сума;
 
@@ -119,12 +132,24 @@ namespace StorageAndTrade
 		private class Записи
         {
 			public string ID { get; set; }
-			public string Номенклатура { get; set; }
+			public int НомерРядка { get; set; }
+			public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public string НоменклатураНазва { get; set; }
-			public string Пакування { get; set; }
+			public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
 			public string ПакуванняНазва { get; set; }
 			public uint Кількість { get; set; }
+			public decimal Ціна { get; set; }
 			public decimal Сума { get; set; }
+
+			public static Записи New()
+            {
+				return new Записи
+				{
+					ID = Guid.Empty.ToString(),
+					Номенклатура = new Довідники.Номенклатура_Pointer(),
+					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer()
+				};
+			}
 
 			public static Записи Clone(Записи запис)
             {
@@ -136,6 +161,7 @@ namespace StorageAndTrade
 					Пакування = запис.Пакування,
 					ПакуванняНазва = запис.ПакуванняНазва,
 					Кількість = запис.Кількість,
+					Ціна = запис.Ціна,
 					Сума = запис.Сума
 				};
             }
@@ -211,16 +237,14 @@ namespace StorageAndTrade
 						DirectoryControl directoryControl = new DirectoryControl();
 
 						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
-						form_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(запис.Номенклатура));
+						form_Номенклатура.DirectoryPointerItem = запис.Номенклатура;
 						form_Номенклатура.DirectoryControlItem = directoryControl;
 						form_Номенклатура.ShowDialog();
 
 						if (directoryControl.DirectoryPointerItem != null)
 						{
-							Довідники.Номенклатура_Pointer номенклатура_Pointer = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
-
-							запис.Номенклатура = номенклатура_Pointer.ToString();
-							запис.НоменклатураНазва = номенклатура_Pointer.GetPresentation();
+							запис.Номенклатура = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
+							запис.НоменклатураНазва = запис.Номенклатура.GetPresentation();
 						}
 
 						break;
@@ -230,16 +254,14 @@ namespace StorageAndTrade
 						DirectoryControl directoryControl = new DirectoryControl();
 
 						Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
-						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(запис.Пакування));
+						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = запис.Пакування;
 						form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl;
 						form_ПакуванняОдиниціВиміру.ShowDialog();
 
 						if (directoryControl.DirectoryPointerItem != null)
 						{
-							Довідники.ПакуванняОдиниціВиміру_Pointer пакуванняОдиниціВиміру_Pointer = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl.DirectoryPointerItem;
-
-							запис.Пакування = пакуванняОдиниціВиміру_Pointer.ToString();
-							запис.ПакуванняНазва = пакуванняОдиниціВиміру_Pointer.GetPresentation();
+							запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl.DirectoryPointerItem;
+							запис.ПакуванняНазва = запис.Пакування.GetPresentation();
 						}
 
 						break;
@@ -268,7 +290,7 @@ namespace StorageAndTrade
 
 		private void toolStripButtonAdd_Click(object sender, EventArgs e)
 		{
-			RecordsBindingList.AddNew();
+			RecordsBindingList.Add(Записи.New());
 		}
 
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
