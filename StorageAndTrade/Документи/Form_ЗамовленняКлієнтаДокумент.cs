@@ -104,6 +104,22 @@ namespace StorageAndTrade
 			form_Каси.ShowDialog();
 		}
 
+		public void CallBack_Договір(DirectoryPointer directoryPointerItem)
+		{
+			Form_ДоговориКонтрагентів form_ДоговориКонтрагентів = new Form_ДоговориКонтрагентів();
+			form_ДоговориКонтрагентів.DirectoryPointerItem = directoryPointerItem;
+			form_ДоговориКонтрагентів.DirectoryControlItem = directoryControl_Договір;
+			form_ДоговориКонтрагентів.ShowDialog();
+		}
+
+		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		{
+			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
+			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
+			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
+			form_СтруктураПідприємства.ShowDialog();
+		}
+
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//Статус
@@ -123,6 +139,8 @@ namespace StorageAndTrade
 			directoryControl_Валюта.CallBack = CallBack_Валюта;
 			directoryControl_Склад.CallBack = CallBack_Склад;
 			directoryControl_Каса.CallBack = CallBack_Каса;
+			directoryControl_Договір.CallBack = CallBack_Договір;
+			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
 
 			if (IsNew.HasValue)
 			{
@@ -140,6 +158,8 @@ namespace StorageAndTrade
 					comboBox_ФормаОплати.SelectedIndex = 0;
 					directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer();
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
+					directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer();
+					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
 				}
 				else
 				{
@@ -157,6 +177,8 @@ namespace StorageAndTrade
 						comboBox_ФормаОплати.SelectedItem = замовленняКлієнта_Objest.ФормаОплати;
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(замовленняКлієнта_Objest.Каса.UnigueID);
 						comboBox_ГосподарськаОперація.SelectedItem = замовленняКлієнта_Objest.ГосподарськаОперація;
+						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(замовленняКлієнта_Objest.Договір.UnigueID);
+						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(замовленняКлієнта_Objest.Підрозділ.UnigueID);
 
 						замовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -185,6 +207,8 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
 					замовленняКлієнта_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
 					замовленняКлієнта_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+					замовленняКлієнта_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
+					замовленняКлієнта_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 
 					замовленняКлієнта_Objest.Save();
 					замовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
