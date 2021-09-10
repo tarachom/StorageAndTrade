@@ -32,15 +32,26 @@ namespace StorageAndTrade
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
-			dataGridViewRecords.Columns["НомерРядка"].Visible = false;
+
+			dataGridViewRecords.Columns["НомерРядка"].Width = 50;
+			dataGridViewRecords.Columns["НомерРядка"].ReadOnly = true;
+			dataGridViewRecords.Columns["НомерРядка"].HeaderText = "№";
+
 			dataGridViewRecords.Columns["Номенклатура"].Visible = false;
+			dataGridViewRecords.Columns["Характеристика"].Visible = false;
 			dataGridViewRecords.Columns["Пакування"].Visible = false;
 
-			dataGridViewRecords.Columns["НоменклатураНазва"].Width = 300;
+			dataGridViewRecords.Columns["НоменклатураНазва"].Width = 200;
 			dataGridViewRecords.Columns["НоменклатураНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["НоменклатураНазва"].HeaderText = "Номенклатура";
 
-			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 300;
+			dataGridViewRecords.Columns["ХарактеристикаНазва"].Width = 200;
+			dataGridViewRecords.Columns["ХарактеристикаНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["ХарактеристикаНазва"].HeaderText = "Характеристика";
+
+			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 100;
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
 
 			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -71,6 +82,13 @@ namespace StorageAndTrade
 			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "pak_name"));
 			querySelect.Joins.Add(new Join(JoinTable, Документи.ЗамовленняКлієнта_Товари_TablePart.Пакування, querySelect.Table));
 
+			//JOIN 3
+			JoinTable = Конфа.Config.Kernel.Conf.Directories["ХарактеристикиНоменклатури"].Table;
+			ParentField = JoinTable + "." + Довідники.ХарактеристикиНоменклатури_Select.Назва;
+
+			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "xar_name"));
+			querySelect.Joins.Add(new Join(JoinTable, Документи.ЗамовленняКлієнта_Товари_TablePart.ХарактеристикаНоменклатури, querySelect.Table));
+
 			//ORDER
 			querySelect.Order.Add(Документи.ЗамовленняКлієнта_Товари_TablePart.НомерРядка, SelectOrder.ASC);
 
@@ -86,6 +104,8 @@ namespace StorageAndTrade
 					НомерРядка = record.НомерРядка,
 					Номенклатура = record.Номенклатура,
 					НоменклатураНазва = JoinValue[record.UID.ToString()]["tovar_name"],
+					Характеристика = record.ХарактеристикаНоменклатури,
+					ХарактеристикаНазва = JoinValue[record.UID.ToString()]["xar_name"],
 					Пакування = record.Пакування,
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
 					Кількість = (uint)record.Кількість,
@@ -119,6 +139,7 @@ namespace StorageAndTrade
 
 				record.НомерРядка = sequenceNumber;
 				record.Номенклатура = запис.Номенклатура;
+				record.ХарактеристикаНоменклатури = запис.Характеристика;
 				record.Пакування = запис.Пакування;
 				record.Кількість = (int)запис.Кількість;
 				record.Сума = запис.Сума;
@@ -135,6 +156,8 @@ namespace StorageAndTrade
 			public int НомерРядка { get; set; }
 			public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public string НоменклатураНазва { get; set; }
+			public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+			public string ХарактеристикаНазва { get; set; }
 			public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
 			public string ПакуванняНазва { get; set; }
 			public uint Кількість { get; set; }
@@ -147,6 +170,7 @@ namespace StorageAndTrade
 				{
 					ID = Guid.Empty.ToString(),
 					Номенклатура = new Довідники.Номенклатура_Pointer(),
+					Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(),
 					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer()
 				};
 			}
@@ -196,7 +220,7 @@ namespace StorageAndTrade
         {
 			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
 
-			string[] allowColumn = new string[] { "НоменклатураНазва", "ПакуванняНазва" };
+			string[] allowColumn = new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва" };
 
 			contextMenuStrip1.Items.Clear();
 
@@ -245,6 +269,23 @@ namespace StorageAndTrade
 						{
 							запис.Номенклатура = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
 							запис.НоменклатураНазва = запис.Номенклатура.GetPresentation();
+						}
+
+						break;
+					}
+				case "ХарактеристикаНазва":
+					{
+						DirectoryControl directoryControl = new DirectoryControl();
+
+						Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
+						form_ХарактеристикиНоменклатури.DirectoryPointerItem = запис.Характеристика;
+						form_ХарактеристикиНоменклатури.DirectoryControlItem = directoryControl;
+						form_ХарактеристикиНоменклатури.ShowDialog();
+
+						if (directoryControl.DirectoryPointerItem != null)
+						{
+							запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)directoryControl.DirectoryPointerItem;
+							запис.ХарактеристикаНазва = запис.Характеристика.GetPresentation();
 						}
 
 						break;
