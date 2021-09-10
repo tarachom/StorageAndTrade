@@ -92,6 +92,7 @@ namespace StorageAndTrade
 			{
 				dataGridViewRecords.Rows[0].Selected = false;
 				dataGridViewRecords.Rows[selectRow].Selected = true;
+				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
 			}
 		}
 
@@ -106,16 +107,9 @@ namespace StorageAndTrade
 			public decimal Сума { get; set; }
         }
 
-		private void CopyMenuItem_Click(object sender, EventArgs e)
-		{
-			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
+		
 
-			MessageBox.Show(copyMenuItem.Name + " | " + copyMenuItem.Tag);
-
-			
-		}
-
-		private void CopyMenuItem_Click1(object sender, EventArgs e)
+		private void CopyMenuItem_ClickFind(object sender, EventArgs e)
 		{
 			Console.WriteLine("Find menu");
 		}
@@ -132,15 +126,65 @@ namespace StorageAndTrade
 
 			for (int i = 0; i < 10; i++)
 			{
-				mas[i] = new ToolStripMenuItem("Варіанти: " + findMenuItem.Text, Properties.Resources.page_white_text, CopyMenuItem_Click1, "find");
+				mas[i] = new ToolStripMenuItem("Варіанти: " + findMenuItem.Text, Properties.Resources.page_white_text, CopyMenuItem_ClickFind, "find");
 			}
 
 			contextMenuStrip1.Items.AddRange(mas);
 		}
 
-        
+		private void CopyMenuItem_Click(object sender, EventArgs e)
+		{
+			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
+			Записи запис = (Записи)copyMenuItem.Tag;
 
-        private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+			Console.WriteLine(copyMenuItem.Name);
+
+			switch(copyMenuItem.Name)
+            {
+				case "НоменклатураНазва":
+                    {
+                        DirectoryControl directoryControl = new DirectoryControl();
+
+                        Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
+                        form_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(запис.Номенклатура));
+                        form_Номенклатура.DirectoryControlItem = directoryControl;
+                        form_Номенклатура.ShowDialog();
+
+                        if (directoryControl.DirectoryPointerItem != null)
+                        {
+							Довідники.Номенклатура_Pointer номенклатура_Pointer = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
+
+							запис.Номенклатура = номенклатура_Pointer.ToString();
+							запис.НоменклатураНазва = номенклатура_Pointer.GetPresentation();
+						}
+
+                        break;
+                    }
+				case "ПакуванняНазва":
+					{
+                        DirectoryControl directoryControl = new DirectoryControl();
+
+                        Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
+                        form_ПакуванняОдиниціВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(запис.Пакування));
+                        form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl;
+                        form_ПакуванняОдиниціВиміру.ShowDialog();
+
+                        if (directoryControl.DirectoryPointerItem != null)
+                        {
+							Довідники.ПакуванняОдиниціВиміру_Pointer пакуванняОдиниціВиміру_Pointer = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl.DirectoryPointerItem;
+
+							запис.Пакування = пакуванняОдиниціВиміру_Pointer.ToString();
+							запис.ПакуванняНазва = пакуванняОдиниціВиміру_Pointer.GetPresentation();
+						}
+
+                        break;
+					}
+				default:
+					break;
+            }
+		}
+
+		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
 
@@ -150,20 +194,18 @@ namespace StorageAndTrade
 
 			if (allowColumn.Contains(columnName))
             {
-				ToolStripTextBox toolStripTextBox = new ToolStripTextBox();
-				toolStripTextBox.ToolTipText = "Пошук";
-				toolStripTextBox.Size = new Size(300, 22);
-                toolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
-				contextMenuStrip1.Items.Add(toolStripTextBox);
-
 				ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Вибрати із списку");
 				copyMenuItem.Image = Properties.Resources.data;
 				copyMenuItem.Name = columnName;
-				copyMenuItem.Tag = "";
+				copyMenuItem.Tag = RecordsBindingList[e.RowIndex];
 				copyMenuItem.Click += CopyMenuItem_Click;
-
 				contextMenuStrip1.Items.Add(copyMenuItem);
 
+				ToolStripTextBox toolStripTextBox = new ToolStripTextBox();
+				toolStripTextBox.ToolTipText = "Пошук";
+				toolStripTextBox.Size = new Size(300, 0);
+				toolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
+				contextMenuStrip1.Items.Add(toolStripTextBox);
 
 				Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
 				rectangle.Offset(0, dataGridViewRecords.Rows[e.RowIndex].Height);
@@ -172,63 +214,6 @@ namespace StorageAndTrade
 
 				contextMenuStrip1.Show(point);
 			}
-
-			
-
-			
-
-			//string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
-
-			//if (columnName == "Номенклатура")
-			//{
-			//	string Uid = "";
-			//	object a = dataGridViewRecords.Rows[e.RowIndex].Cells["Номенклатура"].Value;
-			//	if (a != null) Uid = a.ToString();
-
-
-			//	 DirectoryControl directoryControl = new DirectoryControl();
-
-			//	Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
-			//	form_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(Uid));
-			//	form_Номенклатура.DirectoryControlItem = directoryControl;
-			//	form_Номенклатура.ShowDialog();
-
-			//	if (directoryControl.DirectoryPointerItem != null)
-			//	{
-			//		if (dataGridViewRecords.Rows[e.RowIndex].IsNewRow)
-			//			dataGridViewRecords.Rows.Add();
-
-			//		dataGridViewRecords.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = directoryControl.DirectoryPointerItem.ToString();
-
-			//	}
-
-
-			//}
-
-			//if (columnName == "Пакування")
-			//{
-			//	string Uid = "";
-
-			//	if (e.RowIndex < dataGridViewRecords.RowCount)
-			//		Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["Пакування"].Value.ToString();
-
-			//	DirectoryControl directoryControl = new DirectoryControl();
-
-			//	Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
-			//	form_ПакуванняОдиниціВиміру.DirectoryPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(Uid));
-			//	form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl;
-			//	form_ПакуванняОдиниціВиміру.ShowDialog();
-
-			//	if (directoryControl.DirectoryPointerItem != null)
-			//	{
-			//		dataGridViewRecords.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = directoryControl.DirectoryPointerItem.ToString();
-			//	}
-
-
-			//}
-
-
-
 		}
 
        

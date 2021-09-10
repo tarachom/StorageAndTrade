@@ -138,6 +138,7 @@ namespace StorageAndTrade
 					{
 						dataGridViewRecords.Rows[0].Selected = false;
 						dataGridViewRecords.Rows[RecordsBindingList.Count - 1].Selected = true;
+						dataGridViewRecords.FirstDisplayedScrollingRowIndex = RecordsBindingList.Count - 1;
 					}
 			}
 
@@ -145,6 +146,7 @@ namespace StorageAndTrade
 			{
 				dataGridViewRecords.Rows[0].Selected = false;
 				dataGridViewRecords.Rows[selectRow].Selected = true;
+				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
 			}
 		}
 
