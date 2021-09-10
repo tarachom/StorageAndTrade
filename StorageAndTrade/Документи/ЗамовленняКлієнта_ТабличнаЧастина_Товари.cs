@@ -82,7 +82,7 @@ namespace StorageAndTrade
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
 					Кількість = (uint)record.Кількість,
 					Сума = record.Сума
-				}); ;
+				});
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
@@ -159,6 +159,37 @@ namespace StorageAndTrade
         private void dataGridViewRecords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
 			
+		}
+
+        private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+			Console.WriteLine(dataGridViewRecords.Rows[e.RowIndex].Cells[e.ColumnIndex].Value);
+			Console.WriteLine(RecordsBindingList.Count);
+
+			ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Копировать");
+			ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Вставить");
+
+			contextMenuStrip1.Items.Clear();
+			contextMenuStrip1.Items.Add(copyMenuItem);
+			contextMenuStrip1.Items.Add(pasteMenuItem);
+
+			Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+			rectangle.Offset(0, dataGridViewRecords.Rows[e.RowIndex].Height);
+
+			Point point = dataGridViewRecords.PointToScreen(rectangle.Location);
+
+			contextMenuStrip1.Show(point);
+			
+		}
+
+        private void toolStripButtonRefresh_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButtonAdd_Click(object sender, EventArgs e)
+        {
+			RecordsBindingList.AddNew();
 		}
     }
 }
