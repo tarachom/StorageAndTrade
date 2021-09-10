@@ -96,6 +96,11 @@ namespace StorageAndTrade
 			}
 		}
 
+		public void SaveRecords()
+        {
+
+        }
+
 		private class Записи
         {
             public string ID { get; set; }

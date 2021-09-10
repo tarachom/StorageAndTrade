@@ -106,13 +106,9 @@ namespace StorageAndTrade
 					Сума = (decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу]
 				});
 
-				if (DirectoryPointerItem != null && selectRow == 0) //??
+				if (DirectoryPointerItem != null && selectRow == 0) 
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-					{
-						dataGridViewRecords.Rows[0].Selected = false;
-						dataGridViewRecords.Rows[RecordsBindingList.Count - 1].Selected = true;
-						dataGridViewRecords.FirstDisplayedScrollingRowIndex = RecordsBindingList.Count - 1;
-					}
+						selectRow = RecordsBindingList.Count - 1;
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)

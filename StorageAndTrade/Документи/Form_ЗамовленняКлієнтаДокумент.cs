@@ -113,6 +113,8 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.НомерДок = textBox_НомерДок.Text;
 					замовленняКлієнта_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
 					замовленняКлієнта_Objest.Save();
+
+
 				}
 				catch (Exception exp)
 				{
