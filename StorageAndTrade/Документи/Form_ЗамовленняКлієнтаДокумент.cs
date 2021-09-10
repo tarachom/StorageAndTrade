@@ -114,7 +114,8 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
 					замовленняКлієнта_Objest.Save();
 
-
+					замовленняКлієнта_ТабличнаЧастина_Товари.ЗамовленняКлієнта_Objest = замовленняКлієнта_Objest;
+					замовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 				}
 				catch (Exception exp)
 				{

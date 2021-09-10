@@ -98,12 +98,29 @@ namespace StorageAndTrade
 
 		public void SaveRecords()
         {
+			ЗамовленняКлієнта_Objest.Товари_TablePart.Records.Clear();
 
-        }
+			foreach (Записи запис in RecordsBindingList)
+            {
+				Документи.ЗамовленняКлієнта_Товари_TablePart.Record record = new Документи.ЗамовленняКлієнта_Товари_TablePart.Record();
+
+				if (!String.IsNullOrEmpty(запис.ID))
+					record.UID = Guid.Parse(запис.ID);
+
+				record.Номенклатура = new Довідники.Номенклатура_Pointer(new UnigueID(запис.Номенклатура));
+				record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(запис.Пакування));
+				record.Кількість = (int)запис.Кількість;
+				record.Сума = запис.Сума;
+
+				ЗамовленняКлієнта_Objest.Товари_TablePart.Records.Add(record);
+			}
+
+			ЗамовленняКлієнта_Objest.Товари_TablePart.Save(true);
+		}
 
 		private class Записи
         {
-            public string ID { get; set; }
+			public string ID { get; set; }
 			public string Номенклатура { get; set; }
             public string НоменклатураНазва { get; set; }
 			public string Пакування { get; set; }
@@ -111,8 +128,6 @@ namespace StorageAndTrade
 			public uint Кількість { get; set; }
 			public decimal Сума { get; set; }
         }
-
-		
 
 		private void CopyMenuItem_ClickFind(object sender, EventArgs e)
 		{
