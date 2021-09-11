@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 11.09.2021 11:54:06
+ * Дата конфігурації: 11.09.2021 17:04:15
  *
  */
 
@@ -5905,7 +5905,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_c7"] = ЧасДоставкиДо;
             base.FieldValue["col_c8"] = ПовернутиТару;
             base.FieldValue["col_c9"] = ДатаПоверненняТари;
-            Записи_Triggers.ЗамовленняКлієнта_BeforeRecording(this);
+            
             BaseSave();
 			Записи_Triggers.ЗамовленняКлієнта_AfterRecording(this);
         }
@@ -8974,6 +8974,582 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
             public decimal Кількість { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Номенклатура = null;
+                 ХарактеристикаНоменклатури = null;
+                 Склад = null;
+                 
+            }
+        
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "ЗамовленняКлієнтів"
+    
+    ///<summary>
+    ///Замовлення клієнтів.
+    ///</summary>
+    public class ЗамовленняКлієнтів_RecordsSet : RegisterAccumulationRecordsSet
+    {
+        public ЗамовленняКлієнтів_RecordsSet() : base(Config.Kernel, "tab_a55",
+             new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.ЗамовленняКлієнта != null)
+            {
+                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.ЗамовленняКлієнта.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.Номенклатура != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.ХарактеристикаНоменклатури != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.Склад != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a4", Comparison.EQ, Filter.Склад.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a4", Comparison.EQ, Filter.Склад.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Income = (bool)fieldValue["income"];
+                record.Owner = (Guid)fieldValue["owner"];
+                record.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(fieldValue["col_a1"]);
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
+                record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (int)fieldValue["col_a5"] : 0;
+                record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                base.BaseDelete(owner);
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.ЗамовленняКлієнта.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.Замовлено);
+                    fieldValue.Add("col_a6", record.Сума);
+                    
+                    base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        public SelectFilter Filter { get; set; }
+        
+        ///<summary>
+    ///Замовлення клієнтів.
+    ///</summary>
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Склад = new Довідники.Склади_Pointer();
+                Замовлено = 0;
+                Сума = 0;
+                
+            }
+            public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            public int Замовлено { get; set; }
+            public decimal Сума { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 ЗамовленняКлієнта = null;
+                 Номенклатура = null;
+                 ХарактеристикаНоменклатури = null;
+                 Склад = null;
+                 
+            }
+        
+            public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "РозрахункиЗКлієнтами"
+    
+    
+    public class РозрахункиЗКлієнтами_RecordsSet : RegisterAccumulationRecordsSet
+    {
+        public РозрахункиЗКлієнтами_RecordsSet() : base(Config.Kernel, "tab_a56",
+             new string[] { "col_a1", "col_a2", "col_a4" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.Договір != null)
+            {
+                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.Договір.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.Валюта != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Валюта.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Income = (bool)fieldValue["income"];
+                record.Owner = (Guid)fieldValue["owner"];
+                record.Договір = new Довідники.ДоговориКонтрагентів_Pointer(fieldValue["col_a1"]);
+                record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a2"]);
+                record.Сума = (fieldValue["col_a4"] != DBNull.Value) ? (decimal)fieldValue["col_a4"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                base.BaseDelete(owner);
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.Договір.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Валюта.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Сума);
+                    
+                    base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Договір = new Довідники.ДоговориКонтрагентів_Pointer();
+                Валюта = new Довідники.Валюти_Pointer();
+                Сума = 0;
+                
+            }
+            public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
+            public Довідники.Валюти_Pointer Валюта { get; set; }
+            public decimal Сума { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Договір = null;
+                 Валюта = null;
+                 
+            }
+        
+            public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
+            public Довідники.Валюти_Pointer Валюта { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "РозрахункиЗКлієнтамиПоДокументах"
+    
+    
+    public class РозрахункиЗКлієнтамиПоДокументах_RecordsSet : RegisterAccumulationRecordsSet
+    {
+        public РозрахункиЗКлієнтамиПоДокументах_RecordsSet() : base(Config.Kernel, "tab_a57",
+             new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a6", "col_a7" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.Договір != null)
+            {
+                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.Договір.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.Валюта != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Валюта.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.РозрахунковийДокумент != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.РозрахунковийДокумент, false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.РозрахунковийДокумент, false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Income = (bool)fieldValue["income"];
+                record.Owner = (Guid)fieldValue["owner"];
+                record.Договір = new Довідники.ДоговориКонтрагентів_Pointer(fieldValue["col_a1"]);
+                record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a2"]);
+                record.РозрахунковийДокумент = fieldValue["col_a3"].ToString();
+                record.Заборгованість = (fieldValue["col_a4"] != DBNull.Value) ? (decimal)fieldValue["col_a4"] : 0;
+                record.Передоплата = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
+                record.ГосподарськаОперація = (fieldValue["col_a7"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)fieldValue["col_a7"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                base.BaseDelete(owner);
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.Договір.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Валюта.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.РозрахунковийДокумент);
+                    fieldValue.Add("col_a4", record.Заборгованість);
+                    fieldValue.Add("col_a6", record.Передоплата);
+                    fieldValue.Add("col_a7", record.ГосподарськаОперація);
+                    
+                    base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Договір = new Довідники.ДоговориКонтрагентів_Pointer();
+                Валюта = new Довідники.Валюти_Pointer();
+                РозрахунковийДокумент = "";
+                Заборгованість = 0;
+                Передоплата = 0;
+                ГосподарськаОперація = 0;
+                
+            }
+            public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
+            public Довідники.Валюти_Pointer Валюта { get; set; }
+            public string РозрахунковийДокумент { get; set; }
+            public decimal Заборгованість { get; set; }
+            public decimal Передоплата { get; set; }
+            public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Договір = null;
+                 Валюта = null;
+                 РозрахунковийДокумент = null;
+                 
+            }
+        
+            public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
+            public Довідники.Валюти_Pointer Валюта { get; set; }
+            public string РозрахунковийДокумент { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "ВільніЗалишки"
+    
+    
+    public class ВільніЗалишки_RecordsSet : RegisterAccumulationRecordsSet
+    {
+        public ВільніЗалишки_RecordsSet() : base(Config.Kernel, "tab_a58",
+             new string[] { "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_b2" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            bool isExistPreceding = false;
+            if (Filter.Номенклатура != null)
+            {
+                base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                
+                isExistPreceding = true;
+                
+            }
+            
+            if (Filter.ХарактеристикаНоменклатури != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+            if (Filter.Склад != null)
+            {
+                if (isExistPreceding)
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a7", Comparison.EQ, Filter.Склад.ToString(), false));
+                else
+                {
+                    base.BaseFilter.Add(new Where("col_a7", Comparison.EQ, Filter.Склад.ToString(), false));
+                    isExistPreceding = true; 
+                }
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Income = (bool)fieldValue["income"];
+                record.Owner = (Guid)fieldValue["owner"];
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a5"]);
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a6"]);
+                record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a7"]);
+                record.ВНаявності = (fieldValue["col_a8"] != DBNull.Value) ? (int)fieldValue["col_a8"] : 0;
+                record.ВРезервіЗіСкладу = (fieldValue["col_b1"] != DBNull.Value) ? (int)fieldValue["col_b1"] : 0;
+                record.ВРезервіПідЗамовлення = (fieldValue["col_b2"] != DBNull.Value) ? (int)fieldValue["col_b2"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                base.BaseDelete(owner);
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a5", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_a6", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a7", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a8", record.ВНаявності);
+                    fieldValue.Add("col_b1", record.ВРезервіЗіСкладу);
+                    fieldValue.Add("col_b2", record.ВРезервіПідЗамовлення);
+                    
+                    base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Склад = new Довідники.Склади_Pointer();
+                ВНаявності = 0;
+                ВРезервіЗіСкладу = 0;
+                ВРезервіПідЗамовлення = 0;
+                
+            }
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            public int ВНаявності { get; set; }
+            public int ВРезервіЗіСкладу { get; set; }
+            public int ВРезервіПідЗамовлення { get; set; }
             
         }
     
