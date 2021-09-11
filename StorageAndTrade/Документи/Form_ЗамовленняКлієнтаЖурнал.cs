@@ -99,11 +99,11 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = "Замовлення клієнта №" + cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString() + " від " + 
-					         DateTime.Parse(cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString()).ToShortDateString(),
+					Назва = "Замовлення клієнта №" + cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString() + " від " +
+							 DateTime.Parse(cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString()).ToShortDateString(),
 					НомерДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString(),
-					Сума = (decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу]
+					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу], 2)
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0) 

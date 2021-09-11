@@ -52,6 +52,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].HeaderText = "Характеристика";
 
+			dataGridViewRecords.Columns["КількістьУпаковок"].Width = 50;
+			dataGridViewRecords.Columns["КількістьУпаковок"].HeaderText = "Кво.Упак.";
+
 			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 100;
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
@@ -109,11 +112,12 @@ namespace StorageAndTrade
 					НоменклатураНазва = JoinValue[record.UID.ToString()]["tovar_name"],
 					Характеристика = record.ХарактеристикаНоменклатури,
 					ХарактеристикаНазва = JoinValue[record.UID.ToString()]["xar_name"],
+					КількістьУпаковок = record.КількістьУпаковок,
 					Пакування = record.Пакування,
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
 					Кількість = (uint)record.Кількість,
-					Ціна = record.Ціна,
-					Сума = record.Сума
+					Ціна = Math.Round(record.Ціна, 2),
+					Сума = Math.Round(record.Сума, 2)
 				});
 			}
 
@@ -144,6 +148,7 @@ namespace StorageAndTrade
 				record.НомерРядка = sequenceNumber;
 				record.Номенклатура = запис.Номенклатура;
 				record.ХарактеристикаНоменклатури = запис.Характеристика;
+				record.КількістьУпаковок = запис.КількістьУпаковок;
 				record.Пакування = запис.Пакування;
 				record.Кількість = (int)запис.Кількість;
 				record.Ціна = запис.Ціна;
@@ -154,7 +159,7 @@ namespace StorageAndTrade
 				ДокументОбєкт.Товари_TablePart.Records.Add(record);
 			}
 
-			ДокументОбєкт.СумаДокументу = documentSuma;
+			ДокументОбєкт.СумаДокументу = Math.Round(documentSuma, 2);
 
 			ДокументОбєкт.Товари_TablePart.Save(true);
 		}
@@ -167,6 +172,7 @@ namespace StorageAndTrade
             public string НоменклатураНазва { get; set; }
 			public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
 			public string ХарактеристикаНазва { get; set; }
+			public int КількістьУпаковок { get; set; }
 			public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
 			public string ПакуванняНазва { get; set; }
 			public uint Кількість { get; set; }
@@ -180,7 +186,9 @@ namespace StorageAndTrade
 					ID = Guid.Empty.ToString(),
 					Номенклатура = new Довідники.Номенклатура_Pointer(),
 					Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(),
-					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer()
+					КількістьУпаковок = 1,
+					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(),
+					Кількість = 1
 				};
 			}
 
@@ -281,11 +289,14 @@ namespace StorageAndTrade
 
 							Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
 							запис.НоменклатураНазва = номенклатура_Objest.Назва;
-
 							запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
-							запис.ПакуванняНазва = запис.Пакування.GetPresentation();
 
-							запис.Кількість = 1;
+							Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
+							if (пакуванняОдиниціВиміру_Objest != null)
+                            {
+								запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
+								запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
+							}
 
 							dataGridViewRecords.Refresh();
 						}

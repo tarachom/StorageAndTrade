@@ -72,6 +72,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_КількістьУпаковок.Text = "1";
 				}
 				else
 				{
@@ -79,7 +80,9 @@ namespace StorageAndTrade
 					{
 						this.Text += " - Редагування запису - " + пакуванняОдиниціВиміру_Objest.Назва;
 
-						textBoxName.Text = пакуванняОдиниціВиміру_Objest.Назва;
+						textBox_Назва.Text = пакуванняОдиниціВиміру_Objest.Назва;
+						textBox_НазваПовна.Text = пакуванняОдиниціВиміру_Objest.НазваПовна;
+						textBox_КількістьУпаковок.Text = пакуванняОдиниціВиміру_Objest.КількістьУпаковок.ToString();
 					}
 					else
 						MessageBox.Show("Error read");
@@ -96,7 +99,9 @@ namespace StorageAndTrade
 
 				try
 				{
-					пакуванняОдиниціВиміру_Objest.Назва = textBoxName.Text;
+					пакуванняОдиниціВиміру_Objest.Назва = textBox_Назва.Text;
+					пакуванняОдиниціВиміру_Objest.НазваПовна = textBox_НазваПовна.Text;
+					пакуванняОдиниціВиміру_Objest.КількістьУпаковок = int.Parse(textBox_КількістьУпаковок.Text);
 					пакуванняОдиниціВиміру_Objest.Save();
 				}
 				catch (Exception exp)

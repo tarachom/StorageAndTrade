@@ -31,8 +31,12 @@ namespace StorageAndTrade
         {
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBox_Назва = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.textBox_НазваПовна = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_КількістьУпаковок = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -55,12 +59,12 @@ namespace StorageAndTrade
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBoxName
+            // textBox_Назва
             // 
-            this.textBoxName.Location = new System.Drawing.Point(88, 12);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(461, 20);
-            this.textBoxName.TabIndex = 20;
+            this.textBox_Назва.Location = new System.Drawing.Point(88, 12);
+            this.textBox_Назва.Name = "textBox_Назва";
+            this.textBox_Назва.Size = new System.Drawing.Size(461, 20);
+            this.textBox_Назва.TabIndex = 20;
             // 
             // label2
             // 
@@ -71,12 +75,48 @@ namespace StorageAndTrade
             this.label2.TabIndex = 19;
             this.label2.Text = "Назва:";
             // 
+            // textBox_НазваПовна
+            // 
+            this.textBox_НазваПовна.Location = new System.Drawing.Point(121, 38);
+            this.textBox_НазваПовна.Name = "textBox_НазваПовна";
+            this.textBox_НазваПовна.Size = new System.Drawing.Size(428, 20);
+            this.textBox_НазваПовна.TabIndex = 22;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(75, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Повна назва:";
+            // 
+            // textBox_КількістьУпаковок
+            // 
+            this.textBox_КількістьУпаковок.Location = new System.Drawing.Point(152, 64);
+            this.textBox_КількістьУпаковок.Name = "textBox_КількістьУпаковок";
+            this.textBox_КількістьУпаковок.Size = new System.Drawing.Size(397, 20);
+            this.textBox_КількістьУпаковок.TabIndex = 24;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(40, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 13);
+            this.label3.TabIndex = 23;
+            this.label3.Text = "Кількість упаковок:";
+            // 
             // Form_ПакуванняОдиниціВиміруЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 164);
-            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.textBox_КількістьУпаковок);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBox_НазваПовна);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox_Назва);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
@@ -94,7 +134,11 @@ namespace StorageAndTrade
 
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBox_Назва;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_НазваПовна;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_КількістьУпаковок;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -82,6 +82,8 @@ namespace StorageAndTrade
 
 			Довідники.ПакуванняОдиниціВиміру_Select пакуванняОдиниціВиміру_Select = new Довідники.ПакуванняОдиниціВиміру_Select();
 			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Select.Назва);
+			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Select.НазваПовна);
+			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Select.КількістьУпаковок);
 
 			//ORDER
 			пакуванняОдиниціВиміру_Select.QuerySelect.Order.Add(Довідники.ПакуванняОдиниціВиміру_Select.Назва, SelectOrder.ASC);
@@ -94,7 +96,9 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.Назва].ToString(),
+					НазваПовна = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.НазваПовна].ToString(),
+					КількістьУпаковок = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.КількістьУпаковок].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
@@ -114,6 +118,9 @@ namespace StorageAndTrade
 		{
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string НазваПовна { get; set; }
+			public string КількістьУпаковок { get; set; }
+
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
