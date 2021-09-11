@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 11.09.2021 17:04:15
+ * Дата конфігурації: 11.09.2021 17:17:39
  *
  */
 
@@ -8601,13 +8601,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 
             }
             
-            if (Filter.Характеристика != null)
+            if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e5", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_e5", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
                     isExistPreceding = true; 
                 }
             }
@@ -8634,9 +8634,9 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Income = (bool)fieldValue["income"];
                 record.Owner = (Guid)fieldValue["owner"];
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_e4"]);
-                record.Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_e5"]);
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_e5"]);
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_e6"]);
-                record.ВНявсності = (fieldValue["col_e7"] != DBNull.Value) ? (decimal)fieldValue["col_e7"] : 0;
+                record.ВНаявності = (fieldValue["col_e7"] != DBNull.Value) ? (decimal)fieldValue["col_e7"] : 0;
                 record.ДоВідвантаження = (fieldValue["col_e8"] != DBNull.Value) ? (decimal)fieldValue["col_e8"] : 0;
                 
                 Records.Add(record);
@@ -8656,9 +8656,9 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                     fieldValue.Add("col_e4", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_e5", record.Характеристика.UnigueID.UGuid);
+                    fieldValue.Add("col_e5", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_e6", record.Склад.UnigueID.UGuid);
-                    fieldValue.Add("col_e7", record.ВНявсності);
+                    fieldValue.Add("col_e7", record.ВНаявності);
                     fieldValue.Add("col_e8", record.ДоВідвантаження);
                     
                     base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
@@ -8683,16 +8683,16 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Record()
             {
                 Номенклатура = new Довідники.Номенклатура_Pointer();
-                Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                 Склад = new Довідники.Склади_Pointer();
-                ВНявсності = 0;
+                ВНаявності = 0;
                 ДоВідвантаження = 0;
                 
             }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
-            public decimal ВНявсності { get; set; }
+            public decimal ВНаявності { get; set; }
             public decimal ДоВідвантаження { get; set; }
             
         }
@@ -8702,13 +8702,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public SelectFilter()
             {
                  Номенклатура = null;
-                 Характеристика = null;
+                 ХарактеристикаНоменклатури = null;
                  Склад = null;
                  
             }
         
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
             
         }
