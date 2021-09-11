@@ -134,6 +134,7 @@ namespace StorageAndTrade
             // 
             this.directoryControl_ОдиницяВиміру.CallBack = null;
             this.directoryControl_ОдиницяВиміру.DirectoryPointerItem = null;
+            this.directoryControl_ОдиницяВиміру.EnablePresentation = true;
             this.directoryControl_ОдиницяВиміру.Location = new System.Drawing.Point(127, 102);
             this.directoryControl_ОдиницяВиміру.Name = "directoryControl_ОдиницяВиміру";
             this.directoryControl_ОдиницяВиміру.Size = new System.Drawing.Size(422, 27);
@@ -143,6 +144,7 @@ namespace StorageAndTrade
             // 
             this.directoryControl_ВидНоменклатури.CallBack = null;
             this.directoryControl_ВидНоменклатури.DirectoryPointerItem = null;
+            this.directoryControl_ВидНоменклатури.EnablePresentation = true;
             this.directoryControl_ВидНоменклатури.Location = new System.Drawing.Point(126, 69);
             this.directoryControl_ВидНоменклатури.Name = "directoryControl_ВидНоменклатури";
             this.directoryControl_ВидНоменклатури.Size = new System.Drawing.Size(422, 27);
@@ -152,6 +154,7 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Виробник.CallBack = null;
             this.directoryControl_Виробник.DirectoryPointerItem = null;
+            this.directoryControl_Виробник.EnablePresentation = true;
             this.directoryControl_Виробник.Location = new System.Drawing.Point(84, 38);
             this.directoryControl_Виробник.Name = "directoryControl_Виробник";
             this.directoryControl_Виробник.Size = new System.Drawing.Size(465, 27);
@@ -159,9 +162,9 @@ namespace StorageAndTrade
             // 
             // textBox_Артикул
             // 
-            this.textBox_Артикул.Location = new System.Drawing.Point(87, 163);
+            this.textBox_Артикул.Location = new System.Drawing.Point(109, 163);
             this.textBox_Артикул.Name = "textBox_Артикул";
-            this.textBox_Артикул.Size = new System.Drawing.Size(461, 20);
+            this.textBox_Артикул.Size = new System.Drawing.Size(439, 20);
             this.textBox_Артикул.TabIndex = 32;
             // 
             // label6
