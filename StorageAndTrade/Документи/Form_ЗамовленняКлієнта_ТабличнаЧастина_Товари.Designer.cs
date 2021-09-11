@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class ЗамовленняКлієнта_ТабличнаЧастина_Товари
+    partial class Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари
     {
         /// <summary> 
         /// Required designer variable.

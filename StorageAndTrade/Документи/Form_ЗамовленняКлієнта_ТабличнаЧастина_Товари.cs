@@ -17,14 +17,17 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class ЗамовленняКлієнта_ТабличнаЧастина_Товари : UserControl
+    public partial class Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари : UserControl
     {
-        public ЗамовленняКлієнта_ТабличнаЧастина_Товари()
+        public Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари()
         {
             InitializeComponent();
         }
 
-		public Документи.ЗамовленняКлієнта_Objest Документ { get; set; }
+		/// <summary>
+		/// Власне документ якому належить таблична частина
+		/// </summary>
+		public Документи.ЗамовленняКлієнта_Objest ДокументОбєкт { get; set; }
 
         private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
         {
@@ -66,7 +69,7 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
-			Query querySelect = Документ.Товари_TablePart.QuerySelect;
+			Query querySelect = ДокументОбєкт.Товари_TablePart.QuerySelect;
 
 			//JOIN 1
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Table;
@@ -92,11 +95,11 @@ namespace StorageAndTrade
 			//ORDER
 			querySelect.Order.Add(Документи.ЗамовленняКлієнта_Товари_TablePart.НомерРядка, SelectOrder.ASC);
 
-			Документ.Товари_TablePart.Read();
+			ДокументОбєкт.Товари_TablePart.Read();
 
-			Dictionary<string, Dictionary<string, string>> JoinValue = Документ.Товари_TablePart.JoinValue;
+			Dictionary<string, Dictionary<string, string>> JoinValue = ДокументОбєкт.Товари_TablePart.JoinValue;
 
-			foreach (Документи.ЗамовленняКлієнта_Товари_TablePart.Record record in Документ.Товари_TablePart.Records)
+			foreach (Документи.ЗамовленняКлієнта_Товари_TablePart.Record record in ДокументОбєкт.Товари_TablePart.Records)
 			{
 				RecordsBindingList.Add(new Записи
 				{
@@ -124,9 +127,10 @@ namespace StorageAndTrade
 
 		public void SaveRecords()
         {
-			Документ.Товари_TablePart.Records.Clear();
+			ДокументОбєкт.Товари_TablePart.Records.Clear();
 
 			int sequenceNumber = 0;
+			decimal documentSuma = 0;
 
 			foreach (Записи запис in RecordsBindingList)
             {
@@ -145,10 +149,14 @@ namespace StorageAndTrade
 				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
 
-				Документ.Товари_TablePart.Records.Add(record);
+				documentSuma += запис.Сума;
+
+				ДокументОбєкт.Товари_TablePart.Records.Add(record);
 			}
 
-			Документ.Товари_TablePart.Save(true);
+			ДокументОбєкт.СумаДокументу = documentSuma;
+
+			ДокументОбєкт.Товари_TablePart.Save(true);
 		}
 
 		private class Записи
@@ -270,12 +278,14 @@ namespace StorageAndTrade
 						if (directoryControl.DirectoryPointerItem != null)
 						{
 							запис.Номенклатура = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
-							Console.WriteLine("GetDirectoryObject");
+
 							Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
 							запис.НоменклатураНазва = номенклатура_Objest.Назва;
-							Console.WriteLine("GetPresentation");
+
 							запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
 							запис.ПакуванняНазва = запис.Пакування.GetPresentation();
+
+							запис.Кількість = 1;
 
 							dataGridViewRecords.Refresh();
 						}
