@@ -31,12 +31,16 @@ namespace StorageAndTrade
 		public DirectoryControl()
 		{
 			InitializeComponent();
+
+			EnablePresentation = true;
 		}
 
 		/// <summary>
 		/// Зворотня функція для вибору із списку
 		/// </summary>
 		public Action<DirectoryPointer> CallBack { get; set; }
+
+		public bool EnablePresentation { get; set; }
 
 		private DirectoryPointer mDirectoryPointerItem;
 
@@ -51,7 +55,7 @@ namespace StorageAndTrade
 			{
 				mDirectoryPointerItem = value;
 
-				if (mDirectoryPointerItem != null)
+				if (mDirectoryPointerItem != null && EnablePresentation)
 					ReadPresentation();
 				else
 					textBoxControl.Text = "";

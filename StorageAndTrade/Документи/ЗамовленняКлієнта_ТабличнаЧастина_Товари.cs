@@ -33,7 +33,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 
-			dataGridViewRecords.Columns["НомерРядка"].Width = 50;
+			dataGridViewRecords.Columns["НомерРядка"].Width = 30;
 			dataGridViewRecords.Columns["НомерРядка"].ReadOnly = true;
 			dataGridViewRecords.Columns["НомерРядка"].HeaderText = "№";
 
@@ -142,6 +142,7 @@ namespace StorageAndTrade
 				record.ХарактеристикаНоменклатури = запис.Характеристика;
 				record.Пакування = запис.Пакування;
 				record.Кількість = (int)запис.Кількість;
+				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
 
 				Документ.Товари_TablePart.Records.Add(record);
@@ -259,6 +260,7 @@ namespace StorageAndTrade
 				case "НоменклатураНазва":
 					{
 						DirectoryControl directoryControl = new DirectoryControl();
+						directoryControl.EnablePresentation = false;
 
 						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
 						form_Номенклатура.DirectoryPointerItem = запис.Номенклатура;
@@ -268,7 +270,14 @@ namespace StorageAndTrade
 						if (directoryControl.DirectoryPointerItem != null)
 						{
 							запис.Номенклатура = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
-							запис.НоменклатураНазва = запис.Номенклатура.GetPresentation();
+							Console.WriteLine("GetDirectoryObject");
+							Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
+							запис.НоменклатураНазва = номенклатура_Objest.Назва;
+							Console.WriteLine("GetPresentation");
+							запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
+							запис.ПакуванняНазва = запис.Пакування.GetPresentation();
+
+							dataGridViewRecords.Refresh();
 						}
 
 						break;
@@ -276,6 +285,7 @@ namespace StorageAndTrade
 				case "ХарактеристикаНазва":
 					{
 						DirectoryControl directoryControl = new DirectoryControl();
+						directoryControl.EnablePresentation = false;
 
 						Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
 						form_ХарактеристикиНоменклатури.DirectoryPointerItem = запис.Характеристика;
@@ -293,6 +303,7 @@ namespace StorageAndTrade
 				case "ПакуванняНазва":
 					{
 						DirectoryControl directoryControl = new DirectoryControl();
+						directoryControl.EnablePresentation = false;
 
 						Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
 						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = запис.Пакування;
@@ -321,7 +332,17 @@ namespace StorageAndTrade
 
         private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-						
+			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
+
+			Записи запис = RecordsBindingList[e.RowIndex];
+
+			if (columnName == "Кількість" || columnName == "Ціна")
+            {
+				запис.Сума = запис.Кількість * запис.Ціна;
+				dataGridViewRecords.Refresh();
+			}
+
+			
 		}
 
         private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)

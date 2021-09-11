@@ -55,12 +55,14 @@ namespace StorageAndTrade
             // 
             // dataGridViewRecords
             // 
+            this.dataGridViewRecords.AllowUserToAddRows = false;
             this.dataGridViewRecords.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewRecords.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRecords.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRecords.Name = "dataGridViewRecords";
+            this.dataGridViewRecords.RowHeadersVisible = false;
             this.dataGridViewRecords.Size = new System.Drawing.Size(733, 219);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewRecords_CellBeginEdit);
