@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>13.09.2021 18:09:21</DateTimeSave>
+  <DateTimeSave>13.09.2021 18:37:37</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -2717,7 +2717,7 @@
         <Field>
           <Name>НомерДок</Name>
           <NameInTable>col_a2</NameInTable>
-          <Type>integer</Type>
+          <Type>string</Type>
           <Desc>НомерДок</Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
@@ -2934,6 +2934,33 @@
           </Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
+        <Field>
+          <Name>Менеджер</Name>
+          <NameInTable>col_d1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Користувачі</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>СтаттяРухуКоштів</Name>
+          <NameInTable>col_d2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.СтаттяРухуКоштів</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Каса</Name>
+          <NameInTable>col_d3</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Каси</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -3039,7 +3066,7 @@
             <Field>
               <Name>НомерРядка</Name>
               <NameInTable>col_b3</NameInTable>
-              <Type>string</Type>
+              <Type>integer</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>

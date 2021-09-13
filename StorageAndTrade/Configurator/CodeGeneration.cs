@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 13.09.2021 18:09:21
+ * Дата конфігурації: 13.09.2021 18:37:37
  *
  */
 
@@ -5442,10 +5442,10 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоступленняТоварівТаПослуг_Objest : DocumentObject
     {
         public ПоступленняТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a32",
-             new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9" }) 
+             new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1", "col_d2", "col_d3" }) 
         {
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Валюта = new Довідники.Валюти_Pointer();
             ГосподарськаОперація = 0;
             Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
@@ -5471,6 +5471,9 @@ namespace StorageAndTrade_1_0.Документи
             Кратність = 0;
             ЧасДоставкиЗ = DateTime.MinValue.TimeOfDay;
             ЧасДоставкиДо = DateTime.MinValue.TimeOfDay;
+            Менеджер = new Довідники.Користувачі_Pointer();
+            СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
+            Каса = new Довідники.Каси_Pointer();
             
             //Табличні частини
             Товари_TablePart = new ПоступленняТоварівТаПослуг_Товари_TablePart(this);
@@ -5482,7 +5485,7 @@ namespace StorageAndTrade_1_0.Документи
             if (BaseRead(uid))
             {
                 ДатаДок = (base.FieldValue["col_a1"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_a1"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_a2"] != DBNull.Value) ? (int)base.FieldValue["col_a2"] : 0;
+                НомерДок = base.FieldValue["col_a2"].ToString();
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_a3"]);
                 ГосподарськаОперація = (base.FieldValue["col_a4"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_a4"] : 0;
                 Підрозділ = new Довідники.СтруктураПідприємства_Pointer(base.FieldValue["col_a5"]);
@@ -5508,6 +5511,9 @@ namespace StorageAndTrade_1_0.Документи
                 Кратність = (base.FieldValue["col_c7"] != DBNull.Value) ? (int)base.FieldValue["col_c7"] : 0;
                 ЧасДоставкиЗ = (base.FieldValue["col_c8"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_c8"].ToString()) : DateTime.MinValue.TimeOfDay;
                 ЧасДоставкиДо = (base.FieldValue["col_c9"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_c9"].ToString()) : DateTime.MinValue.TimeOfDay;
+                Менеджер = new Довідники.Користувачі_Pointer(base.FieldValue["col_d1"]);
+                СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_d2"]);
+                Каса = new Довідники.Каси_Pointer(base.FieldValue["col_d3"]);
                 
                 BaseClear();
                 return true;
@@ -5545,6 +5551,9 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_c7"] = Кратність;
             base.FieldValue["col_c8"] = ЧасДоставкиЗ;
             base.FieldValue["col_c9"] = ЧасДоставкиДо;
+            base.FieldValue["col_d1"] = Менеджер.UnigueID.UGuid;
+            base.FieldValue["col_d2"] = СтаттяРухуКоштів.UnigueID.UGuid;
+            base.FieldValue["col_d3"] = Каса.UnigueID.UGuid;
             
             BaseSave();
 			
@@ -5581,6 +5590,9 @@ namespace StorageAndTrade_1_0.Документи
 			copy.Кратність = Кратність;
 			copy.ЧасДоставкиЗ = ЧасДоставкиЗ;
 			copy.ЧасДоставкиДо = ЧасДоставкиДо;
+			copy.Менеджер = Менеджер;
+			copy.СтаттяРухуКоштів = СтаттяРухуКоштів;
+			copy.Каса = Каса;
 			
 			return copy;
         }
@@ -5598,7 +5610,7 @@ namespace StorageAndTrade_1_0.Документи
         }
         
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Валюти_Pointer Валюта { get; set; }
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
         public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
@@ -5624,6 +5636,9 @@ namespace StorageAndTrade_1_0.Документи
         public int Кратність { get; set; }
         public TimeSpan ЧасДоставкиЗ { get; set; }
         public TimeSpan ЧасДоставкиДо { get; set; }
+        public Довідники.Користувачі_Pointer Менеджер { get; set; }
+        public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
+        public Довідники.Каси_Pointer Каса { get; set; }
         
         //Табличні частини
         public ПоступленняТоварівТаПослуг_Товари_TablePart Товари_TablePart { get; set; }
@@ -5682,6 +5697,9 @@ namespace StorageAndTrade_1_0.Документи
         public const string Кратність = "col_c7";
         public const string ЧасДоставкиЗ = "col_c8";
         public const string ЧасДоставкиДо = "col_c9";
+        public const string Менеджер = "col_d1";
+        public const string СтаттяРухуКоштів = "col_d2";
+        public const string Каса = "col_d3";
 		
         public ПоступленняТоварівТаПослуг_Select() : base(Config.Kernel, "tab_a32") { }
         
@@ -5744,7 +5762,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer(fieldValue["col_a7"]);
                 record.Скидка = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
                 record.Підрозділ = new Довідники.СтруктураПідприємства_Pointer(fieldValue["col_b2"]);
-                record.НомерРядка = fieldValue["col_b3"].ToString();
+                record.НомерРядка = (fieldValue["col_b3"] != DBNull.Value) ? (int)fieldValue["col_b3"] : 0;
                 
                 Records.Add(record);
             }
@@ -5808,13 +5826,13 @@ namespace StorageAndTrade_1_0.Документи
                 ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer();
                 Скидка = 0;
                 Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
-                НомерРядка = "";
+                НомерРядка = 0;
                 
             }
         
             
             public Record(
-                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, Довідники.Склади_Pointer _Склад = null, Документи.ЗамовленняПостачальнику_Pointer _ЗамовленняПостачальнику = null, decimal _Скидка = 0, Довідники.СтруктураПідприємства_Pointer _Підрозділ = null, string _НомерРядка = "")
+                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, Довідники.Склади_Pointer _Склад = null, Документи.ЗамовленняПостачальнику_Pointer _ЗамовленняПостачальнику = null, decimal _Скидка = 0, Довідники.СтруктураПідприємства_Pointer _Підрозділ = null, int _НомерРядка = 0)
             {
                 Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = _ХарактеристикаНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
@@ -5841,7 +5859,7 @@ namespace StorageAndTrade_1_0.Документи
             public Документи.ЗамовленняПостачальнику_Pointer ЗамовленняПостачальнику { get; set; }
             public decimal Скидка { get; set; }
             public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
-            public string НомерРядка { get; set; }
+            public int НомерРядка { get; set; }
             
         }
     }

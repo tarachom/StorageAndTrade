@@ -69,6 +69,24 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ПоступленняТоварівТаПослугДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоступленняТоварівТаПослугДокумент.designer.cs">
+      <DependentUpon>Form_ПоступленняТоварівТаПослугДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ПоступленняТоварівТаПослугЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоступленняТоварівТаПослугЖурнал.designer.cs">
+      <DependentUpon>Form_ПоступленняТоварівТаПослугЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -340,6 +358,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоступленняТоварівТаПослугДокумент.resx">
+      <DependentUpon>Form_ПоступленняТоварівТаПослугДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоступленняТоварівТаПослугЖурнал.resx">
+      <DependentUpon>Form_ПоступленняТоварівТаПослугЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs</DependentUpon>
