@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>13.09.2021 17:22:17</DateTimeSave>
+  <DateTimeSave>13.09.2021 17:32:16</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3358,7 +3358,7 @@
         <Field>
           <Name>НомерДок</Name>
           <NameInTable>col_d1</NameInTable>
-          <Type>integer</Type>
+          <Type>string</Type>
           <Desc>НомерДок</Desc>
           <IsPresentation>0</IsPresentation>
         </Field>

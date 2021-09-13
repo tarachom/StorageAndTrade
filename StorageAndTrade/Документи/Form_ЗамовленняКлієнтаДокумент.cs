@@ -90,7 +90,7 @@ namespace StorageAndTrade
 			{
 				замовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
 
-				Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.ДокументОбєкт = замовленняКлієнта_Objest;
+				ЗамовленняКлієнта_ТабличнаЧастина_Товари.ДокументОбєкт = замовленняКлієнта_Objest;
 
 				if (IsNew.Value)
 				{
@@ -125,7 +125,7 @@ namespace StorageAndTrade
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(замовленняКлієнта_Objest.Договір.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(замовленняКлієнта_Objest.Підрозділ.UnigueID);
 
-						Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
+						ЗамовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
@@ -155,7 +155,7 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 					замовленняКлієнта_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 
-					Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
+					ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 
 					замовленняКлієнта_Objest.Save();
 				}

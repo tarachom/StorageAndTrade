@@ -59,7 +59,7 @@ namespace StorageAndTrade
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари = new StorageAndTrade.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари();
+            this.ЗамовленняКлієнта_ТабличнаЧастина_Товари = new StorageAndTrade.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -349,7 +349,7 @@ namespace StorageAndTrade
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари);
+            this.tabPage1.Controls.Add(this.ЗамовленняКлієнта_ТабличнаЧастина_Товари);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -360,12 +360,12 @@ namespace StorageAndTrade
             // 
             // Form_замовленняКлієнта_ТабличнаЧастина_Товари
             // 
-            this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
-            this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.Name = "Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари";
-            this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 241);
-            this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.TabIndex = 0;
-            this.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.ДокументОбєкт = null;
+            this.ЗамовленняКлієнта_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ЗамовленняКлієнта_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
+            this.ЗамовленняКлієнта_ТабличнаЧастина_Товари.Name = "ЗамовленняКлієнта_ТабличнаЧастина_Товари";
+            this.ЗамовленняКлієнта_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 241);
+            this.ЗамовленняКлієнта_ТабличнаЧастина_Товари.TabIndex = 0;
+            this.ЗамовленняКлієнта_ТабличнаЧастина_Товари.ДокументОбєкт = null;
             // 
             // panel3
             // 
@@ -433,6 +433,6 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Договір;
         private System.Windows.Forms.Label label12;
         private DirectoryControl directoryControl_Підрозділ;
-        private StorageAndTrade.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари;
+        private StorageAndTrade.Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари ЗамовленняКлієнта_ТабличнаЧастина_Товари;
     }
 }

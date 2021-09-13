@@ -47,7 +47,7 @@ namespace StorageAndTrade
 		/// <summary>
 		/// Форма списку
 		/// </summary>
-        public Form_ЗамовленняКлієнтаЖурнал OwnerForm { get; set; }
+        public Form_РеалізаціяТоварівТаПослугЖурнал OwnerForm { get; set; }
         
 		/// <summary>
 		/// Чи це новий
@@ -62,13 +62,13 @@ namespace StorageAndTrade
 		/// <summary>
 		/// Обєкт запису
 		/// </summary>
-        private Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest { get; set; }
+        private Документи.РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest { get; set; }
 
         private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//Статус
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиЗамовленьКлієнтів"].Fields.Values)
-				comboBox_Статус.Items.Add((Перелічення.СтатусиЗамовленьКлієнтів)field.Value);
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиРеалізаціїТоварівТаПослуг"].Fields.Values)
+				comboBox_Статус.Items.Add((Перелічення.СтатусиРеалізаціїТоварівТаПослуг)field.Value);
 
 			//Форма Оплати
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ФормаОплати"].Fields.Values)
@@ -88,9 +88,9 @@ namespace StorageAndTrade
 
 			if (IsNew.HasValue)
 			{
-				замовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
+				реалізаціяТоварівТаПослуг_Objest = new Документи.РеалізаціяТоварівТаПослуг_Objest();
 
-				Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.ДокументОбєкт = замовленняКлієнта_Objest;
+				РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ДокументОбєкт = реалізаціяТоварівТаПослуг_Objest;
 
 				if (IsNew.Value)
 				{
@@ -108,24 +108,24 @@ namespace StorageAndTrade
 				}
 				else
 				{
-					if (замовленняКлієнта_Objest.Read(new UnigueID(Uid)))
+					if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + замовленняКлієнта_Objest.НомерДок;
+						this.Text += " - Редагування запису - " + реалізаціяТоварівТаПослуг_Objest.НомерДок;
 
-						textBox_НомерДок.Text = замовленняКлієнта_Objest.НомерДок;
-						dateTimePicker_ДатаДок.Value = замовленняКлієнта_Objest.ДатаДок;
-						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(замовленняКлієнта_Objest.Контрагент.UnigueID);
-						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(замовленняКлієнта_Objest.Організація.UnigueID);
-						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(замовленняКлієнта_Objest.Валюта.UnigueID);
-						directoryControl_Склад.DirectoryPointerItem = new Довідники.Склади_Pointer(замовленняКлієнта_Objest.Склад.UnigueID);
-						comboBox_Статус.SelectedItem = замовленняКлієнта_Objest.Статус;
-						comboBox_ФормаОплати.SelectedItem = замовленняКлієнта_Objest.ФормаОплати;
-						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(замовленняКлієнта_Objest.Каса.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = замовленняКлієнта_Objest.ГосподарськаОперація;
-						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(замовленняКлієнта_Objest.Договір.UnigueID);
-						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(замовленняКлієнта_Objest.Підрозділ.UnigueID);
+						textBox_НомерДок.Text = реалізаціяТоварівТаПослуг_Objest.НомерДок;
+						dateTimePicker_ДатаДок.Value = реалізаціяТоварівТаПослуг_Objest.ДатаДок;
+						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(реалізаціяТоварівТаПослуг_Objest.Контрагент.UnigueID);
+						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(реалізаціяТоварівТаПослуг_Objest.Організація.UnigueID);
+						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(реалізаціяТоварівТаПослуг_Objest.Валюта.UnigueID);
+						directoryControl_Склад.DirectoryPointerItem = new Довідники.Склади_Pointer(реалізаціяТоварівТаПослуг_Objest.Склад.UnigueID);
+						comboBox_Статус.SelectedItem = реалізаціяТоварівТаПослуг_Objest.Статус;
+						comboBox_ФормаОплати.SelectedItem = реалізаціяТоварівТаПослуг_Objest.ФормаОплати;
+						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(реалізаціяТоварівТаПослуг_Objest.Каса.UnigueID);
+						comboBox_ГосподарськаОперація.SelectedItem = реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація;
+						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(реалізаціяТоварівТаПослуг_Objest.Договір.UnigueID);
+						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(реалізаціяТоварівТаПослуг_Objest.Підрозділ.UnigueID);
 
-						Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
+						РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
@@ -138,26 +138,26 @@ namespace StorageAndTrade
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
-					замовленняКлієнта_Objest.New();
+					реалізаціяТоварівТаПослуг_Objest.New();
 
 				try
 				{
-					замовленняКлієнта_Objest.НомерДок = textBox_НомерДок.Text;
-					замовленняКлієнта_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
-					замовленняКлієнта_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-					замовленняКлієнта_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
-					замовленняКлієнта_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
-					замовленняКлієнта_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
-					замовленняКлієнта_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиЗамовленьКлієнтів)comboBox_Статус.SelectedItem : 0;
-					замовленняКлієнта_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
-					замовленняКлієнта_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-					замовленняКлієнта_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
-					замовленняКлієнта_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-					замовленняКлієнта_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+					реалізаціяТоварівТаПослуг_Objest.НомерДок = textBox_НомерДок.Text;
+					реалізаціяТоварівТаПослуг_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+					реалізаціяТоварівТаПослуг_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+					реалізаціяТоварівТаПослуг_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
+					реалізаціяТоварівТаПослуг_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+					реалізаціяТоварівТаПослуг_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
+					реалізаціяТоварівТаПослуг_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиРеалізаціїТоварівТаПослуг)comboBox_Статус.SelectedItem : 0;
+					реалізаціяТоварівТаПослуг_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
+					реалізаціяТоварівТаПослуг_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+					реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+					реалізаціяТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
+					реалізаціяТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 
-					Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
+					РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
 
-					замовленняКлієнта_Objest.Save();
+					реалізаціяТоварівТаПослуг_Objest.Save();
 				}
 				catch (Exception exp)
 				{

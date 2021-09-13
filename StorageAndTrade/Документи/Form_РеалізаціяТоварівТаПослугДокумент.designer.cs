@@ -59,10 +59,12 @@ namespace StorageAndTrade
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари = new StorageAndTrade.Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -354,6 +356,7 @@ namespace StorageAndTrade
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -361,6 +364,15 @@ namespace StorageAndTrade
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Товари";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари
+            // 
+            this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
+            this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.Name = "РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари";
+            this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 241);
+            this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.TabIndex = 0;
+            this.РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ДокументОбєкт = null;
             // 
             // panel3
             // 
@@ -383,12 +395,13 @@ namespace StorageAndTrade
             this.Controls.Add(this.panel1);
             this.Name = "Form_РеалізаціяТоварівТаПослугДокумент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Замовлення клієнтів";
+            this.Text = "Реалізація товарів та послуг";
             this.Load += new System.EventHandler(this.FormAddCash_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -427,5 +440,6 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Договір;
         private System.Windows.Forms.Label label12;
         private DirectoryControl directoryControl_Підрозділ;
+        private StorageAndTrade.Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари;
     }
 }
