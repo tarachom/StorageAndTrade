@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 13.09.2021 19:29:54
+ * Дата конфігурації: 13.09.2021 19:37:29
  *
  */
 
@@ -8499,11 +8499,6 @@ namespace StorageAndTrade_1_0.Документи
     
     #endregion
     
-}
-
-namespace StorageAndTrade_1_0.Журнали
-{
-
 }
 
 namespace StorageAndTrade_1_0.РегістриВідомостей
