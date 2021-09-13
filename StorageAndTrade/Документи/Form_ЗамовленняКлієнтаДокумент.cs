@@ -66,60 +66,67 @@ namespace StorageAndTrade
 
 		#region CallBack
 
-		public void CallBack_Контрагент(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Контрагент(DirectoryPointer directoryPointerItem)
 		{
 			Form_Контрагенти form_Контрагенти = new Form_Контрагенти();
 			form_Контрагенти.DirectoryPointerItem = directoryPointerItem;
-			form_Контрагенти.DirectoryControlItem = directoryControl_Контрагент;
 			form_Контрагенти.ShowDialog();
+
+			return form_Контрагенти.DirectoryPointerItem;
 		}
 
-		public void CallBack_Організація(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Організація(DirectoryPointer directoryPointerItem)
 		{
 			Form_Організації form_Організації = new Form_Організації();
 			form_Організації.DirectoryPointerItem = directoryPointerItem;
-			form_Організації.DirectoryControlItem = directoryControl_Організація;
 			form_Організації.ShowDialog();
+
+			return form_Організації.DirectoryPointerItem;
 		}
 
-		public void CallBack_Валюта(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Валюта(DirectoryPointer directoryPointerItem)
 		{
 			Form_Валюти form_Валюти = new Form_Валюти();
 			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.DirectoryControlItem = directoryControl_Валюта;
 			form_Валюти.ShowDialog();
+
+			return form_Валюти.DirectoryPointerItem;
 		}
 
-		public void CallBack_Склад(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Склад(DirectoryPointer directoryPointerItem)
 		{
 			Form_Склади form_Склади = new Form_Склади();
 			form_Склади.DirectoryPointerItem = directoryPointerItem;
-			form_Склади.DirectoryControlItem = directoryControl_Склад;
 			form_Склади.ShowDialog();
+
+			return form_Склади.DirectoryPointerItem;
 		}
 
-		public void CallBack_Каса(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Каса(DirectoryPointer directoryPointerItem)
 		{
 			Form_Каси form_Каси = new Form_Каси();
 			form_Каси.DirectoryPointerItem = directoryPointerItem;
-			form_Каси.DirectoryControlItem = directoryControl_Каса;
 			form_Каси.ShowDialog();
+
+			return form_Каси.DirectoryPointerItem;
 		}
 
-		public void CallBack_Договір(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Договір(DirectoryPointer directoryPointerItem)
 		{
 			Form_ДоговориКонтрагентів form_ДоговориКонтрагентів = new Form_ДоговориКонтрагентів();
 			form_ДоговориКонтрагентів.DirectoryPointerItem = directoryPointerItem;
-			form_ДоговориКонтрагентів.DirectoryControlItem = directoryControl_Договір;
 			form_ДоговориКонтрагентів.ShowDialog();
+
+			return form_ДоговориКонтрагентів.DirectoryPointerItem;
 		}
 
-		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
 		{
 			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
 			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
-			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
 			form_СтруктураПідприємства.ShowDialog();
+
+			return form_СтруктураПідприємства.DirectoryPointerItem;
 		}
 
         #endregion

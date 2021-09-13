@@ -275,67 +275,46 @@ namespace StorageAndTrade
 			{
 				case "НоменклатураНазва":
 					{
-						DirectoryControl directoryControl = new DirectoryControl();
-						directoryControl.EnablePresentation = false;
-
 						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
 						form_Номенклатура.DirectoryPointerItem = запис.Номенклатура;
-						form_Номенклатура.DirectoryControlItem = directoryControl;
 						form_Номенклатура.ShowDialog();
 
-						if (directoryControl.DirectoryPointerItem != null)
+						запис.Номенклатура = (Довідники.Номенклатура_Pointer)form_Номенклатура.DirectoryPointerItem;
+
+						Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
+						запис.НоменклатураНазва = номенклатура_Objest.Назва;
+						запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
+
+						Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
+						if (пакуванняОдиниціВиміру_Objest != null)
 						{
-							запис.Номенклатура = (Довідники.Номенклатура_Pointer)directoryControl.DirectoryPointerItem;
-
-							Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
-							запис.НоменклатураНазва = номенклатура_Objest.Назва;
-							запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
-
-							Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
-							if (пакуванняОдиниціВиміру_Objest != null)
-                            {
-								запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
-								запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
-							}
-
-							dataGridViewRecords.Refresh();
+							запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
+							запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
 						}
+
+						dataGridViewRecords.Refresh();
 
 						break;
 					}
 				case "ХарактеристикаНазва":
 					{
-						DirectoryControl directoryControl = new DirectoryControl();
-						directoryControl.EnablePresentation = false;
-
 						Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
 						form_ХарактеристикиНоменклатури.DirectoryPointerItem = запис.Характеристика;
-						form_ХарактеристикиНоменклатури.DirectoryControlItem = directoryControl;
 						form_ХарактеристикиНоменклатури.ShowDialog();
 
-						if (directoryControl.DirectoryPointerItem != null)
-						{
-							запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)directoryControl.DirectoryPointerItem;
-							запис.ХарактеристикаНазва = запис.Характеристика.GetPresentation();
-						}
+						запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)form_ХарактеристикиНоменклатури.DirectoryPointerItem;
+						запис.ХарактеристикаНазва = запис.Характеристика.GetPresentation();
 
 						break;
 					}
 				case "ПакуванняНазва":
 					{
-						DirectoryControl directoryControl = new DirectoryControl();
-						directoryControl.EnablePresentation = false;
-
 						Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
 						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = запис.Пакування;
-						form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl;
 						form_ПакуванняОдиниціВиміру.ShowDialog();
 
-						if (directoryControl.DirectoryPointerItem != null)
-						{
-							запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl.DirectoryPointerItem;
-							запис.ПакуванняНазва = запис.Пакування.GetPresentation();
-						}
+						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
+						запис.ПакуванняНазва = запис.Пакування.GetPresentation();
 
 						break;
 					}

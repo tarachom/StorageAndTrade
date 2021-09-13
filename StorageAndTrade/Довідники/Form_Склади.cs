@@ -43,19 +43,7 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
-		#region DirectoryControl OpenForm
-
-		/// <summary>
-		/// Ссилка на елемент довідника
-		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-		/// <summary>
-		/// Контрол який викликав вибір
-		/// </summary>
-		public DirectoryControl DirectoryControlItem { get; set; }
-
-        #endregion
 
         private void FormCash_Load(object sender, EventArgs e)
         {
@@ -128,9 +116,9 @@ namespace StorageAndTrade
 			{
 				string Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString();
 
-				if (DirectoryControlItem != null)
+				if (DirectoryPointerItem != null)
 				{
-					DirectoryControlItem.DirectoryPointerItem = new Довідники.Склади_Pointer(new UnigueID(Uid));
+					DirectoryPointerItem = new Довідники.Склади_Pointer(new UnigueID(Uid));
 					this.Close();
 				}
 				else

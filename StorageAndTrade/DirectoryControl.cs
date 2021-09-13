@@ -31,16 +31,12 @@ namespace StorageAndTrade
 		public DirectoryControl()
 		{
 			InitializeComponent();
-
-			EnablePresentation = true;
 		}
 
 		/// <summary>
 		/// Зворотня функція для вибору із списку
 		/// </summary>
-		public Action<DirectoryPointer> CallBack { get; set; }
-
-		public bool EnablePresentation { get; set; }
+		public Func<DirectoryPointer, DirectoryPointer> CallBack { get; set; }
 
 		private DirectoryPointer mDirectoryPointerItem;
 
@@ -55,7 +51,7 @@ namespace StorageAndTrade
 			{
 				mDirectoryPointerItem = value;
 
-				if (mDirectoryPointerItem != null && EnablePresentation)
+				if (mDirectoryPointerItem != null)
 					ReadPresentation();
 				else
 					textBoxControl.Text = "";
@@ -75,7 +71,12 @@ namespace StorageAndTrade
 		private void buttonOpen_Click(object sender, EventArgs e)
 		{
 			if (CallBack != null)
-				CallBack.Invoke(DirectoryPointerItem);
+            {
+				if (mDirectoryPointerItem != null)
+					DirectoryPointerItem =  CallBack.Invoke(DirectoryPointerItem);
+                else
+					throw new Exception("DirectoryControl Error: DirectoryPointerItem null");
+			}
 		}
 
         private void buttonClear_Click(object sender, EventArgs e)

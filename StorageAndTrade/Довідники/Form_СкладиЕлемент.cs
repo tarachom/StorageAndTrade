@@ -63,28 +63,31 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Склади_Objest склади_Objest { get; set; }
 
-		public void CallBack_Відповідальний(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Відповідальний(DirectoryPointer directoryPointerItem)
 		{
 			Form_ФізичніОсоби form_ФізичніОсоби = new Form_ФізичніОсоби();
 			form_ФізичніОсоби.DirectoryPointerItem = directoryPointerItem;
-			form_ФізичніОсоби.DirectoryControlItem = directoryControl_Відповідальний;
 			form_ФізичніОсоби.ShowDialog();
+
+			return form_ФізичніОсоби.DirectoryPointerItem;
 		}
 
-		public void CallBack_ВидЦін(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_ВидЦін(DirectoryPointer directoryPointerItem)
 		{
 			Form_ВидиЦін form_ВидиЦін = new Form_ВидиЦін();
 			form_ВидиЦін.DirectoryPointerItem = directoryPointerItem;
-			form_ВидиЦін.DirectoryControlItem = directoryControl_ВидЦін;
 			form_ВидиЦін.ShowDialog();
+
+			return form_ВидиЦін.DirectoryPointerItem;
 		}
 
-		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
 		{
 			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
 			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
-			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
 			form_СтруктураПідприємства.ShowDialog();
+
+			return form_СтруктураПідприємства.DirectoryPointerItem;
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)

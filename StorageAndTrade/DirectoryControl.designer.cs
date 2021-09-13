@@ -43,7 +43,7 @@ namespace StorageAndTrade
             this.textBoxControl.Multiline = true;
             this.textBoxControl.Name = "textBoxControl";
             this.textBoxControl.ReadOnly = true;
-            this.textBoxControl.Size = new System.Drawing.Size(265, 22);
+            this.textBoxControl.Size = new System.Drawing.Size(269, 22);
             this.textBoxControl.TabIndex = 0;
             // 
             // buttonOpen
@@ -76,7 +76,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.textBoxControl);
             this.Name = "DirectoryControl";
-            this.Size = new System.Drawing.Size(344, 27);
+            this.Size = new System.Drawing.Size(341, 27);
             this.ResumeLayout(false);
             this.PerformLayout();
 

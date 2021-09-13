@@ -63,28 +63,31 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Номенклатура_Objest номенклатура_Objest { get; set; }
 
-		public void CallBack_Виробник(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Виробник(DirectoryPointer directoryPointerItem)
 		{
 			Form_Виробники form_Виробники = new Form_Виробники();
 			form_Виробники.DirectoryPointerItem = directoryPointerItem;
-			form_Виробники.DirectoryControlItem = directoryControl_Виробник;
 			form_Виробники.ShowDialog();
+
+			return form_Виробники.DirectoryPointerItem;
 		}
 
-		public void CallBack_ВидНоменклатури(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_ВидНоменклатури(DirectoryPointer directoryPointerItem)
 		{
 			Form_ВидиНоменклатури form_ВидиНоменклатури = new Form_ВидиНоменклатури();
 			form_ВидиНоменклатури.DirectoryPointerItem = directoryPointerItem;
-			form_ВидиНоменклатури.DirectoryControlItem = directoryControl_ВидНоменклатури;
 			form_ВидиНоменклатури.ShowDialog();
+
+			return form_ВидиНоменклатури.DirectoryPointerItem;
 		}
 
-		public void CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
 		{
 			Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
 			form_ПакуванняОдиниціВиміру.DirectoryPointerItem = directoryPointerItem;
-			form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl_ОдиницяВиміру;
 			form_ПакуванняОдиниціВиміру.ShowDialog();
+
+			return form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)

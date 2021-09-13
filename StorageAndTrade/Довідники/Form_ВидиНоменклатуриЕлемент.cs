@@ -63,12 +63,13 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ВидиНоменклатури_Objest видиНоменклатури_Objest { get; set; }
 
-		public void CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
 		{
 			Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
 			form_ПакуванняОдиниціВиміру.DirectoryPointerItem = directoryPointerItem;
-			form_ПакуванняОдиниціВиміру.DirectoryControlItem = directoryControl_ОдиницяВиміру;
 			form_ПакуванняОдиниціВиміру.ShowDialog();
+
+			return form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)

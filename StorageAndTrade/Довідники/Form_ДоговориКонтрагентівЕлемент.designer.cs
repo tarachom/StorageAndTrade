@@ -47,6 +47,8 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунок = new StorageAndTrade.DirectoryControl();
             this.comboBox_ТипДоговору = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -196,7 +198,6 @@ namespace StorageAndTrade
             // comboBox_ТипДоговору
             // 
             this.comboBox_ТипДоговору.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ТипДоговору.FormattingEnabled = true;
             this.comboBox_ТипДоговору.Location = new System.Drawing.Point(176, 222);
             this.comboBox_ТипДоговору.Name = "comboBox_ТипДоговору";
             this.comboBox_ТипДоговору.Size = new System.Drawing.Size(257, 21);
@@ -211,11 +212,31 @@ namespace StorageAndTrade
             this.label8.TabIndex = 47;
             this.label8.Text = "Тип договору:";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(17, 270);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 13);
+            this.label9.TabIndex = 50;
+            this.label9.Text = "Номенклатура:";
+            // 
+            // directoryControl_Номенклатура
+            // 
+            this.directoryControl_Номенклатура.CallBack = null;
+            this.directoryControl_Номенклатура.DirectoryPointerItem = null;
+            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(110, 263);
+            this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
+            this.directoryControl_Номенклатура.Size = new System.Drawing.Size(438, 27);
+            this.directoryControl_Номенклатура.TabIndex = 49;
+            // 
             // Form_ДоговориКонтрагентівЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 357);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.directoryControl_Номенклатура);
             this.Controls.Add(this.comboBox_ТипДоговору);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox_ГосподарськаОперація);
@@ -264,5 +285,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox_ТипДоговору;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private DirectoryControl directoryControl_Номенклатура;
     }
 }

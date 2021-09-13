@@ -63,40 +63,56 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ДоговориКонтрагентів_Objest договориКонтрагентів_Objest { get; set; }
 
-		public void CallBack_БанківськийРахунок(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_БанківськийРахунок(DirectoryPointer directoryPointerItem)
 		{
 			Form_БанківськіРахункиОрганізацій form_БанківськіРахункиОрганізацій = new Form_БанківськіРахункиОрганізацій();
 			form_БанківськіРахункиОрганізацій.DirectoryPointerItem = directoryPointerItem;
-			form_БанківськіРахункиОрганізацій.DirectoryControlItem = directoryControl_БанківськийРахунок;
 			form_БанківськіРахункиОрганізацій.ShowDialog();
+
+			return form_БанківськіРахункиОрганізацій.DirectoryPointerItem;
 		}
 
-		public void CallBack_БанківськийРахунокКонтрагента(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_БанківськийРахунокКонтрагента(DirectoryPointer directoryPointerItem)
 		{
 			Form_БанківськіРахункиКонтрагентів form_БанківськіРахункиКонтрагентів = new Form_БанківськіРахункиКонтрагентів();
 			form_БанківськіРахункиКонтрагентів.DirectoryPointerItem = directoryPointerItem;
-			form_БанківськіРахункиКонтрагентів.DirectoryControlItem = directoryControl_БанківськийРахунокКонтрагента;
 			form_БанківськіРахункиКонтрагентів.ShowDialog();
+
+			return form_БанківськіРахункиКонтрагентів.DirectoryPointerItem;
 		}
 
-		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
 		{
 			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
 			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
-			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
 			form_СтруктураПідприємства.ShowDialog();
+
+			return form_СтруктураПідприємства.DirectoryPointerItem;
 		}
 
-		public void CallBack_Контрагент(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Контрагент(DirectoryPointer directoryPointerItem)
 		{
 			Form_Контрагенти form_Контрагенти = new Form_Контрагенти();
 			form_Контрагенти.DirectoryPointerItem = directoryPointerItem;
-			form_Контрагенти.DirectoryControlItem = directoryControl_Контрагент;
 			form_Контрагенти.ShowDialog();
+
+			return form_Контрагенти.DirectoryPointerItem;
+		}
+
+		public DirectoryPointer CallBack_Номенклатура(DirectoryPointer directoryPointerItem)
+		{
+			Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
+			form_Номенклатура.DirectoryPointerItem = directoryPointerItem;
+			form_Номенклатура.ShowDialog();
+
+			return form_Номенклатура.DirectoryPointerItem;
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			directoryControl_Номенклатура.CallBack = CallBack_Номенклатура;
+			directoryControl_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer();
+
 			//Статус
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиДоговорівКонтрагентів"].Fields.Values)
 				comboBox_Статус.Items.Add((Перелічення.СтатусиДоговорівКонтрагентів)field.Value);

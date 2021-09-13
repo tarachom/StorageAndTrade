@@ -63,12 +63,13 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.СтруктураПідприємства_Objest структураПідприємства_Objest { get; set; }
 
-		public void CallBack_Керівник(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Керівник(DirectoryPointer directoryPointerItem)
 		{
 			Form_ФізичніОсоби form_ФізичніОсоби = new Form_ФізичніОсоби();
 			form_ФізичніОсоби.DirectoryPointerItem = directoryPointerItem;
-			form_ФізичніОсоби.DirectoryControlItem = directoryControl_Керівник;
 			form_ФізичніОсоби.ShowDialog();
+
+			return form_ФізичніОсоби.DirectoryPointerItem;
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)

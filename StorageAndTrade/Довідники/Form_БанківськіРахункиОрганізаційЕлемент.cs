@@ -63,28 +63,31 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.БанківськіРахункиОрганізацій_Objest банківськіРахункиОрганізацій_Objest { get; set; }
 
-		public void CallBack_Валюта(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Валюта(DirectoryPointer directoryPointerItem)
 		{
 			Form_Валюти form_Валюти = new Form_Валюти();
 			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.DirectoryControlItem = directoryControl_Валюта;
 			form_Валюти.ShowDialog();
+
+			return form_Валюти.DirectoryPointerItem;
 		}
 
-		public void CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
 		{
 			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
 			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
-			form_СтруктураПідприємства.DirectoryControlItem = directoryControl_Підрозділ;
 			form_СтруктураПідприємства.ShowDialog();
+
+			return form_СтруктураПідприємства.DirectoryPointerItem;
 		}
 
-		public void CallBack_Організація(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_Організація(DirectoryPointer directoryPointerItem)
 		{
 			Form_Організації form_Організації = new Form_Організації();
 			form_Організації.DirectoryPointerItem = directoryPointerItem;
-			form_Організації.DirectoryControlItem = directoryControl_Організація;
 			form_Організації.ShowDialog();
+
+			return form_Організації.DirectoryPointerItem;
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)

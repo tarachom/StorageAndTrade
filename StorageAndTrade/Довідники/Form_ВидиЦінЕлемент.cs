@@ -67,12 +67,13 @@ namespace StorageAndTrade
 		/// Зворотня функція для вибору із списку
 		/// </summary>
 		/// <param name="directoryPointerItem"></param>
-		public void CallBack_DirectoryControl_Open_FormCurrency(DirectoryPointer directoryPointerItem)
+		public DirectoryPointer CallBack_DirectoryControl_Open_FormCurrency(DirectoryPointer directoryPointerItem)
 		{
 			Form_Валюти form_Валюти = new Form_Валюти();
 			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.DirectoryControlItem = directoryControl1;
 			form_Валюти.ShowDialog();
+
+			return form_Валюти.DirectoryPointerItem;
 		}
 
 		private void FormAddCash_Load(object sender, EventArgs e)

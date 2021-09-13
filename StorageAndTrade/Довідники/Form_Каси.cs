@@ -133,9 +133,9 @@ namespace StorageAndTrade
 			{
 				string Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString();
 
-				if (DirectoryControlItem != null)
+				if (DirectoryPointerItem != null)
 				{
-					DirectoryControlItem.DirectoryPointerItem = new Довідники.Каси_Pointer(new UnigueID(Uid));
+					DirectoryPointerItem = new Довідники.Каси_Pointer(new UnigueID(Uid));
 					this.Close();
 				}
 				else
