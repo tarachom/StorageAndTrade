@@ -51,6 +51,7 @@ namespace StorageAndTrade
             this.документиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.замовленняКлієнтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.реалізаціяТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.замовленняПостачальникуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -229,7 +230,8 @@ namespace StorageAndTrade
             // 
             this.документиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.замовленняКлієнтаToolStripMenuItem,
-            this.реалізаціяТоварівТаПослугToolStripMenuItem});
+            this.реалізаціяТоварівТаПослугToolStripMenuItem,
+            this.замовленняПостачальникуToolStripMenuItem});
             this.документиToolStripMenuItem.Name = "документиToolStripMenuItem";
             this.документиToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.документиToolStripMenuItem.Text = "Документи";
@@ -249,6 +251,14 @@ namespace StorageAndTrade
             this.реалізаціяТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
             this.реалізаціяТоварівТаПослугToolStripMenuItem.Text = "Реалізація товарів та послуг";
             this.реалізаціяТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.реалізаціяТоварівТаПослугToolStripMenuItem_Click);
+            // 
+            // замовленняПостачальникуToolStripMenuItem
+            // 
+            this.замовленняПостачальникуToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
+            this.замовленняПостачальникуToolStripMenuItem.Name = "замовленняПостачальникуToolStripMenuItem";
+            this.замовленняПостачальникуToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.замовленняПостачальникуToolStripMenuItem.Text = "Замовлення постачальнику";
+            this.замовленняПостачальникуToolStripMenuItem.Click += new System.EventHandler(this.замовленняПостачальникуToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -291,6 +301,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem документиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem замовленняКлієнтаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem реалізаціяТоварівТаПослугToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem замовленняПостачальникуToolStripMenuItem;
     }
 }
 

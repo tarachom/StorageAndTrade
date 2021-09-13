@@ -69,6 +69,24 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ЗамовленняПостачальникуДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ЗамовленняПостачальникуДокумент.designer.cs">
+      <DependentUpon>Form_ЗамовленняПостачальникуДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ЗамовленняПостачальникуЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ЗамовленняПостачальникуЖурнал.designer.cs">
+      <DependentUpon>Form_ЗамовленняПостачальникуЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -322,6 +340,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ЗамовленняПостачальникуДокумент.resx">
+      <DependentUpon>Form_ЗамовленняПостачальникуДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ЗамовленняПостачальникуЖурнал.resx">
+      <DependentUpon>Form_ЗамовленняПостачальникуЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.cs</DependentUpon>

@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>13.09.2021 17:32:16</DateTimeSave>
+  <DateTimeSave>13.09.2021 18:09:21</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -2336,6 +2336,38 @@
         </Field>
       </Fields>
     </Enum>
+    <Enum>
+      <Name>СтатусиЗамовленьПостачальникам</Name>
+      <Desc>
+      </Desc>
+      <SerialNumber>4</SerialNumber>
+      <Fields>
+        <Field>
+          <Name>НеУзгоджений</Name>
+          <Value>1</Value>
+          <Desc>
+          </Desc>
+        </Field>
+        <Field>
+          <Name>Узгоджений</Name>
+          <Value>2</Value>
+          <Desc>
+          </Desc>
+        </Field>
+        <Field>
+          <Name>Підтверджений</Name>
+          <Value>3</Value>
+          <Desc>
+          </Desc>
+        </Field>
+        <Field>
+          <Name>Закритий</Name>
+          <Value>4</Value>
+          <Desc>
+          </Desc>
+        </Field>
+      </Fields>
+    </Enum>
   </Enums>
   <Documents>
     <Document>
@@ -2354,7 +2386,7 @@
         <Field>
           <Name>НомерДок</Name>
           <NameInTable>col_k1</NameInTable>
-          <Type>integer</Type>
+          <Type>string</Type>
           <Desc>НомерДок</Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
@@ -2517,6 +2549,33 @@
           <NameInTable>col_a6</NameInTable>
           <Type>enum</Type>
           <Pointer>Перелічення.ГосподарськіОперації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Статус</Name>
+          <NameInTable>col_b5</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.СтатусиЗамовленьПостачальникам</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>ФормаОплати</Name>
+          <NameInTable>col_b6</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ФормаОплати</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Менеджер</Name>
+          <NameInTable>col_b7</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Користувачі</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 13.09.2021 17:32:16
+ * Дата конфігурації: 13.09.2021 18:09:21
  *
  */
 
@@ -5025,6 +5025,17 @@ namespace StorageAndTrade_1_0.Перелічення
     }
     #endregion
     
+    #region ENUM "СтатусиЗамовленьПостачальникам"
+    
+    public enum СтатусиЗамовленьПостачальникам
+    {
+         НеУзгоджений = 1,
+         Узгоджений = 2,
+         Підтверджений = 3,
+         Закритий = 4
+    }
+    #endregion
+    
 }
 
 namespace StorageAndTrade_1_0.Документи
@@ -5036,10 +5047,10 @@ namespace StorageAndTrade_1_0.Документи
     public class ЗамовленняПостачальнику_Objest : DocumentObject
     {
         public ЗамовленняПостачальнику_Objest() : base(Config.Kernel, "tab_a25",
-             new string[] { "col_j9", "col_k1", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_a6" }) 
+             new string[] { "col_j9", "col_k1", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_a6", "col_b5", "col_b6", "col_b7" }) 
         {
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Контрагент = new Довідники.Контрагенти_Pointer();
             Організація = new Довідники.Організації_Pointer();
             Склад = new Довідники.Склади_Pointer();
@@ -5059,6 +5070,9 @@ namespace StorageAndTrade_1_0.Документи
             ЧасДоставкиДо = DateTime.MinValue.TimeOfDay;
             АдресаДоставки = "";
             ГосподарськаОперація = 0;
+            Статус = 0;
+            ФормаОплати = 0;
+            Менеджер = new Довідники.Користувачі_Pointer();
             
             //Табличні частини
             Товари_TablePart = new ЗамовленняПостачальнику_Товари_TablePart(this);
@@ -5070,7 +5084,7 @@ namespace StorageAndTrade_1_0.Документи
             if (BaseRead(uid))
             {
                 ДатаДок = (base.FieldValue["col_j9"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_j9"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_k1"] != DBNull.Value) ? (int)base.FieldValue["col_k1"] : 0;
+                НомерДок = base.FieldValue["col_k1"].ToString();
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_k2"]);
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_k3"]);
                 Склад = new Довідники.Склади_Pointer(base.FieldValue["col_k4"]);
@@ -5090,6 +5104,9 @@ namespace StorageAndTrade_1_0.Документи
                 ЧасДоставкиДо = (base.FieldValue["col_b3"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_b3"].ToString()) : DateTime.MinValue.TimeOfDay;
                 АдресаДоставки = base.FieldValue["col_b4"].ToString();
                 ГосподарськаОперація = (base.FieldValue["col_a6"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_a6"] : 0;
+                Статус = (base.FieldValue["col_b5"] != DBNull.Value) ? (Перелічення.СтатусиЗамовленьПостачальникам)base.FieldValue["col_b5"] : 0;
+                ФормаОплати = (base.FieldValue["col_b6"] != DBNull.Value) ? (Перелічення.ФормаОплати)base.FieldValue["col_b6"] : 0;
+                Менеджер = new Довідники.Користувачі_Pointer(base.FieldValue["col_b7"]);
                 
                 BaseClear();
                 return true;
@@ -5121,6 +5138,9 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_b3"] = ЧасДоставкиДо;
             base.FieldValue["col_b4"] = АдресаДоставки;
             base.FieldValue["col_a6"] = (int)ГосподарськаОперація;
+            base.FieldValue["col_b5"] = (int)Статус;
+            base.FieldValue["col_b6"] = (int)ФормаОплати;
+            base.FieldValue["col_b7"] = Менеджер.UnigueID.UGuid;
             
             BaseSave();
 			
@@ -5151,6 +5171,9 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ЧасДоставкиДо = ЧасДоставкиДо;
 			copy.АдресаДоставки = АдресаДоставки;
 			copy.ГосподарськаОперація = ГосподарськаОперація;
+			copy.Статус = Статус;
+			copy.ФормаОплати = ФормаОплати;
+			copy.Менеджер = Менеджер;
 			
 			return copy;
         }
@@ -5168,7 +5191,7 @@ namespace StorageAndTrade_1_0.Документи
         }
         
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.Склади_Pointer Склад { get; set; }
@@ -5188,6 +5211,9 @@ namespace StorageAndTrade_1_0.Документи
         public TimeSpan ЧасДоставкиДо { get; set; }
         public string АдресаДоставки { get; set; }
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+        public Перелічення.СтатусиЗамовленьПостачальникам Статус { get; set; }
+        public Перелічення.ФормаОплати ФормаОплати { get; set; }
+        public Довідники.Користувачі_Pointer Менеджер { get; set; }
         
         //Табличні частини
         public ЗамовленняПостачальнику_Товари_TablePart Товари_TablePart { get; set; }
@@ -5240,6 +5266,9 @@ namespace StorageAndTrade_1_0.Документи
         public const string ЧасДоставкиДо = "col_b3";
         public const string АдресаДоставки = "col_b4";
         public const string ГосподарськаОперація = "col_a6";
+        public const string Статус = "col_b5";
+        public const string ФормаОплати = "col_b6";
+        public const string Менеджер = "col_b7";
 		
         public ЗамовленняПостачальнику_Select() : base(Config.Kernel, "tab_a25") { }
         
