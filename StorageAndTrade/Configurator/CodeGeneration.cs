@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 13.09.2021 11:54:51
+ * Дата конфігурації: 13.09.2021 17:22:17
  *
  */
 
@@ -6510,7 +6510,7 @@ namespace StorageAndTrade_1_0.Документи
         }
         
         public const string Номенклатура = "col_d2";
-        public const string Характеристика = "col_d3";
+        public const string ХарактеристикаНоменклатури = "col_d3";
         public const string Пакування = "col_d4";
         public const string КількістьУпаковок = "col_d5";
         public const string Кількість = "col_d6";
@@ -6537,7 +6537,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.UID = (Guid)fieldValue["uid"];
                 
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_d2"]);
-                record.Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_d3"]);
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_d3"]);
                 record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_d4"]);
                 record.КількістьУпаковок = (fieldValue["col_d5"] != DBNull.Value) ? (int)fieldValue["col_d5"] : 0;
                 record.Кількість = (fieldValue["col_d6"] != DBNull.Value) ? (int)fieldValue["col_d6"] : 0;
@@ -6569,7 +6569,7 @@ namespace StorageAndTrade_1_0.Документи
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                     fieldValue.Add("col_d2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_d3", record.Характеристика.UnigueID.UGuid);
+                    fieldValue.Add("col_d3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_d4", record.Пакування.UnigueID.UGuid);
                     fieldValue.Add("col_d5", record.КількістьУпаковок);
                     fieldValue.Add("col_d6", record.Кількість);
@@ -6601,7 +6601,7 @@ namespace StorageAndTrade_1_0.Документи
             public Record()
             {
                 Номенклатура = new Довідники.Номенклатура_Pointer();
-                Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                 Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
                 КількістьУпаковок = 0;
                 Кількість = 0;
@@ -6617,10 +6617,10 @@ namespace StorageAndTrade_1_0.Документи
         
             
             public Record(
-                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _Характеристика = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, Довідники.ВидиЦін_Pointer _ВидЦіни = null, decimal _Ціна = 0, decimal _Сума = 0, Довідники.Склади_Pointer _Склад = null, Документи.ЗамовленняКлієнта_Pointer _ЗамовленняКлієнта = null, decimal _Скидка = 0, int _НомерРядка = 0)
+                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, Довідники.ВидиЦін_Pointer _ВидЦіни = null, decimal _Ціна = 0, decimal _Сума = 0, Довідники.Склади_Pointer _Склад = null, Документи.ЗамовленняКлієнта_Pointer _ЗамовленняКлієнта = null, decimal _Скидка = 0, int _НомерРядка = 0)
             {
                 Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
-                Характеристика = _Характеристика ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
+                ХарактеристикаНоменклатури = _ХарактеристикаНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
                 Пакування = _Пакування ?? new Довідники.ПакуванняОдиниціВиміру_Pointer();
                 КількістьУпаковок = _КількістьУпаковок;
                 Кількість = _Кількість;
@@ -6634,7 +6634,7 @@ namespace StorageAndTrade_1_0.Документи
                 
             }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public int КількістьУпаковок { get; set; }
             public int Кількість { get; set; }

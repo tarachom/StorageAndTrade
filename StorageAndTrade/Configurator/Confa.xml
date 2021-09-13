@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>13.09.2021 11:54:51</DateTimeSave>
+  <DateTimeSave>13.09.2021 17:22:17</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3611,7 +3611,7 @@
               <IsPresentation>0</IsPresentation>
             </Field>
             <Field>
-              <Name>Характеристика</Name>
+              <Name>ХарактеристикаНоменклатури</Name>
               <NameInTable>col_d3</NameInTable>
               <Type>pointer</Type>
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
