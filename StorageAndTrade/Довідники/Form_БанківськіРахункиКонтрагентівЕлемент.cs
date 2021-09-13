@@ -63,28 +63,10 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.БанківськіРахункиКонтрагентів_Objest банківськіРахункиКонтрагентів_Objest { get; set; }
 
-		public DirectoryPointer CallBack_Валюта(DirectoryPointer directoryPointerItem)
-		{
-			Form_Валюти form_Валюти = new Form_Валюти();
-			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.ShowDialog();
-
-			return form_Валюти.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Організація(DirectoryPointer directoryPointerItem)
-		{
-			Form_Організації form_Організації = new Form_Організації();
-			form_Організації.DirectoryPointerItem = directoryPointerItem;
-			form_Організації.ShowDialog();
-
-			return form_Організації.DirectoryPointerItem;
-		}
-
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
-			directoryControl_Валюта.CallBack = CallBack_Валюта;
-			//directoryControl_Організація.CallBack = CallBack_Організація;
+			directoryControl_Валюта.SelectForm = new Form_Валюти();
+			//directoryControl_Організація.SelectForm = Form_Організації;
 
 			if (IsNew.HasValue)
 			{

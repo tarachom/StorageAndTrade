@@ -75,7 +75,6 @@ namespace StorageAndTrade
             // 
             // directoryControl1
             // 
-            this.directoryControl1.CallBack = null;
             this.directoryControl1.DirectoryPointerItem = null;
             this.directoryControl1.Location = new System.Drawing.Point(88, 38);
             this.directoryControl1.Name = "directoryControl1";

@@ -63,42 +63,15 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Номенклатура_Objest номенклатура_Objest { get; set; }
 
-		public DirectoryPointer CallBack_Виробник(DirectoryPointer directoryPointerItem)
-		{
-			Form_Виробники form_Виробники = new Form_Виробники();
-			form_Виробники.DirectoryPointerItem = directoryPointerItem;
-			form_Виробники.ShowDialog();
-
-			return form_Виробники.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_ВидНоменклатури(DirectoryPointer directoryPointerItem)
-		{
-			Form_ВидиНоменклатури form_ВидиНоменклатури = new Form_ВидиНоменклатури();
-			form_ВидиНоменклатури.DirectoryPointerItem = directoryPointerItem;
-			form_ВидиНоменклатури.ShowDialog();
-
-			return form_ВидиНоменклатури.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
-		{
-			Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
-			form_ПакуванняОдиниціВиміру.DirectoryPointerItem = directoryPointerItem;
-			form_ПакуванняОдиниціВиміру.ShowDialog();
-
-			return form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
-		}
-
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//Заповнення елементів перелічення - ТипНоменклатури
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
 
-			directoryControl_Виробник.CallBack = CallBack_Виробник;
-			directoryControl_ВидНоменклатури.CallBack = CallBack_ВидНоменклатури;
-			directoryControl_ОдиницяВиміру.CallBack = CallBack_ОдиницяВиміру;
+			directoryControl_Виробник.SelectForm = new Form_Виробники();
+			directoryControl_ВидНоменклатури.SelectForm = new Form_ВидиНоменклатури();
+			directoryControl_ОдиницяВиміру.SelectForm = new Form_ПакуванняОдиниціВиміру();
 
 			if (IsNew.HasValue)
 			{

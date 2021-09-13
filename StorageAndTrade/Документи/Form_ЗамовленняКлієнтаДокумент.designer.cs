@@ -164,7 +164,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Підрозділ
             // 
-            this.directoryControl_Підрозділ.CallBack = null;
             this.directoryControl_Підрозділ.DirectoryPointerItem = null;
             this.directoryControl_Підрозділ.Location = new System.Drawing.Point(586, 144);
             this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
@@ -182,7 +181,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Договір
             // 
-            this.directoryControl_Договір.CallBack = null;
             this.directoryControl_Договір.DirectoryPointerItem = null;
             this.directoryControl_Договір.Location = new System.Drawing.Point(548, 111);
             this.directoryControl_Договір.Name = "directoryControl_Договір";
@@ -218,7 +216,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Каса
             // 
-            this.directoryControl_Каса.CallBack = null;
             this.directoryControl_Каса.DirectoryPointerItem = null;
             this.directoryControl_Каса.Location = new System.Drawing.Point(548, 45);
             this.directoryControl_Каса.Name = "directoryControl_Каса";
@@ -272,7 +269,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Склад
             // 
-            this.directoryControl_Склад.CallBack = null;
             this.directoryControl_Склад.DirectoryPointerItem = null;
             this.directoryControl_Склад.Location = new System.Drawing.Point(107, 144);
             this.directoryControl_Склад.Name = "directoryControl_Склад";
@@ -290,7 +286,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Валюта
             // 
-            this.directoryControl_Валюта.CallBack = null;
             this.directoryControl_Валюта.DirectoryPointerItem = null;
             this.directoryControl_Валюта.Location = new System.Drawing.Point(106, 111);
             this.directoryControl_Валюта.Name = "directoryControl_Валюта";
@@ -308,7 +303,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Організація
             // 
-            this.directoryControl_Організація.CallBack = null;
             this.directoryControl_Організація.DirectoryPointerItem = null;
             this.directoryControl_Організація.Location = new System.Drawing.Point(107, 78);
             this.directoryControl_Організація.Name = "directoryControl_Організація";
@@ -326,7 +320,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Контрагент
             // 
-            this.directoryControl_Контрагент.CallBack = null;
             this.directoryControl_Контрагент.DirectoryPointerItem = null;
             this.directoryControl_Контрагент.Location = new System.Drawing.Point(107, 45);
             this.directoryControl_Контрагент.Name = "directoryControl_Контрагент";

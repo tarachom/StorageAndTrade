@@ -86,7 +86,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Валюта
             // 
-            this.directoryControl_Валюта.CallBack = null;
             this.directoryControl_Валюта.DirectoryPointerItem = null;
             this.directoryControl_Валюта.Location = new System.Drawing.Point(84, 38);
             this.directoryControl_Валюта.Name = "directoryControl_Валюта";
@@ -104,7 +103,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Організація
             // 
-            this.directoryControl_Організація.CallBack = null;
             this.directoryControl_Організація.DirectoryPointerItem = null;
             this.directoryControl_Організація.Location = new System.Drawing.Point(84, 102);
             this.directoryControl_Організація.Name = "directoryControl_Організація";

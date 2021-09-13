@@ -64,73 +64,6 @@ namespace StorageAndTrade
 		/// </summary>
         private Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest { get; set; }
 
-		#region CallBack
-
-		public DirectoryPointer CallBack_Контрагент(DirectoryPointer directoryPointerItem)
-		{
-			Form_Контрагенти form_Контрагенти = new Form_Контрагенти();
-			form_Контрагенти.DirectoryPointerItem = directoryPointerItem;
-			form_Контрагенти.ShowDialog();
-
-			return form_Контрагенти.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Організація(DirectoryPointer directoryPointerItem)
-		{
-			Form_Організації form_Організації = new Form_Організації();
-			form_Організації.DirectoryPointerItem = directoryPointerItem;
-			form_Організації.ShowDialog();
-
-			return form_Організації.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Валюта(DirectoryPointer directoryPointerItem)
-		{
-			Form_Валюти form_Валюти = new Form_Валюти();
-			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.ShowDialog();
-
-			return form_Валюти.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Склад(DirectoryPointer directoryPointerItem)
-		{
-			Form_Склади form_Склади = new Form_Склади();
-			form_Склади.DirectoryPointerItem = directoryPointerItem;
-			form_Склади.ShowDialog();
-
-			return form_Склади.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Каса(DirectoryPointer directoryPointerItem)
-		{
-			Form_Каси form_Каси = new Form_Каси();
-			form_Каси.DirectoryPointerItem = directoryPointerItem;
-			form_Каси.ShowDialog();
-
-			return form_Каси.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Договір(DirectoryPointer directoryPointerItem)
-		{
-			Form_ДоговориКонтрагентів form_ДоговориКонтрагентів = new Form_ДоговориКонтрагентів();
-			form_ДоговориКонтрагентів.DirectoryPointerItem = directoryPointerItem;
-			form_ДоговориКонтрагентів.ShowDialog();
-
-			return form_ДоговориКонтрагентів.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
-		{
-			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
-			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
-			form_СтруктураПідприємства.ShowDialog();
-
-			return form_СтруктураПідприємства.DirectoryPointerItem;
-		}
-
-        #endregion
-
         private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//Статус
@@ -145,13 +78,13 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
 				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
 
-			directoryControl_Контрагент.CallBack = CallBack_Контрагент;
-			directoryControl_Організація.CallBack = CallBack_Організація;
-			directoryControl_Валюта.CallBack = CallBack_Валюта;
-			directoryControl_Склад.CallBack = CallBack_Склад;
-			directoryControl_Каса.CallBack = CallBack_Каса;
-			directoryControl_Договір.CallBack = CallBack_Договір;
-			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
+			directoryControl_Контрагент.SelectForm = new Form_Контрагенти();
+			directoryControl_Організація.SelectForm = new Form_Організації();
+			directoryControl_Валюта.SelectForm = new Form_Валюти();
+			directoryControl_Склад.SelectForm = new Form_Склади();
+			directoryControl_Каса.SelectForm = new Form_Каси();
+			directoryControl_Договір.SelectForm = new Form_ДоговориКонтрагентів();
+			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
 
 			if (IsNew.HasValue)
 			{

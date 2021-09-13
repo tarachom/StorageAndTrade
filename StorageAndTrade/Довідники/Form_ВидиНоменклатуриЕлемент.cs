@@ -63,22 +63,13 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ВидиНоменклатури_Objest видиНоменклатури_Objest { get; set; }
 
-		public DirectoryPointer CallBack_ОдиницяВиміру(DirectoryPointer directoryPointerItem)
-		{
-			Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
-			form_ПакуванняОдиниціВиміру.DirectoryPointerItem = directoryPointerItem;
-			form_ПакуванняОдиниціВиміру.ShowDialog();
-
-			return form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
-		}
-
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//Заповнення елементів перелічення - ТипНоменклатури
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
 
-			directoryControl_ОдиницяВиміру.CallBack = CallBack_ОдиницяВиміру;
+			directoryControl_ОдиницяВиміру.SelectForm = new Form_ПакуванняОдиниціВиміру();
 
 			if (IsNew.HasValue)
 			{

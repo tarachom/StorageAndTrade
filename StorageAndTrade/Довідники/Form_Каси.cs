@@ -43,19 +43,7 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
-		#region DirectoryControl Open Form
-
-		/// <summary>
-		/// Ссилка на елемент довідника
-		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-		/// <summary>
-		/// Контрол який викликав вибір
-		/// </summary>
-		public DirectoryControl DirectoryControlItem { get; set; }
-
-        #endregion
 
         private void FormCash_Load(object sender, EventArgs e)
         {

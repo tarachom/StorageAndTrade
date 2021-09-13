@@ -63,54 +63,9 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ДоговориКонтрагентів_Objest договориКонтрагентів_Objest { get; set; }
 
-		public DirectoryPointer CallBack_БанківськийРахунок(DirectoryPointer directoryPointerItem)
-		{
-			Form_БанківськіРахункиОрганізацій form_БанківськіРахункиОрганізацій = new Form_БанківськіРахункиОрганізацій();
-			form_БанківськіРахункиОрганізацій.DirectoryPointerItem = directoryPointerItem;
-			form_БанківськіРахункиОрганізацій.ShowDialog();
-
-			return form_БанківськіРахункиОрганізацій.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_БанківськийРахунокКонтрагента(DirectoryPointer directoryPointerItem)
-		{
-			Form_БанківськіРахункиКонтрагентів form_БанківськіРахункиКонтрагентів = new Form_БанківськіРахункиКонтрагентів();
-			form_БанківськіРахункиКонтрагентів.DirectoryPointerItem = directoryPointerItem;
-			form_БанківськіРахункиКонтрагентів.ShowDialog();
-
-			return form_БанківськіРахункиКонтрагентів.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
-		{
-			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
-			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
-			form_СтруктураПідприємства.ShowDialog();
-
-			return form_СтруктураПідприємства.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Контрагент(DirectoryPointer directoryPointerItem)
-		{
-			Form_Контрагенти form_Контрагенти = new Form_Контрагенти();
-			form_Контрагенти.DirectoryPointerItem = directoryPointerItem;
-			form_Контрагенти.ShowDialog();
-
-			return form_Контрагенти.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Номенклатура(DirectoryPointer directoryPointerItem)
-		{
-			Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
-			form_Номенклатура.DirectoryPointerItem = directoryPointerItem;
-			form_Номенклатура.ShowDialog();
-
-			return form_Номенклатура.DirectoryPointerItem;
-		}
-
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
-			directoryControl_Номенклатура.CallBack = CallBack_Номенклатура;
+			directoryControl_Номенклатура.SelectForm = new Form_Номенклатура();
 			directoryControl_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer();
 
 			//Статус
@@ -125,10 +80,10 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипДоговорів"].Fields.Values)
 				comboBox_ТипДоговору.Items.Add((Перелічення.ТипДоговорів)field.Value);
 
-			directoryControl_БанківськийРахунок.CallBack = CallBack_БанківськийРахунок;
-			directoryControl_БанківськийРахунокКонтрагента.CallBack = CallBack_БанківськийРахунокКонтрагента;
-			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
-			directoryControl_Контрагент.CallBack = CallBack_Контрагент;
+			directoryControl_БанківськийРахунок.SelectForm = new Form_БанківськіРахункиОрганізацій();
+			directoryControl_БанківськийРахунокКонтрагента.SelectForm = new Form_БанківськіРахункиКонтрагентів();
+			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
+			directoryControl_Контрагент.SelectForm = new Form_Контрагенти();
 
 			if (IsNew.HasValue)
 			{

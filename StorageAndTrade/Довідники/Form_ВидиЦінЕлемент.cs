@@ -63,22 +63,9 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ВидиЦін_Objest видиЦін_Objest { get; set; }
 
-		/// <summary>
-		/// Зворотня функція для вибору із списку
-		/// </summary>
-		/// <param name="directoryPointerItem"></param>
-		public DirectoryPointer CallBack_DirectoryControl_Open_FormCurrency(DirectoryPointer directoryPointerItem)
-		{
-			Form_Валюти form_Валюти = new Form_Валюти();
-			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.ShowDialog();
-
-			return form_Валюти.DirectoryPointerItem;
-		}
-
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
-			directoryControl1.CallBack = CallBack_DirectoryControl_Open_FormCurrency;
+			directoryControl1.SelectForm = new Form_Валюти();
 
 			if (IsNew.HasValue)
 			{

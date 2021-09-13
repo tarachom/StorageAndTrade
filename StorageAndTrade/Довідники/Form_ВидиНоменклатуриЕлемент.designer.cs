@@ -86,7 +86,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_ОдиницяВиміру
             // 
-            this.directoryControl_ОдиницяВиміру.CallBack = null;
             this.directoryControl_ОдиницяВиміру.DirectoryPointerItem = null;
             this.directoryControl_ОдиницяВиміру.Location = new System.Drawing.Point(127, 38);
             this.directoryControl_ОдиницяВиміру.Name = "directoryControl_ОдиницяВиміру";

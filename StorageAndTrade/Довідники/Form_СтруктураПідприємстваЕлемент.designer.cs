@@ -84,7 +84,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Керівник
             // 
-            this.directoryControl_Керівник.CallBack = null;
             this.directoryControl_Керівник.DirectoryPointerItem = null;
             this.directoryControl_Керівник.Location = new System.Drawing.Point(111, 38);
             this.directoryControl_Керівник.Name = "directoryControl_Керівник";

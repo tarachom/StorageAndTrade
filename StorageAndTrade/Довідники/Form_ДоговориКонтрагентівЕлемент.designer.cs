@@ -161,7 +161,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Контрагент
             // 
-            this.directoryControl_Контрагент.CallBack = null;
             this.directoryControl_Контрагент.DirectoryPointerItem = null;
             this.directoryControl_Контрагент.Location = new System.Drawing.Point(110, 135);
             this.directoryControl_Контрагент.Name = "directoryControl_Контрагент";
@@ -170,7 +169,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Підрозділ
             // 
-            this.directoryControl_Підрозділ.CallBack = null;
             this.directoryControl_Підрозділ.DirectoryPointerItem = null;
             this.directoryControl_Підрозділ.Location = new System.Drawing.Point(110, 102);
             this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
@@ -179,7 +177,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_БанківськийРахунокКонтрагента
             // 
-            this.directoryControl_БанківськийРахунокКонтрагента.CallBack = null;
             this.directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = null;
             this.directoryControl_БанківськийРахунокКонтрагента.Location = new System.Drawing.Point(205, 69);
             this.directoryControl_БанківськийРахунокКонтрагента.Name = "directoryControl_БанківськийРахунокКонтрагента";
@@ -188,7 +185,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_БанківськийРахунок
             // 
-            this.directoryControl_БанківськийРахунок.CallBack = null;
             this.directoryControl_БанківськийРахунок.DirectoryPointerItem = null;
             this.directoryControl_БанківськийРахунок.Location = new System.Drawing.Point(140, 38);
             this.directoryControl_БанківськийРахунок.Name = "directoryControl_БанківськийРахунок";
@@ -223,7 +219,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Номенклатура
             // 
-            this.directoryControl_Номенклатура.CallBack = null;
             this.directoryControl_Номенклатура.DirectoryPointerItem = null;
             this.directoryControl_Номенклатура.Location = new System.Drawing.Point(110, 263);
             this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";

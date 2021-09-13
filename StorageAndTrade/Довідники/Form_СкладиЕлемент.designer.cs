@@ -109,7 +109,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Відповідальний
             // 
-            this.directoryControl_Відповідальний.CallBack = null;
             this.directoryControl_Відповідальний.DirectoryPointerItem = null;
             this.directoryControl_Відповідальний.Location = new System.Drawing.Point(110, 69);
             this.directoryControl_Відповідальний.Name = "directoryControl_Відповідальний";
@@ -127,7 +126,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_ВидЦін
             // 
-            this.directoryControl_ВидЦін.CallBack = null;
             this.directoryControl_ВидЦін.DirectoryPointerItem = null;
             this.directoryControl_ВидЦін.Location = new System.Drawing.Point(110, 102);
             this.directoryControl_ВидЦін.Name = "directoryControl_ВидЦін";
@@ -145,7 +143,6 @@ namespace StorageAndTrade
             // 
             // directoryControl_Підрозділ
             // 
-            this.directoryControl_Підрозділ.CallBack = null;
             this.directoryControl_Підрозділ.DirectoryPointerItem = null;
             this.directoryControl_Підрозділ.Location = new System.Drawing.Point(110, 135);
             this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";

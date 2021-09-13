@@ -63,38 +63,11 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.БанківськіРахункиОрганізацій_Objest банківськіРахункиОрганізацій_Objest { get; set; }
 
-		public DirectoryPointer CallBack_Валюта(DirectoryPointer directoryPointerItem)
-		{
-			Form_Валюти form_Валюти = new Form_Валюти();
-			form_Валюти.DirectoryPointerItem = directoryPointerItem;
-			form_Валюти.ShowDialog();
-
-			return form_Валюти.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Підрозділ(DirectoryPointer directoryPointerItem)
-		{
-			Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
-			form_СтруктураПідприємства.DirectoryPointerItem = directoryPointerItem;
-			form_СтруктураПідприємства.ShowDialog();
-
-			return form_СтруктураПідприємства.DirectoryPointerItem;
-		}
-
-		public DirectoryPointer CallBack_Організація(DirectoryPointer directoryPointerItem)
-		{
-			Form_Організації form_Організації = new Form_Організації();
-			form_Організації.DirectoryPointerItem = directoryPointerItem;
-			form_Організації.ShowDialog();
-
-			return form_Організації.DirectoryPointerItem;
-		}
-
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
-			directoryControl_Валюта.CallBack = CallBack_Валюта;
-			directoryControl_Підрозділ.CallBack = CallBack_Підрозділ;
-			directoryControl_Організація.CallBack = CallBack_Організація;
+			directoryControl_Валюта.SelectForm = new Form_Валюти();
+			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
+			directoryControl_Організація.SelectForm = new Form_Організації();
 
 			if (IsNew.HasValue)
 			{
