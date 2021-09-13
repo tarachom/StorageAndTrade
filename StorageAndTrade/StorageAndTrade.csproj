@@ -69,6 +69,12 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\Form_РеалізаціяТоварівТаПослугЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_РеалізаціяТоварівТаПослугЖурнал.designer.cs">
+      <DependentUpon>Form_РеалізаціяТоварівТаПослугЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\Form_ЗамовленняКлієнтаЖурнал.designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтаЖурнал.cs</DependentUpon>
     </Compile>
@@ -304,6 +310,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_РеалізаціяТоварівТаПослугЖурнал.resx">
+      <DependentUpon>Form_РеалізаціяТоварівТаПослугЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\Form_ЗамовленняКлієнтаЖурнал.resx">
       <DependentUpon>Form_ЗамовленняКлієнтаЖурнал.cs</DependentUpon>

@@ -36,9 +36,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_ЗамовленняКлієнтаЖурнал : Form
+    public partial class Form_РеалізаціяТоварівТаПослугЖурнал : Form
     {
-        public Form_ЗамовленняКлієнтаЖурнал()
+        public Form_РеалізаціяТоварівТаПослугЖурнал()
         {
             InitializeComponent();
         }
@@ -68,28 +68,28 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
-			Документи.ЗамовленняКлієнта_Select замовленняКлієнта_Select = new Документи.ЗамовленняКлієнта_Select();
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.НомерДок);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.ДатаДок);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.СумаДокументу);
+			Документи.РеалізаціяТоварівТаПослуг_Select реалізаціяТоварівТаПослуг_Select = new Документи.РеалізаціяТоварівТаПослуг_Select();
+			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.РеалізаціяТоварівТаПослуг_Select.НомерДок);
+			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.РеалізаціяТоварівТаПослуг_Select.ДатаДок);
+			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.РеалізаціяТоварівТаПослуг_Select.СумаДокументу);
 
 			//ORDER
-			замовленняКлієнта_Select.QuerySelect.Order.Add(Документи.ЗамовленняКлієнта_Select.ДатаДок, SelectOrder.ASC);
-			замовленняКлієнта_Select.QuerySelect.Order.Add(Документи.ЗамовленняКлієнта_Select.НомерДок, SelectOrder.ASC);
+			реалізаціяТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.РеалізаціяТоварівТаПослуг_Select.ДатаДок, SelectOrder.ASC);
+			реалізаціяТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.РеалізаціяТоварівТаПослуг_Select.НомерДок, SelectOrder.ASC);
 
-			замовленняКлієнта_Select.Select();
-			while (замовленняКлієнта_Select.MoveNext())
+			реалізаціяТоварівТаПослуг_Select.Select();
+			while (реалізаціяТоварівТаПослуг_Select.MoveNext())
 			{
-				Документи.ЗамовленняКлієнта_Pointer cur = замовленняКлієнта_Select.Current;
+				Документи.РеалізаціяТоварівТаПослуг_Pointer cur = реалізаціяТоварівТаПослуг_Select.Current;
 
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = "Замовлення клієнта №" + cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString() + " від " +
-							 DateTime.Parse(cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString()).ToShortDateString(),
-					НомерДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString(),
-					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу], 2)
+					Назва = "Реалізація товарів та послуг №" + cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Select.НомерДок].ToString() + " від " +
+							 DateTime.Parse(cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Select.ДатаДок].ToString()).ToShortDateString(),
+					НомерДок = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Select.НомерДок].ToString(),
+					ДатаДок = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Select.ДатаДок].ToString(),
+					Сума = Math.Round((decimal)cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Select.СумаДокументу], 2)
 				});
 
 				//if (DirectoryPointerItem != null && selectRow == 0) 
@@ -134,10 +134,10 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-			Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-			form_ЗамовленняКлієнтаДокумент.IsNew = true;
-			form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-			form_ЗамовленняКлієнтаДокумент.ShowDialog();
+			//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+			//form_ЗамовленняКлієнтаДокумент.IsNew = true;
+			//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+			//form_ЗамовленняКлієнтаДокумент.ShowDialog();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -146,11 +146,11 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-				form_ЗамовленняКлієнтаДокумент.IsNew = false;
-				form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-				form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
-				form_ЗамовленняКлієнтаДокумент.ShowDialog();
+				//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+				//form_ЗамовленняКлієнтаДокумент.IsNew = false;
+				//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+				//form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				//form_ЗамовленняКлієнтаДокумент.ShowDialog();
 			}			
 		}
 
@@ -169,11 +169,11 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells[0].Value.ToString();
 
-                    Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-                    if (замовленняКлієнта_Objest.Read(new UnigueID(uid)))
+                    Документи.РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new Документи.РеалізаціяТоварівТаПослуг_Objest();
+                    if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
                     {
-						Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest_Новий = замовленняКлієнта_Objest.Copy();
-						ЗамовленняКлієнта_Objest_Новий.Save();
+						Документи.РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest_Новий = реалізаціяТоварівТаПослуг_Objest.Copy();
+						реалізаціяТоварівТаПослуг_Objest_Новий.Save();
 					}
                     else
                     {
@@ -196,10 +196,10 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells[0].Value.ToString();
 
-                    Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-                    if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
+                    Документи.РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new Документи.РеалізаціяТоварівТаПослуг_Objest();
+                    if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
                     {
-						ЗамовленняКлієнта_Objest.Delete();
+						реалізаціяТоварівТаПослуг_Objest.Delete();
                     }
                     else
                     {
