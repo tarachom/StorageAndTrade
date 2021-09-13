@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 11.09.2021 17:17:39
+ * Дата конфігурації: 13.09.2021 11:54:51
  *
  */
 
@@ -294,6 +294,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Організації_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Організації_Objest ОрганізаціїObjestItem = new Організації_Objest();
             return ОрганізаціїObjestItem.Read(base.UnigueID) ? ОрганізаціїObjestItem : null;
         }
@@ -608,6 +609,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Номенклатура_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Номенклатура_Objest НоменклатураObjestItem = new Номенклатура_Objest();
             return НоменклатураObjestItem.Read(base.UnigueID) ? НоменклатураObjestItem : null;
         }
@@ -759,6 +761,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Виробники_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Виробники_Objest ВиробникиObjestItem = new Виробники_Objest();
             return ВиробникиObjestItem.Read(base.UnigueID) ? ВиробникиObjestItem : null;
         }
@@ -918,6 +921,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public ВидиНоменклатури_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             ВидиНоменклатури_Objest ВидиНоменклатуриObjestItem = new ВидиНоменклатури_Objest();
             return ВидиНоменклатуриObjestItem.Read(base.UnigueID) ? ВидиНоменклатуриObjestItem : null;
         }
@@ -1074,6 +1078,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public ПакуванняОдиниціВиміру_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             ПакуванняОдиниціВиміру_Objest ПакуванняОдиниціВиміруObjestItem = new ПакуванняОдиниціВиміру_Objest();
             return ПакуванняОдиниціВиміруObjestItem.Read(base.UnigueID) ? ПакуванняОдиниціВиміруObjestItem : null;
         }
@@ -1217,6 +1222,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Валюти_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Валюти_Objest ВалютиObjestItem = new Валюти_Objest();
             return ВалютиObjestItem.Read(base.UnigueID) ? ВалютиObjestItem : null;
         }
@@ -1382,6 +1388,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Контрагенти_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Контрагенти_Objest КонтрагентиObjestItem = new Контрагенти_Objest();
             return КонтрагентиObjestItem.Read(base.UnigueID) ? КонтрагентиObjestItem : null;
         }
@@ -1675,6 +1682,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Склади_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Склади_Objest СкладиObjestItem = new Склади_Objest();
             return СкладиObjestItem.Read(base.UnigueID) ? СкладиObjestItem : null;
         }
@@ -1940,6 +1948,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public ВидиЦін_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             ВидиЦін_Objest ВидиЦінObjestItem = new ВидиЦін_Objest();
             return ВидиЦінObjestItem.Read(base.UnigueID) ? ВидиЦінObjestItem : null;
         }
@@ -2088,6 +2097,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public ВидиЦінПостачальників_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             ВидиЦінПостачальників_Objest ВидиЦінПостачальниківObjestItem = new ВидиЦінПостачальників_Objest();
             return ВидиЦінПостачальниківObjestItem.Read(base.UnigueID) ? ВидиЦінПостачальниківObjestItem : null;
         }
@@ -2248,6 +2258,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Користувачі_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Користувачі_Objest КористувачіObjestItem = new Користувачі_Objest();
             return КористувачіObjestItem.Read(base.UnigueID) ? КористувачіObjestItem : null;
         }
@@ -2528,6 +2539,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public ФізичніОсоби_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             ФізичніОсоби_Objest ФізичніОсобиObjestItem = new ФізичніОсоби_Objest();
             return ФізичніОсобиObjestItem.Read(base.UnigueID) ? ФізичніОсобиObjestItem : null;
         }
@@ -2791,6 +2803,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public СтруктураПідприємства_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             СтруктураПідприємства_Objest СтруктураПідприємстваObjestItem = new СтруктураПідприємства_Objest();
             return СтруктураПідприємстваObjestItem.Read(base.UnigueID) ? СтруктураПідприємстваObjestItem : null;
         }
@@ -2939,6 +2952,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public КраїниСвіту_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             КраїниСвіту_Objest КраїниСвітуObjestItem = new КраїниСвіту_Objest();
             return КраїниСвітуObjestItem.Read(base.UnigueID) ? КраїниСвітуObjestItem : null;
         }
@@ -3081,6 +3095,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Файли_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Файли_Objest ФайлиObjestItem = new Файли_Objest();
             return ФайлиObjestItem.Read(base.UnigueID) ? ФайлиObjestItem : null;
         }
@@ -3234,6 +3249,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public ХарактеристикиНоменклатури_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             ХарактеристикиНоменклатури_Objest ХарактеристикиНоменклатуриObjestItem = new ХарактеристикиНоменклатури_Objest();
             return ХарактеристикиНоменклатуриObjestItem.Read(base.UnigueID) ? ХарактеристикиНоменклатуриObjestItem : null;
         }
@@ -3383,6 +3399,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Номенклатура_Папки_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Номенклатура_Папки_Objest Номенклатура_ПапкиObjestItem = new Номенклатура_Папки_Objest();
             return Номенклатура_ПапкиObjestItem.Read(base.UnigueID) ? Номенклатура_ПапкиObjestItem : null;
         }
@@ -3531,6 +3548,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Контрагенти_Папки_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Контрагенти_Папки_Objest Контрагенти_ПапкиObjestItem = new Контрагенти_Папки_Objest();
             return Контрагенти_ПапкиObjestItem.Read(base.UnigueID) ? Контрагенти_ПапкиObjestItem : null;
         }
@@ -3679,6 +3697,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Склади_Папки_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Склади_Папки_Objest Склади_ПапкиObjestItem = new Склади_Папки_Objest();
             return Склади_ПапкиObjestItem.Read(base.UnigueID) ? Склади_ПапкиObjestItem : null;
         }
@@ -3833,6 +3852,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public Каси_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             Каси_Objest КасиObjestItem = new Каси_Objest();
             return КасиObjestItem.Read(base.UnigueID) ? КасиObjestItem : null;
         }
@@ -4042,6 +4062,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public БанківськіРахункиОрганізацій_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             БанківськіРахункиОрганізацій_Objest БанківськіРахункиОрганізаційObjestItem = new БанківськіРахункиОрганізацій_Objest();
             return БанківськіРахункиОрганізаційObjestItem.Read(base.UnigueID) ? БанківськіРахункиОрганізаційObjestItem : null;
         }
@@ -4296,6 +4317,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public ДоговориКонтрагентів_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             ДоговориКонтрагентів_Objest ДоговориКонтрагентівObjestItem = new ДоговориКонтрагентів_Objest();
             return ДоговориКонтрагентівObjestItem.Read(base.UnigueID) ? ДоговориКонтрагентівObjestItem : null;
         }
@@ -4532,6 +4554,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public БанківськіРахункиКонтрагентів_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             БанківськіРахункиКонтрагентів_Objest БанківськіРахункиКонтрагентівObjestItem = new БанківськіРахункиКонтрагентів_Objest();
             return БанківськіРахункиКонтрагентівObjestItem.Read(base.UnigueID) ? БанківськіРахункиКонтрагентівObjestItem : null;
         }
@@ -4710,6 +4733,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public СтаттяРухуКоштів_Objest GetDirectoryObject()
         {
+            if (this.IsEmpty()) return null;
             СтаттяРухуКоштів_Objest СтаттяРухуКоштівObjestItem = new СтаттяРухуКоштів_Objest();
             return СтаттяРухуКоштівObjestItem.Read(base.UnigueID) ? СтаттяРухуКоштівObjestItem : null;
         }

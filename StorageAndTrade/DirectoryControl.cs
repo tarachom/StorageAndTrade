@@ -33,10 +33,6 @@ namespace StorageAndTrade
 			InitializeComponent();
 		}
 
-		/// <summary>
-		/// Зворотня функція для вибору із списку
-		/// </summary>
-		//public Func<DirectoryPointer, DirectoryPointer> CallBack { get; set; }
 		public Form SelectForm { get; set; }
 
 		private DirectoryPointer mDirectoryPointerItem;
@@ -71,14 +67,16 @@ namespace StorageAndTrade
 
 		private void buttonOpen_Click(object sender, EventArgs e)
 		{
-			PropertyInfo propertyInfo = SelectForm.GetType().GetProperty("DirectoryPointerItem");
-			if (propertyInfo != null)
+			if (SelectForm != null)
 			{
-				propertyInfo.SetValue(SelectForm, DirectoryPointerItem);
-				SelectForm.ShowDialog();
-				DirectoryPointerItem = (DirectoryPointer)propertyInfo.GetValue(SelectForm);
+				PropertyInfo propertyInfo = SelectForm.GetType().GetProperty("DirectoryPointerItem");
+				if (propertyInfo != null)
+				{
+					propertyInfo.SetValue(SelectForm, DirectoryPointerItem);
+					SelectForm.ShowDialog();
+					DirectoryPointerItem = (DirectoryPointer)propertyInfo.GetValue(SelectForm);
+				}
 			}
-
 			//if (CallBack != null)
 			//{
 			//if (mDirectoryPointerItem != null)
