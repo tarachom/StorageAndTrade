@@ -161,8 +161,20 @@ namespace StorageAndTrade
             form_ПоступленняТоварівТаПослугЖурнал.Show();
         }
 
+        private void поверненняТоварівПостачальникуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПоверненняТоварівПостачальникуЖурнал form_ПоверненняТоварівПостачальникуЖурнал = new Form_ПоверненняТоварівПостачальникуЖурнал();
+            form_ПоверненняТоварівПостачальникуЖурнал.Show();
+        }
+
+        private void поверненняТоварівКлієнтуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПоверненняТоварівВідКлієнтаЖурнал form_ПоверненняТоварівВідКлієнтаЖурнал = new Form_ПоверненняТоварівВідКлієнтаЖурнал();
+            form_ПоверненняТоварівВідКлієнтаЖурнал.Show();
+        }
+
         #endregion
 
 
-    }
+    } 
 }

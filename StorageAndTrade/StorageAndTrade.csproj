@@ -69,6 +69,42 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівВідКлієнтаДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівВідКлієнтаДокумент.designer.cs">
+      <DependentUpon>Form_ПоверненняТоварівВідКлієнтаДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівПостачальникуДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівПостачальникуДокумент.designer.cs">
+      <DependentUpon>Form_ПоверненняТоварівПостачальникуДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівВідКлієнтаЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівВідКлієнтаЖурнал.designer.cs">
+      <DependentUpon>Form_ПоверненняТоварівВідКлієнтаЖурнал.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівПостачальникуЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\Form_ПоверненняТоварівПостачальникуЖурнал.designer.cs">
+      <DependentUpon>Form_ПоверненняТоварівПостачальникуЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -358,6 +394,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоверненняТоварівВідКлієнтаДокумент.resx">
+      <DependentUpon>Form_ПоверненняТоварівВідКлієнтаДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоверненняТоварівПостачальникуДокумент.resx">
+      <DependentUpon>Form_ПоверненняТоварівПостачальникуДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоверненняТоварівВідКлієнтаЖурнал.resx">
+      <DependentUpon>Form_ПоверненняТоварівВідКлієнтаЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\Form_ПоверненняТоварівПостачальникуЖурнал.resx">
+      <DependentUpon>Form_ПоверненняТоварівПостачальникуЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs</DependentUpon>

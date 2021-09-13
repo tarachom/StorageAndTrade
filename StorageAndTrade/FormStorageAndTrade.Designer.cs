@@ -53,6 +53,8 @@ namespace StorageAndTrade
             this.реалізаціяТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.замовленняПостачальникуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поступленняТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поверненняТоварівПостачальникуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поверненняТоварівКлієнтуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -233,7 +235,9 @@ namespace StorageAndTrade
             this.замовленняКлієнтаToolStripMenuItem,
             this.реалізаціяТоварівТаПослугToolStripMenuItem,
             this.замовленняПостачальникуToolStripMenuItem,
-            this.поступленняТоварівТаПослугToolStripMenuItem});
+            this.поступленняТоварівТаПослугToolStripMenuItem,
+            this.поверненняТоварівПостачальникуToolStripMenuItem,
+            this.поверненняТоварівКлієнтуToolStripMenuItem});
             this.документиToolStripMenuItem.Name = "документиToolStripMenuItem";
             this.документиToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.документиToolStripMenuItem.Text = "Документи";
@@ -242,7 +246,7 @@ namespace StorageAndTrade
             // 
             this.замовленняКлієнтаToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
             this.замовленняКлієнтаToolStripMenuItem.Name = "замовленняКлієнтаToolStripMenuItem";
-            this.замовленняКлієнтаToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.замовленняКлієнтаToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.замовленняКлієнтаToolStripMenuItem.Text = "Замовлення клієнта";
             this.замовленняКлієнтаToolStripMenuItem.Click += new System.EventHandler(this.замовленняКлієнтаToolStripMenuItem_Click);
             // 
@@ -250,7 +254,7 @@ namespace StorageAndTrade
             // 
             this.реалізаціяТоварівТаПослугToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
             this.реалізаціяТоварівТаПослугToolStripMenuItem.Name = "реалізаціяТоварівТаПослугToolStripMenuItem";
-            this.реалізаціяТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.реалізаціяТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.реалізаціяТоварівТаПослугToolStripMenuItem.Text = "Реалізація товарів та послуг";
             this.реалізаціяТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.реалізаціяТоварівТаПослугToolStripMenuItem_Click);
             // 
@@ -258,7 +262,7 @@ namespace StorageAndTrade
             // 
             this.замовленняПостачальникуToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
             this.замовленняПостачальникуToolStripMenuItem.Name = "замовленняПостачальникуToolStripMenuItem";
-            this.замовленняПостачальникуToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.замовленняПостачальникуToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.замовленняПостачальникуToolStripMenuItem.Text = "Замовлення постачальнику";
             this.замовленняПостачальникуToolStripMenuItem.Click += new System.EventHandler(this.замовленняПостачальникуToolStripMenuItem_Click);
             // 
@@ -266,9 +270,25 @@ namespace StorageAndTrade
             // 
             this.поступленняТоварівТаПослугToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
             this.поступленняТоварівТаПослугToolStripMenuItem.Name = "поступленняТоварівТаПослугToolStripMenuItem";
-            this.поступленняТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.поступленняТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
             this.поступленняТоварівТаПослугToolStripMenuItem.Text = "Поступлення товарів та послуг";
             this.поступленняТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.поступленняТоварівТаПослугToolStripMenuItem_Click);
+            // 
+            // поверненняТоварівПостачальникуToolStripMenuItem
+            // 
+            this.поверненняТоварівПостачальникуToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
+            this.поверненняТоварівПостачальникуToolStripMenuItem.Name = "поверненняТоварівПостачальникуToolStripMenuItem";
+            this.поверненняТоварівПостачальникуToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.поверненняТоварівПостачальникуToolStripMenuItem.Text = "Повернення товарів постачальнику";
+            this.поверненняТоварівПостачальникуToolStripMenuItem.Click += new System.EventHandler(this.поверненняТоварівПостачальникуToolStripMenuItem_Click);
+            // 
+            // поверненняТоварівКлієнтуToolStripMenuItem
+            // 
+            this.поверненняТоварівКлієнтуToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
+            this.поверненняТоварівКлієнтуToolStripMenuItem.Name = "поверненняТоварівКлієнтуToolStripMenuItem";
+            this.поверненняТоварівКлієнтуToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.поверненняТоварівКлієнтуToolStripMenuItem.Text = "Повернення товарів клієнту";
+            this.поверненняТоварівКлієнтуToolStripMenuItem.Click += new System.EventHandler(this.поверненняТоварівКлієнтуToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -313,6 +333,8 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem реалізаціяТоварівТаПослугToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem замовленняПостачальникуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem поступленняТоварівТаПослугToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поверненняТоварівПостачальникуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поверненняТоварівКлієнтуToolStripMenuItem;
     }
 }
 
