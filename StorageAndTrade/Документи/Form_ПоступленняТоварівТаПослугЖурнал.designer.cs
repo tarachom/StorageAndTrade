@@ -137,16 +137,16 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
-            // Form_ЗамовленняКлієнтаЖурнал
+            // Form_ПоступленняТоварівТаПослугЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 648);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form_ЗамовленняКлієнтаЖурнал";
+            this.Name = "Form_ПоступленняТоварівТаПослугЖурнал";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Замовлення клієнтів - Журнал";
+            this.Text = "Поступлення товарів та послуг - Журнал";
             this.Load += new System.EventHandler(this.FormCash_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

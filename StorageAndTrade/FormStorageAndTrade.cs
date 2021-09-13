@@ -155,6 +155,12 @@ namespace StorageAndTrade
             form_ЗамовленняПостачальникуЖурнал.Show();
         }
 
+        private void поступленняТоварівТаПослугToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПоступленняТоварівТаПослугЖурнал form_ПоступленняТоварівТаПослугЖурнал = new Form_ПоступленняТоварівТаПослугЖурнал();
+            form_ПоступленняТоварівТаПослугЖурнал.Show();
+        }
+
         #endregion
 
 

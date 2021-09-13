@@ -134,10 +134,10 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-			Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-			form_ЗамовленняКлієнтаДокумент.IsNew = true;
-			form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-			form_ЗамовленняКлієнтаДокумент.ShowDialog();
+			Form_ПоступленняТоварівТаПослугДокумент form_ПоступленняТоварівТаПослугДокумент = new Form_ПоступленняТоварівТаПослугДокумент();
+			form_ПоступленняТоварівТаПослугДокумент.IsNew = true;
+			form_ПоступленняТоварівТаПослугДокумент.OwnerForm = this;
+			form_ПоступленняТоварівТаПослугДокумент.ShowDialog();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -146,11 +146,11 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-				form_ЗамовленняКлієнтаДокумент.IsNew = false;
-				form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-				form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
-				form_ЗамовленняКлієнтаДокумент.ShowDialog();
+				Form_ПоступленняТоварівТаПослугДокумент form_ПоступленняТоварівТаПослугДокумент = new Form_ПоступленняТоварівТаПослугДокумент();
+				form_ПоступленняТоварівТаПослугДокумент.IsNew = false;
+				form_ПоступленняТоварівТаПослугДокумент.OwnerForm = this;
+				form_ПоступленняТоварівТаПослугДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ПоступленняТоварівТаПослугДокумент.ShowDialog();
 			}			
 		}
 
