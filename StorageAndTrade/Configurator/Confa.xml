@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>13.09.2021 21:37:11</DateTimeSave>
+  <DateTimeSave>14.09.2021 12:37:15</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -2695,10 +2695,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <AfterSave>Записи_Triggers.ЗамовленняПостачальнику_AfterRecording</AfterSave>
+        <BeforeDelete>Записи_Triggers.ЗамовленняПостачальнику_BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
     <Document>
@@ -3077,10 +3075,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <AfterSave>Записи_Triggers.ПоступленняТоварівТаПослуг_AfterRecording</AfterSave>
+        <BeforeDelete>Записи_Triggers.ПоступленняТоварівТаПослуг_BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
     <Document>
@@ -5471,6 +5467,68 @@
           <Field>
             <Name>ВРезервіПідЗамовлення</Name>
             <NameInTable>col_b2</NameInTable>
+            <Type>integer</Type>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+        </Fields>
+      </ResourcesFields>
+      <PropertyFields>
+        <Fields />
+      </PropertyFields>
+    </RegisterAccumulation>
+    <RegisterAccumulation>
+      <Name>ЗамовленняПостачальникам</Name>
+      <Table>tab_a60</Table>
+      <Type>Residues</Type>
+      <Desc>
+      </Desc>
+      <DimensionFields>
+        <Fields>
+          <Field>
+            <Name>ЗамовленняПостачальнику</Name>
+            <NameInTable>col_a1</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+          <Field>
+            <Name>Номенклатура</Name>
+            <NameInTable>col_a2</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Номенклатура</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+          <Field>
+            <Name>ХарактеристикаНоменклатури</Name>
+            <NameInTable>col_a3</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+          <Field>
+            <Name>Склад</Name>
+            <NameInTable>col_a4</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Склади</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+        </Fields>
+      </DimensionFields>
+      <ResourcesFields>
+        <Fields>
+          <Field>
+            <Name>Замовлено</Name>
+            <NameInTable>col_a5</NameInTable>
             <Type>integer</Type>
             <Desc>
             </Desc>

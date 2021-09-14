@@ -246,5 +246,86 @@ namespace StorageAndTrade_1_0.Документи
 		}
 
 		#endregion
+
+		#region ЗамовленняПостачальнику
+
+		public static void ЗамовленняПостачальнику_BeforeRecording(ЗамовленняПостачальнику_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void ЗамовленняПостачальнику_AfterRecording(ЗамовленняПостачальнику_Objest ДокументОбєкт)
+		{
+			//
+			//Замовлення постачальникам
+			//
+
+			РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet();
+
+			foreach (ЗамовленняПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record();
+				замовленняПостачальникам_RecordsSet.Records.Add(record);
+
+				record.Income = true; // +    | Документ збільшує
+				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record.ЗамовленняПостачальнику = ДокументОбєкт.GetDocumentPointer();
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.Склад = ДокументОбєкт.Склад;
+				record.Замовлено = Товари_Record.Кількість;
+			}
+
+			замовленняПостачальникам_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+
+		}
+
+		public static void ЗамовленняПостачальнику_BeforeDelete(ЗамовленняПостачальнику_Objest ДокументОбєкт)
+		{
+
+		}
+
+		#endregion
+
+		#region ПоступленняТоварівТаПослуг
+
+		public static void ПоступленняТоварівТаПослуг_BeforeRecording(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void ПоступленняТоварівТаПослуг_AfterRecording(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
+		{
+			//
+			//Товари на складах
+			//
+
+			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+
+			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+				товариНаСкладах_RecordsSet.Records.Add(record);
+
+				record.Income = true; // -    | Документ збільшує наявність
+				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.Склад = ДокументОбєкт.Склад;
+				record.ВНаявності = Товари_Record.Кількість;
+			}
+
+			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+		}
+
+		public static void ПоступленняТоварівТаПослуг_BeforeDelete(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
+		{
+			
+		}
+
+		#endregion
 	}
 }
