@@ -545,5 +545,7 @@ namespace StorageAndTrade_1_0.Документи
 		}
 
 		#endregion
+
+
 	}
 }
