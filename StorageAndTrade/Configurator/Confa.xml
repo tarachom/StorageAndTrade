@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>14.09.2021 12:37:15</DateTimeSave>
+  <DateTimeSave>14.09.2021 13:08:11</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -5304,19 +5304,19 @@
       <DimensionFields>
         <Fields>
           <Field>
-            <Name>Договір</Name>
-            <NameInTable>col_a1</NameInTable>
+            <Name>Валюта</Name>
+            <NameInTable>col_a2</NameInTable>
             <Type>pointer</Type>
-            <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
+            <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
             <IsPresentation>0</IsPresentation>
           </Field>
           <Field>
-            <Name>Валюта</Name>
-            <NameInTable>col_a2</NameInTable>
+            <Name>ЗамовленняКлієнта</Name>
+            <NameInTable>col_a5</NameInTable>
             <Type>pointer</Type>
-            <Pointer>Довідники.Валюти</Pointer>
+            <Pointer>Документи.ЗамовленняКлієнта</Pointer>
             <Desc>
             </Desc>
             <IsPresentation>0</IsPresentation>
@@ -5529,6 +5529,122 @@
           <Field>
             <Name>Замовлено</Name>
             <NameInTable>col_a5</NameInTable>
+            <Type>integer</Type>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+        </Fields>
+      </ResourcesFields>
+      <PropertyFields>
+        <Fields />
+      </PropertyFields>
+    </RegisterAccumulation>
+    <RegisterAccumulation>
+      <Name>РозрахункиЗПостачальниками</Name>
+      <Table>tab_a61</Table>
+      <Type>Residues</Type>
+      <Desc>
+      </Desc>
+      <DimensionFields>
+        <Fields>
+          <Field>
+            <Name>ЗамовленняПостачальнику</Name>
+            <NameInTable>col_a6</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+          <Field>
+            <Name>Валюта</Name>
+            <NameInTable>col_a7</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Валюти</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+        </Fields>
+      </DimensionFields>
+      <ResourcesFields>
+        <Fields>
+          <Field>
+            <Name>Сума</Name>
+            <NameInTable>col_a8</NameInTable>
+            <Type>numeric</Type>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+        </Fields>
+      </ResourcesFields>
+      <PropertyFields>
+        <Fields>
+          <Field>
+            <Name>ГосподарськаОперація</Name>
+            <NameInTable>col_a9</NameInTable>
+            <Type>enum</Type>
+            <Pointer>Перелічення.ГосподарськіОперації</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+          <Field>
+            <Name>ФормаОплати</Name>
+            <NameInTable>col_b1</NameInTable>
+            <Type>enum</Type>
+            <Pointer>Перелічення.ФормаОплати</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+        </Fields>
+      </PropertyFields>
+    </RegisterAccumulation>
+    <RegisterAccumulation>
+      <Name>ТовариДоПоступлення</Name>
+      <Table>tab_a62</Table>
+      <Type>Residues</Type>
+      <Desc>
+      </Desc>
+      <DimensionFields>
+        <Fields>
+          <Field>
+            <Name>Номенклатура</Name>
+            <NameInTable>col_b2</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Номенклатура</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+          <Field>
+            <Name>ХарактеристикаНоменклатури</Name>
+            <NameInTable>col_b3</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+          <Field>
+            <Name>Склад</Name>
+            <NameInTable>col_b4</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Склади</Pointer>
+            <Desc>
+            </Desc>
+            <IsPresentation>0</IsPresentation>
+          </Field>
+        </Fields>
+      </DimensionFields>
+      <ResourcesFields>
+        <Fields>
+          <Field>
+            <Name>ДоПоступлення</Name>
+            <NameInTable>col_b5</NameInTable>
             <Type>integer</Type>
             <Desc>
             </Desc>
