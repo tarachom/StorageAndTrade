@@ -96,7 +96,7 @@ namespace StorageAndTrade
 			querySelect.Joins.Add(new Join(JoinTable, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.ХарактеристикаНоменклатури, querySelect.Table));
 
 			//ORDER
-			querySelect.Order.Add(Документи.ЗамовленняКлієнта_Товари_TablePart.НомерРядка, SelectOrder.ASC);
+			querySelect.Order.Add(Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.НомерРядка, SelectOrder.ASC);
 
 			ДокументОбєкт.Товари_TablePart.Read();
 
