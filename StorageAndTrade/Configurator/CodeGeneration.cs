@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 14.09.2021 13:50:27
+ * Дата конфігурації: 14.09.2021 14:02:33
  *
  */
 
@@ -7925,7 +7925,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_a1"] = Каса.UnigueID.UGuid;
             
             BaseSave();
-			
+			Записи_Triggers.ПоверненняТоварівПостачальнику_AfterRecording(this);
         }
 
         public ПоверненняТоварівПостачальнику_Objest Copy()
@@ -7956,7 +7956,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
-		    
+		    Записи_Triggers.ПоверненняТоварівПостачальнику_BeforeDelete(this);
             base.BaseDelete();
         }
         
@@ -8049,7 +8049,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоверненняТоварівПостачальнику_Товари_TablePart : DocumentTablePart
     {
         public ПоверненняТоварівПостачальнику_Товари_TablePart(ПоверненняТоварівПостачальнику_Objest owner) : base(Config.Kernel, "tab_a52",
-             new string[] { "col_d8", "col_d9", "col_e1", "col_e2", "col_e3", "col_e4", "col_e5", "col_a1" }) 
+             new string[] { "col_d8", "col_d9", "col_e1", "col_e2", "col_e3", "col_e4", "col_e5", "col_a1", "col_a2" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -8065,6 +8065,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Ціна = "col_e4";
         public const string Сума = "col_e5";
         public const string НомерРядка = "col_a1";
+        public const string ДокументПоступлення = "col_a2";
 
         public ПоверненняТоварівПостачальнику_Objest Owner { get; private set; }
         
@@ -8088,6 +8089,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.Ціна = (fieldValue["col_e4"] != DBNull.Value) ? (decimal)fieldValue["col_e4"] : 0;
                 record.Сума = (fieldValue["col_e5"] != DBNull.Value) ? (decimal)fieldValue["col_e5"] : 0;
                 record.НомерРядка = (fieldValue["col_a1"] != DBNull.Value) ? (int)fieldValue["col_a1"] : 0;
+                record.ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer(fieldValue["col_a2"]);
                 
                 Records.Add(record);
             }
@@ -8116,6 +8118,7 @@ namespace StorageAndTrade_1_0.Документи
                     fieldValue.Add("col_e4", record.Ціна);
                     fieldValue.Add("col_e5", record.Сума);
                     fieldValue.Add("col_a1", record.НомерРядка);
+                    fieldValue.Add("col_a2", record.ДокументПоступлення.UnigueID.UGuid);
                     
                     base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
                 }
@@ -8144,12 +8147,13 @@ namespace StorageAndTrade_1_0.Документи
                 Ціна = 0;
                 Сума = 0;
                 НомерРядка = 0;
+                ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer();
                 
             }
         
             
             public Record(
-                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, int _НомерРядка = 0)
+                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, int _НомерРядка = 0, Документи.ПоступленняТоварівТаПослуг_Pointer _ДокументПоступлення = null)
             {
                 Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = _ХарактеристикаНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
@@ -8159,6 +8163,7 @@ namespace StorageAndTrade_1_0.Документи
                 Ціна = _Ціна;
                 Сума = _Сума;
                 НомерРядка = _НомерРядка;
+                ДокументПоступлення = _ДокументПоступлення ?? new Документи.ПоступленняТоварівТаПослуг_Pointer();
                 
             }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
@@ -8169,6 +8174,7 @@ namespace StorageAndTrade_1_0.Документи
             public decimal Ціна { get; set; }
             public decimal Сума { get; set; }
             public int НомерРядка { get; set; }
+            public Документи.ПоступленняТоварівТаПослуг_Pointer ДокументПоступлення { get; set; }
             
         }
     }

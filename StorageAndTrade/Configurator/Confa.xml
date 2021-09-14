@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>14.09.2021 13:50:27</DateTimeSave>
+  <DateTimeSave>14.09.2021 14:02:33</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -4735,16 +4735,23 @@
               </Desc>
               <IsPresentation>0</IsPresentation>
             </Field>
+            <Field>
+              <Name>ДокументПоступлення</Name>
+              <NameInTable>col_a2</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <AfterSave>Записи_Triggers.ПоверненняТоварівПостачальнику_AfterRecording</AfterSave>
+        <BeforeDelete>Записи_Triggers.ПоверненняТоварівПостачальнику_BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
     <Document>
