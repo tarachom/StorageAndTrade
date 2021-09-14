@@ -457,5 +457,93 @@ namespace StorageAndTrade_1_0.Документи
 		}
 
 		#endregion
+
+		#region ПоверненняТоварівВідКлієнта
+
+		public static void ПоверненняТоварівВідКлієнта_BeforeRecording(ПоверненняТоварівВідКлієнта_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void ПоверненняТоварівВідКлієнта_AfterRecording(ПоверненняТоварівВідКлієнта_Objest ДокументОбєкт)
+        {
+			//
+			//ВільніЗалишки
+			//
+
+			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+
+			foreach (ПоверненняТоварівВідКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+				вільніЗалишки_RecordsSet.Records.Add(record);
+
+				record.Income = true; // +
+				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.Склад = ДокументОбєкт.Склад;
+				record.ВРезервіПідЗамовлення = Товари_Record.Кількість;
+			}
+
+			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			//
+			//Товари на складах
+			//
+
+			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+
+			foreach (ПоверненняТоварівВідКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+				товариНаСкладах_RecordsSet.Records.Add(record);
+
+				record.Income = true; // +
+				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.Склад = ДокументОбєкт.Склад;
+				record.ВНаявності = Товари_Record.Кількість;
+			}
+
+			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			//
+			//РозрахункиЗКлієнтами
+			//
+
+			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+
+			foreach (ПоверненняТоварівВідКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				//З документу реалізації треба витягнути замовлення
+
+				//Товари_Record.ДокументРеалізації.GetDocumentObject().Товари_TablePart.
+
+				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
+				розрахункиЗКлієнтами_RecordsSet.Records.Add(розрахункиЗКлієнтами_Record);
+
+				розрахункиЗКлієнтами_Record.Income = true; // +
+				розрахункиЗКлієнтами_Record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				//розрахункиЗКлієнтами_Record.ЗамовленняКлієнта = Товари_Record.ДокументРеалізації;
+				розрахункиЗКлієнтами_Record.Валюта = ДокументОбєкт.Валюта;
+				розрахункиЗКлієнтами_Record.Сума = ДокументОбєкт.СумаДокументу;
+			}
+
+			розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+
+		}
+
+		public static void ПоверненняТоварівВідКлієнта_BeforeDelete(ПоверненняТоварівВідКлієнта_Objest ДокументОбєкт)
+		{
+
+		}
+
+		#endregion
 	}
 }

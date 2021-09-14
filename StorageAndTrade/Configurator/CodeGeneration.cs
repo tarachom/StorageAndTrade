@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 14.09.2021 13:08:11
+ * Дата конфігурації: 14.09.2021 13:44:57
  *
  */
 
@@ -8366,7 +8366,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоверненняТоварівВідКлієнта_Товари_TablePart : DocumentTablePart
     {
         public ПоверненняТоварівВідКлієнта_Товари_TablePart(ПоверненняТоварівВідКлієнта_Objest owner) : base(Config.Kernel, "tab_a54",
-             new string[] { "col_g3", "col_g4", "col_g5", "col_g6", "col_g7", "col_g8", "col_g9", "col_h1", "col_h2" }) 
+             new string[] { "col_g3", "col_g4", "col_g5", "col_g6", "col_g7", "col_g8", "col_g9", "col_h1", "col_h2", "col_a2" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -8383,6 +8383,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Сума = "col_g9";
         public const string Штрихкод = "col_h1";
         public const string НомерРядка = "col_h2";
+        public const string ДокументРеалізації = "col_a2";
 
         public ПоверненняТоварівВідКлієнта_Objest Owner { get; private set; }
         
@@ -8407,6 +8408,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.Сума = (fieldValue["col_g9"] != DBNull.Value) ? (decimal)fieldValue["col_g9"] : 0;
                 record.Штрихкод = fieldValue["col_h1"].ToString();
                 record.НомерРядка = (fieldValue["col_h2"] != DBNull.Value) ? (int)fieldValue["col_h2"] : 0;
+                record.ДокументРеалізації = new Документи.РеалізаціяТоварівТаПослуг_Pointer(fieldValue["col_a2"]);
                 
                 Records.Add(record);
             }
@@ -8436,6 +8438,7 @@ namespace StorageAndTrade_1_0.Документи
                     fieldValue.Add("col_g9", record.Сума);
                     fieldValue.Add("col_h1", record.Штрихкод);
                     fieldValue.Add("col_h2", record.НомерРядка);
+                    fieldValue.Add("col_a2", record.ДокументРеалізації.UnigueID.UGuid);
                     
                     base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
                 }
@@ -8465,12 +8468,13 @@ namespace StorageAndTrade_1_0.Документи
                 Сума = 0;
                 Штрихкод = "";
                 НомерРядка = 0;
+                ДокументРеалізації = new Документи.РеалізаціяТоварівТаПослуг_Pointer();
                 
             }
         
             
             public Record(
-                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, string _Штрихкод = "", int _НомерРядка = 0)
+                Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, string _Штрихкод = "", int _НомерРядка = 0, Документи.РеалізаціяТоварівТаПослуг_Pointer _ДокументРеалізації = null)
             {
                 Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = _ХарактеристикаНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
@@ -8481,6 +8485,7 @@ namespace StorageAndTrade_1_0.Документи
                 Сума = _Сума;
                 Штрихкод = _Штрихкод;
                 НомерРядка = _НомерРядка;
+                ДокументРеалізації = _ДокументРеалізації ?? new Документи.РеалізаціяТоварівТаПослуг_Pointer();
                 
             }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
@@ -8492,6 +8497,7 @@ namespace StorageAndTrade_1_0.Документи
             public decimal Сума { get; set; }
             public string Штрихкод { get; set; }
             public int НомерРядка { get; set; }
+            public Документи.РеалізаціяТоварівТаПослуг_Pointer ДокументРеалізації { get; set; }
             
         }
     }
