@@ -195,10 +195,13 @@ namespace StorageAndTrade
                 Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest = Parent_Pointer.GetDirectoryObject();
                 if (номенклатура_Папки_Objest != null)
                 {
-                    Parent_Pointer = номенклатура_Папки_Objest.Родич;
+                    if (MessageBox.Show("Видалити папку?", "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        Parent_Pointer = номенклатура_Папки_Objest.Родич;
 
-                    номенклатура_Папки_Objest.Delete();
-                    LoadTree();
+                        номенклатура_Папки_Objest.Delete();
+                        LoadTree();
+                    }
                 }
             }
         }
