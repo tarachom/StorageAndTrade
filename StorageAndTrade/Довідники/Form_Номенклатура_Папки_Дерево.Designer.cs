@@ -70,6 +70,7 @@ namespace StorageAndTrade
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(66, 22);
             this.toolStripButtonAdd.Text = "Додати";
+            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
             // toolStripButtonCopy
             // 

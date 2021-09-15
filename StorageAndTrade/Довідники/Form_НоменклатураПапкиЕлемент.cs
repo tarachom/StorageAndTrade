@@ -36,9 +36,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_НоменклатураПапка : Form
+    public partial class Form_НоменклатураПапкиЕлемент : Form
     {
-        public Form_НоменклатураПапка()
+        public Form_НоменклатураПапкиЕлемент()
         {
             InitializeComponent();
         }
@@ -65,6 +65,8 @@ namespace StorageAndTrade
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			//directoryControl_НоменклатураПапка.SelectForm = new Довідники.
+
 			if (IsNew.HasValue)
 			{
 				номенклатура_Папки_Objest = new Довідники.Номенклатура_Папки_Objest();

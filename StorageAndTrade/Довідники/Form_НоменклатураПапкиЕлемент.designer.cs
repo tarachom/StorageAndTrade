@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class Form_НоменклатураПапка
+    partial class Form_НоменклатураПапкиЕлемент
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,8 @@ namespace StorageAndTrade
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.directoryControl_НоменклатураПапка = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -71,11 +73,31 @@ namespace StorageAndTrade
             this.label2.TabIndex = 19;
             this.label2.Text = "Назва:";
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(18, 45);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(40, 13);
+            this.label9.TabIndex = 52;
+            this.label9.Text = "Родич:";
+            // 
+            // directoryControl_НоменклатураПапка
+            // 
+            this.directoryControl_НоменклатураПапка.DirectoryPointerItem = null;
+            this.directoryControl_НоменклатураПапка.Location = new System.Drawing.Point(88, 38);
+            this.directoryControl_НоменклатураПапка.Name = "directoryControl_НоменклатураПапка";
+            this.directoryControl_НоменклатураПапка.SelectForm = null;
+            this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(461, 27);
+            this.directoryControl_НоменклатураПапка.TabIndex = 51;
+            // 
             // Form_НоменклатураПапка
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 164);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.directoryControl_НоменклатураПапка);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
@@ -96,5 +118,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label9;
+        private DirectoryControl directoryControl_НоменклатураПапка;
     }
 }
