@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace StorageAndTrade.Довідники
+namespace StorageAndTrade
 {
     public partial class Form_Номенклатура_Папки_Дерево : UserControl
     {

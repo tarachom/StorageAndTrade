@@ -37,10 +37,16 @@ namespace StorageAndTrade
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.form_Номенклатура_Папки_Дерево1 = new StorageAndTrade.Form_Номенклатура_Папки_Дерево();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
             this.SuspendLayout();
             // 
@@ -114,12 +120,29 @@ namespace StorageAndTrade
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dataGridViewRecords);
+            this.panel2.Controls.Add(this.splitContainer1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1011, 649);
             this.panel2.TabIndex = 2;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.dataGridViewRecords);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.form_Номенклатура_Папки_Дерево1);
+            this.splitContainer1.Size = new System.Drawing.Size(1011, 649);
+            this.splitContainer1.SplitterDistance = 717;
+            this.splitContainer1.TabIndex = 1;
             // 
             // dataGridViewRecords
             // 
@@ -128,13 +151,22 @@ namespace StorageAndTrade
             this.dataGridViewRecords.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRecords.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewRecords.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewRecords.Name = "dataGridViewRecords";
             this.dataGridViewRecords.ReadOnly = true;
             this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(629, 649);
+            this.dataGridViewRecords.Size = new System.Drawing.Size(717, 649);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
+            // 
+            // form_Номенклатура_Папки_Дерево1
+            // 
+            this.form_Номенклатура_Папки_Дерево1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.form_Номенклатура_Папки_Дерево1.Location = new System.Drawing.Point(0, 0);
+            this.form_Номенклатура_Папки_Дерево1.Name = "form_Номенклатура_Папки_Дерево1";
+            this.form_Номенклатура_Папки_Дерево1.Size = new System.Drawing.Size(290, 649);
+            this.form_Номенклатура_Папки_Дерево1.TabIndex = 0;
             // 
             // Form_Номенклатура
             // 
@@ -152,6 +184,10 @@ namespace StorageAndTrade
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
             this.ResumeLayout(false);
 
@@ -168,5 +204,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private Form_Номенклатура_Папки_Дерево form_Номенклатура_Папки_Дерево1;
     }
 }

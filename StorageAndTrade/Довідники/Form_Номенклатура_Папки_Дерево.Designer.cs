@@ -1,5 +1,5 @@
 ﻿
-namespace StorageAndTrade.Довідники
+namespace StorageAndTrade
 {
     partial class Form_Номенклатура_Папки_Дерево
     {
@@ -30,32 +30,26 @@ namespace StorageAndTrade.Довідники
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.treeViewFolders = new System.Windows.Forms.TreeView();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(390, 29);
+            this.panel1.Size = new System.Drawing.Size(282, 29);
             this.panel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.treeViewFolders);
-            this.panel2.Location = new System.Drawing.Point(3, 35);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(387, 540);
-            this.panel2.TabIndex = 0;
             // 
             // toolStrip1
             // 
@@ -65,7 +59,7 @@ namespace StorageAndTrade.Довідники
             this.toolStripButtonDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(390, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(282, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -93,12 +87,23 @@ namespace StorageAndTrade.Довідники
             this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 22);
             this.toolStripButtonDelete.Text = "Видалити";
             // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.Controls.Add(this.treeViewFolders);
+            this.panel2.Location = new System.Drawing.Point(3, 28);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(279, 547);
+            this.panel2.TabIndex = 0;
+            // 
             // treeViewFolders
             // 
             this.treeViewFolders.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeViewFolders.Location = new System.Drawing.Point(0, 0);
             this.treeViewFolders.Name = "treeViewFolders";
-            this.treeViewFolders.Size = new System.Drawing.Size(387, 540);
+            this.treeViewFolders.Size = new System.Drawing.Size(279, 547);
             this.treeViewFolders.TabIndex = 0;
             // 
             // Form_Номенклатура_Папки_Дерево
@@ -108,13 +113,13 @@ namespace StorageAndTrade.Довідники
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form_Номенклатура_Папки_Дерево";
-            this.Size = new System.Drawing.Size(390, 578);
+            this.Size = new System.Drawing.Size(285, 578);
             this.Load += new System.EventHandler(this.Form_Номенклатура_Папки_Дерево_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
