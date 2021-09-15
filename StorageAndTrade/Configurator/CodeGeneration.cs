@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 14.09.2021 14:02:33
+ * Дата конфігурації: 15.09.2021 11:36:05
  *
  */
 
@@ -395,37 +395,32 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_a9", record.Тип);
-                    fieldValue.Add("col_a1", record.Країна);
-                    fieldValue.Add("col_a2", record.Район);
-                    fieldValue.Add("col_a3", record.Місто);
-                    fieldValue.Add("col_a4", record.Телефон);
-                    fieldValue.Add("col_a5", record.ЕлектроннаПошта);
-                    fieldValue.Add("col_a6", record.Область);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_a9", record.Тип);
+                fieldValue.Add("col_a1", record.Країна);
+                fieldValue.Add("col_a2", record.Район);
+                fieldValue.Add("col_a3", record.Місто);
+                fieldValue.Add("col_a4", record.Телефон);
+                fieldValue.Add("col_a5", record.ЕлектроннаПошта);
+                fieldValue.Add("col_a6", record.Область);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -1484,37 +1479,32 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_d2", record.Тип);
-                    fieldValue.Add("col_d3", record.Країна);
-                    fieldValue.Add("col_d4", record.Район);
-                    fieldValue.Add("col_d5", record.Область);
-                    fieldValue.Add("col_d6", record.Місто);
-                    fieldValue.Add("col_d7", record.ЕлектроннаПошта);
-                    fieldValue.Add("col_d8", record.Телефон);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_d2", record.Тип);
+                fieldValue.Add("col_d3", record.Країна);
+                fieldValue.Add("col_d4", record.Район);
+                fieldValue.Add("col_d5", record.Область);
+                fieldValue.Add("col_d6", record.Місто);
+                fieldValue.Add("col_d7", record.ЕлектроннаПошта);
+                fieldValue.Add("col_d8", record.Телефон);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -1780,37 +1770,32 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_e2", record.Тип);
-                    fieldValue.Add("col_e3", record.Країна);
-                    fieldValue.Add("col_e4", record.Район);
-                    fieldValue.Add("col_e5", record.Область);
-                    fieldValue.Add("col_e6", record.Місто);
-                    fieldValue.Add("col_e7", record.ЕлектроннаПошта);
-                    fieldValue.Add("col_e8", record.Телефон);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_e2", record.Тип);
+                fieldValue.Add("col_e3", record.Країна);
+                fieldValue.Add("col_e4", record.Район);
+                fieldValue.Add("col_e5", record.Область);
+                fieldValue.Add("col_e6", record.Місто);
+                fieldValue.Add("col_e7", record.ЕлектроннаПошта);
+                fieldValue.Add("col_e8", record.Телефон);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -2353,37 +2338,32 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_f8", record.Тип);
-                    fieldValue.Add("col_f9", record.Країна);
-                    fieldValue.Add("col_g1", record.Область);
-                    fieldValue.Add("col_g2", record.Район);
-                    fieldValue.Add("col_g3", record.Місто);
-                    fieldValue.Add("col_g4", record.ЕлектроннаПошта);
-                    fieldValue.Add("col_g5", record.Телефон);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_f8", record.Тип);
+                fieldValue.Add("col_f9", record.Країна);
+                fieldValue.Add("col_g1", record.Область);
+                fieldValue.Add("col_g2", record.Район);
+                fieldValue.Add("col_g3", record.Місто);
+                fieldValue.Add("col_g4", record.ЕлектроннаПошта);
+                fieldValue.Add("col_g5", record.Телефон);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -2635,37 +2615,32 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_h1", record.Тип);
-                    fieldValue.Add("col_h2", record.Країна);
-                    fieldValue.Add("col_h3", record.Область);
-                    fieldValue.Add("col_h4", record.Район);
-                    fieldValue.Add("col_h5", record.Місто);
-                    fieldValue.Add("col_h6", record.ЕлектроннаПошта);
-                    fieldValue.Add("col_h7", record.Телефон);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_h1", record.Тип);
+                fieldValue.Add("col_h2", record.Країна);
+                fieldValue.Add("col_h3", record.Область);
+                fieldValue.Add("col_h4", record.Район);
+                fieldValue.Add("col_h5", record.Місто);
+                fieldValue.Add("col_h6", record.ЕлектроннаПошта);
+                fieldValue.Add("col_h7", record.Телефон);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -4823,31 +4798,26 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_j3", record.ГосподарськаОперація);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_j3", record.ГосподарськаОперація);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -5341,42 +5311,37 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_o4", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a1", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_a2", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.КількістьУпаковок);
-                    fieldValue.Add("col_a4", record.Кількість);
-                    fieldValue.Add("col_a5", record.ДатаПоступлення);
-                    fieldValue.Add("col_a6", record.Ціна);
-                    fieldValue.Add("col_a7", record.Сума);
-                    fieldValue.Add("col_a8", record.Скидка);
-                    fieldValue.Add("col_a9", record.Склад.UnigueID.UGuid);
-                    fieldValue.Add("col_b1", record.Підрозділ.UnigueID.UGuid);
-                    fieldValue.Add("col_b2", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_o4", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_a1", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_a2", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_a3", record.КількістьУпаковок);
+                fieldValue.Add("col_a4", record.Кількість);
+                fieldValue.Add("col_a5", record.ДатаПоступлення);
+                fieldValue.Add("col_a6", record.Ціна);
+                fieldValue.Add("col_a7", record.Сума);
+                fieldValue.Add("col_a8", record.Скидка);
+                fieldValue.Add("col_a9", record.Склад.UnigueID.UGuid);
+                fieldValue.Add("col_b1", record.Підрозділ.UnigueID.UGuid);
+                fieldValue.Add("col_b2", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -5772,42 +5737,37 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_a9", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_b1", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_a1", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_a2", record.КількістьУпаковок);
-                    fieldValue.Add("col_a3", record.Кількість);
-                    fieldValue.Add("col_a4", record.Ціна);
-                    fieldValue.Add("col_a5", record.Сума);
-                    fieldValue.Add("col_a6", record.Склад.UnigueID.UGuid);
-                    fieldValue.Add("col_a7", record.ЗамовленняПостачальнику.UnigueID.UGuid);
-                    fieldValue.Add("col_a8", record.Скидка);
-                    fieldValue.Add("col_b2", record.Підрозділ.UnigueID.UGuid);
-                    fieldValue.Add("col_b3", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_a9", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_b1", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_a1", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_a2", record.КількістьУпаковок);
+                fieldValue.Add("col_a3", record.Кількість);
+                fieldValue.Add("col_a4", record.Ціна);
+                fieldValue.Add("col_a5", record.Сума);
+                fieldValue.Add("col_a6", record.Склад.UnigueID.UGuid);
+                fieldValue.Add("col_a7", record.ЗамовленняПостачальнику.UnigueID.UGuid);
+                fieldValue.Add("col_a8", record.Скидка);
+                fieldValue.Add("col_b2", record.Підрозділ.UnigueID.UGuid);
+                fieldValue.Add("col_b3", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -6183,41 +6143,36 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_b9", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_c1", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_c2", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_c3", record.КількістьУпаковок);
-                    fieldValue.Add("col_c4", record.Кількість);
-                    fieldValue.Add("col_c5", record.ВидЦіни.UnigueID.UGuid);
-                    fieldValue.Add("col_c6", record.Ціна);
-                    fieldValue.Add("col_c7", record.Сума);
-                    fieldValue.Add("col_c8", record.Скидка);
-                    fieldValue.Add("col_a1", record.Склад.UnigueID.UGuid);
-                    fieldValue.Add("col_a2", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_b9", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_c1", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_c2", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_c3", record.КількістьУпаковок);
+                fieldValue.Add("col_c4", record.Кількість);
+                fieldValue.Add("col_c5", record.ВидЦіни.UnigueID.UGuid);
+                fieldValue.Add("col_c6", record.Ціна);
+                fieldValue.Add("col_c7", record.Сума);
+                fieldValue.Add("col_c8", record.Скидка);
+                fieldValue.Add("col_a1", record.Склад.UnigueID.UGuid);
+                fieldValue.Add("col_a2", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -6604,42 +6559,37 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_d2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_d3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_d4", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_d5", record.КількістьУпаковок);
-                    fieldValue.Add("col_d6", record.Кількість);
-                    fieldValue.Add("col_d7", record.ВидЦіни.UnigueID.UGuid);
-                    fieldValue.Add("col_d8", record.Ціна);
-                    fieldValue.Add("col_d9", record.Сума);
-                    fieldValue.Add("col_e1", record.Склад.UnigueID.UGuid);
-                    fieldValue.Add("col_e2", record.ЗамовленняКлієнта.UnigueID.UGuid);
-                    fieldValue.Add("col_e3", record.Скидка);
-                    fieldValue.Add("col_a1", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_d2", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_d3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_d4", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_d5", record.КількістьУпаковок);
+                fieldValue.Add("col_d6", record.Кількість);
+                fieldValue.Add("col_d7", record.ВидЦіни.UnigueID.UGuid);
+                fieldValue.Add("col_d8", record.Ціна);
+                fieldValue.Add("col_d9", record.Сума);
+                fieldValue.Add("col_e1", record.Склад.UnigueID.UGuid);
+                fieldValue.Add("col_e2", record.ЗамовленняКлієнта.UnigueID.UGuid);
+                fieldValue.Add("col_e3", record.Скидка);
+                fieldValue.Add("col_a1", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -6861,36 +6811,31 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_h1", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_h2", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_h3", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_h4", record.ВидЦіни.UnigueID.UGuid);
-                    fieldValue.Add("col_h5", record.Ціна);
-                    fieldValue.Add("col_a1", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_h1", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_h2", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_h3", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_h4", record.ВидЦіни.UnigueID.UGuid);
+                fieldValue.Add("col_h5", record.Ціна);
+                fieldValue.Add("col_a1", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -7154,36 +7099,31 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_j4", record.Замовлення);
-                    fieldValue.Add("col_j5", record.Сума);
-                    fieldValue.Add("col_j6", record.Підрозділ.UnigueID.UGuid);
-                    fieldValue.Add("col_j7", record.ВалютаВзаєморозрахунків.UnigueID.UGuid);
-                    fieldValue.Add("col_j8", record.Організація.UnigueID.UGuid);
-                    fieldValue.Add("col_a1", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_j4", record.Замовлення);
+                fieldValue.Add("col_j5", record.Сума);
+                fieldValue.Add("col_j6", record.Підрозділ.UnigueID.UGuid);
+                fieldValue.Add("col_j7", record.ВалютаВзаєморозрахунків.UnigueID.UGuid);
+                fieldValue.Add("col_j8", record.Організація.UnigueID.UGuid);
+                fieldValue.Add("col_a1", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -7449,37 +7389,32 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_l4", record.Замовлення);
-                    fieldValue.Add("col_l5", record.Сума);
-                    fieldValue.Add("col_l6", record.ВалютаВзаєморозрахунків.UnigueID.UGuid);
-                    fieldValue.Add("col_l7", record.Підрозділ.UnigueID.UGuid);
-                    fieldValue.Add("col_l8", record.Коментар);
-                    fieldValue.Add("col_l9", record.Організація.UnigueID.UGuid);
-                    fieldValue.Add("col_a1", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_l4", record.Замовлення);
+                fieldValue.Add("col_l5", record.Сума);
+                fieldValue.Add("col_l6", record.ВалютаВзаєморозрахунків.UnigueID.UGuid);
+                fieldValue.Add("col_l7", record.Підрозділ.UnigueID.UGuid);
+                fieldValue.Add("col_l8", record.Коментар);
+                fieldValue.Add("col_l9", record.Організація.UnigueID.UGuid);
+                fieldValue.Add("col_a1", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -7770,36 +7705,31 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_b3", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_b4", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_b5", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_b6", record.КількістьУпаковок);
-                    fieldValue.Add("col_b7", record.Кількість);
-                    fieldValue.Add("col_b8", record.НомерРядка);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_b3", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_b4", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_b5", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_b6", record.КількістьУпаковок);
+                fieldValue.Add("col_b7", record.Кількість);
+                fieldValue.Add("col_b8", record.НомерРядка);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -8099,39 +8029,34 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_d8", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_d9", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_e1", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_e2", record.КількістьУпаковок);
-                    fieldValue.Add("col_e3", record.Кількість);
-                    fieldValue.Add("col_e4", record.Ціна);
-                    fieldValue.Add("col_e5", record.Сума);
-                    fieldValue.Add("col_a1", record.НомерРядка);
-                    fieldValue.Add("col_a2", record.ДокументПоступлення.UnigueID.UGuid);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_d8", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_d9", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_e1", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_e2", record.КількістьУпаковок);
+                fieldValue.Add("col_e3", record.Кількість);
+                fieldValue.Add("col_e4", record.Ціна);
+                fieldValue.Add("col_e5", record.Сума);
+                fieldValue.Add("col_a1", record.НомерРядка);
+                fieldValue.Add("col_a2", record.ДокументПоступлення.UnigueID.UGuid);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         
@@ -8424,40 +8349,35 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save(bool clear_all_before_save /*= true*/) 
         {
-            if (Records.Count > 0)
+            base.BaseBeginTransaction();
+                
+            if (clear_all_before_save)
+                base.BaseDelete(Owner.UnigueID);
+
+            foreach (Record record in Records)
             {
-                base.BaseBeginTransaction();
-                
-                if (clear_all_before_save)
-                    base.BaseDelete(Owner.UnigueID);
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                foreach (Record record in Records)
-                {
-                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
-
-                    fieldValue.Add("col_g3", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_g4", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
-                    fieldValue.Add("col_g5", record.Пакування.UnigueID.UGuid);
-                    fieldValue.Add("col_g6", record.КількістьУпаковок);
-                    fieldValue.Add("col_g7", record.Кількість);
-                    fieldValue.Add("col_g8", record.Ціна);
-                    fieldValue.Add("col_g9", record.Сума);
-                    fieldValue.Add("col_h1", record.Штрихкод);
-                    fieldValue.Add("col_h2", record.НомерРядка);
-                    fieldValue.Add("col_a2", record.ДокументРеалізації.UnigueID.UGuid);
-                    
-                    base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
-                }
+                fieldValue.Add("col_g3", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_g4", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_g5", record.Пакування.UnigueID.UGuid);
+                fieldValue.Add("col_g6", record.КількістьУпаковок);
+                fieldValue.Add("col_g7", record.Кількість);
+                fieldValue.Add("col_g8", record.Ціна);
+                fieldValue.Add("col_g9", record.Сума);
+                fieldValue.Add("col_h1", record.Штрихкод);
+                fieldValue.Add("col_h2", record.НомерРядка);
+                fieldValue.Add("col_a2", record.ДокументРеалізації.UnigueID.UGuid);
                 
-                base.BaseCommitTransaction();
+                base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
+                
+            base.BaseCommitTransaction();
         }
         
         public void Delete()
         {
-            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
-            base.BaseCommitTransaction();
         }
         
         

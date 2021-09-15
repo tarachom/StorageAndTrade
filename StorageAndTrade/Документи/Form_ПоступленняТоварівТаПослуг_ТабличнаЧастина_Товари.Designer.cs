@@ -56,6 +56,7 @@ namespace StorageAndTrade
             // dataGridViewRecords
             // 
             this.dataGridViewRecords.AllowUserToAddRows = false;
+            this.dataGridViewRecords.AllowUserToDeleteRows = false;
             this.dataGridViewRecords.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dataGridViewRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -123,13 +124,13 @@ namespace StorageAndTrade
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // ЗамовленняКлієнта_ТабличнаЧастина_Товари
+            // Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "ЗамовленняКлієнта_ТабличнаЧастина_Товари";
+            this.Name = "Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари";
             this.Size = new System.Drawing.Size(733, 248);
             this.Load += new System.EventHandler(this.ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load);
             this.panel2.ResumeLayout(false);
