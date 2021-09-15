@@ -29,6 +29,8 @@ namespace StorageAndTrade
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Номенклатура_Папки_Дерево));
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
@@ -36,6 +38,7 @@ namespace StorageAndTrade
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.treeViewFolders = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -102,10 +105,19 @@ namespace StorageAndTrade
             // treeViewFolders
             // 
             this.treeViewFolders.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeViewFolders.ImageIndex = 0;
+            this.treeViewFolders.ImageList = this.imageList1;
             this.treeViewFolders.Location = new System.Drawing.Point(0, 0);
             this.treeViewFolders.Name = "treeViewFolders";
+            this.treeViewFolders.SelectedImageIndex = 0;
             this.treeViewFolders.Size = new System.Drawing.Size(279, 547);
             this.treeViewFolders.TabIndex = 0;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "folder.png");
             // 
             // Form_Номенклатура_Папки_Дерево
             // 
@@ -134,5 +146,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.TreeView treeViewFolders;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

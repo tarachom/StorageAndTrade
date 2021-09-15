@@ -66,6 +66,7 @@ namespace StorageAndTrade
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			//directoryControl_НоменклатураПапка.SelectForm = new Довідники.
+			//5e219a5c-4b4e-4ebe-9675-fad875d9b8ad
 
 			if (IsNew.HasValue)
 			{
@@ -74,6 +75,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer();
 				}
 				else
 				{
@@ -82,6 +84,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + номенклатура_Папки_Objest.Назва;
 
 						textBoxName.Text = номенклатура_Папки_Objest.Назва;
+						directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer(номенклатура_Папки_Objest.Родич.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -99,6 +102,7 @@ namespace StorageAndTrade
 				try
 				{
 					номенклатура_Папки_Objest.Назва = textBoxName.Text;
+					номенклатура_Папки_Objest.Родич = (Довідники.Номенклатура_Папки_Pointer)directoryControl_НоменклатураПапка.DirectoryPointerItem;
 					номенклатура_Папки_Objest.Save();
 				}
 				catch (Exception exp)

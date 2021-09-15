@@ -41,7 +41,7 @@ namespace StorageAndTrade
         public Form_Номенклатура()
         {
             InitializeComponent();
-        }
+		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
@@ -65,6 +65,9 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ТипНоменклатури"].Width = 50;
 			dataGridViewRecords.Columns["ТипНоменклатури"].HeaderText = "Тип";
+
+			form_Номенклатура_Папки_Дерево1.OwnerForm = this;
+			form_Номенклатура_Папки_Дерево1.LoadTree();
 
 			LoadRecords();
 		}
@@ -102,6 +105,10 @@ namespace StorageAndTrade
 
 			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join3"));
 			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.ОдиницяВиміру, номенклатура_Select.QuerySelect.Table));
+
+			//WHERE
+			if (form_Номенклатура_Папки_Дерево1.Parent_Pointer != null)
+				номенклатура_Select.QuerySelect.Where.Add(new Where(Довідники.Номенклатура_Select.Папка, Comparison.EQ, form_Номенклатура_Папки_Дерево1.Parent_Pointer.UnigueID.UGuid));
 
 			//ORDER
 			номенклатура_Select.QuerySelect.Order.Add(Довідники.Номенклатура_Select.Назва, SelectOrder.ASC);

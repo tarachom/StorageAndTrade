@@ -23,14 +23,123 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
+        public Form_Номенклатура OwnerForm { get; set; }
+
+        public Довідники.Номенклатура_Папки_Pointer Parent_Pointer { get; set; }
+
         private void Form_Номенклатура_Папки_Дерево_Load(object sender, EventArgs e)
         {
+            Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
 
+            treeViewFolders.AfterSelect += TreeViewFolders_AfterSelect;
+        }
+
+        private void TreeViewFolders_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeViewFolders.SelectedNode.Name != "root")
+                Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer(new UnigueID(treeViewFolders.SelectedNode.Name));
+            else
+                Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
+
+            OwnerForm.LoadRecords();
+        }
+
+        public void LoadTree()
+        {
+            Configuration Conf = Конфа.Config.Kernel.Conf;
+
+            treeViewFolders.Nodes.Clear();
+
+            TreeNode rootNode = treeViewFolders.Nodes.Add("root", "Папки");
+            rootNode.ImageIndex = 0;
+
+            string tab = Conf.Directories["Номенклатура_Папки"].Table;
+            string tabFieldName = Conf.Directories["Номенклатура_Папки"].Fields["Назва"].NameInTable;
+            string tabFieldParent = Conf.Directories["Номенклатура_Папки"].Fields["Родич"].NameInTable;
+
+            string query = $@"
+                WITH RECURSIVE r AS (
+                   SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
+                   FROM {tab}
+                   WHERE col_j3 = '{Guid.Empty}'
+
+                   UNION ALL
+
+                   SELECT {tab}.uid, {tab}.{tabFieldName}, {tab}.{tabFieldParent}, r.level + 1 AS level
+                   FROM {tab}
+                      JOIN r ON {tab}.{tabFieldParent} = r.uid
+                )
+
+                SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
+                ORDER BY level ASC
+            ";
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Конфа.Config.Kernel.DataBase.SelectRequest(query, null, out columnsName, out listRow);
+
+            string currentFindParent = "";
+            TreeNode currentFindNode = null;
+
+            foreach (object[] o in listRow)
+            {
+                string uid = o[0].ToString();
+                string fieldName = o[1].ToString();
+                string fieldParent = o[2].ToString();
+                int level = (int)o[3];
+
+                if (level == 1)
+                {
+                    rootNode.Nodes.Add(uid, fieldName, 0);
+                }
+                else
+                {
+                    if (currentFindParent != fieldParent)
+                    {
+                        if (level == 2)
+                            currentFindNode = rootNode.Nodes[fieldParent];
+                        else
+                        {
+                            TreeNode[] treeNodes = rootNode.Nodes.Find(fieldParent, true);
+                            currentFindNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
+                        }
+                    }
+
+                    if (currentFindNode != null)
+                    {
+                        currentFindNode.Nodes.Add(uid, fieldName, 0);
+                        currentFindParent = fieldParent;
+                    }
+                }
+            }
+
+            rootNode.Expand();
+
+            if (Parent_Pointer != null)
+            {
+                TreeNode[] treeNodes = rootNode.Nodes.Find(Parent_Pointer.ToString(), true);
+                TreeNode findNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
+
+                if (findNode != null)
+                {
+                    treeViewFolders.SelectedNode = findNode;
+                    TreeNode parentNode = findNode.Parent;
+
+                    while (parentNode != null)
+                    {
+                        parentNode.Expand();
+                        parentNode = parentNode.Parent;
+                    }
+                }
+            }
         }
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            form_номе
+            Form_НоменклатураПапкиЕлемент form_НоменклатураПапкиЕлемент = new Form_НоменклатураПапкиЕлемент();
+            form_НоменклатураПапкиЕлемент.IsNew = true;
+            form_НоменклатураПапкиЕлемент.ShowDialog();
         }
     }
 }
