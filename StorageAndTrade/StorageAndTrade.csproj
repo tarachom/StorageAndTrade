@@ -69,11 +69,11 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураПапки.cs">
+    <Compile Include="Довідники\Form_НоменклатураПапкиВибір.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураПапки.designer.cs">
-      <DependentUpon>Form_НоменклатураПапки.cs</DependentUpon>
+    <Compile Include="Довідники\Form_НоменклатураПапкиВибір.designer.cs">
+      <DependentUpon>Form_НоменклатураПапкиВибір.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\Form_Номенклатура_Папки_Дерево.cs">
       <SubType>UserControl</SubType>
@@ -413,8 +413,8 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\Form_НоменклатураПапки.resx">
-      <DependentUpon>Form_НоменклатураПапки.cs</DependentUpon>
+    <EmbeddedResource Include="Довідники\Form_НоменклатураПапкиВибір.resx">
+      <DependentUpon>Form_НоменклатураПапкиВибір.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_Номенклатура_Папки_Дерево.resx">
       <DependentUpon>Form_Номенклатура_Папки_Дерево.cs</DependentUpon>
