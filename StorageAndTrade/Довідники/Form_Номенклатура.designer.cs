@@ -39,7 +39,7 @@ namespace StorageAndTrade
             this.panel2 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
-            this.form_Номенклатура_Папки_Дерево1 = new StorageAndTrade.Form_Номенклатура_Папки_Дерево();
+            this.Номенклатура_Папки_Дерево = new StorageAndTrade.Form_Номенклатура_Папки_Дерево();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -139,7 +139,7 @@ namespace StorageAndTrade
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.form_Номенклатура_Папки_Дерево1);
+            this.splitContainer1.Panel2.Controls.Add(this.Номенклатура_Папки_Дерево);
             this.splitContainer1.Size = new System.Drawing.Size(1011, 649);
             this.splitContainer1.SplitterDistance = 666;
             this.splitContainer1.TabIndex = 1;
@@ -160,15 +160,15 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
-            // form_Номенклатура_Папки_Дерево1
+            // Номенклатура_Папки_Дерево
             // 
-            this.form_Номенклатура_Папки_Дерево1.CallBack_AfterSelect = null;
-            this.form_Номенклатура_Папки_Дерево1.CallBack_DoubleClick = null;
-            this.form_Номенклатура_Папки_Дерево1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.form_Номенклатура_Папки_Дерево1.Location = new System.Drawing.Point(0, 0);
-            this.form_Номенклатура_Папки_Дерево1.Name = "form_Номенклатура_Папки_Дерево1";
-            this.form_Номенклатура_Папки_Дерево1.Size = new System.Drawing.Size(341, 649);
-            this.form_Номенклатура_Папки_Дерево1.TabIndex = 0;
+            this.Номенклатура_Папки_Дерево.CallBack_AfterSelect = null;
+            this.Номенклатура_Папки_Дерево.CallBack_DoubleClick = null;
+            this.Номенклатура_Папки_Дерево.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Номенклатура_Папки_Дерево.Location = new System.Drawing.Point(0, 0);
+            this.Номенклатура_Папки_Дерево.Name = "Номенклатура_Папки_Дерево";
+            this.Номенклатура_Папки_Дерево.Size = new System.Drawing.Size(341, 649);
+            this.Номенклатура_Папки_Дерево.TabIndex = 0;
             // 
             // Form_Номенклатура
             // 
@@ -207,6 +207,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private Form_Номенклатура_Папки_Дерево form_Номенклатура_Папки_Дерево1;
+        private Form_Номенклатура_Папки_Дерево Номенклатура_Папки_Дерево;
     }
 }

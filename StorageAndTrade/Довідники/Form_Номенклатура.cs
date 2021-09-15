@@ -73,12 +73,12 @@ namespace StorageAndTrade
 				{
 					Довідники.Номенклатура_Objest номенклатура_Objest = номенклатура_Pointer.GetDirectoryObject();
 					if (номенклатура_Objest != null)
-						form_Номенклатура_Папки_Дерево1.Parent_Pointer = номенклатура_Objest.Папка;
+						Номенклатура_Папки_Дерево.Parent_Pointer = номенклатура_Objest.Папка;
 				}
 			}
 
-			form_Номенклатура_Папки_Дерево1.CallBack_AfterSelect = TreeFolderAfterSelect;
-			form_Номенклатура_Папки_Дерево1.LoadTree();
+			Номенклатура_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
+			Номенклатура_Папки_Дерево.LoadTree();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -116,8 +116,8 @@ namespace StorageAndTrade
 			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.ОдиницяВиміру, номенклатура_Select.QuerySelect.Table));
 
 			//WHERE
-			if (form_Номенклатура_Папки_Дерево1.Parent_Pointer != null)
-				номенклатура_Select.QuerySelect.Where.Add(new Where(Довідники.Номенклатура_Select.Папка, Comparison.EQ, form_Номенклатура_Папки_Дерево1.Parent_Pointer.UnigueID.UGuid));
+			if (Номенклатура_Папки_Дерево.Parent_Pointer != null)
+				номенклатура_Select.QuerySelect.Where.Add(new Where(Довідники.Номенклатура_Select.Папка, Comparison.EQ, Номенклатура_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
 
 			//ORDER
 			номенклатура_Select.QuerySelect.Order.Add(Довідники.Номенклатура_Select.Назва, SelectOrder.ASC);
@@ -188,8 +188,8 @@ namespace StorageAndTrade
 			Form_НоменклатураЕлемент form_НоменклатураЕлемент = new Form_НоменклатураЕлемент();
 			form_НоменклатураЕлемент.IsNew = true;
 			form_НоменклатураЕлемент.OwnerForm = this;
-			if (form_Номенклатура_Папки_Дерево1.Parent_Pointer != null)
-				form_НоменклатураЕлемент.ParentUid = form_Номенклатура_Папки_Дерево1.Parent_Pointer.UnigueID.UGuid.ToString();
+			if (Номенклатура_Папки_Дерево.Parent_Pointer != null)
+				form_НоменклатураЕлемент.ParentUid = Номенклатура_Папки_Дерево.Parent_Pointer.UnigueID.UGuid.ToString();
 			form_НоменклатураЕлемент.ShowDialog();
         }
 
@@ -209,7 +209,7 @@ namespace StorageAndTrade
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
-			form_Номенклатура_Папки_Дерево1.LoadTree();
+			Номенклатура_Папки_Дерево.LoadTree();
 		}
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)

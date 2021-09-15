@@ -30,34 +30,37 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             this.panel2 = new System.Windows.Forms.Panel();
-            this.form_Номенклатура_Папки_Дерево1 = new StorageAndTrade.Form_Номенклатура_Папки_Дерево();
+            this.Номенклатура_Папки_Дерево = new StorageAndTrade.Form_Номенклатура_Папки_Дерево();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.form_Номенклатура_Папки_Дерево1);
+            this.panel2.Controls.Add(this.Номенклатура_Папки_Дерево);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(555, 738);
             this.panel2.TabIndex = 2;
             // 
-            // form_Номенклатура_Папки_Дерево1
+            // Номенклатура_Папки_Дерево
             // 
-            this.form_Номенклатура_Папки_Дерево1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.form_Номенклатура_Папки_Дерево1.Location = new System.Drawing.Point(0, 0);
-            this.form_Номенклатура_Папки_Дерево1.Name = "form_Номенклатура_Папки_Дерево1";
-            this.form_Номенклатура_Папки_Дерево1.Size = new System.Drawing.Size(555, 738);
-            this.form_Номенклатура_Папки_Дерево1.TabIndex = 3;
+            this.Номенклатура_Папки_Дерево.CallBack_AfterSelect = null;
+            this.Номенклатура_Папки_Дерево.CallBack_DoubleClick = null;
+            this.Номенклатура_Папки_Дерево.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Номенклатура_Папки_Дерево.Location = new System.Drawing.Point(0, 0);
+            this.Номенклатура_Папки_Дерево.Name = "Номенклатура_Папки_Дерево";
+            this.Номенклатура_Папки_Дерево.Size = new System.Drawing.Size(555, 738);
+            this.Номенклатура_Папки_Дерево.TabIndex = 3;
+            this.Номенклатура_Папки_Дерево.UidOpenFolder = null;
             // 
-            // Form_НоменклатураПапки
+            // Form_НоменклатураПапкиВибір
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 738);
             this.Controls.Add(this.panel2);
-            this.Name = "Form_НоменклатураПапки";
+            this.Name = "Form_НоменклатураПапкиВибір";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Номенклатура Папки";
             this.Load += new System.EventHandler(this.FormCash_Load);
@@ -68,6 +71,6 @@ namespace StorageAndTrade
 
         #endregion
         private System.Windows.Forms.Panel panel2;
-        private Form_Номенклатура_Папки_Дерево form_Номенклатура_Папки_Дерево1;
+        private Form_Номенклатура_Папки_Дерево Номенклатура_Папки_Дерево;
     }
 }

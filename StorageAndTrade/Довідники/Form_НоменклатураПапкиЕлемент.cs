@@ -71,7 +71,6 @@ namespace StorageAndTrade
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
 			directoryControl_НоменклатураПапка.SelectForm = new Form_НоменклатураПапкиВибір();
-			//5e219a5c-4b4e-4ebe-9675-fad875d9b8ad
 
 			if (IsNew.HasValue)
 			{
@@ -90,6 +89,7 @@ namespace StorageAndTrade
 
 						textBoxName.Text = номенклатура_Папки_Objest.Назва;
 						directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer(номенклатура_Папки_Objest.Родич.UnigueID);
+						((Form_НоменклатураПапкиВибір)directoryControl_НоменклатураПапка.SelectForm).UidOpenFolder = Uid;
 					}
 					else
 						MessageBox.Show("Error read");

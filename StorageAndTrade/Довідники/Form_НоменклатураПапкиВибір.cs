@@ -45,16 +45,19 @@ namespace StorageAndTrade
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
+        public string UidOpenFolder { get; set; }
+
         private void FormCash_Load(object sender, EventArgs e)
         {
-            form_Номенклатура_Папки_Дерево1.Parent_Pointer = (Довідники.Номенклатура_Папки_Pointer)DirectoryPointerItem;
-            form_Номенклатура_Папки_Дерево1.CallBack_DoubleClick = TreeFolderDoubleClick;
-            form_Номенклатура_Папки_Дерево1.LoadTree();
+            Номенклатура_Папки_Дерево.Parent_Pointer = (Довідники.Номенклатура_Папки_Pointer)DirectoryPointerItem;
+            Номенклатура_Папки_Дерево.UidOpenFolder = UidOpenFolder;
+            Номенклатура_Папки_Дерево.CallBack_DoubleClick = TreeFolderDoubleClick;
+            Номенклатура_Папки_Дерево.LoadTree();
         }
 
         public void TreeFolderDoubleClick()
         {
-            DirectoryPointerItem = form_Номенклатура_Папки_Дерево1.Parent_Pointer;
+            DirectoryPointerItem = Номенклатура_Папки_Дерево.Parent_Pointer;
             this.Close();
         }
     }

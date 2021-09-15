@@ -30,6 +30,8 @@ namespace StorageAndTrade
 
         public Довідники.Номенклатура_Папки_Pointer Parent_Pointer { get; set; }
 
+        public string UidOpenFolder { get; set; }
+
         private void Form_Номенклатура_Папки_Дерево_Load(object sender, EventArgs e)
         {
             Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
@@ -54,29 +56,36 @@ namespace StorageAndTrade
 
             treeViewFolders.Nodes.Clear();
 
-            TreeNode rootNode = treeViewFolders.Nodes.Add("root", "Папки");
+            TreeNode rootNode = treeViewFolders.Nodes.Add("root", "Номенклатура");
             rootNode.ImageIndex = 0;
 
             string tab = Conf.Directories["Номенклатура_Папки"].Table;
             string tabFieldName = Conf.Directories["Номенклатура_Папки"].Fields["Назва"].NameInTable;
             string tabFieldParent = Conf.Directories["Номенклатура_Папки"].Fields["Родич"].NameInTable;
 
+            string whereQueryPart1 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $" AND uid != '{UidOpenFolder}'";
+            string whereQueryPart2 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $"WHERE {tab}.uid != '{UidOpenFolder}'";
+
             string query = $@"
                 WITH RECURSIVE r AS (
                    SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
                    FROM {tab}
                    WHERE col_j3 = '{Guid.Empty}'
+                   {whereQueryPart1}
 
                    UNION ALL
 
                    SELECT {tab}.uid, {tab}.{tabFieldName}, {tab}.{tabFieldParent}, r.level + 1 AS level
                    FROM {tab}
                       JOIN r ON {tab}.{tabFieldParent} = r.uid
+                   {whereQueryPart2}
                 )
 
                 SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
                 ORDER BY level ASC
             ";
+
+            //Console.WriteLine(query);
 
             string[] columnsName;
             List<object[]> listRow;
@@ -158,12 +167,15 @@ namespace StorageAndTrade
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
-            Form_НоменклатураПапкиЕлемент form_НоменклатураПапкиЕлемент = new Form_НоменклатураПапкиЕлемент();
-            form_НоменклатураПапкиЕлемент.IsNew = false;
-            form_НоменклатураПапкиЕлемент.Uid = Parent_Pointer.UnigueID.UGuid.ToString();
-            form_НоменклатураПапкиЕлемент.ShowDialog();
+            if (!Parent_Pointer.IsEmpty())
+            {
+                Form_НоменклатураПапкиЕлемент form_НоменклатураПапкиЕлемент = new Form_НоменклатураПапкиЕлемент();
+                form_НоменклатураПапкиЕлемент.IsNew = false;
+                form_НоменклатураПапкиЕлемент.Uid = Parent_Pointer.UnigueID.UGuid.ToString();
+                form_НоменклатураПапкиЕлемент.ShowDialog();
 
-            LoadTree();
+                LoadTree();
+            }
         }
 
         private void treeViewFolders_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
