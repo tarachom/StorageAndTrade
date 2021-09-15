@@ -70,7 +70,7 @@ namespace StorageAndTrade
                 WITH RECURSIVE r AS (
                    SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
                    FROM {tab}
-                   WHERE col_j3 = '{Guid.Empty}'
+                   WHERE col_j3 = '{Guid.Empty}' 
                    {whereQueryPart1}
 
                    UNION ALL
