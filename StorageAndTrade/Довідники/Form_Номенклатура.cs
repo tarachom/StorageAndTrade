@@ -79,8 +79,6 @@ namespace StorageAndTrade
 
 			form_Номенклатура_Папки_Дерево1.CallBack_AfterSelect = TreeFolderAfterSelect;
 			form_Номенклатура_Папки_Дерево1.LoadTree();
-
-			//LoadRecords();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -162,9 +160,6 @@ namespace StorageAndTrade
 			public string ТипНоменклатури { get; set; }
 		}
 
-		/// <summary>
-		/// Функція яку викликає Дерово Папок після вибору папки
-		/// </summary>
 		public void TreeFolderAfterSelect()
         {
 			LoadRecords();
@@ -214,7 +209,6 @@ namespace StorageAndTrade
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
-			//LoadRecords();
 			form_Номенклатура_Папки_Дерево1.LoadTree();
 		}
 
