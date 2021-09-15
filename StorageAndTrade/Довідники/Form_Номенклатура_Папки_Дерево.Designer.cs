@@ -84,6 +84,7 @@ namespace StorageAndTrade
             this.toolStripButtonCopy.Name = "toolStripButtonCopy";
             this.toolStripButtonCopy.Size = new System.Drawing.Size(85, 22);
             this.toolStripButtonCopy.Text = "Копіювати";
+            this.toolStripButtonCopy.Click += new System.EventHandler(this.toolStripButtonCopy_Click);
             // 
             // toolStripButtonDelete
             // 
@@ -92,6 +93,7 @@ namespace StorageAndTrade
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 20);
             this.toolStripButtonDelete.Text = "Видалити";
+            this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
             // panel2
             // 

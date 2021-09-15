@@ -172,6 +172,35 @@ namespace StorageAndTrade
                 CallBack_DoubleClick.Invoke();
         }
 
-        
+        private void toolStripButtonCopy_Click(object sender, EventArgs e)
+        {
+            if (!Parent_Pointer.IsEmpty())
+            {
+                Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest = Parent_Pointer.GetDirectoryObject();
+                if (номенклатура_Папки_Objest != null)
+                {
+                    Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest_Новий = номенклатура_Папки_Objest.Copy();
+                    номенклатура_Папки_Objest_Новий.Назва = "Копія_" + номенклатура_Папки_Objest_Новий.Назва;
+                    номенклатура_Папки_Objest_Новий.Save();
+
+                    LoadTree();
+                }
+            }
+        }
+
+        private void toolStripButtonDelete_Click(object sender, EventArgs e)
+        {
+            if (!Parent_Pointer.IsEmpty())
+            {
+                Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest = Parent_Pointer.GetDirectoryObject();
+                if (номенклатура_Папки_Objest != null)
+                {
+                    Parent_Pointer = номенклатура_Папки_Objest.Родич;
+
+                    номенклатура_Папки_Objest.Delete();
+                    LoadTree();
+                }
+            }
+        }
     }
 }

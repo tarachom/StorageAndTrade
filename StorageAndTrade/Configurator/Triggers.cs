@@ -35,7 +35,51 @@ using AccountingSoftware;
 
 namespace StorageAndTrade_1_0.Довідники
 {
+	class Номенклатура_Папки_Triggers
+	{
+		public static void BeforeRecording(Номенклатура_Папки_Objest ДовідникОбєкт)
+		{
 
+		}
+		public static void AfterRecording(Номенклатура_Папки_Objest ДовідникОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(Номенклатура_Папки_Objest ДовідникОбєкт)
+		{
+			//
+			//Елементи переносяться на верхній рівень
+			//
+
+			Номенклатура_Select номенклатура_Select = new Номенклатура_Select();
+			номенклатура_Select.QuerySelect.Where.Add(new Where(Номенклатура_Select.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			номенклатура_Select.Select();
+
+			while(номенклатура_Select.MoveNext())
+            {
+				Номенклатура_Objest номенклатура_Objest = номенклатура_Select.Current.GetDirectoryObject();
+				номенклатура_Objest.Папка = new Номенклатура_Папки_Pointer();
+				номенклатура_Objest.Save();
+			}
+
+			//
+			//Вкладені папки видяляються. Для кожної папки буде викликана функція BeforeDelete
+			//
+
+			Номенклатура_Папки_Select номенклатура_Папки_Select = new Номенклатура_Папки_Select();
+			номенклатура_Папки_Select.QuerySelect.Where.Add(new Where(Номенклатура_Папки_Select.Родич, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			номенклатура_Папки_Select.Select();
+
+			while (номенклатура_Папки_Select.MoveNext())
+            {
+				Номенклатура_Папки_Objest номенклатура_Папки_Objest = номенклатура_Папки_Select.Current.GetDirectoryObject();
+				if (номенклатура_Папки_Objest != null)
+					номенклатура_Папки_Objest.Delete();
+
+			}
+		}
+	}
 }
 
 namespace StorageAndTrade_1_0.Документи

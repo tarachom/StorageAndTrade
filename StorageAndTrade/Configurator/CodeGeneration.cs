@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 15.09.2021 11:36:05
+ * Дата конфігурації: 15.09.2021 18:55:52
  *
  */
 
@@ -3316,7 +3316,7 @@ namespace StorageAndTrade_1_0.Довідники
             base.FieldValue["col_j3"] = Родич.UnigueID.UGuid;
             
             BaseSave();
-			
+			Номенклатура_Папки_Triggers.AfterRecording(this);
         }
 
         public string Serialize(string root = "Номенклатура_Папки")
@@ -3343,7 +3343,7 @@ namespace StorageAndTrade_1_0.Довідники
 
         public void Delete()
         {
-            
+            Номенклатура_Папки_Triggers.BeforeDelete(this);
 			base.BaseDelete();
         }
         
