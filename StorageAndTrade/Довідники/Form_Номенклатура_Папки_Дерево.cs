@@ -41,7 +41,7 @@ namespace StorageAndTrade
             else
                 Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
 
-            OwnerForm.LoadRecords();
+            OwnerForm.TreeFolderAfterSelect();
         }
 
         public void LoadTree()
@@ -118,20 +118,25 @@ namespace StorageAndTrade
 
             if (Parent_Pointer != null)
             {
-                TreeNode[] treeNodes = rootNode.Nodes.Find(Parent_Pointer.ToString(), true);
-                TreeNode findNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
-
-                if (findNode != null)
+                if (!Parent_Pointer.IsEmpty())
                 {
-                    treeViewFolders.SelectedNode = findNode;
-                    TreeNode parentNode = findNode.Parent;
+                    TreeNode[] treeNodes = rootNode.Nodes.Find(Parent_Pointer.ToString(), true);
+                    TreeNode findNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
 
-                    while (parentNode != null)
+                    if (findNode != null)
                     {
-                        parentNode.Expand();
-                        parentNode = parentNode.Parent;
+                        treeViewFolders.SelectedNode = findNode;
+                        TreeNode parentNode = findNode.Parent;
+
+                        while (parentNode != null)
+                        {
+                            parentNode.Expand();
+                            parentNode = parentNode.Parent;
+                        }
                     }
                 }
+                else
+                    treeViewFolders.SelectedNode = rootNode;
             }
         }
 

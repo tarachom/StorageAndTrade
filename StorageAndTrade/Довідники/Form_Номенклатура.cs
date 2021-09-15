@@ -151,7 +151,15 @@ namespace StorageAndTrade
 			public string ТипНоменклатури { get; set; }
 		}
 
-        private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		/// <summary>
+		/// Функція яку викликає Дерово Папок після вибору папки
+		/// </summary>
+		public void TreeFolderAfterSelect()
+        {
+			LoadRecords();
+		}
+
+		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 			if (e.RowIndex >= 0 && e.RowIndex < dataGridViewRecords.RowCount)
 			{
