@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Reflection;
 
 using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
@@ -23,7 +24,9 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
-        public Form_Номенклатура OwnerForm { get; set; }
+        public Action CallBack_AfterSelect { get; set; }
+        
+        public Action CallBack_DoubleClick { get; set; }
 
         public Довідники.Номенклатура_Папки_Pointer Parent_Pointer { get; set; }
 
@@ -41,7 +44,8 @@ namespace StorageAndTrade
             else
                 Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
 
-            OwnerForm.TreeFolderAfterSelect();
+            if (CallBack_AfterSelect != null)
+                CallBack_AfterSelect.Invoke();
         }
 
         public void LoadTree()
@@ -128,6 +132,8 @@ namespace StorageAndTrade
                         treeViewFolders.SelectedNode = findNode;
                         TreeNode parentNode = findNode.Parent;
 
+                        findNode.Expand();
+
                         while (parentNode != null)
                         {
                             parentNode.Expand();
@@ -144,7 +150,28 @@ namespace StorageAndTrade
         {
             Form_НоменклатураПапкиЕлемент form_НоменклатураПапкиЕлемент = new Form_НоменклатураПапкиЕлемент();
             form_НоменклатураПапкиЕлемент.IsNew = true;
+            form_НоменклатураПапкиЕлемент.ParentUid = Parent_Pointer.UnigueID.UGuid.ToString();
             form_НоменклатураПапкиЕлемент.ShowDialog();
+
+            LoadTree();
         }
+
+        private void toolStripButtonEdit_Click(object sender, EventArgs e)
+        {
+            Form_НоменклатураПапкиЕлемент form_НоменклатураПапкиЕлемент = new Form_НоменклатураПапкиЕлемент();
+            form_НоменклатураПапкиЕлемент.IsNew = false;
+            form_НоменклатураПапкиЕлемент.Uid = Parent_Pointer.UnigueID.UGuid.ToString();
+            form_НоменклатураПапкиЕлемент.ShowDialog();
+
+            LoadTree();
+        }
+
+        private void treeViewFolders_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (CallBack_DoubleClick != null)
+                CallBack_DoubleClick.Invoke();
+        }
+
+        
     }
 }

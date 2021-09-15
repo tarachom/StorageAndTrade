@@ -141,7 +141,7 @@ namespace StorageAndTrade
             // 
             this.splitContainer1.Panel2.Controls.Add(this.form_Номенклатура_Папки_Дерево1);
             this.splitContainer1.Size = new System.Drawing.Size(1011, 649);
-            this.splitContainer1.SplitterDistance = 717;
+            this.splitContainer1.SplitterDistance = 666;
             this.splitContainer1.TabIndex = 1;
             // 
             // dataGridViewRecords
@@ -156,16 +156,18 @@ namespace StorageAndTrade
             this.dataGridViewRecords.Name = "dataGridViewRecords";
             this.dataGridViewRecords.ReadOnly = true;
             this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(717, 649);
+            this.dataGridViewRecords.Size = new System.Drawing.Size(666, 649);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
             // form_Номенклатура_Папки_Дерево1
             // 
+            this.form_Номенклатура_Папки_Дерево1.CallBack_AfterSelect = null;
+            this.form_Номенклатура_Папки_Дерево1.CallBack_DoubleClick = null;
             this.form_Номенклатура_Папки_Дерево1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.form_Номенклатура_Папки_Дерево1.Location = new System.Drawing.Point(0, 0);
             this.form_Номенклатура_Папки_Дерево1.Name = "form_Номенклатура_Папки_Дерево1";
-            this.form_Номенклатура_Папки_Дерево1.Size = new System.Drawing.Size(290, 649);
+            this.form_Номенклатура_Папки_Дерево1.Size = new System.Drawing.Size(341, 649);
             this.form_Номенклатура_Папки_Дерево1.TabIndex = 0;
             // 
             // Form_Номенклатура

@@ -66,10 +66,21 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ТипНоменклатури"].Width = 50;
 			dataGridViewRecords.Columns["ТипНоменклатури"].HeaderText = "Тип";
 
-			form_Номенклатура_Папки_Дерево1.OwnerForm = this;
+			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
+            {
+				Довідники.Номенклатура_Pointer номенклатура_Pointer = new Довідники.Номенклатура_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
+				if (!номенклатура_Pointer.IsEmpty())
+				{
+					Довідники.Номенклатура_Objest номенклатура_Objest = номенклатура_Pointer.GetDirectoryObject();
+					if (номенклатура_Objest != null)
+						form_Номенклатура_Папки_Дерево1.Parent_Pointer = номенклатура_Objest.Папка;
+				}
+			}
+
+			form_Номенклатура_Папки_Дерево1.CallBack_AfterSelect = TreeFolderAfterSelect;
 			form_Номенклатура_Папки_Дерево1.LoadTree();
 
-			LoadRecords();
+			//LoadRecords();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -182,6 +193,8 @@ namespace StorageAndTrade
 			Form_НоменклатураЕлемент form_НоменклатураЕлемент = new Form_НоменклатураЕлемент();
 			form_НоменклатураЕлемент.IsNew = true;
 			form_НоменклатураЕлемент.OwnerForm = this;
+			if (form_Номенклатура_Папки_Дерево1.Parent_Pointer != null)
+				form_НоменклатураЕлемент.ParentUid = form_Номенклатура_Папки_Дерево1.Parent_Pointer.UnigueID.UGuid.ToString();
 			form_НоменклатураЕлемент.ShowDialog();
         }
 
@@ -201,7 +214,8 @@ namespace StorageAndTrade
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
-			LoadRecords();
+			//LoadRecords();
+			form_Номенклатура_Папки_Дерево1.LoadTree();
 		}
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)

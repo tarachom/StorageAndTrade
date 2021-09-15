@@ -59,9 +59,14 @@ namespace StorageAndTrade
         public string Uid { get; set; }
 
 		/// <summary>
+		/// Ід родителя для нової папки
+		/// </summary>
+		public string ParentUid { get; set; }
+
+		/// <summary>
 		/// Обєкт запису
 		/// </summary>
-        private Довідники.Номенклатура_Objest номенклатура_Objest { get; set; }
+		private Довідники.Номенклатура_Objest номенклатура_Objest { get; set; }
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
@@ -69,6 +74,7 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
 
+			directoryControl_НоменклатураПапка.SelectForm = new Form_НоменклатураПапкиВибір();
 			directoryControl_Виробник.SelectForm = new Form_Виробники();
 			directoryControl_ВидНоменклатури.SelectForm = new Form_ВидиНоменклатури();
 			directoryControl_ОдиницяВиміру.SelectForm = new Form_ПакуванняОдиниціВиміру();
@@ -80,6 +86,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid));
 					directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer();
 					directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer();
 					directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer();
@@ -92,6 +99,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + номенклатура_Objest.Назва;
 
 						textBox_Назва.Text = номенклатура_Objest.Назва;
+						directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer(номенклатура_Objest.Папка.UnigueID);
 						directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer(номенклатура_Objest.Виробник.UnigueID);
 						directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer(номенклатура_Objest.ВидНоменклатури.UnigueID);
 						directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(номенклатура_Objest.ОдиницяВиміру.UnigueID);
@@ -116,6 +124,7 @@ namespace StorageAndTrade
 				try
 				{
 					номенклатура_Objest.Назва = textBox_Назва.Text;
+					номенклатура_Objest.Папка = (Довідники.Номенклатура_Папки_Pointer)directoryControl_НоменклатураПапка.DirectoryPointerItem;
 					номенклатура_Objest.Виробник = (Довідники.Виробники_Pointer)directoryControl_Виробник.DirectoryPointerItem;
 					номенклатура_Objest.ВидНоменклатури = (Довідники.ВидиНоменклатури_Pointer)directoryControl_ВидНоменклатури.DirectoryPointerItem;
 					номенклатура_Objest.ОдиницяВиміру = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяВиміру.DirectoryPointerItem;

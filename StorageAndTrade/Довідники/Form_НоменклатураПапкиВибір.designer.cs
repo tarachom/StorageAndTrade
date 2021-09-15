@@ -48,7 +48,6 @@ namespace StorageAndTrade
             this.form_Номенклатура_Папки_Дерево1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.form_Номенклатура_Папки_Дерево1.Location = new System.Drawing.Point(0, 0);
             this.form_Номенклатура_Папки_Дерево1.Name = "form_Номенклатура_Папки_Дерево1";
-            this.form_Номенклатура_Папки_Дерево1.OwnerForm = null;
             this.form_Номенклатура_Папки_Дерево1.Size = new System.Drawing.Size(555, 738);
             this.form_Номенклатура_Папки_Дерево1.TabIndex = 3;
             // 

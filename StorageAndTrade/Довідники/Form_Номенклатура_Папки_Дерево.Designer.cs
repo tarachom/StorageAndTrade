@@ -39,6 +39,7 @@ namespace StorageAndTrade
             this.panel2 = new System.Windows.Forms.Panel();
             this.treeViewFolders = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -51,18 +52,19 @@ namespace StorageAndTrade
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(282, 29);
+            this.panel1.Size = new System.Drawing.Size(339, 29);
             this.panel1.TabIndex = 0;
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonAdd,
+            this.toolStripButtonEdit,
             this.toolStripButtonCopy,
             this.toolStripButtonDelete});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(282, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(339, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -88,7 +90,7 @@ namespace StorageAndTrade
             this.toolStripButtonDelete.Image = global::StorageAndTrade.Properties.Resources.page_white_delete;
             this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
-            this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 22);
+            this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 20);
             this.toolStripButtonDelete.Text = "Видалити";
             // 
             // panel2
@@ -99,7 +101,7 @@ namespace StorageAndTrade
             this.panel2.Controls.Add(this.treeViewFolders);
             this.panel2.Location = new System.Drawing.Point(3, 28);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(279, 547);
+            this.panel2.Size = new System.Drawing.Size(336, 547);
             this.panel2.TabIndex = 0;
             // 
             // treeViewFolders
@@ -110,14 +112,24 @@ namespace StorageAndTrade
             this.treeViewFolders.Location = new System.Drawing.Point(0, 0);
             this.treeViewFolders.Name = "treeViewFolders";
             this.treeViewFolders.SelectedImageIndex = 0;
-            this.treeViewFolders.Size = new System.Drawing.Size(279, 547);
+            this.treeViewFolders.Size = new System.Drawing.Size(336, 547);
             this.treeViewFolders.TabIndex = 0;
+            this.treeViewFolders.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeViewFolders_NodeMouseDoubleClick);
             // 
             // imageList1
             // 
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "folder.png");
+            // 
+            // toolStripButtonEdit
+            // 
+            this.toolStripButtonEdit.Image = global::StorageAndTrade.Properties.Resources.page;
+            this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdit.Name = "toolStripButtonEdit";
+            this.toolStripButtonEdit.Size = new System.Drawing.Size(87, 22);
+            this.toolStripButtonEdit.Text = "Редагувати";
+            this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
             // 
             // Form_Номенклатура_Папки_Дерево
             // 
@@ -126,7 +138,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form_Номенклатура_Папки_Дерево";
-            this.Size = new System.Drawing.Size(285, 578);
+            this.Size = new System.Drawing.Size(342, 578);
             this.Load += new System.EventHandler(this.Form_Номенклатура_Папки_Дерево_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -147,5 +159,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.TreeView treeViewFolders;
         private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonEdit;
     }
 }
