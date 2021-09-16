@@ -32,6 +32,7 @@ using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
+using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
@@ -70,6 +71,9 @@ namespace StorageAndTrade
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			documentControl1.SelectForm = new Form_ЗамовленняКлієнтаЖурнал();
+			documentControl1.DocumentPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID("7ec5a77f-ed45-4aaf-a375-eed72a5f69fe"));
+
 			//Заповнення елементів перелічення - ТипНоменклатури
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);

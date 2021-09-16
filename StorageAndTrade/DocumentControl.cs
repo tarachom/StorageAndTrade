@@ -69,7 +69,7 @@ namespace StorageAndTrade
 		{
 			if (SelectForm != null)
 			{
-				PropertyInfo propertyInfo = SelectForm.GetType().GetProperty("DirectoryPointerItem");
+				PropertyInfo propertyInfo = SelectForm.GetType().GetProperty("DocumentPointerItem");
 				if (propertyInfo != null)
 				{
 					propertyInfo.SetValue(SelectForm, mDocumentPointerItem);

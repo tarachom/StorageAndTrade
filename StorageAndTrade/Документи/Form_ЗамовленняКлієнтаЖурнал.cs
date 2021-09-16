@@ -43,6 +43,8 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
+		public DocumentPointer DocumentPointerItem { get; set; }
+
         private void FormCash_Load(object sender, EventArgs e)
         {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;

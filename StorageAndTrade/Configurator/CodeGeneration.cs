@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 16.09.2021 13:50:48
+ * Дата конфігурації: 16.09.2021 14:58:58
  *
  */
 
@@ -5205,8 +5205,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "ЗамовленняПостачальнику " + base.BasePresentation(
+			    new string[] {"col_k1", "col_j9"}
 			);
         }
 		
@@ -5637,8 +5637,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "ПоступленняТоварівТаПослуг " + base.BasePresentation(
+			    new string[] {"col_a2", "col_a1"}
 			);
         }
 		
@@ -6060,8 +6060,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] { "col_b2", "col_b3" }
+		    return "ЗамовленняКлієнта " + base.BasePresentation(
+			    new string[] {"col_b3", "col_b2"}
 			);
         }
 		
@@ -6484,8 +6484,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "РеалізаціяТоварівТаПослуг " + base.BasePresentation(
+			    new string[] {"col_d1", "col_c9"}
 			);
         }
 		
@@ -6786,8 +6786,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "ВстановленняЦінНоменклатури " + base.BasePresentation(
+			    new string[] {"col_g8", "col_g7"}
 			);
         }
 		
@@ -7076,8 +7076,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "ПрихіднийКасовийОрдер " + base.BasePresentation(
+			    new string[] {"col_h7", "col_h6"}
 			);
         }
 		
@@ -7376,8 +7376,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "РозхіднийКасовийОрдер " + base.BasePresentation(
+			    new string[] {"col_k1", "col_j9"}
 			);
         }
 		
@@ -7702,8 +7702,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "ПереміщенняТоварів " + base.BasePresentation(
+			    new string[] {"col_a2", "col_a1"}
 			);
         }
 		
@@ -8031,8 +8031,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "ПоверненняТоварівПостачальнику " + base.BasePresentation(
+			    new string[] {"col_c1", "col_b9"}
 			);
         }
 		
@@ -8364,8 +8364,8 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return base.BasePresentation(
-			    new string[] {  }
+		    return "ПоверненняТоварівВідКлієнта " + base.BasePresentation(
+			    new string[] {"col_e7", "col_e6"}
 			);
         }
 		
