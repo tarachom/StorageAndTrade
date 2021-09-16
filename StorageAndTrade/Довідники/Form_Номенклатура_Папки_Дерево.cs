@@ -162,7 +162,8 @@ namespace StorageAndTrade
             form_НоменклатураПапкиЕлемент.ParentUid = Parent_Pointer.UnigueID.UGuid.ToString();
             form_НоменклатураПапкиЕлемент.ShowDialog();
 
-            LoadTree();
+            if (form_НоменклатураПапкиЕлемент.DialogResult == DialogResult.OK)
+                LoadTree();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -174,7 +175,8 @@ namespace StorageAndTrade
                 form_НоменклатураПапкиЕлемент.Uid = Parent_Pointer.UnigueID.UGuid.ToString();
                 form_НоменклатураПапкиЕлемент.ShowDialog();
 
-                LoadTree();
+                if (form_НоменклатураПапкиЕлемент.DialogResult == DialogResult.OK)
+                    LoadTree();
             }
         }
 
