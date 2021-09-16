@@ -63,6 +63,12 @@
     </Compile>
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
+    <Compile Include="DocumentControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DocumentControl.designer.cs">
+      <DependentUpon>DocumentControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="DirectoryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -427,6 +433,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigurationSelectionParam.resx">
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DocumentControl.resx">
+      <DependentUpon>DocumentControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 16.09.2021 09:23:03
+ * Дата конфігурації: 16.09.2021 13:50:48
  *
  */
 
@@ -5201,8 +5201,20 @@ namespace StorageAndTrade_1_0.Документи
         public ЗамовленняПостачальнику_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a25")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public ЗамовленняПостачальнику_Pointer GetEmptyPointer()
+        {
+            return new ЗамовленняПостачальнику_Pointer();
+        }
+		
         public ЗамовленняПостачальнику_Objest GetDocumentObject()
         {
             ЗамовленняПостачальнику_Objest ЗамовленняПостачальникуObjestItem = new ЗамовленняПостачальнику_Objest();
@@ -5621,8 +5633,20 @@ namespace StorageAndTrade_1_0.Документи
         public ПоступленняТоварівТаПослуг_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a32")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public ПоступленняТоварівТаПослуг_Pointer GetEmptyPointer()
+        {
+            return new ПоступленняТоварівТаПослуг_Pointer();
+        }
+		
         public ПоступленняТоварівТаПослуг_Objest GetDocumentObject()
         {
             ПоступленняТоварівТаПослуг_Objest ПоступленняТоварівТаПослугObjestItem = new ПоступленняТоварівТаПослуг_Objest();
@@ -6032,8 +6056,20 @@ namespace StorageAndTrade_1_0.Документи
         public ЗамовленняКлієнта_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a34")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] { "col_b2", "col_b3" }
+			);
+        }
+		
+        public ЗамовленняКлієнта_Pointer GetEmptyPointer()
+        {
+            return new ЗамовленняКлієнта_Pointer();
+        }
+		
         public ЗамовленняКлієнта_Objest GetDocumentObject()
         {
             ЗамовленняКлієнта_Objest ЗамовленняКлієнтаObjestItem = new ЗамовленняКлієнта_Objest();
@@ -6444,8 +6480,20 @@ namespace StorageAndTrade_1_0.Документи
         public РеалізаціяТоварівТаПослуг_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a36")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public РеалізаціяТоварівТаПослуг_Pointer GetEmptyPointer()
+        {
+            return new РеалізаціяТоварівТаПослуг_Pointer();
+        }
+		
         public РеалізаціяТоварівТаПослуг_Objest GetDocumentObject()
         {
             РеалізаціяТоварівТаПослуг_Objest РеалізаціяТоварівТаПослугObjestItem = new РеалізаціяТоварівТаПослуг_Objest();
@@ -6734,8 +6782,20 @@ namespace StorageAndTrade_1_0.Документи
         public ВстановленняЦінНоменклатури_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a42")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public ВстановленняЦінНоменклатури_Pointer GetEmptyPointer()
+        {
+            return new ВстановленняЦінНоменклатури_Pointer();
+        }
+		
         public ВстановленняЦінНоменклатури_Objest GetDocumentObject()
         {
             ВстановленняЦінНоменклатури_Objest ВстановленняЦінНоменклатуриObjestItem = new ВстановленняЦінНоменклатури_Objest();
@@ -7012,8 +7072,20 @@ namespace StorageAndTrade_1_0.Документи
         public ПрихіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a44")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public ПрихіднийКасовийОрдер_Pointer GetEmptyPointer()
+        {
+            return new ПрихіднийКасовийОрдер_Pointer();
+        }
+		
         public ПрихіднийКасовийОрдер_Objest GetDocumentObject()
         {
             ПрихіднийКасовийОрдер_Objest ПрихіднийКасовийОрдерObjestItem = new ПрихіднийКасовийОрдер_Objest();
@@ -7300,8 +7372,20 @@ namespace StorageAndTrade_1_0.Документи
         public РозхіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a48")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public РозхіднийКасовийОрдер_Pointer GetEmptyPointer()
+        {
+            return new РозхіднийКасовийОрдер_Pointer();
+        }
+		
         public РозхіднийКасовийОрдер_Objest GetDocumentObject()
         {
             РозхіднийКасовийОрдер_Objest РозхіднийКасовийОрдерObjestItem = new РозхіднийКасовийОрдер_Objest();
@@ -7614,8 +7698,20 @@ namespace StorageAndTrade_1_0.Документи
         public ПереміщенняТоварів_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a31")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public ПереміщенняТоварів_Pointer GetEmptyPointer()
+        {
+            return new ПереміщенняТоварів_Pointer();
+        }
+		
         public ПереміщенняТоварів_Objest GetDocumentObject()
         {
             ПереміщенняТоварів_Objest ПереміщенняТоварівObjestItem = new ПереміщенняТоварів_Objest();
@@ -7931,8 +8027,20 @@ namespace StorageAndTrade_1_0.Документи
         public ПоверненняТоварівПостачальнику_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a51")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public ПоверненняТоварівПостачальнику_Pointer GetEmptyPointer()
+        {
+            return new ПоверненняТоварівПостачальнику_Pointer();
+        }
+		
         public ПоверненняТоварівПостачальнику_Objest GetDocumentObject()
         {
             ПоверненняТоварівПостачальнику_Objest ПоверненняТоварівПостачальникуObjestItem = new ПоверненняТоварівПостачальнику_Objest();
@@ -8252,8 +8360,20 @@ namespace StorageAndTrade_1_0.Документи
         public ПоверненняТоварівВідКлієнта_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a53")
         {
             base.Init(uid, fields);
-        } 
-        
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] {  }
+			);
+        }
+		
+        public ПоверненняТоварівВідКлієнта_Pointer GetEmptyPointer()
+        {
+            return new ПоверненняТоварівВідКлієнта_Pointer();
+        }
+		
         public ПоверненняТоварівВідКлієнта_Objest GetDocumentObject()
         {
             ПоверненняТоварівВідКлієнта_Objest ПоверненняТоварівВідКлієнтаObjestItem = new ПоверненняТоварівВідКлієнта_Objest();

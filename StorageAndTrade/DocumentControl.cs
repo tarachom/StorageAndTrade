@@ -26,29 +26,29 @@ using AccountingSoftware;
 
 namespace StorageAndTrade
 {
-	public partial class DirectoryControl : UserControl
+	public partial class DocumentControl : UserControl
 	{
-		public DirectoryControl()
+		public DocumentControl()
 		{
 			InitializeComponent();
 		}
 
 		public Form SelectForm { get; set; }
 
-		private DirectoryPointer mDirectoryPointerItem;
+		private DocumentPointer mDocumentPointerItem;
 
 		/// <summary>
-		/// Ссилка на елемент довідника
+		/// Ссилка на документ
 		/// </summary>
-		public DirectoryPointer DirectoryPointerItem
+		public DocumentPointer DocumentPointerItem
 		{
-			get { return mDirectoryPointerItem; }
+			get { return mDocumentPointerItem; }
 
 			set
 			{
-				mDirectoryPointerItem = value;
+				mDocumentPointerItem = value;
 
-				if (mDirectoryPointerItem != null)
+				if (mDocumentPointerItem != null)
 					ReadPresentation();
 				else
 					textBoxControl.Text = "";
@@ -56,13 +56,13 @@ namespace StorageAndTrade
 		}
 
 		/// <summary>
-		/// Функція викликає функцію ссилки довідника GetPresentation()
+		/// Функція викликає функцію GetPresentation()
 		/// </summary>
 		private void ReadPresentation()
 		{
-			if (mDirectoryPointerItem.GetType().GetMember("GetPresentation").Length == 1)
-				textBoxControl.Text = mDirectoryPointerItem.GetType().InvokeMember(
-					"GetPresentation", BindingFlags.InvokeMethod, null, mDirectoryPointerItem, new object[] { }).ToString();
+			if (mDocumentPointerItem.GetType().GetMember("GetPresentation").Length == 1)
+				textBoxControl.Text = mDocumentPointerItem.GetType().InvokeMember(
+					"GetPresentation", BindingFlags.InvokeMethod, null, mDocumentPointerItem, new object[] { }).ToString();
 		}
 
 		private void buttonOpen_Click(object sender, EventArgs e)
@@ -72,16 +72,16 @@ namespace StorageAndTrade
 				PropertyInfo propertyInfo = SelectForm.GetType().GetProperty("DirectoryPointerItem");
 				if (propertyInfo != null)
 				{
-					propertyInfo.SetValue(SelectForm, DirectoryPointerItem);
+					propertyInfo.SetValue(SelectForm, mDocumentPointerItem);
 					SelectForm.ShowDialog();
-					DirectoryPointerItem = (DirectoryPointer)propertyInfo.GetValue(SelectForm);
+					mDocumentPointerItem = (DocumentPointer)propertyInfo.GetValue(SelectForm);
 				}
 			}
 		}
 
 		private void buttonClear_Click(object sender, EventArgs e)
 		{
-			DirectoryPointerItem.Init(new UnigueID(Guid.Empty));
+			DocumentPointerItem.Init(new UnigueID(Guid.Empty));
 			ReadPresentation();
 		}
 	}
