@@ -105,7 +105,7 @@ namespace StorageAndTrade
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form_КонтрагентиПапкиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Номенклатура Папка";
+            this.Text = "Контрагенти Папка";
             this.Load += new System.EventHandler(this.FormAddCash_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

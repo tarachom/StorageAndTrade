@@ -62,7 +62,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.panel2);
             this.Name = "Form_КонтрагентиПапкиВибір";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Номенклатура Папки";
+            this.Text = "Контрагенти Папки";
             this.Load += new System.EventHandler(this.FormCash_Load);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
