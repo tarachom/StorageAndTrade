@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 15.09.2021 18:55:52
+ * Дата конфігурації: 16.09.2021 09:23:03
  *
  */
 
@@ -1283,7 +1283,7 @@ namespace StorageAndTrade_1_0.Довідники
             Код = "";
             НазваПовна = "";
             РеєстраційнийНомер = "";
-            Папка = "";
+            Папка = new Довідники.Контрагенти_Папки_Pointer();
             
             //Табличні частини
             Контакти_TablePart = new Контрагенти_Контакти_TablePart(this);
@@ -1298,7 +1298,7 @@ namespace StorageAndTrade_1_0.Довідники
                 Код = base.FieldValue["col_c8"].ToString();
                 НазваПовна = base.FieldValue["col_c9"].ToString();
                 РеєстраційнийНомер = base.FieldValue["col_d1"].ToString();
-                Папка = base.FieldValue["col_a1"].ToString();
+                Папка = new Довідники.Контрагенти_Папки_Pointer(base.FieldValue["col_a1"]);
                 
                 BaseClear();
                 return true;
@@ -1313,7 +1313,7 @@ namespace StorageAndTrade_1_0.Довідники
             base.FieldValue["col_c8"] = Код;
             base.FieldValue["col_c9"] = НазваПовна;
             base.FieldValue["col_d1"] = РеєстраційнийНомер;
-            base.FieldValue["col_a1"] = Папка;
+            base.FieldValue["col_a1"] = Папка.UnigueID.UGuid;
             
             BaseSave();
 			
@@ -1328,7 +1328,7 @@ namespace StorageAndTrade_1_0.Довідники
                "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
                "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
                "<РеєстраційнийНомер>" + "<![CDATA[" + РеєстраційнийНомер + "]]>" + "</РеєстраційнийНомер>"  +
-               "<Папка>" + "<![CDATA[" + Папка + "]]>" + "</Папка>"  +
+               "<Папка>" + Папка.ToString() + "</Папка>"  +
                "</" + root + ">";
         }
 
@@ -1361,7 +1361,7 @@ namespace StorageAndTrade_1_0.Довідники
         public string Код { get; set; }
         public string НазваПовна { get; set; }
         public string РеєстраційнийНомер { get; set; }
-        public string Папка { get; set; }
+        public Довідники.Контрагенти_Папки_Pointer Папка { get; set; }
         
         //Табличні частини
         public Контрагенти_Контакти_TablePart Контакти_TablePart { get; set; }

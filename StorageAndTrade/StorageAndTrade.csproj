@@ -69,6 +69,18 @@
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Form_КонтрагентиПапкиВибір.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_КонтрагентиПапкиВибір.designer.cs">
+      <DependentUpon>Form_КонтрагентиПапкиВибір.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Form_Контрагенти_Папки_Дерево.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_Контрагенти_Папки_Дерево.Designer.cs">
+      <DependentUpon>Form_Контрагенти_Папки_Дерево.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\Form_НоменклатураПапкиВибір.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +92,12 @@
     </Compile>
     <Compile Include="Довідники\Form_Номенклатура_Папки_Дерево.Designer.cs">
       <DependentUpon>Form_Номенклатура_Папки_Дерево.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Form_КонтрагентиПапкиЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Form_КонтрагентиПапкиЕлемент.designer.cs">
+      <DependentUpon>Form_КонтрагентиПапкиЕлемент.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\Form_НоменклатураПапкиЕлемент.cs">
       <SubType>Form</SubType>
@@ -413,11 +431,20 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_КонтрагентиПапкиВибір.resx">
+      <DependentUpon>Form_КонтрагентиПапкиВибір.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_Контрагенти_Папки_Дерево.resx">
+      <DependentUpon>Form_Контрагенти_Папки_Дерево.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_НоменклатураПапкиВибір.resx">
       <DependentUpon>Form_НоменклатураПапкиВибір.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_Номенклатура_Папки_Дерево.resx">
       <DependentUpon>Form_Номенклатура_Папки_Дерево.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Form_КонтрагентиПапкиЕлемент.resx">
+      <DependentUpon>Form_КонтрагентиПапкиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_НоменклатураПапкиЕлемент.resx">
       <DependentUpon>Form_НоменклатураПапкиЕлемент.cs</DependentUpon>

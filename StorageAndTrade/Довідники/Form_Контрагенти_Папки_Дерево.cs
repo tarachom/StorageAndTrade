@@ -17,9 +17,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_Номенклатура_Папки_Дерево : UserControl
+    public partial class Form_Контрагенти_Папки_Дерево : UserControl
     {
-        public Form_Номенклатура_Папки_Дерево()
+        public Form_Контрагенти_Папки_Дерево()
         {
             InitializeComponent();
         }
@@ -28,13 +28,13 @@ namespace StorageAndTrade
         
         public Action CallBack_DoubleClick { get; set; }
 
-        public Довідники.Номенклатура_Папки_Pointer Parent_Pointer { get; set; }
+        public Довідники.Контрагенти_Папки_Pointer Parent_Pointer { get; set; }
 
         public string UidOpenFolder { get; set; }
 
         private void Form_Номенклатура_Папки_Дерево_Load(object sender, EventArgs e)
         {
-            Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
+            Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
 
             treeViewFolders.AfterSelect += TreeViewFolders_AfterSelect;
         }
@@ -42,9 +42,9 @@ namespace StorageAndTrade
         private void TreeViewFolders_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (treeViewFolders.SelectedNode.Name != "root")
-                Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer(new UnigueID(treeViewFolders.SelectedNode.Name));
+                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer(new UnigueID(treeViewFolders.SelectedNode.Name));
             else
-                Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
+                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
 
             if (CallBack_AfterSelect != null)
                 CallBack_AfterSelect.Invoke();
@@ -59,9 +59,9 @@ namespace StorageAndTrade
             TreeNode rootNode = treeViewFolders.Nodes.Add("root", "Номенклатура");
             rootNode.ImageIndex = 0;
 
-            string tab = Conf.Directories["Номенклатура_Папки"].Table;
-            string tabFieldName = Conf.Directories["Номенклатура_Папки"].Fields["Назва"].NameInTable;
-            string tabFieldParent = Conf.Directories["Номенклатура_Папки"].Fields["Родич"].NameInTable;
+            string tab = Conf.Directories["Контрагенти_Папки"].Table;
+            string tabFieldName = Conf.Directories["Контрагенти_Папки"].Fields["Назва"].NameInTable;
+            string tabFieldParent = Conf.Directories["Контрагенти_Папки"].Fields["Родич"].NameInTable;
 
             string whereQueryPart1 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $" AND uid != '{UidOpenFolder}'";
             string whereQueryPart2 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $"WHERE {tab}.uid != '{UidOpenFolder}'";
@@ -70,7 +70,7 @@ namespace StorageAndTrade
                 WITH RECURSIVE r AS (
                    SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
                    FROM {tab}
-                   WHERE {tabFieldParent} = '{Guid.Empty}' 
+                   WHERE {tabFieldParent} = '{Guid.Empty}'
                    {whereQueryPart1}
 
                    UNION ALL
@@ -157,12 +157,12 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-            Form_НоменклатураПапкиЕлемент form_НоменклатураПапкиЕлемент = new Form_НоменклатураПапкиЕлемент();
-            form_НоменклатураПапкиЕлемент.IsNew = true;
-            form_НоменклатураПапкиЕлемент.ParentUid = Parent_Pointer.UnigueID.UGuid.ToString();
-            form_НоменклатураПапкиЕлемент.ShowDialog();
+            Form_КонтрагентиПапкиЕлемент form_КонтрагентиПапкиЕлемент = new Form_КонтрагентиПапкиЕлемент();
+            form_КонтрагентиПапкиЕлемент.IsNew = true;
+            form_КонтрагентиПапкиЕлемент.ParentUid = Parent_Pointer.UnigueID.UGuid.ToString();
+            form_КонтрагентиПапкиЕлемент.ShowDialog();
 
-            if (form_НоменклатураПапкиЕлемент.DialogResult == DialogResult.OK)
+            if (form_КонтрагентиПапкиЕлемент.DialogResult == DialogResult.OK)
                 LoadTree();
         }
 
@@ -170,12 +170,12 @@ namespace StorageAndTrade
         {
             if (!Parent_Pointer.IsEmpty())
             {
-                Form_НоменклатураПапкиЕлемент form_НоменклатураПапкиЕлемент = new Form_НоменклатураПапкиЕлемент();
-                form_НоменклатураПапкиЕлемент.IsNew = false;
-                form_НоменклатураПапкиЕлемент.Uid = Parent_Pointer.UnigueID.UGuid.ToString();
-                form_НоменклатураПапкиЕлемент.ShowDialog();
+                Form_КонтрагентиПапкиЕлемент form_КонтрагентиПапкиЕлемент = new Form_КонтрагентиПапкиЕлемент();
+                form_КонтрагентиПапкиЕлемент.IsNew = false;
+                form_КонтрагентиПапкиЕлемент.Uid = Parent_Pointer.UnigueID.UGuid.ToString();
+                form_КонтрагентиПапкиЕлемент.ShowDialog();
 
-                if (form_НоменклатураПапкиЕлемент.DialogResult == DialogResult.OK)
+                if (form_КонтрагентиПапкиЕлемент.DialogResult == DialogResult.OK)
                     LoadTree();
             }
         }
@@ -190,12 +190,12 @@ namespace StorageAndTrade
         {
             if (!Parent_Pointer.IsEmpty())
             {
-                Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest = Parent_Pointer.GetDirectoryObject();
-                if (номенклатура_Папки_Objest != null)
+                Довідники.Контрагенти_Папки_Objest контрагенти_Папки_Objest = Parent_Pointer.GetDirectoryObject();
+                if (контрагенти_Папки_Objest != null)
                 {
-                    Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest_Новий = номенклатура_Папки_Objest.Copy();
-                    номенклатура_Папки_Objest_Новий.Назва = "Копія_" + номенклатура_Папки_Objest_Новий.Назва;
-                    номенклатура_Папки_Objest_Новий.Save();
+                    Довідники.Контрагенти_Папки_Objest контрагенти_Папки_Objest_Новий = контрагенти_Папки_Objest.Copy();
+                    контрагенти_Папки_Objest_Новий.Назва = "Копія_" + контрагенти_Папки_Objest_Новий.Назва;
+                    контрагенти_Папки_Objest_Новий.Save();
 
                     LoadTree();
                 }
@@ -206,14 +206,14 @@ namespace StorageAndTrade
         {
             if (!Parent_Pointer.IsEmpty())
             {
-                Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest = Parent_Pointer.GetDirectoryObject();
-                if (номенклатура_Папки_Objest != null)
+                Довідники.Контрагенти_Папки_Objest контрагенти_Папки_Objest = Parent_Pointer.GetDirectoryObject();
+                if (контрагенти_Папки_Objest != null)
                 {
                     if (MessageBox.Show("Видалити папку?", "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        Parent_Pointer = номенклатура_Папки_Objest.Родич;
+                        Parent_Pointer = контрагенти_Папки_Objest.Родич;
 
-                        номенклатура_Папки_Objest.Delete();
+                        контрагенти_Папки_Objest.Delete();
                         LoadTree();
                     }
                 }

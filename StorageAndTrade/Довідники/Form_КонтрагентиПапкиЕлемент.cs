@@ -36,9 +36,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_КонтрагентиЕлемент : Form
+    public partial class Form_КонтрагентиПапкиЕлемент : Form
     {
-        public Form_КонтрагентиЕлемент()
+        public Form_КонтрагентиПапкиЕлемент()
         {
             InitializeComponent();
         }
@@ -59,31 +59,37 @@ namespace StorageAndTrade
         public string Uid { get; set; }
 
 		/// <summary>
+		/// Ід родителя для нової папки
+		/// </summary>
+		public string ParentUid { get; set; }
+
+		/// <summary>
 		/// Обєкт запису
 		/// </summary>
-        private Довідники.Контрагенти_Objest контрагенти_Objest { get; set; }
+        private Довідники.Контрагенти_Папки_Objest контрагенти_Папки_Objest { get; set; }
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
-			directoryControl_КонтрагентПапка.SelectForm = new Form_КонтрагентиПапкиВибір();
+			directoryControl_КонтрагентиПапка.SelectForm = new Form_КонтрагентиПапкиВибір();
 
 			if (IsNew.HasValue)
 			{
-				контрагенти_Objest = new Довідники.Контрагенти_Objest();
+				контрагенти_Папки_Objest = new Довідники.Контрагенти_Папки_Objest();
 
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_КонтрагентПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer();
+					directoryControl_КонтрагентиПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer(new UnigueID(ParentUid));
 				}
 				else
 				{
-					if (контрагенти_Objest.Read(new UnigueID(Uid)))
+					if (контрагенти_Папки_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + контрагенти_Objest.Назва;
+						this.Text += " - Редагування запису - " + контрагенти_Папки_Objest.Назва;
 
-						textBoxName.Text = контрагенти_Objest.Назва;
-						directoryControl_КонтрагентПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer(контрагенти_Objest.Папка.UnigueID);
+						textBoxName.Text = контрагенти_Папки_Objest.Назва;
+						directoryControl_КонтрагентиПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer(контрагенти_Папки_Objest.Родич.UnigueID);
+						((Form_КонтрагентиПапкиВибір)directoryControl_КонтрагентиПапка.SelectForm).UidOpenFolder = Uid;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -96,13 +102,13 @@ namespace StorageAndTrade
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
-					контрагенти_Objest.New();
+					контрагенти_Папки_Objest.New();
 
 				try
 				{
-					контрагенти_Objest.Назва = textBoxName.Text;
-					контрагенти_Objest.Папка = (Довідники.Контрагенти_Папки_Pointer)directoryControl_КонтрагентПапка.DirectoryPointerItem;
-					контрагенти_Objest.Save();
+					контрагенти_Папки_Objest.Назва = textBoxName.Text;
+					контрагенти_Папки_Objest.Родич = (Довідники.Контрагенти_Папки_Pointer)directoryControl_КонтрагентиПапка.DirectoryPointerItem;
+					контрагенти_Папки_Objest.Save();
 				}
 				catch (Exception exp)
 				{
@@ -113,12 +119,14 @@ namespace StorageAndTrade
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();
 
+				this.DialogResult = DialogResult.OK;
 				this.Close();
 			}
 		}
 
 		private void buttonClose_Click(object sender, EventArgs e)
 		{
+			this.DialogResult = DialogResult.Cancel;
 			this.Close();
 		}
 	}

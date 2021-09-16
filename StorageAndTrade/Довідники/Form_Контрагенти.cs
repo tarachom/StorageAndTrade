@@ -56,7 +56,19 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
-			LoadRecords();
+			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
+			{
+				Довідники.Контрагенти_Pointer контрагенти_Pointer = new Довідники.Контрагенти_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
+				if (!контрагенти_Pointer.IsEmpty())
+				{
+					Довідники.Контрагенти_Objest контрагенти_Objest = контрагенти_Pointer.GetDirectoryObject();
+					if (контрагенти_Objest != null)
+						Контрагенти_Папки_Дерево.Parent_Pointer = контрагенти_Objest.Папка;
+				}
+			}
+
+			Контрагенти_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
+			Контрагенти_Папки_Дерево.LoadTree();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -70,6 +82,10 @@ namespace StorageAndTrade
 
 			Довідники.Контрагенти_Select контрагенти_Select = new Довідники.Контрагенти_Select();
 			контрагенти_Select.QuerySelect.Field.Add(Довідники.Контрагенти_Select.Назва);
+
+			//WHERE
+			if (Контрагенти_Папки_Дерево.Parent_Pointer != null)
+				контрагенти_Select.QuerySelect.Where.Add(new Where(Довідники.Контрагенти_Select.Папка, Comparison.EQ, Контрагенти_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
 
 			//ORDER
 			контрагенти_Select.QuerySelect.Order.Add(Довідники.Контрагенти_Select.Назва, SelectOrder.ASC);
@@ -104,7 +120,12 @@ namespace StorageAndTrade
 			public string Назва { get; set; }
 		}
 
-        private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		public void TreeFolderAfterSelect()
+		{
+			LoadRecords();
+		}
+
+		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 			if (e.RowIndex >= 0 && e.RowIndex < dataGridViewRecords.RowCount)
 			{

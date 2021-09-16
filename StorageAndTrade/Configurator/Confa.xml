@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>15.09.2021 18:55:52</DateTimeSave>
+  <DateTimeSave>16.09.2021 09:23:03</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -524,7 +524,8 @@
         <Field>
           <Name>Папка</Name>
           <NameInTable>col_a1</NameInTable>
-          <Type>string</Type>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Контрагенти_Папки</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>

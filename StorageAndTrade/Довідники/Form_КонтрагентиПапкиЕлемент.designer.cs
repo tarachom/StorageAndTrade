@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class Form_КонтрагентиЕлемент
+    partial class Form_КонтрагентиПапкиЕлемент
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@ namespace StorageAndTrade
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.directoryControl_КонтрагентПапка = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_КонтрагентиПапка = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -76,36 +76,36 @@ namespace StorageAndTrade
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 45);
+            this.label9.Location = new System.Drawing.Point(18, 45);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 56;
+            this.label9.TabIndex = 52;
             this.label9.Text = "Родич:";
             // 
-            // directoryControl_КонтрагентПапка
+            // directoryControl_КонтрагентиПапка
             // 
-            this.directoryControl_КонтрагентПапка.DirectoryPointerItem = null;
-            this.directoryControl_КонтрагентПапка.Location = new System.Drawing.Point(92, 38);
-            this.directoryControl_КонтрагентПапка.Name = "directoryControl_КонтрагентПапка";
-            this.directoryControl_КонтрагентПапка.SelectForm = null;
-            this.directoryControl_КонтрагентПапка.Size = new System.Drawing.Size(461, 27);
-            this.directoryControl_КонтрагентПапка.TabIndex = 55;
+            this.directoryControl_КонтрагентиПапка.DirectoryPointerItem = null;
+            this.directoryControl_КонтрагентиПапка.Location = new System.Drawing.Point(88, 38);
+            this.directoryControl_КонтрагентиПапка.Name = "directoryControl_КонтрагентиПапка";
+            this.directoryControl_КонтрагентиПапка.SelectForm = null;
+            this.directoryControl_КонтрагентиПапка.Size = new System.Drawing.Size(461, 27);
+            this.directoryControl_КонтрагентиПапка.TabIndex = 51;
             // 
-            // Form_КонтрагентиЕлемент
+            // Form_КонтрагентиПапкиЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 164);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.directoryControl_КонтрагентПапка);
+            this.Controls.Add(this.directoryControl_КонтрагентиПапка);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form_КонтрагентиЕлемент";
+            this.Name = "Form_КонтрагентиПапкиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Контрагенти";
+            this.Text = "Номенклатура Папка";
             this.Load += new System.EventHandler(this.FormAddCash_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -119,6 +119,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
-        private DirectoryControl directoryControl_КонтрагентПапка;
+        private DirectoryControl directoryControl_КонтрагентиПапка;
     }
 }
