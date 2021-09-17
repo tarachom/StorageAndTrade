@@ -71,6 +71,29 @@ namespace StorageAndTrade
 
 		private void FormAddCash_Load(object sender, EventArgs e)
         {
+			Label label = new Label();
+			label.Margin = new Padding(0);
+			//label.Padding = new Padding(0);
+			label.BackColor = Color.Azure;
+			label.Dock = DockStyle.Fill;
+			label.Text = "text text";
+
+			TextBox textBox = new TextBox();
+			textBox.BorderStyle = BorderStyle.None;
+			textBox.Multiline = true;
+			textBox.Dock = DockStyle.Fill;
+			textBox.Text = "sedfrer";
+			textBox.Margin = new Padding(0);
+			//textBox.Padding = new Padding(0);
+
+			tableLayoutPanel1.RowStyles[0].Height = 16;
+			tableLayoutPanel1.RowCount = 10;
+
+			tableLayoutPanel1.Controls.Add(label, 0, 0);
+			tableLayoutPanel1.Controls.Add(textBox, 1, 0);
+			//tableLayoutPanel1.Refresh();
+
+
 			documentControl1.SelectForm = new Form_ЗамовленняКлієнтаЖурнал();
 			documentControl1.DocumentPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID("7ec5a77f-ed45-4aaf-a375-eed72a5f69fe"));
 

@@ -50,11 +50,13 @@ namespace StorageAndTrade
             this.label9 = new System.Windows.Forms.Label();
             this.directoryControl_НоменклатураПапка = new StorageAndTrade.DirectoryControl();
             this.documentControl1 = new StorageAndTrade.DocumentControl();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(371, 374);
+            this.buttonClose.Location = new System.Drawing.Point(386, 557);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -64,7 +66,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(74, 374);
+            this.buttonSave.Location = new System.Drawing.Point(89, 557);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -235,11 +237,39 @@ namespace StorageAndTrade
             this.documentControl1.Size = new System.Drawing.Size(341, 27);
             this.documentControl1.TabIndex = 55;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(40, 323);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(61, 13);
+            this.label10.TabIndex = 56;
+            this.label10.Text = "Документ:";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(43, 378);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(480, 133);
+            this.tableLayoutPanel1.TabIndex = 57;
+            // 
             // Form_НоменклатураЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 451);
+            this.ClientSize = new System.Drawing.Size(565, 592);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.documentControl1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.directoryControl_НоменклатураПапка);
@@ -294,5 +324,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label9;
         private DirectoryControl directoryControl_НоменклатураПапка;
         private DocumentControl documentControl1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

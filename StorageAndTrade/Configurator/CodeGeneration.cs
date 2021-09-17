@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 16.09.2021 14:58:58
+ * Дата конфігурації: 17.09.2021 19:31:15
  *
  */
 
@@ -8577,7 +8577,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             bool isExistPreceding = false;
             if (Filter.Номенклатура != null)
             {
-                base.BaseFilter.Add(new Where("col_f5", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                base.BaseFilter.Add(new Where("col_f5", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -8586,10 +8586,10 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             if (Filter.Характеристика != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f6", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f6", Comparison.EQ, Filter.Характеристика.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_f6", Comparison.EQ, Filter.Характеристика.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_f6", Comparison.EQ, Filter.Характеристика.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -8597,10 +8597,10 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             if (Filter.ВидЦіни != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f7", Comparison.EQ, Filter.ВидЦіни.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f7", Comparison.EQ, Filter.ВидЦіни.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_f7", Comparison.EQ, Filter.ВидЦіни.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_f7", Comparison.EQ, Filter.ВидЦіни.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -8640,12 +8640,12 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
                 {
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                    fieldValue.Add("col_f5", record.Номенклатура.ToString());
-                    fieldValue.Add("col_f6", record.Характеристика.ToString());
-                    fieldValue.Add("col_f7", record.ВидЦіни.ToString());
+                    fieldValue.Add("col_f5", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_f6", record.Характеристика.UnigueID.UGuid);
+                    fieldValue.Add("col_f7", record.ВидЦіни.UnigueID.UGuid);
                     fieldValue.Add("col_f8", record.Ціна);
-                    fieldValue.Add("col_f9", record.Пакування.ToString());
-                    fieldValue.Add("col_g2", record.Валюта.ToString());
+                    fieldValue.Add("col_f9", record.Пакування.UnigueID.UGuid);
+                    fieldValue.Add("col_g2", record.Валюта.UnigueID.UGuid);
                     
                     base.BaseSave(record.UID, fieldValue);
                 }
@@ -8731,7 +8731,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.Номенклатура != null)
             {
-                base.BaseFilter.Add(new Where("col_e4", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                base.BaseFilter.Add(new Where("col_e4", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -8740,10 +8740,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -8751,10 +8751,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Склад != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e6", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e6", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_e6", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_e6", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -8873,7 +8873,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.Організація != null)
             {
-                base.BaseFilter.Add(new Where("col_e9", Comparison.EQ, Filter.Організація.ToString(), false));
+                base.BaseFilter.Add(new Where("col_e9", Comparison.EQ, Filter.Організація.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -8893,10 +8893,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9015,7 +9015,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.Номенклатура != null)
             {
-                base.BaseFilter.Add(new Where("col_g3", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                base.BaseFilter.Add(new Where("col_g3", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -9024,10 +9024,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9035,10 +9035,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Склад != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g5", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g5", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_g5", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_g5", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9155,7 +9155,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.ЗамовленняКлієнта != null)
             {
-                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.ЗамовленняКлієнта.ToString(), false));
+                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.ЗамовленняКлієнта.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -9164,10 +9164,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Номенклатура != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9175,10 +9175,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9186,10 +9186,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Склад != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a4", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a4", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9316,7 +9316,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.Валюта != null)
             {
-                base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.ToString(), false));
+                base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -9325,10 +9325,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ЗамовленняКлієнта != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a5", Comparison.EQ, Filter.ЗамовленняКлієнта.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a5", Comparison.EQ, Filter.ЗамовленняКлієнта.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.ЗамовленняКлієнта.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.ЗамовленняКлієнта.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9437,7 +9437,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.Договір != null)
             {
-                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.Договір.ToString(), false));
+                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.Договір.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -9446,10 +9446,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Валюта != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Валюта.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9583,7 +9583,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.Номенклатура != null)
             {
-                base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -9592,10 +9592,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9603,10 +9603,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Склад != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a7", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a7", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a7", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a7", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9729,7 +9729,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.ЗамовленняПостачальнику != null)
             {
-                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.ЗамовленняПостачальнику.ToString(), false));
+                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.ЗамовленняПостачальнику.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -9738,10 +9738,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Номенклатура != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9749,10 +9749,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9760,10 +9760,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Склад != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a4", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a4", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -9884,7 +9884,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.ЗамовленняПостачальнику != null)
             {
-                base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.ЗамовленняПостачальнику.ToString(), false));
+                base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.ЗамовленняПостачальнику.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -9893,10 +9893,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Валюта != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a7", Comparison.EQ, Filter.Валюта.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a7", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a7", Comparison.EQ, Filter.Валюта.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_a7", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -10013,7 +10013,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             bool isExistPreceding = false;
             if (Filter.Номенклатура != null)
             {
-                base.BaseFilter.Add(new Where("col_b2", Comparison.EQ, Filter.Номенклатура.ToString(), false));
+                base.BaseFilter.Add(new Where("col_b2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -10022,10 +10022,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.ХарактеристикаНоменклатури != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_b3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_b3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_b3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_b3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -10033,10 +10033,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             if (Filter.Склад != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_b4", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_b4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_b4", Comparison.EQ, Filter.Склад.ToString(), false));
+                    base.BaseFilter.Add(new Where("col_b4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }

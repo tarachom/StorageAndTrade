@@ -61,6 +61,7 @@
     <Compile Include="ConfigurationSelectionParam.designer.cs">
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Configurator\Reports.cs" />
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
     <Compile Include="DocumentControl.cs">
