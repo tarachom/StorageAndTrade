@@ -55,6 +55,8 @@ namespace StorageAndTrade
             this.поступленняТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поверненняТоварівПостачальникуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поверненняТоварівКлієнтуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,10 +64,12 @@ namespace StorageAndTrade
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.довідникиToolStripMenuItem,
-            this.документиToolStripMenuItem});
+            this.документиToolStripMenuItem,
+            this.звітиToolStripMenuItem,
+            this.проПрограмуToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1040, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(993, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -290,11 +294,23 @@ namespace StorageAndTrade
             this.поверненняТоварівКлієнтуToolStripMenuItem.Text = "Повернення товарів клієнту";
             this.поверненняТоварівКлієнтуToolStripMenuItem.Click += new System.EventHandler(this.поверненняТоварівКлієнтуToolStripMenuItem_Click);
             // 
+            // звітиToolStripMenuItem
+            // 
+            this.звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
+            this.звітиToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.звітиToolStripMenuItem.Text = "Звіти";
+            // 
+            // проПрограмуToolStripMenuItem
+            // 
+            this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
+            this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.проПрограмуToolStripMenuItem.Text = "Про програму";
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1040, 634);
+            this.ClientSize = new System.Drawing.Size(993, 696);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormStorageAndTrade";
@@ -335,6 +351,8 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem поступленняТоварівТаПослугToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem поверненняТоварівПостачальникуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem поверненняТоварівКлієнтуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem звітиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
     }
 }
 

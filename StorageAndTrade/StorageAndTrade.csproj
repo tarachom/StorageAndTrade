@@ -707,6 +707,12 @@
   <ItemGroup>
     <None Include="Resources\user.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Документи\ВстановленняЦінНоменклатури\" />
+    <Folder Include="Документи\ПереміщенняТоварів\" />
+    <Folder Include="Документи\ПрихіднийКасовийОрдер\" />
+    <Folder Include="Документи\РозхіднийКасовийОрдер\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
