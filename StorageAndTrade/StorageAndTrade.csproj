@@ -88,16 +88,16 @@
     <Compile Include="Довідники\Form_Контрагенти_Папки_Дерево.Designer.cs">
       <DependentUpon>Form_Контрагенти_Папки_Дерево.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураПапкиВибір.cs">
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиВибір.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураПапкиВибір.designer.cs">
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиВибір.designer.cs">
       <DependentUpon>Form_НоменклатураПапкиВибір.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Form_Номенклатура_Папки_Дерево.cs">
+    <Compile Include="Довідники\Номенклатура\Form_Номенклатура_Папки_Дерево.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Довідники\Form_Номенклатура_Папки_Дерево.Designer.cs">
+    <Compile Include="Довідники\Номенклатура\Form_Номенклатура_Папки_Дерево.Designer.cs">
       <DependentUpon>Form_Номенклатура_Папки_Дерево.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\Form_КонтрагентиПапкиЕлемент.cs">
@@ -106,10 +106,10 @@
     <Compile Include="Довідники\Form_КонтрагентиПапкиЕлемент.designer.cs">
       <DependentUpon>Form_КонтрагентиПапкиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураПапкиЕлемент.cs">
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураПапкиЕлемент.designer.cs">
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.designer.cs">
       <DependentUpon>Form_НоменклатураПапкиЕлемент.cs</DependentUpon>
     </Compile>
     <Compile Include="Документи\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs">
@@ -355,16 +355,16 @@
     <Compile Include="Довідники\Form_КонтрагентиЕлемент.designer.cs">
       <DependentUpon>Form_КонтрагентиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Form_Номенклатура.cs">
+    <Compile Include="Довідники\Номенклатура\Form_Номенклатура.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Довідники\Form_Номенклатура.designer.cs">
+    <Compile Include="Довідники\Номенклатура\Form_Номенклатура.designer.cs">
       <DependentUpon>Form_Номенклатура.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураЕлемент.cs">
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Довідники\Form_НоменклатураЕлемент.designer.cs">
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураЕлемент.designer.cs">
       <DependentUpon>Form_НоменклатураЕлемент.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\Form_Організації.cs">
@@ -447,16 +447,16 @@
     <EmbeddedResource Include="Довідники\Form_Контрагенти_Папки_Дерево.resx">
       <DependentUpon>Form_Контрагенти_Папки_Дерево.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\Form_НоменклатураПапкиВибір.resx">
+    <EmbeddedResource Include="Довідники\Номенклатура\Form_НоменклатураПапкиВибір.resx">
       <DependentUpon>Form_НоменклатураПапкиВибір.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\Form_Номенклатура_Папки_Дерево.resx">
+    <EmbeddedResource Include="Довідники\Номенклатура\Form_Номенклатура_Папки_Дерево.resx">
       <DependentUpon>Form_Номенклатура_Папки_Дерево.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_КонтрагентиПапкиЕлемент.resx">
       <DependentUpon>Form_КонтрагентиПапкиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\Form_НоменклатураПапкиЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.resx">
       <DependentUpon>Form_НоменклатураПапкиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.resx">
@@ -582,10 +582,10 @@
     <EmbeddedResource Include="Довідники\Form_КонтрагентиЕлемент.resx">
       <DependentUpon>Form_КонтрагентиЕлемент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\Form_Номенклатура.resx">
+    <EmbeddedResource Include="Довідники\Номенклатура\Form_Номенклатура.resx">
       <DependentUpon>Form_Номенклатура.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\Form_НоменклатураЕлемент.resx">
+    <EmbeddedResource Include="Довідники\Номенклатура\Form_НоменклатураЕлемент.resx">
       <DependentUpon>Form_НоменклатураЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Form_Організації.resx">
