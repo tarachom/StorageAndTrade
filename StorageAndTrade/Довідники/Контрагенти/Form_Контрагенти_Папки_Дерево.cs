@@ -172,7 +172,6 @@ namespace StorageAndTrade
                 CallBack_AfterSelect.Invoke();
         }
 
-
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
             Form_КонтрагентиПапкиЕлемент form_КонтрагентиПапкиЕлемент = new Form_КонтрагентиПапкиЕлемент();

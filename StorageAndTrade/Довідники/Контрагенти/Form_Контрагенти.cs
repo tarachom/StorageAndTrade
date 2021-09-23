@@ -53,12 +53,13 @@ namespace StorageAndTrade
 
 			Контрагенти_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
 			Контрагенти_Папки_Дерево.LoadTree();
+			Контрагенти_Папки_Дерево.SetParentPointer();
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void FormCash_Load(object sender, EventArgs e)
-        {
+		private void FormCash_Load(object sender, EventArgs e)
+		{
 			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
 			{
 				Довідники.Контрагенти_Pointer контрагенти_Pointer = new Довідники.Контрагенти_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
@@ -170,7 +171,9 @@ namespace StorageAndTrade
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
-			LoadRecords();
+			//LoadRecords();
+			Контрагенти_Папки_Дерево.LoadTree();
+			Контрагенти_Папки_Дерево.SetParentPointer();
 		}
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)
