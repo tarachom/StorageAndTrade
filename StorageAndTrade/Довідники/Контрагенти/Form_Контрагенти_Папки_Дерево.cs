@@ -22,34 +22,25 @@ namespace StorageAndTrade
         public Form_Контрагенти_Папки_Дерево()
         {
             InitializeComponent();
+
+            Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
+            treeViewFolders.AfterSelect += TreeViewFolders_AfterSelect;
         }
 
         public Action CallBack_AfterSelect { get; set; }
         
         public Action CallBack_DoubleClick { get; set; }
 
+        /// <summary>
+        /// Це вказівник на папку яку потрібно виділити в дереві
+        /// </summary>
         public Довідники.Контрагенти_Папки_Pointer Parent_Pointer { get; set; }
 
+        /// <summary>
+        /// Ід папки яка робить вибір родителя. Ця папка має бути скрита від вибору.
+        /// </summary>
         public string UidOpenFolder { get; set; }
-
-        private void Form_Номенклатура_Папки_Дерево_Load(object sender, EventArgs e)
-        {
-            Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
-
-            treeViewFolders.AfterSelect += TreeViewFolders_AfterSelect;
-        }
-
-        private void TreeViewFolders_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            if (treeViewFolders.SelectedNode.Name != "root")
-                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer(new UnigueID(treeViewFolders.SelectedNode.Name));
-            else
-                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
-
-            if (CallBack_AfterSelect != null)
-                CallBack_AfterSelect.Invoke();
-        }
-
+        
         public void LoadTree()
         {
             Configuration Conf = Конфа.Config.Kernel.Conf;
@@ -63,8 +54,13 @@ namespace StorageAndTrade
             string tabFieldName = Conf.Directories["Контрагенти_Папки"].Fields["Назва"].NameInTable;
             string tabFieldParent = Conf.Directories["Контрагенти_Папки"].Fields["Родич"].NameInTable;
 
-            string whereQueryPart1 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $" AND uid != '{UidOpenFolder}'";
-            string whereQueryPart2 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $"WHERE {tab}.uid != '{UidOpenFolder}'";
+            string whereQueryPart1 = "", whereQueryPart2 = "";
+
+            if (!String.IsNullOrEmpty(UidOpenFolder))
+            {
+                whereQueryPart1 = $" AND uid != '{UidOpenFolder}'";
+                whereQueryPart2 = $"WHERE {tab}.uid != '{UidOpenFolder}'";
+            }
 
             string query = $@"
                 WITH RECURSIVE r AS (
@@ -128,32 +124,54 @@ namespace StorageAndTrade
             }
 
             rootNode.Expand();
+        }
 
-            if (Parent_Pointer != null)
+        public void SetParentPointer()
+        {
+            TreeNode rootNode = treeViewFolders.Nodes["root"];
+            rootNode.Expand();
+
+            if (Parent_Pointer != null && !Parent_Pointer.IsEmpty())
             {
-                if (!Parent_Pointer.IsEmpty())
+                TreeNode[] treeNodes = rootNode.Nodes.Find(Parent_Pointer.ToString(), true);
+                TreeNode findNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
+
+                if (findNode != null)
                 {
-                    TreeNode[] treeNodes = rootNode.Nodes.Find(Parent_Pointer.ToString(), true);
-                    TreeNode findNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
+                    treeViewFolders.SelectedNode = findNode;
+                    TreeNode parentNode = findNode.Parent;
 
-                    if (findNode != null)
+                    findNode.Expand();
+
+                    while (parentNode != null)
                     {
-                        treeViewFolders.SelectedNode = findNode;
-                        TreeNode parentNode = findNode.Parent;
-
-                        findNode.Expand();
-
-                        while (parentNode != null)
-                        {
-                            parentNode.Expand();
-                            parentNode = parentNode.Parent;
-                        }
+                        parentNode.Expand();
+                        parentNode = parentNode.Parent;
                     }
                 }
-                else
-                    treeViewFolders.SelectedNode = rootNode;
             }
+            else
+                treeViewFolders.SelectedNode = rootNode;
         }
+
+        private string oldSelectNodeName = "";
+
+        private void TreeViewFolders_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (oldSelectNodeName == treeViewFolders.SelectedNode.Name)
+                return;
+            else
+                oldSelectNodeName = treeViewFolders.SelectedNode.Name;
+
+            if (treeViewFolders.SelectedNode.Name != "root")
+                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer(new UnigueID(treeViewFolders.SelectedNode.Name));
+            else
+                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
+
+            if (CallBack_AfterSelect != null)
+                CallBack_AfterSelect.Invoke();
+        }
+
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {

@@ -30,16 +30,16 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Номенклатура_Папки_Дерево));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Контрагенти_Папки_Дерево));
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.treeViewFolders = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -77,6 +77,15 @@ namespace StorageAndTrade
             this.toolStripButtonAdd.Text = "Додати";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
+            // toolStripButtonEdit
+            // 
+            this.toolStripButtonEdit.Image = global::StorageAndTrade.Properties.Resources.page;
+            this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdit.Name = "toolStripButtonEdit";
+            this.toolStripButtonEdit.Size = new System.Drawing.Size(87, 22);
+            this.toolStripButtonEdit.Text = "Редагувати";
+            this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
+            // 
             // toolStripButtonCopy
             // 
             this.toolStripButtonCopy.Image = global::StorageAndTrade.Properties.Resources.page_copy;
@@ -91,7 +100,7 @@ namespace StorageAndTrade
             this.toolStripButtonDelete.Image = global::StorageAndTrade.Properties.Resources.page_white_delete;
             this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
-            this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 20);
+            this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 22);
             this.toolStripButtonDelete.Text = "Видалити";
             this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
@@ -124,24 +133,14 @@ namespace StorageAndTrade
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "folder.png");
             // 
-            // toolStripButtonEdit
-            // 
-            this.toolStripButtonEdit.Image = global::StorageAndTrade.Properties.Resources.page;
-            this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEdit.Name = "toolStripButtonEdit";
-            this.toolStripButtonEdit.Size = new System.Drawing.Size(87, 22);
-            this.toolStripButtonEdit.Text = "Редагувати";
-            this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
-            // 
-            // Form_Номенклатура_Папки_Дерево
+            // Form_Контрагенти_Папки_Дерево
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form_Номенклатура_Папки_Дерево";
+            this.Name = "Form_Контрагенти_Папки_Дерево";
             this.Size = new System.Drawing.Size(342, 578);
-            this.Load += new System.EventHandler(this.Form_Номенклатура_Папки_Дерево_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

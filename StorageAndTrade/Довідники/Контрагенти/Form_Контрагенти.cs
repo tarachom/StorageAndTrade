@@ -41,12 +41,7 @@ namespace StorageAndTrade
         public Form_Контрагенти()
         {
             InitializeComponent();
-        }
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
@@ -56,6 +51,14 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
+			Контрагенти_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
+			Контрагенти_Папки_Дерево.LoadTree();
+		}
+
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+        private void FormCash_Load(object sender, EventArgs e)
+        {
 			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
 			{
 				Довідники.Контрагенти_Pointer контрагенти_Pointer = new Довідники.Контрагенти_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
@@ -63,21 +66,18 @@ namespace StorageAndTrade
 				{
 					Довідники.Контрагенти_Objest контрагенти_Objest = контрагенти_Pointer.GetDirectoryObject();
 					if (контрагенти_Objest != null)
+					{
 						Контрагенти_Папки_Дерево.Parent_Pointer = контрагенти_Objest.Папка;
+						Контрагенти_Папки_Дерево.SetParentPointer();
+					}
 				}
 			}
-
-			Контрагенти_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
-			Контрагенти_Папки_Дерево.LoadTree();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.Контрагенти_Select контрагенти_Select = new Довідники.Контрагенти_Select();
@@ -100,17 +100,20 @@ namespace StorageAndTrade
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Контрагенти_Select.Назва].ToString()
 				});
-
-				if (DirectoryPointerItem != null && selectRow == 0)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
 			{
 				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+
+				foreach (DataGridViewRow row in dataGridViewRecords.Rows)
+				{
+					if (row.Cells["ID"].Value.ToString() == DirectoryPointerItem.UnigueID.ToString())
+					{
+						row.Selected = true;
+						break;
+					}
+				}
 			}
 		}
 
