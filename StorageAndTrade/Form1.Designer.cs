@@ -31,10 +31,10 @@ namespace StorageAndTrade
         {
             this.table_body = new System.Windows.Forms.TableLayoutPanel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.table_head = new System.Windows.Forms.TableLayoutPanel();
-            this.table_footer = new System.Windows.Forms.TableLayoutPanel();
-            this.documentControl_ЗамовленняКлієнта = new StorageAndTrade.DocumentControl();
             this.button_ok = new System.Windows.Forms.Button();
+            this.table_footer = new System.Windows.Forms.TableLayoutPanel();
+            this.table_head = new System.Windows.Forms.TableLayoutPanel();
+            this.documentControl_ЗамовленняКлієнта = new StorageAndTrade.DocumentControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -47,13 +47,13 @@ namespace StorageAndTrade
             | System.Windows.Forms.AnchorStyles.Right)));
             this.table_body.AutoSize = true;
             this.table_body.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.table_body.ColumnCount = 11;
+            this.table_body.ColumnCount = 1;
             this.table_body.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.table_body.Location = new System.Drawing.Point(3, 43);
             this.table_body.Name = "table_body";
             this.table_body.RowCount = 1;
             this.table_body.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.table_body.Size = new System.Drawing.Size(480, 31);
+            this.table_body.Size = new System.Drawing.Size(891, 31);
             this.table_body.TabIndex = 0;
             // 
             // splitContainer1
@@ -75,26 +75,19 @@ namespace StorageAndTrade
             this.splitContainer1.Panel2.Controls.Add(this.table_footer);
             this.splitContainer1.Panel2.Controls.Add(this.table_head);
             this.splitContainer1.Panel2.Controls.Add(this.table_body);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
+            this.splitContainer1.Size = new System.Drawing.Size(1211, 595);
             this.splitContainer1.SplitterDistance = 310;
             this.splitContainer1.TabIndex = 1;
             // 
-            // table_head
+            // button_ok
             // 
-            this.table_head.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.table_head.AutoSize = true;
-            this.table_head.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.table_head.ColumnCount = 1;
-            this.table_head.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table_head.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.table_head.Location = new System.Drawing.Point(3, 3);
-            this.table_head.Name = "table_head";
-            this.table_head.RowCount = 1;
-            this.table_head.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.table_head.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.table_head.Size = new System.Drawing.Size(480, 37);
-            this.table_head.TabIndex = 1;
+            this.button_ok.Location = new System.Drawing.Point(12, 51);
+            this.button_ok.Name = "button_ok";
+            this.button_ok.Size = new System.Drawing.Size(75, 23);
+            this.button_ok.TabIndex = 1;
+            this.button_ok.Text = "OK";
+            this.button_ok.UseVisualStyleBackColor = true;
+            this.button_ok.Click += new System.EventHandler(this.button_ok_Click);
             // 
             // table_footer
             // 
@@ -110,8 +103,25 @@ namespace StorageAndTrade
             this.table_footer.RowCount = 1;
             this.table_footer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.table_footer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.table_footer.Size = new System.Drawing.Size(480, 37);
+            this.table_footer.Size = new System.Drawing.Size(891, 37);
             this.table_footer.TabIndex = 2;
+            // 
+            // table_head
+            // 
+            this.table_head.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.table_head.AutoSize = true;
+            this.table_head.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.table_head.ColumnCount = 1;
+            this.table_head.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_head.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.table_head.Location = new System.Drawing.Point(3, 3);
+            this.table_head.Name = "table_head";
+            this.table_head.RowCount = 1;
+            this.table_head.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.table_head.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.table_head.Size = new System.Drawing.Size(891, 37);
+            this.table_head.TabIndex = 1;
             // 
             // documentControl_ЗамовленняКлієнта
             // 
@@ -122,21 +132,11 @@ namespace StorageAndTrade
             this.documentControl_ЗамовленняКлієнта.Size = new System.Drawing.Size(285, 27);
             this.documentControl_ЗамовленняКлієнта.TabIndex = 0;
             // 
-            // button_ok
-            // 
-            this.button_ok.Location = new System.Drawing.Point(12, 51);
-            this.button_ok.Name = "button_ok";
-            this.button_ok.Size = new System.Drawing.Size(75, 23);
-            this.button_ok.TabIndex = 1;
-            this.button_ok.Text = "OK";
-            this.button_ok.UseVisualStyleBackColor = true;
-            this.button_ok.Click += new System.EventHandler(this.button_ok_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1211, 595);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "Form1";

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 17.09.2021 19:31:15
+ * Дата конфігурації: 24.09.2021 11:19:12
  *
  */
 
@@ -8568,6 +8568,13 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             Filter = new SelectFilter();
         }
         
+        public const string Номенклатура = "col_f5";
+        public const string Характеристика = "col_f6";
+        public const string ВидЦіни = "col_f7";
+        public const string Ціна = "col_f8";
+        public const string Пакування = "col_f9";
+        public const string Валюта = "col_g2";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -8722,6 +8729,12 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string Номенклатура = "col_e4";
+        public const string ХарактеристикаНоменклатури = "col_e5";
+        public const string Склад = "col_e6";
+        public const string ВНаявності = "col_e7";
+        public const string ДоВідвантаження = "col_e8";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -8864,6 +8877,12 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string Організація = "col_e9";
+        public const string Номенклатура = "col_f2";
+        public const string ХарактеристикаНоменклатури = "col_f3";
+        public const string Кількість = "col_f1";
+        public const string ГосподарськаОперація = "col_f4";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -9006,6 +9025,11 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string Номенклатура = "col_g3";
+        public const string ХарактеристикаНоменклатури = "col_g4";
+        public const string Склад = "col_g5";
+        public const string Кількість = "col_g6";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -9146,6 +9170,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string ЗамовленняКлієнта = "col_a1";
+        public const string Номенклатура = "col_a2";
+        public const string ХарактеристикаНоменклатури = "col_a3";
+        public const string Склад = "col_a4";
+        public const string Замовлено = "col_a5";
+        public const string Сума = "col_a6";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -9307,6 +9338,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string Валюта = "col_a2";
+        public const string ЗамовленняКлієнта = "col_a5";
+        public const string Сума = "col_a4";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -9428,6 +9463,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string Договір = "col_a1";
+        public const string Валюта = "col_a2";
+        public const string РозрахунковийДокумент = "col_a3";
+        public const string Заборгованість = "col_a4";
+        public const string Передоплата = "col_a6";
+        public const string ГосподарськаОперація = "col_a7";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -9574,6 +9616,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string Номенклатура = "col_a5";
+        public const string ХарактеристикаНоменклатури = "col_a6";
+        public const string Склад = "col_a7";
+        public const string ВНаявності = "col_a8";
+        public const string ВРезервіЗіСкладу = "col_b1";
+        public const string ВРезервіПідЗамовлення = "col_b2";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -9720,6 +9769,12 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string ЗамовленняПостачальнику = "col_a1";
+        public const string Номенклатура = "col_a2";
+        public const string ХарактеристикаНоменклатури = "col_a3";
+        public const string Склад = "col_a4";
+        public const string Замовлено = "col_a5";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -9875,6 +9930,12 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string ЗамовленняПостачальнику = "col_a6";
+        public const string Валюта = "col_a7";
+        public const string Сума = "col_a8";
+        public const string ГосподарськаОперація = "col_a9";
+        public const string ФормаОплати = "col_b1";
+		
         public List<Record> Records { get; set; }
         
         public void Read()
@@ -10004,6 +10065,11 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Filter = new SelectFilter();
         }
         
+        public const string Номенклатура = "col_b2";
+        public const string ХарактеристикаНоменклатури = "col_b3";
+        public const string Склад = "col_b4";
+        public const string ДоПоступлення = "col_b5";
+		
         public List<Record> Records { get; set; }
         
         public void Read()

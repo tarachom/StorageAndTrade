@@ -84,6 +84,14 @@ namespace StorageAndTrade
 
 			РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
 			замовленняКлієнтів_RecordsSet.Filter.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)documentControl_ЗамовленняКлієнта.DocumentPointerItem;
+
+			//JOIN 1
+			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Table;
+			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Fields["Назва"].NameInTable;
+
+			замовленняКлієнтів_RecordsSet.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "nomenklatura"));
+			замовленняКлієнтів_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Номенклатура, замовленняКлієнтів_RecordsSet.QuerySelect.Table));
+
 			замовленняКлієнтів_RecordsSet.Read();
 
 			int line_number = 0;
@@ -91,7 +99,7 @@ namespace StorageAndTrade
 			foreach(РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
             {
 				table_body.Controls.Add(CreateBodyCell(record.Income == true ? "+" : "-", ContentAlignment.MiddleCenter), 0, line_number);
-				table_body.Controls.Add(CreateBodyCell(record.Номенклатура.GetPresentation()), 1, line_number);
+				table_body.Controls.Add(CreateBodyCell(замовленняКлієнтів_RecordsSet.JoinValue[record.UID.ToString()]["nomenklatura"]), 1, line_number);
 				table_body.Controls.Add(CreateBodyCell(record.Сума.ToString(), ContentAlignment.MiddleRight), 2, line_number);
 
 				line_number++;
@@ -107,8 +115,6 @@ namespace StorageAndTrade
 
         private void button_ok_Click(object sender, EventArgs e)
         {
-			Console.WriteLine(documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID.UGuid);
-
 			CreateReport();
 		}
 
