@@ -67,55 +67,6 @@ namespace StorageAndTrade
 			documentControl_ЗамовленняКлієнта.DocumentPointerItem = new Документи.ЗамовленняКлієнта_Pointer();
 		}
 
-		//void CreateReport()
-  //      {
-		//	SendMessage(this.Handle, WM_SETREDRAW, false, 0);
-
-		//	table_head.Top = 500;
-		//	table_head.Controls.Clear();
-		//	table_head.Controls.Add(CreateHeadCell("Рух документу"));
-
-		//	table_body.Controls.Clear();
-		//	table_body.Top = table_head.Location.Y + (table_head.Height - 1);
-
-		//	table_body.ColumnCount = 3;
-		//	table_body.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 5);
-		//	table_body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85));
-		//	table_body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
-
-		//	РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
-		//	замовленняКлієнтів_RecordsSet.Filter.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)documentControl_ЗамовленняКлієнта.DocumentPointerItem;
-
-		//	//JOIN 1
-		//	string JoinTable = Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Table;
-		//	string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Fields["Назва"].NameInTable;
-
-		//	замовленняКлієнтів_RecordsSet.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "nomenklatura"));
-		//	замовленняКлієнтів_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Номенклатура, замовленняКлієнтів_RecordsSet.QuerySelect.Table));
-
-		//	замовленняКлієнтів_RecordsSet.Read();
-
-		//	int line_number = 0;
-
-		//	foreach(РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
-  //          {
-		//		table_body.Controls.Add(CreateBodyCell(record.Income == true ? "+" : "-", ContentAlignment.MiddleCenter), 0, line_number);
-		//		table_body.Controls.Add(CreateBodyCell(замовленняКлієнтів_RecordsSet.JoinValue[record.UID.ToString()]["nomenklatura"]), 1, line_number);
-		//		table_body.Controls.Add(CreateBodyCell(record.Сума.ToString(), ContentAlignment.MiddleRight), 2, line_number);
-
-		//		line_number++;
-		//	}
-
-		//	table_footer.Controls.Clear();
-		//	table_footer.Top = table_body.Location.Y + (table_body.Height - 1);
-		//	table_footer.Controls.Add(CreateHeadCell("ИТОГО"));
-
-			
-
-		//	SendMessage(this.Handle, WM_SETREDRAW, true, 0);
-		//	this.Refresh();
-		//}
-
 		private int PositionTopNextBlock { get; set; }
 
 		TableLayoutPanel CreateTableLayoutPanel()
