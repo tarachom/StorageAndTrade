@@ -46,15 +46,15 @@ namespace StorageAndTrade
 			return label;
 		}
 
-		Label CreateBodyCell(string text = "")
+		Label CreateBodyCell(string text = "", ContentAlignment contentAlignment = ContentAlignment.MiddleLeft )
 		{
 			Label label = new Label
 			{
 				Margin = new Padding(0),
 				Dock = DockStyle.Fill,
 				BackColor = Color.Azure,
-				TextAlign = ContentAlignment.MiddleLeft,
-				Font = new Font("Arial", 12),
+				TextAlign = contentAlignment,
+				Font = new Font("Arial", 10),
 				Text = text
 			};
 
@@ -77,9 +77,10 @@ namespace StorageAndTrade
 			table_body.Controls.Clear();
 			table_body.Top = table_head.Location.Y + (table_head.Height - 1);
 
-			table_body.ColumnCount = 2;
-			table_body.ColumnStyles[0].SizeType = SizeType.Percent;
-			table_body.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 100));
+			table_body.ColumnCount = 3;
+			table_body.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 5);
+			table_body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85));
+			table_body.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
 
 			РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
 			замовленняКлієнтів_RecordsSet.Filter.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)documentControl_ЗамовленняКлієнта.DocumentPointerItem;
@@ -89,8 +90,9 @@ namespace StorageAndTrade
 
 			foreach(РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
             {
-				table_body.Controls.Add(CreateBodyCell(record.Номенклатура.GetPresentation()), 0, line_number);
-				table_body.Controls.Add(CreateBodyCell(record.Сума.ToString()), 1, line_number);
+				table_body.Controls.Add(CreateBodyCell(record.Income == true ? "+" : "-", ContentAlignment.MiddleCenter), 0, line_number);
+				table_body.Controls.Add(CreateBodyCell(record.Номенклатура.GetPresentation()), 1, line_number);
+				table_body.Controls.Add(CreateBodyCell(record.Сума.ToString(), ContentAlignment.MiddleRight), 2, line_number);
 
 				line_number++;
 			}

@@ -47,7 +47,7 @@ namespace StorageAndTrade
             | System.Windows.Forms.AnchorStyles.Right)));
             this.table_body.AutoSize = true;
             this.table_body.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.table_body.ColumnCount = 7;
+            this.table_body.ColumnCount = 11;
             this.table_body.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.table_body.Location = new System.Drawing.Point(3, 43);
             this.table_body.Name = "table_body";
