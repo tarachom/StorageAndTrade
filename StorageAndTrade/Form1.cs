@@ -221,7 +221,7 @@ namespace StorageAndTrade
 			TableLayoutPanel tableLayoutPanel = CreateTableLayoutPanel();
 			tableLayoutPanel.Height = 20;
 
-			tableLayoutPanel.ColumnCount = 5;
+			tableLayoutPanel.ColumnCount = 3;
 			tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5));
 			tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85));
 			tableLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10));
