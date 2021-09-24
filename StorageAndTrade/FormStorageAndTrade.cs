@@ -173,8 +173,13 @@ namespace StorageAndTrade
             form_ПоверненняТоварівВідКлієнтаЖурнал.Show();
         }
 
+
         #endregion
 
-
+        private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.Show();
+        }
     } 
 }

@@ -42,12 +42,7 @@ namespace StorageAndTrade
         public Form_ЗамовленняКлієнтаЖурнал()
         {
             InitializeComponent();
-        }
 
-		public DocumentPointer DocumentPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
@@ -58,7 +53,12 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
 			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+		}
 
+		public DocumentPointer DocumentPointerItem { get; set; }
+
+        private void FormCash_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -95,9 +95,9 @@ namespace StorageAndTrade
 					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу], 2)
 				});
 
-				//if (DirectoryPointerItem != null && selectRow == 0) 
-				//	if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-				//		selectRow = RecordsBindingList.Count - 1;
+				if (DocumentPointerItem != null && selectRow == 0) 
+					if (cur.UnigueID.ToString() == DocumentPointerItem.UnigueID.ToString())
+						selectRow = RecordsBindingList.Count - 1;
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
@@ -123,16 +123,16 @@ namespace StorageAndTrade
 			{
 				string Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString();
 
-				//if (DirectoryControlItem != null)
-				//{
-				//	//DirectoryControlItem.DirectoryPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(Uid));
-				//	this.Close();
-				//}
-				//else
-				//{
-					toolStripButtonEdit_Click(this, null);
-				//}
-			}
+                if (DocumentPointerItem != null)
+                {
+					DocumentPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(Uid));
+					this.Close();
+                }
+                else
+                {
+                    toolStripButtonEdit_Click(this, null);
+                }
+            }
 		}
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
@@ -152,7 +152,7 @@ namespace StorageAndTrade
 				Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
 				form_ЗамовленняКлієнтаДокумент.IsNew = false;
 				form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-				form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ЗамовленняКлієнтаДокумент.ShowDialog();
 			}
 		}

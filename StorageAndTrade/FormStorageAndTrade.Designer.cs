@@ -305,6 +305,7 @@ namespace StorageAndTrade
             this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
             this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.проПрограмуToolStripMenuItem.Text = "Про програму";
+            this.проПрограмуToolStripMenuItem.Click += new System.EventHandler(this.проПрограмуToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 

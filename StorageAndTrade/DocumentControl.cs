@@ -74,7 +74,7 @@ namespace StorageAndTrade
 				{
 					propertyInfo.SetValue(SelectForm, mDocumentPointerItem);
 					SelectForm.ShowDialog();
-					mDocumentPointerItem = (DocumentPointer)propertyInfo.GetValue(SelectForm);
+					DocumentPointerItem = (DocumentPointer)propertyInfo.GetValue(SelectForm);
 				}
 			}
 		}
