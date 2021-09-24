@@ -39,7 +39,7 @@ namespace StorageAndTrade
 				Dock = DockStyle.Fill,
 				BackColor = Color.Azure,
 				TextAlign = ContentAlignment.MiddleCenter,
-				Font = new Font("Arial", 18),
+				Font = new Font("Arial", 14),
 				Text = text
 			};
 
