@@ -61,6 +61,24 @@ namespace StorageAndTrade
 			return label;
 		}
 
+		TextBox CreateBodyCellTextBox(string text = "", HorizontalAlignment horizontalAlignment = HorizontalAlignment.Left)
+		{
+			TextBox textBox = new TextBox
+			{
+				Margin = new Padding(0),
+				Dock = DockStyle.Fill,
+				BackColor = Color.Azure,
+				BorderStyle = BorderStyle.None,
+				Multiline = true,
+				TextAlign = horizontalAlignment,
+				ReadOnly = true,
+				Font = new Font("Arial", 10),
+				Text = text
+			};
+
+			return textBox;
+		}
+
 		private void Form1_Load(object sender, EventArgs e)
         {
 			documentControl_ЗамовленняКлієнта.SelectForm = new Form_ЗамовленняКлієнтаЖурнал();
@@ -111,9 +129,9 @@ namespace StorageAndTrade
 
 			foreach (РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
 			{
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.Income == true ? "+" : "-", ContentAlignment.MiddleCenter), 0, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(замовленняКлієнтів_RecordsSet.JoinValue[record.UID.ToString()]["nomenklatura"]), 1, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.Сума.ToString(), ContentAlignment.MiddleRight), 2, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.Income == true ? "+" : "-", HorizontalAlignment.Center), 0, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(замовленняКлієнтів_RecordsSet.JoinValue[record.UID.ToString()]["nomenklatura"]), 1, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.Сума.ToString(), HorizontalAlignment.Right), 2, line_number);
 
 				line_number++;
 			}
@@ -154,11 +172,11 @@ namespace StorageAndTrade
 
 			foreach (РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record in вільніЗалишки_RecordsSet.Records)
 			{
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.Income == true ? "+" : "-", ContentAlignment.MiddleCenter), 0, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(вільніЗалишки_RecordsSet.JoinValue[record.UID.ToString()]["nomenklatura"]), 1, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.ВНаявності.ToString(), ContentAlignment.MiddleRight), 2, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.ВРезервіЗіСкладу.ToString(), ContentAlignment.MiddleRight), 3, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.ВРезервіПідЗамовлення.ToString(), ContentAlignment.MiddleRight), 4, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.Income == true ? "+" : "-", HorizontalAlignment.Center), 0, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(вільніЗалишки_RecordsSet.JoinValue[record.UID.ToString()]["nomenklatura"]), 1, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.ВНаявності.ToString(), HorizontalAlignment.Right), 2, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.ВРезервіЗіСкладу.ToString(), HorizontalAlignment.Right), 3, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.ВРезервіПідЗамовлення.ToString(), HorizontalAlignment.Right), 4, line_number);
 
 				line_number++;
 			}
@@ -197,9 +215,9 @@ namespace StorageAndTrade
 
 			foreach (РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record record in розрахункиЗКлієнтами_RecordsSet.Records)
 			{
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.Income == true ? "+" : "-", ContentAlignment.MiddleCenter), 0, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(розрахункиЗКлієнтами_RecordsSet.JoinValue[record.UID.ToString()]["valuta"]), 1, line_number);
-				tableLayoutPanel.Controls.Add(CreateBodyCell(record.Сума.ToString(), ContentAlignment.MiddleRight), 2, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.Income == true ? "+" : "-", HorizontalAlignment.Center), 0, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(розрахункиЗКлієнтами_RecordsSet.JoinValue[record.UID.ToString()]["valuta"]), 1, line_number);
+				tableLayoutPanel.Controls.Add(CreateBodyCellTextBox(record.Сума.ToString(), HorizontalAlignment.Right), 2, line_number);
 
 				line_number++;
 			}
