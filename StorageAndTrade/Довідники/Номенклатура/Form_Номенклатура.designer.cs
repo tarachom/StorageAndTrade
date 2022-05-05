@@ -180,7 +180,7 @@ namespace StorageAndTrade
             this.Name = "Form_Номенклатура";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Номенклатура";
-            this.Load += new System.EventHandler(this.FormCash_Load);
+            this.Load += new System.EventHandler(this.Form_Номенклатура_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
