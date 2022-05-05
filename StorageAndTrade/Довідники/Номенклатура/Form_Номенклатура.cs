@@ -45,6 +45,7 @@ namespace StorageAndTrade
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
+		//test
         private void Form_Номенклатура_Load(object sender, EventArgs e)
         {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
