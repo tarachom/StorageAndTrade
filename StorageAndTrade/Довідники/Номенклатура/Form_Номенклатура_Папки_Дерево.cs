@@ -56,7 +56,7 @@ namespace StorageAndTrade
 
             treeViewFolders.Nodes.Clear();
 
-            TreeNode rootNode = treeViewFolders.Nodes.Add("root", "Номенклатура");
+            TreeNode rootNode = treeViewFolders.Nodes.Add("root", "[ Номенклатура ]");
             rootNode.ImageIndex = 0;
 
             string tab = Conf.Directories["Номенклатура_Папки"].Table;
@@ -85,7 +85,7 @@ namespace StorageAndTrade
                 ORDER BY level ASC
             ";
 
-            //Console.WriteLine(query);
+            Console.WriteLine(query);
 
             string[] columnsName;
             List<object[]> listRow;

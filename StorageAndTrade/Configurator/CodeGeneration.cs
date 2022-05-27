@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 24.09.2021 11:19:12
+ * Дата конфігурації: 26.05.2022 16:11:31
  *
  */
 
@@ -8706,6 +8706,119 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
             public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "КурсиВалют"
+    
+    
+    public class КурсиВалют_RecordsSet : RegisterInformationRecordsSet
+    {
+        public КурсиВалют_RecordsSet() : base(Config.Kernel, "tab_a59",
+             new string[] { "col_a1", "col_a2", "col_a3" }) 
+        {
+            Records = new List<Record>();
+            Filter = new SelectFilter();
+        }
+        
+        public const string Валюта = "col_a1";
+        public const string Курс = "col_a2";
+        public const string Кратність = "col_a3";
+		
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            
+            
+            if (Filter.Валюта != null)
+            {
+                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
+                
+            }
+            
+
+            base.BaseRead();
+            
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                
+                record.UID = (Guid)fieldValue["uid"];
+                  
+                record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a1"]);
+                record.Курс = (fieldValue["col_a2"] != DBNull.Value) ? (decimal)fieldValue["col_a2"] : 0;
+                record.Кратність = (fieldValue["col_a3"] != DBNull.Value) ? (int)fieldValue["col_a3"] : 0;
+                
+                Records.Add(record);
+            }
+            
+            base.BaseClear();
+        }
+        
+        public void Save(bool clear_all_before_save = true) 
+        {
+            if (Records.Count > 0)
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.Валюта.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Курс);
+                    fieldValue.Add("col_a3", record.Кратність);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        }
+        
+        public void Delete()
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete();
+            base.BaseCommitTransaction();
+        }
+        
+        public SelectFilter Filter { get; set; }
+        
+        
+        public class Record : RegisterRecord
+        {
+            public Record()
+            {
+                Валюта = new Довідники.Валюти_Pointer();
+                Курс = 0;
+                Кратність = 0;
+                
+            }
+        
+            public Довідники.Валюти_Pointer Валюта { get; set; }
+            public decimal Курс { get; set; }
+            public int Кратність { get; set; }
+            
+        }
+    
+        public class SelectFilter
+        {
+            public SelectFilter()
+            {
+                 Валюта = null;
+                 
+            }
+        
+            public Довідники.Валюти_Pointer Валюта { get; set; }
             
         }
     }
