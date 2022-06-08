@@ -722,6 +722,9 @@
     <Folder Include="Документи\ПрихіднийКасовийОрдер\" />
     <Folder Include="Документи\РозхіднийКасовийОрдер\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Документи\ЗамовленняКлієнта\Report_ЗамовленняКлієнта_РухПоРегістрах.xslt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
