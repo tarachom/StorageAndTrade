@@ -48,16 +48,16 @@ namespace StorageAndTrade_1_0.Звіти
 
             Console.WriteLine("Док: " + ДокументВказівник.UnigueID.ToString());
 
-            РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
-            замовленняКлієнтів_RecordsSet.Filter.ЗамовленняКлієнта = ДокументВказівник;
+            //РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
+            //замовленняКлієнтів_RecordsSet.Filter.ЗамовленняКлієнта = ДокументВказівник;
 
-            замовленняКлієнтів_RecordsSet.Read();
+            //замовленняКлієнтів_RecordsSet.Read();
 
-            foreach(РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
-            {
-                Console.WriteLine(record.UID + " " + record.Номенклатура.GetPresentation());
+            //foreach(РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
+            //{
+            //    Console.WriteLine(record.UID + " " + record.Номенклатура.GetPresentation());
                  
-            }
+            //}
 
             Configuration Conf = Config.Kernel.Conf;
 
@@ -97,6 +97,7 @@ FROM
        Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["Склад"].NameInTable}
 WHERE
     Рег_ЗамовленняКлієнтів.Owner = @ЗамовленняКлієнта
+ORDER BY Номенклатура_Назва
 ";
 
             Console.WriteLine(query);
@@ -141,14 +142,9 @@ WHERE
 
             xmlConfDocument.Save(@"E:\Project\StorageAndTrade\StorageAndTrade\bin\Debug\SaveXML_Report.xml");
 
-            //
-
             XslCompiledTransform xsltTransform = new XslCompiledTransform();
-
-            //Завантаження шаблону
             xsltTransform.Load(@"E:\Project\StorageAndTrade\StorageAndTrade\Документи\ЗамовленняКлієнта\Report_ЗамовленняКлієнта_РухПоРегістрах.xslt", new XsltSettings(), null);
 
-            //Трансформація і запис результату
             xsltTransform.Transform(@"E:\Project\StorageAndTrade\StorageAndTrade\bin\Debug\SaveXML_Report.xml",
                 @"E:\Project\StorageAndTrade\StorageAndTrade\bin\Debug\SaveXML_Report.html");
 
