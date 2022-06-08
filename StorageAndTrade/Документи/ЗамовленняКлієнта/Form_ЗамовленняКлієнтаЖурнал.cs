@@ -72,6 +72,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняКлієнта_Select замовленняКлієнта_Select = new Документи.ЗамовленняКлієнта_Select();
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.Назва);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.НомерДок);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.ДатаДок);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.СумаДокументу);
@@ -88,8 +89,7 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = "Замовлення клієнта №" + cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString() + " від " +
-							 DateTime.Parse(cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString()).ToShortDateString(),
+					Назва = cur.Fields[Документи.ЗамовленняКлієнта_Select.Назва].ToString(),
 					НомерДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу], 2)
@@ -220,10 +220,9 @@ namespace StorageAndTrade
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 
-				Звіти.ЗамовленняКлієнта_Report.PrintRegisterRecords(
-					new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString())));
-
+				Звіти.ЗамовленняКлієнта_Report.PrintRegisterRecords(new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
 			}
 		}
     }

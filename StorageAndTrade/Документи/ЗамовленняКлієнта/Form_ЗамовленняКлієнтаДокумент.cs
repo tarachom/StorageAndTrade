@@ -154,6 +154,7 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 					замовленняКлієнта_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 					замовленняКлієнта_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+					замовленняКлієнта_Objest.Назва = $"Замовлення клієнта №{замовленняКлієнта_Objest.НомерДок} від {замовленняКлієнта_Objest.ДатаДок.ToShortDateString()}";
 
 					ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 

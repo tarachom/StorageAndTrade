@@ -23,14 +23,15 @@ limitations under the License.
 
 /*
  
-Модуль функцій для звітів.
- 
+Модуль функцій для звітів
+
 */
 
 using System;
 using System.Collections.Generic;
 using AccountingSoftware;
 
+using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Документи;
 
 namespace StorageAndTrade_1_0.Звіти
@@ -43,6 +44,8 @@ namespace StorageAndTrade_1_0.Звіти
             //ЗамовленняКлієнтів
             //
 
+            Console.WriteLine("Док: " + ДокументВказівник.UnigueID.ToString());
+
             РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
             замовленняКлієнтів_RecordsSet.Filter.ЗамовленняКлієнта = ДокументВказівник;
 
@@ -50,10 +53,59 @@ namespace StorageAndTrade_1_0.Звіти
 
             foreach(РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
             {
-                Console.WriteLine(record.UID);
-
+                Console.WriteLine(record.UID + " " + record.Номенклатура.GetPresentation());
+                 
             }
-            
+
+            Configuration Conf = Config.Kernel.Conf;
+
+            ConfigurationRegistersAccumulation Регістр_ЗамовленняКлієнтів = Conf.RegistersAccumulation["ЗамовленняКлієнтів"];
+            ConfigurationDirectories Довідник_Номенклатура = Conf.Directories["Номенклатура"];
+            ConfigurationDirectories Довідник_ХарактеристикиНоменклатури = Conf.Directories["ХарактеристикиНоменклатури"];
+            ConfigurationDirectories Довідник_Склади = Conf.Directories["Склади"];
+
+            string query = $@"
+SELECT 
+    Рег_ЗамовленняКлієнтів.period,
+    Рег_ЗамовленняКлієнтів.income,
+    Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["ЗамовленняКлієнта"].NameInTable} AS ЗамовленняКлієнта, 
+    Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["Номенклатура"].NameInTable} AS Номенклатура, 
+    Довідник_Номенклатура.{Довідник_Номенклатура.Fields["Назва"].NameInTable} AS Номенклатура_Назва, 
+    Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["ХарактеристикаНоменклатури"].NameInTable} AS ХарактеристикаНоменклатури,
+    Довідник_ХарактеристикиНоменклатури.{Довідник_ХарактеристикиНоменклатури.Fields["Назва"].NameInTable} AS ХарактеристикаНоменклатури_Назва, 
+    Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["Склад"].NameInTable} AS Склад,
+    Довідник_Склади.{Довідник_Склади.Fields["Назва"].NameInTable} AS Склад_Назва,
+    Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.ResourcesFields["Замовлено"].NameInTable} AS Замовлено,
+    Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.ResourcesFields["Сума"].NameInTable} AS Сума
+FROM 
+    {Регістр_ЗамовленняКлієнтів.Table} AS Рег_ЗамовленняКлієнтів
+    LEFT JOIN {Довідник_Номенклатура.Table} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["Номенклатура"].NameInTable}
+    LEFT JOIN {Довідник_ХарактеристикиНоменклатури.Table} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["ХарактеристикаНоменклатури"].NameInTable}
+    LEFT JOIN {Довідник_Склади.Table} AS Довідник_Склади ON Довідник_Склади.uid = Рег_ЗамовленняКлієнтів.{Регістр_ЗамовленняКлієнтів.DimensionFields["Склад"].NameInTable}
+WHERE
+    Рег_ЗамовленняКлієнтів.Owner = @ЗамовленняКлієнта
+ORDER BY 
+";
+
+            Console.WriteLine(query);
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("ЗамовленняКлієнта", ДокументВказівник.UnigueID.UGuid);
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+            string result = "";
+
+			foreach(object[] o in listRow)
+            {
+				result += o[2].ToString() + "\n\r";
+			}
+
+            Console.WriteLine(result);
         }
     }
 }
+

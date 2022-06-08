@@ -39,7 +39,7 @@ namespace StorageAndTrade
 
         private void пакуванняОдиниціВиміруToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
+            Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру =new Form_ПакуванняОдиниціВиміру();
             form_ПакуванняОдиниціВиміру.Show();
         }
 

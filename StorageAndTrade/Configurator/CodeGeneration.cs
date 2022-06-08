@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 26.05.2022 16:11:31
+ * Дата конфігурації: 08.06.2022 17:09:14
  *
  */
 
@@ -5206,7 +5206,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ЗамовленняПостачальнику " + base.BasePresentation(
-			    new string[] {"col_k1", "col_j9"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -5638,7 +5639,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ПоступленняТоварівТаПослуг " + base.BasePresentation(
-			    new string[] {"col_a2", "col_a1"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -5857,7 +5859,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ЗамовленняКлієнта_Objest : DocumentObject
     {
         public ЗамовленняКлієнта_Objest() : base(Config.Kernel, "tab_a34",
-             new string[] { "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9" }) 
+             new string[] { "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1" }) 
         {
             ДатаДок = DateTime.MinValue;
             НомерДок = "";
@@ -5886,6 +5888,7 @@ namespace StorageAndTrade_1_0.Документи
             ЧасДоставкиДо = DateTime.MinValue.TimeOfDay;
             ПовернутиТару = false;
             ДатаПоверненняТари = DateTime.MinValue;
+            Назва = "";
             
             //Табличні частини
             Товари_TablePart = new ЗамовленняКлієнта_Товари_TablePart(this);
@@ -5923,6 +5926,7 @@ namespace StorageAndTrade_1_0.Документи
                 ЧасДоставкиДо = (base.FieldValue["col_c7"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_c7"].ToString()) : DateTime.MinValue.TimeOfDay;
                 ПовернутиТару = (base.FieldValue["col_c8"] != DBNull.Value) ? bool.Parse(base.FieldValue["col_c8"].ToString()) : false;
                 ДатаПоверненняТари = (base.FieldValue["col_c9"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_c9"].ToString()) : DateTime.MinValue;
+                Назва = base.FieldValue["col_d1"].ToString();
                 
                 BaseClear();
                 return true;
@@ -5960,6 +5964,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_c7"] = ЧасДоставкиДо;
             base.FieldValue["col_c8"] = ПовернутиТару;
             base.FieldValue["col_c9"] = ДатаПоверненняТари;
+            base.FieldValue["col_d1"] = Назва;
             
             BaseSave();
 			Записи_Triggers.ЗамовленняКлієнта_AfterRecording(this);
@@ -5996,6 +6001,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ЧасДоставкиДо = ЧасДоставкиДо;
 			copy.ПовернутиТару = ПовернутиТару;
 			copy.ДатаПоверненняТари = ДатаПоверненняТари;
+			copy.Назва = Назва;
 			
 			return copy;
         }
@@ -6039,6 +6045,7 @@ namespace StorageAndTrade_1_0.Документи
         public TimeSpan ЧасДоставкиДо { get; set; }
         public bool ПовернутиТару { get; set; }
         public DateTime ДатаПоверненняТари { get; set; }
+        public string Назва { get; set; }
         
         //Табличні частини
         public ЗамовленняКлієнта_Товари_TablePart Товари_TablePart { get; set; }
@@ -6061,7 +6068,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ЗамовленняКлієнта " + base.BasePresentation(
-			    new string[] {"col_b3", "col_b2"}
+				new string[] { "col_d1" }
+				
 			);
         }
 		
@@ -6109,6 +6117,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string ЧасДоставкиДо = "col_c7";
         public const string ПовернутиТару = "col_c8";
         public const string ДатаПоверненняТари = "col_c9";
+        public const string Назва = "col_d1";
 		
         public ЗамовленняКлієнта_Select() : base(Config.Kernel, "tab_a34") { }
         
@@ -6485,7 +6494,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "РеалізаціяТоварівТаПослуг " + base.BasePresentation(
-			    new string[] {"col_d1", "col_c9"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -6787,7 +6797,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ВстановленняЦінНоменклатури " + base.BasePresentation(
-			    new string[] {"col_g8", "col_g7"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -7077,7 +7088,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ПрихіднийКасовийОрдер " + base.BasePresentation(
-			    new string[] {"col_h7", "col_h6"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -7377,7 +7389,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "РозхіднийКасовийОрдер " + base.BasePresentation(
-			    new string[] {"col_k1", "col_j9"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -7703,7 +7716,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ПереміщенняТоварів " + base.BasePresentation(
-			    new string[] {"col_a2", "col_a1"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -8032,7 +8046,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ПоверненняТоварівПостачальнику " + base.BasePresentation(
-			    new string[] {"col_c1", "col_b9"}
+				new string[] {  }
+				
 			);
         }
 		
@@ -8365,7 +8380,8 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return "ПоверненняТоварівВідКлієнта " + base.BasePresentation(
-			    new string[] {"col_e7", "col_e6"}
+				new string[] {  }
+				
 			);
         }
 		
