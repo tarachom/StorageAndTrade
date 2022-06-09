@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 08.06.2022 17:09:14
+ * Дата конфігурації: 08.06.2022 19:11:54
  *
  */
 
@@ -5207,7 +5207,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ЗамовленняПостачальнику " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -5640,7 +5639,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ПоступленняТоварівТаПослуг " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -6069,7 +6067,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ЗамовленняКлієнта " + base.BasePresentation(
 				new string[] { "col_d1" }
-				
 			);
         }
 		
@@ -6495,7 +6492,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "РеалізаціяТоварівТаПослуг " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -6798,7 +6794,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ВстановленняЦінНоменклатури " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -7089,7 +7084,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ПрихіднийКасовийОрдер " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -7390,7 +7384,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "РозхіднийКасовийОрдер " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -7717,7 +7710,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ПереміщенняТоварів " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -8047,7 +8039,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ПоверненняТоварівПостачальнику " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
@@ -8381,7 +8372,6 @@ namespace StorageAndTrade_1_0.Документи
         {
 		    return "ПоверненняТоварівВідКлієнта " + base.BasePresentation(
 				new string[] {  }
-				
 			);
         }
 		
