@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>08.06.2022 19:11:54</DateTimeSave>
+  <DateTimeSave>09.06.2022 16:01:22</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -1295,10 +1295,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <AfterSave>Контрагенти_Папки_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>Контрагенти_Папки_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Directory>
     <Directory>
@@ -2579,6 +2577,14 @@
           </Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_b8</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -2957,6 +2963,14 @@
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_d4</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
         </Field>
       </Fields>
       <TabularParts>
@@ -3427,8 +3441,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>Записи_Triggers.ЗамовленняКлієнта_AfterRecording</AfterSave>
-        <BeforeDelete>Записи_Triggers.ЗамовленняКлієнта_BeforeDelete</BeforeDelete>
+        <AfterSave>ЗамовленняКлієнта_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ЗамовленняКлієнта_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
     <Document>
@@ -3682,6 +3696,14 @@
           </Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_d3</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -3798,8 +3820,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>Записи_Triggers.РеалізаціяТоварівТаПослуг_AfterRecording</AfterSave>
-        <BeforeDelete>Записи_Triggers.РеалізаціяТоварівТаПослуг_BeforeDelete</BeforeDelete>
+        <AfterSave>РеалізаціяТоварівТаПослуг_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>РеалізаціяТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
     <Document>
@@ -3829,6 +3851,14 @@
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
         </Field>
       </Fields>
       <TabularParts>
@@ -4018,6 +4048,14 @@
           </Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -4206,6 +4244,14 @@
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
         </Field>
       </Fields>
       <TabularParts>
@@ -4437,6 +4483,14 @@
           </Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_b9</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -4667,6 +4721,14 @@
           </Desc>
           <IsPresentation>0</IsPresentation>
         </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -4894,6 +4956,14 @@
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
+        </Field>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
         </Field>
       </Fields>
       <TabularParts>

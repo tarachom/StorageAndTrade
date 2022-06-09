@@ -82,21 +82,78 @@ namespace StorageAndTrade_1_0.Довідники
 			}
 		}
 	}
+	
+	class Контрагенти_Папки_Triggers
+	{
+		public static void BeforeRecording(Контрагенти_Папки_Objest ДовідникОбєкт)
+		{
+
+		}
+		public static void AfterRecording(Контрагенти_Папки_Objest ДовідникОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(Контрагенти_Папки_Objest ДовідникОбєкт)
+		{
+			//
+			//Елементи переносяться на верхній рівень
+			//
+
+			Контрагенти_Select контрагенти_Select = new Контрагенти_Select();
+			контрагенти_Select.QuerySelect.Where.Add(new Where(Контрагенти_Select.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			контрагенти_Select.Select();
+
+			while (контрагенти_Select.MoveNext())
+			{
+				Контрагенти_Objest контрагенти_Objest = контрагенти_Select.Current.GetDirectoryObject();
+				контрагенти_Objest.Папка = new Контрагенти_Папки_Pointer();
+				контрагенти_Objest.Save();
+			}
+
+			//
+			//Вкладені папки видаляються. Для кожної папки буде викликана функція BeforeDelete
+			//
+
+			Контрагенти_Папки_Select контрагенти_Папки_Select = new Контрагенти_Папки_Select();
+			контрагенти_Папки_Select.QuerySelect.Where.Add(new Where(Контрагенти_Папки_Select.Родич, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			контрагенти_Папки_Select.Select();
+
+			while (контрагенти_Папки_Select.MoveNext())
+			{
+				Контрагенти_Папки_Objest контрагенти_Папки_Objest = контрагенти_Папки_Select.Current.GetDirectoryObject();
+				if (контрагенти_Папки_Objest != null)
+					контрагенти_Папки_Objest.Delete();
+
+			}
+		}
+	}
+
+
 }
 
 namespace StorageAndTrade_1_0.Документи
 {
-	class Записи_Triggers
+
+	class ЗамовленняКлієнта_Triggers
     {
-		#region ЗамовленняКлієнта
-
-		public static void ЗамовленняКлієнта_BeforeRecording(ЗамовленняКлієнта_Objest ДокументОбєкт)
-        {
-
-        }
-
-		public static void ЗамовленняКлієнта_AfterRecording(ЗамовленняКлієнта_Objest ДокументОбєкт)
+		/// <summary>
+		/// Перед записом
+		/// </summary>
+		/// <param name="ДокументОбєкт"></param>
+		public static void BeforeRecording(ЗамовленняКлієнта_Objest ДокументОбєкт)
 		{
+
+		}
+
+		/// <summary>
+		/// Після запису
+		/// </summary>
+		/// <param name="ДокументОбєкт"></param>
+		public static void AfterRecording(ЗамовленняКлієнта_Objest ДокументОбєкт)
+		{
+			#region Рух по регістрах
+
 			//
 			//ЗамовленняКлієнтів
 			//
@@ -106,7 +163,7 @@ namespace StorageAndTrade_1_0.Документи
 			ДокументОбєкт.Товари_TablePart.Read();
 
 			foreach (ЗамовленняКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
-            {
+			{
 				РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record();
 				замовленняКлієнтів_RecordsSet.Records.Add(record);
 
@@ -162,9 +219,15 @@ namespace StorageAndTrade_1_0.Документи
 			розрахункиЗКлієнтами_Record.Сума = ДокументОбєкт.СумаДокументу;
 
 			розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
-		}
 
-		public static void ЗамовленняКлієнта_BeforeDelete(ЗамовленняКлієнта_Objest ДокументОбєкт)
+            #endregion
+        }
+
+		/// <summary>
+		/// Перед видаленням
+		/// </summary>
+		/// <param name="ДокументОбєкт"></param>
+        public static void BeforeDelete(ЗамовленняКлієнта_Objest ДокументОбєкт)
 		{
 			РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
 			замовленняКлієнтів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
@@ -176,22 +239,24 @@ namespace StorageAndTrade_1_0.Документи
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
 
-		#endregion
+	}
 
-		#region РеалізаціяТоварівТаПослуг
-
-		public static void РеалізаціяТоварівТаПослуг_BeforeRecording(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
+	class РеалізаціяТоварівТаПослуг_Triggers
+    {
+		public static void BeforeRecording(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
 		{
 
 		}
 
-		public static void РеалізаціяТоварівТаПослуг_AfterRecording(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
-        {
-			//
-			//ЗамовленняКлієнтів
-			//
+		public static void AfterRecording(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
+		{
+            #region Рух по регістрах
 
-			РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
+            //
+            //ЗамовленняКлієнтів
+            //
+
+            РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
 
 			ДокументОбєкт.Товари_TablePart.Read();
 
@@ -200,7 +265,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record();
 				замовленняКлієнтів_RecordsSet.Records.Add(record);
 
-				record.Income = false; // -
+				record.Income = false; // -     | Документ зменшує замовлення
 				record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record.ЗамовленняКлієнта = Товари_Record.ЗамовленняКлієнта;
@@ -224,7 +289,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
 				вільніЗалишки_RecordsSet.Records.Add(record);
 
-				record.Income = false; // -    | Документ зменшує резерв
+				record.Income = false; // -      | Документ зменшує резерв
 				record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record.Номенклатура = Товари_Record.Номенклатура;
@@ -242,11 +307,11 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 
 			foreach (РеалізаціяТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
-            {
+			{
 				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
 				товариНаСкладах_RecordsSet.Records.Add(record);
 
-				record.Income = false; // -    | Документ зменшує наявність
+				record.Income = false; // -      | Документ зменшує наявність
 				record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record.Номенклатура = Товари_Record.Номенклатура;
@@ -257,18 +322,18 @@ namespace StorageAndTrade_1_0.Документи
 
 			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
-            //
-            //РозрахункиЗКлієнтами
-            //
+			//
+			//РозрахункиЗКлієнтами
+			//
 
-            РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 
 			foreach (РеалізаціяТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
-            {
+			{
 				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
 				розрахункиЗКлієнтами_RecordsSet.Records.Add(розрахункиЗКлієнтами_Record);
 
-				розрахункиЗКлієнтами_Record.Income = false; // -
+				розрахункиЗКлієнтами_Record.Income = true; // +       | Документ збільшує борг клієнта 
 				розрахункиЗКлієнтами_Record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				розрахункиЗКлієнтами_Record.ЗамовленняКлієнта = Товари_Record.ЗамовленняКлієнта;
@@ -278,11 +343,11 @@ namespace StorageAndTrade_1_0.Документи
 
 			розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
+            #endregion
+        }
 
-		}
-
-		public static void РеалізаціяТоварівТаПослуг_BeforeDelete(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
-        {
+        public static void BeforeDelete(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
+		{
 			РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
 			замовленняКлієнтів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
@@ -296,7 +361,15 @@ namespace StorageAndTrade_1_0.Документи
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
 
-		#endregion
+	}
+
+
+
+	class Записи_Triggers
+    {
+		
+
+		
 
 		#region ЗамовленняПостачальнику
 
