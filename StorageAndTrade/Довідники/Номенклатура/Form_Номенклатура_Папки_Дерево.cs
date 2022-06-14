@@ -1,4 +1,24 @@
-﻿using System;
+﻿/*
+Copyright (C) 2019-2020 TARAKHOMYN YURIY IVANOVYCH
+All rights reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/*
+Автор:    Тарахомин Юрій Іванович
+Адреса:   Україна, м. Львів
+Сайт:     accounting.org.ua
+*/
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -67,22 +87,22 @@ namespace StorageAndTrade
             string whereQueryPart2 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $"WHERE {tab}.uid != '{UidOpenFolder}'";
 
             string query = $@"
-                WITH RECURSIVE r AS (
-                   SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
-                   FROM {tab}
-                   WHERE {tabFieldParent} = '{Guid.Empty}' 
-                   {whereQueryPart1}
+WITH RECURSIVE r AS (
+    SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
+    FROM {tab}
+    WHERE {tabFieldParent} = '{Guid.Empty}' 
+    {whereQueryPart1}
 
-                   UNION ALL
+    UNION ALL
 
-                   SELECT {tab}.uid, {tab}.{tabFieldName}, {tab}.{tabFieldParent}, r.level + 1 AS level
-                   FROM {tab}
-                      JOIN r ON {tab}.{tabFieldParent} = r.uid
-                   {whereQueryPart2}
-                )
+    SELECT {tab}.uid, {tab}.{tabFieldName}, {tab}.{tabFieldParent}, r.level + 1 AS level
+    FROM {tab}
+        JOIN r ON {tab}.{tabFieldParent} = r.uid
+    {whereQueryPart2}
+)
 
-                SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
-                ORDER BY level ASC
+SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
+ORDER BY level ASC
             ";
 
             Console.WriteLine(query);
@@ -141,8 +161,6 @@ namespace StorageAndTrade
                         treeViewFolders.SelectedNode = findNode;
                         TreeNode parentNode = findNode.Parent;
 
-                        findNode.Expand();
-
                         while (parentNode != null)
                         {
                             parentNode.Expand();
@@ -183,7 +201,16 @@ namespace StorageAndTrade
         private void treeViewFolders_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (CallBack_DoubleClick != null)
+            {
+                if (e.Node.Name != "root")
+                    Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer(new UnigueID(e.Node.Name));
+                else
+                    Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
+
                 CallBack_DoubleClick.Invoke();
+
+                e.Node.Collapse();
+            }
         }
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)

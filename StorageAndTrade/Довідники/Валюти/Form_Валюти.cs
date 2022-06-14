@@ -41,21 +41,24 @@ namespace StorageAndTrade
         public Form_Валюти()
         {
             InitializeComponent();
-        }
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
+		}
 
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+        private void FormCash_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -70,6 +73,7 @@ namespace StorageAndTrade
 
 			Довідники.Валюти_Select валюти_Select = new Довідники.Валюти_Select();
 			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Select.Назва);
+			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Select.Код);
 
 			//ORDER
 			валюти_Select.QuerySelect.Order.Add(Довідники.Валюти_Select.Назва, SelectOrder.ASC);
@@ -82,7 +86,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Валюти_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.Валюти_Select.Назва].ToString(),
+					Код = cur.Fields[Довідники.Валюти_Select.Код].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
@@ -100,8 +105,12 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -139,7 +148,7 @@ namespace StorageAndTrade
 				Form_ВалютиЕлемент form_ВалютиЕлемент = new Form_ВалютиЕлемент();
 				form_ВалютиЕлемент.IsNew = false;
 				form_ВалютиЕлемент.OwnerForm = this;
-				form_ВалютиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ВалютиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ВалютиЕлемент.ShowDialog();
 			}			
 		}
@@ -157,7 +166,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Валюти_Objest валюти_Objest = new Довідники.Валюти_Objest();
                     if (валюти_Objest.Read(new UnigueID(uid)))
@@ -185,7 +194,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Валюти_Objest валюти_Objest = new Довідники.Валюти_Objest();
                     if (валюти_Objest.Read(new UnigueID(uid)))

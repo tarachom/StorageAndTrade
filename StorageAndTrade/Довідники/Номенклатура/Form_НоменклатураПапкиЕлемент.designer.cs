@@ -39,7 +39,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 129);
+            this.buttonClose.Location = new System.Drawing.Point(385, 79);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -49,7 +49,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(88, 129);
+            this.buttonSave.Location = new System.Drawing.Point(88, 79);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -95,7 +95,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 164);
+            this.ClientSize = new System.Drawing.Size(565, 114);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.directoryControl_НоменклатураПапка);
             this.Controls.Add(this.textBoxName);

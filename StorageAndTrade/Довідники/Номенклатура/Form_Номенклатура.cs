@@ -41,19 +41,15 @@ namespace StorageAndTrade
         public Form_Номенклатура()
         {
             InitializeComponent();
-		}
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-		//test
-        private void Form_Номенклатура_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 			dataGridViewRecords.Columns["Виробник"].Width = 100;
@@ -66,7 +62,13 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ТипНоменклатури"].Width = 50;
 			dataGridViewRecords.Columns["ТипНоменклатури"].HeaderText = "Тип";
+		}
 
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+		//test
+        private void Form_Номенклатура_Load(object sender, EventArgs e)
+        {
 			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
             {
 				Довідники.Номенклатура_Pointer номенклатура_Pointer = new Довідники.Номенклатура_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
@@ -153,6 +155,10 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+
+			public Bitmap Image { get; set; }
+
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Виробник { get; set; }
@@ -203,7 +209,7 @@ namespace StorageAndTrade
 				Form_НоменклатураЕлемент form_НоменклатураЕлемент = new Form_НоменклатураЕлемент();
 				form_НоменклатураЕлемент.IsNew = false;
 				form_НоменклатураЕлемент.OwnerForm = this;
-				form_НоменклатураЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_НоменклатураЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_НоменклатураЕлемент.ShowDialog();
 			}			
 		}
@@ -221,7 +227,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Номенклатура_Objest номенклатура_Objest = new Довідники.Номенклатура_Objest();
                     if (номенклатура_Objest.Read(new UnigueID(uid)))

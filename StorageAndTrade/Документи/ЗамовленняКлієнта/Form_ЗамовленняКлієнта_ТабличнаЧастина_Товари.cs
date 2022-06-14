@@ -109,16 +109,16 @@ namespace StorageAndTrade
 					ID = record.UID.ToString(),
 					НомерРядка = record.НомерРядка,
 					Номенклатура = record.Номенклатура,
-					НоменклатураНазва = JoinValue[record.UID.ToString()]["tovar_name"],
-					Характеристика = record.ХарактеристикаНоменклатури,
-					ХарактеристикаНазва = JoinValue[record.UID.ToString()]["xar_name"],
-					КількістьУпаковок = record.КількістьУпаковок,
-					Пакування = record.Пакування,
-					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
-					Кількість = (uint)record.Кількість,
-					Ціна = Math.Round(record.Ціна, 2),
-					Сума = Math.Round(record.Сума, 2)
-				});
+                    НоменклатураНазва = JoinValue[record.UID.ToString()]["tovar_name"],
+                    Характеристика = record.ХарактеристикаНоменклатури,
+                    ХарактеристикаНазва = JoinValue[record.UID.ToString()]["xar_name"],
+                    КількістьУпаковок = record.КількістьУпаковок,
+                    Пакування = record.Пакування,
+                    ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
+                    Кількість = (uint)record.Кількість,
+                    Ціна = Math.Round(record.Ціна, 2),
+                    Сума = Math.Round(record.Сума, 2)
+                });
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)

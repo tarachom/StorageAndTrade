@@ -159,7 +159,7 @@ namespace StorageAndTrade
 				Form_ВидиНоменклатуриЕлемент form_ВидиНоменклатуриЕлемент = new Form_ВидиНоменклатуриЕлемент();
 				form_ВидиНоменклатуриЕлемент.IsNew = false;
 				form_ВидиНоменклатуриЕлемент.OwnerForm = this;
-				form_ВидиНоменклатуриЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ВидиНоменклатуриЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ВидиНоменклатуриЕлемент.ShowDialog();
 			}			
 		}
@@ -177,7 +177,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.ВидиНоменклатури_Objest видиНоменклатури_Objest = new Довідники.ВидиНоменклатури_Objest();
                     if (видиНоменклатури_Objest.Read(new UnigueID(uid)))

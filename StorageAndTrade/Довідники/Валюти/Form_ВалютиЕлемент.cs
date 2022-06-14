@@ -80,6 +80,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + валюти_Objest.Назва;
 
 						textBoxName.Text = валюти_Objest.Назва;
+						textBox_Код.Text = валюти_Objest.Код;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -97,6 +98,7 @@ namespace StorageAndTrade
 				try
 				{
 					валюти_Objest.Назва = textBoxName.Text;
+					валюти_Objest.Код = textBox_Код.Text;
 					валюти_Objest.Save();
 				}
 				catch (Exception exp)
