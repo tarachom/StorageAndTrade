@@ -298,8 +298,8 @@ namespace StorageAndTrade
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form_НоменклатураЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Номенклатура";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Text = "Номенклатура елемент";
+            this.Load += new System.EventHandler(this.Form_НоменклатураЕлемент_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

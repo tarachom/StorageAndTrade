@@ -41,24 +41,26 @@ namespace StorageAndTrade
         public Form_ВидиНоменклатури()
         {
             InitializeComponent();
-        }
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = ""; 
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
 			dataGridViewRecords.Columns["ОдиницяВиміру"].Width = 100;
 			dataGridViewRecords.Columns["ОдиницяВиміру"].HeaderText = "Од.";
+		}
 
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+		private void Form_ВидиНоменклатури_Load(object sender, EventArgs e)
+		{
 			LoadRecords();
 		}
 
@@ -66,8 +68,7 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
+			int selectRow = 0; 
 
 			RecordsBindingList.Clear();
 
@@ -98,7 +99,7 @@ namespace StorageAndTrade
 					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.ВидиНоменклатури_Select.ТипНоменклатури]).ToString()
 				});
 
-				if (DirectoryPointerItem != null && selectRow == 0)
+				if (DirectoryPointerItem != null)
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
 						selectRow = RecordsBindingList.Count - 1;
 			}
@@ -108,11 +109,15 @@ namespace StorageAndTrade
 				dataGridViewRecords.Rows[0].Selected = false;
 				dataGridViewRecords.Rows[selectRow].Selected = true;
 				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				dataGridViewRecords.Focus();
 			}
 		}
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string ОдиницяВиміру { get; set; }
