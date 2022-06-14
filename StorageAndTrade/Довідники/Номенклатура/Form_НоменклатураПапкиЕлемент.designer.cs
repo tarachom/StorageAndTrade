@@ -67,7 +67,7 @@ namespace StorageAndTrade
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 15);
+            this.label2.Location = new System.Drawing.Point(18, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 19;
@@ -91,7 +91,7 @@ namespace StorageAndTrade
             this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(461, 27);
             this.directoryControl_НоменклатураПапка.TabIndex = 51;
             // 
-            // Form_НоменклатураПапка
+            // Form_НоменклатураПапкиЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,7 +103,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form_НоменклатураПапка";
+            this.Name = "Form_НоменклатураПапкиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Номенклатура Папка";
             this.Load += new System.EventHandler(this.FormAddCash_Load);

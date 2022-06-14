@@ -26,6 +26,9 @@ using AccountingSoftware;
 
 namespace StorageAndTrade
 {
+	/// <summary>
+	/// DirectoryControl - Це контрол який відображає вказівник на елемент довідника
+	/// </summary>
 	public partial class DirectoryControl : UserControl
 	{
 		public DirectoryControl()
@@ -33,12 +36,15 @@ namespace StorageAndTrade
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Форма для вибору елементу довідника
+		/// </summary>
 		public Form SelectForm { get; set; }
 
 		private DirectoryPointer mDirectoryPointerItem;
 
 		/// <summary>
-		/// Ссилка на елемент довідника
+		/// Вказівник на елемент довідника
 		/// </summary>
 		public DirectoryPointer DirectoryPointerItem
 		{
@@ -56,7 +62,9 @@ namespace StorageAndTrade
 		}
 
 		/// <summary>
-		/// Функція викликає функцію ссилки довідника GetPresentation()
+		/// Функція викликає функцію вказівника довідника GetPresentation()
+		/// для того щоб відобразити значення поля яке представляє даний елемент довідника. 
+		/// Наприклад поле Назва
 		/// </summary>
 		private void ReadPresentation()
 		{
@@ -65,6 +73,11 @@ namespace StorageAndTrade
 					"GetPresentation", BindingFlags.InvokeMethod, null, mDirectoryPointerItem, new object[] { }).ToString();
 		}
 
+		/// <summary>
+		/// Кнопка відкриття форми вибору елементу довідника із списку
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void buttonOpen_Click(object sender, EventArgs e)
 		{
 			if (SelectForm != null)
@@ -79,6 +92,11 @@ namespace StorageAndTrade
 			}
 		}
 
+		/// <summary>
+		/// Кнопка очищення
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void buttonClear_Click(object sender, EventArgs e)
 		{
 			DirectoryPointerItem.Init(new UnigueID(Guid.Empty));

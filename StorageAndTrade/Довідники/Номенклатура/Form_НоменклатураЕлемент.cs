@@ -70,37 +70,7 @@ namespace StorageAndTrade
 		private Довідники.Номенклатура_Objest номенклатура_Objest { get; set; }
 
 		private void FormAddCash_Load(object sender, EventArgs e)
-        {
-
-			tableLayoutPanel1.ColumnCount = 5;
-			tableLayoutPanel1.RowCount = 5;
-
-			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10f));
-			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30f));
-			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-			tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20f));
-
-			for (int i = 0; i < 5; i++)
-			{
-				tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-
-				for (int j = 0; j < 5; j++)
-				{
-					Label label = new Label();
-					label.Margin = new Padding(0);
-					label.BackColor = Color.Azure;
-					label.Dock = DockStyle.Fill;
-					label.Text = "text " + i.ToString();
-
-					tableLayoutPanel1.Controls.Add(label, j, i);
-				}
-			}
-			
-
-			documentControl1.SelectForm = new Form_ЗамовленняКлієнтаЖурнал();
-			documentControl1.DocumentPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID("7ec5a77f-ed45-4aaf-a375-eed72a5f69fe"));
-
+        {	
 			//Заповнення елементів перелічення - ТипНоменклатури
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
@@ -182,5 +152,5 @@ namespace StorageAndTrade
 		{
 			this.Close();
 		}
-	}
+    }
 }

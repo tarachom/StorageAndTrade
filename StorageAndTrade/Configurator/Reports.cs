@@ -48,17 +48,6 @@ namespace StorageAndTrade_1_0.Звіти
 
             Console.WriteLine("Док: " + ДокументВказівник.UnigueID.ToString());
 
-            //РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
-            //замовленняКлієнтів_RecordsSet.Filter.ЗамовленняКлієнта = ДокументВказівник;
-
-            //замовленняКлієнтів_RecordsSet.Read();
-
-            //foreach(РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record in замовленняКлієнтів_RecordsSet.Records)
-            //{
-            //    Console.WriteLine(record.UID + " " + record.Номенклатура.GetPresentation());
-                 
-            //}
-
             Configuration Conf = Config.Kernel.Conf;
 
             ConfigurationRegistersAccumulation Регістр_ЗамовленняКлієнтів = Conf.RegistersAccumulation["ЗамовленняКлієнтів"];
