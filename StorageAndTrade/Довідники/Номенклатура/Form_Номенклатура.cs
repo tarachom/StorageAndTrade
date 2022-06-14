@@ -156,9 +156,7 @@ namespace StorageAndTrade
 		private class Записи
 		{
 			public Записи() { Image = Properties.Resources.doc_text_image; }
-
 			public Bitmap Image { get; set; }
-
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Виробник { get; set; }
@@ -255,7 +253,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Номенклатура_Objest номенклатура_Objest = new Довідники.Номенклатура_Objest();
                     if (номенклатура_Objest.Read(new UnigueID(uid)))

@@ -143,7 +143,7 @@ namespace StorageAndTrade
 				Form_КористувачіЕлемент form_КористувачіЕлемент = new Form_КористувачіЕлемент();
 				form_КористувачіЕлемент.IsNew = false;
 				form_КористувачіЕлемент.OwnerForm = this;
-				form_КористувачіЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_КористувачіЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_КористувачіЕлемент.ShowDialog();
 			}			
 		}
@@ -161,7 +161,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Користувачі_Objest користувачі_Objest = new Довідники.Користувачі_Objest();
                     if (користувачі_Objest.Read(new UnigueID(uid)))
@@ -189,7 +189,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Користувачі_Objest користувачі_Objest = new Довідники.Користувачі_Objest();
                     if (користувачі_Objest.Read(new UnigueID(uid)))

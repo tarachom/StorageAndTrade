@@ -168,7 +168,7 @@ namespace StorageAndTrade
 				Form_КонтрагентиЕлемент form_КонтрагентиЕлемент = new Form_КонтрагентиЕлемент();
 				form_КонтрагентиЕлемент.IsNew = false;
 				form_КонтрагентиЕлемент.OwnerForm = this;
-				form_КонтрагентиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_КонтрагентиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_КонтрагентиЕлемент.ShowDialog();
 			}			
 		}
@@ -188,7 +188,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Контрагенти_Objest контрагенти_Objest = new Довідники.Контрагенти_Objest();
                     if (контрагенти_Objest.Read(new UnigueID(uid)))
@@ -216,7 +216,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Контрагенти_Objest контрагенти_Objest = new Довідники.Контрагенти_Objest();
                     if (контрагенти_Objest.Read(new UnigueID(uid)))
