@@ -52,10 +52,6 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
-
-			Контрагенти_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
-			Контрагенти_Папки_Дерево.LoadTree();
-			Контрагенти_Папки_Дерево.SetParentPointer();
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -69,12 +65,12 @@ namespace StorageAndTrade
 				{
 					Довідники.Контрагенти_Objest контрагенти_Objest = контрагенти_Pointer.GetDirectoryObject();
 					if (контрагенти_Objest != null)
-					{
 						Контрагенти_Папки_Дерево.Parent_Pointer = контрагенти_Objest.Папка;
-						Контрагенти_Папки_Дерево.SetParentPointer();
-					}
 				}
 			}
+
+			Контрагенти_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
+			Контрагенти_Папки_Дерево.LoadTree();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -175,9 +171,7 @@ namespace StorageAndTrade
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
-			//LoadRecords();
 			Контрагенти_Папки_Дерево.LoadTree();
-			Контрагенти_Папки_Дерево.SetParentPointer();
 		}
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)

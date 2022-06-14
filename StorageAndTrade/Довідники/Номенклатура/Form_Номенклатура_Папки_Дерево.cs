@@ -55,7 +55,6 @@ namespace StorageAndTrade
         private void Form_Номенклатура_Папки_Дерево_Load(object sender, EventArgs e)
         {
             Parent_Pointer = new Довідники.Номенклатура_Папки_Pointer();
-
             treeViewFolders.AfterSelect += TreeViewFolders_AfterSelect;
         }
 
@@ -105,7 +104,7 @@ SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
 ORDER BY level ASC
             ";
 
-            Console.WriteLine(query);
+            //Console.WriteLine(query);
 
             string[] columnsName;
             List<object[]> listRow;

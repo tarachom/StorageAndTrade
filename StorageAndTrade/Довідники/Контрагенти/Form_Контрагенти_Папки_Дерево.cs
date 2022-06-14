@@ -40,45 +40,51 @@ namespace StorageAndTrade
         /// Ід папки яка робить вибір родителя. Ця папка має бути скрита від вибору.
         /// </summary>
         public string UidOpenFolder { get; set; }
-        
+
+        private void TreeViewFolders_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (treeViewFolders.SelectedNode.Name != "root")
+                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer(new UnigueID(treeViewFolders.SelectedNode.Name));
+            else
+                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
+
+            if (CallBack_AfterSelect != null)
+                CallBack_AfterSelect.Invoke();
+        }
+
         public void LoadTree()
         {
             Configuration Conf = Конфа.Config.Kernel.Conf;
 
             treeViewFolders.Nodes.Clear();
 
-            TreeNode rootNode = treeViewFolders.Nodes.Add("root", "Номенклатура");
+            TreeNode rootNode = treeViewFolders.Nodes.Add("root", "[ Контрагенти ]");
             rootNode.ImageIndex = 0;
 
             string tab = Conf.Directories["Контрагенти_Папки"].Table;
             string tabFieldName = Conf.Directories["Контрагенти_Папки"].Fields["Назва"].NameInTable;
             string tabFieldParent = Conf.Directories["Контрагенти_Папки"].Fields["Родич"].NameInTable;
 
-            string whereQueryPart1 = "", whereQueryPart2 = "";
-
-            if (!String.IsNullOrEmpty(UidOpenFolder))
-            {
-                whereQueryPart1 = $" AND uid != '{UidOpenFolder}'";
-                whereQueryPart2 = $"WHERE {tab}.uid != '{UidOpenFolder}'";
-            }
+            string whereQueryPart1 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $" AND uid != '{UidOpenFolder}'";
+            string whereQueryPart2 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $"WHERE {tab}.uid != '{UidOpenFolder}'";
 
             string query = $@"
-                WITH RECURSIVE r AS (
-                   SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
-                   FROM {tab}
-                   WHERE {tabFieldParent} = '{Guid.Empty}'
-                   {whereQueryPart1}
+WITH RECURSIVE r AS (
+    SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
+    FROM {tab}
+    WHERE {tabFieldParent} = '{Guid.Empty}'
+    {whereQueryPart1}
 
-                   UNION ALL
+    UNION ALL
 
-                   SELECT {tab}.uid, {tab}.{tabFieldName}, {tab}.{tabFieldParent}, r.level + 1 AS level
-                   FROM {tab}
-                      JOIN r ON {tab}.{tabFieldParent} = r.uid
-                   {whereQueryPart2}
-                )
+    SELECT {tab}.uid, {tab}.{tabFieldName}, {tab}.{tabFieldParent}, r.level + 1 AS level
+    FROM {tab}
+        JOIN r ON {tab}.{tabFieldParent} = r.uid
+    {whereQueryPart2}
+)
 
-                SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
-                ORDER BY level ASC
+SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
+ORDER BY level ASC
             ";
 
             //Console.WriteLine(query);
@@ -124,53 +130,30 @@ namespace StorageAndTrade
             }
 
             rootNode.Expand();
-        }
 
-        public void SetParentPointer()
-        {
-            TreeNode rootNode = treeViewFolders.Nodes["root"];
-            rootNode.Expand();
-
-            if (Parent_Pointer != null && !Parent_Pointer.IsEmpty())
+            if (Parent_Pointer != null)
             {
-                TreeNode[] treeNodes = rootNode.Nodes.Find(Parent_Pointer.ToString(), true);
-                TreeNode findNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
-
-                if (findNode != null)
+                if (!Parent_Pointer.IsEmpty())
                 {
-                    treeViewFolders.SelectedNode = findNode;
-                    TreeNode parentNode = findNode.Parent;
+                    TreeNode[] treeNodes = rootNode.Nodes.Find(Parent_Pointer.ToString(), true);
+                    TreeNode findNode = treeNodes.Length >= 1 ? treeNodes[0] : null;
 
-                    findNode.Expand();
-
-                    while (parentNode != null)
+                    if (findNode != null)
                     {
-                        parentNode.Expand();
-                        parentNode = parentNode.Parent;
+                        treeViewFolders.SelectedNode = findNode;
+                        TreeNode parentNode = findNode.Parent;
+
+                        while (parentNode != null)
+                        {
+                            parentNode.Expand();
+                            parentNode = parentNode.Parent;
+                        }
                     }
                 }
+                else
+                    treeViewFolders.SelectedNode = rootNode;
             }
-            else
-                treeViewFolders.SelectedNode = rootNode;
-        }
-
-        private string oldSelectNodeName = "";
-
-        private void TreeViewFolders_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            if (oldSelectNodeName == treeViewFolders.SelectedNode.Name)
-                return;
-            else
-                oldSelectNodeName = treeViewFolders.SelectedNode.Name;
-
-            if (treeViewFolders.SelectedNode.Name != "root")
-                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer(new UnigueID(treeViewFolders.SelectedNode.Name));
-            else
-                Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
-
-            if (CallBack_AfterSelect != null)
-                CallBack_AfterSelect.Invoke();
-        }
+        }        
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
@@ -200,7 +183,16 @@ namespace StorageAndTrade
         private void treeViewFolders_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (CallBack_DoubleClick != null)
+            {
+                if (e.Node.Name != "root")
+                    Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer(new UnigueID(e.Node.Name));
+                else
+                    Parent_Pointer = new Довідники.Контрагенти_Папки_Pointer();
+
                 CallBack_DoubleClick.Invoke();
+
+                e.Node.Collapse();
+            }
         }
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)
