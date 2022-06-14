@@ -66,8 +66,7 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
+			int selectRow = 0;
 
 			RecordsBindingList.Clear();
 
@@ -90,7 +89,7 @@ namespace StorageAndTrade
 					Код = cur.Fields[Довідники.Валюти_Select.Код].ToString()
 				});
 
-				if (DirectoryPointerItem != null && selectRow == 0)
+				if (DirectoryPointerItem != null)
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
 						selectRow = RecordsBindingList.Count - 1;
 			}

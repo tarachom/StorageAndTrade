@@ -41,21 +41,23 @@ namespace StorageAndTrade
         public Form_Виробники()
         {
             InitializeComponent();
-        }
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+		}
 
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+        private void FormCash_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -63,13 +65,13 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
+			int selectRow = 0;
 
 			RecordsBindingList.Clear();
 
 			Довідники.Виробники_Select виробники_Select = new Довідники.Виробники_Select();
 			виробники_Select.QuerySelect.Field.Add(Довідники.Виробники_Select.Назва);
+			виробники_Select.QuerySelect.Field.Add(Довідники.Виробники_Select.Код);
 
 			//ORDER
 			виробники_Select.QuerySelect.Order.Add(Довідники.Виробники_Select.Назва, SelectOrder.ASC);
@@ -82,10 +84,11 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Виробники_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.Виробники_Select.Назва].ToString(),
+					Код = cur.Fields[Довідники.Виробники_Select.Код].ToString()
 				});
 
-				if (DirectoryPointerItem != null && selectRow == 0)
+				if (DirectoryPointerItem != null)
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
 						selectRow = RecordsBindingList.Count - 1;
 			}
@@ -100,8 +103,11 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -139,7 +145,7 @@ namespace StorageAndTrade
 				Form_ВиробникиЕлемент form_ВиробникиЕлемент = new Form_ВиробникиЕлемент();
 				form_ВиробникиЕлемент.IsNew = false;
 				form_ВиробникиЕлемент.OwnerForm = this;
-				form_ВиробникиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ВиробникиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ВиробникиЕлемент.ShowDialog();
 			}			
 		}
@@ -157,7 +163,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Виробники_Objest виробники_Objest = new Довідники.Виробники_Objest();
                     if (виробники_Objest.Read(new UnigueID(uid)))
@@ -185,7 +191,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Виробники_Objest виробники_Objest = new Довідники.Виробники_Objest();
                     if (виробники_Objest.Read(new UnigueID(uid)))

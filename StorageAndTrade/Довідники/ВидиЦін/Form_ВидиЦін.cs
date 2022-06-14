@@ -41,21 +41,23 @@ namespace StorageAndTrade
         public Form_ВидиЦін()
         {
             InitializeComponent();
-        }
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+		}
 
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+        private void FormCash_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -63,8 +65,7 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
+			int selectRow = 0;
 
 			RecordsBindingList.Clear();
 
@@ -95,7 +96,7 @@ namespace StorageAndTrade
 					Валюта = cur.Fields["field2"].ToString()
 				});
 
-				if (DirectoryPointerItem != null && selectRow == 0)
+				if (DirectoryPointerItem != null)
 					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
 						selectRow = RecordsBindingList.Count - 1;
 			}
@@ -110,6 +111,8 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Валюта { get; set; }
@@ -150,7 +153,7 @@ namespace StorageAndTrade
 				Form_ВидиЦінЕлемент form_ВидиЦінЕлемент = new Form_ВидиЦінЕлемент();
 				form_ВидиЦінЕлемент.OwnerForm = this;
 				form_ВидиЦінЕлемент.IsNew = false;
-				form_ВидиЦінЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ВидиЦінЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ВидиЦінЕлемент.ShowDialog();
             }			
 		}
@@ -168,7 +171,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.ВидиЦін_Objest видиЦін_Objest = new Довідники.ВидиЦін_Objest();
                     if (видиЦін_Objest.Read(new UnigueID(uid)))
@@ -196,7 +199,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.ВидиЦін_Objest видиЦін_Objest = new Довідники.ВидиЦін_Objest();
                     if (видиЦін_Objest.Read(new UnigueID(uid)))

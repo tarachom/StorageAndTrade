@@ -116,7 +116,6 @@ namespace StorageAndTrade
 		private class Записи
 		{
 			public Записи() { Image = Properties.Resources.doc_text_image; }
-
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
