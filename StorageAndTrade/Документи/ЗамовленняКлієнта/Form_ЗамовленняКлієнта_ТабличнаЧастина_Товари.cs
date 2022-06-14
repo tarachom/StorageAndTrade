@@ -22,15 +22,7 @@ namespace StorageAndTrade
         public Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари()
         {
             InitializeComponent();
-        }
 
-		/// <summary>
-		/// Власне документ якому належить таблична частина
-		/// </summary>
-		public Документи.ЗамовленняКлієнта_Objest ДокументОбєкт { get; set; }
-
-        private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
-        {
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
@@ -61,6 +53,16 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+		}
+
+		/// <summary>
+		/// Власне документ якому належить таблична частина
+		/// </summary>
+		public Документи.ЗамовленняКлієнта_Objest ДокументОбєкт { get; set; }
+
+        private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
+        {
+			
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -355,9 +357,7 @@ namespace StorageAndTrade
             {
 				запис.Сума = запис.Кількість * запис.Ціна;
 				dataGridViewRecords.Refresh();
-			}
-
-			
+			}	
 		}
 
         private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)

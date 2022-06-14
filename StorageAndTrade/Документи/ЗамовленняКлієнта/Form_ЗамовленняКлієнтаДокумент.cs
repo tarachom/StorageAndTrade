@@ -64,7 +64,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest { get; set; }
 
-        private void FormAddCash_Load(object sender, EventArgs e)
+        private void Form_ЗамовленняКлієнтаДокумент_Load(object sender, EventArgs e)
         {
 			//Статус
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиЗамовленьКлієнтів"].Fields.Values)
