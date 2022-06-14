@@ -41,24 +41,26 @@ namespace StorageAndTrade
         public Form_Склади()
         {
             InitializeComponent();
-        }
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
 			dataGridViewRecords.Columns["ТипСкладу"].Width = 50;
 			dataGridViewRecords.Columns["ТипСкладу"].HeaderText = "Тип";
+		}
 
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+        private void Form_Склади_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -105,6 +107,8 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string ТипСкладу { get; set; }
@@ -145,7 +149,7 @@ namespace StorageAndTrade
 				Form_СкладиЕлемент form_СкладиЕлемент = new Form_СкладиЕлемент();
 				form_СкладиЕлемент.IsNew = false;
 				form_СкладиЕлемент.OwnerForm = this;
-				form_СкладиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_СкладиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_СкладиЕлемент.ShowDialog();
 			}			
 		}
@@ -163,7 +167,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Склади_Objest склади_Objest = new Довідники.Склади_Objest();
                     if (склади_Objest.Read(new UnigueID(uid)))
@@ -191,7 +195,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Склади_Objest склади_Objest = new Довідники.Склади_Objest();
                     if (склади_Objest.Read(new UnigueID(uid)))

@@ -41,21 +41,23 @@ namespace StorageAndTrade
         public Form_ФізичніОсоби()
         {
             InitializeComponent();
-        }
 
-		public DirectoryPointer DirectoryPointerItem { get; set; }
-
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+		}
 
+		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+        private void Form_ФізичніОсоби_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -100,6 +102,8 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 		}
@@ -139,7 +143,7 @@ namespace StorageAndTrade
 				Form_ФізичніОсобиЕлемент form_ФізичніОсобиЕлемент = new Form_ФізичніОсобиЕлемент();
 				form_ФізичніОсобиЕлемент.IsNew = false;
 				form_ФізичніОсобиЕлемент.OwnerForm = this;
-				form_ФізичніОсобиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ФізичніОсобиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ФізичніОсобиЕлемент.ShowDialog();
 			}			
 		}
@@ -157,7 +161,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.ФізичніОсоби_Objest фізичніОсоби_Objest = new Довідники.ФізичніОсоби_Objest();
                     if (фізичніОсоби_Objest.Read(new UnigueID(uid)))
@@ -185,7 +189,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.ФізичніОсоби_Objest фізичніОсоби_Objest = new Довідники.ФізичніОсоби_Objest();
                     if (фізичніОсоби_Objest.Read(new UnigueID(uid)))

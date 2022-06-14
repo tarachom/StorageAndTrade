@@ -39,7 +39,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 129);
+            this.buttonClose.Location = new System.Drawing.Point(385, 80);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -49,7 +49,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(88, 129);
+            this.buttonSave.Location = new System.Drawing.Point(73, 80);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -59,15 +59,15 @@ namespace StorageAndTrade
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(88, 12);
+            this.textBoxName.Location = new System.Drawing.Point(73, 12);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(461, 20);
+            this.textBoxName.Size = new System.Drawing.Size(477, 20);
             this.textBoxName.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 15);
+            this.label2.Location = new System.Drawing.Point(12, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 19;
@@ -76,7 +76,7 @@ namespace StorageAndTrade
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 45);
+            this.label1.Location = new System.Drawing.Point(12, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 36;
@@ -85,16 +85,17 @@ namespace StorageAndTrade
             // directoryControl_Керівник
             // 
             this.directoryControl_Керівник.DirectoryPointerItem = null;
-            this.directoryControl_Керівник.Location = new System.Drawing.Point(111, 38);
+            this.directoryControl_Керівник.Location = new System.Drawing.Point(73, 38);
             this.directoryControl_Керівник.Name = "directoryControl_Керівник";
-            this.directoryControl_Керівник.Size = new System.Drawing.Size(438, 27);
+            this.directoryControl_Керівник.SelectForm = null;
+            this.directoryControl_Керівник.Size = new System.Drawing.Size(476, 27);
             this.directoryControl_Керівник.TabIndex = 35;
             // 
             // Form_СтруктураПідприємстваЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 164);
+            this.ClientSize = new System.Drawing.Size(565, 121);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.directoryControl_Керівник);
             this.Controls.Add(this.textBoxName);
@@ -105,7 +106,7 @@ namespace StorageAndTrade
             this.Name = "Form_СтруктураПідприємстваЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Структура підприємства";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_СтруктураПідприємстваЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

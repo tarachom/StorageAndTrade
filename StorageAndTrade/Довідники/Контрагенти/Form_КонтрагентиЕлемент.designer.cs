@@ -39,7 +39,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 129);
+            this.buttonClose.Location = new System.Drawing.Point(389, 71);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -49,7 +49,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(88, 129);
+            this.buttonSave.Location = new System.Drawing.Point(60, 71);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -59,15 +59,15 @@ namespace StorageAndTrade
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(88, 12);
+            this.textBoxName.Location = new System.Drawing.Point(60, 12);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(461, 20);
+            this.textBoxName.Size = new System.Drawing.Size(493, 20);
             this.textBoxName.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 15);
+            this.label2.Location = new System.Drawing.Point(12, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 19;
@@ -76,7 +76,7 @@ namespace StorageAndTrade
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 45);
+            this.label9.Location = new System.Drawing.Point(12, 44);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 13);
             this.label9.TabIndex = 56;
@@ -85,17 +85,17 @@ namespace StorageAndTrade
             // directoryControl_КонтрагентПапка
             // 
             this.directoryControl_КонтрагентПапка.DirectoryPointerItem = null;
-            this.directoryControl_КонтрагентПапка.Location = new System.Drawing.Point(92, 38);
+            this.directoryControl_КонтрагентПапка.Location = new System.Drawing.Point(60, 38);
             this.directoryControl_КонтрагентПапка.Name = "directoryControl_КонтрагентПапка";
             this.directoryControl_КонтрагентПапка.SelectForm = null;
-            this.directoryControl_КонтрагентПапка.Size = new System.Drawing.Size(461, 27);
+            this.directoryControl_КонтрагентПапка.Size = new System.Drawing.Size(493, 27);
             this.directoryControl_КонтрагентПапка.TabIndex = 55;
             // 
             // Form_КонтрагентиЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 164);
+            this.ClientSize = new System.Drawing.Size(565, 111);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.directoryControl_КонтрагентПапка);
             this.Controls.Add(this.textBoxName);
@@ -106,7 +106,7 @@ namespace StorageAndTrade
             this.Name = "Form_КонтрагентиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Контрагенти";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_КонтрагентиЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

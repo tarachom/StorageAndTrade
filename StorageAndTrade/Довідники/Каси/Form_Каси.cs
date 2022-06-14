@@ -52,7 +52,9 @@ namespace StorageAndTrade
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
@@ -110,6 +112,8 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Валюта { get; set; }
@@ -150,7 +154,7 @@ namespace StorageAndTrade
                 Form_КасиЕлемент form_КасиЕлемент = new Form_КасиЕлемент();
 				form_КасиЕлемент.OwnerForm = this;
 				form_КасиЕлемент.IsNew = false;
-				form_КасиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_КасиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_КасиЕлемент.ShowDialog();
             }			
 		}
@@ -168,7 +172,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Каси_Objest каси_Objest = new Довідники.Каси_Objest();
                     if (каси_Objest.Read(new UnigueID(uid)))
@@ -196,7 +200,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.Каси_Objest каси_Objest = new Довідники.Каси_Objest();
                     if (каси_Objest.Read(new UnigueID(uid)))

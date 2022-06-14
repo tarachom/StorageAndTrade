@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Склади_Objest склади_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_СкладиЕлемент_Load(object sender, EventArgs e)
         {
 			//Заповнення елементів перелічення - ТипСкладу
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиСкладів"].Fields.Values)

@@ -68,7 +68,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Номенклатура_Папки_Objest номенклатура_Папки_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_НоменклатураПапкиЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl_НоменклатураПапка.SelectForm = new Form_НоменклатураПапкиВибір();
 

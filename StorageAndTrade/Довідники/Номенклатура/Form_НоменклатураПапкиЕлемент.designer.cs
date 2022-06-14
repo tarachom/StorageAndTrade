@@ -106,7 +106,7 @@ namespace StorageAndTrade
             this.Name = "Form_НоменклатураПапкиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Номенклатура Папка";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_НоменклатураПапкиЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ФізичніОсоби_Objest фізичніОсоби_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ФізичніОсобиЕлемент_Load(object sender, EventArgs e)
         {
 			//Заповнення елементів перелічення - Стать
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатьФізичноїОсоби"].Fields.Values)

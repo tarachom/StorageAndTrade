@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.СтруктураПідприємства_Objest структураПідприємства_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_СтруктураПідприємстваЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl_Керівник.SelectForm = new Form_СтруктураПідприємства();
 

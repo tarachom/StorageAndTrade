@@ -41,7 +41,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 129);
+            this.buttonClose.Location = new System.Drawing.Point(385, 99);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -51,7 +51,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(88, 129);
+            this.buttonSave.Location = new System.Drawing.Point(124, 99);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -61,15 +61,15 @@ namespace StorageAndTrade
             // 
             // textBox_Назва
             // 
-            this.textBox_Назва.Location = new System.Drawing.Point(88, 12);
+            this.textBox_Назва.Location = new System.Drawing.Point(124, 12);
             this.textBox_Назва.Name = "textBox_Назва";
-            this.textBox_Назва.Size = new System.Drawing.Size(461, 20);
+            this.textBox_Назва.Size = new System.Drawing.Size(425, 20);
             this.textBox_Назва.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 15);
+            this.label2.Location = new System.Drawing.Point(12, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 19;
@@ -77,15 +77,15 @@ namespace StorageAndTrade
             // 
             // textBox_НазваПовна
             // 
-            this.textBox_НазваПовна.Location = new System.Drawing.Point(121, 38);
+            this.textBox_НазваПовна.Location = new System.Drawing.Point(124, 38);
             this.textBox_НазваПовна.Name = "textBox_НазваПовна";
-            this.textBox_НазваПовна.Size = new System.Drawing.Size(428, 20);
+            this.textBox_НазваПовна.Size = new System.Drawing.Size(425, 20);
             this.textBox_НазваПовна.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 41);
+            this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 21;
@@ -93,15 +93,15 @@ namespace StorageAndTrade
             // 
             // textBox_КількістьУпаковок
             // 
-            this.textBox_КількістьУпаковок.Location = new System.Drawing.Point(152, 64);
+            this.textBox_КількістьУпаковок.Location = new System.Drawing.Point(124, 64);
             this.textBox_КількістьУпаковок.Name = "textBox_КількістьУпаковок";
-            this.textBox_КількістьУпаковок.Size = new System.Drawing.Size(397, 20);
+            this.textBox_КількістьУпаковок.Size = new System.Drawing.Size(425, 20);
             this.textBox_КількістьУпаковок.TabIndex = 24;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 67);
+            this.label3.Location = new System.Drawing.Point(12, 67);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 23;
@@ -111,7 +111,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 164);
+            this.ClientSize = new System.Drawing.Size(565, 141);
             this.Controls.Add(this.textBox_КількістьУпаковок);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_НазваПовна);
@@ -124,7 +124,7 @@ namespace StorageAndTrade
             this.Name = "Form_ПакуванняОдиниціВиміруЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Пакування одиниці виміру";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ПакуванняОдиниціВиміруЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

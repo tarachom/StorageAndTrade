@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ПакуванняОдиниціВиміруЕлемент_Load(object sender, EventArgs e)
         {
 			if (IsNew.HasValue)
 			{

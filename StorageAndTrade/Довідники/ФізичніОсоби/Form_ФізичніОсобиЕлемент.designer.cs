@@ -106,7 +106,7 @@ namespace StorageAndTrade
             this.Name = "Form_ФізичніОсобиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Фізичні особи";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ФізичніОсобиЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

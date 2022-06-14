@@ -68,7 +68,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Контрагенти_Папки_Objest контрагенти_Папки_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_КонтрагентиПапкиЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl_КонтрагентиПапка.SelectForm = new Form_КонтрагентиПапкиВибір();
 

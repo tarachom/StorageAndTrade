@@ -47,7 +47,7 @@ namespace StorageAndTrade
 
         public string UidOpenFolder { get; set; }
 
-        private void FormCash_Load(object sender, EventArgs e)
+        private void Form_КонтрагентиПапкиВибір_Load(object sender, EventArgs e)
         {
             Контрагенти_Папки_Дерево.Parent_Pointer = (Довідники.Контрагенти_Папки_Pointer)DirectoryPointerItem;
             Контрагенти_Папки_Дерево.UidOpenFolder = UidOpenFolder;
