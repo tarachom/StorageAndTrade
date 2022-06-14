@@ -147,7 +147,7 @@ namespace StorageAndTrade
             this.Name = "Form_БанківськіРахункиОрганізацій";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Банківські рахунки організацій";
-            this.Load += new System.EventHandler(this.FormCash_Load);
+            this.Load += new System.EventHandler(this.Form_БанківськіРахункиОрганізацій_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

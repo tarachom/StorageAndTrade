@@ -56,7 +56,7 @@ namespace StorageAndTrade
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void FormCash_Load(object sender, EventArgs e)
+        private void Form_ВидиЦін_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}

@@ -53,7 +53,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(384, 322);
+            this.buttonClose.Location = new System.Drawing.Point(317, 300);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -63,7 +63,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(87, 322);
+            this.buttonSave.Location = new System.Drawing.Point(20, 300);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -81,7 +81,7 @@ namespace StorageAndTrade
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 15);
+            this.label2.Location = new System.Drawing.Point(17, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 19;
@@ -127,7 +127,7 @@ namespace StorageAndTrade
             // 
             this.comboBox_Статус.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Статус.FormattingEnabled = true;
-            this.comboBox_Статус.Location = new System.Drawing.Point(110, 168);
+            this.comboBox_Статус.Location = new System.Drawing.Point(176, 201);
             this.comboBox_Статус.Name = "comboBox_Статус";
             this.comboBox_Статус.Size = new System.Drawing.Size(257, 21);
             this.comboBox_Статус.TabIndex = 44;
@@ -135,7 +135,7 @@ namespace StorageAndTrade
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 171);
+            this.label6.Location = new System.Drawing.Point(18, 204);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 13);
             this.label6.TabIndex = 43;
@@ -145,7 +145,7 @@ namespace StorageAndTrade
             // 
             this.comboBox_ГосподарськаОперація.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ГосподарськаОперація.FormattingEnabled = true;
-            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(176, 195);
+            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(176, 228);
             this.comboBox_ГосподарськаОперація.Name = "comboBox_ГосподарськаОперація";
             this.comboBox_ГосподарськаОперація.Size = new System.Drawing.Size(257, 21);
             this.comboBox_ГосподарськаОперація.TabIndex = 46;
@@ -153,7 +153,7 @@ namespace StorageAndTrade
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 198);
+            this.label7.Location = new System.Drawing.Point(18, 231);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(129, 13);
             this.label7.TabIndex = 45;
@@ -164,6 +164,7 @@ namespace StorageAndTrade
             this.directoryControl_Контрагент.DirectoryPointerItem = null;
             this.directoryControl_Контрагент.Location = new System.Drawing.Point(110, 135);
             this.directoryControl_Контрагент.Name = "directoryControl_Контрагент";
+            this.directoryControl_Контрагент.SelectForm = null;
             this.directoryControl_Контрагент.Size = new System.Drawing.Size(438, 27);
             this.directoryControl_Контрагент.TabIndex = 41;
             // 
@@ -172,6 +173,7 @@ namespace StorageAndTrade
             this.directoryControl_Підрозділ.DirectoryPointerItem = null;
             this.directoryControl_Підрозділ.Location = new System.Drawing.Point(110, 102);
             this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
+            this.directoryControl_Підрозділ.SelectForm = null;
             this.directoryControl_Підрозділ.Size = new System.Drawing.Size(438, 27);
             this.directoryControl_Підрозділ.TabIndex = 39;
             // 
@@ -180,21 +182,23 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = null;
             this.directoryControl_БанківськийРахунокКонтрагента.Location = new System.Drawing.Point(205, 69);
             this.directoryControl_БанківськийРахунокКонтрагента.Name = "directoryControl_БанківськийРахунокКонтрагента";
+            this.directoryControl_БанківськийРахунокКонтрагента.SelectForm = null;
             this.directoryControl_БанківськийРахунокКонтрагента.Size = new System.Drawing.Size(343, 27);
             this.directoryControl_БанківськийРахунокКонтрагента.TabIndex = 37;
             // 
             // directoryControl_БанківськийРахунок
             // 
             this.directoryControl_БанківськийРахунок.DirectoryPointerItem = null;
-            this.directoryControl_БанківськийРахунок.Location = new System.Drawing.Point(140, 38);
+            this.directoryControl_БанківськийРахунок.Location = new System.Drawing.Point(205, 38);
             this.directoryControl_БанківськийРахунок.Name = "directoryControl_БанківськийРахунок";
-            this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(409, 27);
+            this.directoryControl_БанківськийРахунок.SelectForm = null;
+            this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(344, 27);
             this.directoryControl_БанківськийРахунок.TabIndex = 35;
             // 
             // comboBox_ТипДоговору
             // 
             this.comboBox_ТипДоговору.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ТипДоговору.Location = new System.Drawing.Point(176, 222);
+            this.comboBox_ТипДоговору.Location = new System.Drawing.Point(176, 255);
             this.comboBox_ТипДоговору.Name = "comboBox_ТипДоговору";
             this.comboBox_ТипДоговору.Size = new System.Drawing.Size(257, 21);
             this.comboBox_ТипДоговору.TabIndex = 48;
@@ -202,7 +206,7 @@ namespace StorageAndTrade
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(41, 225);
+            this.label8.Location = new System.Drawing.Point(18, 258);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 47;
@@ -211,7 +215,7 @@ namespace StorageAndTrade
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(17, 270);
+            this.label9.Location = new System.Drawing.Point(17, 175);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 13);
             this.label9.TabIndex = 50;
@@ -220,8 +224,9 @@ namespace StorageAndTrade
             // directoryControl_Номенклатура
             // 
             this.directoryControl_Номенклатура.DirectoryPointerItem = null;
-            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(110, 263);
+            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(110, 168);
             this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
+            this.directoryControl_Номенклатура.SelectForm = null;
             this.directoryControl_Номенклатура.Size = new System.Drawing.Size(438, 27);
             this.directoryControl_Номенклатура.TabIndex = 49;
             // 
@@ -229,7 +234,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 357);
+            this.ClientSize = new System.Drawing.Size(566, 343);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.directoryControl_Номенклатура);
             this.Controls.Add(this.comboBox_ТипДоговору);
