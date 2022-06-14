@@ -104,7 +104,7 @@ namespace StorageAndTrade
             this.Name = "Form_ВалютиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Валюти";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ВалютиЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

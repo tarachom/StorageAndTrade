@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.БанківськіРахункиОрганізацій_Objest банківськіРахункиОрганізацій_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_БанківськіРахункиОрганізаційЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl_Валюта.SelectForm = new Form_Валюти();
 			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();

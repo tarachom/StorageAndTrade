@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Виробники_Objest виробники_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ВиробникиЕлемент_Load(object sender, EventArgs e)
         {
 			if (IsNew.HasValue)
 			{

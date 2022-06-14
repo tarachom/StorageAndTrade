@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Валюти_Objest валюти_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ВалютиЕлемент_Load(object sender, EventArgs e)
         {
 			if (IsNew.HasValue)
 			{

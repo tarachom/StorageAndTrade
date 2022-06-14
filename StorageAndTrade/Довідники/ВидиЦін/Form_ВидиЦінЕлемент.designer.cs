@@ -106,7 +106,7 @@ namespace StorageAndTrade
             this.Name = "Form_ВидиЦінЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Види Цін";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ВидиЦінЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

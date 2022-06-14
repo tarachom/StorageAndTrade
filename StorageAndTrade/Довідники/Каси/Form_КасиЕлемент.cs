@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.Каси_Objest каси_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_КасиЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl_Валюта.SelectForm = new Form_Валюти();
 

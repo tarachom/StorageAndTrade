@@ -128,7 +128,7 @@ namespace StorageAndTrade
             this.Name = "Form_ВидиНоменклатуриЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Види номенклатури";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ВидиНоменклатуриЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

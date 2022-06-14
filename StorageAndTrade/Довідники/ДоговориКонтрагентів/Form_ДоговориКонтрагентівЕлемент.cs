@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ДоговориКонтрагентів_Objest договориКонтрагентів_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ДоговориКонтрагентівЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl_Номенклатура.SelectForm = new Form_Номенклатура();
 			directoryControl_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer();

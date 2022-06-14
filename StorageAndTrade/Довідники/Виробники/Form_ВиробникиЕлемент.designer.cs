@@ -104,7 +104,7 @@ namespace StorageAndTrade
             this.Name = "Form_ВиробникиЕлемент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Виробники";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ВиробникиЕлемент_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

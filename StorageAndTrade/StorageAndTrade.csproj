@@ -241,16 +241,16 @@
     <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаДокумент.designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтаДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.cs">
+    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.designer.cs">
+    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.designer.cs">
       <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.cs">
+    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.designer.cs">
+    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.designer.cs">
       <DependentUpon>Form_ХарактеристикиНоменклатуриЕлемент.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентів.cs">
@@ -531,10 +531,10 @@
     <EmbeddedResource Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаДокумент.resx">
       <DependentUpon>Form_ЗамовленняКлієнтаДокумент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.resx">
+    <EmbeddedResource Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.resx">
       <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.resx">
+    <EmbeddedResource Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.resx">
       <DependentUpon>Form_ХарактеристикиНоменклатуриЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентів.resx">

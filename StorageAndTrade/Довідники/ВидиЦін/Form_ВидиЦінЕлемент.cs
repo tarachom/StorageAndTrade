@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ВидиЦін_Objest видиЦін_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ВидиЦінЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl1.SelectForm = new Form_Валюти();
 

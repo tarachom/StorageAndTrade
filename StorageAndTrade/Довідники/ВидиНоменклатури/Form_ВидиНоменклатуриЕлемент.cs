@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ВидиНоменклатури_Objest видиНоменклатури_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ВидиНоменклатуриЕлемент_Load(object sender, EventArgs e)
         {
 			//Заповнення елементів перелічення - ТипНоменклатури
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
