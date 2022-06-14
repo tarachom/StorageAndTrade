@@ -53,7 +53,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
-			dataGridViewRecords.Columns["ТипСкладу"].Width = 50;
+			dataGridViewRecords.Columns["ТипСкладу"].Width = 100;
 			dataGridViewRecords.Columns["ТипСкладу"].HeaderText = "Тип";
 		}
 

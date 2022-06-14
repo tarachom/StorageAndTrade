@@ -39,7 +39,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 129);
+            this.buttonClose.Location = new System.Drawing.Point(385, 75);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -49,7 +49,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(88, 129);
+            this.buttonSave.Location = new System.Drawing.Point(60, 75);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -59,15 +59,15 @@ namespace StorageAndTrade
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(88, 12);
+            this.textBoxName.Location = new System.Drawing.Point(60, 12);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(461, 20);
+            this.textBoxName.Size = new System.Drawing.Size(489, 20);
             this.textBoxName.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 15);
+            this.label2.Location = new System.Drawing.Point(12, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 19;
@@ -77,15 +77,15 @@ namespace StorageAndTrade
             // 
             this.comboBox_Стать.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Стать.FormattingEnabled = true;
-            this.comboBox_Стать.Location = new System.Drawing.Point(88, 38);
+            this.comboBox_Стать.Location = new System.Drawing.Point(60, 38);
             this.comboBox_Стать.Name = "comboBox_Стать";
-            this.comboBox_Стать.Size = new System.Drawing.Size(257, 21);
+            this.comboBox_Стать.Size = new System.Drawing.Size(285, 21);
             this.comboBox_Стать.TabIndex = 34;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 41);
+            this.label5.Location = new System.Drawing.Point(15, 41);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(39, 13);
             this.label5.TabIndex = 33;
@@ -95,7 +95,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 164);
+            this.ClientSize = new System.Drawing.Size(565, 118);
             this.Controls.Add(this.comboBox_Стать);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxName);
