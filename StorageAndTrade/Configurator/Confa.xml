@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>16.06.2022 17:01:02</DateTimeSave>
+  <DateTimeSave>16.06.2022 22:34:33</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -257,8 +257,8 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Артикул</Name>
-          <NameInTable>col_b3</NameInTable>
+          <Name>НазваПовна</Name>
+          <NameInTable>col_b4</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
@@ -266,8 +266,17 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>НазваПовна</Name>
-          <NameInTable>col_b4</NameInTable>
+          <Name>Опис</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Артикул</Name>
+          <NameInTable>col_b3</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
@@ -279,15 +288,6 @@
           <NameInTable>col_b5</NameInTable>
           <Type>enum</Type>
           <Pointer>Перелічення.ТипиНоменклатури</Pointer>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Опис</Name>
-          <NameInTable>col_a1</NameInTable>
-          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -400,19 +400,19 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>ТипНоменклатури</Name>
-          <NameInTable>col_a1</NameInTable>
-          <Type>enum</Type>
-          <Pointer>Перелічення.ТипиНоменклатури</Pointer>
+          <Name>Опис</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Опис</Name>
-          <NameInTable>col_a2</NameInTable>
-          <Type>string</Type>
+          <Name>ТипНоменклатури</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ТипиНоменклатури</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -922,19 +922,19 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_g6</NameInTable>
-          <Type>string</Type>
+          <Name>ФізичнаОсоба</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ФізичніОсоби</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>ФізичнаОсоба</Name>
-          <NameInTable>col_a1</NameInTable>
-          <Type>pointer</Type>
-          <Pointer>Довідники.ФізичніОсоби</Pointer>
+          <Name>Коментар</Name>
+          <NameInTable>col_g6</NameInTable>
+          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -1476,20 +1476,20 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Підрозділ</Name>
-          <NameInTable>col_a1</NameInTable>
+          <Name>Валюта</Name>
+          <NameInTable>col_a2</NameInTable>
           <Type>pointer</Type>
-          <Pointer>Довідники.СтруктураПідприємства</Pointer>
+          <Pointer>Довідники.Валюти</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Валюта</Name>
-          <NameInTable>col_a2</NameInTable>
+          <Name>Підрозділ</Name>
+          <NameInTable>col_a1</NameInTable>
           <Type>pointer</Type>
-          <Pointer>Довідники.Валюти</Pointer>
+          <Pointer>Довідники.СтруктураПідприємства</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -1694,15 +1694,6 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_a3</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
           <Name>ДатаПочаткуДії</Name>
           <NameInTable>col_a4</NameInTable>
           <Type>date</Type>
@@ -1820,6 +1811,15 @@
           <Name>Сума</Name>
           <NameInTable>col_b7</NameInTable>
           <Type>numeric</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Коментар</Name>
+          <NameInTable>col_a3</NameInTable>
+          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -2020,19 +2020,19 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Опис</Name>
-          <NameInTable>col_j1</NameInTable>
-          <Type>string</Type>
+          <Name>ВидРухуКоштів</Name>
+          <NameInTable>col_j2</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ВидиРухуКоштів</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>ВидРухуКоштів</Name>
-          <NameInTable>col_j2</NameInTable>
-          <Type>enum</Type>
-          <Pointer>Перелічення.ВидиРухуКоштів</Pointer>
+          <Name>Опис</Name>
+          <NameInTable>col_j1</NameInTable>
+          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -2545,6 +2545,24 @@
       </Desc>
       <Fields>
         <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_b8</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_b9</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_j9</NameInTable>
           <Type>datetime</Type>
@@ -2624,15 +2642,6 @@
           <NameInTable>col_a1</NameInTable>
           <Type>pointer</Type>
           <Pointer>Довідники.БанківськіРахункиОрганізацій</Pointer>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_a2</NameInTable>
-          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -2773,12 +2782,12 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_b8</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_a2</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -2789,6 +2798,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_b2</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_o4</NameInTable>
@@ -2893,15 +2911,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_b2</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -2918,6 +2927,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_d4</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_d5</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_a1</NameInTable>
@@ -2998,15 +3025,6 @@
           <NameInTable>col_a9</NameInTable>
           <Type>pointer</Type>
           <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_b1</NameInTable>
-          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -3203,12 +3221,12 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_d4</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_b1</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -3219,6 +3237,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_b3</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_a9</NameInTable>
@@ -3324,15 +3351,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_b3</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -3349,6 +3367,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_d1</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_d2</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_b2</NameInTable>
@@ -3520,15 +3556,6 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_c1</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
           <Name>Договір</Name>
           <NameInTable>col_c2</NameInTable>
           <Type>pointer</Type>
@@ -3605,18 +3632,9 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_d1</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_c1</NameInTable>
           <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_d2</NameInTable>
-          <Type>boolean</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -3630,6 +3648,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a2</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_b9</NameInTable>
@@ -3725,15 +3752,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_a2</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -3750,6 +3768,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_d3</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_d4</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_c9</NameInTable>
@@ -3859,15 +3895,6 @@
           <NameInTable>col_b1</NameInTable>
           <Type>pointer</Type>
           <Pointer>Довідники.Склади</Pointer>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_b2</NameInTable>
-          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -4025,12 +4052,12 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_d3</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_b2</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -4041,6 +4068,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_d2</NameInTable>
@@ -4146,15 +4182,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_a1</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -4171,6 +4198,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_g7</NameInTable>
@@ -4196,15 +4241,6 @@
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_a1</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -4213,6 +4249,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_h1</NameInTable>
@@ -4262,15 +4307,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_a1</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -4289,6 +4325,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_a5</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_h6</NameInTable>
@@ -4412,15 +4466,6 @@
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_a4</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -4429,6 +4474,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Замовлення</Name>
               <NameInTable>col_j4</NameInTable>
@@ -4477,15 +4531,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_a1</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -4504,6 +4549,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_j9</NameInTable>
@@ -4601,15 +4664,6 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_l1</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
           <Name>СтаттяРухуКоштів</Name>
           <NameInTable>col_l2</NameInTable>
           <Type>pointer</Type>
@@ -4630,12 +4684,12 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_a1</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_l1</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -4646,6 +4700,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Замовлення</Name>
               <NameInTable>col_l4</NameInTable>
@@ -4703,15 +4766,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_a1</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -4730,6 +4784,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_b9</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_c1</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_a1</NameInTable>
@@ -4771,15 +4843,6 @@
           <NameInTable>col_a5</NameInTable>
           <Type>pointer</Type>
           <Pointer>Довідники.ВидиЦін</Pointer>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_a6</NameInTable>
-          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -4893,12 +4956,12 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_b9</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_a6</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -4909,6 +4972,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_b8</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_b3</NameInTable>
@@ -4957,15 +5029,6 @@
               <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_b8</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
@@ -4984,6 +5047,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_a3</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_b9</NameInTable>
@@ -5054,15 +5135,6 @@
           <Name>СумаДокументу</Name>
           <NameInTable>col_c7</NameInTable>
           <Type>numeric</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_c8</NameInTable>
-          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -5156,12 +5228,12 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_a2</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_c8</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -5172,6 +5244,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_d8</NameInTable>
@@ -5239,15 +5320,6 @@
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_a1</NameInTable>
-              <Type>integer</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
               <Name>ДокументПоступлення</Name>
               <NameInTable>col_a2</NameInTable>
               <Type>pointer</Type>
@@ -5273,6 +5345,24 @@
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Проведений</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>boolean</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_e6</NameInTable>
@@ -5349,15 +5439,6 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_f6</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
           <Name>ДокументПродажу</Name>
           <NameInTable>col_f7</NameInTable>
           <Type>pointer</Type>
@@ -5417,12 +5498,12 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_a2</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_f6</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -5433,6 +5514,15 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_h2</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_g3</NameInTable>
@@ -5503,15 +5593,6 @@
               <Name>Штрихкод</Name>
               <NameInTable>col_h1</NameInTable>
               <Type>string</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_h2</NameInTable>
-              <Type>integer</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>

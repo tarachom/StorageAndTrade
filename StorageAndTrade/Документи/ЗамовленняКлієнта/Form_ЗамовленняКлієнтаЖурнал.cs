@@ -119,6 +119,7 @@ namespace StorageAndTrade
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
 			public decimal Сума { get; set; }
+			public bool Проведений { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
