@@ -57,6 +57,7 @@ namespace StorageAndTrade
             this.поверненняТоварівКлієнтуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.замовленняКлієнтівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -296,6 +297,8 @@ namespace StorageAndTrade
             // 
             // звітиToolStripMenuItem
             // 
+            this.звітиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.замовленняКлієнтівToolStripMenuItem});
             this.звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
             this.звітиToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.звітиToolStripMenuItem.Text = "Звіти";
@@ -306,6 +309,13 @@ namespace StorageAndTrade
             this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
             this.проПрограмуToolStripMenuItem.Text = "Про програму";
             this.проПрограмуToolStripMenuItem.Click += new System.EventHandler(this.проПрограмуToolStripMenuItem_Click);
+            // 
+            // замовленняКлієнтівToolStripMenuItem
+            // 
+            this.замовленняКлієнтівToolStripMenuItem.Name = "замовленняКлієнтівToolStripMenuItem";
+            this.замовленняКлієнтівToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.замовленняКлієнтівToolStripMenuItem.Text = "Замовлення клієнтів";
+            this.замовленняКлієнтівToolStripMenuItem.Click += new System.EventHandler(this.замовленняКлієнтівToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -354,6 +364,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem поверненняТоварівКлієнтуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem звітиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem замовленняКлієнтівToolStripMenuItem;
     }
 }
 

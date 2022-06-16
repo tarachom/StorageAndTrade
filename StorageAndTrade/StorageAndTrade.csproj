@@ -241,16 +241,16 @@
     <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаДокумент.designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтаДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.cs">
+    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.designer.cs">
+    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.designer.cs">
       <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
     </Compile>
-    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.cs">
+    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.designer.cs">
+    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.designer.cs">
       <DependentUpon>Form_ХарактеристикиНоменклатуриЕлемент.cs</DependentUpon>
     </Compile>
     <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентів.cs">
@@ -435,6 +435,12 @@
     <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
+    <Compile Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.Designer.cs">
+      <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConfigurationSelectionForm.resx">
       <DependentUpon>ConfigurationSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -531,10 +537,10 @@
     <EmbeddedResource Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаДокумент.resx">
       <DependentUpon>Form_ЗамовленняКлієнтаДокумент.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.resx">
+    <EmbeddedResource Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.resx">
       <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.resx">
+    <EmbeddedResource Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.resx">
       <DependentUpon>Form_ХарактеристикиНоменклатуриЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентів.resx">
@@ -640,6 +646,9 @@
     <EmbeddedResource Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.resx">
+      <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -724,6 +733,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Документи\ЗамовленняКлієнта\Report_ЗамовленняКлієнта_РухПоРегістрах.xslt" />
+    <Content Include="Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

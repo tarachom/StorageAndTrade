@@ -63,7 +63,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ХарактеристикиНоменклатури_Objest характеристикиНоменклатури_Objest { get; set; }
 
-		private void FormAddCash_Load(object sender, EventArgs e)
+		private void Form_ХарактеристикиНоменклатуриЕлемент_Load(object sender, EventArgs e)
         {
 			if (IsNew.HasValue)
 			{

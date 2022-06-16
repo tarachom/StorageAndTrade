@@ -181,5 +181,11 @@ namespace StorageAndTrade
             Form1 form1 = new Form1();
             form1.Show();
         }
+
+        private void замовленняКлієнтівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ЗамовленняКлієнтів_Звіт form_ЗамовленняКлієнтів_Звіт = new Form_ЗамовленняКлієнтів_Звіт();
+            form_ЗамовленняКлієнтів_Звіт.Show();
+        }
     } 
 }

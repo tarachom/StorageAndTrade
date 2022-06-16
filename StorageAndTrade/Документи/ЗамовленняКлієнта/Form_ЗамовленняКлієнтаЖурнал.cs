@@ -229,5 +229,31 @@ namespace StorageAndTrade
 				Звіти.ЗамовленняКлієнта_Report.PrintRegisterRecords(new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
 			}
 		}
+
+        private void toolStripButtonSpend_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count != 0 &&
+				MessageBox.Show("Відмінити проведення?", "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
+			{
+				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
+				{
+					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string uid = row.Cells["ID"].Value.ToString();
+
+					Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
+					Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject();
+
+					замовленняКлієнта_Objest.Проведений = false;
+					замовленняКлієнта_Objest.Save();
+				}
+
+				LoadRecords();
+			}
+		}
     }
 }

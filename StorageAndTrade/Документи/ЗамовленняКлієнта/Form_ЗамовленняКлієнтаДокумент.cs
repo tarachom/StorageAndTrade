@@ -158,6 +158,7 @@ namespace StorageAndTrade
 
 					ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 
+					замовленняКлієнта_Objest.Проведений = true;
 					замовленняКлієнта_Objest.Save();
 				}
 				catch (Exception exp)

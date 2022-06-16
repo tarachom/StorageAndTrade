@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 09.06.2022 16:01:22
+ * Дата конфігурації: 16.06.2022 17:01:02
  *
  */
 
@@ -5869,7 +5869,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ЗамовленняКлієнта_Objest : DocumentObject
     {
         public ЗамовленняКлієнта_Objest() : base(Config.Kernel, "tab_a34",
-             new string[] { "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1" }) 
+             new string[] { "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1", "col_d2" }) 
         {
             ДатаДок = DateTime.MinValue;
             НомерДок = "";
@@ -5899,6 +5899,7 @@ namespace StorageAndTrade_1_0.Документи
             ПовернутиТару = false;
             ДатаПоверненняТари = DateTime.MinValue;
             Назва = "";
+            Проведений = false;
             
             //Табличні частини
             Товари_TablePart = new ЗамовленняКлієнта_Товари_TablePart(this);
@@ -5937,6 +5938,7 @@ namespace StorageAndTrade_1_0.Документи
                 ПовернутиТару = (base.FieldValue["col_c8"] != DBNull.Value) ? bool.Parse(base.FieldValue["col_c8"].ToString()) : false;
                 ДатаПоверненняТари = (base.FieldValue["col_c9"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_c9"].ToString()) : DateTime.MinValue;
                 Назва = base.FieldValue["col_d1"].ToString();
+                Проведений = (base.FieldValue["col_d2"] != DBNull.Value) ? bool.Parse(base.FieldValue["col_d2"].ToString()) : false;
                 
                 BaseClear();
                 return true;
@@ -5975,6 +5977,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_c8"] = ПовернутиТару;
             base.FieldValue["col_c9"] = ДатаПоверненняТари;
             base.FieldValue["col_d1"] = Назва;
+            base.FieldValue["col_d2"] = Проведений;
             
             BaseSave();
 			ЗамовленняКлієнта_Triggers.AfterRecording(this);
@@ -6012,6 +6015,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ПовернутиТару = ПовернутиТару;
 			copy.ДатаПоверненняТари = ДатаПоверненняТари;
 			copy.Назва = Назва;
+			copy.Проведений = Проведений;
 			
 			return copy;
         }
@@ -6056,6 +6060,7 @@ namespace StorageAndTrade_1_0.Документи
         public bool ПовернутиТару { get; set; }
         public DateTime ДатаПоверненняТари { get; set; }
         public string Назва { get; set; }
+        public bool Проведений { get; set; }
         
         //Табличні частини
         public ЗамовленняКлієнта_Товари_TablePart Товари_TablePart { get; set; }
@@ -6127,6 +6132,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string ПовернутиТару = "col_c8";
         public const string ДатаПоверненняТари = "col_c9";
         public const string Назва = "col_d1";
+        public const string Проведений = "col_d2";
 		
         public ЗамовленняКлієнта_Select() : base(Config.Kernel, "tab_a34") { }
         

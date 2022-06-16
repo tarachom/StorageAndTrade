@@ -147,7 +147,7 @@ namespace StorageAndTrade
             this.Name = "Form_ХарактеристикиНоменклатури";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Характеристики номенклатури";
-            this.Load += new System.EventHandler(this.FormCash_Load);
+            this.Load += new System.EventHandler(this.Form_ХарактеристикиНоменклатури_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
