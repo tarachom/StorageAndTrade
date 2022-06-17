@@ -71,10 +71,10 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.ХарактеристикиНоменклатури_Select характеристикиНоменклатури_Select = new Довідники.ХарактеристикиНоменклатури_Select();
-			характеристикиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ХарактеристикиНоменклатури_Select.Назва);
+			характеристикиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ХарактеристикиНоменклатури_Const.Назва);
 
 			//ORDER
-			характеристикиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ХарактеристикиНоменклатури_Select.Назва, SelectOrder.ASC);
+			характеристикиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ХарактеристикиНоменклатури_Const.Назва, SelectOrder.ASC);
 
 			характеристикиНоменклатури_Select.Select();
 			while (характеристикиНоменклатури_Select.MoveNext())
@@ -84,7 +84,7 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.ХарактеристикиНоменклатури_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.ХарактеристикиНоменклатури_Const.Назва].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)

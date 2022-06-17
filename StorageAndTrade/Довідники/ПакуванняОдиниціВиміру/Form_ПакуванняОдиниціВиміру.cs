@@ -71,12 +71,12 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.ПакуванняОдиниціВиміру_Select пакуванняОдиниціВиміру_Select = new Довідники.ПакуванняОдиниціВиміру_Select();
-			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Select.Назва);
-			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Select.НазваПовна);
-			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Select.КількістьУпаковок);
+			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Const.Назва);
+			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Const.НазваПовна);
+			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Const.КількістьУпаковок);
 
 			//ORDER
-			пакуванняОдиниціВиміру_Select.QuerySelect.Order.Add(Довідники.ПакуванняОдиниціВиміру_Select.Назва, SelectOrder.ASC);
+			пакуванняОдиниціВиміру_Select.QuerySelect.Order.Add(Довідники.ПакуванняОдиниціВиміру_Const.Назва, SelectOrder.ASC);
 
 			пакуванняОдиниціВиміру_Select.Select();
 			while (пакуванняОдиниціВиміру_Select.MoveNext())
@@ -86,9 +86,9 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.Назва].ToString(),
-					НазваПовна = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.НазваПовна].ToString(),
-					КількістьУпаковок = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Select.КількістьУпаковок].ToString()
+					Назва = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Const.Назва].ToString(),
+					НазваПовна = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Const.НазваПовна].ToString(),
+					КількістьУпаковок = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Const.КількістьУпаковок].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)

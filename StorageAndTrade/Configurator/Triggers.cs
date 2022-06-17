@@ -55,7 +55,7 @@ namespace StorageAndTrade_1_0.Довідники
 			//
 
 			Номенклатура_Select номенклатура_Select = new Номенклатура_Select();
-			номенклатура_Select.QuerySelect.Where.Add(new Where(Номенклатура_Select.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			номенклатура_Select.QuerySelect.Where.Add(new Where(Номенклатура_Const.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
 			номенклатура_Select.Select();
 
 			while(номенклатура_Select.MoveNext())
@@ -70,7 +70,7 @@ namespace StorageAndTrade_1_0.Довідники
 			//
 
 			Номенклатура_Папки_Select номенклатура_Папки_Select = new Номенклатура_Папки_Select();
-			номенклатура_Папки_Select.QuerySelect.Where.Add(new Where(Номенклатура_Папки_Select.Родич, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			номенклатура_Папки_Select.QuerySelect.Where.Add(new Where(Номенклатура_Папки_Const.Родич, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
 			номенклатура_Папки_Select.Select();
 
 			while (номенклатура_Папки_Select.MoveNext())
@@ -101,7 +101,7 @@ namespace StorageAndTrade_1_0.Довідники
 			//
 
 			Контрагенти_Select контрагенти_Select = new Контрагенти_Select();
-			контрагенти_Select.QuerySelect.Where.Add(new Where(Контрагенти_Select.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			контрагенти_Select.QuerySelect.Where.Add(new Where(Контрагенти_Const.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
 			контрагенти_Select.Select();
 
 			while (контрагенти_Select.MoveNext())
@@ -116,7 +116,7 @@ namespace StorageAndTrade_1_0.Довідники
 			//
 
 			Контрагенти_Папки_Select контрагенти_Папки_Select = new Контрагенти_Папки_Select();
-			контрагенти_Папки_Select.QuerySelect.Where.Add(new Where(Контрагенти_Папки_Select.Родич, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			контрагенти_Папки_Select.QuerySelect.Where.Add(new Where(Контрагенти_Папки_Const.Родич, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
 			контрагенти_Папки_Select.Select();
 
 			while (контрагенти_Папки_Select.MoveNext())

@@ -72,18 +72,18 @@ namespace StorageAndTrade
 
 			Довідники.Каси_Select каси_Select = new Довідники.Каси_Select();
 
-			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Select.Назва);
-			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Select.Валюта);
+			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Назва);
+			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Валюта);
 			
 			//JOIN
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Валюти"].Table;
 			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Валюти"].Fields["Назва"].NameInTable;
 
 			каси_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "field2"));
-			каси_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Каси_Select.Валюта, каси_Select.QuerySelect.Table));
+			каси_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Каси_Const.Валюта, каси_Select.QuerySelect.Table));
 
 			//ORDER
-			каси_Select.QuerySelect.Order.Add(Довідники.Каси_Select.Назва, SelectOrder.ASC);
+			каси_Select.QuerySelect.Order.Add(Довідники.Каси_Const.Назва, SelectOrder.ASC);
 
 			каси_Select.Select();
 			while (каси_Select.MoveNext())
@@ -93,7 +93,7 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Каси_Select.Назва].ToString(),
+					Назва = cur.Fields[Довідники.Каси_Const.Назва].ToString(),
 					Валюта = cur.Fields["field2"].ToString()
 				});
 

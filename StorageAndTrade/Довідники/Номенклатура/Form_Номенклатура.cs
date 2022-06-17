@@ -94,36 +94,36 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.Номенклатура_Select номенклатура_Select = new Довідники.Номенклатура_Select();
-			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Select.Назва);
-			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Select.ТипНоменклатури);
+			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Const.Назва);
+			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Const.ТипНоменклатури);
 
 			//JOIN 1
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Виробники"].Table;
 			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Виробники"].Fields["Назва"].NameInTable;
 
 			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join1"));
-			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.Виробник, номенклатура_Select.QuerySelect.Table));
+			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Const.Виробник, номенклатура_Select.QuerySelect.Table));
 
 			//JOIN 2
 			JoinTable = Конфа.Config.Kernel.Conf.Directories["ВидиНоменклатури"].Table;
 			ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ВидиНоменклатури"].Fields["Назва"].NameInTable;
 
 			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join2"));
-			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.ВидНоменклатури, номенклатура_Select.QuerySelect.Table));
+			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Const.ВидНоменклатури, номенклатура_Select.QuerySelect.Table));
 
 			//JOIN 3
 			JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
 			ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Fields["Назва"].NameInTable;
 
 			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join3"));
-			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Select.ОдиницяВиміру, номенклатура_Select.QuerySelect.Table));
+			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Const.ОдиницяВиміру, номенклатура_Select.QuerySelect.Table));
 
 			//WHERE
 			if (Номенклатура_Папки_Дерево.Parent_Pointer != null)
-				номенклатура_Select.QuerySelect.Where.Add(new Where(Довідники.Номенклатура_Select.Папка, Comparison.EQ, Номенклатура_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
+				номенклатура_Select.QuerySelect.Where.Add(new Where(Довідники.Номенклатура_Const.Папка, Comparison.EQ, Номенклатура_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
 
 			//ORDER
-			номенклатура_Select.QuerySelect.Order.Add(Довідники.Номенклатура_Select.Назва, SelectOrder.ASC);
+			номенклатура_Select.QuerySelect.Order.Add(Довідники.Номенклатура_Const.Назва, SelectOrder.ASC);
 
 			номенклатура_Select.Select();
 			while (номенклатура_Select.MoveNext())
@@ -133,11 +133,11 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Номенклатура_Select.Назва].ToString(),
+					Назва = cur.Fields[Довідники.Номенклатура_Const.Назва].ToString(),
 					Виробник = cur.Fields["join1"].ToString(),
 					ВидНоменклатури = cur.Fields["join2"].ToString(),
 					ОдиницяВиміру = cur.Fields["join3"].ToString(),
-					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.Номенклатура_Select.ТипНоменклатури]).ToString()
+					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.Номенклатура_Const.ТипНоменклатури]).ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)

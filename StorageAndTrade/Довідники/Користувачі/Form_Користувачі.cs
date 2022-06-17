@@ -71,10 +71,10 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.Користувачі_Select користувачі_Select = new Довідники.Користувачі_Select();
-			користувачі_Select.QuerySelect.Field.Add(Довідники.Користувачі_Select.Назва);
+			користувачі_Select.QuerySelect.Field.Add(Довідники.Користувачі_Const.Назва);
 
 			//ORDER
-			користувачі_Select.QuerySelect.Order.Add(Довідники.Користувачі_Select.Назва, SelectOrder.ASC);
+			користувачі_Select.QuerySelect.Order.Add(Довідники.Користувачі_Const.Назва, SelectOrder.ASC);
 
 			користувачі_Select.Select();
 			while (користувачі_Select.MoveNext())
@@ -84,7 +84,7 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Користувачі_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.Користувачі_Const.Назва].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)

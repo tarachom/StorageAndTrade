@@ -76,21 +76,21 @@ namespace StorageAndTrade
 
 			//JOIN 1
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Table;
-			string ParentField = JoinTable + "." + Довідники.Номенклатура_Select.Назва;
+			string ParentField = JoinTable + "." + Довідники.Номенклатура_Const.Назва;
 
 			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "tovar_name"));
 			querySelect.Joins.Add(new Join(JoinTable, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Номенклатура, querySelect.Table));
 
 			//JOIN 2
 			JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
-			ParentField = JoinTable + "." + Довідники.ПакуванняОдиниціВиміру_Select.Назва;
+			ParentField = JoinTable + "." + Довідники.ПакуванняОдиниціВиміру_Const.Назва;
 
 			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "pak_name"));
 			querySelect.Joins.Add(new Join(JoinTable, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Пакування, querySelect.Table));
 
 			//JOIN 3
 			JoinTable = Конфа.Config.Kernel.Conf.Directories["ХарактеристикиНоменклатури"].Table;
-			ParentField = JoinTable + "." + Довідники.ХарактеристикиНоменклатури_Select.Назва;
+			ParentField = JoinTable + "." + Довідники.ХарактеристикиНоменклатури_Const.Назва;
 
 			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "xar_name"));
 			querySelect.Joins.Add(new Join(JoinTable, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.ХарактеристикаНоменклатури, querySelect.Table));

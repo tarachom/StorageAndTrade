@@ -121,7 +121,7 @@ namespace StorageAndTrade
 			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Fields["Назва"].NameInTable;
 
 			замовленняКлієнтів_RecordsSet.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "nomenklatura"));
-			замовленняКлієнтів_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Номенклатура, замовленняКлієнтів_RecordsSet.QuerySelect.Table));
+			замовленняКлієнтів_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.ЗамовленняКлієнтів_Const.Номенклатура, замовленняКлієнтів_RecordsSet.QuerySelect.Table));
 
 			замовленняКлієнтів_RecordsSet.Read();
 
@@ -164,7 +164,7 @@ namespace StorageAndTrade
 			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Fields["Назва"].NameInTable;
 
 			вільніЗалишки_RecordsSet.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "nomenklatura"));
-			вільніЗалишки_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.ВільніЗалишки_RecordsSet.Номенклатура, вільніЗалишки_RecordsSet.QuerySelect.Table));
+			вільніЗалишки_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.ВільніЗалишки_Const.Номенклатура, вільніЗалишки_RecordsSet.QuerySelect.Table));
 
 			вільніЗалишки_RecordsSet.Read();
 
@@ -207,7 +207,7 @@ namespace StorageAndTrade
 			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Валюти"].Fields["Назва"].NameInTable;
 
 			розрахункиЗКлієнтами_RecordsSet.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "valuta"));
-			розрахункиЗКлієнтами_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Валюта, розрахункиЗКлієнтами_RecordsSet.QuerySelect.Table));
+			розрахункиЗКлієнтами_RecordsSet.QuerySelect.Joins.Add(new Join(JoinTable, РегістриНакопичення.РозрахункиЗКлієнтами_Const.Валюта, розрахункиЗКлієнтами_RecordsSet.QuerySelect.Table));
 
 			розрахункиЗКлієнтами_RecordsSet.Read();
 

@@ -70,11 +70,11 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.Виробники_Select виробники_Select = new Довідники.Виробники_Select();
-			виробники_Select.QuerySelect.Field.Add(Довідники.Виробники_Select.Назва);
-			виробники_Select.QuerySelect.Field.Add(Довідники.Виробники_Select.Код);
+			виробники_Select.QuerySelect.Field.Add(Довідники.Виробники_Const.Назва);
+			виробники_Select.QuerySelect.Field.Add(Довідники.Виробники_Const.Код);
 
 			//ORDER
-			виробники_Select.QuerySelect.Order.Add(Довідники.Виробники_Select.Назва, SelectOrder.ASC);
+			виробники_Select.QuerySelect.Order.Add(Довідники.Виробники_Const.Назва, SelectOrder.ASC);
 
 			виробники_Select.Select();
 			while (виробники_Select.MoveNext())
@@ -84,8 +84,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Виробники_Select.Назва].ToString(),
-					Код = cur.Fields[Довідники.Виробники_Select.Код].ToString()
+					Назва = cur.Fields[Довідники.Виробники_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.Виробники_Const.Код].ToString()
 				});
 
 				if (DirectoryPointerItem != null)

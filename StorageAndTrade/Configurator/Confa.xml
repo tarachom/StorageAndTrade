@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>16.06.2022 22:34:33</DateTimeSave>
+  <DateTimeSave>17.06.2022 12:56:18</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -347,8 +347,7 @@
     <Directory>
       <Name>Виробники</Name>
       <Table>tab_a04</Table>
-      <Desc>
-      </Desc>
+      <Desc>Виробники</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -380,8 +379,7 @@
     <Directory>
       <Name>ВидиНоменклатури</Name>
       <Table>tab_a05</Table>
-      <Desc>
-      </Desc>
+      <Desc>Види номенклатури</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -442,8 +440,7 @@
     <Directory>
       <Name>ПакуванняОдиниціВиміру</Name>
       <Table>tab_a06</Table>
-      <Desc>
-      </Desc>
+      <Desc>Одиниці виміру</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -493,8 +490,7 @@
     <Directory>
       <Name>Валюти</Name>
       <Table>tab_a07</Table>
-      <Desc>
-      </Desc>
+      <Desc>Валюти</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -526,8 +522,7 @@
     <Directory>
       <Name>Контрагенти</Name>
       <Table>tab_a08</Table>
-      <Desc>
-      </Desc>
+      <Desc>Контрагенти</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -660,8 +655,7 @@
     <Directory>
       <Name>Склади</Name>
       <Table>tab_a10</Table>
-      <Desc>
-      </Desc>
+      <Desc>Склади</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -816,8 +810,7 @@
     <Directory>
       <Name>ВидиЦін</Name>
       <Table>tab_a12</Table>
-      <Desc>
-      </Desc>
+      <Desc>Види цін</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -859,8 +852,7 @@
     <Directory>
       <Name>ВидиЦінПостачальників</Name>
       <Table>tab_a13</Table>
-      <Desc>
-      </Desc>
+      <Desc>Види цін постачальників</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -902,8 +894,7 @@
     <Directory>
       <Name>Користувачі</Name>
       <Table>tab_a14</Table>
-      <Desc>
-      </Desc>
+      <Desc>Користувачі</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1027,8 +1018,7 @@
     <Directory>
       <Name>ФізичніОсоби</Name>
       <Table>tab_a16</Table>
-      <Desc>
-      </Desc>
+      <Desc>Фізичні особи</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1161,8 +1151,7 @@
     <Directory>
       <Name>СтруктураПідприємства</Name>
       <Table>tab_a18</Table>
-      <Desc>
-      </Desc>
+      <Desc>Структура підприємства</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1204,8 +1193,7 @@
     <Directory>
       <Name>КраїниСвіту</Name>
       <Table>tab_a19</Table>
-      <Desc>
-      </Desc>
+      <Desc>Країни світу</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1246,8 +1234,7 @@
     <Directory>
       <Name>Файли</Name>
       <Table>tab_a20</Table>
-      <Desc>
-      </Desc>
+      <Desc>Файли</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1279,8 +1266,7 @@
     <Directory>
       <Name>ХарактеристикиНоменклатури</Name>
       <Table>tab_a21</Table>
-      <Desc>
-      </Desc>
+      <Desc>Характеристики номенклатури</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1331,8 +1317,7 @@
     <Directory>
       <Name>Номенклатура_Папки</Name>
       <Table>tab_a22</Table>
-      <Desc>
-      </Desc>
+      <Desc>Номенклатура папки</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1372,8 +1357,7 @@
     <Directory>
       <Name>Контрагенти_Папки</Name>
       <Table>tab_a23</Table>
-      <Desc>
-      </Desc>
+      <Desc>Контрагенти папки</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1413,8 +1397,7 @@
     <Directory>
       <Name>Склади_Папки</Name>
       <Table>tab_a24</Table>
-      <Desc>
-      </Desc>
+      <Desc>Склади папки</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1456,8 +1439,7 @@
     <Directory>
       <Name>Каси</Name>
       <Table>tab_a26</Table>
-      <Desc>
-      </Desc>
+      <Desc>Каси</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1509,8 +1491,7 @@
     <Directory>
       <Name>БанківськіРахункиОрганізацій</Name>
       <Table>tab_a27</Table>
-      <Desc>
-      </Desc>
+      <Desc>Банківські рахунки організацій</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1644,8 +1625,7 @@
     <Directory>
       <Name>ДоговориКонтрагентів</Name>
       <Table>tab_a28</Table>
-      <Desc>
-      </Desc>
+      <Desc>Договори контрагентів</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1839,8 +1819,7 @@
     <Directory>
       <Name>БанківськіРахункиКонтрагентів</Name>
       <Table>tab_a29</Table>
-      <Desc>
-      </Desc>
+      <Desc>Банківські рахунки контрагентів</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -1991,8 +1970,7 @@
     <Directory>
       <Name>СтаттяРухуКоштів</Name>
       <Table>tab_a45</Table>
-      <Desc>
-      </Desc>
+      <Desc>Стаття руху коштів</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 16.06.2022 22:34:33
+ * Дата конфігурації: 17.06.2022 12:56:18
  *
  */
 
@@ -162,6 +162,23 @@ namespace StorageAndTrade_1_0.Довідники
 {
     
     #region DIRECTORY "Організації"
+    ///<summary>
+    ///Юридичні особи та підприємці нашої організації.
+    ///</summary>
+    public static class Організації_Const
+    {
+        public const string Table = "tab_a01";
+        
+        public const string Назва = "col_a1";
+        public const string Код = "col_a2";
+        public const string НазваПовна = "col_a3";
+        public const string НазваСкорочена = "col_a4";
+        public const string ДатаРеєстрації = "col_a5";
+        public const string КраїнаРеєстрації = "col_a6";
+        public const string СвідоцтвоСеріяНомер = "col_a7";
+        public const string СвідоцтвоДатаВидачі = "col_a8";
+    }
+	
     ///<summary>
     ///Юридичні особи та підприємці нашої організації.
     ///</summary>
@@ -317,17 +334,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public class Організації_Select : DirectorySelect, IDisposable
     {
-        public Організації_Select() : base(Config.Kernel, "tab_a01") { }
-        
-        public const string Назва = "col_a1";
-        public const string Код = "col_a2";
-        public const string НазваПовна = "col_a3";
-        public const string НазваСкорочена = "col_a4";
-        public const string ДатаРеєстрації = "col_a5";
-        public const string КраїнаРеєстрації = "col_a6";
-        public const string СвідоцтвоСеріяНомер = "col_a7";
-        public const string СвідоцтвоДатаВидачі = "col_a8";
-        
+        public Організації_Select() : base(Config.Kernel, "tab_a01") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -466,6 +473,25 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Номенклатура"
+    ///<summary>
+    ///Товари та послуги.
+    ///</summary>
+    public static class Номенклатура_Const
+    {
+        public const string Table = "tab_a03";
+        
+        public const string Назва = "col_b1";
+        public const string Код = "col_b2";
+        public const string НазваПовна = "col_b4";
+        public const string Опис = "col_a1";
+        public const string Артикул = "col_b3";
+        public const string ТипНоменклатури = "col_b5";
+        public const string Виробник = "col_a2";
+        public const string ВидНоменклатури = "col_a3";
+        public const string ОдиницяВиміру = "col_a4";
+        public const string Папка = "col_a5";
+    }
+	
     ///<summary>
     ///Товари та послуги.
     ///</summary>
@@ -627,19 +653,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public class Номенклатура_Select : DirectorySelect, IDisposable
     {
-        public Номенклатура_Select() : base(Config.Kernel, "tab_a03") { }
-        
-        public const string Назва = "col_b1";
-        public const string Код = "col_b2";
-        public const string НазваПовна = "col_b4";
-        public const string Опис = "col_a1";
-        public const string Артикул = "col_b3";
-        public const string ТипНоменклатури = "col_b5";
-        public const string Виробник = "col_a2";
-        public const string ВидНоменклатури = "col_a3";
-        public const string ОдиницяВиміру = "col_a4";
-        public const string Папка = "col_a5";
-        
+        public Номенклатура_Select() : base(Config.Kernel, "tab_a03") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -670,7 +684,20 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Виробники"
-    
+    ///<summary>
+    ///Виробники.
+    ///</summary>
+    public static class Виробники_Const
+    {
+        public const string Table = "tab_a04";
+        
+        public const string Назва = "col_b6";
+        public const string Код = "col_b7";
+    }
+	
+    ///<summary>
+    ///Виробники.
+    ///</summary>
     public class Виробники_Objest : DirectoryObject
     {
         public Виробники_Objest() : base(Config.Kernel, "tab_a04",
@@ -741,7 +768,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Виробники.
+    ///</summary>
     public class Виробники_Pointer : DirectoryPointer
     {
         public Виробники_Pointer(object uid = null) : base(Config.Kernel, "tab_a04")
@@ -774,14 +803,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Виробники.
+    ///</summary>
     public class Виробники_Select : DirectorySelect, IDisposable
     {
-        public Виробники_Select() : base(Config.Kernel, "tab_a04") { }
-        
-        public const string Назва = "col_b6";
-        public const string Код = "col_b7";
-        
+        public Виробники_Select() : base(Config.Kernel, "tab_a04") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -812,7 +839,23 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ВидиНоменклатури"
-    
+    ///<summary>
+    ///Види номенклатури.
+    ///</summary>
+    public static class ВидиНоменклатури_Const
+    {
+        public const string Table = "tab_a05";
+        
+        public const string Назва = "col_b8";
+        public const string Код = "col_b9";
+        public const string Опис = "col_a2";
+        public const string ТипНоменклатури = "col_a1";
+        public const string ОдиницяВиміру = "col_a4";
+    }
+	
+    ///<summary>
+    ///Види номенклатури.
+    ///</summary>
     public class ВидиНоменклатури_Objest : DirectoryObject
     {
         public ВидиНоменклатури_Objest() : base(Config.Kernel, "tab_a05",
@@ -901,7 +944,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Види номенклатури.
+    ///</summary>
     public class ВидиНоменклатури_Pointer : DirectoryPointer
     {
         public ВидиНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a05")
@@ -934,17 +979,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Види номенклатури.
+    ///</summary>
     public class ВидиНоменклатури_Select : DirectorySelect, IDisposable
     {
-        public ВидиНоменклатури_Select() : base(Config.Kernel, "tab_a05") { }
-        
-        public const string Назва = "col_b8";
-        public const string Код = "col_b9";
-        public const string Опис = "col_a2";
-        public const string ТипНоменклатури = "col_a1";
-        public const string ОдиницяВиміру = "col_a4";
-        
+        public ВидиНоменклатури_Select() : base(Config.Kernel, "tab_a05") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -975,7 +1015,22 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ПакуванняОдиниціВиміру"
-    
+    ///<summary>
+    ///Одиниці виміру.
+    ///</summary>
+    public static class ПакуванняОдиниціВиміру_Const
+    {
+        public const string Table = "tab_a06";
+        
+        public const string Назва = "col_c1";
+        public const string Код = "col_c2";
+        public const string НазваПовна = "col_c3";
+        public const string КількістьУпаковок = "col_c4";
+    }
+	
+    ///<summary>
+    ///Одиниці виміру.
+    ///</summary>
     public class ПакуванняОдиниціВиміру_Objest : DirectoryObject
     {
         public ПакуванняОдиниціВиміру_Objest() : base(Config.Kernel, "tab_a06",
@@ -1058,7 +1113,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Одиниці виміру.
+    ///</summary>
     public class ПакуванняОдиниціВиміру_Pointer : DirectoryPointer
     {
         public ПакуванняОдиниціВиміру_Pointer(object uid = null) : base(Config.Kernel, "tab_a06")
@@ -1091,16 +1148,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Одиниці виміру.
+    ///</summary>
     public class ПакуванняОдиниціВиміру_Select : DirectorySelect, IDisposable
     {
-        public ПакуванняОдиниціВиміру_Select() : base(Config.Kernel, "tab_a06") { }
-        
-        public const string Назва = "col_c1";
-        public const string Код = "col_c2";
-        public const string НазваПовна = "col_c3";
-        public const string КількістьУпаковок = "col_c4";
-        
+        public ПакуванняОдиниціВиміру_Select() : base(Config.Kernel, "tab_a06") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -1131,7 +1184,20 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Валюти"
-    
+    ///<summary>
+    ///Валюти.
+    ///</summary>
+    public static class Валюти_Const
+    {
+        public const string Table = "tab_a07";
+        
+        public const string Назва = "col_c5";
+        public const string Код = "col_c6";
+    }
+	
+    ///<summary>
+    ///Валюти.
+    ///</summary>
     public class Валюти_Objest : DirectoryObject
     {
         public Валюти_Objest() : base(Config.Kernel, "tab_a07",
@@ -1202,7 +1268,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Валюти.
+    ///</summary>
     public class Валюти_Pointer : DirectoryPointer
     {
         public Валюти_Pointer(object uid = null) : base(Config.Kernel, "tab_a07")
@@ -1235,14 +1303,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Валюти.
+    ///</summary>
     public class Валюти_Select : DirectorySelect, IDisposable
     {
-        public Валюти_Select() : base(Config.Kernel, "tab_a07") { }
-        
-        public const string Назва = "col_c5";
-        public const string Код = "col_c6";
-        
+        public Валюти_Select() : base(Config.Kernel, "tab_a07") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -1273,7 +1339,23 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Контрагенти"
-    
+    ///<summary>
+    ///Контрагенти.
+    ///</summary>
+    public static class Контрагенти_Const
+    {
+        public const string Table = "tab_a08";
+        
+        public const string Назва = "col_c7";
+        public const string Код = "col_c8";
+        public const string НазваПовна = "col_c9";
+        public const string РеєстраційнийНомер = "col_d1";
+        public const string Папка = "col_a1";
+    }
+	
+    ///<summary>
+    ///Контрагенти.
+    ///</summary>
     public class Контрагенти_Objest : DirectoryObject
     {
         public Контрагенти_Objest() : base(Config.Kernel, "tab_a08",
@@ -1368,7 +1450,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Контрагенти.
+    ///</summary>
     public class Контрагенти_Pointer : DirectoryPointer
     {
         public Контрагенти_Pointer(object uid = null) : base(Config.Kernel, "tab_a08")
@@ -1401,17 +1485,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Контрагенти.
+    ///</summary>
     public class Контрагенти_Select : DirectorySelect, IDisposable
     {
-        public Контрагенти_Select() : base(Config.Kernel, "tab_a08") { }
-        
-        public const string Назва = "col_c7";
-        public const string Код = "col_c8";
-        public const string НазваПовна = "col_c9";
-        public const string РеєстраційнийНомер = "col_d1";
-        public const string Папка = "col_a1";
-        
+        public Контрагенти_Select() : base(Config.Kernel, "tab_a08") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -1550,7 +1629,25 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Склади"
-    
+    ///<summary>
+    ///Склади.
+    ///</summary>
+    public static class Склади_Const
+    {
+        public const string Table = "tab_a10";
+        
+        public const string Назва = "col_d9";
+        public const string Код = "col_e1";
+        public const string ТипСкладу = "col_a1";
+        public const string Відповідальний = "col_a2";
+        public const string ВидЦін = "col_a3";
+        public const string Підрозділ = "col_a4";
+        public const string Папка = "col_a5";
+    }
+	
+    ///<summary>
+    ///Склади.
+    ///</summary>
     public class Склади_Objest : DirectoryObject
     {
         public Склади_Objest() : base(Config.Kernel, "tab_a10",
@@ -1657,7 +1754,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Склади.
+    ///</summary>
     public class Склади_Pointer : DirectoryPointer
     {
         public Склади_Pointer(object uid = null) : base(Config.Kernel, "tab_a10")
@@ -1690,19 +1789,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Склади.
+    ///</summary>
     public class Склади_Select : DirectorySelect, IDisposable
     {
-        public Склади_Select() : base(Config.Kernel, "tab_a10") { }
-        
-        public const string Назва = "col_d9";
-        public const string Код = "col_e1";
-        public const string ТипСкладу = "col_a1";
-        public const string Відповідальний = "col_a2";
-        public const string ВидЦін = "col_a3";
-        public const string Підрозділ = "col_a4";
-        public const string Папка = "col_a5";
-        
+        public Склади_Select() : base(Config.Kernel, "tab_a10") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -1841,7 +1933,21 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ВидиЦін"
-    
+    ///<summary>
+    ///Види цін.
+    ///</summary>
+    public static class ВидиЦін_Const
+    {
+        public const string Table = "tab_a12";
+        
+        public const string Назва = "col_e9";
+        public const string Код = "col_f1";
+        public const string Валюта = "col_f2";
+    }
+	
+    ///<summary>
+    ///Види цін.
+    ///</summary>
     public class ВидиЦін_Objest : DirectoryObject
     {
         public ВидиЦін_Objest() : base(Config.Kernel, "tab_a12",
@@ -1918,7 +2024,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Види цін.
+    ///</summary>
     public class ВидиЦін_Pointer : DirectoryPointer
     {
         public ВидиЦін_Pointer(object uid = null) : base(Config.Kernel, "tab_a12")
@@ -1951,15 +2059,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Види цін.
+    ///</summary>
     public class ВидиЦін_Select : DirectorySelect, IDisposable
     {
-        public ВидиЦін_Select() : base(Config.Kernel, "tab_a12") { }
-        
-        public const string Назва = "col_e9";
-        public const string Код = "col_f1";
-        public const string Валюта = "col_f2";
-        
+        public ВидиЦін_Select() : base(Config.Kernel, "tab_a12") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -1990,7 +2095,21 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ВидиЦінПостачальників"
-    
+    ///<summary>
+    ///Види цін постачальників.
+    ///</summary>
+    public static class ВидиЦінПостачальників_Const
+    {
+        public const string Table = "tab_a13";
+        
+        public const string Назва = "col_f3";
+        public const string Код = "col_f4";
+        public const string Валюта = "col_f5";
+    }
+	
+    ///<summary>
+    ///Види цін постачальників.
+    ///</summary>
     public class ВидиЦінПостачальників_Objest : DirectoryObject
     {
         public ВидиЦінПостачальників_Objest() : base(Config.Kernel, "tab_a13",
@@ -2067,7 +2186,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Види цін постачальників.
+    ///</summary>
     public class ВидиЦінПостачальників_Pointer : DirectoryPointer
     {
         public ВидиЦінПостачальників_Pointer(object uid = null) : base(Config.Kernel, "tab_a13")
@@ -2100,15 +2221,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Види цін постачальників.
+    ///</summary>
     public class ВидиЦінПостачальників_Select : DirectorySelect, IDisposable
     {
-        public ВидиЦінПостачальників_Select() : base(Config.Kernel, "tab_a13") { }
-        
-        public const string Назва = "col_f3";
-        public const string Код = "col_f4";
-        public const string Валюта = "col_f5";
-        
+        public ВидиЦінПостачальників_Select() : base(Config.Kernel, "tab_a13") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -2139,7 +2257,22 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Користувачі"
-    
+    ///<summary>
+    ///Користувачі.
+    ///</summary>
+    public static class Користувачі_Const
+    {
+        public const string Table = "tab_a14";
+        
+        public const string Назва = "col_f6";
+        public const string Код = "col_f7";
+        public const string ФізичнаОсоба = "col_a1";
+        public const string Коментар = "col_g6";
+    }
+	
+    ///<summary>
+    ///Користувачі.
+    ///</summary>
     public class Користувачі_Objest : DirectoryObject
     {
         public Користувачі_Objest() : base(Config.Kernel, "tab_a14",
@@ -2228,7 +2361,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Користувачі.
+    ///</summary>
     public class Користувачі_Pointer : DirectoryPointer
     {
         public Користувачі_Pointer(object uid = null) : base(Config.Kernel, "tab_a14")
@@ -2261,16 +2396,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Користувачі.
+    ///</summary>
     public class Користувачі_Select : DirectorySelect, IDisposable
     {
-        public Користувачі_Select() : base(Config.Kernel, "tab_a14") { }
-        
-        public const string Назва = "col_f6";
-        public const string Код = "col_f7";
-        public const string ФізичнаОсоба = "col_a1";
-        public const string Коментар = "col_g6";
-        
+        public Користувачі_Select() : base(Config.Kernel, "tab_a14") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -2409,7 +2540,23 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ФізичніОсоби"
-    
+    ///<summary>
+    ///Фізичні особи.
+    ///</summary>
+    public static class ФізичніОсоби_Const
+    {
+        public const string Table = "tab_a16";
+        
+        public const string Назва = "col_g7";
+        public const string Код = "col_g8";
+        public const string ДатаНародження = "col_g9";
+        public const string Стать = "col_a1";
+        public const string ІПН = "col_a2";
+    }
+	
+    ///<summary>
+    ///Фізичні особи.
+    ///</summary>
     public class ФізичніОсоби_Objest : DirectoryObject
     {
         public ФізичніОсоби_Objest() : base(Config.Kernel, "tab_a16",
@@ -2504,7 +2651,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Фізичні особи.
+    ///</summary>
     public class ФізичніОсоби_Pointer : DirectoryPointer
     {
         public ФізичніОсоби_Pointer(object uid = null) : base(Config.Kernel, "tab_a16")
@@ -2537,17 +2686,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Фізичні особи.
+    ///</summary>
     public class ФізичніОсоби_Select : DirectorySelect, IDisposable
     {
-        public ФізичніОсоби_Select() : base(Config.Kernel, "tab_a16") { }
-        
-        public const string Назва = "col_g7";
-        public const string Код = "col_g8";
-        public const string ДатаНародження = "col_g9";
-        public const string Стать = "col_a1";
-        public const string ІПН = "col_a2";
-        
+        public ФізичніОсоби_Select() : base(Config.Kernel, "tab_a16") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -2686,7 +2830,21 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "СтруктураПідприємства"
-    
+    ///<summary>
+    ///Структура підприємства.
+    ///</summary>
+    public static class СтруктураПідприємства_Const
+    {
+        public const string Table = "tab_a18";
+        
+        public const string Назва = "col_h8";
+        public const string Код = "col_h9";
+        public const string Керівник = "col_i1";
+    }
+	
+    ///<summary>
+    ///Структура підприємства.
+    ///</summary>
     public class СтруктураПідприємства_Objest : DirectoryObject
     {
         public СтруктураПідприємства_Objest() : base(Config.Kernel, "tab_a18",
@@ -2763,7 +2921,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Структура підприємства.
+    ///</summary>
     public class СтруктураПідприємства_Pointer : DirectoryPointer
     {
         public СтруктураПідприємства_Pointer(object uid = null) : base(Config.Kernel, "tab_a18")
@@ -2796,15 +2956,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Структура підприємства.
+    ///</summary>
     public class СтруктураПідприємства_Select : DirectorySelect, IDisposable
     {
-        public СтруктураПідприємства_Select() : base(Config.Kernel, "tab_a18") { }
-        
-        public const string Назва = "col_h8";
-        public const string Код = "col_h9";
-        public const string Керівник = "col_i1";
-        
+        public СтруктураПідприємства_Select() : base(Config.Kernel, "tab_a18") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -2835,7 +2992,21 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "КраїниСвіту"
-    
+    ///<summary>
+    ///Країни світу.
+    ///</summary>
+    public static class КраїниСвіту_Const
+    {
+        public const string Table = "tab_a19";
+        
+        public const string Назва = "col_i2";
+        public const string Код = "col_i3";
+        public const string НазваПовна = "col_i4";
+    }
+	
+    ///<summary>
+    ///Країни світу.
+    ///</summary>
     public class КраїниСвіту_Objest : DirectoryObject
     {
         public КраїниСвіту_Objest() : base(Config.Kernel, "tab_a19",
@@ -2912,7 +3083,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Країни світу.
+    ///</summary>
     public class КраїниСвіту_Pointer : DirectoryPointer
     {
         public КраїниСвіту_Pointer(object uid = null) : base(Config.Kernel, "tab_a19")
@@ -2945,15 +3118,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Країни світу.
+    ///</summary>
     public class КраїниСвіту_Select : DirectorySelect, IDisposable
     {
-        public КраїниСвіту_Select() : base(Config.Kernel, "tab_a19") { }
-        
-        public const string Назва = "col_i2";
-        public const string Код = "col_i3";
-        public const string НазваПовна = "col_i4";
-        
+        public КраїниСвіту_Select() : base(Config.Kernel, "tab_a19") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -2984,7 +3154,20 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Файли"
-    
+    ///<summary>
+    ///Файли.
+    ///</summary>
+    public static class Файли_Const
+    {
+        public const string Table = "tab_a20";
+        
+        public const string Назва = "col_i5";
+        public const string Код = "col_i6";
+    }
+	
+    ///<summary>
+    ///Файли.
+    ///</summary>
     public class Файли_Objest : DirectoryObject
     {
         public Файли_Objest() : base(Config.Kernel, "tab_a20",
@@ -3055,7 +3238,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Файли.
+    ///</summary>
     public class Файли_Pointer : DirectoryPointer
     {
         public Файли_Pointer(object uid = null) : base(Config.Kernel, "tab_a20")
@@ -3088,14 +3273,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Файли.
+    ///</summary>
     public class Файли_Select : DirectorySelect, IDisposable
     {
-        public Файли_Select() : base(Config.Kernel, "tab_a20") { }
-        
-        public const string Назва = "col_i5";
-        public const string Код = "col_i6";
-        
+        public Файли_Select() : base(Config.Kernel, "tab_a20") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -3126,7 +3309,22 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ХарактеристикиНоменклатури"
-    
+    ///<summary>
+    ///Характеристики номенклатури.
+    ///</summary>
+    public static class ХарактеристикиНоменклатури_Const
+    {
+        public const string Table = "tab_a21";
+        
+        public const string Назва = "col_i7";
+        public const string Код = "col_i8";
+        public const string НазваПовна = "col_i9";
+        public const string Номенклатура = "col_a1";
+    }
+	
+    ///<summary>
+    ///Характеристики номенклатури.
+    ///</summary>
     public class ХарактеристикиНоменклатури_Objest : DirectoryObject
     {
         public ХарактеристикиНоменклатури_Objest() : base(Config.Kernel, "tab_a21",
@@ -3209,7 +3407,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Характеристики номенклатури.
+    ///</summary>
     public class ХарактеристикиНоменклатури_Pointer : DirectoryPointer
     {
         public ХарактеристикиНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a21")
@@ -3242,16 +3442,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Характеристики номенклатури.
+    ///</summary>
     public class ХарактеристикиНоменклатури_Select : DirectorySelect, IDisposable
     {
-        public ХарактеристикиНоменклатури_Select() : base(Config.Kernel, "tab_a21") { }
-        
-        public const string Назва = "col_i7";
-        public const string Код = "col_i8";
-        public const string НазваПовна = "col_i9";
-        public const string Номенклатура = "col_a1";
-        
+        public ХарактеристикиНоменклатури_Select() : base(Config.Kernel, "tab_a21") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -3282,7 +3478,21 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Номенклатура_Папки"
-    
+    ///<summary>
+    ///Номенклатура папки.
+    ///</summary>
+    public static class Номенклатура_Папки_Const
+    {
+        public const string Table = "tab_a22";
+        
+        public const string Назва = "col_j1";
+        public const string Код = "col_j2";
+        public const string Родич = "col_j3";
+    }
+	
+    ///<summary>
+    ///Номенклатура папки.
+    ///</summary>
     public class Номенклатура_Папки_Objest : DirectoryObject
     {
         public Номенклатура_Папки_Objest() : base(Config.Kernel, "tab_a22",
@@ -3359,7 +3569,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Номенклатура папки.
+    ///</summary>
     public class Номенклатура_Папки_Pointer : DirectoryPointer
     {
         public Номенклатура_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a22")
@@ -3392,15 +3604,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Номенклатура папки.
+    ///</summary>
     public class Номенклатура_Папки_Select : DirectorySelect, IDisposable
     {
-        public Номенклатура_Папки_Select() : base(Config.Kernel, "tab_a22") { }
-        
-        public const string Назва = "col_j1";
-        public const string Код = "col_j2";
-        public const string Родич = "col_j3";
-        
+        public Номенклатура_Папки_Select() : base(Config.Kernel, "tab_a22") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -3431,7 +3640,21 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Контрагенти_Папки"
-    
+    ///<summary>
+    ///Контрагенти папки.
+    ///</summary>
+    public static class Контрагенти_Папки_Const
+    {
+        public const string Table = "tab_a23";
+        
+        public const string Назва = "col_j4";
+        public const string Код = "col_j5";
+        public const string Родич = "col_j6";
+    }
+	
+    ///<summary>
+    ///Контрагенти папки.
+    ///</summary>
     public class Контрагенти_Папки_Objest : DirectoryObject
     {
         public Контрагенти_Папки_Objest() : base(Config.Kernel, "tab_a23",
@@ -3508,7 +3731,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Контрагенти папки.
+    ///</summary>
     public class Контрагенти_Папки_Pointer : DirectoryPointer
     {
         public Контрагенти_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a23")
@@ -3541,15 +3766,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Контрагенти папки.
+    ///</summary>
     public class Контрагенти_Папки_Select : DirectorySelect, IDisposable
     {
-        public Контрагенти_Папки_Select() : base(Config.Kernel, "tab_a23") { }
-        
-        public const string Назва = "col_j4";
-        public const string Код = "col_j5";
-        public const string Родич = "col_j6";
-        
+        public Контрагенти_Папки_Select() : base(Config.Kernel, "tab_a23") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -3580,7 +3802,21 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Склади_Папки"
-    
+    ///<summary>
+    ///Склади папки.
+    ///</summary>
+    public static class Склади_Папки_Const
+    {
+        public const string Table = "tab_a24";
+        
+        public const string Назва = "col_j7";
+        public const string Код = "col_j8";
+        public const string Родич = "col_a1";
+    }
+	
+    ///<summary>
+    ///Склади папки.
+    ///</summary>
     public class Склади_Папки_Objest : DirectoryObject
     {
         public Склади_Папки_Objest() : base(Config.Kernel, "tab_a24",
@@ -3657,7 +3893,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Склади папки.
+    ///</summary>
     public class Склади_Папки_Pointer : DirectoryPointer
     {
         public Склади_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a24")
@@ -3690,15 +3928,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Склади папки.
+    ///</summary>
     public class Склади_Папки_Select : DirectorySelect, IDisposable
     {
-        public Склади_Папки_Select() : base(Config.Kernel, "tab_a24") { }
-        
-        public const string Назва = "col_j7";
-        public const string Код = "col_j8";
-        public const string Родич = "col_a1";
-        
+        public Склади_Папки_Select() : base(Config.Kernel, "tab_a24") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -3729,7 +3964,22 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Каси"
-    
+    ///<summary>
+    ///Каси.
+    ///</summary>
+    public static class Каси_Const
+    {
+        public const string Table = "tab_a26";
+        
+        public const string Назва = "col_k8";
+        public const string Код = "col_k9";
+        public const string Валюта = "col_a2";
+        public const string Підрозділ = "col_a1";
+    }
+	
+    ///<summary>
+    ///Каси.
+    ///</summary>
     public class Каси_Objest : DirectoryObject
     {
         public Каси_Objest() : base(Config.Kernel, "tab_a26",
@@ -3812,7 +4062,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Каси.
+    ///</summary>
     public class Каси_Pointer : DirectoryPointer
     {
         public Каси_Pointer(object uid = null) : base(Config.Kernel, "tab_a26")
@@ -3845,16 +4097,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Каси.
+    ///</summary>
     public class Каси_Select : DirectorySelect, IDisposable
     {
-        public Каси_Select() : base(Config.Kernel, "tab_a26") { }
-        
-        public const string Назва = "col_k8";
-        public const string Код = "col_k9";
-        public const string Валюта = "col_a2";
-        public const string Підрозділ = "col_a1";
-        
+        public Каси_Select() : base(Config.Kernel, "tab_a26") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -3885,7 +4133,31 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "БанківськіРахункиОрганізацій"
-    
+    ///<summary>
+    ///Банківські рахунки організацій.
+    ///</summary>
+    public static class БанківськіРахункиОрганізацій_Const
+    {
+        public const string Table = "tab_a27";
+        
+        public const string Назва = "col_l1";
+        public const string Код = "col_l2";
+        public const string Валюта = "col_l3";
+        public const string Банк = "col_l4";
+        public const string Підрозділ = "col_l5";
+        public const string НазваБанку = "col_l6";
+        public const string НомерРахунку = "col_l7";
+        public const string АдресаБанку = "col_l8";
+        public const string МістоБанку = "col_l9";
+        public const string КореспонденськийРахунокБанку = "col_n1";
+        public const string ТелефониБанку = "col_n2";
+        public const string Закритий = "col_n3";
+        public const string Організація = "col_a1";
+    }
+	
+    ///<summary>
+    ///Банківські рахунки організацій.
+    ///</summary>
     public class БанківськіРахункиОрганізацій_Objest : DirectoryObject
     {
         public БанківськіРахункиОрганізацій_Objest() : base(Config.Kernel, "tab_a27",
@@ -4022,7 +4294,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Банківські рахунки організацій.
+    ///</summary>
     public class БанківськіРахункиОрганізацій_Pointer : DirectoryPointer
     {
         public БанківськіРахункиОрганізацій_Pointer(object uid = null) : base(Config.Kernel, "tab_a27")
@@ -4055,25 +4329,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Банківські рахунки організацій.
+    ///</summary>
     public class БанківськіРахункиОрганізацій_Select : DirectorySelect, IDisposable
     {
-        public БанківськіРахункиОрганізацій_Select() : base(Config.Kernel, "tab_a27") { }
-        
-        public const string Назва = "col_l1";
-        public const string Код = "col_l2";
-        public const string Валюта = "col_l3";
-        public const string Банк = "col_l4";
-        public const string Підрозділ = "col_l5";
-        public const string НазваБанку = "col_l6";
-        public const string НомерРахунку = "col_l7";
-        public const string АдресаБанку = "col_l8";
-        public const string МістоБанку = "col_l9";
-        public const string КореспонденськийРахунокБанку = "col_n1";
-        public const string ТелефониБанку = "col_n2";
-        public const string Закритий = "col_n3";
-        public const string Організація = "col_a1";
-        
+        public БанківськіРахункиОрганізацій_Select() : base(Config.Kernel, "tab_a27") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -4104,7 +4365,37 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ДоговориКонтрагентів"
-    
+    ///<summary>
+    ///Договори контрагентів.
+    ///</summary>
+    public static class ДоговориКонтрагентів_Const
+    {
+        public const string Table = "tab_a28";
+        
+        public const string Назва = "col_n4";
+        public const string Код = "col_n5";
+        public const string БанківськийРахунок = "col_n6";
+        public const string БанківськийРахунокКонтрагента = "col_a1";
+        public const string ВалютаВзаєморозрахунків = "col_a2";
+        public const string ДатаПочаткуДії = "col_a4";
+        public const string ДатаЗакінченняДії = "col_a5";
+        public const string Організація = "col_a6";
+        public const string Контрагент = "col_a7";
+        public const string Дата = "col_a8";
+        public const string Номер = "col_a9";
+        public const string Підрозділ = "col_b1";
+        public const string Узгоджений = "col_b2";
+        public const string Статус = "col_b3";
+        public const string ГосподарськаОперація = "col_b4";
+        public const string ТипДоговору = "col_b5";
+        public const string ДопустимаСумаЗаборгованості = "col_b6";
+        public const string Сума = "col_b7";
+        public const string Коментар = "col_a3";
+    }
+	
+    ///<summary>
+    ///Договори контрагентів.
+    ///</summary>
     public class ДоговориКонтрагентів_Objest : DirectoryObject
     {
         public ДоговориКонтрагентів_Objest() : base(Config.Kernel, "tab_a28",
@@ -4277,7 +4568,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Договори контрагентів.
+    ///</summary>
     public class ДоговориКонтрагентів_Pointer : DirectoryPointer
     {
         public ДоговориКонтрагентів_Pointer(object uid = null) : base(Config.Kernel, "tab_a28")
@@ -4310,31 +4603,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Договори контрагентів.
+    ///</summary>
     public class ДоговориКонтрагентів_Select : DirectorySelect, IDisposable
     {
-        public ДоговориКонтрагентів_Select() : base(Config.Kernel, "tab_a28") { }
-        
-        public const string Назва = "col_n4";
-        public const string Код = "col_n5";
-        public const string БанківськийРахунок = "col_n6";
-        public const string БанківськийРахунокКонтрагента = "col_a1";
-        public const string ВалютаВзаєморозрахунків = "col_a2";
-        public const string ДатаПочаткуДії = "col_a4";
-        public const string ДатаЗакінченняДії = "col_a5";
-        public const string Організація = "col_a6";
-        public const string Контрагент = "col_a7";
-        public const string Дата = "col_a8";
-        public const string Номер = "col_a9";
-        public const string Підрозділ = "col_b1";
-        public const string Узгоджений = "col_b2";
-        public const string Статус = "col_b3";
-        public const string ГосподарськаОперація = "col_b4";
-        public const string ТипДоговору = "col_b5";
-        public const string ДопустимаСумаЗаборгованості = "col_b6";
-        public const string Сума = "col_b7";
-        public const string Коментар = "col_a3";
-        
+        public ДоговориКонтрагентів_Select() : base(Config.Kernel, "tab_a28") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -4365,7 +4639,33 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "БанківськіРахункиКонтрагентів"
-    
+    ///<summary>
+    ///Банківські рахунки контрагентів.
+    ///</summary>
+    public static class БанківськіРахункиКонтрагентів_Const
+    {
+        public const string Table = "tab_a29";
+        
+        public const string Назва = "col_n7";
+        public const string Код = "col_n8";
+        public const string НомерРахунку = "col_n9";
+        public const string Банк = "col_m1";
+        public const string БанкДляРозрахунків = "col_m2";
+        public const string ТекстКореспондента = "col_m3";
+        public const string ТекстПризначення = "col_m4";
+        public const string Валюта = "col_m5";
+        public const string НазваБанку = "col_m6";
+        public const string КорРахунокБанку = "col_m7";
+        public const string МістоБанку = "col_m8";
+        public const string АдресаБанку = "col_m9";
+        public const string ТелефониБанку = "col_o1";
+        public const string Закрито = "col_o2";
+        public const string Контрагент = "col_o3";
+    }
+	
+    ///<summary>
+    ///Банківські рахунки контрагентів.
+    ///</summary>
     public class БанківськіРахункиКонтрагентів_Objest : DirectoryObject
     {
         public БанківськіРахункиКонтрагентів_Objest() : base(Config.Kernel, "tab_a29",
@@ -4514,7 +4814,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Банківські рахунки контрагентів.
+    ///</summary>
     public class БанківськіРахункиКонтрагентів_Pointer : DirectoryPointer
     {
         public БанківськіРахункиКонтрагентів_Pointer(object uid = null) : base(Config.Kernel, "tab_a29")
@@ -4547,27 +4849,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Банківські рахунки контрагентів.
+    ///</summary>
     public class БанківськіРахункиКонтрагентів_Select : DirectorySelect, IDisposable
     {
-        public БанківськіРахункиКонтрагентів_Select() : base(Config.Kernel, "tab_a29") { }
-        
-        public const string Назва = "col_n7";
-        public const string Код = "col_n8";
-        public const string НомерРахунку = "col_n9";
-        public const string Банк = "col_m1";
-        public const string БанкДляРозрахунків = "col_m2";
-        public const string ТекстКореспондента = "col_m3";
-        public const string ТекстПризначення = "col_m4";
-        public const string Валюта = "col_m5";
-        public const string НазваБанку = "col_m6";
-        public const string КорРахунокБанку = "col_m7";
-        public const string МістоБанку = "col_m8";
-        public const string АдресаБанку = "col_m9";
-        public const string ТелефониБанку = "col_o1";
-        public const string Закрито = "col_o2";
-        public const string Контрагент = "col_o3";
-        
+        public БанківськіРахункиКонтрагентів_Select() : base(Config.Kernel, "tab_a29") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -4598,7 +4885,23 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "СтаттяРухуКоштів"
-    
+    ///<summary>
+    ///Стаття руху коштів.
+    ///</summary>
+    public static class СтаттяРухуКоштів_Const
+    {
+        public const string Table = "tab_a45";
+        
+        public const string Назва = "col_i7";
+        public const string Код = "col_i8";
+        public const string КореспондуючийРахунок = "col_i9";
+        public const string ВидРухуКоштів = "col_j2";
+        public const string Опис = "col_j1";
+    }
+	
+    ///<summary>
+    ///Стаття руху коштів.
+    ///</summary>
     public class СтаттяРухуКоштів_Objest : DirectoryObject
     {
         public СтаттяРухуКоштів_Objest() : base(Config.Kernel, "tab_a45",
@@ -4693,7 +4996,9 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    
+    ///<summary>
+    ///Стаття руху коштів.
+    ///</summary>
     public class СтаттяРухуКоштів_Pointer : DirectoryPointer
     {
         public СтаттяРухуКоштів_Pointer(object uid = null) : base(Config.Kernel, "tab_a45")
@@ -4726,17 +5031,12 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    
+    ///<summary>
+    ///Стаття руху коштів.
+    ///</summary>
     public class СтаттяРухуКоштів_Select : DirectorySelect, IDisposable
     {
-        public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45") { }
-        
-        public const string Назва = "col_i7";
-        public const string Код = "col_i8";
-        public const string КореспондуючийРахунок = "col_i9";
-        public const string ВидРухуКоштів = "col_j2";
-        public const string Опис = "col_j1";
-        
+        public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45") { }        
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
@@ -5013,6 +5313,38 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ЗамовленняПостачальнику"
     
+    public static class ЗамовленняПостачальнику_Const
+    {
+        public const string Table = "tab_a25";
+        
+        public const string Назва = "col_b8";
+        public const string Проведений = "col_b9";
+        public const string ДатаДок = "col_j9";
+        public const string НомерДок = "col_k1";
+        public const string Контрагент = "col_k2";
+        public const string Організація = "col_k3";
+        public const string Склад = "col_k4";
+        public const string Валюта = "col_k5";
+        public const string СумаДокументу = "col_k6";
+        public const string Каса = "col_k7";
+        public const string БанківськийРахунок = "col_a1";
+        public const string Підрозділ = "col_a3";
+        public const string Договір = "col_a4";
+        public const string Автор = "col_a5";
+        public const string ДатаПоступлення = "col_a7";
+        public const string АдресаДоставкиДляПостачальника = "col_a8";
+        public const string ПовернутиТару = "col_a9";
+        public const string СпосібДоставки = "col_b1";
+        public const string ЧасДоставкиЗ = "col_b2";
+        public const string ЧасДоставкиДо = "col_b3";
+        public const string АдресаДоставки = "col_b4";
+        public const string ГосподарськаОперація = "col_a6";
+        public const string Статус = "col_b5";
+        public const string ФормаОплати = "col_b6";
+        public const string Менеджер = "col_b7";
+        public const string Коментар = "col_a2";
+    }
+	
     
     public class ЗамовленняПостачальнику_Objest : DocumentObject
     {
@@ -5235,35 +5567,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ЗамовленняПостачальнику_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_b8";
-        public const string Проведений = "col_b9";
-        public const string ДатаДок = "col_j9";
-        public const string НомерДок = "col_k1";
-        public const string Контрагент = "col_k2";
-        public const string Організація = "col_k3";
-        public const string Склад = "col_k4";
-        public const string Валюта = "col_k5";
-        public const string СумаДокументу = "col_k6";
-        public const string Каса = "col_k7";
-        public const string БанківськийРахунок = "col_a1";
-        public const string Підрозділ = "col_a3";
-        public const string Договір = "col_a4";
-        public const string Автор = "col_a5";
-        public const string ДатаПоступлення = "col_a7";
-        public const string АдресаДоставкиДляПостачальника = "col_a8";
-        public const string ПовернутиТару = "col_a9";
-        public const string СпосібДоставки = "col_b1";
-        public const string ЧасДоставкиЗ = "col_b2";
-        public const string ЧасДоставкиДо = "col_b3";
-        public const string АдресаДоставки = "col_b4";
-        public const string ГосподарськаОперація = "col_a6";
-        public const string Статус = "col_b5";
-        public const string ФормаОплати = "col_b6";
-        public const string Менеджер = "col_b7";
-        public const string Коментар = "col_a2";
-		
+    {		
         public ЗамовленняПостачальнику_Select() : base(Config.Kernel, "tab_a25") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -5427,6 +5731,44 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ПоступленняТоварівТаПослуг"
     
+    public static class ПоступленняТоварівТаПослуг_Const
+    {
+        public const string Table = "tab_a32";
+        
+        public const string Назва = "col_d4";
+        public const string Проведений = "col_d5";
+        public const string ДатаДок = "col_a1";
+        public const string НомерДок = "col_a2";
+        public const string Валюта = "col_a3";
+        public const string ГосподарськаОперація = "col_a4";
+        public const string Підрозділ = "col_a5";
+        public const string Склад = "col_a6";
+        public const string Контрагент = "col_a7";
+        public const string СумаДокументу = "col_a8";
+        public const string ЗамовленняПостачальнику = "col_a9";
+        public const string ДатаОплати = "col_b2";
+        public const string ФормаОплати = "col_b3";
+        public const string Узгоджений = "col_b4";
+        public const string БанківськийрахунокОрганізації = "col_b5";
+        public const string НомерВхідногоДокументу = "col_b6";
+        public const string ДатаВхідногоДокументу = "col_b7";
+        public const string БанківськийрахунокКонтрагента = "col_b8";
+        public const string Договір = "col_b9";
+        public const string Автор = "col_c1";
+        public const string ВернутиТару = "col_c2";
+        public const string ДатаПоверненняТари = "col_c3";
+        public const string СпосібДоставки = "col_c4";
+        public const string Організація = "col_c5";
+        public const string Курс = "col_c6";
+        public const string Кратність = "col_c7";
+        public const string ЧасДоставкиЗ = "col_c8";
+        public const string ЧасДоставкиДо = "col_c9";
+        public const string Менеджер = "col_d1";
+        public const string СтаттяРухуКоштів = "col_d2";
+        public const string Каса = "col_d3";
+        public const string Коментар = "col_b1";
+    }
+	
     
     public class ПоступленняТоварівТаПослуг_Objest : DocumentObject
     {
@@ -5679,41 +6021,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ПоступленняТоварівТаПослуг_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_d4";
-        public const string Проведений = "col_d5";
-        public const string ДатаДок = "col_a1";
-        public const string НомерДок = "col_a2";
-        public const string Валюта = "col_a3";
-        public const string ГосподарськаОперація = "col_a4";
-        public const string Підрозділ = "col_a5";
-        public const string Склад = "col_a6";
-        public const string Контрагент = "col_a7";
-        public const string СумаДокументу = "col_a8";
-        public const string ЗамовленняПостачальнику = "col_a9";
-        public const string ДатаОплати = "col_b2";
-        public const string ФормаОплати = "col_b3";
-        public const string Узгоджений = "col_b4";
-        public const string БанківськийрахунокОрганізації = "col_b5";
-        public const string НомерВхідногоДокументу = "col_b6";
-        public const string ДатаВхідногоДокументу = "col_b7";
-        public const string БанківськийрахунокКонтрагента = "col_b8";
-        public const string Договір = "col_b9";
-        public const string Автор = "col_c1";
-        public const string ВернутиТару = "col_c2";
-        public const string ДатаПоверненняТари = "col_c3";
-        public const string СпосібДоставки = "col_c4";
-        public const string Організація = "col_c5";
-        public const string Курс = "col_c6";
-        public const string Кратність = "col_c7";
-        public const string ЧасДоставкиЗ = "col_c8";
-        public const string ЧасДоставкиДо = "col_c9";
-        public const string Менеджер = "col_d1";
-        public const string СтаттяРухуКоштів = "col_d2";
-        public const string Каса = "col_d3";
-        public const string Коментар = "col_b1";
-		
+    {		
         public ПоступленняТоварівТаПослуг_Select() : base(Config.Kernel, "tab_a32") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -5877,6 +6185,41 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ЗамовленняКлієнта"
     
+    public static class ЗамовленняКлієнта_Const
+    {
+        public const string Table = "tab_a34";
+        
+        public const string Назва = "col_d1";
+        public const string Проведений = "col_d2";
+        public const string ДатаДок = "col_b2";
+        public const string НомерДок = "col_b3";
+        public const string Контрагент = "col_b4";
+        public const string Організація = "col_b5";
+        public const string Валюта = "col_b6";
+        public const string СумаДокументу = "col_b7";
+        public const string Склад = "col_b8";
+        public const string Статус = "col_a1";
+        public const string Узгоджений = "col_a2";
+        public const string ФормаОплати = "col_a3";
+        public const string БанківськийРахунок = "col_a4";
+        public const string БанківськийРахунокКонтрагента = "col_a5";
+        public const string Каса = "col_a6";
+        public const string СумаАвансуДоЗабезпечення = "col_a7";
+        public const string СумаПередоплатиДоВідгрузки = "col_a8";
+        public const string ДатаВідгрузки = "col_b1";
+        public const string АдресаДоставки = "col_a9";
+        public const string ГосподарськаОперація = "col_b9";
+        public const string Договір = "col_c2";
+        public const string Підрозділ = "col_c3";
+        public const string Автор = "col_c4";
+        public const string СпосібДоставки = "col_c5";
+        public const string ЧасДоставкиЗ = "col_c6";
+        public const string ЧасДоставкиДо = "col_c7";
+        public const string ПовернутиТару = "col_c8";
+        public const string ДатаПоверненняТари = "col_c9";
+        public const string Коментар = "col_c1";
+    }
+	
     
     public class ЗамовленняКлієнта_Objest : DocumentObject
     {
@@ -6114,38 +6457,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ЗамовленняКлієнта_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_d1";
-        public const string Проведений = "col_d2";
-        public const string ДатаДок = "col_b2";
-        public const string НомерДок = "col_b3";
-        public const string Контрагент = "col_b4";
-        public const string Організація = "col_b5";
-        public const string Валюта = "col_b6";
-        public const string СумаДокументу = "col_b7";
-        public const string Склад = "col_b8";
-        public const string Статус = "col_a1";
-        public const string Узгоджений = "col_a2";
-        public const string ФормаОплати = "col_a3";
-        public const string БанківськийРахунок = "col_a4";
-        public const string БанківськийРахунокКонтрагента = "col_a5";
-        public const string Каса = "col_a6";
-        public const string СумаАвансуДоЗабезпечення = "col_a7";
-        public const string СумаПередоплатиДоВідгрузки = "col_a8";
-        public const string ДатаВідгрузки = "col_b1";
-        public const string АдресаДоставки = "col_a9";
-        public const string ГосподарськаОперація = "col_b9";
-        public const string Договір = "col_c2";
-        public const string Підрозділ = "col_c3";
-        public const string Автор = "col_c4";
-        public const string СпосібДоставки = "col_c5";
-        public const string ЧасДоставкиЗ = "col_c6";
-        public const string ЧасДоставкиДо = "col_c7";
-        public const string ПовернутиТару = "col_c8";
-        public const string ДатаПоверненняТари = "col_c9";
-        public const string Коментар = "col_c1";
-		
+    {		
         public ЗамовленняКлієнта_Select() : base(Config.Kernel, "tab_a34") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -6303,6 +6615,43 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "РеалізаціяТоварівТаПослуг"
     
+    public static class РеалізаціяТоварівТаПослуг_Const
+    {
+        public const string Table = "tab_a36";
+        
+        public const string Назва = "col_d3";
+        public const string Проведений = "col_d4";
+        public const string ДатаДок = "col_c9";
+        public const string НомерДок = "col_d1";
+        public const string Організація = "col_a1";
+        public const string Валюта = "col_a2";
+        public const string БанківськийРахунокОрганізації = "col_a3";
+        public const string БанківськийРахунокКонтрагента = "col_a4";
+        public const string ДатаОплати = "col_a5";
+        public const string ЗамовленняКлієнта = "col_a6";
+        public const string Контрагент = "col_a7";
+        public const string СумаДокументу = "col_a8";
+        public const string Підрозділ = "col_a9";
+        public const string Склад = "col_b1";
+        public const string ФормаОплати = "col_b3";
+        public const string ГосподарськаОперація = "col_b4";
+        public const string Каса = "col_b5";
+        public const string Договір = "col_b6";
+        public const string Основа = "col_b7";
+        public const string Статус = "col_b8";
+        public const string Автор = "col_b9";
+        public const string СумаПередоплати = "col_c1";
+        public const string СумаПередоплатиЗаТару = "col_c2";
+        public const string СпосібДоставки = "col_c3";
+        public const string ЧасДоставкиЗ = "col_c4";
+        public const string ЧасДоставкиДо = "col_c5";
+        public const string ПовернутиТару = "col_c6";
+        public const string ДатаПоверненняТари = "col_c7";
+        public const string Курс = "col_c8";
+        public const string Кратність = "col_d2";
+        public const string Коментар = "col_b2";
+    }
+	
     
     public class РеалізаціяТоварівТаПослуг_Objest : DocumentObject
     {
@@ -6550,40 +6899,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class РеалізаціяТоварівТаПослуг_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_d3";
-        public const string Проведений = "col_d4";
-        public const string ДатаДок = "col_c9";
-        public const string НомерДок = "col_d1";
-        public const string Організація = "col_a1";
-        public const string Валюта = "col_a2";
-        public const string БанківськийРахунокОрганізації = "col_a3";
-        public const string БанківськийРахунокКонтрагента = "col_a4";
-        public const string ДатаОплати = "col_a5";
-        public const string ЗамовленняКлієнта = "col_a6";
-        public const string Контрагент = "col_a7";
-        public const string СумаДокументу = "col_a8";
-        public const string Підрозділ = "col_a9";
-        public const string Склад = "col_b1";
-        public const string ФормаОплати = "col_b3";
-        public const string ГосподарськаОперація = "col_b4";
-        public const string Каса = "col_b5";
-        public const string Договір = "col_b6";
-        public const string Основа = "col_b7";
-        public const string Статус = "col_b8";
-        public const string Автор = "col_b9";
-        public const string СумаПередоплати = "col_c1";
-        public const string СумаПередоплатиЗаТару = "col_c2";
-        public const string СпосібДоставки = "col_c3";
-        public const string ЧасДоставкиЗ = "col_c4";
-        public const string ЧасДоставкиДо = "col_c5";
-        public const string ПовернутиТару = "col_c6";
-        public const string ДатаПоверненняТари = "col_c7";
-        public const string Курс = "col_c8";
-        public const string Кратність = "col_d2";
-        public const string Коментар = "col_b2";
-		
+    {		
         public РеалізаціяТоварівТаПослуг_Select() : base(Config.Kernel, "tab_a36") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -6747,6 +7063,17 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ВстановленняЦінНоменклатури"
     
+    public static class ВстановленняЦінНоменклатури_Const
+    {
+        public const string Table = "tab_a42";
+        
+        public const string Назва = "col_a1";
+        public const string Проведений = "col_a2";
+        public const string ДатаДок = "col_g7";
+        public const string НомерДок = "col_g8";
+        public const string Коментар = "col_g9";
+    }
+	
     
     public class ВстановленняЦінНоменклатури_Objest : DocumentObject
     {
@@ -6864,14 +7191,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ВстановленняЦінНоменклатури_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_a1";
-        public const string Проведений = "col_a2";
-        public const string ДатаДок = "col_g7";
-        public const string НомерДок = "col_g8";
-        public const string Коментар = "col_g9";
-		
+    {		
         public ВстановленняЦінНоменклатури_Select() : base(Config.Kernel, "tab_a42") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -6999,6 +7319,27 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ПрихіднийКасовийОрдер"
     
+    public static class ПрихіднийКасовийОрдер_Const
+    {
+        public const string Table = "tab_a44";
+        
+        public const string Назва = "col_a4";
+        public const string Проведений = "col_a5";
+        public const string ДатаДок = "col_h6";
+        public const string НомерДок = "col_h7";
+        public const string Організація = "col_h8";
+        public const string Каса = "col_h9";
+        public const string СумаДокументу = "col_i1";
+        public const string ГосподарськаОперація = "col_i2";
+        public const string Основа = "col_i3";
+        public const string Контрагент = "col_i4";
+        public const string БанківськийРахунок = "col_i5";
+        public const string Валюта = "col_i6";
+        public const string СтаттяРухуКоштів = "col_a1";
+        public const string КасаВідправник = "col_a2";
+        public const string Коментар = "col_a3";
+    }
+	
     
     public class ПрихіднийКасовийОрдер_Objest : DocumentObject
     {
@@ -7166,24 +7507,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ПрихіднийКасовийОрдер_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_a4";
-        public const string Проведений = "col_a5";
-        public const string ДатаДок = "col_h6";
-        public const string НомерДок = "col_h7";
-        public const string Організація = "col_h8";
-        public const string Каса = "col_h9";
-        public const string СумаДокументу = "col_i1";
-        public const string ГосподарськаОперація = "col_i2";
-        public const string Основа = "col_i3";
-        public const string Контрагент = "col_i4";
-        public const string БанківськийРахунок = "col_i5";
-        public const string Валюта = "col_i6";
-        public const string СтаттяРухуКоштів = "col_a1";
-        public const string КасаВідправник = "col_a2";
-        public const string Коментар = "col_a3";
-		
+    {		
         public ПрихіднийКасовийОрдер_Select() : base(Config.Kernel, "tab_a44") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -7311,6 +7635,27 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "РозхіднийКасовийОрдер"
     
+    public static class РозхіднийКасовийОрдер_Const
+    {
+        public const string Table = "tab_a48";
+        
+        public const string Назва = "col_a1";
+        public const string Проведений = "col_a2";
+        public const string ДатаДок = "col_j9";
+        public const string НомерДок = "col_k1";
+        public const string Організація = "col_k2";
+        public const string Каса = "col_k3";
+        public const string ОрганізаціяОтримувач = "col_k4";
+        public const string ГосподарськаОперація = "col_k5";
+        public const string КасаОтримувач = "col_k6";
+        public const string Контрагент = "col_k7";
+        public const string БанківськийРахунок = "col_k8";
+        public const string Валюта = "col_k9";
+        public const string СтаттяРухуКоштів = "col_l2";
+        public const string Підрозділ = "col_l3";
+        public const string Коментар = "col_l1";
+    }
+	
     
     public class РозхіднийКасовийОрдер_Objest : DocumentObject
     {
@@ -7478,24 +7823,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class РозхіднийКасовийОрдер_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_a1";
-        public const string Проведений = "col_a2";
-        public const string ДатаДок = "col_j9";
-        public const string НомерДок = "col_k1";
-        public const string Організація = "col_k2";
-        public const string Каса = "col_k3";
-        public const string ОрганізаціяОтримувач = "col_k4";
-        public const string ГосподарськаОперація = "col_k5";
-        public const string КасаОтримувач = "col_k6";
-        public const string Контрагент = "col_k7";
-        public const string БанківськийРахунок = "col_k8";
-        public const string Валюта = "col_k9";
-        public const string СтаттяРухуКоштів = "col_l2";
-        public const string Підрозділ = "col_l3";
-        public const string Коментар = "col_l1";
-		
+    {		
         public РозхіднийКасовийОрдер_Select() : base(Config.Kernel, "tab_a48") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -7629,6 +7957,31 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ПереміщенняТоварів"
     
+    public static class ПереміщенняТоварів_Const
+    {
+        public const string Table = "tab_a31";
+        
+        public const string Назва = "col_b9";
+        public const string Проведений = "col_c1";
+        public const string ДатаДок = "col_a1";
+        public const string НомерДок = "col_a2";
+        public const string Організація = "col_a3";
+        public const string БанківськийРахунокОрганізації = "col_a4";
+        public const string ВидЦіни = "col_a5";
+        public const string ОрганізаціяОтримувач = "col_a7";
+        public const string Відповідальний = "col_a8";
+        public const string Підрозділ = "col_a9";
+        public const string СкладВідправник = "col_b1";
+        public const string СкладОтримувач = "col_b2";
+        public const string Статус = "col_b3";
+        public const string ГосподарськаОперація = "col_b4";
+        public const string СпосібДоставки = "col_b5";
+        public const string АдресДоставки = "col_b6";
+        public const string ЧасДоставкиЗ = "col_b7";
+        public const string ЧасДоставкиДо = "col_b8";
+        public const string Коментар = "col_a6";
+    }
+	
     
     public class ПереміщенняТоварів_Objest : DocumentObject
     {
@@ -7816,28 +8169,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ПереміщенняТоварів_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_b9";
-        public const string Проведений = "col_c1";
-        public const string ДатаДок = "col_a1";
-        public const string НомерДок = "col_a2";
-        public const string Організація = "col_a3";
-        public const string БанківськийРахунокОрганізації = "col_a4";
-        public const string ВидЦіни = "col_a5";
-        public const string ОрганізаціяОтримувач = "col_a7";
-        public const string Відповідальний = "col_a8";
-        public const string Підрозділ = "col_a9";
-        public const string СкладВідправник = "col_b1";
-        public const string СкладОтримувач = "col_b2";
-        public const string Статус = "col_b3";
-        public const string ГосподарськаОперація = "col_b4";
-        public const string СпосібДоставки = "col_b5";
-        public const string АдресДоставки = "col_b6";
-        public const string ЧасДоставкиЗ = "col_b7";
-        public const string ЧасДоставкиДо = "col_b8";
-        public const string Коментар = "col_a6";
-		
+    {		
         public ПереміщенняТоварів_Select() : base(Config.Kernel, "tab_a31") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -7965,6 +8297,32 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ПоверненняТоварівПостачальнику"
     
+    public static class ПоверненняТоварівПостачальнику_Const
+    {
+        public const string Table = "tab_a51";
+        
+        public const string Назва = "col_a2";
+        public const string Проведений = "col_a3";
+        public const string ДатаДок = "col_b9";
+        public const string НомерДок = "col_c1";
+        public const string Організація = "col_c2";
+        public const string Контрагент = "col_c3";
+        public const string Підрозділ = "col_c4";
+        public const string Валюта = "col_c5";
+        public const string Склад = "col_c6";
+        public const string СумаДокументу = "col_c7";
+        public const string ГосподарськаОперація = "col_c9";
+        public const string БанківськийРахунокОрганізації = "col_d1";
+        public const string БанківськийРахунокКонтрагента = "col_d2";
+        public const string Договір = "col_d3";
+        public const string СпосібДоставки = "col_d4";
+        public const string АдресДоставки = "col_d5";
+        public const string ЧасДоставкиЗ = "col_d6";
+        public const string ЧасДоставкиДо = "col_d7";
+        public const string Каса = "col_a1";
+        public const string Коментар = "col_c8";
+    }
+	
     
     public class ПоверненняТоварівПостачальнику_Objest : DocumentObject
     {
@@ -8157,29 +8515,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ПоверненняТоварівПостачальнику_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_a2";
-        public const string Проведений = "col_a3";
-        public const string ДатаДок = "col_b9";
-        public const string НомерДок = "col_c1";
-        public const string Організація = "col_c2";
-        public const string Контрагент = "col_c3";
-        public const string Підрозділ = "col_c4";
-        public const string Валюта = "col_c5";
-        public const string Склад = "col_c6";
-        public const string СумаДокументу = "col_c7";
-        public const string ГосподарськаОперація = "col_c9";
-        public const string БанківськийРахунокОрганізації = "col_d1";
-        public const string БанківськийРахунокКонтрагента = "col_d2";
-        public const string Договір = "col_d3";
-        public const string СпосібДоставки = "col_d4";
-        public const string АдресДоставки = "col_d5";
-        public const string ЧасДоставкиЗ = "col_d6";
-        public const string ЧасДоставкиДо = "col_d7";
-        public const string Каса = "col_a1";
-        public const string Коментар = "col_c8";
-		
+    {		
         public ПоверненняТоварівПостачальнику_Select() : base(Config.Kernel, "tab_a51") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -8325,6 +8661,29 @@ namespace StorageAndTrade_1_0.Документи
     
     #region DOCUMENT "ПоверненняТоварівВідКлієнта"
     
+    public static class ПоверненняТоварівВідКлієнта_Const
+    {
+        public const string Table = "tab_a53";
+        
+        public const string Назва = "col_a2";
+        public const string Проведений = "col_a4";
+        public const string ДатаДок = "col_e6";
+        public const string НомерДок = "col_e7";
+        public const string Організація = "col_e8";
+        public const string Валюта = "col_e9";
+        public const string СумаДокументу = "col_f1";
+        public const string Склад = "col_f2";
+        public const string Підрозділ = "col_f3";
+        public const string Менеджер = "col_f5";
+        public const string ДокументПродажу = "col_f7";
+        public const string ГосподарськаОперація = "col_f8";
+        public const string Договір = "col_f9";
+        public const string ПричинаПовернення = "col_g1";
+        public const string Контрагент = "col_g2";
+        public const string Каса = "col_a1";
+        public const string Коментар = "col_f6";
+    }
+	
     
     public class ПоверненняТоварівВідКлієнта_Objest : DocumentObject
     {
@@ -8502,26 +8861,7 @@ namespace StorageAndTrade_1_0.Документи
     
     
     public class ПоверненняТоварівВідКлієнта_Select : DocumentSelect, IDisposable
-    {
-        
-        public const string Назва = "col_a2";
-        public const string Проведений = "col_a4";
-        public const string ДатаДок = "col_e6";
-        public const string НомерДок = "col_e7";
-        public const string Організація = "col_e8";
-        public const string Валюта = "col_e9";
-        public const string СумаДокументу = "col_f1";
-        public const string Склад = "col_f2";
-        public const string Підрозділ = "col_f3";
-        public const string Менеджер = "col_f5";
-        public const string ДокументПродажу = "col_f7";
-        public const string ГосподарськаОперація = "col_f8";
-        public const string Договір = "col_f9";
-        public const string ПричинаПовернення = "col_g1";
-        public const string Контрагент = "col_g2";
-        public const string Каса = "col_a1";
-        public const string Коментар = "col_f6";
-		
+    {		
         public ПоверненняТоварівВідКлієнта_Select() : base(Config.Kernel, "tab_a53") { }
         
         public bool Select() { return base.BaseSelect(); }
@@ -8678,6 +9018,18 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
     
     #region REGISTER "ЦіниНоменклатури"
     
+    public static class ЦіниНоменклатури_Const
+    {
+        public const string Table = "tab_a40";
+        
+        public const string Номенклатура = "col_f5";
+        public const string Характеристика = "col_f6";
+        public const string ВидЦіни = "col_f7";
+        public const string Ціна = "col_f8";
+        public const string Пакування = "col_f9";
+        public const string Валюта = "col_g2";
+    }
+	
     
     public class ЦіниНоменклатури_RecordsSet : RegisterInformationRecordsSet
     {
@@ -8687,13 +9039,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Номенклатура = "col_f5";
-        public const string Характеристика = "col_f6";
-        public const string ВидЦіни = "col_f7";
-        public const string Ціна = "col_f8";
-        public const string Пакування = "col_f9";
-        public const string Валюта = "col_g2";
 		
         public List<Record> Records { get; set; }
         
@@ -8834,6 +9179,15 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
   
     #region REGISTER "КурсиВалют"
     
+    public static class КурсиВалют_Const
+    {
+        public const string Table = "tab_a59";
+        
+        public const string Валюта = "col_a1";
+        public const string Курс = "col_a2";
+        public const string Кратність = "col_a3";
+    }
+	
     
     public class КурсиВалют_RecordsSet : RegisterInformationRecordsSet
     {
@@ -8843,10 +9197,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Валюта = "col_a1";
-        public const string Курс = "col_a2";
-        public const string Кратність = "col_a3";
 		
         public List<Record> Records { get; set; }
         
@@ -8952,6 +9302,17 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     #region REGISTER "ТовариНаСкладах"
     
+    public static class ТовариНаСкладах_Const
+    {
+        public const string Table = "tab_a38";
+        
+        public const string Номенклатура = "col_e4";
+        public const string ХарактеристикаНоменклатури = "col_e5";
+        public const string Склад = "col_e6";
+        public const string ВНаявності = "col_e7";
+        public const string ДоВідвантаження = "col_e8";
+    }
+	
     
     public class ТовариНаСкладах_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -8961,12 +9322,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Номенклатура = "col_e4";
-        public const string ХарактеристикаНоменклатури = "col_e5";
-        public const string Склад = "col_e6";
-        public const string ВНаявності = "col_e7";
-        public const string ДоВідвантаження = "col_e8";
 		
         public List<Record> Records { get; set; }
         
@@ -9100,6 +9455,17 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "ТовариОрганізацій"
     
+    public static class ТовариОрганізацій_Const
+    {
+        public const string Table = "tab_a39";
+        
+        public const string Організація = "col_e9";
+        public const string Номенклатура = "col_f2";
+        public const string ХарактеристикаНоменклатури = "col_f3";
+        public const string Кількість = "col_f1";
+        public const string ГосподарськаОперація = "col_f4";
+    }
+	
     
     public class ТовариОрганізацій_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -9109,12 +9475,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Організація = "col_e9";
-        public const string Номенклатура = "col_f2";
-        public const string ХарактеристикаНоменклатури = "col_f3";
-        public const string Кількість = "col_f1";
-        public const string ГосподарськаОперація = "col_f4";
 		
         public List<Record> Records { get; set; }
         
@@ -9248,6 +9608,16 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "РухТоварів"
     
+    public static class РухТоварів_Const
+    {
+        public const string Table = "tab_a41";
+        
+        public const string Номенклатура = "col_g3";
+        public const string ХарактеристикаНоменклатури = "col_g4";
+        public const string Склад = "col_g5";
+        public const string Кількість = "col_g6";
+    }
+	
     
     public class РухТоварів_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -9257,11 +9627,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Номенклатура = "col_g3";
-        public const string ХарактеристикаНоменклатури = "col_g4";
-        public const string Склад = "col_g5";
-        public const string Кількість = "col_g6";
 		
         public List<Record> Records { get; set; }
         
@@ -9390,7 +9755,21 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     #endregion
   
     #region REGISTER "ЗамовленняКлієнтів"
-    
+    ///<summary>
+    ///Замовлення клієнтів.
+    ///</summary>
+    public static class ЗамовленняКлієнтів_Const
+    {
+        public const string Table = "tab_a55";
+        
+        public const string ЗамовленняКлієнта = "col_a1";
+        public const string Номенклатура = "col_a2";
+        public const string ХарактеристикаНоменклатури = "col_a3";
+        public const string Склад = "col_a4";
+        public const string Замовлено = "col_a5";
+        public const string Сума = "col_a6";
+    }
+	
     ///<summary>
     ///Замовлення клієнтів.
     ///</summary>
@@ -9402,13 +9781,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string ЗамовленняКлієнта = "col_a1";
-        public const string Номенклатура = "col_a2";
-        public const string ХарактеристикаНоменклатури = "col_a3";
-        public const string Склад = "col_a4";
-        public const string Замовлено = "col_a5";
-        public const string Сума = "col_a6";
 		
         public List<Record> Records { get; set; }
         
@@ -9561,6 +9933,15 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "РозрахункиЗКлієнтами"
     
+    public static class РозрахункиЗКлієнтами_Const
+    {
+        public const string Table = "tab_a56";
+        
+        public const string Валюта = "col_a2";
+        public const string ЗамовленняКлієнта = "col_a5";
+        public const string Сума = "col_a4";
+    }
+	
     
     public class РозрахункиЗКлієнтами_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -9570,10 +9951,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Валюта = "col_a2";
-        public const string ЗамовленняКлієнта = "col_a5";
-        public const string Сума = "col_a4";
 		
         public List<Record> Records { get; set; }
         
@@ -9686,6 +10063,18 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "РозрахункиЗКлієнтамиПоДокументах"
     
+    public static class РозрахункиЗКлієнтамиПоДокументах_Const
+    {
+        public const string Table = "tab_a57";
+        
+        public const string Договір = "col_a1";
+        public const string Валюта = "col_a2";
+        public const string РозрахунковийДокумент = "col_a3";
+        public const string Заборгованість = "col_a4";
+        public const string Передоплата = "col_a6";
+        public const string ГосподарськаОперація = "col_a7";
+    }
+	
     
     public class РозрахункиЗКлієнтамиПоДокументах_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -9695,13 +10084,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Договір = "col_a1";
-        public const string Валюта = "col_a2";
-        public const string РозрахунковийДокумент = "col_a3";
-        public const string Заборгованість = "col_a4";
-        public const string Передоплата = "col_a6";
-        public const string ГосподарськаОперація = "col_a7";
 		
         public List<Record> Records { get; set; }
         
@@ -9839,6 +10221,18 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "ВільніЗалишки"
     
+    public static class ВільніЗалишки_Const
+    {
+        public const string Table = "tab_a58";
+        
+        public const string Номенклатура = "col_a5";
+        public const string ХарактеристикаНоменклатури = "col_a6";
+        public const string Склад = "col_a7";
+        public const string ВНаявності = "col_a8";
+        public const string ВРезервіЗіСкладу = "col_b1";
+        public const string ВРезервіПідЗамовлення = "col_b2";
+    }
+	
     
     public class ВільніЗалишки_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -9848,13 +10242,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Номенклатура = "col_a5";
-        public const string ХарактеристикаНоменклатури = "col_a6";
-        public const string Склад = "col_a7";
-        public const string ВНаявності = "col_a8";
-        public const string ВРезервіЗіСкладу = "col_b1";
-        public const string ВРезервіПідЗамовлення = "col_b2";
 		
         public List<Record> Records { get; set; }
         
@@ -9992,6 +10379,17 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "ЗамовленняПостачальникам"
     
+    public static class ЗамовленняПостачальникам_Const
+    {
+        public const string Table = "tab_a60";
+        
+        public const string ЗамовленняПостачальнику = "col_a1";
+        public const string Номенклатура = "col_a2";
+        public const string ХарактеристикаНоменклатури = "col_a3";
+        public const string Склад = "col_a4";
+        public const string Замовлено = "col_a5";
+    }
+	
     
     public class ЗамовленняПостачальникам_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -10001,12 +10399,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string ЗамовленняПостачальнику = "col_a1";
-        public const string Номенклатура = "col_a2";
-        public const string ХарактеристикаНоменклатури = "col_a3";
-        public const string Склад = "col_a4";
-        public const string Замовлено = "col_a5";
 		
         public List<Record> Records { get; set; }
         
@@ -10153,6 +10545,17 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "РозрахункиЗПостачальниками"
     
+    public static class РозрахункиЗПостачальниками_Const
+    {
+        public const string Table = "tab_a61";
+        
+        public const string ЗамовленняПостачальнику = "col_a6";
+        public const string Валюта = "col_a7";
+        public const string Сума = "col_a8";
+        public const string ГосподарськаОперація = "col_a9";
+        public const string ФормаОплати = "col_b1";
+    }
+	
     
     public class РозрахункиЗПостачальниками_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -10162,12 +10565,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string ЗамовленняПостачальнику = "col_a6";
-        public const string Валюта = "col_a7";
-        public const string Сума = "col_a8";
-        public const string ГосподарськаОперація = "col_a9";
-        public const string ФормаОплати = "col_b1";
 		
         public List<Record> Records { get; set; }
         
@@ -10288,6 +10685,16 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
   
     #region REGISTER "ТовариДоПоступлення"
     
+    public static class ТовариДоПоступлення_Const
+    {
+        public const string Table = "tab_a62";
+        
+        public const string Номенклатура = "col_b2";
+        public const string ХарактеристикаНоменклатури = "col_b3";
+        public const string Склад = "col_b4";
+        public const string ДоПоступлення = "col_b5";
+    }
+	
     
     public class ТовариДоПоступлення_RecordsSet : RegisterAccumulationRecordsSet
     {
@@ -10297,11 +10704,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records = new List<Record>();
             Filter = new SelectFilter();
         }
-        
-        public const string Номенклатура = "col_b2";
-        public const string ХарактеристикаНоменклатури = "col_b3";
-        public const string Склад = "col_b4";
-        public const string ДоПоступлення = "col_b5";
 		
         public List<Record> Records { get; set; }
         

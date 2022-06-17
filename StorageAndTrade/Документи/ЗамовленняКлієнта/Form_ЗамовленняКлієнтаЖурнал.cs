@@ -74,14 +74,15 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняКлієнта_Select замовленняКлієнта_Select = new Документи.ЗамовленняКлієнта_Select();
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.Назва);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.НомерДок);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.ДатаДок);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Select.СумаДокументу);
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Назва);
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Проведений);
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.НомерДок);
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.ДатаДок);
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.СумаДокументу);
 
 			//ORDER
-			замовленняКлієнта_Select.QuerySelect.Order.Add(Документи.ЗамовленняКлієнта_Select.ДатаДок, SelectOrder.ASC);
-			замовленняКлієнта_Select.QuerySelect.Order.Add(Документи.ЗамовленняКлієнта_Select.НомерДок, SelectOrder.ASC);
+			замовленняКлієнта_Select.QuerySelect.Order.Add(Документи.ЗамовленняКлієнта_Const.ДатаДок, SelectOrder.ASC);
+			замовленняКлієнта_Select.QuerySelect.Order.Add(Документи.ЗамовленняКлієнта_Const.НомерДок, SelectOrder.ASC);
 
 			замовленняКлієнта_Select.Select();
 			while (замовленняКлієнта_Select.MoveNext())
@@ -91,10 +92,11 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Документи.ЗамовленняКлієнта_Select.Назва].ToString(),
-					НомерДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.НомерДок].ToString(),
-					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Select.ДатаДок].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняКлієнта_Select.СумаДокументу], 2)
+					Назва = cur.Fields[Документи.ЗамовленняКлієнта_Const.Назва].ToString(),
+					НомерДок = cur.Fields[Документи.ЗамовленняКлієнта_Const.НомерДок].ToString(),
+					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Const.ДатаДок].ToString(),
+					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняКлієнта_Const.СумаДокументу], 2),
+					Проведений = (bool)cur.Fields[Документи.ЗамовленняКлієнта_Const.Проведений]
 				});
 
 				if (DocumentPointerItem != null && selectRow == 0) 
@@ -231,15 +233,10 @@ namespace StorageAndTrade
 			}
 		}
 
-        private void toolStripButtonSpend_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
+		private void SpendDocuments(bool spend, string message)
         {
 			if (dataGridViewRecords.SelectedRows.Count != 0 &&
-				MessageBox.Show("Відмінити проведення?", "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
+				MessageBox.Show(message, "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
 			{
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
@@ -249,12 +246,23 @@ namespace StorageAndTrade
 					Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
 					Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject();
 
-					замовленняКлієнта_Objest.Проведений = false;
+					замовленняКлієнта_Objest.Проведений = spend;
 					замовленняКлієнта_Objest.Save();
 				}
 
 				LoadRecords();
 			}
+		}
+
+
+		private void toolStripButtonSpend_Click(object sender, EventArgs e)
+        {
+			SpendDocuments(true, "Провести?");
+		}
+
+        private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
+        {
+			SpendDocuments(false, "Відмінити проведення?");
 		}
     }
 }

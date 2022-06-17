@@ -71,10 +71,10 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.БанківськіРахункиОрганізацій_Select банківськіРахункиОрганізацій_Select = new Довідники.БанківськіРахункиОрганізацій_Select();
-			банківськіРахункиОрганізацій_Select.QuerySelect.Field.Add(Довідники.БанківськіРахункиОрганізацій_Select.Назва);
+			банківськіРахункиОрганізацій_Select.QuerySelect.Field.Add(Довідники.БанківськіРахункиОрганізацій_Const.Назва);
 
 			//ORDER
-			банківськіРахункиОрганізацій_Select.QuerySelect.Order.Add(Довідники.БанківськіРахункиОрганізацій_Select.Назва, SelectOrder.ASC);
+			банківськіРахункиОрганізацій_Select.QuerySelect.Order.Add(Довідники.БанківськіРахункиОрганізацій_Const.Назва, SelectOrder.ASC);
 
 			банківськіРахункиОрганізацій_Select.Select();
 			while (банківськіРахункиОрганізацій_Select.MoveNext())
@@ -84,7 +84,7 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.БанківськіРахункиОрганізацій_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.БанківськіРахункиОрганізацій_Const.Назва].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)

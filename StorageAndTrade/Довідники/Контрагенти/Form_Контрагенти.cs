@@ -80,14 +80,14 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.Контрагенти_Select контрагенти_Select = new Довідники.Контрагенти_Select();
-			контрагенти_Select.QuerySelect.Field.Add(Довідники.Контрагенти_Select.Назва);
+			контрагенти_Select.QuerySelect.Field.Add(Довідники.Контрагенти_Const.Назва);
 
 			//WHERE
 			if (Контрагенти_Папки_Дерево.Parent_Pointer != null)
-				контрагенти_Select.QuerySelect.Where.Add(new Where(Довідники.Контрагенти_Select.Папка, Comparison.EQ, Контрагенти_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
+				контрагенти_Select.QuerySelect.Where.Add(new Where(Довідники.Контрагенти_Const.Папка, Comparison.EQ, Контрагенти_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
 
 			//ORDER
-			контрагенти_Select.QuerySelect.Order.Add(Довідники.Контрагенти_Select.Назва, SelectOrder.ASC);
+			контрагенти_Select.QuerySelect.Order.Add(Довідники.Контрагенти_Const.Назва, SelectOrder.ASC);
 
 			контрагенти_Select.Select();
 			while (контрагенти_Select.MoveNext())
@@ -97,7 +97,7 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Контрагенти_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.Контрагенти_Const.Назва].ToString()
 				});
 			}
 

@@ -71,11 +71,11 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.Валюти_Select валюти_Select = new Довідники.Валюти_Select();
-			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Select.Назва);
-			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Select.Код);
+			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Const.Назва);
+			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Const.Код);
 
 			//ORDER
-			валюти_Select.QuerySelect.Order.Add(Довідники.Валюти_Select.Назва, SelectOrder.ASC);
+			валюти_Select.QuerySelect.Order.Add(Довідники.Валюти_Const.Назва, SelectOrder.ASC);
 
 			валюти_Select.Select();
 			while (валюти_Select.MoveNext())
@@ -85,8 +85,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Валюти_Select.Назва].ToString(),
-					Код = cur.Fields[Довідники.Валюти_Select.Код].ToString()
+					Назва = cur.Fields[Довідники.Валюти_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.Валюти_Const.Код].ToString()
 				});
 
 				if (DirectoryPointerItem != null)

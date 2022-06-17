@@ -74,11 +74,11 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.Склади_Select склади_Select = new Довідники.Склади_Select();
-			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Select.Назва);
-			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Select.ТипСкладу);
+			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Const.Назва);
+			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Const.ТипСкладу);
 
 			//ORDER
-			склади_Select.QuerySelect.Order.Add(Довідники.Склади_Select.Назва, SelectOrder.ASC);
+			склади_Select.QuerySelect.Order.Add(Довідники.Склади_Const.Назва, SelectOrder.ASC);
 
 			склади_Select.Select();
 			while (склади_Select.MoveNext())
@@ -88,8 +88,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Склади_Select.Назва].ToString(),
-					ТипСкладу = ((Перелічення.ТипиСкладів)cur.Fields[Довідники.Склади_Select.ТипСкладу]).ToString()
+					Назва = cur.Fields[Довідники.Склади_Const.Назва].ToString(),
+					ТипСкладу = ((Перелічення.ТипиСкладів)cur.Fields[Довідники.Склади_Const.ТипСкладу]).ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)

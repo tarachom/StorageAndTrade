@@ -71,10 +71,10 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.ДоговориКонтрагентів_Select договориКонтрагентів_Select = new Довідники.ДоговориКонтрагентів_Select();
-			договориКонтрагентів_Select.QuerySelect.Field.Add(Довідники.ДоговориКонтрагентів_Select.Назва);
+			договориКонтрагентів_Select.QuerySelect.Field.Add(Довідники.ДоговориКонтрагентів_Const.Назва);
 
 			//ORDER
-			договориКонтрагентів_Select.QuerySelect.Order.Add(Довідники.ДоговориКонтрагентів_Select.Назва, SelectOrder.ASC);
+			договориКонтрагентів_Select.QuerySelect.Order.Add(Довідники.ДоговориКонтрагентів_Const.Назва, SelectOrder.ASC);
 
 			договориКонтрагентів_Select.Select();
 			while (договориКонтрагентів_Select.MoveNext())
@@ -84,7 +84,7 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.ДоговориКонтрагентів_Select.Назва].ToString()
+					Назва = cur.Fields[Довідники.ДоговориКонтрагентів_Const.Назва].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)

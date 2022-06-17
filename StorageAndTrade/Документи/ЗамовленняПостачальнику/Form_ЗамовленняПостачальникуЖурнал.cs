@@ -69,13 +69,13 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняПостачальнику_Select замовленняПостачальнику_Select = new Документи.ЗамовленняПостачальнику_Select();
-			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Select.НомерДок);
-			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Select.ДатаДок);
-			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Select.СумаДокументу);
+			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Const.НомерДок);
+			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Const.ДатаДок);
+			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Const.СумаДокументу);
 
 			//ORDER
-			замовленняПостачальнику_Select.QuerySelect.Order.Add(Документи.ЗамовленняПостачальнику_Select.ДатаДок, SelectOrder.ASC);
-			замовленняПостачальнику_Select.QuerySelect.Order.Add(Документи.ЗамовленняПостачальнику_Select.НомерДок, SelectOrder.ASC);
+			замовленняПостачальнику_Select.QuerySelect.Order.Add(Документи.ЗамовленняПостачальнику_Const.ДатаДок, SelectOrder.ASC);
+			замовленняПостачальнику_Select.QuerySelect.Order.Add(Документи.ЗамовленняПостачальнику_Const.НомерДок, SelectOrder.ASC);
 
 			замовленняПостачальнику_Select.Select();
 			while (замовленняПостачальнику_Select.MoveNext())
@@ -85,11 +85,11 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = "Замовлення постачальнику №" + cur.Fields[Документи.ЗамовленняПостачальнику_Select.НомерДок].ToString() + " від " +
-							 DateTime.Parse(cur.Fields[Документи.ЗамовленняПостачальнику_Select.ДатаДок].ToString()).ToShortDateString(),
-					НомерДок = cur.Fields[Документи.ЗамовленняПостачальнику_Select.НомерДок].ToString(),
-					ДатаДок = cur.Fields[Документи.ЗамовленняПостачальнику_Select.ДатаДок].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняПостачальнику_Select.СумаДокументу], 2)
+					Назва = "Замовлення постачальнику №" + cur.Fields[Документи.ЗамовленняПостачальнику_Const.НомерДок].ToString() + " від " +
+							 DateTime.Parse(cur.Fields[Документи.ЗамовленняПостачальнику_Const.ДатаДок].ToString()).ToShortDateString(),
+					НомерДок = cur.Fields[Документи.ЗамовленняПостачальнику_Const.НомерДок].ToString(),
+					ДатаДок = cur.Fields[Документи.ЗамовленняПостачальнику_Const.ДатаДок].ToString(),
+					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняПостачальнику_Const.СумаДокументу], 2)
 				});
 
 				//if (DirectoryPointerItem != null && selectRow == 0) 

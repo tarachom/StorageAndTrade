@@ -73,18 +73,18 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.ВидиНоменклатури_Select видиНоменклатури_Select = new Довідники.ВидиНоменклатури_Select();
-			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Select.Назва);
-			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Select.ТипНоменклатури);
+			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Const.Назва);
+			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Const.ТипНоменклатури);
 
 			//JOIN 1
 			string JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
 			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Fields["Назва"].NameInTable;
 
 			видиНоменклатури_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join1"));
-			видиНоменклатури_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.ВидиНоменклатури_Select.ОдиницяВиміру, видиНоменклатури_Select.QuerySelect.Table));
+			видиНоменклатури_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.ВидиНоменклатури_Const.ОдиницяВиміру, видиНоменклатури_Select.QuerySelect.Table));
 
 			//ORDER
-			видиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ВидиНоменклатури_Select.Назва, SelectOrder.ASC);
+			видиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ВидиНоменклатури_Const.Назва, SelectOrder.ASC);
 
 			видиНоменклатури_Select.Select();
 			while (видиНоменклатури_Select.MoveNext())
@@ -94,9 +94,9 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.ВидиНоменклатури_Select.Назва].ToString(),
+					Назва = cur.Fields[Довідники.ВидиНоменклатури_Const.Назва].ToString(),
 					ОдиницяВиміру = cur.Fields["join1"].ToString(),
-					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.ВидиНоменклатури_Select.ТипНоменклатури]).ToString()
+					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.ВидиНоменклатури_Const.ТипНоменклатури]).ToString()
 				});
 
 				if (DirectoryPointerItem != null)

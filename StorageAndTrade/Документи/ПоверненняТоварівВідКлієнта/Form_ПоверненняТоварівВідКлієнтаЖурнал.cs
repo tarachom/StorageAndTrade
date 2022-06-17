@@ -69,13 +69,13 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПоверненняТоварівВідКлієнта_Select поверненняТоварівВідКлієнта_Select = new Документи.ПоверненняТоварівВідКлієнта_Select();
-			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Select.НомерДок);
-			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Select.ДатаДок);
-			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Select.СумаДокументу);
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок);
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок);
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.СумаДокументу);
 
 			//ORDER
-			поверненняТоварівВідКлієнта_Select.QuerySelect.Order.Add(Документи.ПоверненняТоварівВідКлієнта_Select.ДатаДок, SelectOrder.ASC);
-			поверненняТоварівВідКлієнта_Select.QuerySelect.Order.Add(Документи.ПоверненняТоварівВідКлієнта_Select.НомерДок, SelectOrder.ASC);
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Order.Add(Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок, SelectOrder.ASC);
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Order.Add(Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок, SelectOrder.ASC);
 
 			поверненняТоварівВідКлієнта_Select.Select();
 			while (поверненняТоварівВідКлієнта_Select.MoveNext())
@@ -85,11 +85,11 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = "Повернення від клієнта №" + cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Select.НомерДок].ToString() + " від " +
-							 DateTime.Parse(cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Select.ДатаДок].ToString()).ToShortDateString(),
-					НомерДок = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Select.НомерДок].ToString(),
-					ДатаДок = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Select.ДатаДок].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Select.СумаДокументу], 2)
+					Назва = "Повернення від клієнта №" + cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок].ToString() + " від " +
+							 DateTime.Parse(cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок].ToString()).ToShortDateString(),
+					НомерДок = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок].ToString(),
+					ДатаДок = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок].ToString(),
+					Сума = Math.Round((decimal)cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.СумаДокументу], 2)
 				});
 
 				//if (DirectoryPointerItem != null && selectRow == 0) 
