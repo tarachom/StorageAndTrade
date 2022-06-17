@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 17.06.2022 12:56:18
+ * Дата конфігурації: 17.06.2022 16:11:16
  *
  */
 
@@ -167,7 +167,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Організації_Const
     {
-        public const string Table = "tab_a01";
+        public const string TABLE = "tab_a01";
         
         public const string Назва = "col_a1";
         public const string Код = "col_a2";
@@ -478,7 +478,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Номенклатура_Const
     {
-        public const string Table = "tab_a03";
+        public const string TABLE = "tab_a03";
         
         public const string Назва = "col_b1";
         public const string Код = "col_b2";
@@ -689,7 +689,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Виробники_Const
     {
-        public const string Table = "tab_a04";
+        public const string TABLE = "tab_a04";
         
         public const string Назва = "col_b6";
         public const string Код = "col_b7";
@@ -844,7 +844,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class ВидиНоменклатури_Const
     {
-        public const string Table = "tab_a05";
+        public const string TABLE = "tab_a05";
         
         public const string Назва = "col_b8";
         public const string Код = "col_b9";
@@ -1020,7 +1020,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class ПакуванняОдиниціВиміру_Const
     {
-        public const string Table = "tab_a06";
+        public const string TABLE = "tab_a06";
         
         public const string Назва = "col_c1";
         public const string Код = "col_c2";
@@ -1189,7 +1189,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Валюти_Const
     {
-        public const string Table = "tab_a07";
+        public const string TABLE = "tab_a07";
         
         public const string Назва = "col_c5";
         public const string Код = "col_c6";
@@ -1344,7 +1344,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Контрагенти_Const
     {
-        public const string Table = "tab_a08";
+        public const string TABLE = "tab_a08";
         
         public const string Назва = "col_c7";
         public const string Код = "col_c8";
@@ -1634,7 +1634,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Склади_Const
     {
-        public const string Table = "tab_a10";
+        public const string TABLE = "tab_a10";
         
         public const string Назва = "col_d9";
         public const string Код = "col_e1";
@@ -1938,7 +1938,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class ВидиЦін_Const
     {
-        public const string Table = "tab_a12";
+        public const string TABLE = "tab_a12";
         
         public const string Назва = "col_e9";
         public const string Код = "col_f1";
@@ -2100,7 +2100,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class ВидиЦінПостачальників_Const
     {
-        public const string Table = "tab_a13";
+        public const string TABLE = "tab_a13";
         
         public const string Назва = "col_f3";
         public const string Код = "col_f4";
@@ -2262,7 +2262,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Користувачі_Const
     {
-        public const string Table = "tab_a14";
+        public const string TABLE = "tab_a14";
         
         public const string Назва = "col_f6";
         public const string Код = "col_f7";
@@ -2545,7 +2545,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class ФізичніОсоби_Const
     {
-        public const string Table = "tab_a16";
+        public const string TABLE = "tab_a16";
         
         public const string Назва = "col_g7";
         public const string Код = "col_g8";
@@ -2835,7 +2835,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class СтруктураПідприємства_Const
     {
-        public const string Table = "tab_a18";
+        public const string TABLE = "tab_a18";
         
         public const string Назва = "col_h8";
         public const string Код = "col_h9";
@@ -2997,7 +2997,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class КраїниСвіту_Const
     {
-        public const string Table = "tab_a19";
+        public const string TABLE = "tab_a19";
         
         public const string Назва = "col_i2";
         public const string Код = "col_i3";
@@ -3159,7 +3159,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Файли_Const
     {
-        public const string Table = "tab_a20";
+        public const string TABLE = "tab_a20";
         
         public const string Назва = "col_i5";
         public const string Код = "col_i6";
@@ -3314,7 +3314,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class ХарактеристикиНоменклатури_Const
     {
-        public const string Table = "tab_a21";
+        public const string TABLE = "tab_a21";
         
         public const string Назва = "col_i7";
         public const string Код = "col_i8";
@@ -3483,7 +3483,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Номенклатура_Папки_Const
     {
-        public const string Table = "tab_a22";
+        public const string TABLE = "tab_a22";
         
         public const string Назва = "col_j1";
         public const string Код = "col_j2";
@@ -3645,7 +3645,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Контрагенти_Папки_Const
     {
-        public const string Table = "tab_a23";
+        public const string TABLE = "tab_a23";
         
         public const string Назва = "col_j4";
         public const string Код = "col_j5";
@@ -3807,7 +3807,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Склади_Папки_Const
     {
-        public const string Table = "tab_a24";
+        public const string TABLE = "tab_a24";
         
         public const string Назва = "col_j7";
         public const string Код = "col_j8";
@@ -3969,7 +3969,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class Каси_Const
     {
-        public const string Table = "tab_a26";
+        public const string TABLE = "tab_a26";
         
         public const string Назва = "col_k8";
         public const string Код = "col_k9";
@@ -4138,7 +4138,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class БанківськіРахункиОрганізацій_Const
     {
-        public const string Table = "tab_a27";
+        public const string TABLE = "tab_a27";
         
         public const string Назва = "col_l1";
         public const string Код = "col_l2";
@@ -4370,7 +4370,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class ДоговориКонтрагентів_Const
     {
-        public const string Table = "tab_a28";
+        public const string TABLE = "tab_a28";
         
         public const string Назва = "col_n4";
         public const string Код = "col_n5";
@@ -4644,7 +4644,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class БанківськіРахункиКонтрагентів_Const
     {
-        public const string Table = "tab_a29";
+        public const string TABLE = "tab_a29";
         
         public const string Назва = "col_n7";
         public const string Код = "col_n8";
@@ -4890,7 +4890,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///</summary>
     public static class СтаттяРухуКоштів_Const
     {
-        public const string Table = "tab_a45";
+        public const string TABLE = "tab_a45";
         
         public const string Назва = "col_i7";
         public const string Код = "col_i8";
@@ -5315,7 +5315,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ЗамовленняПостачальнику_Const
     {
-        public const string Table = "tab_a25";
+        public const string TABLE = "tab_a25";
         
         public const string Назва = "col_b8";
         public const string Проведений = "col_b9";
@@ -5547,7 +5547,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ЗамовленняПостачальнику " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_b8" }
 			);
         }
@@ -5733,7 +5733,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ПоступленняТоварівТаПослуг_Const
     {
-        public const string Table = "tab_a32";
+        public const string TABLE = "tab_a32";
         
         public const string Назва = "col_d4";
         public const string Проведений = "col_d5";
@@ -6001,7 +6001,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ПоступленняТоварівТаПослуг " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_d4" }
 			);
         }
@@ -6187,7 +6187,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ЗамовленняКлієнта_Const
     {
-        public const string Table = "tab_a34";
+        public const string TABLE = "tab_a34";
         
         public const string Назва = "col_d1";
         public const string Проведений = "col_d2";
@@ -6437,7 +6437,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ЗамовленняКлієнта " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_d1" }
 			);
         }
@@ -6617,7 +6617,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class РеалізаціяТоварівТаПослуг_Const
     {
-        public const string Table = "tab_a36";
+        public const string TABLE = "tab_a36";
         
         public const string Назва = "col_d3";
         public const string Проведений = "col_d4";
@@ -6879,7 +6879,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "РеалізаціяТоварівТаПослуг " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_d3" }
 			);
         }
@@ -7065,7 +7065,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ВстановленняЦінНоменклатури_Const
     {
-        public const string Table = "tab_a42";
+        public const string TABLE = "tab_a42";
         
         public const string Назва = "col_a1";
         public const string Проведений = "col_a2";
@@ -7171,7 +7171,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ВстановленняЦінНоменклатури " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_a1" }
 			);
         }
@@ -7321,7 +7321,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ПрихіднийКасовийОрдер_Const
     {
-        public const string Table = "tab_a44";
+        public const string TABLE = "tab_a44";
         
         public const string Назва = "col_a4";
         public const string Проведений = "col_a5";
@@ -7487,7 +7487,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ПрихіднийКасовийОрдер " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_a4" }
 			);
         }
@@ -7637,7 +7637,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class РозхіднийКасовийОрдер_Const
     {
-        public const string Table = "tab_a48";
+        public const string TABLE = "tab_a48";
         
         public const string Назва = "col_a1";
         public const string Проведений = "col_a2";
@@ -7803,7 +7803,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "РозхіднийКасовийОрдер " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_a1" }
 			);
         }
@@ -7959,7 +7959,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ПереміщенняТоварів_Const
     {
-        public const string Table = "tab_a31";
+        public const string TABLE = "tab_a31";
         
         public const string Назва = "col_b9";
         public const string Проведений = "col_c1";
@@ -8149,7 +8149,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ПереміщенняТоварів " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_b9" }
 			);
         }
@@ -8299,7 +8299,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ПоверненняТоварівПостачальнику_Const
     {
-        public const string Table = "tab_a51";
+        public const string TABLE = "tab_a51";
         
         public const string Назва = "col_a2";
         public const string Проведений = "col_a3";
@@ -8495,7 +8495,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ПоверненняТоварівПостачальнику " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_a2" }
 			);
         }
@@ -8663,7 +8663,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public static class ПоверненняТоварівВідКлієнта_Const
     {
-        public const string Table = "tab_a53";
+        public const string TABLE = "tab_a53";
         
         public const string Назва = "col_a2";
         public const string Проведений = "col_a4";
@@ -8841,7 +8841,7 @@ namespace StorageAndTrade_1_0.Документи
 		
 		public string GetPresentation()
         {
-		    return "ПоверненняТоварівВідКлієнта " + base.BasePresentation(
+		    return base.BasePresentation(
 				new string[] { "col_a2" }
 			);
         }
@@ -9020,7 +9020,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
     
     public static class ЦіниНоменклатури_Const
     {
-        public const string Table = "tab_a40";
+        public const string TABLE = "tab_a40";
         
         public const string Номенклатура = "col_f5";
         public const string Характеристика = "col_f6";
@@ -9181,7 +9181,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
     
     public static class КурсиВалют_Const
     {
-        public const string Table = "tab_a59";
+        public const string TABLE = "tab_a59";
         
         public const string Валюта = "col_a1";
         public const string Курс = "col_a2";
@@ -9304,7 +9304,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class ТовариНаСкладах_Const
     {
-        public const string Table = "tab_a38";
+        public const string TABLE = "tab_a38";
         
         public const string Номенклатура = "col_e4";
         public const string ХарактеристикаНоменклатури = "col_e5";
@@ -9457,7 +9457,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class ТовариОрганізацій_Const
     {
-        public const string Table = "tab_a39";
+        public const string TABLE = "tab_a39";
         
         public const string Організація = "col_e9";
         public const string Номенклатура = "col_f2";
@@ -9610,7 +9610,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class РухТоварів_Const
     {
-        public const string Table = "tab_a41";
+        public const string TABLE = "tab_a41";
         
         public const string Номенклатура = "col_g3";
         public const string ХарактеристикаНоменклатури = "col_g4";
@@ -9760,7 +9760,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     ///</summary>
     public static class ЗамовленняКлієнтів_Const
     {
-        public const string Table = "tab_a55";
+        public const string TABLE = "tab_a55";
         
         public const string ЗамовленняКлієнта = "col_a1";
         public const string Номенклатура = "col_a2";
@@ -9935,7 +9935,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class РозрахункиЗКлієнтами_Const
     {
-        public const string Table = "tab_a56";
+        public const string TABLE = "tab_a56";
         
         public const string Валюта = "col_a2";
         public const string ЗамовленняКлієнта = "col_a5";
@@ -10065,7 +10065,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class РозрахункиЗКлієнтамиПоДокументах_Const
     {
-        public const string Table = "tab_a57";
+        public const string TABLE = "tab_a57";
         
         public const string Договір = "col_a1";
         public const string Валюта = "col_a2";
@@ -10223,7 +10223,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class ВільніЗалишки_Const
     {
-        public const string Table = "tab_a58";
+        public const string TABLE = "tab_a58";
         
         public const string Номенклатура = "col_a5";
         public const string ХарактеристикаНоменклатури = "col_a6";
@@ -10381,7 +10381,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class ЗамовленняПостачальникам_Const
     {
-        public const string Table = "tab_a60";
+        public const string TABLE = "tab_a60";
         
         public const string ЗамовленняПостачальнику = "col_a1";
         public const string Номенклатура = "col_a2";
@@ -10547,7 +10547,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class РозрахункиЗПостачальниками_Const
     {
-        public const string Table = "tab_a61";
+        public const string TABLE = "tab_a61";
         
         public const string ЗамовленняПостачальнику = "col_a6";
         public const string Валюта = "col_a7";
@@ -10687,7 +10687,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     
     public static class ТовариДоПоступлення_Const
     {
-        public const string Table = "tab_a62";
+        public const string TABLE = "tab_a62";
         
         public const string Номенклатура = "col_b2";
         public const string ХарактеристикаНоменклатури = "col_b3";

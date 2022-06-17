@@ -21,42 +21,46 @@
 			<body>
 
 				<div class="container">
-					<h2>Bordered Table</h2>
-					<p>The .table-bordered class adds borders on all sides of the table and the cells:</p>
+					<h2>Звіт</h2>
+					<p>Замовлення клієнтів по Номенклатурі</p>
 
 					<table class="table table-bordered table-sm">
 						<thead>
 							<tr>
 								<th>Номенклатура</th>
 								<th>Характеристика номенклатури</th>
+								<th>Склад</th>
 								<th>Замовлено</th>
 								<th>Сума</th>
 							</tr>
 						</thead>
-						
-					<xsl:for-each select="row">
-						<tbody>
-							<tr>
-								<td>
-									<xsl:value-of select="Номенклатура_Назва"/>
-								</td>
-								<td>
-									<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
-								</td>
-								<td>
-									<xsl:value-of select="Замовлено"/>
-								</td>
-								<td>
-									<xsl:value-of select="Сума"/>
-								</td>
-							</tr>
-						</tbody>
-					</xsl:for-each>
 
-				</table>
+						<xsl:for-each select="row">
+							<tbody>
+								<tr>
+									<td>
+										<xsl:value-of select="Номенклатура_Назва"/>
+									</td>
+									<td>
+										<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+									</td>
+									<td>
+										<xsl:value-of select="Склад_Назва"/>
+									</td>
+									<td align="right">
+										<xsl:value-of select="Замовлено"/>
+									</td>
+									<td align="right">
+										<xsl:value-of select="Сума"/>
+									</td>
+								</tr>
+							</tbody>
+						</xsl:for-each>
+
+					</table>
 
 				</div>
-					
+
 			</body>
 		</html>
 				

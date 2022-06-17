@@ -34,6 +34,16 @@ namespace StorageAndTrade
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimeStop = new System.Windows.Forms.DateTimePicker();
             this.buttonCreate = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.directoryControl_Склади = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_СкладиПапки = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_НоменклатураПапка = new StorageAndTrade.DirectoryControl();
+            this.label6 = new System.Windows.Forms.Label();
+            this.documentControl_ЗамовленняКлієнта = new StorageAndTrade.DocumentControl();
             this.SuspendLayout();
             // 
             // dateTimeStart
@@ -70,7 +80,7 @@ namespace StorageAndTrade
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(26, 111);
+            this.buttonCreate.Location = new System.Drawing.Point(26, 292);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(90, 23);
             this.buttonCreate.TabIndex = 4;
@@ -78,11 +88,111 @@ namespace StorageAndTrade
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(24, 63);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 13);
+            this.label9.TabIndex = 56;
+            this.label9.Text = "Папка:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 13);
+            this.label3.TabIndex = 58;
+            this.label3.Text = "Номенклатура:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 151);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 60;
+            this.label4.Text = "Папка:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(24, 184);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 13);
+            this.label5.TabIndex = 62;
+            this.label5.Text = "Склад:";
+            // 
+            // directoryControl_Склади
+            // 
+            this.directoryControl_Склади.DirectoryPointerItem = null;
+            this.directoryControl_Склади.Location = new System.Drawing.Point(114, 177);
+            this.directoryControl_Склади.Name = "directoryControl_Склади";
+            this.directoryControl_Склади.SelectForm = null;
+            this.directoryControl_Склади.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Склади.TabIndex = 61;
+            // 
+            // directoryControl_СкладиПапки
+            // 
+            this.directoryControl_СкладиПапки.DirectoryPointerItem = null;
+            this.directoryControl_СкладиПапки.Location = new System.Drawing.Point(114, 144);
+            this.directoryControl_СкладиПапки.Name = "directoryControl_СкладиПапки";
+            this.directoryControl_СкладиПапки.SelectForm = null;
+            this.directoryControl_СкладиПапки.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_СкладиПапки.TabIndex = 59;
+            // 
+            // directoryControl_Номенклатура
+            // 
+            this.directoryControl_Номенклатура.DirectoryPointerItem = null;
+            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(114, 89);
+            this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
+            this.directoryControl_Номенклатура.SelectForm = null;
+            this.directoryControl_Номенклатура.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Номенклатура.TabIndex = 57;
+            // 
+            // directoryControl_НоменклатураПапка
+            // 
+            this.directoryControl_НоменклатураПапка.DirectoryPointerItem = null;
+            this.directoryControl_НоменклатураПапка.Location = new System.Drawing.Point(114, 56);
+            this.directoryControl_НоменклатураПапка.Name = "directoryControl_НоменклатураПапка";
+            this.directoryControl_НоменклатураПапка.SelectForm = null;
+            this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_НоменклатураПапка.TabIndex = 55;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 244);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.TabIndex = 64;
+            this.label6.Text = "Документ:";
+            // 
+            // documentControl_ЗамовленняКлієнта
+            // 
+            this.documentControl_ЗамовленняКлієнта.DocumentPointerItem = null;
+            this.documentControl_ЗамовленняКлієнта.Location = new System.Drawing.Point(114, 238);
+            this.documentControl_ЗамовленняКлієнта.Name = "documentControl_ЗамовленняКлієнта";
+            this.documentControl_ЗамовленняКлієнта.SelectForm = null;
+            this.documentControl_ЗамовленняКлієнта.Size = new System.Drawing.Size(402, 27);
+            this.documentControl_ЗамовленняКлієнта.TabIndex = 65;
+            // 
             // Form_ЗамовленняКлієнтів_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 450);
+            this.ClientSize = new System.Drawing.Size(537, 450);
+            this.Controls.Add(this.documentControl_ЗамовленняКлієнта);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.directoryControl_Склади);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.directoryControl_СкладиПапки);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.directoryControl_Номенклатура);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.directoryControl_НоменклатураПапка);
             this.Controls.Add(this.buttonCreate);
             this.Controls.Add(this.dateTimeStop);
             this.Controls.Add(this.label2);
@@ -90,6 +200,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.dateTimeStart);
             this.Name = "Form_ЗамовленняКлієнтів_Звіт";
             this.Text = "Звіт \"Замолення клієнтів\"";
+            this.Load += new System.EventHandler(this.Form_ЗамовленняКлієнтів_Звіт_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -102,5 +213,15 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dateTimeStop;
         private System.Windows.Forms.Button buttonCreate;
+        private System.Windows.Forms.Label label9;
+        private DirectoryControl directoryControl_НоменклатураПапка;
+        private System.Windows.Forms.Label label3;
+        private DirectoryControl directoryControl_Номенклатура;
+        private System.Windows.Forms.Label label4;
+        private DirectoryControl directoryControl_СкладиПапки;
+        private System.Windows.Forms.Label label5;
+        private DirectoryControl directoryControl_Склади;
+        private System.Windows.Forms.Label label6;
+        private DocumentControl documentControl_ЗамовленняКлієнта;
     }
 }
