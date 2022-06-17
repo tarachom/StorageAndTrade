@@ -22,7 +22,7 @@
 
 				<div class="container">
 					<h2>Звіт</h2>
-					<p>Замовлення клієнтів по Номенклатурі</p>
+					<p>Замовлення клієнтів</p>
 
 					<table class="table table-bordered table-sm">
 						<thead>
