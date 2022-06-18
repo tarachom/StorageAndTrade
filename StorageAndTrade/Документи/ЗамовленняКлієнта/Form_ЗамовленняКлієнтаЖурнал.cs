@@ -52,9 +52,23 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
+
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
+			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
+			dataGridViewRecords.Columns["НомерДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
-			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["ДатаДок"].HeaderText = "Дата";
+			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+			dataGridViewRecords.Columns["Назва"].Width = 500;
+
+			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dataGridViewRecords.Columns["Сума"].Width = 100;
+
+			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewRecords.Columns["Проведений"].Width = 80; 
 		}
 
 		public DocumentPointer DocumentPointerItem { get; set; }
@@ -74,8 +88,8 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняКлієнта_Select замовленняКлієнта_Select = new Документи.ЗамовленняКлієнта_Select();
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Назва);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Проведений);
+			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Назва);			
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.НомерДок);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.ДатаДок);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.СумаДокументу);
