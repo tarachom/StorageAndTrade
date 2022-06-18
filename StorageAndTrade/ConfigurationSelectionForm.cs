@@ -54,7 +54,7 @@ namespace StorageAndTrade
 			string assemblyLocation = Application.ExecutablePath;
 
 			PathToXML = Path.GetDirectoryName(assemblyLocation) + "\\ConfigurationParam.xml";
-			PathToSQLXML = Path.GetDirectoryName(assemblyLocation) + "\\Sql.xml";
+			//PathToSQLXML = Path.GetDirectoryName(assemblyLocation) + "\\Sql.xml";
 
 			//Конфігурація знаходиться в тому самому каталозі що і програма
 			PathToConfXML = Path.GetDirectoryName(assemblyLocation) + "\\Confa.xml";
@@ -279,7 +279,7 @@ namespace StorageAndTrade
 				}
 
                 #region Перевірка наявності таблиць
-
+				/*
                 ConfigurationInformationSchema configurationInformationSchema = Конфа.Config.Kernel.DataBase.SelectInformationSchema();
 
 				string msg = "Не знайдено таблицю '{tab_name}'. Запустіть конфігуратор і збережіть конфігурацію для створення таблиць.";
@@ -320,7 +320,7 @@ namespace StorageAndTrade
 						return;
 					}
 				}
-
+				*/
                 #endregion
 
                 Конфа.Config.ReadAllConstants();

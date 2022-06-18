@@ -42,10 +42,9 @@ namespace StorageAndTrade
         {
             InitializeComponent();
 
-			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
+			
 
 			dataGridViewRecords.Columns["Image"].Width = 30;
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
@@ -59,7 +58,10 @@ namespace StorageAndTrade
 
         private void Form_Валюти_Load(object sender, EventArgs e)
         {
+			
 			LoadRecords();
+
+			//List<Записи> a = RecordsBindingList.OrderByDescending(x => x.ID).ToList();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -69,6 +71,7 @@ namespace StorageAndTrade
 			int selectRow = 0;
 
 			RecordsBindingList.Clear();
+			dataGridViewRecords.Rows.Clear();
 
 			Довідники.Валюти_Select валюти_Select = new Довідники.Валюти_Select();
 			валюти_Select.QuerySelect.Field.Add(Довідники.Валюти_Const.Назва);
@@ -96,9 +99,10 @@ namespace StorageAndTrade
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				//dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				//dataGridViewRecords.Rows[selectRow].Selected = true;
+				//dataGridViewRecords.Rows[0].Selected = false;
+
 			}
 		}
 
