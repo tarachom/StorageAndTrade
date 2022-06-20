@@ -4,6 +4,10 @@
 >
     <xsl:output method="html" indent="yes"/>
 
+	<xsl:template match="">
+		
+	</xsl:template>
+	
     <xsl:template match="/root">
 
 		<table border="1" width="100%">

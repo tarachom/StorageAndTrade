@@ -61,7 +61,7 @@
     <Compile Include="ConfigurationSelectionParam.designer.cs">
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
     </Compile>
-    <Compile Include="Configurator\Reports.cs" />
+    <Compile Include="Звіти\РухДокументівПоРегістрах\РухПоРугістрахНакопичення.cs" />
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
     <Compile Include="DocumentControl.cs">
@@ -759,8 +759,7 @@
     <Folder Include="Документи\РозхіднийКасовийОрдер\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Configurator\Confa.xml" />
-    <Content Include="Документи\ЗамовленняКлієнта\Report_ЗамовленняКлієнта_РухПоРегістрах.xslt" />
+    <Content Include="Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt" />
     <Content Include="Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
