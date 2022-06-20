@@ -45,6 +45,41 @@ namespace StorageAndTrade_1_0.Звіти
 {
     class РухПоРугістрахНакопичення
     {
+        public void PrintRecords(DocumentPointer ДокументВказівник)
+        {
+            Dictionary<string, Func<string>> funcQuery = new Dictionary<string, Func<string>>();
+            funcQuery.Add("ТовариНаСкладах", Запит_ТовариНаСкладах);
+            funcQuery.Add("РухТоварів", Запит_РухТоварів);
+            funcQuery.Add("ЗамовленняКлієнтів", Запит_ЗамовленняКлієнтів);
+            funcQuery.Add("РозрахункиЗКлієнтами", Запит_РозрахункиЗКлієнтами);
+            funcQuery.Add("ВільніЗалишки", Запит_ВільніЗалишки);
+            funcQuery.Add("ЗамовленняПостачальникам", Запит_ЗамовленняПостачальникам);
+            funcQuery.Add("РозрахункиЗПостачальниками", Запит_РозрахункиЗПостачальниками);
+            funcQuery.Add("ТовариДоПоступлення", Запит_ТовариДоПоступлення);
+
+            XmlDocument xmlDoc = CreateXmlDocument();
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("ДокументВказівник", ДокументВказівник.UnigueID.UGuid);
+
+            foreach (KeyValuePair<string, Func<string>> func in funcQuery)
+            {
+                string[] columnsName;
+                List<object[]> listRow;
+
+                string query = func.Value.Invoke();
+                Console.WriteLine(query);
+
+                Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+                DataToXML(xmlDoc, func.Key, columnsName, listRow);
+            }
+
+            XmlDocumentSaveAndTransform(xmlDoc);
+        }
+
+        #region Запити
+
         private static string Запит_ТовариНаСкладах()
         {
             string query = $@"
@@ -307,38 +342,9 @@ ORDER BY Номенклатура_Назва
             return query;
         }
 
-        public void PrintRecords(DocumentPointer ДокументВказівник)
-        {
-            Dictionary<string, Func<string>> funcQuery = new Dictionary<string, Func<string>>();
-            funcQuery.Add("ТовариНаСкладах", Запит_ТовариНаСкладах);
-            funcQuery.Add("РухТоварів", Запит_РухТоварів);
-            funcQuery.Add("ЗамовленняКлієнтів", Запит_ЗамовленняКлієнтів);
-            funcQuery.Add("РозрахункиЗКлієнтами", Запит_РозрахункиЗКлієнтами);
-            funcQuery.Add("ВільніЗалишки", Запит_ВільніЗалишки);
-            funcQuery.Add("ЗамовленняПостачальникам", Запит_ЗамовленняПостачальникам);
-            funcQuery.Add("РозрахункиЗПостачальниками", Запит_РозрахункиЗПостачальниками);
-            funcQuery.Add("ТовариДоПоступлення", Запит_ТовариДоПоступлення);
+        #endregion
 
-            XmlDocument xmlDoc = CreateXmlDocument();
-
-            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-            paramQuery.Add("ДокументВказівник", ДокументВказівник.UnigueID.UGuid);
-
-            foreach(KeyValuePair<string, Func<string>> func in funcQuery)
-            {
-                string[] columnsName;
-                List<object[]> listRow;
-
-                string query = func.Value.Invoke();
-                Console.WriteLine(query);
-
-                Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-
-                DataToXML(xmlDoc, func.Key, columnsName, listRow);
-            }
-
-            XmlDocumentSaveAndTransform(xmlDoc);
-        }
+        #region Функції
 
         private static void DataToXML(XmlDocument xmlDoc, string registerName, string[] columnsName, List<object[]> listRow)
         {
@@ -394,6 +400,7 @@ ORDER BY Номенклатура_Назва
             System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile);
         }
 
+        #endregion
 
         public static void PrintRegisterRecords(ЗамовленняКлієнта_Pointer ДокументВказівник)
         {

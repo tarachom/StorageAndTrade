@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:msxsl="urn:schemas-microsoft-com:xslt" exclude-result-prefixes="msxsl"
->
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+	
     <xsl:output method="html" indent="yes"/>
 
-	<xsl:template match="">
-		
-	</xsl:template>
-	
     <xsl:template match="/root">
 
+		<xsl:apply-templates select="ЗамовленняКлієнтів" />
+		
+    </xsl:template>
+
+	<xsl:template match="ЗамовленняКлієнтів">
+		
 		<table border="1" width="100%">
 
 			<tr>
@@ -26,7 +27,7 @@
 
 				<tr>
 					<td>
-						<xsl:value-of select="income"/> 
+						<xsl:value-of select="income"/>
 					</td>
 					<td>
 						<xsl:value-of select="ЗамовленняКлієнта_Назва"/>
@@ -47,11 +48,11 @@
 						<xsl:value-of select="Сума"/>
 					</td>
 				</tr>
-				
+
 			</xsl:for-each>
-			
+
 		</table>
 		
-    </xsl:template>
+	</xsl:template>
 	
 </xsl:stylesheet>
