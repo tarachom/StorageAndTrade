@@ -129,7 +129,51 @@ namespace StorageAndTrade_1_0.Довідники
 		}
 	}
 
+	class Склади_Папки_Triggers
+	{
+		public static void BeforeRecording(Склади_Папки_Objest ДовідникОбєкт)
+		{
 
+		}
+		public static void AfterRecording(Склади_Папки_Objest ДовідникОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(Склади_Папки_Objest ДовідникОбєкт)
+		{
+			//
+			//Елементи переносяться на верхній рівень
+			//
+
+			Склади_Select склади_Select = new Склади_Select();
+			склади_Select.QuerySelect.Where.Add(new Where(Склади_Const.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			склади_Select.Select();
+
+			while (склади_Select.MoveNext())
+			{
+				Склади_Objest склади_Objest = склади_Select.Current.GetDirectoryObject();
+				склади_Objest.Папка = new Склади_Папки_Pointer();
+				склади_Objest.Save();
+			}
+
+			//
+			//Вкладені папки видяляються. Для кожної папки буде викликана функція BeforeDelete
+			//
+
+			Склади_Папки_Select cклади_Папки_Select = new Склади_Папки_Select();
+			cклади_Папки_Select.QuerySelect.Where.Add(new Where(Склади_Папки_Const.Родич, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
+			cклади_Папки_Select.Select();
+
+			while (cклади_Папки_Select.MoveNext())
+			{
+				Склади_Папки_Objest cклади_Папки_Objest = cклади_Папки_Select.Current.GetDirectoryObject();
+				if (cклади_Папки_Objest != null)
+					cклади_Папки_Objest.Delete();
+
+			}
+		}
+	}
 }
 
 namespace StorageAndTrade_1_0.Документи

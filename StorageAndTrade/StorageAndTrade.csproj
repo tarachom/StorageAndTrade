@@ -118,6 +118,24 @@
     <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.designer.cs">
       <DependentUpon>Form_НоменклатураПапкиЕлемент.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Склади\Form_СкладиПапкиВибір.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Склади\Form_СкладиПапкиВибір.designer.cs">
+      <DependentUpon>Form_СкладиПапкиВибір.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Склади\Form_СкладиПапкиЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\Склади\Form_СкладиПапкиЕлемент.designer.cs">
+      <DependentUpon>Form_СкладиПапкиЕлемент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\Склади\Form_Склади_Папки_Дерево.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Довідники\Склади\Form_Склади_Папки_Дерево.Designer.cs">
+      <DependentUpon>Form_Склади_Папки_Дерево.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -473,6 +491,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.resx">
       <DependentUpon>Form_НоменклатураПапкиЕлемент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Склади\Form_СкладиПапкиВибір.resx">
+      <DependentUpon>Form_СкладиПапкиВибір.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Склади\Form_СкладиПапкиЕлемент.resx">
+      <DependentUpon>Form_СкладиПапкиЕлемент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Склади\Form_Склади_Папки_Дерево.resx">
+      <DependentUpon>Form_Склади_Папки_Дерево.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>

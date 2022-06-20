@@ -61,7 +61,19 @@ namespace StorageAndTrade
 
         private void Form_Склади_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
+			{
+				Довідники.Склади_Pointer склади_Pointer = new Довідники.Склади_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
+				if (!склади_Pointer.IsEmpty())
+				{
+					Довідники.Склади_Objest склади_Objest = склади_Pointer.GetDirectoryObject();
+					if (склади_Objest != null)
+						Склади_Папки_Дерево.Parent_Pointer = склади_Objest.Папка;
+				}
+			}
+
+			Склади_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
+			Склади_Папки_Дерево.LoadTree();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -76,6 +88,10 @@ namespace StorageAndTrade
 			Довідники.Склади_Select склади_Select = new Довідники.Склади_Select();
 			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Const.Назва);
 			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Const.ТипСкладу);
+
+			//WHERE
+			if (Склади_Папки_Дерево.Parent_Pointer != null)
+				склади_Select.QuerySelect.Where.Add(new Where(Довідники.Склади_Const.Папка, Comparison.EQ, Склади_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
 
 			//ORDER
 			склади_Select.QuerySelect.Order.Add(Довідники.Склади_Const.Назва, SelectOrder.ASC);
@@ -114,7 +130,12 @@ namespace StorageAndTrade
 			public string ТипСкладу { get; set; }
 		}
 
-        private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		public void TreeFolderAfterSelect()
+		{
+			LoadRecords();
+		}
+
+		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
 			if (e.RowIndex >= 0 && e.RowIndex < dataGridViewRecords.RowCount)
 			{
@@ -137,6 +158,8 @@ namespace StorageAndTrade
 			Form_СкладиЕлемент form_СкладиЕлемент = new Form_СкладиЕлемент();
 			form_СкладиЕлемент.IsNew = true;
 			form_СкладиЕлемент.OwnerForm = this;
+			if (Склади_Папки_Дерево.Parent_Pointer != null)
+				form_СкладиЕлемент.ParentUid = Склади_Папки_Дерево.Parent_Pointer.UnigueID.UGuid.ToString();
 			form_СкладиЕлемент.ShowDialog();
         }
 

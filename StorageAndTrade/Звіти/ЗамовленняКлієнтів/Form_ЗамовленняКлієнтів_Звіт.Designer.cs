@@ -80,7 +80,7 @@ namespace StorageAndTrade
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(26, 292);
+            this.buttonCreate.Location = new System.Drawing.Point(114, 296);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(90, 23);
             this.buttonCreate.TabIndex = 4;
@@ -182,7 +182,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(537, 450);
+            this.ClientSize = new System.Drawing.Size(537, 346);
             this.Controls.Add(this.documentControl_ЗамовленняКлієнта);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);

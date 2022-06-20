@@ -59,9 +59,14 @@ namespace StorageAndTrade
         public string Uid { get; set; }
 
 		/// <summary>
+		/// Ід родителя для нової папки
+		/// </summary>
+		public string ParentUid { get; set; }
+
+		/// <summary>
 		/// Обєкт запису
 		/// </summary>
-        private Довідники.Склади_Objest склади_Objest { get; set; }
+		private Довідники.Склади_Objest склади_Objest { get; set; }
 
 		private void Form_СкладиЕлемент_Load(object sender, EventArgs e)
         {
@@ -69,6 +74,7 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиСкладів"].Fields.Values)
 				comboBox_ТипСкладу.Items.Add((Перелічення.ТипиСкладів)field.Value);
 
+			directoryControl_СкладиПапка.SelectForm = new Form_СкладиПапкиВибір();
 			directoryControl_Відповідальний.SelectForm = new Form_ФізичніОсоби();
 			directoryControl_ВидЦін.SelectForm = new Form_ВидиЦін();
 			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
@@ -81,6 +87,7 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий запис";
 					comboBox_ТипСкладу.SelectedIndex = 0;
+					directoryControl_СкладиПапка.DirectoryPointerItem = new Довідники.Склади_Папки_Pointer(new UnigueID(ParentUid));
 					directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer();
 					directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer();
 					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
@@ -93,6 +100,7 @@ namespace StorageAndTrade
 
 						textBoxНазва.Text = склади_Objest.Назва;
 						comboBox_ТипСкладу.SelectedItem = склади_Objest.ТипСкладу;
+						directoryControl_СкладиПапка.DirectoryPointerItem = new Довідники.Склади_Папки_Pointer(склади_Objest.Папка.UnigueID);
 						directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(склади_Objest.Відповідальний.UnigueID);
 						directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer(склади_Objest.ВидЦін.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(склади_Objest.Підрозділ.UnigueID);
@@ -114,6 +122,7 @@ namespace StorageAndTrade
 				{
 					склади_Objest.Назва = textBoxНазва.Text;
 					склади_Objest.ТипСкладу = comboBox_ТипСкладу.SelectedItem != null ? (Перелічення.ТипиСкладів)comboBox_ТипСкладу.SelectedItem : 0;
+					склади_Objest.Папка = (Довідники.Склади_Папки_Pointer)directoryControl_СкладиПапка.DirectoryPointerItem;
 					склади_Objest.Відповідальний = (Довідники.ФізичніОсоби_Pointer)directoryControl_Відповідальний.DirectoryPointerItem;
 					склади_Objest.ВидЦін = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦін.DirectoryPointerItem;
 					склади_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
