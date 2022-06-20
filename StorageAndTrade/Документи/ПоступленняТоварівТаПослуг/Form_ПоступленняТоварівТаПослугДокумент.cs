@@ -147,9 +147,9 @@ namespace StorageAndTrade
 					поступленняТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 					поступленняТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 					поступленняТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+					поступленняТоварівТаПослуг_Objest.Проведений = true;
 
 					ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
-
 					поступленняТоварівТаПослуг_Objest.Save();
 				}
 				catch (Exception exp)

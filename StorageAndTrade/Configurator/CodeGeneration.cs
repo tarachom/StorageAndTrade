@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 20.06.2022 10:53:28
+ * Дата конфігурації: 20.06.2022 13:44:08
  *
  */
 
@@ -411,7 +411,7 @@ namespace StorageAndTrade_1_0.Довідники
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                fieldValue.Add("col_a9", record.Тип);
+                fieldValue.Add("col_a9", (int)record.Тип);
                 fieldValue.Add("col_a1", record.Країна);
                 fieldValue.Add("col_a2", record.Район);
                 fieldValue.Add("col_a3", record.Місто);
@@ -427,7 +427,9 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -1567,7 +1569,7 @@ namespace StorageAndTrade_1_0.Довідники
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                fieldValue.Add("col_d2", record.Тип);
+                fieldValue.Add("col_d2", (int)record.Тип);
                 fieldValue.Add("col_d3", record.Країна);
                 fieldValue.Add("col_d4", record.Район);
                 fieldValue.Add("col_d5", record.Область);
@@ -1583,7 +1585,9 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -1871,7 +1875,7 @@ namespace StorageAndTrade_1_0.Довідники
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                fieldValue.Add("col_e2", record.Тип);
+                fieldValue.Add("col_e2", (int)record.Тип);
                 fieldValue.Add("col_e3", record.Країна);
                 fieldValue.Add("col_e4", record.Район);
                 fieldValue.Add("col_e5", record.Область);
@@ -1887,7 +1891,9 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -2478,7 +2484,7 @@ namespace StorageAndTrade_1_0.Довідники
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                fieldValue.Add("col_f8", record.Тип);
+                fieldValue.Add("col_f8", (int)record.Тип);
                 fieldValue.Add("col_f9", record.Країна);
                 fieldValue.Add("col_g1", record.Область);
                 fieldValue.Add("col_g2", record.Район);
@@ -2494,7 +2500,9 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -2768,7 +2776,7 @@ namespace StorageAndTrade_1_0.Довідники
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                fieldValue.Add("col_h1", record.Тип);
+                fieldValue.Add("col_h1", (int)record.Тип);
                 fieldValue.Add("col_h2", record.Країна);
                 fieldValue.Add("col_h3", record.Область);
                 fieldValue.Add("col_h4", record.Район);
@@ -2784,7 +2792,9 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -5107,7 +5117,7 @@ namespace StorageAndTrade_1_0.Довідники
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                fieldValue.Add("col_j3", record.ГосподарськаОперація);
+                fieldValue.Add("col_j3", (int)record.ГосподарськаОперація);
                 
                 base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
@@ -5117,7 +5127,9 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -5669,7 +5681,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -5893,7 +5907,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_b1"] = Коментар;
             
             BaseSave();
-			Записи_Triggers.ПоступленняТоварівТаПослуг_AfterRecording(this);
+			ПоступленняТоварівТаПослуг_Triggers.AfterRecording(this);
         }
 
         public ПоступленняТоварівТаПослуг_Objest Copy()
@@ -5938,7 +5952,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
-		    Записи_Triggers.ПоступленняТоварівТаПослуг_BeforeDelete(this);
+		    ПоступленняТоварівТаПослуг_Triggers.BeforeDelete(this);
             base.BaseDelete();
         }
         
@@ -6123,7 +6137,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -6556,7 +6572,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -7001,7 +7019,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -7275,7 +7295,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -7591,7 +7613,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -7910,7 +7934,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -8253,7 +8279,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -8608,7 +8636,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -8957,7 +8987,9 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Delete()
         {
+            base.BaseBeginTransaction();
             base.BaseDelete(Owner.UnigueID);
+            base.BaseCommitTransaction();
         }
         
         
@@ -9549,7 +9581,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                     fieldValue.Add("col_f2", record.Номенклатура);
                     fieldValue.Add("col_f3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_f1", record.Кількість);
-                    fieldValue.Add("col_f4", record.ГосподарськаОперація);
+                    fieldValue.Add("col_f4", (int)record.ГосподарськаОперація);
                     
                     base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
                 }
@@ -10160,7 +10192,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                     fieldValue.Add("col_a3", record.РозрахунковийДокумент);
                     fieldValue.Add("col_a4", record.Заборгованість);
                     fieldValue.Add("col_a6", record.Передоплата);
-                    fieldValue.Add("col_a7", record.ГосподарськаОперація);
+                    fieldValue.Add("col_a7", (int)record.ГосподарськаОперація);
                     
                     base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
                 }
@@ -10552,15 +10584,15 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string ЗамовленняПостачальнику = "col_a6";
         public const string Валюта = "col_a7";
         public const string Сума = "col_a8";
-        public const string ГосподарськаОперація = "col_a9";
         public const string ФормаОплати = "col_b1";
+        public const string ГосподарськаОперація = "col_a1";
     }
 	
     
     public class РозрахункиЗПостачальниками_RecordsSet : RegisterAccumulationRecordsSet
     {
         public РозрахункиЗПостачальниками_RecordsSet() : base(Config.Kernel, "tab_a61",
-             new string[] { "col_a6", "col_a7", "col_a8", "col_a9", "col_b1" }) 
+             new string[] { "col_a6", "col_a7", "col_a8", "col_b1", "col_a1" }) 
         {
             Records = new List<Record>();
             Filter = new SelectFilter();
@@ -10605,8 +10637,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer(fieldValue["col_a6"]);
                 record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a7"]);
                 record.Сума = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
-                record.ГосподарськаОперація = (fieldValue["col_a9"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)fieldValue["col_a9"] : 0;
                 record.ФормаОплати = (fieldValue["col_b1"] != DBNull.Value) ? (Перелічення.ФормаОплати)fieldValue["col_b1"] : 0;
+                record.ГосподарськаОперація = (fieldValue["col_a1"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)fieldValue["col_a1"] : 0;
                 
                 Records.Add(record);
             }
@@ -10627,8 +10659,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                     fieldValue.Add("col_a6", record.ЗамовленняПостачальнику.UnigueID.UGuid);
                     fieldValue.Add("col_a7", record.Валюта.UnigueID.UGuid);
                     fieldValue.Add("col_a8", record.Сума);
-                    fieldValue.Add("col_a9", record.ГосподарськаОперація);
-                    fieldValue.Add("col_b1", record.ФормаОплати);
+                    fieldValue.Add("col_b1", (int)record.ФормаОплати);
+                    fieldValue.Add("col_a1", (int)record.ГосподарськаОперація);
                     
                     base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
                 }
@@ -10654,15 +10686,15 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer();
                 Валюта = new Довідники.Валюти_Pointer();
                 Сума = 0;
-                ГосподарськаОперація = 0;
                 ФормаОплати = 0;
+                ГосподарськаОперація = 0;
                 
             }
             public Документи.ЗамовленняПостачальнику_Pointer ЗамовленняПостачальнику { get; set; }
             public Довідники.Валюти_Pointer Валюта { get; set; }
             public decimal Сума { get; set; }
-            public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
             public Перелічення.ФормаОплати ФормаОплати { get; set; }
+            public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
             
         }
     

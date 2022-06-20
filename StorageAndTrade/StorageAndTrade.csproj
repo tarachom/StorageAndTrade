@@ -759,6 +759,7 @@
     <Folder Include="Документи\РозхіднийКасовийОрдер\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configurator\Confa.xml" />
     <Content Include="Документи\ЗамовленняКлієнта\Report_ЗамовленняКлієнта_РухПоРегістрах.xslt" />
     <Content Include="Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt" />
   </ItemGroup>

@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>20.06.2022 10:53:28</DateTimeSave>
+  <DateTimeSave>20.06.2022 13:44:08</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3334,8 +3334,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>Записи_Triggers.ПоступленняТоварівТаПослуг_AfterRecording</AfterSave>
-        <BeforeDelete>Записи_Triggers.ПоступленняТоварівТаПослуг_BeforeDelete</BeforeDelete>
+        <AfterSave>ПоступленняТоварівТаПослуг_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ПоступленняТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
     <Document>
@@ -6296,20 +6296,20 @@
       <PropertyFields>
         <Fields>
           <Field>
-            <Name>ГосподарськаОперація</Name>
-            <NameInTable>col_a9</NameInTable>
+            <Name>ФормаОплати</Name>
+            <NameInTable>col_b1</NameInTable>
             <Type>enum</Type>
-            <Pointer>Перелічення.ГосподарськіОперації</Pointer>
+            <Pointer>Перелічення.ФормаОплати</Pointer>
             <Desc>
             </Desc>
             <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
-            <Name>ФормаОплати</Name>
-            <NameInTable>col_b1</NameInTable>
+            <Name>ГосподарськаОперація</Name>
+            <NameInTable>col_a1</NameInTable>
             <Type>enum</Type>
-            <Pointer>Перелічення.ФормаОплати</Pointer>
+            <Pointer>Перелічення.ГосподарськіОперації</Pointer>
             <Desc>
             </Desc>
             <IsPresentation>0</IsPresentation>
