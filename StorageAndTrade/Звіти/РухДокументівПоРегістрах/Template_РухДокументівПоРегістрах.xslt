@@ -176,7 +176,7 @@
 			<tr>
 				<th>period</th>
 				<th>income</th>
-				<th>Замовлення клієнта</th>
+				<th>Контрагент</th>
 				<th>Валюта</th>
 				<th>Замовлено</th>
 			</tr>
@@ -191,7 +191,7 @@
 						<xsl:value-of select="income"/>
 					</td>
 					<td>
-						<xsl:value-of select="ЗамовленняКлієнта_Назва"/>
+						<xsl:value-of select="Контрагент_Назва"/>
 					</td>
 					<td>
 						<xsl:value-of select="Валюта_Назва"/>
@@ -316,7 +316,7 @@
 			<tr>
 				<th>period</th>
 				<th>income</th>
-				<th>ЗамовленняПостачальнику</th>
+				<th>Контрагент</th>
 				<th>Валюта</th>
 				<th>Замовлено</th>
 			</tr>
@@ -331,7 +331,7 @@
 						<xsl:value-of select="income"/>
 					</td>
 					<td>
-						<xsl:value-of select="ЗамовленняПостачальнику_Назва"/>
+						<xsl:value-of select="Контрагент_Назва"/>
 					</td>
 					<td>
 						<xsl:value-of select="Валюта_Назва"/>

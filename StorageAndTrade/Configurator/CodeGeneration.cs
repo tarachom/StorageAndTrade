@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 20.06.2022 13:44:08
+ * Дата конфігурації: 20.06.2022 18:25:57
  *
  */
 
@@ -9970,7 +9970,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string TABLE = "tab_a56";
         
         public const string Валюта = "col_a2";
-        public const string ЗамовленняКлієнта = "col_a5";
+        public const string Контрагент = "col_a5";
         public const string Сума = "col_a4";
     }
 	
@@ -9999,13 +9999,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 
             }
             
-            if (Filter.ЗамовленняКлієнта != null)
+            if (Filter.Контрагент != null)
             {
                 if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a5", Comparison.EQ, Filter.ЗамовленняКлієнта.UnigueID.UGuid, false));
+                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a5", Comparison.EQ, Filter.Контрагент.UnigueID.UGuid, false));
                 else
                 {
-                    base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.ЗамовленняКлієнта.UnigueID.UGuid, false));
+                    base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.Контрагент.UnigueID.UGuid, false));
                     isExistPreceding = true; 
                 }
             }
@@ -10021,7 +10021,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Income = (bool)fieldValue["income"];
                 record.Owner = (Guid)fieldValue["owner"];
                 record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a2"]);
-                record.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(fieldValue["col_a5"]);
+                record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a5"]);
                 record.Сума = (fieldValue["col_a4"] != DBNull.Value) ? (decimal)fieldValue["col_a4"] : 0;
                 
                 Records.Add(record);
@@ -10041,7 +10041,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                     fieldValue.Add("col_a2", record.Валюта.UnigueID.UGuid);
-                    fieldValue.Add("col_a5", record.ЗамовленняКлієнта.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.Контрагент.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Сума);
                     
                     base.BaseSave(record.UID, period, record.Income, record.Owner, fieldValue);
@@ -10066,12 +10066,12 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Record()
             {
                 Валюта = new Довідники.Валюти_Pointer();
-                ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
+                Контрагент = new Довідники.Контрагенти_Pointer();
                 Сума = 0;
                 
             }
             public Довідники.Валюти_Pointer Валюта { get; set; }
-            public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+            public Довідники.Контрагенти_Pointer Контрагент { get; set; }
             public decimal Сума { get; set; }
             
         }
@@ -10081,12 +10081,12 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public SelectFilter()
             {
                  Валюта = null;
-                 ЗамовленняКлієнта = null;
+                 Контрагент = null;
                  
             }
         
             public Довідники.Валюти_Pointer Валюта { get; set; }
-            public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+            public Довідники.Контрагенти_Pointer Контрагент { get; set; }
             
         }
     }
@@ -10581,7 +10581,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     {
         public const string TABLE = "tab_a61";
         
-        public const string ЗамовленняПостачальнику = "col_a6";
+        public const string Контрагент = "col_a6";
         public const string Валюта = "col_a7";
         public const string Сума = "col_a8";
         public const string ФормаОплати = "col_b1";
@@ -10605,9 +10605,9 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             Records.Clear();
             
             bool isExistPreceding = false;
-            if (Filter.ЗамовленняПостачальнику != null)
+            if (Filter.Контрагент != null)
             {
-                base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.ЗамовленняПостачальнику.UnigueID.UGuid, false));
+                base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.Контрагент.UnigueID.UGuid, false));
                 
                 isExistPreceding = true;
                 
@@ -10634,7 +10634,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
 				record.Period = DateTime.Parse(fieldValue["period"].ToString());
                 record.Income = (bool)fieldValue["income"];
                 record.Owner = (Guid)fieldValue["owner"];
-                record.ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer(fieldValue["col_a6"]);
+                record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a6"]);
                 record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a7"]);
                 record.Сума = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
                 record.ФормаОплати = (fieldValue["col_b1"] != DBNull.Value) ? (Перелічення.ФормаОплати)fieldValue["col_b1"] : 0;
@@ -10656,7 +10656,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 {
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                    fieldValue.Add("col_a6", record.ЗамовленняПостачальнику.UnigueID.UGuid);
+                    fieldValue.Add("col_a6", record.Контрагент.UnigueID.UGuid);
                     fieldValue.Add("col_a7", record.Валюта.UnigueID.UGuid);
                     fieldValue.Add("col_a8", record.Сума);
                     fieldValue.Add("col_b1", (int)record.ФормаОплати);
@@ -10683,14 +10683,14 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             public Record()
             {
-                ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer();
+                Контрагент = new Довідники.Контрагенти_Pointer();
                 Валюта = new Довідники.Валюти_Pointer();
                 Сума = 0;
                 ФормаОплати = 0;
                 ГосподарськаОперація = 0;
                 
             }
-            public Документи.ЗамовленняПостачальнику_Pointer ЗамовленняПостачальнику { get; set; }
+            public Довідники.Контрагенти_Pointer Контрагент { get; set; }
             public Довідники.Валюти_Pointer Валюта { get; set; }
             public decimal Сума { get; set; }
             public Перелічення.ФормаОплати ФормаОплати { get; set; }
@@ -10702,12 +10702,12 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             public SelectFilter()
             {
-                 ЗамовленняПостачальнику = null;
+                 Контрагент = null;
                  Валюта = null;
                  
             }
         
-            public Документи.ЗамовленняПостачальнику_Pointer ЗамовленняПостачальнику { get; set; }
+            public Довідники.Контрагенти_Pointer Контрагент { get; set; }
             public Довідники.Валюти_Pointer Валюта { get; set; }
             
         }

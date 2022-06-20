@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>20.06.2022 13:44:08</DateTimeSave>
+  <DateTimeSave>20.06.2022 18:25:57</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -6004,10 +6004,10 @@
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
-            <Name>ЗамовленняКлієнта</Name>
+            <Name>Контрагент</Name>
             <NameInTable>col_a5</NameInTable>
             <Type>pointer</Type>
-            <Pointer>Документи.ЗамовленняКлієнта</Pointer>
+            <Pointer>Довідники.Контрагенти</Pointer>
             <Desc>
             </Desc>
             <IsPresentation>0</IsPresentation>
@@ -6259,10 +6259,10 @@
       <DimensionFields>
         <Fields>
           <Field>
-            <Name>ЗамовленняПостачальнику</Name>
+            <Name>Контрагент</Name>
             <NameInTable>col_a6</NameInTable>
             <Type>pointer</Type>
-            <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
+            <Pointer>Довідники.Контрагенти</Pointer>
             <Desc>
             </Desc>
             <IsPresentation>0</IsPresentation>

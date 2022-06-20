@@ -765,6 +765,10 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
 set conf_folder_code=E:\Project\AccountingSoftware_29_05_21\Configurator
 set conf_folder=%25conf_folder_code%25\bin\Release
 
@@ -777,10 +781,6 @@ copy %25conf_folder%25\Configurator.exe.config           %25st_folder%25\Configu
 copy %25conf_folder_code%25\CodeGeneration.xslt                    %25st_folder%25\CodeGeneration.xslt
 copy %25conf_folder_code%25\Comparison.xslt                          %25st_folder%25\Comparison.xslt
 copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\ComparisonAnalize.xslt
-</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
+</PreBuildEvent>
   </PropertyGroup>
 </Project>

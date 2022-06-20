@@ -33,6 +33,7 @@ using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using Звіти = StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
@@ -209,6 +210,17 @@ namespace StorageAndTrade
                 }
 
 				LoadRecords();
+			}
+		}
+
+        private void toolStripButtonДрукПроводок_Click(object sender, EventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+
+				Звіти.РухПоРугістрахНакопичення.PrintRecords(new Документи.РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
 			}
 		}
     }
