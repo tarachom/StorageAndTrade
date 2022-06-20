@@ -35,6 +35,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
+using System.Xml.XPath;
 
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Довідники;
@@ -45,7 +46,7 @@ namespace StorageAndTrade_1_0.Звіти
 {
     class РухПоРугістрахНакопичення
     {
-        public void PrintRecords(DocumentPointer ДокументВказівник)
+        public static void PrintRecords(DocumentPointer ДокументВказівник)
         {
             Dictionary<string, Func<string>> funcQuery = new Dictionary<string, Func<string>>();
             funcQuery.Add("ТовариНаСкладах", Запит_ТовариНаСкладах);
@@ -72,7 +73,8 @@ namespace StorageAndTrade_1_0.Звіти
 
                 Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-                DataToXML(xmlDoc, func.Key, columnsName, listRow);
+                if (listRow.Count > 0)
+                    DataToXML(xmlDoc, func.Key, columnsName, listRow);
             }
 
             XmlDocumentSaveAndTransform(xmlDoc);
@@ -119,11 +121,11 @@ ORDER BY Номенклатура_Назва
 SELECT 
     Рег_РухТоварів.period,
     Рег_РухТоварів.income, 
-    Рег_РухТоварів.{ТовариДоПоступлення_Const.Номенклатура} AS Номенклатура, 
+    Рег_РухТоварів.{РухТоварів_Const.Номенклатура} AS Номенклатура, 
     Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва, 
-    Рег_РухТоварів.{ТовариДоПоступлення_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Рег_РухТоварів.{РухТоварів_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва, 
-    Рег_РухТоварів.{ТовариДоПоступлення_Const.Склад} AS Склад,
+    Рег_РухТоварів.{РухТоварів_Const.Склад} AS Склад,
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва,
     Рег_РухТоварів.{РухТоварів_Const.Кількість} AS Кількість
 FROM 
@@ -176,7 +178,7 @@ FROM
     LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад}
 WHERE
-    Рег_ЗамовленняКлієнтів.Owner = @ЗамовленняКлієнта
+    Рег_ЗамовленняКлієнтів.Owner = @ДокументВказівник
 ORDER BY Номенклатура_Назва
 ";
 
@@ -204,7 +206,6 @@ FROM
        Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта}
 WHERE
     Рег_РозрахункиЗКлієнтами.Owner = @ДокументВказівник
-ORDER BY Номенклатура_Назва
 ";
 
             return query;
@@ -252,13 +253,13 @@ SELECT
     Рег_ЗамовленняПостачальникам.income, 
     Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.ЗамовленняПостачальнику} AS ЗамовленняПостачальнику, 
     Документ_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Назва} AS ЗамовленняПостачальнику_Назва,
-    Рег_ЗамовленняПостачальникам.{ТовариНаСкладах_Const.Номенклатура} AS Номенклатура, 
+    Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Номенклатура} AS Номенклатура, 
     Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва, 
-    Рег_ЗамовленняПостачальникам.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва, 
-    Рег_ЗамовленняПостачальникам.{ТовариНаСкладах_Const.Склад} AS Склад,
+    Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Склад} AS Склад,
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва,
-    Рег_ЗамовленняПостачальникам.{ТовариНаСкладах_Const.ВНаявності} AS Замовлено
+    Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} AS Замовлено
 FROM 
     {ЗамовленняПостачальникам_Const.TABLE} AS Рег_ЗамовленняПостачальникам
 
@@ -304,7 +305,6 @@ FROM
        Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта}
 WHERE
     Рег_РозрахункиЗПостачальниками.Owner = @ДокументВказівник
-ORDER BY Номенклатура_Назва
 ";
 
             return query;
@@ -348,7 +348,7 @@ ORDER BY Номенклатура_Назва
 
         private static void DataToXML(XmlDocument xmlDoc, string registerName, string[] columnsName, List<object[]> listRow)
         {
-            XmlNode root = xmlDoc.ChildNodes[0];
+            XmlNode root= xmlDoc.SelectSingleNode("/root");
 
             XmlElement rootItemNode = xmlDoc.CreateElement(registerName);
             root.AppendChild(rootItemNode);
@@ -358,7 +358,7 @@ ORDER BY Номенклатура_Назва
                 int counter = 0;
 
                 XmlElement nodeRow = xmlDoc.CreateElement("row");
-                root.AppendChild(nodeRow);
+                rootItemNode.AppendChild(nodeRow);
 
                 foreach (string col in columnsName)
                 {
@@ -371,7 +371,7 @@ ORDER BY Номенклатура_Назва
             }
         }
 
-        private XmlDocument CreateXmlDocument()
+        private static XmlDocument CreateXmlDocument()
         {
             XmlDocument xmlConfDocument = new XmlDocument();
             xmlConfDocument.AppendChild(xmlConfDocument.CreateXmlDeclaration("1.0", "utf-8", ""));
@@ -382,7 +382,7 @@ ORDER BY Номенклатура_Назва
             return xmlConfDocument;
         }
 
-        private void XmlDocumentSaveAndTransform(XmlDocument xmlDoc)
+        private static void XmlDocumentSaveAndTransform(XmlDocument xmlDoc)
         {
             string pathToFolder = Path.GetDirectoryName(Application.ExecutablePath);
             string pathToTemplate = Path.Combine(@"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\РухДокументівПоРегістрах", "Template_РухДокументівПоРегістрах.xslt");
