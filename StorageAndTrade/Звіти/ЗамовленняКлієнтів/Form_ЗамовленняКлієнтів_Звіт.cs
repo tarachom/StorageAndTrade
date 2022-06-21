@@ -51,20 +51,12 @@ namespace StorageAndTrade
 
         private void Form_ЗамовленняКлієнтів_Звіт_Load(object sender, EventArgs e)
         {
-            directoryControl_НоменклатураПапка.SelectForm = new Form_НоменклатураПапкиВибір();
-            directoryControl_НоменклатураПапка.DirectoryPointerItem = new Номенклатура_Папки_Pointer();
+            directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Номенклатура_Папки_Pointer());
+            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer());
+            directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
+            directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
 
-            directoryControl_Номенклатура.SelectForm = new Form_Номенклатура();
-            directoryControl_Номенклатура.DirectoryPointerItem = new Номенклатура_Pointer();
-
-            directoryControl_СкладиПапки.SelectForm = new Form_СкладиПапкиВибір();
-            directoryControl_СкладиПапки.DirectoryPointerItem = new Склади_Папки_Pointer();
-
-            directoryControl_Склади.SelectForm = new Form_Склади();
-            directoryControl_Склади.DirectoryPointerItem = new Склади_Pointer();
-
-            documentControl_ЗамовленняКлієнта.SelectForm = new Form_ЗамовленняКлієнтаЖурнал();
-            documentControl_ЗамовленняКлієнта.DocumentPointerItem = new ЗамовленняКлієнта_Pointer();
+            documentControl_ЗамовленняКлієнта.Init(new Form_ЗамовленняКлієнтаЖурнал(), new ЗамовленняКлієнта_Pointer());
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)

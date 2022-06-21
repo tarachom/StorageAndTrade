@@ -33,6 +33,20 @@ namespace StorageAndTrade
 			InitializeComponent();
 		}
 
+		/// <summary>
+		/// Ініціалізація параметрів
+		/// </summary>
+		/// <param name="selectForm">Форма</param>
+		/// <param name="directoryPointerItem">Вказівник</param>
+		public void Init(Form selectForm, DocumentPointer documentPointerItem)
+		{
+			SelectForm = selectForm;
+			DocumentPointerItem = documentPointerItem;
+		}
+
+		/// <summary>
+		/// Форма яку потрібно відкрити
+		/// </summary>
 		public Form SelectForm { get; set; }
 
 		private DocumentPointer mDocumentPointerItem;

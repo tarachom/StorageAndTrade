@@ -37,6 +37,17 @@ namespace StorageAndTrade
 		}
 
 		/// <summary>
+		/// Ініціалізація параметрів
+		/// </summary>
+		/// <param name="selectForm">Форма</param>
+		/// <param name="directoryPointerItem">Вказівник</param>
+		public void Init(Form selectForm, DirectoryPointer directoryPointerItem)
+        {
+			SelectForm = selectForm;
+			DirectoryPointerItem = directoryPointerItem;
+		}
+
+		/// <summary>
 		/// Форма для вибору елементу довідника
 		/// </summary>
 		public Form SelectForm { get; set; }

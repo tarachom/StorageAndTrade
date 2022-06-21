@@ -58,7 +58,6 @@
 
 		<table class="table table-bordered table-sm">
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>Номенклатура</th>
 				<th>Характеристика номенклатури</th>
@@ -69,9 +68,6 @@
 
 			<xsl:for-each select="row">
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
@@ -104,7 +100,6 @@
 		<table class="table table-bordered table-sm">
 
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>Номенклатура</th>
 				<th>Характеристика номенклатури</th>
@@ -115,9 +110,6 @@
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
@@ -148,7 +140,6 @@
 		<table class="table table-bordered table-sm">
 
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>ЗамовленняКлієнта</th>
 				<th>Номенклатура</th>
@@ -161,9 +152,6 @@
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
@@ -200,7 +188,6 @@
 		<table class="table table-bordered table-sm">
 
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>Контрагент</th>
 				<th>Валюта</th>
@@ -210,9 +197,6 @@
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
@@ -240,7 +224,6 @@
 		<table class="table table-bordered table-sm">
 
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>Номенклатура</th>
 				<th>Характеристика номенклатури</th>
@@ -253,9 +236,6 @@
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
@@ -292,7 +272,6 @@
 		<table class="table table-bordered table-sm">
 
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>ЗамовленняПостачальнику</th>
 				<th>Номенклатура</th>
@@ -304,9 +283,6 @@
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
@@ -340,7 +316,6 @@
 		<table class="table table-bordered table-sm">
 
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>Контрагент</th>
 				<th>Валюта</th>
@@ -350,9 +325,6 @@
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
@@ -380,7 +352,6 @@
 		<table class="table table-bordered table-sm">
 
 			<tr>
-				<th>period</th>
 				<th>income</th>
 				<th>Номенклатура</th>
 				<th>Характеристика номенклатури</th>
@@ -391,9 +362,6 @@
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="period"/>
-					</td>
 					<td>
 						<xsl:value-of select="income"/>
 					</td>
