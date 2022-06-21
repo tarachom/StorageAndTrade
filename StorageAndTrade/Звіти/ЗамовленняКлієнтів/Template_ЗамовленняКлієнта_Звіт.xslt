@@ -25,36 +25,32 @@
 					<p>Замовлення клієнтів</p>
 
 					<table class="table table-bordered table-sm">
-						<thead>
-							<tr>
-								<th>Номенклатура</th>
-								<th>Характеристика номенклатури</th>
-								<th>Склад</th>
-								<th>Замовлено</th>
-								<th>Сума</th>
-							</tr>
-						</thead>
+						<tr>
+							<th>Номенклатура</th>
+							<th>Характеристика номенклатури</th>
+							<th>Склад</th>
+							<th>Замовлено</th>
+							<th>Сума</th>
+						</tr>
 
-						<xsl:for-each select="row">
-							<tbody>
-								<tr>
-									<td>
-										<xsl:value-of select="Номенклатура_Назва"/>
-									</td>
-									<td>
-										<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
-									</td>
-									<td>
-										<xsl:value-of select="Склад_Назва"/>
-									</td>
-									<td align="right">
-										<xsl:value-of select="Замовлено"/>
-									</td>
-									<td align="right">
-										<xsl:value-of select="Сума"/>
-									</td>
-								</tr>
-							</tbody>
+						<xsl:for-each select="ЗамовленняКлієнтів/row">
+							<tr>
+								<td>
+									<xsl:value-of select="Номенклатура_Назва"/>
+								</td>
+								<td>
+									<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+								</td>
+								<td>
+									<xsl:value-of select="Склад_Назва"/>
+								</td>
+								<td align="right">
+									<xsl:value-of select="Замовлено"/>
+								</td>
+								<td align="right">
+									<xsl:value-of select="Сума"/>
+								</td>
+							</tr>
 						</xsl:for-each>
 
 					</table>
