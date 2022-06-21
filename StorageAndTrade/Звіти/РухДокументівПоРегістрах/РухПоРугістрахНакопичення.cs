@@ -21,12 +21,6 @@ limitations under the License.
 Сайт:     accounting.org.ua
 */
 
-/*
- 
-Модуль функцій для звітів
-
-*/
-
 using System;
 using System.Collections.Generic;
 using AccountingSoftware;
@@ -44,10 +38,18 @@ using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade_1_0.Звіти
 {
+    /// <summary>
+    /// Рух документу по регістрах
+    /// </summary>
     class РухПоРугістрахНакопичення
     {
+        /// <summary>
+        /// Функція формує звіт рухів документу по регістрах
+        /// </summary>
+        /// <param name="ДокументВказівник">Документ для якого формується звіт</param>
         public static void PrintRecords(DocumentPointer ДокументВказівник)
         {
+            //Словник [ Назва групи, Функція]
             Dictionary<string, Func<string>> funcQuery = new Dictionary<string, Func<string>>();
             funcQuery.Add("ТовариНаСкладах", Запит_ТовариНаСкладах);
             funcQuery.Add("РухТоварів", Запит_РухТоварів);
@@ -58,7 +60,7 @@ namespace StorageAndTrade_1_0.Звіти
             funcQuery.Add("РозрахункиЗПостачальниками", Запит_РозрахункиЗПостачальниками);
             funcQuery.Add("ТовариДоПоступлення", Запит_ТовариДоПоступлення);
 
-            XmlDocument xmlDoc = CreateXmlDocument();
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("ДокументВказівник", ДокументВказівник.UnigueID.UGuid);
@@ -69,15 +71,16 @@ namespace StorageAndTrade_1_0.Звіти
                 List<object[]> listRow;
 
                 string query = func.Value.Invoke();
-                Console.WriteLine(query);
+                //Console.WriteLine(query);
 
                 Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
                 if (listRow.Count > 0)
-                    DataToXML(xmlDoc, func.Key, columnsName, listRow);
+                    Функції.DataToXML(xmlDoc, func.Key, columnsName, listRow);
             }
 
-            XmlDocumentSaveAndTransform(xmlDoc);
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, 
+                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt");
         }
 
         #region Запити
@@ -343,118 +346,6 @@ ORDER BY Номенклатура_Назва
         }
 
         #endregion
-
-        #region Функції
-
-        private static void DataToXML(XmlDocument xmlDoc, string registerName, string[] columnsName, List<object[]> listRow)
-        {
-            XmlNode root= xmlDoc.SelectSingleNode("/root");
-
-            XmlElement rootItemNode = xmlDoc.CreateElement(registerName);
-            root.AppendChild(rootItemNode);
-
-            foreach (object[] row in listRow)
-            {
-                int counter = 0;
-
-                XmlElement nodeRow = xmlDoc.CreateElement("row");
-                rootItemNode.AppendChild(nodeRow);
-
-                foreach (string col in columnsName)
-                {
-                    XmlElement node = xmlDoc.CreateElement(col);
-                    node.InnerText = row[counter].ToString();
-                    nodeRow.AppendChild(node);
-
-                    counter++;
-                }
-            }
-        }
-
-        private static XmlDocument CreateXmlDocument()
-        {
-            XmlDocument xmlConfDocument = new XmlDocument();
-            xmlConfDocument.AppendChild(xmlConfDocument.CreateXmlDeclaration("1.0", "utf-8", ""));
-
-            XmlElement rootNode = xmlConfDocument.CreateElement("root");
-            xmlConfDocument.AppendChild(rootNode);
-
-            return xmlConfDocument;
-        }
-
-        private static void XmlDocumentSaveAndTransform(XmlDocument xmlDoc)
-        {
-            string pathToFolder = Path.GetDirectoryName(Application.ExecutablePath);
-            string pathToTemplate = Path.Combine(@"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\РухДокументівПоРегістрах", "Template_РухДокументівПоРегістрах.xslt");
-
-            string pathToXmlFile = Path.Combine(pathToFolder, "SaveXML_Report.xml");
-            string pathToHtmlFile = Path.Combine(pathToFolder, "SaveXML_Report.html");
-
-            xmlDoc.Save(pathToXmlFile);
-
-            XslCompiledTransform xsltTransform = new XslCompiledTransform();
-            xsltTransform.Load(pathToTemplate, new XsltSettings(), null);
-
-            xsltTransform.Transform(pathToXmlFile, pathToHtmlFile);
-
-            System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile);
-        }
-
-        #endregion
-
-        public static void PrintRegisterRecords(ЗамовленняКлієнта_Pointer ДокументВказівник)
-        {
-            //
-            //ЗамовленняКлієнтів
-            //
-
-            Console.WriteLine("Док: " + ДокументВказівник.UnigueID.ToString());
-
-            string query = $@"
-SELECT 
-    Рег_ЗамовленняКлієнтів.period,
-    Рег_ЗамовленняКлієнтів.income,
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} AS ЗамовленняКлієнта, 
-    Документ_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.Назва} AS ЗамовленняКлієнта_Назва, 
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} AS Номенклатура, 
-    Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва, 
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
-    Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва, 
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад} AS Склад,
-    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва,
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} AS Замовлено,
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} AS Сума
-FROM 
-    {ЗамовленняКлієнтів_Const.TABLE} AS Рег_ЗамовленняКлієнтів
-
-    LEFT JOIN {ЗамовленняКлієнта_Const.TABLE} AS Документ_ЗамовленняКлієнта ON Документ_ЗамовленняКлієнта.uid = 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта}
-
-    LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура}
-
-    LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури}
-
-    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
-       Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад}
-WHERE
-    Рег_ЗамовленняКлієнтів.Owner = @ЗамовленняКлієнта
-ORDER BY Номенклатура_Назва
-";
-
-            Console.WriteLine(query);
-
-            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-            paramQuery.Add("ЗамовленняКлієнта", ДокументВказівник.UnigueID.UGuid);
-
-            string[] columnsName;
-            List<object[]> listRow;
-
-            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-
-            //SaveXML(columnsName, listRow);
-        }
 
     }
 }

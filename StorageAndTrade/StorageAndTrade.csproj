@@ -459,6 +459,7 @@
     <Compile Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.Designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
     </Compile>
+    <Compile Include="Звіти\Функції.cs" />
     <EmbeddedResource Include="ConfigurationSelectionForm.resx">
       <DependentUpon>ConfigurationSelectionForm.cs</DependentUpon>
     </EmbeddedResource>

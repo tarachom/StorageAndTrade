@@ -1,4 +1,26 @@
-﻿using System;
+﻿/*
+Copyright (C) 2019-2020 TARAKHOMYN YURIY IVANOVYCH
+All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+/*
+Автор:    Тарахомин Юрій Іванович
+Адреса:   Україна, м. Львів
+Сайт:     accounting.org.ua
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +38,7 @@ using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
+using StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
@@ -178,6 +201,8 @@ ORDER BY Номенклатура_Назва
 ";
 
             Console.WriteLine(query);
+            
+            XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 
@@ -186,47 +211,11 @@ ORDER BY Номенклатура_Назва
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            SaveXML(columnsName, listRow);
+            Функції.DataToXML(xmlDoc, "ЗамовленняКлієнтів", columnsName, listRow);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, 
+                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt");
         }
-
-        public static void SaveXML(string[] columnsName, List<object[]> listRow)
-        {
-            XmlDocument xmlConfDocument = new XmlDocument();
-            xmlConfDocument.AppendChild(xmlConfDocument.CreateXmlDeclaration("1.0", "utf-8", ""));
-
-            XmlElement rootNode = xmlConfDocument.CreateElement("root");
-            xmlConfDocument.AppendChild(rootNode);
-
-            int counter;
-
-            foreach (object[] row in listRow)
-            {
-                counter = 0;
-
-                XmlElement nodeRow = xmlConfDocument.CreateElement("row");
-                rootNode.AppendChild(nodeRow);
-
-                foreach (string col in columnsName)
-                {
-                    XmlElement node = xmlConfDocument.CreateElement(col);
-                    node.InnerText = row[counter].ToString();
-                    nodeRow.AppendChild(node);
-
-                    counter++;
-                }
-            }
-
-            xmlConfDocument.Save(@"E:\Project\StorageAndTrade\StorageAndTrade\bin\Debug\SaveXML_Report.xml");
-
-            XslCompiledTransform xsltTransform = new XslCompiledTransform();
-            xsltTransform.Load(@"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt", new XsltSettings(), null);
-
-            xsltTransform.Transform(@"E:\Project\StorageAndTrade\StorageAndTrade\bin\Debug\SaveXML_Report.xml",
-                @"E:\Project\StorageAndTrade\StorageAndTrade\bin\Debug\SaveXML_Report.html");
-
-            System.Diagnostics.Process.Start("firefox.exe", @"E:\Project\StorageAndTrade\StorageAndTrade\bin\Debug\SaveXML_Report.html");
-        }
-
         
     }
 }
