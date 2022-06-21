@@ -34,6 +34,9 @@ namespace StorageAndTrade
             directoryControl_Номенклатура.SelectForm = new Form_Номенклатура();
             directoryControl_Номенклатура.DirectoryPointerItem = new Номенклатура_Pointer();
 
+            directoryControl_СкладиПапки.SelectForm = new Form_СкладиПапкиВибір();
+            directoryControl_СкладиПапки.DirectoryPointerItem = new Склади_Папки_Pointer();
+
             directoryControl_Склади.SelectForm = new Form_Склади();
             directoryControl_Склади.DirectoryPointerItem = new Склади_Pointer();
 
@@ -43,6 +46,8 @@ namespace StorageAndTrade
 
         private void buttonCreate_Click(object sender, EventArgs e)
         {
+            bool isExistParent = false;
+
             string query = $@"
 SELECT 
     Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} AS Номенклатура, 
@@ -53,10 +58,12 @@ SELECT
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва, 
 
     SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} ELSE -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} END) AS Замовлено,
+        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} ELSE 
+       -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} END) AS Замовлено,
 
     SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} ELSE -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) AS Сума
+        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} ELSE 
+        -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) AS Сума
 FROM 
     {ЗамовленняКлієнтів_Const.TABLE} AS Рег_ЗамовленняКлієнтів
 
@@ -73,15 +80,17 @@ FROM
             //Відбір по всіх вкладених папках вибраної папки Номенклатури
             if (!directoryControl_НоменклатураПапка.DirectoryPointerItem.IsEmpty())
             {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
                 query += $@"
-WHERE 
-    Довідник_Номенклатура.{Номенклатура_Const.Папка} IN 
+Довідник_Номенклатура.{Номенклатура_Const.Папка} IN 
     (
         WITH RECURSIVE r AS 
         (
             SELECT uid
             FROM {Номенклатура_Папки_Const.TABLE}
-            WHERE {Номенклатура_Папки_Const.TABLE}.uid = '{directoryControl_НоменклатураПапка.DirectoryPointerItem.UnigueID.UGuid}' 
+            WHERE {Номенклатура_Папки_Const.TABLE}.uid = '{directoryControl_НоменклатураПапка.DirectoryPointerItem.UnigueID}' 
 
             UNION ALL
 
@@ -96,27 +105,58 @@ WHERE
             //Відбір по вибраному елементу Номенклатура
             if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
             {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
                 query += $@"
-WHERE 
-    Довідник_Номенклатура.uid = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID.UGuid}'
+Довідник_Номенклатура.uid = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по всіх вкладених папках вибраної папки Склади
+            if (!directoryControl_СкладиПапки.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Склади.{Склади_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Склади_Папки_Const.TABLE}
+            WHERE {Склади_Папки_Const.TABLE}.uid = '{directoryControl_СкладиПапки.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Склади_Папки_Const.TABLE}.uid
+            FROM {Склади_Папки_Const.TABLE}
+                JOIN r ON {Склади_Папки_Const.TABLE}.{Склади_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
 ";
             }
 
             //Відбір по вибраному елементу Склади
             if (!directoryControl_Склади.DirectoryPointerItem.IsEmpty())
             {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
                 query += $@"
-WHERE 
-    Довідник_Склади.uid = '{directoryControl_Склади.DirectoryPointerItem.UnigueID.UGuid}'
+Довідник_Склади.uid = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
 ";
             }
 
             //Відбір по документу ЗамовленняКлієнта
             if (!documentControl_ЗамовленняКлієнта.DocumentPointerItem.IsEmpty())
             {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
                 query += $@"
-WHERE 
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID.UGuid}'
+Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
 ";
             }
 
@@ -125,15 +165,21 @@ GROUP BY Номенклатура, Номенклатура_Назва,
          ХарактеристикаНоменклатури, ХарактеристикаНоменклатури_Назва,
          Склад, Склад_Назва
 
+HAVING
+     SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
+        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} ELSE 
+       -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} END) != 0
+OR
+    SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
+        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} ELSE 
+        -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) != 0   
+
 ORDER BY Номенклатура_Назва
 ";
 
             Console.WriteLine(query);
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-
-            //if (!directoryControl_НоменклатураПапка.DirectoryPointerItem.IsEmpty())
-            //    paramQuery.Add("Папка", directoryControl_НоменклатураПапка.DirectoryPointerItem.UnigueID.UGuid);
 
             string[] columnsName;
             List<object[]> listRow;
