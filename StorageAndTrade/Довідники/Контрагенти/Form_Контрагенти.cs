@@ -101,7 +101,7 @@ namespace StorageAndTrade
 				});
 			}
 
-			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
+			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty() && dataGridViewRecords.Rows.Count > 0)
 			{
 				dataGridViewRecords.Rows[0].Selected = false;
 
