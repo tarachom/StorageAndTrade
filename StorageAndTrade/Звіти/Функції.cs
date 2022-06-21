@@ -35,12 +35,6 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
-using System.Xml.XPath;
-
-using StorageAndTrade_1_0;
-using StorageAndTrade_1_0.Довідники;
-using StorageAndTrade_1_0.Документи;
-using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade_1_0.Звіти
 {
@@ -49,7 +43,10 @@ namespace StorageAndTrade_1_0.Звіти
     /// </summary>
     public class Функції
     {
-
+        /// <summary>
+        /// Створює хмл документ та корінну вітку root
+        /// </summary>
+        /// <returns>хмл документ</returns>
         public static XmlDocument CreateXmlDocument()
         {
             XmlDocument xmlConfDocument = new XmlDocument();
@@ -61,11 +58,18 @@ namespace StorageAndTrade_1_0.Звіти
             return xmlConfDocument;
         }
 
-        public static void DataToXML(XmlDocument xmlDoc, string registerName, string[] columnsName, List<object[]> listRow)
+        /// <summary>
+        /// Записує блок даних в хмл документ
+        /// </summary>
+        /// <param name="xmlDoc">Хмл документ</param>
+        /// <param name="blockName">Назва блоку даних</param>
+        /// <param name="columnsName">Масив стовпчиків</param>
+        /// <param name="listRow">Список рядків</param>
+        public static void DataToXML(XmlDocument xmlDoc, string blockName, string[] columnsName, List<object[]> listRow)
         {
             XmlNode root= xmlDoc.SelectSingleNode("/root");
 
-            XmlElement rootItemNode = xmlDoc.CreateElement(registerName);
+            XmlElement rootItemNode = xmlDoc.CreateElement(blockName);
             root.AppendChild(rootItemNode);
 
             foreach (object[] row in listRow)
@@ -86,6 +90,11 @@ namespace StorageAndTrade_1_0.Звіти
             }
         }
 
+        /// <summary>
+        /// Записує хмл документ та трансформує його в HTML
+        /// </summary>
+        /// <param name="xmlDoc">хмл документ</param>
+        /// <param name="pathToTemplate">шлях до шаблону XSLT</param>
         public static void XmlDocumentSaveAndTransform(XmlDocument xmlDoc, string pathToTemplate)
         {
             string pathToFolder = Path.GetDirectoryName(Application.ExecutablePath);
