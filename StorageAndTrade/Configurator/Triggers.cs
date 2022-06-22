@@ -178,7 +178,6 @@ namespace StorageAndTrade_1_0.Довідники
 
 namespace StorageAndTrade_1_0.Документи
 {
-
 	class ЗамовленняКлієнта_Triggers
     {
 		/// <summary>
@@ -288,7 +287,6 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
-
 	}
 
 	class РеалізаціяТоварівТаПослуг_Triggers
@@ -412,12 +410,10 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
-
 	}
 
 	class ПоступленняТоварівТаПослуг_Triggers
 	{
-
 		public static void BeforeRecording(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
 		{
 
