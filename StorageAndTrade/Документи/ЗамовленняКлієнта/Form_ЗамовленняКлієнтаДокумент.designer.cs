@@ -72,7 +72,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(411, 3);
+            this.buttonClose.Location = new System.Drawing.Point(173, 3);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 28);
             this.buttonClose.TabIndex = 16;
@@ -109,7 +109,7 @@ namespace StorageAndTrade
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(287, 22);
+            this.label1.Location = new System.Drawing.Point(301, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 21;
@@ -117,9 +117,9 @@ namespace StorageAndTrade
             // 
             // dateTimePicker_ДатаДок
             // 
-            this.dateTimePicker_ДатаДок.Location = new System.Drawing.Point(331, 19);
+            this.dateTimePicker_ДатаДок.Location = new System.Drawing.Point(344, 19);
             this.dateTimePicker_ДатаДок.Name = "dateTimePicker_ДатаДок";
-            this.dateTimePicker_ДатаДок.Size = new System.Drawing.Size(151, 20);
+            this.dateTimePicker_ДатаДок.Size = new System.Drawing.Size(138, 20);
             this.dateTimePicker_ДатаДок.TabIndex = 22;
             // 
             // panel1
@@ -298,7 +298,7 @@ namespace StorageAndTrade
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(52, 40);
+            this.label12.Location = new System.Drawing.Point(52, 47);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(58, 13);
             this.label12.TabIndex = 62;
@@ -307,7 +307,7 @@ namespace StorageAndTrade
             // directoryControl_Підрозділ
             // 
             this.directoryControl_Підрозділ.DirectoryPointerItem = null;
-            this.directoryControl_Підрозділ.Location = new System.Drawing.Point(145, 33);
+            this.directoryControl_Підрозділ.Location = new System.Drawing.Point(145, 40);
             this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
             this.directoryControl_Підрозділ.SelectForm = null;
             this.directoryControl_Підрозділ.Size = new System.Drawing.Size(399, 27);
@@ -317,7 +317,7 @@ namespace StorageAndTrade
             // 
             this.comboBox_ГосподарськаОперація.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_ГосподарськаОперація.FormattingEnabled = true;
-            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(145, 6);
+            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(145, 13);
             this.comboBox_ГосподарськаОперація.Name = "comboBox_ГосподарськаОперація";
             this.comboBox_ГосподарськаОперація.Size = new System.Drawing.Size(351, 21);
             this.comboBox_ГосподарськаОперація.TabIndex = 58;
@@ -325,7 +325,7 @@ namespace StorageAndTrade
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(10, 9);
+            this.label10.Location = new System.Drawing.Point(10, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 13);
             this.label10.TabIndex = 57;
@@ -382,9 +382,9 @@ namespace StorageAndTrade
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(988, 331);
+            this.tabPage2.Size = new System.Drawing.Size(988, 367);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Додатково";
+            this.tabPage2.Text = "Додаток";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // panel3
