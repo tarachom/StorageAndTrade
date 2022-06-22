@@ -760,6 +760,13 @@
     <Folder Include="Документи\РозхіднийКасовийОрдер\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\down.ico" />
+    <None Include="Resources\plus.ico" />
+    <None Include="Resources\up.ico" />
+    <None Include="Resources\add_document.ico" />
+    <None Include="Resources\calculator.ico" />
+    <None Include="Resources\document_not_spend.ico" />
+    <None Include="Resources\refresh.ico" />
     <Content Include="Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt" />
     <Content Include="Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt" />
   </ItemGroup>
