@@ -65,7 +65,7 @@ namespace StorageAndTrade
 
 		private void Form_КонтрагентиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_КонтрагентПапка.SelectForm = new Form_КонтрагентиПапкиВибір();
+			directoryControl_КонтрагентПапка.Init(new Form_КонтрагентиПапкиВибір(), new Довідники.Контрагенти_Папки_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -74,7 +74,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_КонтрагентПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer();
 				}
 				else
 				{

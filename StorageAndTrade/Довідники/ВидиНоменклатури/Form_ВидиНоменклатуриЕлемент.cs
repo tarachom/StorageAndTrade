@@ -69,7 +69,7 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
 
-			directoryControl_ОдиницяВиміру.SelectForm = new Form_ПакуванняОдиниціВиміру();
+			directoryControl_ОдиницяВиміру.Init(new Form_ПакуванняОдиниціВиміру(), new Довідники.ПакуванняОдиниціВиміру_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -78,7 +78,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer();
 					comboBox_ТипНоменклатури.SelectedIndex = 0;
 				}
 				else

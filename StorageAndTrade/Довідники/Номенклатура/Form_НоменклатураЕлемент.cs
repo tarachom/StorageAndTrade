@@ -75,10 +75,10 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
 
-			directoryControl_НоменклатураПапка.SelectForm = new Form_НоменклатураПапкиВибір();
-			directoryControl_Виробник.SelectForm = new Form_Виробники();
-			directoryControl_ВидНоменклатури.SelectForm = new Form_ВидиНоменклатури();
-			directoryControl_ОдиницяВиміру.SelectForm = new Form_ПакуванняОдиниціВиміру();
+			directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid)));
+			directoryControl_Виробник.Init(new Form_Виробники(), new Довідники.Виробники_Pointer());
+			directoryControl_ВидНоменклатури.Init(new Form_ВидиНоменклатури(), new Довідники.ВидиНоменклатури_Pointer());
+			directoryControl_ОдиницяВиміру.Init(new Form_ПакуванняОдиниціВиміру(), new Довідники.ПакуванняОдиниціВиміру_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -87,10 +87,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid));
-					directoryControl_Виробник.DirectoryPointerItem = new Довідники.Виробники_Pointer();
-					directoryControl_ВидНоменклатури.DirectoryPointerItem = new Довідники.ВидиНоменклатури_Pointer();
-					directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer();
 					comboBox_ТипНоменклатури.SelectedItem = Перелічення.ТипиНоменклатури.Товар;
 				}
 				else

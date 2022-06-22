@@ -45,7 +45,6 @@ namespace StorageAndTrade
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 			
-
 			dataGridViewRecords.Columns["Image"].Width = 30;
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
@@ -58,10 +57,7 @@ namespace StorageAndTrade
 
         private void Form_Валюти_Load(object sender, EventArgs e)
         {
-			
 			LoadRecords();
-
-			//List<Записи> a = RecordsBindingList.OrderByDescending(x => x.ID).ToList();
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -102,14 +98,12 @@ namespace StorageAndTrade
 				//dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
 				//dataGridViewRecords.Rows[selectRow].Selected = true;
 				//dataGridViewRecords.Rows[0].Selected = false;
-
 			}
 		}
 
 		private class Записи
 		{
 			public Записи() { Image = Properties.Resources.doc_text_image; }
-
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }

@@ -33,7 +33,7 @@ namespace StorageAndTrade
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.directoryControl1 = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Валюта = new StorageAndTrade.DirectoryControl();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -73,14 +73,14 @@ namespace StorageAndTrade
             this.label2.TabIndex = 19;
             this.label2.Text = "Назва:";
             // 
-            // directoryControl1
+            // directoryControl_Валюта
             // 
-            this.directoryControl1.DirectoryPointerItem = null;
-            this.directoryControl1.Location = new System.Drawing.Point(88, 38);
-            this.directoryControl1.Name = "directoryControl1";
-            this.directoryControl1.SelectForm = null;
-            this.directoryControl1.Size = new System.Drawing.Size(465, 27);
-            this.directoryControl1.TabIndex = 21;
+            this.directoryControl_Валюта.DirectoryPointerItem = null;
+            this.directoryControl_Валюта.Location = new System.Drawing.Point(88, 38);
+            this.directoryControl_Валюта.Name = "directoryControl_Валюта";
+            this.directoryControl_Валюта.SelectForm = null;
+            this.directoryControl_Валюта.Size = new System.Drawing.Size(465, 27);
+            this.directoryControl_Валюта.TabIndex = 21;
             // 
             // label1
             // 
@@ -97,7 +97,7 @@ namespace StorageAndTrade
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(565, 119);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.directoryControl1);
+            this.Controls.Add(this.directoryControl_Валюта);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
@@ -118,7 +118,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
-        private DirectoryControl directoryControl1;
+        private DirectoryControl directoryControl_Валюта;
         private System.Windows.Forms.Label label1;
     }
 }

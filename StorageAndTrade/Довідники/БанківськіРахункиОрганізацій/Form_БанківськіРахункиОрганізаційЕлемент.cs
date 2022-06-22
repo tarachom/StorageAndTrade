@@ -65,9 +65,9 @@ namespace StorageAndTrade
 
 		private void Form_БанківськіРахункиОрганізаційЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_Валюта.SelectForm = new Form_Валюти();
-			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
-			directoryControl_Організація.SelectForm = new Form_Організації();
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
+			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
+			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -76,10 +76,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-
-					directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer();
-					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
-					directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer();
 				}
 				else
 				{

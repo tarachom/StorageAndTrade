@@ -65,7 +65,7 @@ namespace StorageAndTrade
 
 		private void Form_ВидиЦінЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl1.SelectForm = new Form_Валюти();
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -74,8 +74,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-
-					directoryControl1.DirectoryPointerItem = new Довідники.Валюти_Pointer();
 				}
 				else
 				{
@@ -84,7 +82,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + видиЦін_Objest.Назва;
 
 						textBoxName.Text = видиЦін_Objest.Назва;
-						directoryControl1.DirectoryPointerItem = new Довідники.Валюти_Pointer(видиЦін_Objest.Валюта.UnigueID);
+						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(видиЦін_Objest.Валюта.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -102,7 +100,7 @@ namespace StorageAndTrade
 				try
 				{
 					видиЦін_Objest.Назва = textBoxName.Text;
-					видиЦін_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl1.DirectoryPointerItem;
+					видиЦін_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					видиЦін_Objest.Save();
 				}
 				catch (Exception exp)

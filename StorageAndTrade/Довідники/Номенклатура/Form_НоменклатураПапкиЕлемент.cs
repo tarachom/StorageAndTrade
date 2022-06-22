@@ -70,7 +70,7 @@ namespace StorageAndTrade
 
 		private void Form_НоменклатураПапкиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_НоменклатураПапка.SelectForm = new Form_НоменклатураПапкиВибір();
+			directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid)));
 
 			if (IsNew.HasValue)
 			{
@@ -79,7 +79,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid));
 				}
 				else
 				{

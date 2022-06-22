@@ -74,10 +74,10 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиСкладів"].Fields.Values)
 				comboBox_ТипСкладу.Items.Add((Перелічення.ТипиСкладів)field.Value);
 
-			directoryControl_СкладиПапка.SelectForm = new Form_СкладиПапкиВибір();
-			directoryControl_Відповідальний.SelectForm = new Form_ФізичніОсоби();
-			directoryControl_ВидЦін.SelectForm = new Form_ВидиЦін();
-			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
+			directoryControl_СкладиПапка.Init(new Form_СкладиПапкиВибір(), new Довідники.Склади_Папки_Pointer(new UnigueID(ParentUid)));
+			directoryControl_Відповідальний.Init(new Form_ФізичніОсоби(), new Довідники.ФізичніОсоби_Pointer());
+			directoryControl_ВидЦін.Init(new Form_ВидиЦін(), new Довідники.ВидиЦін_Pointer());
+			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -87,10 +87,6 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий запис";
 					comboBox_ТипСкладу.SelectedIndex = 0;
-					directoryControl_СкладиПапка.DirectoryPointerItem = new Довідники.Склади_Папки_Pointer(new UnigueID(ParentUid));
-					directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer();
-					directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer();
-					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
 				}
 				else
 				{

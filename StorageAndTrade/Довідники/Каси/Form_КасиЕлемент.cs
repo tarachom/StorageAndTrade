@@ -65,7 +65,7 @@ namespace StorageAndTrade
 
 		private void Form_КасиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_Валюта.SelectForm = new Form_Валюти();
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -74,8 +74,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-
-					directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer();
 				}
 				else
 				{

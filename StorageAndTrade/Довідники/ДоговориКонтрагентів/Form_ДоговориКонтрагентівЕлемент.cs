@@ -80,10 +80,10 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипДоговорів"].Fields.Values)
 				comboBox_ТипДоговору.Items.Add((Перелічення.ТипДоговорів)field.Value);
 
-			directoryControl_БанківськийРахунок.SelectForm = new Form_БанківськіРахункиОрганізацій();
-			directoryControl_БанківськийРахунокКонтрагента.SelectForm = new Form_БанківськіРахункиКонтрагентів();
-			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
-			directoryControl_Контрагент.SelectForm = new Form_Контрагенти();
+			directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
+			directoryControl_БанківськийРахунокКонтрагента.Init(new Form_БанківськіРахункиКонтрагентів(), new Довідники.БанківськіРахункиКонтрагентів_Pointer());
+			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
+			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -92,10 +92,6 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer();
-					directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer();
-					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
-					directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer();
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 					comboBox_ТипДоговору.SelectedIndex = 0;
