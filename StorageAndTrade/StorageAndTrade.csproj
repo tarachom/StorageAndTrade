@@ -61,6 +61,11 @@
     <Compile Include="ConfigurationSelectionParam.designer.cs">
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РухДокументівПоРегістрах\РухПоРугістрахНакопичення.cs" />
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
@@ -660,14 +665,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаЖурнал.cs">
       <SubType>Form</SubType>
     </Compile>

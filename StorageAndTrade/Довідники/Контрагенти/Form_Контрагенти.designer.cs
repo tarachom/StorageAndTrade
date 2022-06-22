@@ -37,17 +37,17 @@ namespace StorageAndTrade
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.Контрагенти_Папки_Дерево = new StorageAndTrade.Form_Контрагенти_Папки_Дерево();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -75,7 +75,7 @@ namespace StorageAndTrade
             // 
             // toolStripButtonAdd
             // 
-            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.page;
+            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(66, 22);
@@ -127,22 +127,6 @@ namespace StorageAndTrade
             this.panel2.Size = new System.Drawing.Size(1052, 704);
             this.panel2.TabIndex = 2;
             // 
-            // dataGridViewRecords
-            // 
-            this.dataGridViewRecords.AllowUserToAddRows = false;
-            this.dataGridViewRecords.AllowUserToDeleteRows = false;
-            this.dataGridViewRecords.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            this.dataGridViewRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridViewRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewRecords.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewRecords.Location = new System.Drawing.Point(0, 0);
-            this.dataGridViewRecords.Name = "dataGridViewRecords";
-            this.dataGridViewRecords.ReadOnly = true;
-            this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(700, 704);
-            this.dataGridViewRecords.TabIndex = 0;
-            this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -159,6 +143,22 @@ namespace StorageAndTrade
             this.splitContainer1.Size = new System.Drawing.Size(1052, 704);
             this.splitContainer1.SplitterDistance = 700;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // dataGridViewRecords
+            // 
+            this.dataGridViewRecords.AllowUserToAddRows = false;
+            this.dataGridViewRecords.AllowUserToDeleteRows = false;
+            this.dataGridViewRecords.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
+            this.dataGridViewRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRecords.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewRecords.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewRecords.Name = "dataGridViewRecords";
+            this.dataGridViewRecords.ReadOnly = true;
+            this.dataGridViewRecords.RowHeadersVisible = false;
+            this.dataGridViewRecords.Size = new System.Drawing.Size(700, 704);
+            this.dataGridViewRecords.TabIndex = 0;
+            this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
             // Контрагенти_Папки_Дерево
             // 
@@ -187,11 +187,11 @@ namespace StorageAndTrade
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
             this.ResumeLayout(false);
 
         }

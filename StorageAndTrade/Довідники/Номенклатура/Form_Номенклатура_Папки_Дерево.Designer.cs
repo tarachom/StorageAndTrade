@@ -34,12 +34,12 @@ namespace StorageAndTrade
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.treeViewFolders = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -70,12 +70,21 @@ namespace StorageAndTrade
             // 
             // toolStripButtonAdd
             // 
-            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.page;
+            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(66, 22);
             this.toolStripButtonAdd.Text = "Додати";
             this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
+            // 
+            // toolStripButtonEdit
+            // 
+            this.toolStripButtonEdit.Image = global::StorageAndTrade.Properties.Resources.page;
+            this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonEdit.Name = "toolStripButtonEdit";
+            this.toolStripButtonEdit.Size = new System.Drawing.Size(87, 22);
+            this.toolStripButtonEdit.Text = "Редагувати";
+            this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
             // 
             // toolStripButtonCopy
             // 
@@ -123,15 +132,6 @@ namespace StorageAndTrade
             this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList1.Images.SetKeyName(0, "folder.png");
-            // 
-            // toolStripButtonEdit
-            // 
-            this.toolStripButtonEdit.Image = global::StorageAndTrade.Properties.Resources.page;
-            this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonEdit.Name = "toolStripButtonEdit";
-            this.toolStripButtonEdit.Size = new System.Drawing.Size(87, 22);
-            this.toolStripButtonEdit.Text = "Редагувати";
-            this.toolStripButtonEdit.Click += new System.EventHandler(this.toolStripButtonEdit_Click);
             // 
             // Form_Номенклатура_Папки_Дерево
             // 

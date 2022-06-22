@@ -75,7 +75,7 @@ namespace StorageAndTrade
             // 
             // toolStripButtonAdd
             // 
-            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.page;
+            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(66, 22);
@@ -169,6 +169,7 @@ namespace StorageAndTrade
             this.Номенклатура_Папки_Дерево.Name = "Номенклатура_Папки_Дерево";
             this.Номенклатура_Папки_Дерево.Size = new System.Drawing.Size(341, 649);
             this.Номенклатура_Папки_Дерево.TabIndex = 0;
+            this.Номенклатура_Папки_Дерево.UidOpenFolder = null;
             // 
             // Form_Номенклатура
             // 
