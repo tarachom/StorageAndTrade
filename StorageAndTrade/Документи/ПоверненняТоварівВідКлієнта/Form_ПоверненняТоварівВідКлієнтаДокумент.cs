@@ -140,9 +140,9 @@ namespace StorageAndTrade
 					поверненняТоварівВідКлієнта_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 					поверненняТоварівВідКлієнта_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 					поверненняТоварівВідКлієнта_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+					поверненняТоварівВідКлієнта_Objest.Проведений = true;
 
 					ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.SaveRecords();
-
 					поверненняТоварівВідКлієнта_Objest.Save();
 				}
 				catch (Exception exp)

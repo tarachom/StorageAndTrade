@@ -38,6 +38,7 @@ namespace StorageAndTrade
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.toolStripButtonДрукПроводок = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,7 +61,8 @@ namespace StorageAndTrade
             this.toolStripButtonEdit,
             this.toolStripButtonRefresh,
             this.toolStripButtonCopy,
-            this.toolStripButtonDelete});
+            this.toolStripButtonDelete,
+            this.toolStripButtonДрукПроводок});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1048, 25);
@@ -137,6 +139,15 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
+            // toolStripButtonДрукПроводок
+            // 
+            this.toolStripButtonДрукПроводок.Image = global::StorageAndTrade.Properties.Resources.page_2;
+            this.toolStripButtonДрукПроводок.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonДрукПроводок.Name = "toolStripButtonДрукПроводок";
+            this.toolStripButtonДрукПроводок.Size = new System.Drawing.Size(82, 22);
+            this.toolStripButtonДрукПроводок.Text = "Проводки";
+            this.toolStripButtonДрукПроводок.Click += new System.EventHandler(this.toolStripButtonДрукПроводок_Click);
+            // 
             // Form_ПоверненняТоварівВідКлієнтаЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,5 +180,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
+        private System.Windows.Forms.ToolStripButton toolStripButtonДрукПроводок;
     }
 }

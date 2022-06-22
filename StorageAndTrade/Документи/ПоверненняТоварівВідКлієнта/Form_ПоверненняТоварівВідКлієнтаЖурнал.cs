@@ -33,6 +33,7 @@ using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using Звіти = StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
@@ -41,21 +42,26 @@ namespace StorageAndTrade
         public Form_ПоверненняТоварівВідКлієнтаЖурнал()
         {
             InitializeComponent();
-        }
 
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
+
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
 			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 
+			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewRecords.Columns["Проведений"].Width = 80;
+		}
+
+        private void FormCash_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -149,7 +155,7 @@ namespace StorageAndTrade
 				Form_ПоверненняТоварівВідКлієнтаДокумент form_ПоверненняТоварівВідКлієнтаДокумент = new Form_ПоверненняТоварівВідКлієнтаДокумент();
 				form_ПоверненняТоварівВідКлієнтаДокумент.IsNew = false;
 				form_ПоверненняТоварівВідКлієнтаДокумент.OwnerForm = this;
-				form_ПоверненняТоварівВідКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_ПоверненняТоварівВідКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ПоверненняТоварівВідКлієнтаДокумент.ShowDialog();
 			}			
 		}
@@ -167,7 +173,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Документи.ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new Документи.ПоверненняТоварівВідКлієнта_Objest();
                     if (поверненняТоварівВідКлієнта_Objest.Read(new UnigueID(uid)))
@@ -194,7 +200,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Документи.ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new Документи.ПоверненняТоварівВідКлієнта_Objest();
                     if (поверненняТоварівВідКлієнта_Objest.Read(new UnigueID(uid)))
@@ -209,6 +215,17 @@ namespace StorageAndTrade
                 }
 
 				LoadRecords();
+			}
+		}
+
+        private void toolStripButtonДрукПроводок_Click(object sender, EventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+
+				Звіти.РухПоРугістрахНакопичення.PrintRecords(new Документи.ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid)));
 			}
 		}
     }

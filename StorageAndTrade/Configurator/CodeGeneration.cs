@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 22.06.2022 10:36:23
+ * Дата конфігурації: 22.06.2022 10:45:43
  *
  */
 
@@ -8793,7 +8793,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_f6"] = Коментар;
             
             BaseSave();
-			Записи_Triggers.ПоверненняТоварівВідКлієнта_AfterRecording(this);
+			ПоверненняТоварівВідКлієнта_Triggers.AfterRecording(this);
         }
 
         public ПоверненняТоварівВідКлієнта_Objest Copy()
@@ -8823,7 +8823,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
-		    Записи_Triggers.ПоверненняТоварівВідКлієнта_BeforeDelete(this);
+		    ПоверненняТоварівВідКлієнта_Triggers.BeforeDelete(this);
             base.BaseDelete();
         }
         

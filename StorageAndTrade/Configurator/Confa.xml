@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>22.06.2022 10:36:23</DateTimeSave>
+  <DateTimeSave>22.06.2022 10:45:43</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -5591,8 +5591,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>Записи_Triggers.ПоверненняТоварівВідКлієнта_AfterRecording</AfterSave>
-        <BeforeDelete>Записи_Triggers.ПоверненняТоварівВідКлієнта_BeforeDelete</BeforeDelete>
+        <AfterSave>ПоверненняТоварівВідКлієнта_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ПоверненняТоварівВідКлієнта_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
   </Documents>
