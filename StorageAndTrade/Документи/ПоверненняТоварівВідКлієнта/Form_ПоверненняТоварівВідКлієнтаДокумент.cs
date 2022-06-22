@@ -70,13 +70,13 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
 				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
 
-			directoryControl_Контрагент.SelectForm = new Form_Контрагенти();
-			directoryControl_Організація.SelectForm = new Form_Організації();
-			directoryControl_Валюта.SelectForm = new Form_Валюти();
-			directoryControl_Склад.SelectForm = new Form_Склади();
-			directoryControl_Каса.SelectForm = new Form_Каси();
-			directoryControl_Договір.SelectForm = new Form_ДоговориКонтрагентів();
-			directoryControl_Підрозділ.SelectForm = new Form_СтруктураПідприємства();
+			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
+			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
+			directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer());
+			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
+			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -87,14 +87,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer();
-					directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer();
-					directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer();
-					directoryControl_Склад.DirectoryPointerItem = new Довідники.Склади_Pointer();
-					directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer();
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
-					directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer();
-					directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer();
 				}
 				else
 				{
