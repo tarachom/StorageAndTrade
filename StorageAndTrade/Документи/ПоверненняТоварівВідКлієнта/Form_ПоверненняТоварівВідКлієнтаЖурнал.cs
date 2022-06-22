@@ -52,15 +52,28 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
+
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
+			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
+			dataGridViewRecords.Columns["НомерДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
-			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["ДатаДок"].HeaderText = "Дата";
+			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+			dataGridViewRecords.Columns["Назва"].Width = 500;
+
+			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dataGridViewRecords.Columns["Сума"].Width = 100;
 
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
 		}
 
-        private void FormCash_Load(object sender, EventArgs e)
+		public DocumentPointer DocumentPointerItem { get; set; }
+
+		private void FormCash_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -75,6 +88,8 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПоверненняТоварівВідКлієнта_Select поверненняТоварівВідКлієнта_Select = new Документи.ПоверненняТоварівВідКлієнта_Select();
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.Проведений);
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.Назва);
 			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок);
 			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок);
 			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.СумаДокументу);
@@ -91,16 +106,16 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = "Повернення від клієнта №" + cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок].ToString() + " від " +
-							 DateTime.Parse(cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок].ToString()).ToShortDateString(),
+					Назва = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.Назва].ToString(),
 					НомерДок = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.СумаДокументу], 2)
+					Сума = Math.Round((decimal)cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.СумаДокументу], 2),
+					Проведений = (bool)cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.Проведений]
 				});
 
-				//if (DirectoryPointerItem != null && selectRow == 0) 
-				//	if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-				//		selectRow = RecordsBindingList.Count - 1;
+				if (DocumentPointerItem != null) 
+					if (cur.UnigueID.ToString() == DocumentPointerItem.UnigueID.ToString())
+						selectRow = RecordsBindingList.Count - 1;
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
@@ -113,11 +128,14 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
 			public decimal Сума { get; set; }
+			public bool Проведений { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -126,16 +144,16 @@ namespace StorageAndTrade
 			{
 				string Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString();
 
-				//if (DirectoryControlItem != null)
-				//{
-				//	//DirectoryControlItem.DirectoryPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(Uid));
-				//	this.Close();
-				//}
-				//else
-				//{
-					toolStripButtonEdit_Click(this, null);
-				//}
-			}
+                if (DocumentPointerItem != null)
+                {
+					DocumentPointerItem = new Документи.ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(Uid));
+                    this.Close();
+                }
+                else
+                {
+                    toolStripButtonEdit_Click(this, null);
+                }
+            }
 		}
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)

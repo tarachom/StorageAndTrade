@@ -52,8 +52,15 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
+
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
+			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
+			dataGridViewRecords.Columns["НомерДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
+			dataGridViewRecords.Columns["ДатаДок"].HeaderText = "Дата";
+			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
 			dataGridViewRecords.Columns["Назва"].Width = 500;
 
 			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
