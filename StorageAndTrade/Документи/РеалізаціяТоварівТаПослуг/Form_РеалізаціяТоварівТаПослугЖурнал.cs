@@ -42,21 +42,39 @@ namespace StorageAndTrade
         public Form_РеалізаціяТоварівТаПослугЖурнал()
         {
             InitializeComponent();
-        }
 
-        private void FormCash_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
-			dataGridViewRecords.Columns.Add(new DataGridViewImageColumn() { Name = "Image", HeaderText = "", Width = 30, DisplayIndex = 0, Image = Properties.Resources.doc_text_image });
-			dataGridViewRecords.Columns["ID"].Visible = false;
-			dataGridViewRecords.Columns["НомерДок"].Width = 100;
-			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
-			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Image"].Width = 30;
+			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
+			dataGridViewRecords.Columns["ID"].Visible = false;
+
+			dataGridViewRecords.Columns["НомерДок"].Width = 100;
+			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
+			dataGridViewRecords.Columns["НомерДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+			dataGridViewRecords.Columns["ДатаДок"].Width = 120;
+			dataGridViewRecords.Columns["ДатаДок"].HeaderText = "Дата";
+			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+			dataGridViewRecords.Columns["Назва"].Width = 500;
+
+			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+			dataGridViewRecords.Columns["Сума"].Width = 100;
+
+			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+			dataGridViewRecords.Columns["Проведений"].Width = 80;
+		}
+
+		public DocumentPointer DocumentPointerItem { get; set; }
+
+		private void FormCash_Load(object sender, EventArgs e)
+        {
 			LoadRecords();
 		}
 
@@ -70,6 +88,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.РеалізаціяТоварівТаПослуг_Select реалізаціяТоварівТаПослуг_Select = new Документи.РеалізаціяТоварівТаПослуг_Select();
+			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.РеалізаціяТоварівТаПослуг_Const.Проведений);
 			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.РеалізаціяТоварівТаПослуг_Const.Назва);
 			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.РеалізаціяТоварівТаПослуг_Const.НомерДок);
 			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.РеалізаціяТоварівТаПослуг_Const.ДатаДок);
@@ -90,12 +109,13 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.Назва].ToString(),
 					НомерДок = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.ДатаДок].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.СумаДокументу], 2)
+					Сума = Math.Round((decimal)cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.СумаДокументу], 2),
+					Проведений = (bool)cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.Проведений]
 				});
 
-				//if (DirectoryPointerItem != null && selectRow == 0) 
-				//	if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-				//		selectRow = RecordsBindingList.Count - 1;
+				if (DocumentPointerItem != null) 
+					if (cur.UnigueID.ToString() == DocumentPointerItem.UnigueID.ToString())
+						selectRow = RecordsBindingList.Count - 1;
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
@@ -108,11 +128,14 @@ namespace StorageAndTrade
 
 		private class Записи
 		{
+			public Записи() { Image = Properties.Resources.doc_text_image; }
+			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
 			public decimal Сума { get; set; }
+			public bool Проведений { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -121,16 +144,16 @@ namespace StorageAndTrade
 			{
 				string Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString();
 
-				//if (DirectoryControlItem != null)
-				//{
-				//	//DirectoryControlItem.DirectoryPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(Uid));
-				//	this.Close();
-				//}
-				//else
-				//{
-					toolStripButtonEdit_Click(this, null);
-				//}
-			}
+                if (DocumentPointerItem != null)
+                {
+					DocumentPointerItem = new Документи.РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(Uid));
+                    this.Close();
+                }
+                else
+                {
+                    toolStripButtonEdit_Click(this, null);
+                }
+            }
 		}
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
@@ -150,7 +173,7 @@ namespace StorageAndTrade
 				Form_РеалізаціяТоварівТаПослугДокумент form_РеалізаціяТоварівТаПослугДокумент = new Form_РеалізаціяТоварівТаПослугДокумент();
 				form_РеалізаціяТоварівТаПослугДокумент.IsNew = false;
 				form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
-				form_РеалізаціяТоварівТаПослугДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells[0].Value.ToString();
+				form_РеалізаціяТоварівТаПослугДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_РеалізаціяТоварівТаПослугДокумент.ShowDialog();
 			}
 		}
@@ -168,7 +191,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Документи.РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new Документи.РеалізаціяТоварівТаПослуг_Objest();
                     if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
@@ -195,7 +218,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Документи.РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new Документи.РеалізаціяТоварівТаПослуг_Objest();
                     if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
