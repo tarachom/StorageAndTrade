@@ -120,8 +120,8 @@ namespace StorageAndTrade
 			}
 		}
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
+		private void SaveDoc(bool spendDoc, bool closeForm)
+		{
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
@@ -141,7 +141,7 @@ namespace StorageAndTrade
 					поступленняТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 					поступленняТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					поступленняТоварівТаПослуг_Objest.Назва = $"Поступлення товарів та послуг №{поступленняТоварівТаПослуг_Objest.НомерДок} від {поступленняТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
-					поступленняТоварівТаПослуг_Objest.Проведений = true;
+					поступленняТоварівТаПослуг_Objest.Проведений = spendDoc;
 
 					ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
 					поступленняТоварівТаПослуг_Objest.Save();
@@ -155,8 +155,24 @@ namespace StorageAndTrade
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();
 
-				this.Close();
+				if (closeForm)
+					this.Close();
 			}
+		}
+
+		private void buttonSave_Click(object sender, EventArgs e)
+        {
+			SaveDoc(false, false);
+		}
+
+        private void buttonSpend_Click(object sender, EventArgs e)
+        {
+			SaveDoc(true, false);
+		}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			SaveDoc(true, true);
 		}
 
 		private void buttonClose_Click(object sender, EventArgs e)

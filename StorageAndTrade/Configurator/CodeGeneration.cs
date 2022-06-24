@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 24.06.2022 15:19:53
+ * Дата конфігурації: 24.06.2022 15:53:27
  *
  */
 
@@ -6103,7 +6103,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_b1"]);
                 record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_a1"]);
                 record.КількістьУпаковок = (fieldValue["col_a2"] != DBNull.Value) ? (int)fieldValue["col_a2"] : 0;
-                record.Кількість = (fieldValue["col_a3"] != DBNull.Value) ? (int)fieldValue["col_a3"] : 0;
+                record.Кількість = (fieldValue["col_a3"] != DBNull.Value) ? (decimal)fieldValue["col_a3"] : 0;
                 record.Ціна = (fieldValue["col_a4"] != DBNull.Value) ? (decimal)fieldValue["col_a4"] : 0;
                 record.Сума = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a6"]);
@@ -6176,7 +6176,7 @@ namespace StorageAndTrade_1_0.Документи
         
             
             public Record(
-                int _НомерРядка = 0, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, int _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, Довідники.Склади_Pointer _Склад = null, Документи.ЗамовленняПостачальнику_Pointer _ЗамовленняПостачальнику = null, decimal _Скидка = 0, Довідники.СтруктураПідприємства_Pointer _Підрозділ = null)
+                int _НомерРядка = 0, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.ПакуванняОдиниціВиміру_Pointer _Пакування = null, int _КількістьУпаковок = 0, decimal _Кількість = 0, decimal _Ціна = 0, decimal _Сума = 0, Довідники.Склади_Pointer _Склад = null, Документи.ЗамовленняПостачальнику_Pointer _ЗамовленняПостачальнику = null, decimal _Скидка = 0, Довідники.СтруктураПідприємства_Pointer _Підрозділ = null)
             {
                 НомерРядка = _НомерРядка;
                 Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
@@ -6197,7 +6197,7 @@ namespace StorageAndTrade_1_0.Документи
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public int КількістьУпаковок { get; set; }
-            public int Кількість { get; set; }
+            public decimal Кількість { get; set; }
             public decimal Ціна { get; set; }
             public decimal Сума { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
@@ -9618,7 +9618,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Організація = new Довідники.Організації_Pointer(fieldValue["col_e9"]);
                 record.Номенклатура = fieldValue["col_f2"].ToString();
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_f3"]);
-                record.Кількість = (fieldValue["col_f1"] != DBNull.Value) ? (int)fieldValue["col_f1"] : 0;
+                record.Кількість = (fieldValue["col_f1"] != DBNull.Value) ? (decimal)fieldValue["col_f1"] : 0;
                 record.ГосподарськаОперація = (fieldValue["col_f4"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)fieldValue["col_f4"] : 0;
                 
                 Records.Add(record);
@@ -9674,7 +9674,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Організації_Pointer Організація { get; set; }
             public string Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
-            public int Кількість { get; set; }
+            public decimal Кількість { get; set; }
             public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
             
         }
@@ -9936,7 +9936,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
-                record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (int)fieldValue["col_a5"] : 0;
+                record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                 record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
                 
                 Records.Add(record);
@@ -9997,7 +9997,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
-            public int Замовлено { get; set; }
+            public decimal Замовлено { get; set; }
             public decimal Сума { get; set; }
             
         }
@@ -10385,9 +10385,9 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a5"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a6"]);
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a7"]);
-                record.ВНаявності = (fieldValue["col_a8"] != DBNull.Value) ? (int)fieldValue["col_a8"] : 0;
-                record.ВРезервіЗіСкладу = (fieldValue["col_b1"] != DBNull.Value) ? (int)fieldValue["col_b1"] : 0;
-                record.ВРезервіПідЗамовлення = (fieldValue["col_b2"] != DBNull.Value) ? (int)fieldValue["col_b2"] : 0;
+                record.ВНаявності = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
+                record.ВРезервіЗіСкладу = (fieldValue["col_b1"] != DBNull.Value) ? (decimal)fieldValue["col_b1"] : 0;
+                record.ВРезервіПідЗамовлення = (fieldValue["col_b2"] != DBNull.Value) ? (decimal)fieldValue["col_b2"] : 0;
                 
                 Records.Add(record);
             }
@@ -10444,9 +10444,9 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
-            public int ВНаявності { get; set; }
-            public int ВРезервіЗіСкладу { get; set; }
-            public int ВРезервіПідЗамовлення { get; set; }
+            public decimal ВНаявності { get; set; }
+            public decimal ВРезервіЗіСкладу { get; set; }
+            public decimal ВРезервіПідЗамовлення { get; set; }
             
         }
     
@@ -10554,7 +10554,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
-                record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (int)fieldValue["col_a5"] : 0;
+                record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                 
                 Records.Add(record);
             }
@@ -10610,7 +10610,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
-            public int Замовлено { get; set; }
+            public decimal Замовлено { get; set; }
             
         }
     
@@ -10847,7 +10847,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_b2"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_b3"]);
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_b4"]);
-                record.ДоПоступлення = (fieldValue["col_b5"] != DBNull.Value) ? (int)fieldValue["col_b5"] : 0;
+                record.ДоПоступлення = (fieldValue["col_b5"] != DBNull.Value) ? (decimal)fieldValue["col_b5"] : 0;
                 
                 Records.Add(record);
             }
@@ -10900,7 +10900,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
-            public int ДоПоступлення { get; set; }
+            public decimal ДоПоступлення { get; set; }
             
         }
     
