@@ -246,5 +246,35 @@ namespace StorageAndTrade
 				Звіти.РухПоРугістрахНакопичення.PrintRecords(new Документи.ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
 			}
 		}
-    }
+		private void SpendDocuments(bool spend, string message)
+		{
+			if (dataGridViewRecords.SelectedRows.Count != 0 &&
+				MessageBox.Show(message, "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
+			{
+				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
+				{
+					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string uid = row.Cells["ID"].Value.ToString();
+
+					Документи.ЗамовленняПостачальнику_Pointer замовленняПостачальнику_Pointer = new Документи.ЗамовленняПостачальнику_Pointer(new UnigueID(uid));
+					Документи.ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = замовленняПостачальнику_Pointer.GetDocumentObject(true);
+
+					замовленняПостачальнику_Objest.Проведений = spend;
+					замовленняПостачальнику_Objest.Save();
+				}
+
+				LoadRecords();
+			}
+		}
+
+		private void toolStripButtonSpend_Click(object sender, EventArgs e)
+		{
+			SpendDocuments(true, "Провести?");
+		}
+
+		private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
+		{
+			SpendDocuments(false, "Відмінити проведення?");
+		}
+	}
 }

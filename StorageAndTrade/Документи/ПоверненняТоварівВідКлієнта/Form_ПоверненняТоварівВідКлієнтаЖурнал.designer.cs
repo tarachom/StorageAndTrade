@@ -39,6 +39,8 @@ namespace StorageAndTrade
             this.toolStripButtonДрукПроводок = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.toolStripButtonClearSpend = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -62,7 +64,9 @@ namespace StorageAndTrade
             this.toolStripButtonRefresh,
             this.toolStripButtonCopy,
             this.toolStripButtonDelete,
-            this.toolStripButtonДрукПроводок});
+            this.toolStripButtonДрукПроводок,
+            this.toolStripButtonClearSpend,
+            this.toolStripButtonSpend});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1048, 25);
@@ -148,6 +152,24 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
+            // toolStripButtonClearSpend
+            // 
+            this.toolStripButtonClearSpend.Image = global::StorageAndTrade.Properties.Resources.report;
+            this.toolStripButtonClearSpend.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonClearSpend.Name = "toolStripButtonClearSpend";
+            this.toolStripButtonClearSpend.Size = new System.Drawing.Size(111, 22);
+            this.toolStripButtonClearSpend.Text = "Не проведений";
+            this.toolStripButtonClearSpend.Click += new System.EventHandler(this.toolStripButtonClearSpend_Click);
+            // 
+            // toolStripButtonSpend
+            // 
+            this.toolStripButtonSpend.Image = global::StorageAndTrade.Properties.Resources.report;
+            this.toolStripButtonSpend.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSpend.Name = "toolStripButtonSpend";
+            this.toolStripButtonSpend.Size = new System.Drawing.Size(80, 22);
+            this.toolStripButtonSpend.Text = "Провести";
+            this.toolStripButtonSpend.Click += new System.EventHandler(this.toolStripButtonSpend_Click);
+            // 
             // Form_ПоверненняТоварівВідКлієнтаЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -181,5 +203,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.ToolStripButton toolStripButtonДрукПроводок;
+        private System.Windows.Forms.ToolStripButton toolStripButtonClearSpend;
+        private System.Windows.Forms.ToolStripButton toolStripButtonSpend;
     }
 }

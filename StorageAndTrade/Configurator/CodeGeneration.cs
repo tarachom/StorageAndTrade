@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 22.06.2022 13:00:52
+ * Дата конфігурації: 24.06.2022 15:19:53
  *
  */
 
@@ -5569,10 +5569,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ЗамовленняПостачальнику_Pointer();
         }
 		
-        public ЗамовленняПостачальнику_Objest GetDocumentObject()
+        public ЗамовленняПостачальнику_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ЗамовленняПостачальнику_Objest ЗамовленняПостачальникуObjestItem = new ЗамовленняПостачальнику_Objest();
             ЗамовленняПостачальникуObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ЗамовленняПостачальникуObjestItem.Товари_TablePart.Read();
+			}
+			
             return ЗамовленняПостачальникуObjestItem;
         }
     }
@@ -6025,10 +6031,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ПоступленняТоварівТаПослуг_Pointer();
         }
 		
-        public ПоступленняТоварівТаПослуг_Objest GetDocumentObject()
+        public ПоступленняТоварівТаПослуг_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ПоступленняТоварівТаПослуг_Objest ПоступленняТоварівТаПослугObjestItem = new ПоступленняТоварівТаПослуг_Objest();
             ПоступленняТоварівТаПослугObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ПоступленняТоварівТаПослугObjestItem.Товари_TablePart.Read();
+			}
+			
             return ПоступленняТоварівТаПослугObjestItem;
         }
     }
@@ -6463,10 +6475,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ЗамовленняКлієнта_Pointer();
         }
 		
-        public ЗамовленняКлієнта_Objest GetDocumentObject()
+        public ЗамовленняКлієнта_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ЗамовленняКлієнта_Objest ЗамовленняКлієнтаObjestItem = new ЗамовленняКлієнта_Objest();
             ЗамовленняКлієнтаObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ЗамовленняКлієнтаObjestItem.Товари_TablePart.Read();
+			}
+			
             return ЗамовленняКлієнтаObjestItem;
         }
     }
@@ -6907,10 +6925,16 @@ namespace StorageAndTrade_1_0.Документи
             return new РеалізаціяТоварівТаПослуг_Pointer();
         }
 		
-        public РеалізаціяТоварівТаПослуг_Objest GetDocumentObject()
+        public РеалізаціяТоварівТаПослуг_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             РеалізаціяТоварівТаПослуг_Objest РеалізаціяТоварівТаПослугObjestItem = new РеалізаціяТоварівТаПослуг_Objest();
             РеалізаціяТоварівТаПослугObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				РеалізаціяТоварівТаПослугObjestItem.Товари_TablePart.Read();
+			}
+			
             return РеалізаціяТоварівТаПослугObjestItem;
         }
     }
@@ -7201,10 +7225,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ВстановленняЦінНоменклатури_Pointer();
         }
 		
-        public ВстановленняЦінНоменклатури_Objest GetDocumentObject()
+        public ВстановленняЦінНоменклатури_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ВстановленняЦінНоменклатури_Objest ВстановленняЦінНоменклатуриObjestItem = new ВстановленняЦінНоменклатури_Objest();
             ВстановленняЦінНоменклатуриObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ВстановленняЦінНоменклатуриObjestItem.Товари_TablePart.Read();
+			}
+			
             return ВстановленняЦінНоменклатуриObjestItem;
         }
     }
@@ -7519,10 +7549,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ПрихіднийКасовийОрдер_Pointer();
         }
 		
-        public ПрихіднийКасовийОрдер_Objest GetDocumentObject()
+        public ПрихіднийКасовийОрдер_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ПрихіднийКасовийОрдер_Objest ПрихіднийКасовийОрдерObjestItem = new ПрихіднийКасовийОрдер_Objest();
             ПрихіднийКасовийОрдерObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ПрихіднийКасовийОрдерObjestItem.РозшифруванняПлатежу_TablePart.Read();
+			}
+			
             return ПрихіднийКасовийОрдерObjestItem;
         }
     }
@@ -7837,10 +7873,16 @@ namespace StorageAndTrade_1_0.Документи
             return new РозхіднийКасовийОрдер_Pointer();
         }
 		
-        public РозхіднийКасовийОрдер_Objest GetDocumentObject()
+        public РозхіднийКасовийОрдер_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             РозхіднийКасовийОрдер_Objest РозхіднийКасовийОрдерObjestItem = new РозхіднийКасовийОрдер_Objest();
             РозхіднийКасовийОрдерObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				РозхіднийКасовийОрдерObjestItem.РозшифровкаПлатежу_TablePart.Read();
+			}
+			
             return РозхіднийКасовийОрдерObjestItem;
         }
     }
@@ -8185,10 +8227,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ПереміщенняТоварів_Pointer();
         }
 		
-        public ПереміщенняТоварів_Objest GetDocumentObject()
+        public ПереміщенняТоварів_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ПереміщенняТоварів_Objest ПереміщенняТоварівObjestItem = new ПереміщенняТоварів_Objest();
             ПереміщенняТоварівObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ПереміщенняТоварівObjestItem.Товари_TablePart.Read();
+			}
+			
             return ПереміщенняТоварівObjestItem;
         }
     }
@@ -8533,10 +8581,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ПоверненняТоварівПостачальнику_Pointer();
         }
 		
-        public ПоверненняТоварівПостачальнику_Objest GetDocumentObject()
+        public ПоверненняТоварівПостачальнику_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ПоверненняТоварівПостачальнику_Objest ПоверненняТоварівПостачальникуObjestItem = new ПоверненняТоварівПостачальнику_Objest();
             ПоверненняТоварівПостачальникуObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ПоверненняТоварівПостачальникуObjestItem.Товари_TablePart.Read();
+			}
+			
             return ПоверненняТоварівПостачальникуObjestItem;
         }
     }
@@ -8881,10 +8935,16 @@ namespace StorageAndTrade_1_0.Документи
             return new ПоверненняТоварівВідКлієнта_Pointer();
         }
 		
-        public ПоверненняТоварівВідКлієнта_Objest GetDocumentObject()
+        public ПоверненняТоварівВідКлієнта_Objest GetDocumentObject(bool readAllTablePart = false)
         {
             ПоверненняТоварівВідКлієнта_Objest ПоверненняТоварівВідКлієнтаObjestItem = new ПоверненняТоварівВідКлієнта_Objest();
             ПоверненняТоварівВідКлієнтаObjestItem.Read(base.UnigueID);
+			
+			if (readAllTablePart)
+			{   
+				ПоверненняТоварівВідКлієнтаObjestItem.Товари_TablePart.Read();
+			}
+			
             return ПоверненняТоварівВідКлієнтаObjestItem;
         }
     }

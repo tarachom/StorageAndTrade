@@ -258,7 +258,7 @@ namespace StorageAndTrade
 					string uid = row.Cells["ID"].Value.ToString();
 
 					Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
-					Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject();
+					Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
 
 					замовленняКлієнта_Objest.Проведений = spend;
 					замовленняКлієнта_Objest.Save();
