@@ -115,7 +115,7 @@ namespace StorageAndTrade
 					КількістьУпаковок = record.КількістьУпаковок,
 					Пакування = record.Пакування,
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
-					Кількість = (uint)record.Кількість,
+					Кількість = record.Кількість,
 					Ціна = Math.Round(record.Ціна, 2),
 					Сума = Math.Round(record.Сума, 2)
 				});
@@ -150,7 +150,7 @@ namespace StorageAndTrade
 				record.ХарактеристикаНоменклатури = запис.Характеристика;
 				record.КількістьУпаковок = запис.КількістьУпаковок;
 				record.Пакування = запис.Пакування;
-				record.Кількість = (int)запис.Кількість;
+				record.Кількість = запис.Кількість;
 				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
 
@@ -175,7 +175,7 @@ namespace StorageAndTrade
 			public int КількістьУпаковок { get; set; }
 			public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
 			public string ПакуванняНазва { get; set; }
-			public uint Кількість { get; set; }
+			public decimal Кількість { get; set; }
 			public decimal Ціна { get; set; }
 			public decimal Сума { get; set; }
 

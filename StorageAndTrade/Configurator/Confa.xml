@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>24.06.2022 15:53:27</DateTimeSave>
+  <DateTimeSave>24.06.2022 16:17:50</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -2826,7 +2826,7 @@
             <Field>
               <Name>Кількість</Name>
               <NameInTable>col_a4</NameInTable>
-              <Type>integer</Type>
+              <Type>numeric</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>
@@ -3676,7 +3676,7 @@
             <Field>
               <Name>Кількість</Name>
               <NameInTable>col_c4</NameInTable>
-              <Type>integer</Type>
+              <Type>numeric</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>
@@ -4096,7 +4096,7 @@
             <Field>
               <Name>Кількість</Name>
               <NameInTable>col_d6</NameInTable>
-              <Type>integer</Type>
+              <Type>numeric</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>
@@ -5000,7 +5000,7 @@
             <Field>
               <Name>Кількість</Name>
               <NameInTable>col_b7</NameInTable>
-              <Type>integer</Type>
+              <Type>numeric</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>
@@ -5272,7 +5272,7 @@
             <Field>
               <Name>Кількість</Name>
               <NameInTable>col_e3</NameInTable>
-              <Type>integer</Type>
+              <Type>numeric</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>
@@ -5542,7 +5542,7 @@
             <Field>
               <Name>Кількість</Name>
               <NameInTable>col_g7</NameInTable>
-              <Type>integer</Type>
+              <Type>numeric</Type>
               <Desc>
               </Desc>
               <IsPresentation>0</IsPresentation>
