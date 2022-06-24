@@ -85,7 +85,6 @@ namespace StorageAndTrade
 			if (IsNew.HasValue)
 			{
 				поступленняТоварівТаПослуг_Objest = new Документи.ПоступленняТоварівТаПослуг_Objest();
-
 				ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.ДокументОбєкт = поступленняТоварівТаПослуг_Objest;
 
 				if (IsNew.Value)
@@ -148,6 +147,8 @@ namespace StorageAndTrade
 				}
 				catch (Exception exp)
 				{
+					//Що буде якщо таб частина записана а док не записався? !!!
+					//треба подумати
 					MessageBox.Show(exp.Message);
 					return;
 				}
@@ -170,8 +171,8 @@ namespace StorageAndTrade
 			SaveDoc(true, false);
 		}
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+		private void buttonSaveAndSpend_Click(object sender, EventArgs e)
+		{
 			SaveDoc(true, true);
 		}
 
@@ -179,5 +180,7 @@ namespace StorageAndTrade
 		{
 			this.Close();
 		}
-	}
+
+        
+    }
 }

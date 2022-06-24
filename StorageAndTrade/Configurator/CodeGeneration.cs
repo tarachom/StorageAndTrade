@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 24.06.2022 16:17:50
+ * Дата конфігурації: 24.06.2022 20:32:19
  *
  */
 
@@ -5691,7 +5691,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -6153,7 +6163,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -6594,7 +6614,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -7047,7 +7077,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -7329,7 +7369,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -7653,7 +7703,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -7980,7 +8040,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -8331,7 +8401,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -8694,7 +8774,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
@@ -9051,7 +9141,17 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(Owner.UnigueID);
             base.BaseCommitTransaction();
         }
-        
+
+        public List<Record> Copy()
+        {
+            List<Record> copyRecords = new List<Record>();
+            copyRecords = Records;
+
+            foreach (Record copyRecordItem in copyRecords)
+                copyRecordItem.UID = Guid.Empty;
+
+            return copyRecords;
+        }
         
         public class Record : DocumentTablePartRecord
         {
