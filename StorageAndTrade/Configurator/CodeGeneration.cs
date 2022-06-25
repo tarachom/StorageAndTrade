@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 25.06.2022 09:32:27
+ * Дата конфігурації: 25.06.2022 10:30:22
  *
  */
 
@@ -45,6 +45,8 @@ namespace StorageAndTrade_1_0
             Константи.ЗначенняПоЗамовчуванню.ReadAll();
             Константи.Системні.ReadAll();
             Константи.ВіртуальніТаблиціРегістрівНакопичення.ReadAll();
+            Константи.НумераціяДокументів.ReadAll();
+            Константи.НумераціяЕлементівДовідників.ReadAll();
             
         }
     }
@@ -385,13 +387,16 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_b1", "col_b3", "col_b4" }, fieldValue);
+                 new string[] { "col_b1", "col_b3", "col_b4", "col_b2", "col_b5", "col_b6" }, fieldValue);
             
             if (IsSelect)
             {
                 m_ЗамовленняКлієнтів_Const = fieldValue["col_b1"].ToString();
                 m_ТовариНаСкладах_Const = fieldValue["col_b3"].ToString();
                 m_РозрахункиЗКлієнтами_Const = fieldValue["col_b4"].ToString();
+                m_РозрахункиЗПостачальниками_Const = fieldValue["col_b2"].ToString();
+                m_ЗамовленняПостачальникам_Const = fieldValue["col_b5"].ToString();
+                m_ВільніЗалишки_Const = fieldValue["col_b6"].ToString();
                 
             }
 			
@@ -430,9 +435,40 @@ namespace StorageAndTrade_1_0.Константи
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b4", m_РозрахункиЗКлієнтами_Const);
             }
         }
-        ///<summary>
-    ///Замовлення клієнтів згруповані по місяцях.
-    ///</summary>
+        
+        static string m_РозрахункиЗПостачальниками_Const = "";
+        public static string РозрахункиЗПостачальниками_Const
+        {
+            get { return m_РозрахункиЗПостачальниками_Const; }
+            set
+            {
+                m_РозрахункиЗПостачальниками_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b2", m_РозрахункиЗПостачальниками_Const);
+            }
+        }
+        
+        static string m_ЗамовленняПостачальникам_Const = "";
+        public static string ЗамовленняПостачальникам_Const
+        {
+            get { return m_ЗамовленняПостачальникам_Const; }
+            set
+            {
+                m_ЗамовленняПостачальникам_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b5", m_ЗамовленняПостачальникам_Const);
+            }
+        }
+        
+        static string m_ВільніЗалишки_Const = "";
+        public static string ВільніЗалишки_Const
+        {
+            get { return m_ВільніЗалишки_Const; }
+            set
+            {
+                m_ВільніЗалишки_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b6", m_ВільніЗалишки_Const);
+            }
+        }
+        
         public class ЗамовленняКлієнтів_Місяць_TablePart : ConstantsTablePart
         {
             public ЗамовленняКлієнтів_Місяць_TablePart() : base(Config.Kernel, "tab_a68",
@@ -534,9 +570,7 @@ namespace StorageAndTrade_1_0.Константи
                 
             }            
         }
-          ///<summary>
-    ///Замовлення клієнтів згруповані по днях.
-    ///</summary>
+          
         public class ЗамовленняКлієнтів_День_TablePart : ConstantsTablePart
         {
             public ЗамовленняКлієнтів_День_TablePart() : base(Config.Kernel, "tab_a70",
@@ -735,9 +769,7 @@ namespace StorageAndTrade_1_0.Константи
                 
             }            
         }
-          ///<summary>
-    ///Товари на складах згруповані по місяцях.
-    ///</summary>
+          
         public class ТовариНаСкладах_Місяць_TablePart : ConstantsTablePart
         {
             public ТовариНаСкладах_Місяць_TablePart() : base(Config.Kernel, "tab_a73",
@@ -834,9 +866,7 @@ namespace StorageAndTrade_1_0.Константи
                 
             }            
         }
-          ///<summary>
-    ///Розрахунки з клієнтами згруповані по місяцях.
-    ///</summary>
+          
         public class РозрахункиЗКлієнтами_Місяць_TablePart : ConstantsTablePart
         {
             public РозрахункиЗКлієнтами_Місяць_TablePart() : base(Config.Kernel, "tab_a75",
@@ -923,9 +953,7 @@ namespace StorageAndTrade_1_0.Константи
                 
             }            
         }
-          ///<summary>
-    ///Розрахунки з клієнтами згрупованіі по днях.
-    ///</summary>
+          
         public class РозрахункиЗКлієнтами_День_TablePart : ConstantsTablePart
         {
             public РозрахункиЗКлієнтами_День_TablePart() : base(Config.Kernel, "tab_a76",
@@ -1012,7 +1040,650 @@ namespace StorageAndTrade_1_0.Константи
                 
             }            
         }
+          
+        public class РозрахункиЗПостачальниками_Місяць_TablePart : ConstantsTablePart
+        {
+            public РозрахункиЗПостачальниками_Місяць_TablePart() : base(Config.Kernel, "tab_a63",
+                 new string[] { "col_a6", "col_a1", "col_a2", "col_a3" }) 
+            {
+                Records = new List<Record>();
+            }
+                
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.period = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
+                    record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a1"]);
+                    record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a2"]);
+                    record.Сума = (fieldValue["col_a3"] != DBNull.Value) ? (decimal)fieldValue["col_a3"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a6", record.period);
+                    fieldValue.Add("col_a1", record.Валюта.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Контрагент.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.Сума);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    period = DateTime.MinValue;
+                    Валюта = new Довідники.Валюти_Pointer();
+                    Контрагент = new Довідники.Контрагенти_Pointer();
+                    Сума = 0;
+                    
+                }
+        
+                
+                public Record(
+                    DateTime?  _period = null, Довідники.Валюти_Pointer _Валюта = null, Довідники.Контрагенти_Pointer _Контрагент = null, decimal _Сума = 0)
+                {
+                    period = _period ?? DateTime.MinValue;
+                    Валюта = _Валюта ?? new Довідники.Валюти_Pointer();
+                    Контрагент = _Контрагент ?? new Довідники.Контрагенти_Pointer();
+                    Сума = _Сума;
+                    
+                }
+                public DateTime period { get; set; }
+                public Довідники.Валюти_Pointer Валюта { get; set; }
+                public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+                public decimal Сума { get; set; }
+                
+            }            
+        }
+          
+        public class РозрахункиЗПостачальниками_День_TablePart : ConstantsTablePart
+        {
+            public РозрахункиЗПостачальниками_День_TablePart() : base(Config.Kernel, "tab_a64",
+                 new string[] { "col_b1", "col_a1", "col_a2", "col_a6" }) 
+            {
+                Records = new List<Record>();
+            }
+                
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.period = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
+                    record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a1"]);
+                    record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a2"]);
+                    record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_b1", record.period);
+                    fieldValue.Add("col_a1", record.Валюта.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Контрагент.UnigueID.UGuid);
+                    fieldValue.Add("col_a6", record.Сума);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    period = DateTime.MinValue;
+                    Валюта = new Довідники.Валюти_Pointer();
+                    Контрагент = new Довідники.Контрагенти_Pointer();
+                    Сума = 0;
+                    
+                }
+        
+                
+                public Record(
+                    DateTime?  _period = null, Довідники.Валюти_Pointer _Валюта = null, Довідники.Контрагенти_Pointer _Контрагент = null, decimal _Сума = 0)
+                {
+                    period = _period ?? DateTime.MinValue;
+                    Валюта = _Валюта ?? new Довідники.Валюти_Pointer();
+                    Контрагент = _Контрагент ?? new Довідники.Контрагенти_Pointer();
+                    Сума = _Сума;
+                    
+                }
+                public DateTime period { get; set; }
+                public Довідники.Валюти_Pointer Валюта { get; set; }
+                public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+                public decimal Сума { get; set; }
+                
+            }            
+        }
+          
+        public class ЗамовленняПостачальникам_Місяць_TablePart : ConstantsTablePart
+        {
+            public ЗамовленняПостачальникам_Місяць_TablePart() : base(Config.Kernel, "tab_a65",
+                 new string[] { "col_a6", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5" }) 
+            {
+                Records = new List<Record>();
+            }
+                
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.period = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
+                    record.ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer(fieldValue["col_a1"]);
+                    record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
+                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
+                    record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a6", record.period);
+                    fieldValue.Add("col_a1", record.ЗамовленняПостачальнику.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.Замовлено);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    period = DateTime.MinValue;
+                    ЗамовленняПостачальнику = new Документи.ЗамовленняПостачальнику_Pointer();
+                    Номенклатура = new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = new Довідники.Склади_Pointer();
+                    Замовлено = 0;
+                    
+                }
+        
+                
+                public Record(
+                    DateTime?  _period = null, Документи.ЗамовленняПостачальнику_Pointer _ЗамовленняПостачальнику = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _Замовлено = 0)
+                {
+                    period = _period ?? DateTime.MinValue;
+                    ЗамовленняПостачальнику = _ЗамовленняПостачальнику ?? new Документи.ЗамовленняПостачальнику_Pointer();
+                    Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = _ХарактеристикиНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = _Склад ?? new Довідники.Склади_Pointer();
+                    Замовлено = _Замовлено;
+                    
+                }
+                public DateTime period { get; set; }
+                public Документи.ЗамовленняПостачальнику_Pointer ЗамовленняПостачальнику { get; set; }
+                public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.Склади_Pointer Склад { get; set; }
+                public decimal Замовлено { get; set; }
+                
+            }            
+        }
+          
+        public class ЗамовленняПостачальникам_День_TablePart : ConstantsTablePart
+        {
+            public ЗамовленняПостачальникам_День_TablePart() : base(Config.Kernel, "tab_a66",
+                 new string[] { "col_b1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
+            {
+                Records = new List<Record>();
+            }
+                
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.period = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
+                    record.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(fieldValue["col_a1"]);
+                    record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
+                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
+                    record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
+                    record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_b1", record.period);
+                    fieldValue.Add("col_a1", record.ЗамовленняКлієнта.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.Замовлено);
+                    fieldValue.Add("col_a6", record.Сума);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    period = DateTime.MinValue;
+                    ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
+                    Номенклатура = new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = new Довідники.Склади_Pointer();
+                    Замовлено = 0;
+                    Сума = 0;
+                    
+                }
+        
+                
+                public Record(
+                    DateTime?  _period = null, Документи.ЗамовленняКлієнта_Pointer _ЗамовленняКлієнта = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _Замовлено = 0, decimal _Сума = 0)
+                {
+                    period = _period ?? DateTime.MinValue;
+                    ЗамовленняКлієнта = _ЗамовленняКлієнта ?? new Документи.ЗамовленняКлієнта_Pointer();
+                    Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = _ХарактеристикиНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = _Склад ?? new Довідники.Склади_Pointer();
+                    Замовлено = _Замовлено;
+                    Сума = _Сума;
+                    
+                }
+                public DateTime period { get; set; }
+                public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+                public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.Склади_Pointer Склад { get; set; }
+                public decimal Замовлено { get; set; }
+                public decimal Сума { get; set; }
+                
+            }            
+        }
+          
+        public class ВільніЗалишки_Місяць_TablePart : ConstantsTablePart
+        {
+            public ВільніЗалишки_Місяць_TablePart() : base(Config.Kernel, "tab_a71",
+                 new string[] { "col_a6", "col_a2", "col_a3", "col_a4", "col_a5", "col_a7", "col_a1" }) 
+            {
+                Records = new List<Record>();
+            }
+                
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.period = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
+                    record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
+                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
+                    record.ВНаявності = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
+                    record.ВРезервіЗіСкладу = (fieldValue["col_a7"] != DBNull.Value) ? (decimal)fieldValue["col_a7"] : 0;
+                    record.ВРезервіПідЗамовлення = (fieldValue["col_a1"] != DBNull.Value) ? (decimal)fieldValue["col_a1"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a6", record.period);
+                    fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.ВНаявності);
+                    fieldValue.Add("col_a7", record.ВРезервіЗіСкладу);
+                    fieldValue.Add("col_a1", record.ВРезервіПідЗамовлення);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    period = DateTime.MinValue;
+                    Номенклатура = new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = new Довідники.Склади_Pointer();
+                    ВНаявності = 0;
+                    ВРезервіЗіСкладу = 0;
+                    ВРезервіПідЗамовлення = 0;
+                    
+                }
+        
+                
+                public Record(
+                    DateTime?  _period = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _ВНаявності = 0, decimal _ВРезервіЗіСкладу = 0, decimal _ВРезервіПідЗамовлення = 0)
+                {
+                    period = _period ?? DateTime.MinValue;
+                    Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = _ХарактеристикиНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = _Склад ?? new Довідники.Склади_Pointer();
+                    ВНаявності = _ВНаявності;
+                    ВРезервіЗіСкладу = _ВРезервіЗіСкладу;
+                    ВРезервіПідЗамовлення = _ВРезервіПідЗамовлення;
+                    
+                }
+                public DateTime period { get; set; }
+                public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.Склади_Pointer Склад { get; set; }
+                public decimal ВНаявності { get; set; }
+                public decimal ВРезервіЗіСкладу { get; set; }
+                public decimal ВРезервіПідЗамовлення { get; set; }
+                
+            }            
+        }
+          
+        public class ВільніЗалишки_День_TablePart : ConstantsTablePart
+        {
+            public ВільніЗалишки_День_TablePart() : base(Config.Kernel, "tab_a72",
+                 new string[] { "col_b1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a1" }) 
+            {
+                Records = new List<Record>();
+            }
+                
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.period = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
+                    record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
+                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
+                    record.ВНаявності = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
+                    record.ВРезервіЗіСкладу = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
+                    record.ВРезервіПідЗамовлення = (fieldValue["col_a1"] != DBNull.Value) ? (decimal)fieldValue["col_a1"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_b1", record.period);
+                    fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.ВНаявності);
+                    fieldValue.Add("col_a6", record.ВРезервіЗіСкладу);
+                    fieldValue.Add("col_a1", record.ВРезервіПідЗамовлення);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    period = DateTime.MinValue;
+                    Номенклатура = new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = new Довідники.Склади_Pointer();
+                    ВНаявності = 0;
+                    ВРезервіЗіСкладу = 0;
+                    ВРезервіПідЗамовлення = 0;
+                    
+                }
+        
+                
+                public Record(
+                    DateTime?  _period = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _ВНаявності = 0, decimal _ВРезервіЗіСкладу = 0, decimal _ВРезервіПідЗамовлення = 0)
+                {
+                    period = _period ?? DateTime.MinValue;
+                    Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
+                    ХарактеристикиНоменклатури = _ХарактеристикиНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Склад = _Склад ?? new Довідники.Склади_Pointer();
+                    ВНаявності = _ВНаявності;
+                    ВРезервіЗіСкладу = _ВРезервіЗіСкладу;
+                    ВРезервіПідЗамовлення = _ВРезервіПідЗамовлення;
+                    
+                }
+                public DateTime period { get; set; }
+                public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.Склади_Pointer Склад { get; set; }
+                public decimal ВНаявності { get; set; }
+                public decimal ВРезервіЗіСкладу { get; set; }
+                public decimal ВРезервіПідЗамовлення { get; set; }
+                
+            }            
+        }
                
+    }
+    #endregion
+    
+	#region CONSTANTS BLOCK "НумераціяДокументів"
+    public static class НумераціяДокументів
+    {
+        public static void ReadAll()
+        {
+            
+            Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+            bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
+                 new string[] { "col_b7" }, fieldValue);
+            
+            if (IsSelect)
+            {
+                m_ПоступленняТоварівТаПослуг_Const = fieldValue["col_b7"].ToString();
+                
+            }
+			
+        }
+        
+        
+        static string m_ПоступленняТоварівТаПослуг_Const = "";
+        public static string ПоступленняТоварівТаПослуг_Const
+        {
+            get { return m_ПоступленняТоварівТаПослуг_Const; }
+            set
+            {
+                m_ПоступленняТоварівТаПослуг_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b7", m_ПоступленняТоварівТаПослуг_Const);
+            }
+        }
+             
+    }
+    #endregion
+    
+	#region CONSTANTS BLOCK "НумераціяЕлементівДовідників"
+    public static class НумераціяЕлементівДовідників
+    {
+        public static void ReadAll()
+        {
+            
+            Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+            bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
+                 new string[] { "col_b8" }, fieldValue);
+            
+            if (IsSelect)
+            {
+                m_Номенклатура_Const = fieldValue["col_b8"].ToString();
+                
+            }
+			
+        }
+        
+        
+        static string m_Номенклатура_Const = "";
+        public static string Номенклатура_Const
+        {
+            get { return m_Номенклатура_Const; }
+            set
+            {
+                m_Номенклатура_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b8", m_Номенклатура_Const);
+            }
+        }
+             
     }
     #endregion
     
