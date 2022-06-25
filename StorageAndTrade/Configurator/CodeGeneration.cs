@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 25.06.2022 14:32:41
+ * Дата конфігурації: 25.06.2022 16:44:22
  *
  */
 
@@ -209,7 +209,10 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a69";
+            
+            public const string Дата = "col_a7";
+            public const string Коментар = "col_a8";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -286,7 +289,14 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a67";
+            
+            public const string Назва = "col_a2";
+            public const string Дата = "col_a1";
+            public const string Ключ = "col_a5";
+            public const string Виконано = "col_a3";
+            public const string Заблоковано = "col_a4";
+            public const string Результат = "col_a6";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -476,7 +486,15 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a68";
+            
+            public const string period = "col_a6";
+            public const string ЗамовленняКлієнта = "col_a1";
+            public const string Номенклатура = "col_a2";
+            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string Склад = "col_a4";
+            public const string Замовлено = "col_a5";
+            public const string Сума = "col_a7";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -578,7 +596,15 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a70";
+            
+            public const string period = "col_b1";
+            public const string ЗамовленняКлієнта = "col_a1";
+            public const string Номенклатура = "col_a2";
+            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string Склад = "col_a4";
+            public const string Замовлено = "col_a5";
+            public const string Сума = "col_a6";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -680,7 +706,14 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a74";
+            
+            public const string period = "col_a7";
+            public const string Номенклатура = "col_a8";
+            public const string ХарактеристикаНоменклатури = "col_a9";
+            public const string Склад = "col_b1";
+            public const string ВНаявності = "col_b2";
+            public const string ДоВідвантаження = "col_b3";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -777,7 +810,14 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a73";
+            
+            public const string period = "col_a1";
+            public const string Номенклатура = "col_a2";
+            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string Склад = "col_a4";
+            public const string ВНаявності = "col_a5";
+            public const string ДоВідвантаження = "col_a6";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -874,7 +914,12 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a75";
+            
+            public const string period = "col_a6";
+            public const string Валюта = "col_a1";
+            public const string Контрагент = "col_a2";
+            public const string Сума = "col_a3";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -961,7 +1006,12 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a76";
+            
+            public const string period = "col_b1";
+            public const string Валюта = "col_a1";
+            public const string Контрагент = "col_a2";
+            public const string Сума = "col_a6";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -1048,7 +1098,12 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a63";
+            
+            public const string period = "col_a6";
+            public const string Валюта = "col_a1";
+            public const string Контрагент = "col_a2";
+            public const string Сума = "col_a3";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -1135,7 +1190,12 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a64";
+            
+            public const string period = "col_b1";
+            public const string Валюта = "col_a1";
+            public const string Контрагент = "col_a2";
+            public const string Сума = "col_a6";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -1222,7 +1282,14 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a65";
+            
+            public const string period = "col_a6";
+            public const string ЗамовленняПостачальнику = "col_a1";
+            public const string Номенклатура = "col_a2";
+            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string Склад = "col_a4";
+            public const string Замовлено = "col_a5";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -1319,7 +1386,15 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a66";
+            
+            public const string period = "col_b1";
+            public const string ЗамовленняКлієнта = "col_a1";
+            public const string Номенклатура = "col_a2";
+            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string Склад = "col_a4";
+            public const string Замовлено = "col_a5";
+            public const string Сума = "col_a6";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -1421,7 +1496,15 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a71";
+            
+            public const string period = "col_a6";
+            public const string Номенклатура = "col_a2";
+            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string Склад = "col_a4";
+            public const string ВНаявності = "col_a5";
+            public const string ВРезервіЗіСкладу = "col_a7";
+            public const string ВРезервіПідЗамовлення = "col_a1";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -1523,7 +1606,15 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
-                
+            public const string TABLE = "tab_a72";
+            
+            public const string period = "col_b1";
+            public const string Номенклатура = "col_a2";
+            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string Склад = "col_a4";
+            public const string ВНаявності = "col_a5";
+            public const string ВРезервіЗіСкладу = "col_a6";
+            public const string ВРезервіПідЗамовлення = "col_a1";
             public List<Record> Records { get; set; }
         
             public void Read()

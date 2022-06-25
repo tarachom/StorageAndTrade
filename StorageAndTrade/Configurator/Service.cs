@@ -34,17 +34,29 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AccountingSoftware;
+using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade_1_0.Service
 { 
     class CalculateBalancesInRegister
     {
+
+
         public static string Запит_ЗамовленняКлієнтів()
         {
-
+            //Очистка таблиці
             string query = $@"
+DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE};";
+
+            Console.WriteLine(Config.Kernel.DataBase.ExecuteSQL(query));
+
+            //Заповнення таблиці
+            query = $@"
+INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}
+
 SELECT 
+    uuid_generate_v4(),
     date_trunc('month', Рег_ЗамовленняКлієнтів.period) as period_month,
     Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} AS ЗамовленняКлієнта, 
     Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} AS Номенклатура, 
@@ -73,9 +85,10 @@ OR
        -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) != 0
 ";
 
+            Console.WriteLine(Config.Kernel.DataBase.ExecuteSQL(query));
+
             return query;
         }
-
 
     }
 }
