@@ -178,7 +178,7 @@ namespace StorageAndTrade
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Console.WriteLine(StorageAndTrade_1_0.Service.CalculateBalancesInRegister.Запит_ЗамовленняКлієнтів());
         }
 
         private void замовленняКлієнтівToolStripMenuItem_Click(object sender, EventArgs e)
