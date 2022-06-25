@@ -75,7 +75,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-
+					textBox_Код.Text = банківськіРахункиКонтрагентів_Objest.Код = (++Константи.НумераціяДовідників.БанківськіРахункиКонтрагентів_Const).ToString("D6");
 					//directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer();
 				}
 				else
@@ -85,6 +85,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + банківськіРахункиКонтрагентів_Objest.Назва;
 
 						textBoxName.Text = банківськіРахункиКонтрагентів_Objest.Назва;
+						textBox_Код.Text = банківськіРахункиКонтрагентів_Objest.Код;
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(банківськіРахункиКонтрагентів_Objest.Валюта.UnigueID);
 						//directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(банківськіРахункиКонтрагентів_Objest.Організація.UnigueID);
 					}

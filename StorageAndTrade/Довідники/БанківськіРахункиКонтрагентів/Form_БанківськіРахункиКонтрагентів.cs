@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -72,6 +73,7 @@ namespace StorageAndTrade
 
 			Довідники.БанківськіРахункиКонтрагентів_Select банківськіРахункиКонтрагентів_Select = new Довідники.БанківськіРахункиКонтрагентів_Select();
 			банківськіРахункиКонтрагентів_Select.QuerySelect.Field.Add(Довідники.БанківськіРахункиКонтрагентів_Const.Назва);
+			банківськіРахункиКонтрагентів_Select.QuerySelect.Field.Add(Довідники.БанківськіРахункиКонтрагентів_Const.Код);
 
 			//ORDER
 			банківськіРахункиКонтрагентів_Select.QuerySelect.Order.Add(Довідники.БанківськіРахункиКонтрагентів_Const.Назва, SelectOrder.ASC);
@@ -84,7 +86,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.БанківськіРахункиКонтрагентів_Const.Назва].ToString()
+					Назва = cur.Fields[Довідники.БанківськіРахункиКонтрагентів_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.БанківськіРахункиКонтрагентів_Const.Код].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
@@ -106,6 +109,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -168,6 +172,7 @@ namespace StorageAndTrade
                     {
 						Довідники.БанківськіРахункиКонтрагентів_Objest банківськіРахункиКонтрагентів_Objest_Новий = банківськіРахункиКонтрагентів_Objest.Copy();
 						банківськіРахункиКонтрагентів_Objest_Новий.Назва = "Копія - " + банківськіРахункиКонтрагентів_Objest_Новий.Назва;
+						банківськіРахункиКонтрагентів_Objest_Новий.Код = (++Константи.НумераціяДовідників.БанківськіРахункиКонтрагентів_Const).ToString("D6");
 						банківськіРахункиКонтрагентів_Objest_Новий.Save();
 					}
                     else

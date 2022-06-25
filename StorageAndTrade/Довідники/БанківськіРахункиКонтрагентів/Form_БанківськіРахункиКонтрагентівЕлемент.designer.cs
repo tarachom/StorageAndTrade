@@ -37,11 +37,13 @@ namespace StorageAndTrade
             this.directoryControl_Валюта = new StorageAndTrade.DirectoryControl();
             this.label3 = new System.Windows.Forms.Label();
             this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
+            this.textBox_Код = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 118);
+            this.buttonClose.Location = new System.Drawing.Point(386, 145);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -51,7 +53,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(84, 118);
+            this.buttonSave.Location = new System.Drawing.Point(85, 145);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -111,11 +113,29 @@ namespace StorageAndTrade
             this.directoryControl_Організація.Size = new System.Drawing.Size(464, 27);
             this.directoryControl_Організація.TabIndex = 41;
             // 
+            // textBox_Код
+            // 
+            this.textBox_Код.Location = new System.Drawing.Point(85, 105);
+            this.textBox_Код.Name = "textBox_Код";
+            this.textBox_Код.Size = new System.Drawing.Size(465, 20);
+            this.textBox_Код.TabIndex = 44;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 43;
+            this.label4.Text = "Код:";
+            // 
             // Form_БанківськіРахункиКонтрагентівЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 167);
+            this.ClientSize = new System.Drawing.Size(565, 187);
+            this.Controls.Add(this.textBox_Код);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.directoryControl_Організація);
             this.Controls.Add(this.label1);
@@ -144,5 +164,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Валюта;
         private System.Windows.Forms.Label label3;
         private DirectoryControl directoryControl_Організація;
+        private System.Windows.Forms.TextBox textBox_Код;
+        private System.Windows.Forms.Label label4;
     }
 }
