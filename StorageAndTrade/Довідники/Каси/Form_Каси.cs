@@ -57,6 +57,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 
 			LoadRecords();
 		}
@@ -71,8 +72,8 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.Каси_Select каси_Select = new Довідники.Каси_Select();
-
 			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Назва);
+			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Код);
 			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Валюта);
 			
 			//JOIN
@@ -94,6 +95,7 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Каси_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.Каси_Const.Код].ToString(),
 					Валюта = cur.Fields["field2"].ToString()
 				});
 
@@ -116,6 +118,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 			public string Валюта { get; set; }
 		}
 
@@ -179,6 +182,7 @@ namespace StorageAndTrade
                     {
 						Довідники.Каси_Objest каси_Новий_Objest = каси_Objest.Copy();
 						каси_Новий_Objest.Назва = "Копія - " + каси_Новий_Objest.Назва;
+						каси_Новий_Objest.Код = (++Константи.НумераціяДовідників.Каси_Const).ToString("D6");
 						каси_Новий_Objest.Save();
 					}
                     else

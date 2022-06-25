@@ -72,6 +72,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = користувачі_Objest.Код = (++Константи.НумераціяДовідників.Користувачі_Const).ToString("D6");
 				}
 				else
 				{
@@ -80,6 +81,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + користувачі_Objest.Назва;
 
 						textBoxName.Text = користувачі_Objest.Назва;
+						textBox_Код.Text = користувачі_Objest.Код;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -97,6 +99,7 @@ namespace StorageAndTrade
 				try
 				{
 					користувачі_Objest.Назва = textBoxName.Text;
+					користувачі_Objest.Код = textBox_Код.Text;
 					користувачі_Objest.Save();
 				}
 				catch (Exception exp)

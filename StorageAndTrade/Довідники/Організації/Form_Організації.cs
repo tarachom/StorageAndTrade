@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -72,6 +73,7 @@ namespace StorageAndTrade
 
 			Довідники.Організації_Select організації_Select = new Довідники.Організації_Select();
 			організації_Select.QuerySelect.Field.Add(Довідники.Організації_Const.Назва);
+			організації_Select.QuerySelect.Field.Add(Довідники.Організації_Const.Код);
 
 			//ORDER
 			організації_Select.QuerySelect.Order.Add(Довідники.Організації_Const.Назва, SelectOrder.ASC);
@@ -84,7 +86,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Організації_Const.Назва].ToString()
+					Назва = cur.Fields[Довідники.Організації_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.Організації_Const.Код].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
@@ -106,6 +109,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -168,6 +172,7 @@ namespace StorageAndTrade
                     {
 						Довідники.Організації_Objest організації_Objest_Новий = організації_Objest.Copy();
 						організації_Objest_Новий.Назва = "Копія - " + організації_Objest_Новий.Назва;
+						організації_Objest_Новий.Код = (++Константи.НумераціяДовідників.Організації_Const).ToString("D6");
 						організації_Objest_Новий.Save();
 					}
                     else

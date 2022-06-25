@@ -74,6 +74,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = каси_Objest.Код = (++Константи.НумераціяДовідників.Каси_Const).ToString("D6");
 				}
 				else
 				{
@@ -82,6 +83,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + каси_Objest.Назва;
 
 						textBoxName.Text = каси_Objest.Назва;
+						textBox_Код.Text = каси_Objest.Код;
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(каси_Objest.Валюта.UnigueID);
 					}
 					else
@@ -100,6 +102,7 @@ namespace StorageAndTrade
 				try
 				{
 					каси_Objest.Назва = textBoxName.Text;
+					каси_Objest.Код = textBox_Код.Text;
 					каси_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					каси_Objest.Save();
 				}
