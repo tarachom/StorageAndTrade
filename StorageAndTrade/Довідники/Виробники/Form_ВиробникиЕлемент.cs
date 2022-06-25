@@ -72,6 +72,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = виробники_Objest.Код = (++Константи.НумераціяДовідників.Виробники_Const).ToString("D6");
 				}
 				else
 				{

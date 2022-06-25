@@ -108,6 +108,7 @@ namespace StorageAndTrade
 				try
 				{
 					видиНоменклатури_Objest.Назва = textBoxName.Text;
+					видиНоменклатури_Objest.Код = textBox_Код.Text;
 					видиНоменклатури_Objest.ОдиницяВиміру = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяВиміру.DirectoryPointerItem;
 					видиНоменклатури_Objest.ТипНоменклатури = comboBox_ТипНоменклатури.SelectedItem != null ? (Перелічення.ТипиНоменклатури)comboBox_ТипНоменклатури.SelectedItem : 0;
 					видиНоменклатури_Objest.Save();

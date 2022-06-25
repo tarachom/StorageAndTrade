@@ -102,6 +102,7 @@ namespace StorageAndTrade
 				try
 				{
 					видиЦін_Objest.Назва = textBoxName.Text;
+					видиЦін_Objest.Код = textBox_Код.Text;
 					видиЦін_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					видиЦін_Objest.Save();
 				}

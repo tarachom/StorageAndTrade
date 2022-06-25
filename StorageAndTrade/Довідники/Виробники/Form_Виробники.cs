@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -170,6 +171,7 @@ namespace StorageAndTrade
                     {
 						Довідники.Виробники_Objest виробники_Objest_Новий = виробники_Objest.Copy();
 						виробники_Objest_Новий.Назва = "Копія - " + виробники_Objest_Новий.Назва;
+						виробники_Objest_Новий.Код = (++Константи.НумераціяДовідників.Виробники_Const).ToString("D6");
 						виробники_Objest_Новий.Save();
 					}
                     else

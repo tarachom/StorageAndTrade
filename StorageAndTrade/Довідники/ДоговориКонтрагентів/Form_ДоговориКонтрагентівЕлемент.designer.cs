@@ -49,11 +49,13 @@ namespace StorageAndTrade
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
+            this.textBox_Код = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(317, 300);
+            this.buttonClose.Location = new System.Drawing.Point(317, 330);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -63,7 +65,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(20, 300);
+            this.buttonSave.Location = new System.Drawing.Point(20, 330);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -230,11 +232,29 @@ namespace StorageAndTrade
             this.directoryControl_Номенклатура.Size = new System.Drawing.Size(438, 27);
             this.directoryControl_Номенклатура.TabIndex = 49;
             // 
+            // textBox_Код
+            // 
+            this.textBox_Код.Location = new System.Drawing.Point(88, 282);
+            this.textBox_Код.Name = "textBox_Код";
+            this.textBox_Код.Size = new System.Drawing.Size(461, 20);
+            this.textBox_Код.TabIndex = 52;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(17, 285);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(29, 13);
+            this.label10.TabIndex = 51;
+            this.label10.Text = "Код:";
+            // 
             // Form_ДоговориКонтрагентівЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 343);
+            this.ClientSize = new System.Drawing.Size(566, 365);
+            this.Controls.Add(this.textBox_Код);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.directoryControl_Номенклатура);
             this.Controls.Add(this.comboBox_ТипДоговору);
@@ -287,5 +307,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private DirectoryControl directoryControl_Номенклатура;
+        private System.Windows.Forms.TextBox textBox_Код;
+        private System.Windows.Forms.Label label10;
     }
 }

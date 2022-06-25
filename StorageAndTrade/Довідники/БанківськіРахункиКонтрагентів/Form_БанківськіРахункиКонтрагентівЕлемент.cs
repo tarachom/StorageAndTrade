@@ -105,6 +105,7 @@ namespace StorageAndTrade
 				try
 				{
 					банківськіРахункиКонтрагентів_Objest.Назва = textBoxName.Text;
+					банківськіРахункиКонтрагентів_Objest.Код = textBox_Код.Text;
 					банківськіРахункиКонтрагентів_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					//банківськіРахункиКонтрагентів_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 					банківськіРахункиКонтрагентів_Objest.Save();

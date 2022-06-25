@@ -106,6 +106,7 @@ namespace StorageAndTrade
 				try
 				{
 					банківськіРахункиОрганізацій_Objest.Назва = textBoxName.Text;
+					банківськіРахункиОрганізацій_Objest.Код = textBox_Код.Text;
 					банківськіРахункиОрганізацій_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					банківськіРахункиОрганізацій_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					банківськіРахункиОрганізацій_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;

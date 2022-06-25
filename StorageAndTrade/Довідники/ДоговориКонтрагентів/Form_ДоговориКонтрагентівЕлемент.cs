@@ -92,6 +92,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = договориКонтрагентів_Objest.Код = (++Константи.НумераціяДовідників.ДоговориКонтрагентів_Const).ToString("D6");
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 					comboBox_ТипДоговору.SelectedIndex = 0;
@@ -103,6 +104,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + договориКонтрагентів_Objest.Назва;
 
 						textBoxName.Text = договориКонтрагентів_Objest.Назва;
+						textBox_Код.Text = договориКонтрагентів_Objest.Код;
 						directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer(договориКонтрагентів_Objest.БанківськийРахунок.UnigueID);
 						directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer(договориКонтрагентів_Objest.БанківськийРахунокКонтрагента.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(договориКонтрагентів_Objest.Підрозділ.UnigueID);
@@ -127,6 +129,7 @@ namespace StorageAndTrade
 				try
 				{
 					договориКонтрагентів_Objest.Назва = textBoxName.Text;
+					договориКонтрагентів_Objest.Код = textBox_Код.Text;
 					договориКонтрагентів_Objest.БанківськийРахунок = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
 					договориКонтрагентів_Objest.БанківськийРахунокКонтрагента = (Довідники.БанківськіРахункиКонтрагентів_Pointer)directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
