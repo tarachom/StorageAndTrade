@@ -141,7 +141,7 @@ namespace StorageAndTrade
             // 
             this.splitContainer1.Panel2.Controls.Add(this.Склади_Папки_Дерево);
             this.splitContainer1.Size = new System.Drawing.Size(1047, 624);
-            this.splitContainer1.SplitterDistance = 750;
+            this.splitContainer1.SplitterDistance = 703;
             this.splitContainer1.TabIndex = 1;
             // 
             // dataGridViewRecords
@@ -156,7 +156,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.Name = "dataGridViewRecords";
             this.dataGridViewRecords.ReadOnly = true;
             this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(750, 624);
+            this.dataGridViewRecords.Size = new System.Drawing.Size(703, 624);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
@@ -167,7 +167,7 @@ namespace StorageAndTrade
             this.Склади_Папки_Дерево.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Склади_Папки_Дерево.Location = new System.Drawing.Point(0, 0);
             this.Склади_Папки_Дерево.Name = "Склади_Папки_Дерево";
-            this.Склади_Папки_Дерево.Size = new System.Drawing.Size(293, 624);
+            this.Склади_Папки_Дерево.Size = new System.Drawing.Size(340, 624);
             this.Склади_Папки_Дерево.TabIndex = 0;
             this.Склади_Папки_Дерево.UidOpenFolder = null;
             // 

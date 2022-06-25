@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 
 			dataGridViewRecords.Columns["ТипСкладу"].Width = 100;
 			dataGridViewRecords.Columns["ТипСкладу"].HeaderText = "Тип";
@@ -87,6 +88,7 @@ namespace StorageAndTrade
 
 			Довідники.Склади_Select склади_Select = new Довідники.Склади_Select();
 			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Const.Назва);
+			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Const.Код);
 			склади_Select.QuerySelect.Field.Add(Довідники.Склади_Const.ТипСкладу);
 
 			//WHERE
@@ -105,6 +107,7 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Склади_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.Склади_Const.Код].ToString(),
 					ТипСкладу = ((Перелічення.ТипиСкладів)cur.Fields[Довідники.Склади_Const.ТипСкладу]).ToString()
 				});
 
@@ -127,6 +130,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 			public string ТипСкладу { get; set; }
 		}
 
@@ -197,6 +201,7 @@ namespace StorageAndTrade
                     {
 						Довідники.Склади_Objest склади_Objest_Новий = склади_Objest.Copy();
 						склади_Objest_Новий.Назва = "Копія - " + склади_Objest_Новий.Назва;
+						склади_Objest_Новий.Код = (++Константи.НумераціяДовідників.Склади_Const).ToString("D6");
 						склади_Objest_Новий.Save();
 					}
                     else

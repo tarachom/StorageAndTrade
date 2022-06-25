@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 25.06.2022 11:25:57
+ * Дата конфігурації: 25.06.2022 11:42:51
  *
  */
 
@@ -1770,12 +1770,34 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_b8", "col_d1" }, fieldValue);
+                 new string[] { "col_b8", "col_d1", "col_d2", "col_d3", "col_d4", "col_d5", "col_d6", "col_d7", "col_d8", "col_d9", "col_e1", "col_e2", "col_e3", "col_e4", "col_e5", "col_e6", "col_e7", "col_e8", "col_e9", "col_f1", "col_f2", "col_f3", "col_f4", "col_f5" }, fieldValue);
             
             if (IsSelect)
             {
                 m_Номенклатура_Const = (fieldValue["col_b8"] != DBNull.Value) ? (int)fieldValue["col_b8"] : 0;
                 m_Номенклатура_Папки_Const = (fieldValue["col_d1"] != DBNull.Value) ? (int)fieldValue["col_d1"] : 0;
+                m_Склади_Const = (fieldValue["col_d2"] != DBNull.Value) ? (int)fieldValue["col_d2"] : 0;
+                m_Склади_Папки_Const = (fieldValue["col_d3"] != DBNull.Value) ? (int)fieldValue["col_d3"] : 0;
+                m_Контрагенти_Const = (fieldValue["col_d4"] != DBNull.Value) ? (int)fieldValue["col_d4"] : 0;
+                m_Контрагенти_Папки_Const = (fieldValue["col_d5"] != DBNull.Value) ? (int)fieldValue["col_d5"] : 0;
+                m_ХарактеристикиНоменклатури_Const = (fieldValue["col_d6"] != DBNull.Value) ? (int)fieldValue["col_d6"] : 0;
+                m_Валюти_Const = (fieldValue["col_d7"] != DBNull.Value) ? (int)fieldValue["col_d7"] : 0;
+                m_Організації_Const = (fieldValue["col_d8"] != DBNull.Value) ? (int)fieldValue["col_d8"] : 0;
+                m_Виробники_Const = (fieldValue["col_d9"] != DBNull.Value) ? (int)fieldValue["col_d9"] : 0;
+                m_ВидиНоменклатури_Const = (fieldValue["col_e1"] != DBNull.Value) ? (int)fieldValue["col_e1"] : 0;
+                m_ПакуванняОдиниціВиміру_Const = (fieldValue["col_e2"] != DBNull.Value) ? (int)fieldValue["col_e2"] : 0;
+                m_ВидиЦін_Const = (fieldValue["col_e3"] != DBNull.Value) ? (int)fieldValue["col_e3"] : 0;
+                m_ВидиЦінПостачальників_Const = (fieldValue["col_e4"] != DBNull.Value) ? (int)fieldValue["col_e4"] : 0;
+                m_Користувачі_Const = (fieldValue["col_e5"] != DBNull.Value) ? (int)fieldValue["col_e5"] : 0;
+                m_ФізичніОсоби_Const = (fieldValue["col_e6"] != DBNull.Value) ? (int)fieldValue["col_e6"] : 0;
+                m_СтруктураПідприємства_Const = (fieldValue["col_e7"] != DBNull.Value) ? (int)fieldValue["col_e7"] : 0;
+                m_КраїниСвіту_Const = (fieldValue["col_e8"] != DBNull.Value) ? (int)fieldValue["col_e8"] : 0;
+                m_Файли_Const = (fieldValue["col_e9"] != DBNull.Value) ? (int)fieldValue["col_e9"] : 0;
+                m_Каси_Const = (fieldValue["col_f1"] != DBNull.Value) ? (int)fieldValue["col_f1"] : 0;
+                m_БанківськіРахункиОрганізацій_Const = (fieldValue["col_f2"] != DBNull.Value) ? (int)fieldValue["col_f2"] : 0;
+                m_ДоговориКонтрагентів_Const = (fieldValue["col_f3"] != DBNull.Value) ? (int)fieldValue["col_f3"] : 0;
+                m_БанківськіРахункиКонтрагентів_Const = (fieldValue["col_f4"] != DBNull.Value) ? (int)fieldValue["col_f4"] : 0;
+                m_СтаттяРухуКоштів_Const = (fieldValue["col_f5"] != DBNull.Value) ? (int)fieldValue["col_f5"] : 0;
                 
             }
 			
@@ -1801,6 +1823,248 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_Номенклатура_Папки_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d1", m_Номенклатура_Папки_Const);
+            }
+        }
+        
+        static int m_Склади_Const = 0;
+        public static int Склади_Const
+        {
+            get { return m_Склади_Const; }
+            set
+            {
+                m_Склади_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d2", m_Склади_Const);
+            }
+        }
+        
+        static int m_Склади_Папки_Const = 0;
+        public static int Склади_Папки_Const
+        {
+            get { return m_Склади_Папки_Const; }
+            set
+            {
+                m_Склади_Папки_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d3", m_Склади_Папки_Const);
+            }
+        }
+        
+        static int m_Контрагенти_Const = 0;
+        public static int Контрагенти_Const
+        {
+            get { return m_Контрагенти_Const; }
+            set
+            {
+                m_Контрагенти_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d4", m_Контрагенти_Const);
+            }
+        }
+        
+        static int m_Контрагенти_Папки_Const = 0;
+        public static int Контрагенти_Папки_Const
+        {
+            get { return m_Контрагенти_Папки_Const; }
+            set
+            {
+                m_Контрагенти_Папки_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d5", m_Контрагенти_Папки_Const);
+            }
+        }
+        
+        static int m_ХарактеристикиНоменклатури_Const = 0;
+        public static int ХарактеристикиНоменклатури_Const
+        {
+            get { return m_ХарактеристикиНоменклатури_Const; }
+            set
+            {
+                m_ХарактеристикиНоменклатури_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d6", m_ХарактеристикиНоменклатури_Const);
+            }
+        }
+        
+        static int m_Валюти_Const = 0;
+        public static int Валюти_Const
+        {
+            get { return m_Валюти_Const; }
+            set
+            {
+                m_Валюти_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d7", m_Валюти_Const);
+            }
+        }
+        
+        static int m_Організації_Const = 0;
+        public static int Організації_Const
+        {
+            get { return m_Організації_Const; }
+            set
+            {
+                m_Організації_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d8", m_Організації_Const);
+            }
+        }
+        
+        static int m_Виробники_Const = 0;
+        public static int Виробники_Const
+        {
+            get { return m_Виробники_Const; }
+            set
+            {
+                m_Виробники_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d9", m_Виробники_Const);
+            }
+        }
+        
+        static int m_ВидиНоменклатури_Const = 0;
+        public static int ВидиНоменклатури_Const
+        {
+            get { return m_ВидиНоменклатури_Const; }
+            set
+            {
+                m_ВидиНоменклатури_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e1", m_ВидиНоменклатури_Const);
+            }
+        }
+        
+        static int m_ПакуванняОдиниціВиміру_Const = 0;
+        public static int ПакуванняОдиниціВиміру_Const
+        {
+            get { return m_ПакуванняОдиниціВиміру_Const; }
+            set
+            {
+                m_ПакуванняОдиниціВиміру_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e2", m_ПакуванняОдиниціВиміру_Const);
+            }
+        }
+        
+        static int m_ВидиЦін_Const = 0;
+        public static int ВидиЦін_Const
+        {
+            get { return m_ВидиЦін_Const; }
+            set
+            {
+                m_ВидиЦін_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e3", m_ВидиЦін_Const);
+            }
+        }
+        
+        static int m_ВидиЦінПостачальників_Const = 0;
+        public static int ВидиЦінПостачальників_Const
+        {
+            get { return m_ВидиЦінПостачальників_Const; }
+            set
+            {
+                m_ВидиЦінПостачальників_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e4", m_ВидиЦінПостачальників_Const);
+            }
+        }
+        
+        static int m_Користувачі_Const = 0;
+        public static int Користувачі_Const
+        {
+            get { return m_Користувачі_Const; }
+            set
+            {
+                m_Користувачі_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e5", m_Користувачі_Const);
+            }
+        }
+        
+        static int m_ФізичніОсоби_Const = 0;
+        public static int ФізичніОсоби_Const
+        {
+            get { return m_ФізичніОсоби_Const; }
+            set
+            {
+                m_ФізичніОсоби_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e6", m_ФізичніОсоби_Const);
+            }
+        }
+        
+        static int m_СтруктураПідприємства_Const = 0;
+        public static int СтруктураПідприємства_Const
+        {
+            get { return m_СтруктураПідприємства_Const; }
+            set
+            {
+                m_СтруктураПідприємства_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e7", m_СтруктураПідприємства_Const);
+            }
+        }
+        
+        static int m_КраїниСвіту_Const = 0;
+        public static int КраїниСвіту_Const
+        {
+            get { return m_КраїниСвіту_Const; }
+            set
+            {
+                m_КраїниСвіту_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e8", m_КраїниСвіту_Const);
+            }
+        }
+        
+        static int m_Файли_Const = 0;
+        public static int Файли_Const
+        {
+            get { return m_Файли_Const; }
+            set
+            {
+                m_Файли_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_e9", m_Файли_Const);
+            }
+        }
+        
+        static int m_Каси_Const = 0;
+        public static int Каси_Const
+        {
+            get { return m_Каси_Const; }
+            set
+            {
+                m_Каси_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f1", m_Каси_Const);
+            }
+        }
+        
+        static int m_БанківськіРахункиОрганізацій_Const = 0;
+        public static int БанківськіРахункиОрганізацій_Const
+        {
+            get { return m_БанківськіРахункиОрганізацій_Const; }
+            set
+            {
+                m_БанківськіРахункиОрганізацій_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f2", m_БанківськіРахункиОрганізацій_Const);
+            }
+        }
+        
+        static int m_ДоговориКонтрагентів_Const = 0;
+        public static int ДоговориКонтрагентів_Const
+        {
+            get { return m_ДоговориКонтрагентів_Const; }
+            set
+            {
+                m_ДоговориКонтрагентів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f3", m_ДоговориКонтрагентів_Const);
+            }
+        }
+        
+        static int m_БанківськіРахункиКонтрагентів_Const = 0;
+        public static int БанківськіРахункиКонтрагентів_Const
+        {
+            get { return m_БанківськіРахункиКонтрагентів_Const; }
+            set
+            {
+                m_БанківськіРахункиКонтрагентів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f4", m_БанківськіРахункиКонтрагентів_Const);
+            }
+        }
+        
+        static int m_СтаттяРухуКоштів_Const = 0;
+        public static int СтаттяРухуКоштів_Const
+        {
+            get { return m_СтаттяРухуКоштів_Const; }
+            set
+            {
+                m_СтаттяРухуКоштів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f5", m_СтаттяРухуКоштів_Const);
             }
         }
              

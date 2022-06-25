@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -81,6 +82,7 @@ namespace StorageAndTrade
 
 			Довідники.Контрагенти_Select контрагенти_Select = new Довідники.Контрагенти_Select();
 			контрагенти_Select.QuerySelect.Field.Add(Довідники.Контрагенти_Const.Назва);
+			контрагенти_Select.QuerySelect.Field.Add(Довідники.Контрагенти_Const.Код);
 
 			//WHERE
 			if (Контрагенти_Папки_Дерево.Parent_Pointer != null)
@@ -97,7 +99,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Контрагенти_Const.Назва].ToString()
+					Назва = cur.Fields[Довідники.Контрагенти_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.Контрагенти_Const.Код].ToString()
 				});
 			}
 
@@ -122,6 +125,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 		}
 
 		public void TreeFolderAfterSelect()
@@ -189,6 +193,7 @@ namespace StorageAndTrade
                     {
 						Довідники.Контрагенти_Objest контрагенти_Objest_Новий = контрагенти_Objest.Copy();
 						контрагенти_Objest_Новий.Назва = "Копія - " + контрагенти_Objest_Новий.Назва;
+						контрагенти_Objest_Новий.Код = (++Константи.НумераціяДовідників.Контрагенти_Const).ToString("D6");
 						контрагенти_Objest_Новий.Save();
 					}
                     else

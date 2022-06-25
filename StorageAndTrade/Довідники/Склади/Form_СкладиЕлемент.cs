@@ -86,6 +86,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = склади_Objest.Код = (++Константи.НумераціяДовідників.Склади_Const).ToString("D6");
 					comboBox_ТипСкладу.SelectedIndex = 0;
 				}
 				else
@@ -95,6 +96,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + склади_Objest.Назва;
 
 						textBoxНазва.Text = склади_Objest.Назва;
+						textBox_Код.Text = склади_Objest.Код;
 						comboBox_ТипСкладу.SelectedItem = склади_Objest.ТипСкладу;
 						directoryControl_СкладиПапка.DirectoryPointerItem = new Довідники.Склади_Папки_Pointer(склади_Objest.Папка.UnigueID);
 						directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(склади_Objest.Відповідальний.UnigueID);

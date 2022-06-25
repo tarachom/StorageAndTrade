@@ -74,6 +74,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = контрагенти_Objest.Код = (++Константи.НумераціяДовідників.Контрагенти_Const).ToString("D6");
 				}
 				else
 				{
@@ -82,6 +83,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + контрагенти_Objest.Назва;
 
 						textBoxName.Text = контрагенти_Objest.Назва;
+						textBox_Код.Text = контрагенти_Objest.Код;
 						directoryControl_КонтрагентПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer(контрагенти_Objest.Папка.UnigueID);
 					}
 					else
