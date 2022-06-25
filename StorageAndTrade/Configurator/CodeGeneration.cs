@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 25.06.2022 10:30:22
+ * Дата конфігурації: 25.06.2022 10:57:58
  *
  */
 
@@ -1629,25 +1629,133 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_b7" }, fieldValue);
+                 new string[] { "col_b7", "col_b9", "col_c1", "col_c2", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9" }, fieldValue);
             
             if (IsSelect)
             {
-                m_ПоступленняТоварівТаПослуг_Const = fieldValue["col_b7"].ToString();
+                m_ПоступленняТоварівТаПослуг_Const = (fieldValue["col_b7"] != DBNull.Value) ? (int)fieldValue["col_b7"] : 0;
+                m_ЗамовленняПостачальнику_Const = (fieldValue["col_b9"] != DBNull.Value) ? (int)fieldValue["col_b9"] : 0;
+                m_ЗамовленняКлієнта_Const = (fieldValue["col_c1"] != DBNull.Value) ? (int)fieldValue["col_c1"] : 0;
+                m_РеалізаціяТоварівТаПослуг_Const = (fieldValue["col_c2"] != DBNull.Value) ? (int)fieldValue["col_c2"] : 0;
+                m_ВстановленняЦінНоменклатури_Const = (fieldValue["col_c4"] != DBNull.Value) ? (int)fieldValue["col_c4"] : 0;
+                m_ПрихіднийКасовийОрдер_Const = (fieldValue["col_c5"] != DBNull.Value) ? (int)fieldValue["col_c5"] : 0;
+                m_РозхіднийКасовийОрдер_Const = (fieldValue["col_c6"] != DBNull.Value) ? (int)fieldValue["col_c6"] : 0;
+                m_ПереміщенняТоварів_Const = (fieldValue["col_c7"] != DBNull.Value) ? (int)fieldValue["col_c7"] : 0;
+                m_ПоверненняТоварівПостачальнику_Const = (fieldValue["col_c8"] != DBNull.Value) ? (int)fieldValue["col_c8"] : 0;
+                m_ПоверненняТоварівВідКлієнта_Const = (fieldValue["col_c9"] != DBNull.Value) ? (int)fieldValue["col_c9"] : 0;
                 
             }
 			
         }
         
         
-        static string m_ПоступленняТоварівТаПослуг_Const = "";
-        public static string ПоступленняТоварівТаПослуг_Const
+        static int m_ПоступленняТоварівТаПослуг_Const = 0;
+        public static int ПоступленняТоварівТаПослуг_Const
         {
             get { return m_ПоступленняТоварівТаПослуг_Const; }
             set
             {
                 m_ПоступленняТоварівТаПослуг_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b7", m_ПоступленняТоварівТаПослуг_Const);
+            }
+        }
+        
+        static int m_ЗамовленняПостачальнику_Const = 0;
+        public static int ЗамовленняПостачальнику_Const
+        {
+            get { return m_ЗамовленняПостачальнику_Const; }
+            set
+            {
+                m_ЗамовленняПостачальнику_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b9", m_ЗамовленняПостачальнику_Const);
+            }
+        }
+        
+        static int m_ЗамовленняКлієнта_Const = 0;
+        public static int ЗамовленняКлієнта_Const
+        {
+            get { return m_ЗамовленняКлієнта_Const; }
+            set
+            {
+                m_ЗамовленняКлієнта_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c1", m_ЗамовленняКлієнта_Const);
+            }
+        }
+        
+        static int m_РеалізаціяТоварівТаПослуг_Const = 0;
+        public static int РеалізаціяТоварівТаПослуг_Const
+        {
+            get { return m_РеалізаціяТоварівТаПослуг_Const; }
+            set
+            {
+                m_РеалізаціяТоварівТаПослуг_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c2", m_РеалізаціяТоварівТаПослуг_Const);
+            }
+        }
+        
+        static int m_ВстановленняЦінНоменклатури_Const = 0;
+        public static int ВстановленняЦінНоменклатури_Const
+        {
+            get { return m_ВстановленняЦінНоменклатури_Const; }
+            set
+            {
+                m_ВстановленняЦінНоменклатури_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c4", m_ВстановленняЦінНоменклатури_Const);
+            }
+        }
+        
+        static int m_ПрихіднийКасовийОрдер_Const = 0;
+        public static int ПрихіднийКасовийОрдер_Const
+        {
+            get { return m_ПрихіднийКасовийОрдер_Const; }
+            set
+            {
+                m_ПрихіднийКасовийОрдер_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c5", m_ПрихіднийКасовийОрдер_Const);
+            }
+        }
+        
+        static int m_РозхіднийКасовийОрдер_Const = 0;
+        public static int РозхіднийКасовийОрдер_Const
+        {
+            get { return m_РозхіднийКасовийОрдер_Const; }
+            set
+            {
+                m_РозхіднийКасовийОрдер_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c6", m_РозхіднийКасовийОрдер_Const);
+            }
+        }
+        
+        static int m_ПереміщенняТоварів_Const = 0;
+        public static int ПереміщенняТоварів_Const
+        {
+            get { return m_ПереміщенняТоварів_Const; }
+            set
+            {
+                m_ПереміщенняТоварів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c7", m_ПереміщенняТоварів_Const);
+            }
+        }
+        
+        static int m_ПоверненняТоварівПостачальнику_Const = 0;
+        public static int ПоверненняТоварівПостачальнику_Const
+        {
+            get { return m_ПоверненняТоварівПостачальнику_Const; }
+            set
+            {
+                m_ПоверненняТоварівПостачальнику_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c8", m_ПоверненняТоварівПостачальнику_Const);
+            }
+        }
+        
+        static int m_ПоверненняТоварівВідКлієнта_Const = 0;
+        public static int ПоверненняТоварівВідКлієнта_Const
+        {
+            get { return m_ПоверненняТоварівВідКлієнта_Const; }
+            set
+            {
+                m_ПоверненняТоварівВідКлієнта_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c9", m_ПоверненняТоварівВідКлієнта_Const);
             }
         }
              

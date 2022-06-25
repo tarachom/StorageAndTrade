@@ -95,6 +95,9 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					замовленняКлієнта_Objest.НомерДок = (++Константи.НумераціяДокументів.ЗамовленняКлієнта_Const).ToString("D8");
+
+					textBox_НомерДок.Text = замовленняКлієнта_Objest.НомерДок;
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ФормаОплати.SelectedIndex = 0;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;

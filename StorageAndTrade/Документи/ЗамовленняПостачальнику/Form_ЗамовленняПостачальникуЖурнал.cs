@@ -193,11 +193,20 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells["ID"].Value.ToString();
 
-                    Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-                    if (замовленняКлієнта_Objest.Read(new UnigueID(uid)))
+                    Документи.ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = new Документи.ЗамовленняПостачальнику_Objest();
+                    if (замовленняПостачальнику_Objest.Read(new UnigueID(uid)))
                     {
-						Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest_Новий = замовленняКлієнта_Objest.Copy();
-						ЗамовленняКлієнта_Objest_Новий.Save();
+						Документи.ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest_Новий = замовленняПостачальнику_Objest.Copy();
+						замовленняПостачальнику_Objest_Новий.Назва += " *";
+						замовленняПостачальнику_Objest_Новий.ДатаДок = DateTime.Now;
+						замовленняПостачальнику_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ЗамовленняПостачальнику_Const).ToString("D8");
+						замовленняПостачальнику_Objest_Новий.Проведений = false;
+
+						//Зчитати та скопіювати табличну частину Товари
+						замовленняПостачальнику_Objest.Товари_TablePart.Read();
+						замовленняПостачальнику_Objest_Новий.Товари_TablePart.Records = замовленняПостачальнику_Objest.Товари_TablePart.Copy();
+						замовленняПостачальнику_Objest_Новий.Товари_TablePart.Save(true);
+						замовленняПостачальнику_Objest_Новий.Save();
 					}
                     else
                     {

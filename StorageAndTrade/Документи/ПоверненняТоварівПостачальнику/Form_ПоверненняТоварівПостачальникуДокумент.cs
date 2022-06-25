@@ -87,6 +87,9 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					поверненняТоварівПостачальнику_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоверненняТоварівПостачальнику_Const).ToString("D8");
+
+					textBox_НомерДок.Text = поверненняТоварівПостачальнику_Objest.НомерДок;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else

@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>25.06.2022 10:30:22</DateTimeSave>
+  <DateTimeSave>25.06.2022 10:57:58</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -991,7 +991,79 @@
           <NameInTable>col_b7</NameInTable>
           <Desc>
           </Desc>
-          <Type>string</Type>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ЗамовленняПостачальнику</Name>
+          <NameInTable>col_b9</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ЗамовленняКлієнта</Name>
+          <NameInTable>col_c1</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>РеалізаціяТоварівТаПослуг</Name>
+          <NameInTable>col_c2</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ВстановленняЦінНоменклатури</Name>
+          <NameInTable>col_c4</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ПрихіднийКасовийОрдер</Name>
+          <NameInTable>col_c5</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>РозхіднийКасовийОрдер</Name>
+          <NameInTable>col_c6</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ПереміщенняТоварів</Name>
+          <NameInTable>col_c7</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ПоверненняТоварівПостачальнику</Name>
+          <NameInTable>col_c8</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ПоверненняТоварівВідКлієнта</Name>
+          <NameInTable>col_c9</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
           <TabularParts />
         </Constant>
       </Constants>
