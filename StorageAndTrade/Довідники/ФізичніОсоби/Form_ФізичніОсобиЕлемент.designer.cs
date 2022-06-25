@@ -35,11 +35,13 @@ namespace StorageAndTrade
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox_Стать = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox_Код = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 75);
+            this.buttonClose.Location = new System.Drawing.Point(385, 99);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -49,7 +51,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(60, 75);
+            this.buttonSave.Location = new System.Drawing.Point(60, 99);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -91,11 +93,29 @@ namespace StorageAndTrade
             this.label5.TabIndex = 33;
             this.label5.Text = "Стать:";
             // 
+            // textBox_Код
+            // 
+            this.textBox_Код.Location = new System.Drawing.Point(60, 65);
+            this.textBox_Код.Name = "textBox_Код";
+            this.textBox_Код.Size = new System.Drawing.Size(489, 20);
+            this.textBox_Код.TabIndex = 36;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 35;
+            this.label1.Text = "Код:";
+            // 
             // Form_ФізичніОсобиЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 118);
+            this.ClientSize = new System.Drawing.Size(565, 134);
+            this.Controls.Add(this.textBox_Код);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox_Стать);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxName);
@@ -120,5 +140,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox_Стать;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox_Код;
+        private System.Windows.Forms.Label label1;
     }
 }

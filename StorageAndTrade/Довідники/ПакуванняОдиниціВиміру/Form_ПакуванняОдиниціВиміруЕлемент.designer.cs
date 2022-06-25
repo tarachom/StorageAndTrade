@@ -37,11 +37,13 @@ namespace StorageAndTrade
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_КількістьУпаковок = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBox_Код = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 99);
+            this.buttonClose.Location = new System.Drawing.Point(385, 127);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -51,7 +53,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(124, 99);
+            this.buttonSave.Location = new System.Drawing.Point(124, 127);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -107,11 +109,29 @@ namespace StorageAndTrade
             this.label3.TabIndex = 23;
             this.label3.Text = "Кількість упаковок:";
             // 
+            // textBox_Код
+            // 
+            this.textBox_Код.Location = new System.Drawing.Point(124, 90);
+            this.textBox_Код.Name = "textBox_Код";
+            this.textBox_Код.Size = new System.Drawing.Size(425, 20);
+            this.textBox_Код.TabIndex = 26;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 93);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 13);
+            this.label4.TabIndex = 25;
+            this.label4.Text = "Код:";
+            // 
             // Form_ПакуванняОдиниціВиміруЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 141);
+            this.ClientSize = new System.Drawing.Size(565, 171);
+            this.Controls.Add(this.textBox_Код);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox_КількістьУпаковок);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox_НазваПовна);
@@ -140,5 +160,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_КількістьУпаковок;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox_Код;
+        private System.Windows.Forms.Label label4;
     }
 }

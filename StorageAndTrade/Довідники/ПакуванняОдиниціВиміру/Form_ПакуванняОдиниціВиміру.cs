@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -72,6 +73,7 @@ namespace StorageAndTrade
 
 			Довідники.ПакуванняОдиниціВиміру_Select пакуванняОдиниціВиміру_Select = new Довідники.ПакуванняОдиниціВиміру_Select();
 			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Const.Назва);
+			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Const.Код);
 			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Const.НазваПовна);
 			пакуванняОдиниціВиміру_Select.QuerySelect.Field.Add(Довідники.ПакуванняОдиниціВиміру_Const.КількістьУпаковок);
 
@@ -87,6 +89,7 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Const.Код].ToString(),
 					НазваПовна = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Const.НазваПовна].ToString(),
 					КількістьУпаковок = cur.Fields[Довідники.ПакуванняОдиниціВиміру_Const.КількістьУпаковок].ToString()
 				});
@@ -110,6 +113,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 			public string НазваПовна { get; set; }
 			public string КількістьУпаковок { get; set; }
 
@@ -175,6 +179,7 @@ namespace StorageAndTrade
                     {
 						Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest_Новий = пакуванняОдиниціВиміру_Objest.Copy();
 						пакуванняОдиниціВиміру_Objest_Новий.Назва = "Копія - " + пакуванняОдиниціВиміру_Objest_Новий.Назва;
+						пакуванняОдиниціВиміру_Objest_Новий.Код = (++Константи.НумераціяДовідників.ПакуванняОдиниціВиміру_Const).ToString("D6");
 						пакуванняОдиниціВиміру_Objest_Новий.Save();
 					}
                     else

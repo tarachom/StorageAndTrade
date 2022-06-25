@@ -65,7 +65,7 @@ namespace StorageAndTrade
 
 		private void Form_СтруктураПідприємстваЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_Керівник.SelectForm = new Form_СтруктураПідприємства();
+			directoryControl_Керівник.Init(new Form_СтруктураПідприємства(), new Довідники.ФізичніОсоби_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -74,7 +74,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-					directoryControl_Керівник.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer();
+					textBox_Код.Text = структураПідприємства_Objest.Код = (++Константи.НумераціяДовідників.СтруктураПідприємства_Const).ToString("D6");
 				}
 				else
 				{
@@ -82,6 +82,7 @@ namespace StorageAndTrade
 					{
 						this.Text += " - Редагування запису - " + структураПідприємства_Objest.Назва;
 						textBoxName.Text = структураПідприємства_Objest.Назва;
+						textBox_Код.Text = структураПідприємства_Objest.Код;
 						directoryControl_Керівник.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(структураПідприємства_Objest.Керівник.UnigueID);
 					}
 					else
@@ -100,6 +101,7 @@ namespace StorageAndTrade
 				try
 				{
 					структураПідприємства_Objest.Назва = textBoxName.Text;
+					структураПідприємства_Objest.Код = textBox_Код.Text;
 					структураПідприємства_Objest.Керівник = (Довідники.ФізичніОсоби_Pointer)directoryControl_Керівник.DirectoryPointerItem;
 					структураПідприємства_Objest.Save();
 				}

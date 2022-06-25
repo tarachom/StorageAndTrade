@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -72,6 +73,7 @@ namespace StorageAndTrade
 
 			Довідники.ХарактеристикиНоменклатури_Select характеристикиНоменклатури_Select = new Довідники.ХарактеристикиНоменклатури_Select();
 			характеристикиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ХарактеристикиНоменклатури_Const.Назва);
+			характеристикиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ХарактеристикиНоменклатури_Const.Код);
 
 			//ORDER
 			характеристикиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ХарактеристикиНоменклатури_Const.Назва, SelectOrder.ASC);
@@ -84,7 +86,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.ХарактеристикиНоменклатури_Const.Назва].ToString()
+					Назва = cur.Fields[Довідники.ХарактеристикиНоменклатури_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.ХарактеристикиНоменклатури_Const.Код].ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
@@ -106,6 +109,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -168,6 +172,7 @@ namespace StorageAndTrade
                     {
 						Довідники.ХарактеристикиНоменклатури_Objest характеристикиНоменклатури_Objest_Новий = характеристикиНоменклатури_Objest.Copy();
 						характеристикиНоменклатури_Objest_Новий.Назва = "Копія - " + характеристикиНоменклатури_Objest_Новий.Назва;
+						характеристикиНоменклатури_Objest_Новий.Код = (++Константи.НумераціяДовідників.ХарактеристикиНоменклатури_Const).ToString("D6");
 						характеристикиНоменклатури_Objest_Новий.Save();
 					}
                     else

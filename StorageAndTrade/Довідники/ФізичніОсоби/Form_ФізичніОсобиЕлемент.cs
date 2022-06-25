@@ -76,6 +76,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = фізичніОсоби_Objest.Код = (++Константи.НумераціяДовідників.ФізичніОсоби_Const).ToString("D6");
 					comboBox_Стать.SelectedIndex = 0;
 				}
 				else
@@ -85,6 +86,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + фізичніОсоби_Objest.Назва;
 
 						textBoxName.Text = фізичніОсоби_Objest.Назва;
+						textBox_Код.Text = фізичніОсоби_Objest.Код;
 						comboBox_Стать.SelectedItem = фізичніОсоби_Objest.Стать;
 					}
 					else
@@ -103,6 +105,7 @@ namespace StorageAndTrade
 				try
 				{
 					фізичніОсоби_Objest.Назва = textBoxName.Text;
+					фізичніОсоби_Objest.Код = textBox_Код.Text;
 					фізичніОсоби_Objest.Стать = comboBox_Стать.SelectedItem != null ? (Перелічення.СтатьФізичноїОсоби)comboBox_Стать.SelectedItem : 0;
 					фізичніОсоби_Objest.Save();
 				}
