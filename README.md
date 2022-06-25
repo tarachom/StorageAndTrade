@@ -6,4 +6,4 @@
 
 Вимоги: операційна система Windows 10, Windows Server 2012 R2 і вище, .NET Framework, Version = v4.7.2 
 
-Скачати програму      http://accounting.org.ua/
+Скачати програму      https://accounting.org.ua/storage_and_trade.html
