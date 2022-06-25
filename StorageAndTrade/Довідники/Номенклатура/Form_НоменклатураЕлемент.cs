@@ -87,6 +87,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = номенклатура_Objest.Код = (++Константи.НумераціяДовідників.Номенклатура_Const).ToString("D6");
 					comboBox_ТипНоменклатури.SelectedItem = Перелічення.ТипиНоменклатури.Товар;
 				}
 				else

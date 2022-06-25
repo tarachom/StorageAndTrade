@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 25.06.2022 10:57:58
+ * Дата конфігурації: 25.06.2022 11:25:57
  *
  */
 
@@ -46,7 +46,7 @@ namespace StorageAndTrade_1_0
             Константи.Системні.ReadAll();
             Константи.ВіртуальніТаблиціРегістрівНакопичення.ReadAll();
             Константи.НумераціяДокументів.ReadAll();
-            Константи.НумераціяЕлементівДовідників.ReadAll();
+            Константи.НумераціяДовідників.ReadAll();
             
         }
     }
@@ -1762,33 +1762,45 @@ namespace StorageAndTrade_1_0.Константи
     }
     #endregion
     
-	#region CONSTANTS BLOCK "НумераціяЕлементівДовідників"
-    public static class НумераціяЕлементівДовідників
+	#region CONSTANTS BLOCK "НумераціяДовідників"
+    public static class НумераціяДовідників
     {
         public static void ReadAll()
         {
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_b8" }, fieldValue);
+                 new string[] { "col_b8", "col_d1" }, fieldValue);
             
             if (IsSelect)
             {
-                m_Номенклатура_Const = fieldValue["col_b8"].ToString();
+                m_Номенклатура_Const = (fieldValue["col_b8"] != DBNull.Value) ? (int)fieldValue["col_b8"] : 0;
+                m_Номенклатура_Папки_Const = (fieldValue["col_d1"] != DBNull.Value) ? (int)fieldValue["col_d1"] : 0;
                 
             }
 			
         }
         
         
-        static string m_Номенклатура_Const = "";
-        public static string Номенклатура_Const
+        static int m_Номенклатура_Const = 0;
+        public static int Номенклатура_Const
         {
             get { return m_Номенклатура_Const; }
             set
             {
                 m_Номенклатура_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_b8", m_Номенклатура_Const);
+            }
+        }
+        
+        static int m_Номенклатура_Папки_Const = 0;
+        public static int Номенклатура_Папки_Const
+        {
+            get { return m_Номенклатура_Папки_Const; }
+            set
+            {
+                m_Номенклатура_Папки_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_d1", m_Номенклатура_Папки_Const);
             }
         }
              

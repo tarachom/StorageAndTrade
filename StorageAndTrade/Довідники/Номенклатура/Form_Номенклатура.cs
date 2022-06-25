@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 			dataGridViewRecords.Columns["Виробник"].Width = 100;
 
 			dataGridViewRecords.Columns["ВидНоменклатури"].Width = 100;
@@ -95,6 +96,7 @@ namespace StorageAndTrade
 
 			Довідники.Номенклатура_Select номенклатура_Select = new Довідники.Номенклатура_Select();
 			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Const.Назва);
+			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Const.Код);
 			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Const.ТипНоменклатури);
 
 			//JOIN 1
@@ -134,6 +136,7 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.Номенклатура_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.Номенклатура_Const.Код].ToString(),
 					Виробник = cur.Fields["join1"].ToString(),
 					ВидНоменклатури = cur.Fields["join2"].ToString(),
 					ОдиницяВиміру = cur.Fields["join3"].ToString(),
@@ -159,6 +162,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 			public string Виробник { get; set; }
 			public string ВидНоменклатури { get; set; }
 			public string ОдиницяВиміру { get; set; }
@@ -232,6 +236,7 @@ namespace StorageAndTrade
                     {
 						Довідники.Номенклатура_Objest номенклатура_Objest_Новий = номенклатура_Objest.Copy();
 						номенклатура_Objest_Новий.Назва = "Копія - " + номенклатура_Objest_Новий.Назва;
+						номенклатура_Objest_Новий.Код = (++Константи.НумераціяДовідників.Номенклатура_Const).ToString("D6");
 						номенклатура_Objest_Новий.Save();
 					}
                     else

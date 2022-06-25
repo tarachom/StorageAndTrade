@@ -90,10 +90,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
-
-					поступленняТоварівТаПослуг_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоступленняТоварівТаПослуг_Const).ToString("D8");
-
-					textBox_НомерДок.Text = поступленняТоварівТаПослуг_Objest.НомерДок;
+					textBox_НомерДок.Text = поступленняТоварівТаПослуг_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоступленняТоварівТаПослуг_Const).ToString("D8");
 					comboBox_ФормаОплати.SelectedIndex = 0;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}

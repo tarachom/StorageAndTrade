@@ -79,6 +79,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = номенклатура_Папки_Objest.Код = (++Константи.НумераціяДовідників.Номенклатура_Папки_Const).ToString("D6");
 				}
 				else
 				{
@@ -87,6 +88,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + номенклатура_Папки_Objest.Назва;
 
 						textBoxName.Text = номенклатура_Папки_Objest.Назва;
+						textBox_Код.Text = номенклатура_Папки_Objest.Код;
 						directoryControl_НоменклатураПапка.DirectoryPointerItem = new Довідники.Номенклатура_Папки_Pointer(номенклатура_Папки_Objest.Родич.UnigueID);
 						((Form_НоменклатураПапкиВибір)directoryControl_НоменклатураПапка.SelectForm).UidOpenFolder = Uid;
 					}
