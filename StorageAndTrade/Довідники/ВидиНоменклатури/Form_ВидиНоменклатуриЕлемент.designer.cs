@@ -37,11 +37,13 @@ namespace StorageAndTrade
             this.directoryControl_ОдиницяВиміру = new StorageAndTrade.DirectoryControl();
             this.comboBox_ТипНоменклатури = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox_Код = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 116);
+            this.buttonClose.Location = new System.Drawing.Point(385, 135);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 23);
             this.buttonClose.TabIndex = 16;
@@ -51,7 +53,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(127, 116);
+            this.buttonSave.Location = new System.Drawing.Point(127, 135);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 23);
             this.buttonSave.TabIndex = 15;
@@ -111,11 +113,29 @@ namespace StorageAndTrade
             this.label5.TabIndex = 31;
             this.label5.Text = "Тип:";
             // 
+            // textBox_Код
+            // 
+            this.textBox_Код.Location = new System.Drawing.Point(127, 96);
+            this.textBox_Код.Name = "textBox_Код";
+            this.textBox_Код.Size = new System.Drawing.Size(422, 20);
+            this.textBox_Код.TabIndex = 34;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Код:";
+            // 
             // Form_ВидиНоменклатуриЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 150);
+            this.ClientSize = new System.Drawing.Size(565, 178);
+            this.Controls.Add(this.textBox_Код);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox_ТипНоменклатури);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -144,5 +164,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_ОдиницяВиміру;
         private System.Windows.Forms.ComboBox comboBox_ТипНоменклатури;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox_Код;
+        private System.Windows.Forms.Label label1;
     }
 }

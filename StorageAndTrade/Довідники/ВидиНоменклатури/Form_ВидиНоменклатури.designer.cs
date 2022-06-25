@@ -30,18 +30,18 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,20 +52,6 @@ namespace StorageAndTrade
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(921, 29);
             this.panel1.TabIndex = 1;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonAdd,
-            this.toolStripButtonEdit,
-            this.toolStripButtonRefresh,
-            this.toolStripButtonCopy,
-            this.toolStripButtonDelete});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(921, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
             // 
             // panel2
             // 
@@ -92,8 +78,23 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonAdd,
+            this.toolStripButtonEdit,
+            this.toolStripButtonRefresh,
+            this.toolStripButtonCopy,
+            this.toolStripButtonDelete});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(921, 25);
+            this.toolStrip1.TabIndex = 2;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
             // toolStripButtonAdd
             // 
+            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.page;
             this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonAdd.Name = "toolStripButtonAdd";
             this.toolStripButtonAdd.Size = new System.Drawing.Size(66, 22);
@@ -102,6 +103,7 @@ namespace StorageAndTrade
             // 
             // toolStripButtonEdit
             // 
+            this.toolStripButtonEdit.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
             this.toolStripButtonEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonEdit.Name = "toolStripButtonEdit";
             this.toolStripButtonEdit.Size = new System.Drawing.Size(87, 22);
@@ -110,6 +112,7 @@ namespace StorageAndTrade
             // 
             // toolStripButtonRefresh
             // 
+            this.toolStripButtonRefresh.Image = global::StorageAndTrade.Properties.Resources.page_refresh;
             this.toolStripButtonRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonRefresh.Name = "toolStripButtonRefresh";
             this.toolStripButtonRefresh.Size = new System.Drawing.Size(82, 22);
@@ -118,6 +121,7 @@ namespace StorageAndTrade
             // 
             // toolStripButtonCopy
             // 
+            this.toolStripButtonCopy.Image = global::StorageAndTrade.Properties.Resources.page_copy;
             this.toolStripButtonCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonCopy.Name = "toolStripButtonCopy";
             this.toolStripButtonCopy.Size = new System.Drawing.Size(85, 22);
@@ -126,6 +130,7 @@ namespace StorageAndTrade
             // 
             // toolStripButtonDelete
             // 
+            this.toolStripButtonDelete.Image = global::StorageAndTrade.Properties.Resources.page_white_delete;
             this.toolStripButtonDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButtonDelete.Name = "toolStripButtonDelete";
             this.toolStripButtonDelete.Size = new System.Drawing.Size(79, 22);
@@ -145,10 +150,10 @@ namespace StorageAndTrade
             this.Load += new System.EventHandler(this.Form_ВидиНоменклатури_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -156,9 +161,9 @@ namespace StorageAndTrade
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridViewRecords;
+        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
         private System.Windows.Forms.ToolStripButton toolStripButtonEdit;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;

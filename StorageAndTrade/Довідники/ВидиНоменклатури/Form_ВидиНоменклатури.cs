@@ -74,6 +74,7 @@ namespace StorageAndTrade
 
 			Довідники.ВидиНоменклатури_Select видиНоменклатури_Select = new Довідники.ВидиНоменклатури_Select();
 			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Const.Назва);
+			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Const.Код);
 			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Const.ТипНоменклатури);
 
 			//JOIN 1
@@ -95,6 +96,7 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ВидиНоменклатури_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.ВидиНоменклатури_Const.Код].ToString(),
 					ОдиницяВиміру = cur.Fields["join1"].ToString(),
 					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.ВидиНоменклатури_Const.ТипНоменклатури]).ToString()
 				});
@@ -119,6 +121,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 			public string ОдиницяВиміру { get; set; }
 			public string ТипНоменклатури { get; set; }
 		}
@@ -183,6 +186,7 @@ namespace StorageAndTrade
                     {
 						Довідники.ВидиНоменклатури_Objest видиНоменклатури_Objest_Новий = видиНоменклатури_Objest.Copy();
 						видиНоменклатури_Objest_Новий.Назва = "Копія - " + видиНоменклатури_Objest_Новий.Назва;
+						видиНоменклатури_Objest_Новий.Код = (++Константи.НумераціяДовідників.ВидиНоменклатури_Const).ToString("D6");
 						видиНоменклатури_Objest_Новий.Save();
 					}
                     else
@@ -204,7 +208,7 @@ namespace StorageAndTrade
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
-					string uid = row.Cells[0].Value.ToString();
+					string uid = row.Cells["ID"].Value.ToString();
 
                     Довідники.ВидиНоменклатури_Objest видиНоменклатури_Objest = new Довідники.ВидиНоменклатури_Objest();
                     if (видиНоменклатури_Objest.Read(new UnigueID(uid)))

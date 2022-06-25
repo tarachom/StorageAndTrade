@@ -170,6 +170,7 @@ namespace StorageAndTrade
                     {
 						Довідники.Валюти_Objest валюти_Objest_Новий = валюти_Objest.Copy();
 						валюти_Objest_Новий.Назва = "Копія - " + валюти_Objest_Новий.Назва;
+						валюти_Objest_Новий.Код = (++Константи.НумераціяДовідників.Валюти_Const).ToString("D6");
 						валюти_Objest_Новий.Save();
 					}
                     else

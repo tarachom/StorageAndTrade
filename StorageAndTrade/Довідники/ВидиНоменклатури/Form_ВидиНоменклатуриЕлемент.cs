@@ -78,6 +78,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий запис";
+					textBox_Код.Text = видиНоменклатури_Objest.Код = (++Константи.НумераціяДовідників.ВидиНоменклатури_Const).ToString("D6");
 					comboBox_ТипНоменклатури.SelectedIndex = 0;
 				}
 				else
@@ -87,6 +88,7 @@ namespace StorageAndTrade
 						this.Text += " - Редагування запису - " + видиНоменклатури_Objest.Назва;
 
 						textBoxName.Text = видиНоменклатури_Objest.Назва;
+						textBox_Код.Text = видиНоменклатури_Objest.Код;
 						directoryControl_ОдиницяВиміру.DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(видиНоменклатури_Objest.ОдиницяВиміру.UnigueID);
 						comboBox_ТипНоменклатури.SelectedItem = видиНоменклатури_Objest.ТипНоменклатури;
 					}
