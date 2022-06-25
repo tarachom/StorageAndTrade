@@ -52,6 +52,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -70,8 +71,8 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.ВидиЦін_Select видиЦін_Select = new Довідники.ВидиЦін_Select();
-
 			видиЦін_Select.QuerySelect.Field.Add(Довідники.ВидиЦін_Const.Назва);
+			видиЦін_Select.QuerySelect.Field.Add(Довідники.ВидиЦін_Const.Код);
 			видиЦін_Select.QuerySelect.Field.Add(Довідники.ВидиЦін_Const.Валюта);
 			
 			//JOIN
@@ -93,6 +94,7 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ВидиЦін_Const.Назва].ToString(),
+					Код = cur.Fields[Довідники.ВидиЦін_Const.Код].ToString(),
 					Валюта = cur.Fields["field2"].ToString()
 				});
 
@@ -115,6 +117,7 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public string Код { get; set; }
 			public string Валюта { get; set; }
 		}
 
@@ -178,6 +181,7 @@ namespace StorageAndTrade
                     {
 						Довідники.ВидиЦін_Objest ВидиЦін_Objest_Новий = видиЦін_Objest.Copy();
 						ВидиЦін_Objest_Новий.Назва = "Копія - " + ВидиЦін_Objest_Новий.Назва;
+						ВидиЦін_Objest_Новий.Код = (++Константи.НумераціяДовідників.ВидиЦін_Const).ToString("D6");
 						ВидиЦін_Objest_Новий.Save();
 					}
                     else
