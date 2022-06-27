@@ -91,6 +91,7 @@ FROM
     LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
         Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад}
 ";
+            #region WHERE
 
             //Відбір по всіх вкладених папках вибраної папки Номенклатури
             if (!directoryControl_НоменклатураПапка.DirectoryPointerItem.IsEmpty())
@@ -174,6 +175,8 @@ FROM
 Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
 ";
             }
+
+            #endregion
 
             query += $@"
 GROUP BY Номенклатура, Номенклатура_Назва, 

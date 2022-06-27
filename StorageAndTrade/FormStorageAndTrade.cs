@@ -192,12 +192,20 @@ namespace StorageAndTrade
             Console.WriteLine(StorageAndTrade_1_0.Service.CalculateBalancesInRegister.Запит_ЗамовленняКлієнтів());
         }
 
+        #region Звіти
+
         private void замовленняКлієнтівToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ЗамовленняКлієнтів_Звіт form_ЗамовленняКлієнтів_Звіт = new Form_ЗамовленняКлієнтів_Звіт();
             form_ЗамовленняКлієнтів_Звіт.Show();
         }
 
-        
-    } 
+        private void розрахункиЗКлієнтамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_РозрахункиЗКлієнтами_Звіт form_РозрахункиЗКлієнтами_Звіт = new Form_РозрахункиЗКлієнтами_Звіт();
+            form_РозрахункиЗКлієнтами_Звіт.Show();
+        }
+
+        #endregion
+    }
 }
