@@ -218,6 +218,12 @@ namespace StorageAndTrade
             form_ТовариНаСкладах_Звіт.Show();
         }
 
+        private void замовленняПостачальникамToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ЗамовленняПостачальникам_Звіт form_ЗамовленняПостачальникам_Звіт = new Form_ЗамовленняПостачальникам_Звіт();
+            form_ЗамовленняПостачальникам_Звіт.Show();
+        }
+
         #endregion
 
 
