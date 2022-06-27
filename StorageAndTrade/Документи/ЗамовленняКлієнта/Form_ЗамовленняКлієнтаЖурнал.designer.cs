@@ -53,7 +53,7 @@ namespace StorageAndTrade
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1048, 29);
+            this.panel1.Size = new System.Drawing.Size(1084, 29);
             this.panel1.TabIndex = 1;
             // 
             // toolStrip1
@@ -69,7 +69,7 @@ namespace StorageAndTrade
             this.toolStripButtonДрукПроводок});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1048, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -151,7 +151,7 @@ namespace StorageAndTrade
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1048, 619);
+            this.panel2.Size = new System.Drawing.Size(1084, 632);
             this.panel2.TabIndex = 2;
             // 
             // dataGridViewRecords
@@ -166,7 +166,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.Name = "dataGridViewRecords";
             this.dataGridViewRecords.ReadOnly = true;
             this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(1048, 619);
+            this.dataGridViewRecords.Size = new System.Drawing.Size(1084, 632);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
@@ -174,7 +174,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1048, 648);
+            this.ClientSize = new System.Drawing.Size(1084, 661);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Form_ЗамовленняКлієнтаЖурнал";
