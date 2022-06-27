@@ -31,6 +31,7 @@ using System.Windows.Forms;
 using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
+using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 using Звіти = StorageAndTrade_1_0.Звіти;
@@ -61,7 +62,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ДатаДок"].HeaderText = "Дата";
 			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-			dataGridViewRecords.Columns["Назва"].Width = 500;
+			dataGridViewRecords.Columns["Назва"].Width = 350;
+			dataGridViewRecords.Columns["Контрагент"].Width = 300;
 
 			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -94,6 +96,12 @@ namespace StorageAndTrade
 			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.ДатаДок);
 			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.СумаДокументу);
 
+			//Контрагент
+			прихіднийКасовийОрдер_Select.QuerySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
+			прихіднийКасовийОрдер_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Контрагенти_Const.TABLE, Документи.ПрихіднийКасовийОрдер_Const.Контрагент, Документи.ПрихіднийКасовийОрдер_Const.TABLE));
+
 			//ORDER
 			прихіднийКасовийОрдер_Select.QuerySelect.Order.Add(Документи.ПрихіднийКасовийОрдер_Const.ДатаДок, SelectOrder.ASC);
 			прихіднийКасовийОрдер_Select.QuerySelect.Order.Add(Документи.ПрихіднийКасовийОрдер_Const.НомерДок, SelectOrder.ASC);
@@ -109,6 +117,7 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.Назва].ToString(),
 					НомерДок = cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.ДатаДок].ToString(),
+					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.СумаДокументу], 2),
 					Проведений = (bool)cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.Проведений]
 				});
@@ -134,6 +143,7 @@ namespace StorageAndTrade
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
+			public string Контрагент { get; set; }
 			public decimal Сума { get; set; }
 			public bool Проведений { get; set; }
 		}

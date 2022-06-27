@@ -62,8 +62,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ДатаДок"].HeaderText = "Дата";
 			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-			dataGridViewRecords.Columns["Назва"].Width = 400;
-
+			dataGridViewRecords.Columns["Назва"].Width = 350;
 			dataGridViewRecords.Columns["Контрагент"].Width = 300;
 
 			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
