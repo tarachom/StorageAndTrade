@@ -67,6 +67,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.designer.cs">
+      <DependentUpon>Form_ПрихіднийКасовийОрдерДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерЖурнал.designer.cs">
+      <DependentUpon>Form_ПрихіднийКасовийОрдерЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РухДокументівПоРегістрах\РухПоРугістрахНакопичення.cs" />
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
@@ -544,6 +556,12 @@
     <EmbeddedResource Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальникуЖурнал.resx">
       <DependentUpon>Form_ЗамовленняПостачальникуЖурнал.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.resx">
+      <DependentUpon>Form_ПрихіднийКасовийОрдерДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерЖурнал.resx">
+      <DependentUpon>Form_ПрихіднийКасовийОрдерЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.cs</DependentUpon>
     </EmbeddedResource>
@@ -757,7 +775,6 @@
   <ItemGroup>
     <Folder Include="Документи\ВстановленняЦінНоменклатури\" />
     <Folder Include="Документи\ПереміщенняТоварів\" />
-    <Folder Include="Документи\ПрихіднийКасовийОрдер\" />
     <Folder Include="Документи\РозхіднийКасовийОрдер\" />
   </ItemGroup>
   <ItemGroup>

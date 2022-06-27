@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 25.06.2022 16:44:22
+ * Дата конфігурації: 27.06.2022 15:52:47
  *
  */
 
@@ -209,6 +209,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a69";
             
             public const string Дата = "col_a7";
@@ -289,6 +290,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a67";
             
             public const string Назва = "col_a2";
@@ -486,6 +488,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a68";
             
             public const string period = "col_a6";
@@ -596,6 +599,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a70";
             
             public const string period = "col_b1";
@@ -706,6 +710,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a74";
             
             public const string period = "col_a7";
@@ -810,6 +815,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a73";
             
             public const string period = "col_a1";
@@ -914,6 +920,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a75";
             
             public const string period = "col_a6";
@@ -1006,6 +1013,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a76";
             
             public const string period = "col_b1";
@@ -1098,6 +1106,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a63";
             
             public const string period = "col_a6";
@@ -1190,6 +1199,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a64";
             
             public const string period = "col_b1";
@@ -1282,6 +1292,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a65";
             
             public const string period = "col_a6";
@@ -1386,6 +1397,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a66";
             
             public const string period = "col_b1";
@@ -1496,6 +1508,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a71";
             
             public const string period = "col_a6";
@@ -1606,6 +1619,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 Records = new List<Record>();
             }
+            
             public const string TABLE = "tab_a72";
             
             public const string period = "col_b1";
@@ -9457,7 +9471,7 @@ namespace StorageAndTrade_1_0.Документи
             Назва = "";
             Проведений = false;
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Організація = new Довідники.Організації_Pointer();
             Каса = new Довідники.Каси_Pointer();
             СумаДокументу = 0;
@@ -9482,7 +9496,7 @@ namespace StorageAndTrade_1_0.Документи
                 Назва = base.FieldValue["col_a4"].ToString();
                 Проведений = (base.FieldValue["col_a5"] != DBNull.Value) ? bool.Parse(base.FieldValue["col_a5"].ToString()) : false;
                 ДатаДок = (base.FieldValue["col_h6"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_h6"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_h7"] != DBNull.Value) ? (int)base.FieldValue["col_h7"] : 0;
+                НомерДок = base.FieldValue["col_h7"].ToString();
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_h8"]);
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_h9"]);
                 СумаДокументу = (base.FieldValue["col_i1"] != DBNull.Value) ? (decimal)base.FieldValue["col_i1"] : 0;
@@ -9521,7 +9535,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_a3"] = Коментар;
             
             BaseSave();
-			
+			ПрихіднийКасовийОрдер_Triggers.AfterRecording(this);
         }
 
         public ПрихіднийКасовийОрдер_Objest Copy()
@@ -9549,7 +9563,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
-		    
+		    ПрихіднийКасовийОрдер_Triggers.BeforeDelete(this);
             base.BaseDelete();
         }
         
@@ -9562,7 +9576,7 @@ namespace StorageAndTrade_1_0.Документи
         public string Назва { get; set; }
         public bool Проведений { get; set; }
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
         public decimal СумаДокументу { get; set; }
@@ -9791,7 +9805,7 @@ namespace StorageAndTrade_1_0.Документи
             Назва = "";
             Проведений = false;
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Організація = new Довідники.Організації_Pointer();
             Каса = new Довідники.Каси_Pointer();
             ОрганізаціяОтримувач = new Довідники.Організації_Pointer();
@@ -9816,7 +9830,7 @@ namespace StorageAndTrade_1_0.Документи
                 Назва = base.FieldValue["col_a1"].ToString();
                 Проведений = (base.FieldValue["col_a2"] != DBNull.Value) ? bool.Parse(base.FieldValue["col_a2"].ToString()) : false;
                 ДатаДок = (base.FieldValue["col_j9"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_j9"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_k1"] != DBNull.Value) ? (int)base.FieldValue["col_k1"] : 0;
+                НомерДок = base.FieldValue["col_k1"].ToString();
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_k2"]);
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_k3"]);
                 ОрганізаціяОтримувач = new Довідники.Організації_Pointer(base.FieldValue["col_k4"]);
@@ -9896,7 +9910,7 @@ namespace StorageAndTrade_1_0.Документи
         public string Назва { get; set; }
         public bool Проведений { get; set; }
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
         public Довідники.Організації_Pointer ОрганізаціяОтримувач { get; set; }

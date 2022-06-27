@@ -866,4 +866,52 @@ namespace StorageAndTrade_1_0.Документи
 
 		}
 	}
+
+	class ПрихіднийКасовийОрдер_Triggers
+	{
+		public static void BeforeRecording(ПрихіднийКасовийОрдер_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(ПрихіднийКасовийОрдер_Objest ДокументОбєкт)
+		{
+			BeforeDelete(ДокументОбєкт);
+
+			if (ДокументОбєкт.Проведений)
+			{
+				#region Рух по регістрах
+
+				//
+				//РозрахункиЗПостачальниками
+				//
+
+				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+
+				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record recordContragent = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
+				розрахункиЗПостачальниками_RecordsSet.Records.Add(recordContragent);
+
+				recordContragent.Income = true; // +
+				recordContragent.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				recordContragent.Контрагент = ДокументОбєкт.Контрагент;
+				recordContragent.Валюта = ДокументОбєкт.Валюта;
+				recordContragent.Сума = ДокументОбєкт.СумаДокументу;
+
+				//record.ГосподарськаОперація = ДокументОбєкт.ГосподарськаОперація;
+				//record.ФормаОплати = ДокументОбєкт.ФормаОплати;
+
+				розрахункиЗПостачальниками_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+				#endregion
+			}
+		}
+
+		public static void BeforeDelete(ПрихіднийКасовийОрдер_Objest ДокументОбєкт)
+		{
+			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+		}
+
+	}
 }

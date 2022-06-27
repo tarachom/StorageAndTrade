@@ -173,6 +173,11 @@ namespace StorageAndTrade
             form_ПоверненняТоварівВідКлієнтаЖурнал.Show();
         }
 
+        private void прихіднийКасовийОрдерToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПрихіднийКасовийОрдерЖурнал form_ПрихіднийКасовийОрдерЖурнал = new Form_ПрихіднийКасовийОрдерЖурнал();
+            form_ПрихіднийКасовийОрдерЖурнал.Show();
+        }
 
         #endregion
 
@@ -186,5 +191,7 @@ namespace StorageAndTrade
             Form_ЗамовленняКлієнтів_Звіт form_ЗамовленняКлієнтів_Звіт = new Form_ЗамовленняКлієнтів_Звіт();
             form_ЗамовленняКлієнтів_Звіт.Show();
         }
+
+        
     } 
 }
