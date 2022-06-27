@@ -222,7 +222,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimeStart);
             this.Name = "Form_ЗамовленняПостачальникам_Звіт";
-            this.Text = "Звіт \"Замолення клієнтів\"";
+            this.Text = "Звіт \"Замолення постачальникам\"";
             this.Load += new System.EventHandler(this.Form_ЗамовленняКлієнтів_Звіт_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
