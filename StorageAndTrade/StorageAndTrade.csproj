@@ -91,6 +91,12 @@
     <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.designer.cs">
       <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладах_Звіт.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладах_Звіт.Designer.cs">
+      <DependentUpon>Form_ТовариНаСкладах_Звіт.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РозрахункиЗПостачальниками\Form_РозрахункиЗПостачальниками_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -723,6 +729,9 @@
     <EmbeddedResource Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.resx">
       <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладах_Звіт.resx">
+      <DependentUpon>Form_ТовариНаСкладах_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Звіти\РозрахункиЗПостачальниками\Form_РозрахункиЗПостачальниками_Звіт.resx">
       <DependentUpon>Form_РозрахункиЗПостачальниками_Звіт.cs</DependentUpon>
     </EmbeddedResource>
@@ -820,6 +829,7 @@
     <None Include="Resources\calculator.ico" />
     <None Include="Resources\document_not_spend.ico" />
     <None Include="Resources\refresh.ico" />
+    <Content Include="Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt" />
     <Content Include="Звіти\РозрахункиЗПостачальниками\Template_РозрахункиЗПостачальниками_Звіт.xslt">
       <SubType>Designer</SubType>
     </Content>

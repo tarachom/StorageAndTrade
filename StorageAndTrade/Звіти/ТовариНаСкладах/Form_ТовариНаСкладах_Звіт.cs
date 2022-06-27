@@ -42,9 +42,9 @@ using StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
-    public partial class Form_ЗамовленняКлієнтів_Звіт : Form
+    public partial class Form_ТовариНаСкладах_Звіт : Form
     {
-        public Form_ЗамовленняКлієнтів_Звіт()
+        public Form_ТовариНаСкладах_Звіт()
         {
             InitializeComponent();
         }
@@ -56,8 +56,6 @@ namespace StorageAndTrade
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer());
             directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
             directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
-
-            documentControl_ЗамовленняКлієнта.Init(new Form_ЗамовленняКлієнтаЖурнал(), new ЗамовленняКлієнта_Pointer());
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -66,31 +64,31 @@ namespace StorageAndTrade
 
             string query = $@"
 SELECT 
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} AS Номенклатура, 
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} AS Номенклатура, 
     Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва, 
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
-    Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад} AS Склад,
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} AS Склад,
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва, 
 
-    SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} ELSE 
-       -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} END) AS Замовлено,
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) AS ВНаявності,
 
-    SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} ELSE 
-        -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) AS Сума
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
+        -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) AS Сума
 FROM 
-    {ЗамовленняКлієнтів_Const.TABLE} AS Рег_ЗамовленняКлієнтів
+    {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
 
     LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура}
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура}
 
     LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури}
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури}
 
     LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад}
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Склад}
 ";
             #region WHERE
 
@@ -177,17 +175,6 @@ FROM
 ";
             }
 
-            //Відбір по документу ЗамовленняКлієнта
-            if (!documentControl_ЗамовленняКлієнта.DocumentPointerItem.IsEmpty())
-            {
-                query += isExistParent ? "AND" : "WHERE";
-                isExistParent = true;
-
-                query += $@"
-Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
-";
-            }
-
             #endregion
 
             query += $@"
@@ -196,13 +183,13 @@ GROUP BY Номенклатура, Номенклатура_Назва,
          Склад, Склад_Назва
 
 HAVING
-     SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} ELSE 
-       -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} END) != 0
+     SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) != 0
 OR
-    SUM(CASE WHEN Рег_ЗамовленняКлієнтів.income = true THEN 
-        Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} ELSE 
-        -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) != 0   
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
+        -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) != 0   
 
 ORDER BY Номенклатура_Назва
 ";
@@ -218,15 +205,11 @@ ORDER BY Номенклатура_Назва
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            Функції.DataToXML(xmlDoc, "ЗамовленняКлієнтів", columnsName, listRow);
+            Функції.DataToXML(xmlDoc, "ТовариНаСкладах", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, 
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc,
+                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt");
         }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

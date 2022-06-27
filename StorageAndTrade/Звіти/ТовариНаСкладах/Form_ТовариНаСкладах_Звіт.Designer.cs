@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class Form_ЗамовленняКлієнтів_Звіт
+    partial class Form_ТовариНаСкладах_Звіт
     {
         /// <summary>
         /// Required designer variable.
@@ -43,8 +43,6 @@ namespace StorageAndTrade
             this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
             this.directoryControl_НоменклатураПапка = new StorageAndTrade.DirectoryControl();
             this.label6 = new System.Windows.Forms.Label();
-            this.documentControl_ЗамовленняКлієнта = new StorageAndTrade.DocumentControl();
-            this.label7 = new System.Windows.Forms.Label();
             this.directoryControl_ХарактеристикаНоменклатури = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
@@ -82,7 +80,7 @@ namespace StorageAndTrade
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(123, 302);
+            this.buttonCreate.Location = new System.Drawing.Point(123, 264);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(90, 23);
             this.buttonCreate.TabIndex = 4;
@@ -111,7 +109,7 @@ namespace StorageAndTrade
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 172);
+            this.label4.Location = new System.Drawing.Point(24, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 60;
@@ -120,7 +118,7 @@ namespace StorageAndTrade
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 205);
+            this.label5.Location = new System.Drawing.Point(24, 223);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 13);
             this.label5.TabIndex = 62;
@@ -129,7 +127,7 @@ namespace StorageAndTrade
             // directoryControl_Склади
             // 
             this.directoryControl_Склади.DirectoryPointerItem = null;
-            this.directoryControl_Склади.Location = new System.Drawing.Point(123, 198);
+            this.directoryControl_Склади.Location = new System.Drawing.Point(123, 216);
             this.directoryControl_Склади.Name = "directoryControl_Склади";
             this.directoryControl_Склади.SelectForm = null;
             this.directoryControl_Склади.Size = new System.Drawing.Size(402, 27);
@@ -138,7 +136,7 @@ namespace StorageAndTrade
             // directoryControl_СкладиПапки
             // 
             this.directoryControl_СкладиПапки.DirectoryPointerItem = null;
-            this.directoryControl_СкладиПапки.Location = new System.Drawing.Point(123, 165);
+            this.directoryControl_СкладиПапки.Location = new System.Drawing.Point(123, 183);
             this.directoryControl_СкладиПапки.Name = "directoryControl_СкладиПапки";
             this.directoryControl_СкладиПапки.SelectForm = null;
             this.directoryControl_СкладиПапки.Size = new System.Drawing.Size(402, 27);
@@ -165,30 +163,11 @@ namespace StorageAndTrade
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 248);
+            this.label6.Location = new System.Drawing.Point(24, 129);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.Size = new System.Drawing.Size(93, 13);
             this.label6.TabIndex = 64;
-            this.label6.Text = "Документ:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // documentControl_ЗамовленняКлієнта
-            // 
-            this.documentControl_ЗамовленняКлієнта.DocumentPointerItem = null;
-            this.documentControl_ЗамовленняКлієнта.Location = new System.Drawing.Point(123, 242);
-            this.documentControl_ЗамовленняКлієнта.Name = "documentControl_ЗамовленняКлієнта";
-            this.documentControl_ЗамовленняКлієнта.SelectForm = null;
-            this.documentControl_ЗамовленняКлієнта.Size = new System.Drawing.Size(402, 27);
-            this.documentControl_ЗамовленняКлієнта.TabIndex = 65;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(24, 129);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(93, 13);
-            this.label7.TabIndex = 67;
-            this.label7.Text = "Характеристика:";
+            this.label6.Text = "Характеристика:";
             // 
             // directoryControl_ХарактеристикаНоменклатури
             // 
@@ -197,17 +176,15 @@ namespace StorageAndTrade
             this.directoryControl_ХарактеристикаНоменклатури.Name = "directoryControl_ХарактеристикаНоменклатури";
             this.directoryControl_ХарактеристикаНоменклатури.SelectForm = null;
             this.directoryControl_ХарактеристикаНоменклатури.Size = new System.Drawing.Size(402, 27);
-            this.directoryControl_ХарактеристикаНоменклатури.TabIndex = 66;
+            this.directoryControl_ХарактеристикаНоменклатури.TabIndex = 63;
             // 
-            // Form_ЗамовленняКлієнтів_Звіт
+            // Form_ТовариНаСкладах_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 337);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.directoryControl_ХарактеристикаНоменклатури);
-            this.Controls.Add(this.documentControl_ЗамовленняКлієнта);
+            this.ClientSize = new System.Drawing.Size(537, 319);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.directoryControl_ХарактеристикаНоменклатури);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.directoryControl_Склади);
             this.Controls.Add(this.label4);
@@ -221,8 +198,8 @@ namespace StorageAndTrade
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimeStart);
-            this.Name = "Form_ЗамовленняКлієнтів_Звіт";
-            this.Text = "Звіт \"Замолення клієнтів\"";
+            this.Name = "Form_ТовариНаСкладах_Звіт";
+            this.Text = "Звіт \"Товари на складах\"";
             this.Load += new System.EventHandler(this.Form_ЗамовленняКлієнтів_Звіт_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -245,8 +222,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label5;
         private DirectoryControl directoryControl_Склади;
         private System.Windows.Forms.Label label6;
-        private DocumentControl documentControl_ЗамовленняКлієнта;
-        private System.Windows.Forms.Label label7;
         private DirectoryControl directoryControl_ХарактеристикаНоменклатури;
     }
 }
