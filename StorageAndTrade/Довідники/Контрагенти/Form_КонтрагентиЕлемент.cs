@@ -59,13 +59,18 @@ namespace StorageAndTrade
         public string Uid { get; set; }
 
 		/// <summary>
+		/// Ід родителя для нового елемента
+		/// </summary>
+		public string ParentUid { get; set; }
+
+		/// <summary>
 		/// Обєкт запису
 		/// </summary>
-        private Довідники.Контрагенти_Objest контрагенти_Objest { get; set; }
+		private Довідники.Контрагенти_Objest контрагенти_Objest { get; set; }
 
 		private void Form_КонтрагентиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_КонтрагентПапка.Init(new Form_КонтрагентиПапкиВибір(), new Довідники.Контрагенти_Папки_Pointer());
+			directoryControl_КонтрагентПапка.Init(new Form_КонтрагентиПапкиВибір(), new Довідники.Контрагенти_Папки_Pointer(new UnigueID(ParentUid)));
 
 			if (IsNew.HasValue)
 			{

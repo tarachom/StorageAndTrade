@@ -42,6 +42,13 @@ namespace StorageAndTrade_1_0.Service
     class CalculateBalancesInRegister
     {
 
+/*
+--CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+--SELECT uuid_generate_v4();
+
+--CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+--SELECT gen_random_uuid(), uuid_generate_v4(); 
+*/
 
         public static string Запит_ЗамовленняКлієнтів()
         {

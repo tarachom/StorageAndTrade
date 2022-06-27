@@ -156,6 +156,8 @@ namespace StorageAndTrade
 			Form_КонтрагентиЕлемент form_КонтрагентиЕлемент = new Form_КонтрагентиЕлемент();
 			form_КонтрагентиЕлемент.IsNew = true;
 			form_КонтрагентиЕлемент.OwnerForm = this;
+			if (Контрагенти_Папки_Дерево.Parent_Pointer != null)
+				form_КонтрагентиЕлемент.ParentUid = Контрагенти_Папки_Дерево.Parent_Pointer.UnigueID.UGuid.ToString();
 			form_КонтрагентиЕлемент.ShowDialog();
         }
 
