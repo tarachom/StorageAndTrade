@@ -914,4 +914,49 @@ namespace StorageAndTrade_1_0.Документи
 		}
 
 	}
+
+	class РозхіднийКасовийОрдер_Triggers
+	{
+		public static void BeforeRecording(РозхіднийКасовийОрдер_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(РозхіднийКасовийОрдер_Objest ДокументОбєкт)
+		{
+			BeforeDelete(ДокументОбєкт);
+
+			if (ДокументОбєкт.Проведений)
+			{
+				#region Рух по регістрах
+
+				//
+				//РозрахункиЗПостачальниками
+				//
+
+				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+
+				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record recordContragent = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
+				розрахункиЗКлієнтами_RecordsSet.Records.Add(recordContragent);
+
+				recordContragent.Income = false; // -
+				recordContragent.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				recordContragent.Контрагент = ДокументОбєкт.Контрагент;
+				recordContragent.Валюта = ДокументОбєкт.Валюта;
+				recordContragent.Сума = ДокументОбєкт.СумаДокументу;
+
+				розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+				#endregion
+			}
+		}
+
+		public static void BeforeDelete(РозхіднийКасовийОрдер_Objest ДокументОбєкт)
+		{
+			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+		}
+
+	}
 }

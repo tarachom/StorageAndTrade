@@ -31,10 +31,6 @@ namespace StorageAndTrade
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.довідникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.документиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.замовленняКлієнтівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.валютиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пакуванняОдиниціВиміруToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оганізаціїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +48,7 @@ namespace StorageAndTrade
             this.договориКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.банківськіРахункиКонтрагентівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.характеристикиНоменклатуриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.документиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.замовленняКлієнтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.реалізаціяТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.замовленняПостачальникуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,6 +56,10 @@ namespace StorageAndTrade
             this.поверненняТоварівПостачальникуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.поверненняТоварівКлієнтуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.прихіднийКасовийОрдерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.замовленняКлієнтівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.розхіднийКасовийОрдерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,42 +99,6 @@ namespace StorageAndTrade
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
-            // 
-            // документиToolStripMenuItem
-            // 
-            this.документиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.замовленняКлієнтаToolStripMenuItem,
-            this.реалізаціяТоварівТаПослугToolStripMenuItem,
-            this.замовленняПостачальникуToolStripMenuItem,
-            this.поступленняТоварівТаПослугToolStripMenuItem,
-            this.поверненняТоварівПостачальникуToolStripMenuItem,
-            this.поверненняТоварівКлієнтуToolStripMenuItem,
-            this.прихіднийКасовийОрдерToolStripMenuItem});
-            this.документиToolStripMenuItem.Name = "документиToolStripMenuItem";
-            this.документиToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
-            this.документиToolStripMenuItem.Text = "Документи";
-            // 
-            // звітиToolStripMenuItem
-            // 
-            this.звітиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.замовленняКлієнтівToolStripMenuItem});
-            this.звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
-            this.звітиToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.звітиToolStripMenuItem.Text = "Звіти";
-            // 
-            // замовленняКлієнтівToolStripMenuItem
-            // 
-            this.замовленняКлієнтівToolStripMenuItem.Name = "замовленняКлієнтівToolStripMenuItem";
-            this.замовленняКлієнтівToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
-            this.замовленняКлієнтівToolStripMenuItem.Text = "Замовлення клієнтів";
-            this.замовленняКлієнтівToolStripMenuItem.Click += new System.EventHandler(this.замовленняКлієнтівToolStripMenuItem_Click);
-            // 
-            // проПрограмуToolStripMenuItem
-            // 
-            this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
-            this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
-            this.проПрограмуToolStripMenuItem.Text = "Про програму";
-            this.проПрограмуToolStripMenuItem.Click += new System.EventHandler(this.проПрограмуToolStripMenuItem_Click);
             // 
             // валютиToolStripMenuItem
             // 
@@ -271,6 +236,21 @@ namespace StorageAndTrade
             this.характеристикиНоменклатуриToolStripMenuItem.Text = "Характеристики номенклатури";
             this.характеристикиНоменклатуриToolStripMenuItem.Click += new System.EventHandler(this.характеристикиНоменклатуриToolStripMenuItem_Click);
             // 
+            // документиToolStripMenuItem
+            // 
+            this.документиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.замовленняКлієнтаToolStripMenuItem,
+            this.реалізаціяТоварівТаПослугToolStripMenuItem,
+            this.замовленняПостачальникуToolStripMenuItem,
+            this.поступленняТоварівТаПослугToolStripMenuItem,
+            this.поверненняТоварівПостачальникуToolStripMenuItem,
+            this.поверненняТоварівКлієнтуToolStripMenuItem,
+            this.прихіднийКасовийОрдерToolStripMenuItem,
+            this.розхіднийКасовийОрдерToolStripMenuItem});
+            this.документиToolStripMenuItem.Name = "документиToolStripMenuItem";
+            this.документиToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.документиToolStripMenuItem.Text = "Документи";
+            // 
             // замовленняКлієнтаToolStripMenuItem
             // 
             this.замовленняКлієнтаToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.blog;
@@ -326,6 +306,35 @@ namespace StorageAndTrade
             this.прихіднийКасовийОрдерToolStripMenuItem.Text = "Прихідний касовий ордер";
             this.прихіднийКасовийОрдерToolStripMenuItem.Click += new System.EventHandler(this.прихіднийКасовийОрдерToolStripMenuItem_Click);
             // 
+            // звітиToolStripMenuItem
+            // 
+            this.звітиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.замовленняКлієнтівToolStripMenuItem});
+            this.звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
+            this.звітиToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.звітиToolStripMenuItem.Text = "Звіти";
+            // 
+            // замовленняКлієнтівToolStripMenuItem
+            // 
+            this.замовленняКлієнтівToolStripMenuItem.Name = "замовленняКлієнтівToolStripMenuItem";
+            this.замовленняКлієнтівToolStripMenuItem.Size = new System.Drawing.Size(188, 22);
+            this.замовленняКлієнтівToolStripMenuItem.Text = "Замовлення клієнтів";
+            this.замовленняКлієнтівToolStripMenuItem.Click += new System.EventHandler(this.замовленняКлієнтівToolStripMenuItem_Click);
+            // 
+            // проПрограмуToolStripMenuItem
+            // 
+            this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
+            this.проПрограмуToolStripMenuItem.Size = new System.Drawing.Size(99, 20);
+            this.проПрограмуToolStripMenuItem.Text = "Про програму";
+            this.проПрограмуToolStripMenuItem.Click += new System.EventHandler(this.проПрограмуToolStripMenuItem_Click);
+            // 
+            // розхіднийКасовийОрдерToolStripMenuItem
+            // 
+            this.розхіднийКасовийОрдерToolStripMenuItem.Name = "розхіднийКасовийОрдерToolStripMenuItem";
+            this.розхіднийКасовийОрдерToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.розхіднийКасовийОрдерToolStripMenuItem.Text = "Розхідний касовий ордер";
+            this.розхіднийКасовийОрдерToolStripMenuItem.Click += new System.EventHandler(this.розхіднийКасовийОрдерToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,6 +384,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem проПрограмуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem замовленняКлієнтівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem прихіднийКасовийОрдерToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem розхіднийКасовийОрдерToolStripMenuItem;
     }
 }
 

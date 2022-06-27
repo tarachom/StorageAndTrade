@@ -179,6 +179,12 @@ namespace StorageAndTrade
             form_ПрихіднийКасовийОрдерЖурнал.Show();
         }
 
+        private void розхіднийКасовийОрдерToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_РозхіднийКасовийОрдерЖурнал form_РозхіднийКасовийОрдерЖурнал = new Form_РозхіднийКасовийОрдерЖурнал();
+            form_РозхіднийКасовийОрдерЖурнал.Show();
+        }
+
         #endregion
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)

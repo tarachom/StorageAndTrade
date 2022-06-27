@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 27.06.2022 15:52:47
+ * Дата конфігурації: 27.06.2022 16:18:47
  *
  */
 
@@ -9785,14 +9785,14 @@ namespace StorageAndTrade_1_0.Документи
         public const string НомерДок = "col_k1";
         public const string Організація = "col_k2";
         public const string Каса = "col_k3";
-        public const string ОрганізаціяОтримувач = "col_k4";
+        public const string СумаДокументу = "col_a3";
         public const string ГосподарськаОперація = "col_k5";
-        public const string КасаОтримувач = "col_k6";
+        public const string ОрганізаціяОтримувач = "col_k4";
         public const string Контрагент = "col_k7";
         public const string БанківськийРахунок = "col_k8";
         public const string Валюта = "col_k9";
         public const string СтаттяРухуКоштів = "col_l2";
-        public const string Підрозділ = "col_l3";
+        public const string КасаОтримувач = "col_k6";
         public const string Коментар = "col_l1";
     }
 	
@@ -9800,7 +9800,7 @@ namespace StorageAndTrade_1_0.Документи
     public class РозхіднийКасовийОрдер_Objest : DocumentObject
     {
         public РозхіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a48",
-             new string[] { "col_a1", "col_a2", "col_j9", "col_k1", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_k8", "col_k9", "col_l2", "col_l3", "col_l1" }) 
+             new string[] { "col_a1", "col_a2", "col_j9", "col_k1", "col_k2", "col_k3", "col_a3", "col_k5", "col_k4", "col_k7", "col_k8", "col_k9", "col_l2", "col_k6", "col_l1" }) 
         {
             Назва = "";
             Проведений = false;
@@ -9808,18 +9808,18 @@ namespace StorageAndTrade_1_0.Документи
             НомерДок = "";
             Організація = new Довідники.Організації_Pointer();
             Каса = new Довідники.Каси_Pointer();
-            ОрганізаціяОтримувач = new Довідники.Організації_Pointer();
+            СумаДокументу = 0;
             ГосподарськаОперація = 0;
-            КасаОтримувач = new Довідники.Каси_Pointer();
+            ОрганізаціяОтримувач = new Довідники.Організації_Pointer();
             Контрагент = new Довідники.Контрагенти_Pointer();
             БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer();
             Валюта = new Довідники.Валюти_Pointer();
             СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
-            Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
+            КасаОтримувач = new Довідники.Каси_Pointer();
             Коментар = "";
             
             //Табличні частини
-            РозшифровкаПлатежу_TablePart = new РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart(this);
+            РозшифруванняПлатежу_TablePart = new РозхіднийКасовийОрдер_РозшифруванняПлатежу_TablePart(this);
             
         }
         
@@ -9833,14 +9833,14 @@ namespace StorageAndTrade_1_0.Документи
                 НомерДок = base.FieldValue["col_k1"].ToString();
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_k2"]);
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_k3"]);
-                ОрганізаціяОтримувач = new Довідники.Організації_Pointer(base.FieldValue["col_k4"]);
+                СумаДокументу = (base.FieldValue["col_a3"] != DBNull.Value) ? (decimal)base.FieldValue["col_a3"] : 0;
                 ГосподарськаОперація = (base.FieldValue["col_k5"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_k5"] : 0;
-                КасаОтримувач = new Довідники.Каси_Pointer(base.FieldValue["col_k6"]);
+                ОрганізаціяОтримувач = new Довідники.Організації_Pointer(base.FieldValue["col_k4"]);
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_k7"]);
                 БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_k8"]);
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_k9"]);
                 СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_l2"]);
-                Підрозділ = new Довідники.СтруктураПідприємства_Pointer(base.FieldValue["col_l3"]);
+                КасаОтримувач = new Довідники.Каси_Pointer(base.FieldValue["col_k6"]);
                 Коментар = base.FieldValue["col_l1"].ToString();
                 
                 BaseClear();
@@ -9858,18 +9858,18 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_k1"] = НомерДок;
             base.FieldValue["col_k2"] = Організація.UnigueID.UGuid;
             base.FieldValue["col_k3"] = Каса.UnigueID.UGuid;
-            base.FieldValue["col_k4"] = ОрганізаціяОтримувач.UnigueID.UGuid;
+            base.FieldValue["col_a3"] = СумаДокументу;
             base.FieldValue["col_k5"] = (int)ГосподарськаОперація;
-            base.FieldValue["col_k6"] = КасаОтримувач.UnigueID.UGuid;
+            base.FieldValue["col_k4"] = ОрганізаціяОтримувач.UnigueID.UGuid;
             base.FieldValue["col_k7"] = Контрагент.UnigueID.UGuid;
             base.FieldValue["col_k8"] = БанківськийРахунок.UnigueID.UGuid;
             base.FieldValue["col_k9"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_l2"] = СтаттяРухуКоштів.UnigueID.UGuid;
-            base.FieldValue["col_l3"] = Підрозділ.UnigueID.UGuid;
+            base.FieldValue["col_k6"] = КасаОтримувач.UnigueID.UGuid;
             base.FieldValue["col_l1"] = Коментар;
             
             BaseSave();
-			
+			РозхіднийКасовийОрдер_Triggers.AfterRecording(this);
         }
 
         public РозхіднийКасовийОрдер_Objest Copy()
@@ -9882,14 +9882,14 @@ namespace StorageAndTrade_1_0.Документи
 			copy.НомерДок = НомерДок;
 			copy.Організація = Організація;
 			copy.Каса = Каса;
-			copy.ОрганізаціяОтримувач = ОрганізаціяОтримувач;
+			copy.СумаДокументу = СумаДокументу;
 			copy.ГосподарськаОперація = ГосподарськаОперація;
-			copy.КасаОтримувач = КасаОтримувач;
+			copy.ОрганізаціяОтримувач = ОрганізаціяОтримувач;
 			copy.Контрагент = Контрагент;
 			copy.БанківськийРахунок = БанківськийРахунок;
 			copy.Валюта = Валюта;
 			copy.СтаттяРухуКоштів = СтаттяРухуКоштів;
-			copy.Підрозділ = Підрозділ;
+			copy.КасаОтримувач = КасаОтримувач;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -9897,7 +9897,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
-		    
+		    РозхіднийКасовийОрдер_Triggers.BeforeDelete(this);
             base.BaseDelete();
         }
         
@@ -9913,18 +9913,18 @@ namespace StorageAndTrade_1_0.Документи
         public string НомерДок { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
-        public Довідники.Організації_Pointer ОрганізаціяОтримувач { get; set; }
+        public decimal СумаДокументу { get; set; }
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
-        public Довідники.Каси_Pointer КасаОтримувач { get; set; }
+        public Довідники.Організації_Pointer ОрганізаціяОтримувач { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
         public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунок { get; set; }
         public Довідники.Валюти_Pointer Валюта { get; set; }
         public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
-        public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
+        public Довідники.Каси_Pointer КасаОтримувач { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини
-        public РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart РозшифровкаПлатежу_TablePart { get; set; }
+        public РозхіднийКасовийОрдер_РозшифруванняПлатежу_TablePart РозшифруванняПлатежу_TablePart { get; set; }
         
     }
     
@@ -9960,7 +9960,7 @@ namespace StorageAndTrade_1_0.Документи
 			
 			if (readAllTablePart)
 			{   
-				РозхіднийКасовийОрдерObjestItem.РозшифровкаПлатежу_TablePart.Read();
+				РозхіднийКасовийОрдерObjestItem.РозшифруванняПлатежу_TablePart.Read();
 			}
 			
             return РозхіднийКасовийОрдерObjestItem;
@@ -9982,9 +9982,9 @@ namespace StorageAndTrade_1_0.Документи
     }
     
       
-    public class РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart : DocumentTablePart
+    public class РозхіднийКасовийОрдер_РозшифруванняПлатежу_TablePart : DocumentTablePart
     {
-        public РозхіднийКасовийОрдер_РозшифровкаПлатежу_TablePart(РозхіднийКасовийОрдер_Objest owner) : base(Config.Kernel, "tab_a49",
+        public РозхіднийКасовийОрдер_РозшифруванняПлатежу_TablePart(РозхіднийКасовийОрдер_Objest owner) : base(Config.Kernel, "tab_a49",
              new string[] { "col_a1", "col_l4", "col_l5", "col_l6", "col_l7", "col_l8", "col_l9" }) 
         {
             if (owner == null) throw new Exception("owner null");

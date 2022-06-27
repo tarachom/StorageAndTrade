@@ -79,6 +79,18 @@
     <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерЖурнал.designer.cs">
       <DependentUpon>Form_ПрихіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерДокумент.designer.cs">
+      <DependentUpon>Form_РозхіднийКасовийОрдерДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.designer.cs">
+      <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РухДокументівПоРегістрах\РухПоРугістрахНакопичення.cs" />
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
@@ -693,6 +705,12 @@
     <EmbeddedResource Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерДокумент.resx">
+      <DependentUpon>Form_РозхіднийКасовийОрдерДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.resx">
+      <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.resx">
       <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
     </EmbeddedResource>
@@ -775,7 +793,6 @@
   <ItemGroup>
     <Folder Include="Документи\ВстановленняЦінНоменклатури\" />
     <Folder Include="Документи\ПереміщенняТоварів\" />
-    <Folder Include="Документи\РозхіднийКасовийОрдер\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\down.ico" />

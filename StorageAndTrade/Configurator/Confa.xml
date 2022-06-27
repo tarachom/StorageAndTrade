@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>27.06.2022 15:52:47</DateTimeSave>
+  <DateTimeSave>27.06.2022 16:18:47</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -5771,10 +5771,9 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>ОрганізаціяОтримувач</Name>
-          <NameInTable>col_k4</NameInTable>
-          <Type>pointer</Type>
-          <Pointer>Довідники.Організації</Pointer>
+          <Name>СумаДокументу</Name>
+          <NameInTable>col_a3</NameInTable>
+          <Type>numeric</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -5791,10 +5790,10 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>КасаОтримувач</Name>
-          <NameInTable>col_k6</NameInTable>
+          <Name>ОрганізаціяОтримувач</Name>
+          <NameInTable>col_k4</NameInTable>
           <Type>pointer</Type>
-          <Pointer>Довідники.Каси</Pointer>
+          <Pointer>Довідники.Організації</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -5841,10 +5840,10 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Підрозділ</Name>
-          <NameInTable>col_l3</NameInTable>
+          <Name>КасаОтримувач</Name>
+          <NameInTable>col_k6</NameInTable>
           <Type>pointer</Type>
-          <Pointer>Довідники.СтруктураПідприємства</Pointer>
+          <Pointer>Довідники.Каси</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -5862,7 +5861,7 @@
       </Fields>
       <TabularParts>
         <TablePart>
-          <Name>РозшифровкаПлатежу</Name>
+          <Name>РозшифруванняПлатежу</Name>
           <Table>tab_a49</Table>
           <Desc>
           </Desc>
@@ -5939,10 +5938,8 @@
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <AfterSave>РозхіднийКасовийОрдер_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>РозхіднийКасовийОрдер_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Document>
     <Document>
