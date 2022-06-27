@@ -206,6 +206,14 @@ namespace StorageAndTrade
             form_РозрахункиЗКлієнтами_Звіт.Show();
         }
 
+        private void розрахункиЗПостачальникамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_РозрахункиЗПостачальниками_Звіт form_РозрахункиЗПостачальниками_Звіт = new Form_РозрахункиЗПостачальниками_Звіт();
+            form_РозрахункиЗПостачальниками_Звіт.Show();
+        }
+
         #endregion
+
+
     }
 }

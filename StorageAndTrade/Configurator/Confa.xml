@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>27.06.2022 16:18:47</DateTimeSave>
+  <DateTimeSave>27.06.2022 18:56:26</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -5587,6 +5587,16 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
+          <Name>Договір</Name>
+          <NameInTable>col_a6</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
           <Name>БанківськийРахунок</Name>
           <NameInTable>col_i5</NameInTable>
           <Type>pointer</Type>
@@ -5804,6 +5814,16 @@
           <NameInTable>col_k7</NameInTable>
           <Type>pointer</Type>
           <Pointer>Довідники.Контрагенти</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Договір</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>

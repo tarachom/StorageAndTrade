@@ -59,8 +59,9 @@ namespace StorageAndTrade
             this.розхіднийКасовийОрдерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.замовленняКлієнтівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.розрахункиЗКлієнтамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.розрахункиЗПостачальникамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -320,7 +321,8 @@ namespace StorageAndTrade
             // 
             this.звітиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.замовленняКлієнтівToolStripMenuItem,
-            this.розрахункиЗКлієнтамиToolStripMenuItem});
+            this.розрахункиЗКлієнтамиToolStripMenuItem,
+            this.розрахункиЗПостачальникамиToolStripMenuItem});
             this.звітиToolStripMenuItem.Name = "звітиToolStripMenuItem";
             this.звітиToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.звітиToolStripMenuItem.Text = "Звіти";
@@ -328,9 +330,16 @@ namespace StorageAndTrade
             // замовленняКлієнтівToolStripMenuItem
             // 
             this.замовленняКлієнтівToolStripMenuItem.Name = "замовленняКлієнтівToolStripMenuItem";
-            this.замовленняКлієнтівToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.замовленняКлієнтівToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
             this.замовленняКлієнтівToolStripMenuItem.Text = "Замовлення клієнтів";
             this.замовленняКлієнтівToolStripMenuItem.Click += new System.EventHandler(this.замовленняКлієнтівToolStripMenuItem_Click);
+            // 
+            // розрахункиЗКлієнтамиToolStripMenuItem
+            // 
+            this.розрахункиЗКлієнтамиToolStripMenuItem.Name = "розрахункиЗКлієнтамиToolStripMenuItem";
+            this.розрахункиЗКлієнтамиToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.розрахункиЗКлієнтамиToolStripMenuItem.Text = "Розрахунки з клієнтами";
+            this.розрахункиЗКлієнтамиToolStripMenuItem.Click += new System.EventHandler(this.розрахункиЗКлієнтамиToolStripMenuItem_Click);
             // 
             // проПрограмуToolStripMenuItem
             // 
@@ -339,12 +348,12 @@ namespace StorageAndTrade
             this.проПрограмуToolStripMenuItem.Text = "Про програму";
             this.проПрограмуToolStripMenuItem.Click += new System.EventHandler(this.проПрограмуToolStripMenuItem_Click);
             // 
-            // розрахункиЗКлієнтамиToolStripMenuItem
+            // розрахункиЗПостачальникамиToolStripMenuItem
             // 
-            this.розрахункиЗКлієнтамиToolStripMenuItem.Name = "розрахункиЗКлієнтамиToolStripMenuItem";
-            this.розрахункиЗКлієнтамиToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.розрахункиЗКлієнтамиToolStripMenuItem.Text = "Розрахунки з клієнтами";
-            this.розрахункиЗКлієнтамиToolStripMenuItem.Click += new System.EventHandler(this.розрахункиЗКлієнтамиToolStripMenuItem_Click);
+            this.розрахункиЗПостачальникамиToolStripMenuItem.Name = "розрахункиЗПостачальникамиToolStripMenuItem";
+            this.розрахункиЗПостачальникамиToolStripMenuItem.Size = new System.Drawing.Size(247, 22);
+            this.розрахункиЗПостачальникамиToolStripMenuItem.Text = "Розрахунки з постачальниками";
+            this.розрахункиЗПостачальникамиToolStripMenuItem.Click += new System.EventHandler(this.розрахункиЗПостачальникамиToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -397,6 +406,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem прихіднийКасовийОрдерToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem розхіднийКасовийОрдерToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem розрахункиЗКлієнтамиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem розрахункиЗПостачальникамиToolStripMenuItem;
     }
 }
 

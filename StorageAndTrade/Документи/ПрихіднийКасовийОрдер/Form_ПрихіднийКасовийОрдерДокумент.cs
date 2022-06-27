@@ -74,6 +74,7 @@ namespace StorageAndTrade
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
 			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
 
 			if (IsNew.HasValue)
 			{
@@ -97,6 +98,7 @@ namespace StorageAndTrade
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(прихіднийКасовийОрдер_Objest.Організація.UnigueID);
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(прихіднийКасовийОрдер_Objest.Валюта.UnigueID);
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(прихіднийКасовийОрдер_Objest.Каса.UnigueID);
+						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(прихіднийКасовийОрдер_Objest.Договір.UnigueID);
 						comboBox_ГосподарськаОперація.SelectedItem = прихіднийКасовийОрдер_Objest.ГосподарськаОперація;
 						textBox_СумаДокументу.Text = прихіднийКасовийОрдер_Objest.СумаДокументу.ToString();
 					}
@@ -121,6 +123,7 @@ namespace StorageAndTrade
 					прихіднийКасовийОрдер_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 					прихіднийКасовийОрдер_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 					прихіднийКасовийОрдер_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+					прихіднийКасовийОрдер_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 					прихіднийКасовийОрдер_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 					прихіднийКасовийОрдер_Objest.СумаДокументу = decimal.Parse(textBox_СумаДокументу.Text);
 					прихіднийКасовийОрдер_Objest.Назва = $"Прихідний касовий ордер №{прихіднийКасовийОрдер_Objest.НомерДок} від {прихіднийКасовийОрдер_Objest.ДатаДок.ToShortDateString()}";

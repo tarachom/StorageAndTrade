@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 27.06.2022 16:18:47
+ * Дата конфігурації: 27.06.2022 18:56:26
  *
  */
 
@@ -9455,6 +9455,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string ГосподарськаОперація = "col_i2";
         public const string Основа = "col_i3";
         public const string Контрагент = "col_i4";
+        public const string Договір = "col_a6";
         public const string БанківськийРахунок = "col_i5";
         public const string Валюта = "col_i6";
         public const string СтаттяРухуКоштів = "col_a1";
@@ -9466,7 +9467,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПрихіднийКасовийОрдер_Objest : DocumentObject
     {
         public ПрихіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a44",
-             new string[] { "col_a4", "col_a5", "col_h6", "col_h7", "col_h8", "col_h9", "col_i1", "col_i2", "col_i3", "col_i4", "col_i5", "col_i6", "col_a1", "col_a2", "col_a3" }) 
+             new string[] { "col_a4", "col_a5", "col_h6", "col_h7", "col_h8", "col_h9", "col_i1", "col_i2", "col_i3", "col_i4", "col_a6", "col_i5", "col_i6", "col_a1", "col_a2", "col_a3" }) 
         {
             Назва = "";
             Проведений = false;
@@ -9478,6 +9479,7 @@ namespace StorageAndTrade_1_0.Документи
             ГосподарськаОперація = 0;
             Основа = "";
             Контрагент = new Довідники.Контрагенти_Pointer();
+            Договір = new Довідники.ДоговориКонтрагентів_Pointer();
             БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer();
             Валюта = new Довідники.Валюти_Pointer();
             СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
@@ -9503,6 +9505,7 @@ namespace StorageAndTrade_1_0.Документи
                 ГосподарськаОперація = (base.FieldValue["col_i2"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_i2"] : 0;
                 Основа = base.FieldValue["col_i3"].ToString();
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_i4"]);
+                Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_a6"]);
                 БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_i5"]);
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_i6"]);
                 СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_a1"]);
@@ -9528,6 +9531,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_i2"] = (int)ГосподарськаОперація;
             base.FieldValue["col_i3"] = Основа;
             base.FieldValue["col_i4"] = Контрагент.UnigueID.UGuid;
+            base.FieldValue["col_a6"] = Договір.UnigueID.UGuid;
             base.FieldValue["col_i5"] = БанківськийРахунок.UnigueID.UGuid;
             base.FieldValue["col_i6"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_a1"] = СтаттяРухуКоштів.UnigueID.UGuid;
@@ -9552,6 +9556,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ГосподарськаОперація = ГосподарськаОперація;
 			copy.Основа = Основа;
 			copy.Контрагент = Контрагент;
+			copy.Договір = Договір;
 			copy.БанківськийРахунок = БанківськийРахунок;
 			copy.Валюта = Валюта;
 			copy.СтаттяРухуКоштів = СтаттяРухуКоштів;
@@ -9583,6 +9588,7 @@ namespace StorageAndTrade_1_0.Документи
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
         public string Основа { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+        public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
         public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунок { get; set; }
         public Довідники.Валюти_Pointer Валюта { get; set; }
         public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
@@ -9789,6 +9795,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string ГосподарськаОперація = "col_k5";
         public const string ОрганізаціяОтримувач = "col_k4";
         public const string Контрагент = "col_k7";
+        public const string Договір = "col_a4";
         public const string БанківськийРахунок = "col_k8";
         public const string Валюта = "col_k9";
         public const string СтаттяРухуКоштів = "col_l2";
@@ -9800,7 +9807,7 @@ namespace StorageAndTrade_1_0.Документи
     public class РозхіднийКасовийОрдер_Objest : DocumentObject
     {
         public РозхіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a48",
-             new string[] { "col_a1", "col_a2", "col_j9", "col_k1", "col_k2", "col_k3", "col_a3", "col_k5", "col_k4", "col_k7", "col_k8", "col_k9", "col_l2", "col_k6", "col_l1" }) 
+             new string[] { "col_a1", "col_a2", "col_j9", "col_k1", "col_k2", "col_k3", "col_a3", "col_k5", "col_k4", "col_k7", "col_a4", "col_k8", "col_k9", "col_l2", "col_k6", "col_l1" }) 
         {
             Назва = "";
             Проведений = false;
@@ -9812,6 +9819,7 @@ namespace StorageAndTrade_1_0.Документи
             ГосподарськаОперація = 0;
             ОрганізаціяОтримувач = new Довідники.Організації_Pointer();
             Контрагент = new Довідники.Контрагенти_Pointer();
+            Договір = new Довідники.ДоговориКонтрагентів_Pointer();
             БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer();
             Валюта = new Довідники.Валюти_Pointer();
             СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
@@ -9837,6 +9845,7 @@ namespace StorageAndTrade_1_0.Документи
                 ГосподарськаОперація = (base.FieldValue["col_k5"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_k5"] : 0;
                 ОрганізаціяОтримувач = new Довідники.Організації_Pointer(base.FieldValue["col_k4"]);
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_k7"]);
+                Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_a4"]);
                 БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_k8"]);
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_k9"]);
                 СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_l2"]);
@@ -9862,6 +9871,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_k5"] = (int)ГосподарськаОперація;
             base.FieldValue["col_k4"] = ОрганізаціяОтримувач.UnigueID.UGuid;
             base.FieldValue["col_k7"] = Контрагент.UnigueID.UGuid;
+            base.FieldValue["col_a4"] = Договір.UnigueID.UGuid;
             base.FieldValue["col_k8"] = БанківськийРахунок.UnigueID.UGuid;
             base.FieldValue["col_k9"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_l2"] = СтаттяРухуКоштів.UnigueID.UGuid;
@@ -9886,6 +9896,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ГосподарськаОперація = ГосподарськаОперація;
 			copy.ОрганізаціяОтримувач = ОрганізаціяОтримувач;
 			copy.Контрагент = Контрагент;
+			copy.Договір = Договір;
 			copy.БанківськийРахунок = БанківськийРахунок;
 			copy.Валюта = Валюта;
 			copy.СтаттяРухуКоштів = СтаттяРухуКоштів;
@@ -9917,6 +9928,7 @@ namespace StorageAndTrade_1_0.Документи
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
         public Довідники.Організації_Pointer ОрганізаціяОтримувач { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+        public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
         public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунок { get; set; }
         public Довідники.Валюти_Pointer Валюта { get; set; }
         public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }

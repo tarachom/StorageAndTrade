@@ -191,7 +191,7 @@
 				<th>income</th>
 				<th>Контрагент</th>
 				<th>Валюта</th>
-				<th>Замовлено</th>
+				<th>Сума</th>
 			</tr>
 
 			<xsl:for-each select="row">
@@ -207,7 +207,7 @@
 						<xsl:value-of select="Валюта_Назва"/>
 					</td>
 					<td>
-						<xsl:value-of select="Замовлено"/>
+						<xsl:value-of select="Сума"/>
 					</td>
 				</tr>
 
@@ -319,7 +319,7 @@
 				<th>income</th>
 				<th>Контрагент</th>
 				<th>Валюта</th>
-				<th>Замовлено</th>
+				<th>Сума</th>
 			</tr>
 
 			<xsl:for-each select="row">
@@ -335,7 +335,7 @@
 						<xsl:value-of select="Валюта_Назва"/>
 					</td>
 					<td>
-						<xsl:value-of select="Замовлено"/>
+						<xsl:value-of select="Сума"/>
 					</td>
 				</tr>
 
