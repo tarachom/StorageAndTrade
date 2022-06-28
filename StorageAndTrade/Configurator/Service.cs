@@ -76,14 +76,12 @@ GROUP BY period_month
             return listRowDateTime;
         }
 
-        private static void ВидалитиЗалишкиЗаМісяць(DateTime month)
+        public static void ВидалитиЗалишки()
         {
-            string query = $@"
-DELETE 
-    FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}
-WHERE 
-    {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.Період} = '{month}'
-";
+            string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+
+            query = $@"VACUUM (VERBOSE) {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}";
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
 
@@ -93,8 +91,6 @@ WHERE
         /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
         public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
         {
-            ВидалитиЗалишкиЗаМісяць(month);
-
             //Заповнення таблиці
             string query = $@"
 INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}
@@ -170,14 +166,12 @@ GROUP BY period_month
             return listRowDateTime;
         }
 
-        private static void ВидалитиЗалишкиЗаМісяць(DateTime month)
+        public static void ВидалитиЗалишки()
         {
-            string query = $@"
-DELETE 
-    FROM {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.TABLE}
-WHERE 
-    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.Період} = '{month}'
-";
+            string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+
+            query = $@"VACUUM (VERBOSE) {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.TABLE}";
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
 
@@ -187,8 +181,6 @@ WHERE
         /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
         public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
         {
-            ВидалитиЗалишкиЗаМісяць(month);
-
             //Заповнення таблиці
             string query = $@"
 INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.TABLE}
@@ -264,14 +256,12 @@ GROUP BY period_month
             return listRowDateTime;
         }
 
-        private static void ВидалитиЗалишкиЗаМісяць(DateTime month)
+        public static void ВидалитиЗалишки()
         {
-            string query = $@"
-DELETE 
-    FROM {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE}
-WHERE 
-    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.Період} = '{month}'
-";
+            string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+
+            query = $@"VACUUM (VERBOSE) {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE}";
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
 
@@ -281,8 +271,6 @@ WHERE
         /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
         public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
         {
-            ВидалитиЗалишкиЗаМісяць(month);
-
             //Заповнення таблиці
             string query = $@"
 INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE}
@@ -317,6 +305,8 @@ HAVING
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
     }
+
+
 }
 
 

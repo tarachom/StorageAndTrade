@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>28.06.2022 14:13:20</DateTimeSave>
+  <DateTimeSave>28.06.2022 14:48:20</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -572,7 +572,7 @@
               <Desc>Розрахунки з постачальниками згруповані по місяцях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_a6</NameInTable>
                   <Type>date</Type>
                   <Desc>
@@ -617,7 +617,7 @@
               <Desc>Розрахунки з постачальниками згрупованіі по днях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_b1</NameInTable>
                   <Type>date</Type>
                   <Desc>
@@ -670,23 +670,13 @@
               <Desc>Замовлення постачальнику згруповані по місяцях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_a6</NameInTable>
                   <Type>date</Type>
                   <Desc>
                   </Desc>
                   <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
-                </Field>
-                <Field>
-                  <Name>ЗамовленняПостачальнику</Name>
-                  <NameInTable>col_a1</NameInTable>
-                  <Type>pointer</Type>
-                  <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
-                  <Desc>
-                  </Desc>
-                  <IsPresentation>0</IsPresentation>
-                  <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
                   <Name>Номенклатура</Name>
@@ -735,23 +725,13 @@
               <Desc>Замовлення клієнтів згруповані по днях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_b1</NameInTable>
                   <Type>date</Type>
                   <Desc>
                   </Desc>
                   <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
-                </Field>
-                <Field>
-                  <Name>ЗамовленняКлієнта</Name>
-                  <NameInTable>col_a1</NameInTable>
-                  <Type>pointer</Type>
-                  <Pointer>Документи.ЗамовленняКлієнта</Pointer>
-                  <Desc>
-                  </Desc>
-                  <IsPresentation>0</IsPresentation>
-                  <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
                   <Name>Номенклатура</Name>
@@ -817,7 +797,7 @@
               <Desc>Вільні залишки згруповані по місяцях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_a6</NameInTable>
                   <Type>date</Type>
                   <Desc>
@@ -890,7 +870,7 @@
               <Desc>Вільні залишки згруповані по днях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_b1</NameInTable>
                   <Type>date</Type>
                   <Desc>

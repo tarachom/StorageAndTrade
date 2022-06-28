@@ -57,7 +57,7 @@ namespace StorageAndTrade
 
 				if (!String.IsNullOrEmpty(bodySelect))
 				{
-					richTextBoxInfo.SelectionFont = new Font("Consolas"/*"Microsoft Sans Serif"*/, 10, FontStyle.Bold);
+					richTextBoxInfo.SelectionFont = new Font("Consolas"/*"Microsoft Sans Serif"*/, 10);
 					richTextBoxInfo.SelectionColor = Color.DarkBlue;
 					richTextBoxInfo.AppendText(bodySelect);
 				}
@@ -73,84 +73,103 @@ namespace StorageAndTrade
 			}
 		}
 
-		private void StartThreadCalculateBalance_ЗамовленняКлієнтів()
+		private void CalculateBalance_ЗамовленняКлієнтів()
 		{
 			const string registr_name = "ЗамовленняКлієнтів";
 
-			List<DateTime> ListMonth;
+			ApendLine($"[ {registr_name} ] ", "");
+			ApendLine("", " -> очистка ");
 
 			lock (lockobject)
-			{
+				CalculateBalancesInRegister_ЗамовленняКлієнтів.ВидалитиЗалишки();
+
+			List<DateTime> ListMonth;
+
+			ApendLine("", " -> список місяців ");
+
+			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ЗамовленняКлієнтів.ОтриматиСписокМісяців();
-			}
+
+			ApendLine("", " -> розрахунок ");
 
 			foreach (DateTime listMonthItem in ListMonth)
 			{
-				ApendLine($"[ {registr_name} ] ", " -> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
 
 				lock (lockobject)
-				{
 					CalculateBalancesInRegister_ЗамовленняКлієнтів.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
-				}
 			}
 		}
 
-		private void StartThreadCalculateBalance_ТовариНаСкладах()
+		private void CalculateBalance_ТовариНаСкладах()
 		{
 			const string registr_name = "ТовариНаСкладах";
 
-			List<DateTime> ListMonth;
+			ApendLine($"[ {registr_name} ] ", "");
+			ApendLine("", " -> очистка ");
 
 			lock (lockobject)
-			{
+				CalculateBalancesInRegister_ТовариНаСкладах.ВидалитиЗалишки();
+
+			List<DateTime> ListMonth;
+
+			ApendLine("", " -> список місяців ");
+
+			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ТовариНаСкладах.ОтриматиСписокМісяців();
-			}
+
+			ApendLine("", " -> розрахунок ");
 
 			foreach (DateTime listMonthItem in ListMonth)
 			{
-				ApendLine($"[ {registr_name} ] ", " -> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
 
 				lock (lockobject)
-				{
 					CalculateBalancesInRegister_ТовариНаСкладах.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
-				}
 			}
 		}
 
-		private void StartThreadCalculateBalance_РозрахункиЗКлієнтами()
+		private void CalculateBalance_РозрахункиЗКлієнтами()
 		{
 			const string registr_name = "РозрахункиЗКлієнтами";
 
-			List<DateTime> ListMonth;
+			ApendLine($"[ {registr_name} ] ", "");
+			ApendLine("", " -> очистка ");
 
 			lock (lockobject)
-			{
+				CalculateBalancesInRegister_РозрахункиЗКлієнтами.ВидалитиЗалишки();
+
+			List<DateTime> ListMonth;
+
+			ApendLine("", " -> список місяців ");
+
+			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОтриматиСписокМісяців();
-			}
+
+			ApendLine("", " -> розрахунок ");
 
 			foreach (DateTime listMonthItem in ListMonth)
 			{
-				ApendLine($"[ {registr_name} ] ", " -> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
 
 				lock (lockobject)
-				{
 					CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
-				}
 			}
+		}
+
+		private void StartThreadCalculateBalance()
+        {
+			CalculateBalance_ЗамовленняКлієнтів();
+			CalculateBalance_ТовариНаСкладах();
+			CalculateBalance_РозрахункиЗКлієнтами();
 		}
 
 		private void buttonCalculate_Click(object sender, EventArgs e)
         {
 			CalculateBalancesInRegister.ПідключитиДодаток_UUID_OSSP();
 
-			Thread thread_ЗамовленняКлієнтів = new Thread(new ThreadStart(StartThreadCalculateBalance_ЗамовленняКлієнтів));
-			thread_ЗамовленняКлієнтів.Start();
-
-			Thread thread_ТовариНаСкладах = new Thread(new ThreadStart(StartThreadCalculateBalance_ТовариНаСкладах));
-			thread_ТовариНаСкладах.Start();
-
-			Thread thread_РозрахункиЗКлієнтами = new Thread(new ThreadStart(StartThreadCalculateBalance_РозрахункиЗКлієнтами));
-			thread_РозрахункиЗКлієнтами.Start();
+			Thread thread = new Thread(new ThreadStart(StartThreadCalculateBalance));
+			thread.Start();
 		}
 
 
