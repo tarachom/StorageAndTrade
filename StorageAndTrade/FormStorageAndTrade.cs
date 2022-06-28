@@ -196,7 +196,8 @@ namespace StorageAndTrade
             {
                 Console.WriteLine(dt);
 
-                CalculateBalancesInRegister.DeleteRecordsFromPeriod(dt);
+                CalculateBalancesInRegister.ОбчислитиЗалишкиЗаПеріод(dt);
+                //break;
             }
 
 

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 28.06.2022 12:31:03
+ * Дата конфігурації: 28.06.2022 13:04:26
  *
  */
 
@@ -484,7 +484,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ЗамовленняКлієнтів_Місяць_TablePart : ConstantsTablePart
         {
             public ЗамовленняКлієнтів_Місяць_TablePart() : base(Config.Kernel, "tab_a68",
-                 new string[] { "col_a6", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a7" }) 
+                 new string[] { "col_a6", "col_a2", "col_a3", "col_a4", "col_a5", "col_a7" }) 
             {
                 Records = new List<Record>();
             }
@@ -492,7 +492,6 @@ namespace StorageAndTrade_1_0.Константи
             public const string TABLE = "tab_a68";
             
             public const string Період = "col_a6";
-            public const string ЗамовленняКлієнта = "col_a1";
             public const string Номенклатура = "col_a2";
             public const string ХарактеристикиНоменклатури = "col_a3";
             public const string Склад = "col_a4";
@@ -511,7 +510,6 @@ namespace StorageAndTrade_1_0.Константи
                     record.UID = (Guid)fieldValue["uid"];
                     
                     record.Період = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
-                    record.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(fieldValue["col_a1"]);
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
                     record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
@@ -536,7 +534,6 @@ namespace StorageAndTrade_1_0.Константи
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                     fieldValue.Add("col_a6", record.Період);
-                    fieldValue.Add("col_a1", record.ЗамовленняКлієнта.UnigueID.UGuid);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
@@ -559,7 +556,6 @@ namespace StorageAndTrade_1_0.Константи
                 public Record()
                 {
                     Період = DateTime.MinValue;
-                    ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
@@ -570,10 +566,9 @@ namespace StorageAndTrade_1_0.Константи
         
                 
                 public Record(
-                    DateTime?  _Період = null, Документи.ЗамовленняКлієнта_Pointer _ЗамовленняКлієнта = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _Замовлено = 0, decimal _Сума = 0)
+                    DateTime?  _Період = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _Замовлено = 0, decimal _Сума = 0)
                 {
                     Період = _Період ?? DateTime.MinValue;
-                    ЗамовленняКлієнта = _ЗамовленняКлієнта ?? new Документи.ЗамовленняКлієнта_Pointer();
                     Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                     ХарактеристикиНоменклатури = _ХарактеристикиНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = _Склад ?? new Довідники.Склади_Pointer();
@@ -582,7 +577,6 @@ namespace StorageAndTrade_1_0.Константи
                     
                 }
                 public DateTime Період { get; set; }
-                public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
@@ -595,7 +589,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ЗамовленняКлієнтів_День_TablePart : ConstantsTablePart
         {
             public ЗамовленняКлієнтів_День_TablePart() : base(Config.Kernel, "tab_a70",
-                 new string[] { "col_b1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
+                 new string[] { "col_b1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
             {
                 Records = new List<Record>();
             }
@@ -603,7 +597,6 @@ namespace StorageAndTrade_1_0.Константи
             public const string TABLE = "tab_a70";
             
             public const string Період = "col_b1";
-            public const string ЗамовленняКлієнта = "col_a1";
             public const string Номенклатура = "col_a2";
             public const string ХарактеристикиНоменклатури = "col_a3";
             public const string Склад = "col_a4";
@@ -622,7 +615,6 @@ namespace StorageAndTrade_1_0.Константи
                     record.UID = (Guid)fieldValue["uid"];
                     
                     record.Період = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
-                    record.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(fieldValue["col_a1"]);
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
                     record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
@@ -647,7 +639,6 @@ namespace StorageAndTrade_1_0.Константи
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                     fieldValue.Add("col_b1", record.Період);
-                    fieldValue.Add("col_a1", record.ЗамовленняКлієнта.UnigueID.UGuid);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
@@ -670,7 +661,6 @@ namespace StorageAndTrade_1_0.Константи
                 public Record()
                 {
                     Період = DateTime.MinValue;
-                    ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
@@ -681,10 +671,9 @@ namespace StorageAndTrade_1_0.Константи
         
                 
                 public Record(
-                    DateTime?  _Період = null, Документи.ЗамовленняКлієнта_Pointer _ЗамовленняКлієнта = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _Замовлено = 0, decimal _Сума = 0)
+                    DateTime?  _Період = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _Замовлено = 0, decimal _Сума = 0)
                 {
                     Період = _Період ?? DateTime.MinValue;
-                    ЗамовленняКлієнта = _ЗамовленняКлієнта ?? new Документи.ЗамовленняКлієнта_Pointer();
                     Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                     ХарактеристикиНоменклатури = _ХарактеристикиНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = _Склад ?? new Довідники.Склади_Pointer();
@@ -693,7 +682,6 @@ namespace StorageAndTrade_1_0.Константи
                     
                 }
                 public DateTime Період { get; set; }
-                public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
