@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>27.06.2022 18:56:26</DateTimeSave>
+  <DateTimeSave>28.06.2022 12:31:03</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -201,7 +201,7 @@
               <Desc>Замовлення клієнтів згруповані по місяцях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_a6</NameInTable>
                   <Type>date</Type>
                   <Desc>
@@ -275,7 +275,7 @@
               <Desc>Замовлення клієнтів згруповані по днях</Desc>
               <Fields>
                 <Field>
-                  <Name>period</Name>
+                  <Name>Період</Name>
                   <NameInTable>col_b1</NameInTable>
                   <Type>date</Type>
                   <Desc>

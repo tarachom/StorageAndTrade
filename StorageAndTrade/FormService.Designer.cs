@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class Service
+    partial class FormService
     {
         /// <summary>
         /// Required designer variable.
@@ -34,22 +34,22 @@ namespace StorageAndTrade
             // 
             // buttonCalculate
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(12, 415);
+            this.buttonCalculate.Location = new System.Drawing.Point(12, 411);
             this.buttonCalculate.Name = "buttonCalculate";
-            this.buttonCalculate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCalculate.Size = new System.Drawing.Size(81, 27);
             this.buttonCalculate.TabIndex = 0;
-            this.buttonCalculate.Text = "Обчислити";
+            this.buttonCalculate.Text = "Calculate";
             this.buttonCalculate.UseVisualStyleBackColor = true;
             this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
             // 
-            // Service
+            // FormService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.buttonCalculate);
-            this.Name = "Service";
-            this.Text = "Service";
+            this.Name = "FormService";
+            this.Text = "FormService";
             this.ResumeLayout(false);
 
         }

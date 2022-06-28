@@ -14,6 +14,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 using РегістриНакопичення = StorageAndTrade_1_0.РегістриНакопичення;
+using StorageAndTrade_1_0.Service;
 
 namespace StorageAndTrade
 {
@@ -189,7 +190,16 @@ namespace StorageAndTrade
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(StorageAndTrade_1_0.Service.CalculateBalancesInRegister.Запит_ЗамовленняКлієнтів());
+            List<DateTime> listMonth = CalculateBalancesInRegister.ОтриматиСписокМісяців();
+
+            foreach (DateTime dt in listMonth)
+            {
+                Console.WriteLine(dt);
+
+                CalculateBalancesInRegister.DeleteRecordsFromPeriod(dt);
+            }
+
+
         }
 
         #region Звіти

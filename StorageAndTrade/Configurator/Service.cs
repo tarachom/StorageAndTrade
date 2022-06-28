@@ -41,25 +41,62 @@ namespace StorageAndTrade_1_0.Service
 { 
     class CalculateBalancesInRegister
     {
-
-/*
---CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
---SELECT uuid_generate_v4();
-
---CREATE EXTENSION IF NOT EXISTS "pgcrypto";
---SELECT gen_random_uuid(), uuid_generate_v4(); 
-*/
-
-        public static string Запит_ЗамовленняКлієнтів()
+        /// <summary>
+        /// Список місяців для яких є рухи по регістру
+        /// </summary>
+        /// <returns>Список місяців типу 01.05.2022 00:00:00</returns>
+        public static List<DateTime> ОтриматиСписокМісяців()
         {
-            //Очистка таблиці
             string query = $@"
-DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE};";
+SELECT
+    date_trunc('month', Рег_ЗамовленняКлієнтів.period) as period_month
+FROM 
+    {ЗамовленняКлієнтів_Const.TABLE} AS Рег_ЗамовленняКлієнтів
+GROUP BY period_month
+";
 
-            Console.WriteLine(Config.Kernel.DataBase.ExecuteSQL(query));
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, null, out columnsName, out listRow);
+
+            List<DateTime> listRowDateTime = new List<DateTime>();
+            foreach (object[] dateTimeObject in listRow)
+                listRowDateTime.Add((DateTime)dateTimeObject[0]);
+
+            return listRowDateTime;
+        }
+
+        private static void ВидалитиЗалишкиЗаПеріод(DateTime month)
+        {
+            string query = $@"
+DELETE 
+    FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}
+WHERE 
+    {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.Період} = '{month}'
+";
+            Console.WriteLine(query);
+
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+
+        private static void ПідключитиДодаток_UUID_OSSP()
+        {
+            string query = "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"";
+
+            Console.WriteLine(query);
+
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+
+        public static void ОбчислитиЗалишкиЗаПеріод(DateTime month)
+        {
+            ВидалитиЗалишкиЗаПеріод(month);
+
+            ПідключитиДодаток_UUID_OSSP();
 
             //Заповнення таблиці
-            query = $@"
+            string query = $@"
 INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}
 
 SELECT 
@@ -93,9 +130,13 @@ OR
 ";
 
             Console.WriteLine(Config.Kernel.DataBase.ExecuteSQL(query));
-
-            return query;
         }
+        /*
+--CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+--SELECT uuid_generate_v4();
 
+--CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+--SELECT gen_random_uuid(), uuid_generate_v4(); 
+*/
     }
 }

@@ -28,6 +28,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -35,15 +36,18 @@ using StorageAndTrade_1_0.Service;
 
 namespace StorageAndTrade
 {
-    public partial class Service : Form
+    public partial class FormService : Form
     {
-        public Service()
+        public FormService()
         {
             InitializeComponent();
         }
+
         private void buttonCalculate_Click(object sender, EventArgs e)
         {
-
+            //Thread node = new Thread(new ThreadStart(CalculateBalancesInRegister.Запит_ЗамовленняКлієнтів));
         }
+
+
     }
 }
