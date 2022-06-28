@@ -23,7 +23,8 @@ limitations under the License.
 
 /*
 
-Модуль сервісних функцій.
+Модуль розрахунку віртуальних залишків.
+Віртуальні залишки - це згруповані залишки (місяць, день)
 
 */
 
@@ -77,6 +78,9 @@ ORDER BY period_month
             return listRowDateTime;
         }
 
+        /// <summary>
+        /// Очистка віртуальної таблиці
+        /// </summary>
         public static void ВидалитиЗалишки()
         {
             string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}";
@@ -168,6 +172,9 @@ ORDER BY period_month
             return listRowDateTime;
         }
 
+        /// <summary>
+        /// Очистка віртуальної таблиці
+        /// </summary>
         public static void ВидалитиЗалишки()
         {
             string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.TABLE}";
@@ -259,6 +266,9 @@ ORDER BY period_month
             return listRowDateTime;
         }
 
+        /// <summary>
+        /// Очистка віртуальної таблиці
+        /// </summary>
         public static void ВидалитиЗалишки()
         {
             string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE}";
@@ -338,6 +348,9 @@ ORDER BY period_month
             return listRowDateTime;
         }
 
+        /// <summary>
+        /// Очистка віртуальної таблиці
+        /// </summary>
         public static void ВидалитиЗалишки()
         {
             string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.TABLE}";
@@ -417,6 +430,9 @@ ORDER BY period_month
             return listRowDateTime;
         }
 
+        /// <summary>
+        /// Очистка віртуальної таблиці
+        /// </summary>
         public static void ВидалитиЗалишки()
         {
             string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.TABLE}";
@@ -498,6 +514,9 @@ ORDER BY period_month
             return listRowDateTime;
         }
 
+        /// <summary>
+        /// Очистка віртуальної таблиці
+        /// </summary>
         public static void ВидалитиЗалишки()
         {
             string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.TABLE}";
