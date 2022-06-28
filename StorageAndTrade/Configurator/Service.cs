@@ -62,6 +62,7 @@ SELECT
 FROM 
     {ЗамовленняКлієнтів_Const.TABLE} AS Рег_ЗамовленняКлієнтів
 GROUP BY period_month
+ORDER BY period_month
 ";
 
             string[] columnsName;
@@ -152,6 +153,7 @@ SELECT
 FROM 
     {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
 GROUP BY period_month
+ORDER BY period_month
 ";
 
             string[] columnsName;
@@ -242,6 +244,7 @@ SELECT
 FROM 
     {РозрахункиЗКлієнтами_Const.TABLE} AS Рег_РозрахункиЗКлієнтами
 GROUP BY period_month
+ORDER BY period_month
 ";
 
             string[] columnsName;
@@ -306,7 +309,264 @@ HAVING
         }
     }
 
+    class CalculateBalancesInRegister_РозрахункиЗПостачальниками
+    {
+        /// <summary>
+        /// Список місяців для яких є рухи по регістру
+        /// </summary>
+        /// <returns>Список місяців типу 01.05.2022 00:00:00</returns>
+        public static List<DateTime> ОтриматиСписокМісяців()
+        {
+            string query = $@"
+SELECT
+    date_trunc('month', Рег_РозрахункиЗПостачальниками.period) as period_month
+FROM 
+    {РозрахункиЗПостачальниками_Const.TABLE} AS Рег_РозрахункиЗПостачальниками
+GROUP BY period_month
+ORDER BY period_month
+";
 
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, null, out columnsName, out listRow);
+
+            List<DateTime> listRowDateTime = new List<DateTime>();
+            foreach (object[] dateTimeObject in listRow)
+                listRowDateTime.Add((DateTime)dateTimeObject[0]);
+
+            return listRowDateTime;
+        }
+
+        public static void ВидалитиЗалишки()
+        {
+            string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+
+            query = $@"VACUUM (VERBOSE) {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+
+        /// <summary>
+        /// Обчислити залишки за період
+        /// </summary>
+        /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
+        public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
+        {
+            //Заповнення таблиці
+            string query = $@"
+INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.TABLE}
+(
+    uid,
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.Період},
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.Валюта},
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.Контрагент},
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗПостачальниками_Місяць_TablePart.Сума}
+)
+SELECT 
+    uuid_generate_v4(),
+    date_trunc('month', Рег_РозрахункиЗПостачальниками.period) as period_month,
+    Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта} AS Валюта, 
+    Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Контрагент} AS Контрагент,
+
+    SUM(CASE WHEN Рег_РозрахункиЗПостачальниками.income = true THEN 
+        Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} ELSE 
+       -Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} END) AS Сума
+FROM 
+    {РозрахункиЗПостачальниками_Const.TABLE} AS Рег_РозрахункиЗПостачальниками
+WHERE
+    date_trunc('month', Рег_РозрахункиЗПостачальниками.period) = '{month}'
+GROUP BY 
+    period_month, Валюта, Контрагент
+HAVING
+
+   SUM(CASE WHEN Рег_РозрахункиЗПостачальниками.income = true THEN 
+        Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} ELSE 
+       -Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} END) != 0
+";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+    }
+
+    class CalculateBalancesInRegister_ЗамовленняПостачальникам
+    {
+        /// <summary>
+        /// Список місяців для яких є рухи по регістру
+        /// </summary>
+        /// <returns>Список місяців типу 01.05.2022 00:00:00</returns>
+        public static List<DateTime> ОтриматиСписокМісяців()
+        {
+            string query = $@"
+SELECT
+    date_trunc('month', Рег_ЗамовленняПостачальникам.period) as period_month
+FROM 
+    {ЗамовленняПостачальникам_Const.TABLE} AS Рег_ЗамовленняПостачальникам
+GROUP BY period_month
+ORDER BY period_month
+";
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, null, out columnsName, out listRow);
+
+            List<DateTime> listRowDateTime = new List<DateTime>();
+            foreach (object[] dateTimeObject in listRow)
+                listRowDateTime.Add((DateTime)dateTimeObject[0]);
+
+            return listRowDateTime;
+        }
+
+        public static void ВидалитиЗалишки()
+        {
+            string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+
+            query = $@"VACUUM (VERBOSE) {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+
+        /// <summary>
+        /// Обчислити залишки за період
+        /// </summary>
+        /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
+        public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
+        {
+            //Заповнення таблиці
+            string query = $@"
+INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.TABLE}
+(
+    uid,
+    {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.Період},
+    {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.Номенклатура},
+    {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.ХарактеристикиНоменклатури},
+    {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.Склад},
+    {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняПостачальникам_Місяць_TablePart.Замовлено}
+)
+SELECT 
+    uuid_generate_v4(),
+    date_trunc('month', Рег_ЗамовленняПостачальникам.period) as period_month,
+    Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Номенклатура} AS Номенклатура, 
+    Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Склад} AS Склад,
+
+    SUM(CASE WHEN Рег_ЗамовленняПостачальникам.income = true THEN 
+        Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} ELSE 
+       -Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} END) AS Замовлено
+FROM 
+    {ЗамовленняПостачальникам_Const.TABLE} AS Рег_ЗамовленняПостачальникам
+WHERE
+    date_trunc('month', Рег_ЗамовленняПостачальникам.period) = '{month}'
+GROUP BY 
+    period_month, Номенклатура, ХарактеристикаНоменклатури, Склад
+HAVING 
+
+   SUM(CASE WHEN Рег_ЗамовленняПостачальникам.income = true THEN 
+        Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} ELSE 
+       -Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} END) != 0
+";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+    }
+
+    class CalculateBalancesInRegister_ВільніЗалишки
+    {
+        /// <summary>
+        /// Список місяців для яких є рухи по регістру
+        /// </summary>
+        /// <returns>Список місяців типу 01.05.2022 00:00:00</returns>
+        public static List<DateTime> ОтриматиСписокМісяців()
+        {
+            string query = $@"
+SELECT
+    date_trunc('month', Рег_ВільніЗалишки.period) as period_month
+FROM 
+    {ВільніЗалишки_Const.TABLE} AS Рег_ВільніЗалишки
+GROUP BY period_month
+ORDER BY period_month
+";
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, null, out columnsName, out listRow);
+
+            List<DateTime> listRowDateTime = new List<DateTime>();
+            foreach (object[] dateTimeObject in listRow)
+                listRowDateTime.Add((DateTime)dateTimeObject[0]);
+
+            return listRowDateTime;
+        }
+
+        public static void ВидалитиЗалишки()
+        {
+            string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+
+            query = $@"VACUUM (VERBOSE) {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.TABLE}";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+
+        /// <summary>
+        /// Обчислити залишки за період
+        /// </summary>
+        /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
+        public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
+        {
+            //Заповнення таблиці
+            string query = $@"
+INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.TABLE}
+(
+    uid,
+    {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.Період},
+    {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.Номенклатура},
+    {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.ХарактеристикиНоменклатури},
+    {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.Склад},
+    {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.ВНаявності},
+    {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу},
+    {ВіртуальніТаблиціРегістрівНакопичення.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення}
+)
+SELECT 
+    uuid_generate_v4(),
+    date_trunc('month', Рег_ВільніЗалишки.period) as period_month,
+    Рег_ВільніЗалишки.{ВільніЗалишки_Const.Номенклатура} AS Номенклатура, 
+    Рег_ВільніЗалишки.{ВільніЗалишки_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Рег_ВільніЗалишки.{ВільніЗалишки_Const.Склад} AS Склад,
+
+    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
+        Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВНаявності} ELSE 
+       -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВНаявності} END) AS ВНаявності,
+
+    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
+        Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} ELSE 
+       -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} END) AS ВРезервіЗіСкладу,
+
+    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
+        Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} ELSE 
+       -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} END) AS ВРезервіПідЗамовлення
+FROM 
+    {ВільніЗалишки_Const.TABLE} AS Рег_ВільніЗалишки
+WHERE
+    date_trunc('month', Рег_ВільніЗалишки.period) = '{month}'
+GROUP BY 
+    period_month, Номенклатура, ХарактеристикаНоменклатури, Склад
+HAVING 
+
+   SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
+        Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВНаявності} ELSE 
+       -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВНаявності} END) != 0
+OR
+    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
+        Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} ELSE 
+       -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} END) != 0
+OR
+    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
+        Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} ELSE 
+       -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} END) != 0
+";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+    }
 }
 
 

@@ -85,8 +85,6 @@ namespace StorageAndTrade
 
 			List<DateTime> ListMonth;
 
-			ApendLine("", " -> список місяців ");
-
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ЗамовленняКлієнтів.ОтриматиСписокМісяців();
 
@@ -112,8 +110,6 @@ namespace StorageAndTrade
 				CalculateBalancesInRegister_ТовариНаСкладах.ВидалитиЗалишки();
 
 			List<DateTime> ListMonth;
-
-			ApendLine("", " -> список місяців ");
 
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ТовариНаСкладах.ОтриматиСписокМісяців();
@@ -141,8 +137,6 @@ namespace StorageAndTrade
 
 			List<DateTime> ListMonth;
 
-			ApendLine("", " -> список місяців ");
-
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОтриматиСписокМісяців();
 
@@ -157,11 +151,92 @@ namespace StorageAndTrade
 			}
 		}
 
+		private void CalculateBalance_РозрахункиЗПостачальниками()
+		{
+			const string registr_name = "РозрахункиЗПостачальниками";
+
+			ApendLine($"[ {registr_name} ] ", "");
+			ApendLine("", " -> очистка ");
+
+			lock (lockobject)
+				CalculateBalancesInRegister_РозрахункиЗПостачальниками.ВидалитиЗалишки();
+
+			List<DateTime> ListMonth;
+
+			lock (lockobject)
+				ListMonth = CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОтриматиСписокМісяців();
+
+			ApendLine("", " -> розрахунок ");
+
+			foreach (DateTime listMonthItem in ListMonth)
+			{
+				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+				lock (lockobject)
+					CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+			}
+		}
+
+		private void CalculateBalance_ЗамовленняПостачальникам()
+		{
+			const string registr_name = "ЗамовленняПостачальникам";
+
+			ApendLine($"[ {registr_name} ] ", "");
+			ApendLine("", " -> очистка ");
+
+			lock (lockobject)
+				CalculateBalancesInRegister_ЗамовленняПостачальникам.ВидалитиЗалишки();
+
+			List<DateTime> ListMonth;
+
+			lock (lockobject)
+				ListMonth = CalculateBalancesInRegister_ЗамовленняПостачальникам.ОтриматиСписокМісяців();
+
+			ApendLine("", " -> розрахунок ");
+
+			foreach (DateTime listMonthItem in ListMonth)
+			{
+				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+				lock (lockobject)
+					CalculateBalancesInRegister_ЗамовленняПостачальникам.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+			}
+		}
+
+		private void CalculateBalance_ВільніЗалишки()
+		{
+			const string registr_name = "ВільніЗалишки";
+
+			ApendLine($"[ {registr_name} ] ", "");
+			ApendLine("", " -> очистка ");
+
+			lock (lockobject)
+				CalculateBalancesInRegister_ВільніЗалишки.ВидалитиЗалишки();
+
+			List<DateTime> ListMonth;
+
+			lock (lockobject)
+				ListMonth = CalculateBalancesInRegister_ВільніЗалишки.ОтриматиСписокМісяців();
+
+			ApendLine("", " -> розрахунок ");
+
+			foreach (DateTime listMonthItem in ListMonth)
+			{
+				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+				lock (lockobject)
+					CalculateBalancesInRegister_ВільніЗалишки.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+			}
+		}
+
 		private void StartThreadCalculateBalance()
         {
 			CalculateBalance_ЗамовленняКлієнтів();
 			CalculateBalance_ТовариНаСкладах();
 			CalculateBalance_РозрахункиЗКлієнтами();
+			CalculateBalance_РозрахункиЗПостачальниками();
+			CalculateBalance_ЗамовленняПостачальникам();
+			CalculateBalance_ВільніЗалишки();
 		}
 
 		private void buttonCalculate_Click(object sender, EventArgs e)
