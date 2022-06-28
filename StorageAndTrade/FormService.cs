@@ -88,14 +88,17 @@ namespace StorageAndTrade
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ЗамовленняКлієнтів.ОтриматиСписокМісяців();
 
-			ApendLine("", " -> розрахунок ");
-
-			foreach (DateTime listMonthItem in ListMonth)
+			if (ListMonth.Count > 0)
 			{
-				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " -> розрахунок ");
 
-				lock (lockobject)
-					CalculateBalancesInRegister_ЗамовленняКлієнтів.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				foreach (DateTime listMonthItem in ListMonth)
+				{
+					ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+					lock (lockobject)
+						CalculateBalancesInRegister_ЗамовленняКлієнтів.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
 			}
 		}
 
@@ -114,14 +117,17 @@ namespace StorageAndTrade
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ТовариНаСкладах.ОтриматиСписокМісяців();
 
-			ApendLine("", " -> розрахунок ");
-
-			foreach (DateTime listMonthItem in ListMonth)
+			if (ListMonth.Count > 0)
 			{
-				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " -> розрахунок ");
 
-				lock (lockobject)
-					CalculateBalancesInRegister_ТовариНаСкладах.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				foreach (DateTime listMonthItem in ListMonth)
+				{
+					ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+					lock (lockobject)
+						CalculateBalancesInRegister_ТовариНаСкладах.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
 			}
 		}
 
@@ -140,14 +146,17 @@ namespace StorageAndTrade
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОтриматиСписокМісяців();
 
-			ApendLine("", " -> розрахунок ");
-
-			foreach (DateTime listMonthItem in ListMonth)
+			if (ListMonth.Count > 0)
 			{
-				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " -> розрахунок ");
 
-				lock (lockobject)
-					CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				foreach (DateTime listMonthItem in ListMonth)
+				{
+					ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+					lock (lockobject)
+						CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
 			}
 		}
 
@@ -166,14 +175,17 @@ namespace StorageAndTrade
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОтриматиСписокМісяців();
 
-			ApendLine("", " -> розрахунок ");
-
-			foreach (DateTime listMonthItem in ListMonth)
+			if (ListMonth.Count > 0)
 			{
-				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " -> розрахунок ");
 
-				lock (lockobject)
-					CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				foreach (DateTime listMonthItem in ListMonth)
+				{
+					ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+					lock (lockobject)
+						CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
 			}
 		}
 
@@ -192,14 +204,17 @@ namespace StorageAndTrade
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ЗамовленняПостачальникам.ОтриматиСписокМісяців();
 
-			ApendLine("", " -> розрахунок ");
-
-			foreach (DateTime listMonthItem in ListMonth)
+			if (ListMonth.Count > 0)
 			{
-				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " -> розрахунок ");
 
-				lock (lockobject)
-					CalculateBalancesInRegister_ЗамовленняПостачальникам.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				foreach (DateTime listMonthItem in ListMonth)
+				{
+					ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+					lock (lockobject)
+						CalculateBalancesInRegister_ЗамовленняПостачальникам.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
 			}
 		}
 
@@ -218,14 +233,17 @@ namespace StorageAndTrade
 			lock (lockobject)
 				ListMonth = CalculateBalancesInRegister_ВільніЗалишки.ОтриматиСписокМісяців();
 
-			ApendLine("", " -> розрахунок ");
-
-			foreach (DateTime listMonthItem in ListMonth)
+			if (ListMonth.Count > 0)
 			{
-				ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+				ApendLine("", " -> розрахунок ");
 
-				lock (lockobject)
-					CalculateBalancesInRegister_ВільніЗалишки.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				foreach (DateTime listMonthItem in ListMonth)
+				{
+					ApendLine("", " --> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+					lock (lockobject)
+						CalculateBalancesInRegister_ВільніЗалишки.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
 			}
 		}
 
