@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 28.06.2022 13:04:26
+ * Дата конфігурації: 28.06.2022 13:54:51
  *
  */
 
@@ -701,7 +701,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string TABLE = "tab_a74";
             
-            public const string period = "col_a7";
+            public const string Період = "col_a7";
             public const string Номенклатура = "col_a8";
             public const string ХарактеристикаНоменклатури = "col_a9";
             public const string Склад = "col_b1";
@@ -719,7 +719,7 @@ namespace StorageAndTrade_1_0.Константи
                     Record record = new Record();
                     record.UID = (Guid)fieldValue["uid"];
                     
-                    record.period = (fieldValue["col_a7"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a7"].ToString()) : DateTime.MinValue;
+                    record.Період = (fieldValue["col_a7"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a7"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a8"]);
                     record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a9"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_b1"]);
@@ -743,7 +743,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                    fieldValue.Add("col_a7", record.period);
+                    fieldValue.Add("col_a7", record.Період);
                     fieldValue.Add("col_a8", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_a9", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_b1", record.Склад.UnigueID.UGuid);
@@ -765,7 +765,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 public Record()
                 {
-                    period = DateTime.MinValue;
+                    Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
@@ -776,9 +776,9 @@ namespace StorageAndTrade_1_0.Константи
         
                 
                 public Record(
-                    DateTime?  _period = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _ВНаявності = 0, decimal _ДоВідвантаження = 0)
+                    DateTime?  _Період = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикаНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _ВНаявності = 0, decimal _ДоВідвантаження = 0)
                 {
-                    period = _period ?? DateTime.MinValue;
+                    Період = _Період ?? DateTime.MinValue;
                     Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                     ХарактеристикаНоменклатури = _ХарактеристикаНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = _Склад ?? new Довідники.Склади_Pointer();
@@ -786,7 +786,7 @@ namespace StorageAndTrade_1_0.Константи
                     ДоВідвантаження = _ДоВідвантаження;
                     
                 }
-                public DateTime period { get; set; }
+                public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
@@ -806,7 +806,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string TABLE = "tab_a73";
             
-            public const string period = "col_a1";
+            public const string Період = "col_a1";
             public const string Номенклатура = "col_a2";
             public const string ХарактеристикиНоменклатури = "col_a3";
             public const string Склад = "col_a4";
@@ -824,7 +824,7 @@ namespace StorageAndTrade_1_0.Константи
                     Record record = new Record();
                     record.UID = (Guid)fieldValue["uid"];
                     
-                    record.period = (fieldValue["col_a1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a1"].ToString()) : DateTime.MinValue;
+                    record.Період = (fieldValue["col_a1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a1"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
                     record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
@@ -848,7 +848,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                    fieldValue.Add("col_a1", record.period);
+                    fieldValue.Add("col_a1", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
@@ -870,7 +870,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 public Record()
                 {
-                    period = DateTime.MinValue;
+                    Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
@@ -881,9 +881,9 @@ namespace StorageAndTrade_1_0.Константи
         
                 
                 public Record(
-                    DateTime?  _period = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _ВНаявності = 0, decimal _ДоВідвантаження = 0)
+                    DateTime?  _Період = null, Довідники.Номенклатура_Pointer _Номенклатура = null, Довідники.ХарактеристикиНоменклатури_Pointer _ХарактеристикиНоменклатури = null, Довідники.Склади_Pointer _Склад = null, decimal _ВНаявності = 0, decimal _ДоВідвантаження = 0)
                 {
-                    period = _period ?? DateTime.MinValue;
+                    Період = _Період ?? DateTime.MinValue;
                     Номенклатура = _Номенклатура ?? new Довідники.Номенклатура_Pointer();
                     ХарактеристикиНоменклатури = _ХарактеристикиНоменклатури ?? new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = _Склад ?? new Довідники.Склади_Pointer();
@@ -891,7 +891,7 @@ namespace StorageAndTrade_1_0.Константи
                     ДоВідвантаження = _ДоВідвантаження;
                     
                 }
-                public DateTime period { get; set; }
+                public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }

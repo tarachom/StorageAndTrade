@@ -38,8 +38,17 @@ using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade_1_0.Service
-{ 
+{
     class CalculateBalancesInRegister
+    {
+        public static void ПідключитиДодаток_UUID_OSSP()
+        {
+            string query = "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+    }
+
+    class CalculateBalancesInRegister_ЗамовленняКлієнтів
     {
         /// <summary>
         /// Список місяців для яких є рухи по регістру
@@ -67,7 +76,7 @@ GROUP BY period_month
             return listRowDateTime;
         }
 
-        private static void ВидалитиЗалишкиЗаПеріод(DateTime month)
+        private static void ВидалитиЗалишкиЗаМісяць(DateTime month)
         {
             string query = $@"
 DELETE 
@@ -75,17 +84,6 @@ DELETE
 WHERE 
     {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.Період} = '{month}'
 ";
-            Console.WriteLine(query);
-
-            Config.Kernel.DataBase.ExecuteSQL(query);
-        }
-
-        private static void ПідключитиДодаток_UUID_OSSP()
-        {
-            string query = "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"";
-
-            Console.WriteLine(query);
-
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
 
@@ -93,11 +91,9 @@ WHERE
         /// Обчислити залишки за період
         /// </summary>
         /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
-        public static void ОбчислитиЗалишкиЗаПеріод(DateTime month)
+        public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
         {
-            ВидалитиЗалишкиЗаПеріод(month);
-
-            ПідключитиДодаток_UUID_OSSP();
+            ВидалитиЗалишкиЗаМісяць(month);
 
             //Заповнення таблиці
             string query = $@"
@@ -142,10 +138,102 @@ OR
         Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} ELSE 
        -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) != 0
 ";
-            Console.WriteLine(query);
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+    }
+
+    class CalculateBalancesInRegister_ТовариНаСкладах
+    {
+        /// <summary>
+        /// Список місяців для яких є рухи по регістру
+        /// </summary>
+        /// <returns>Список місяців типу 01.05.2022 00:00:00</returns>
+        public static List<DateTime> ОтриматиСписокМісяців()
+        {
+            string query = $@"
+SELECT
+    date_trunc('month', Рег_ТовариНаСкладах.period) as period_month
+FROM 
+    {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
+GROUP BY period_month
+";
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, null, out columnsName, out listRow);
+
+            List<DateTime> listRowDateTime = new List<DateTime>();
+            foreach (object[] dateTimeObject in listRow)
+                listRowDateTime.Add((DateTime)dateTimeObject[0]);
+
+            return listRowDateTime;
+        }
+
+        private static void ВидалитиЗалишкиЗаМісяць(DateTime month)
+        {
+            string query = $@"
+DELETE 
+    FROM {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.TABLE}
+WHERE 
+    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.Період} = '{month}'
+";
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
 
+        /// <summary>
+        /// Обчислити залишки за період
+        /// </summary>
+        /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
+        public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
+        {
+            ВидалитиЗалишкиЗаМісяць(month);
+
+            //Заповнення таблиці
+            string query = $@"
+INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.TABLE}
+(
+    uid,
+    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.Період},
+    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.Номенклатура},
+    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.ХарактеристикиНоменклатури},
+    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.Склад},
+    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.ВНаявності},
+    {ВіртуальніТаблиціРегістрівНакопичення.ТовариНаСкладах_Місяць_TablePart.ДоВідвантаження}
+)
+SELECT 
+    uuid_generate_v4(),
+    date_trunc('month', Рег_ТовариНаСкладах.period) as period_month,
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} AS Номенклатура, 
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} AS Склад,
+
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) AS ВНаявності,
+
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) AS ДоВідвантаження
+FROM 
+    {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
+WHERE
+    date_trunc('month', Рег_ТовариНаСкладах.period) = '{month}'
+GROUP BY 
+    period_month, Номенклатура, ХарактеристикаНоменклатури, Склад
+HAVING 
+
+   SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) != 0
+OR
+
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) != 0
+";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
     }
 }
 

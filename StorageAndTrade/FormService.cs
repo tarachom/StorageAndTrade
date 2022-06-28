@@ -36,17 +36,97 @@ using StorageAndTrade_1_0.Service;
 
 namespace StorageAndTrade
 {
-    public partial class FormService : Form
-    {
-        public FormService()
-        {
-            InitializeComponent();
-        }
+	public partial class FormService : Form
+	{
+		public FormService()
+		{
+			InitializeComponent();
+		}
 
-        private void buttonCalculate_Click(object sender, EventArgs e)
+		private object lockobject = new object();
+
+		private void ApendLine(string head, string bodySelect, string futer = "")
+		{
+			if (richTextBoxInfo.InvokeRequired)
+			{
+				richTextBoxInfo.Invoke(new Action<string, string, string>(ApendLine), head, bodySelect, futer);
+			}
+			else
+			{
+				richTextBoxInfo.AppendText(head);
+
+				if (!String.IsNullOrEmpty(bodySelect))
+				{
+					richTextBoxInfo.SelectionFont = new Font("Consolas"/*"Microsoft Sans Serif"*/, 10, FontStyle.Bold);
+					richTextBoxInfo.SelectionColor = Color.DarkBlue;
+					richTextBoxInfo.AppendText(bodySelect);
+				}
+
+				if (!String.IsNullOrEmpty(bodySelect))
+				{
+					richTextBoxInfo.SelectionFont = new Font("Consolas", 10);
+					richTextBoxInfo.SelectionColor = Color.Black;
+				}
+
+				richTextBoxInfo.AppendText(" " + futer + "\n");
+				richTextBoxInfo.ScrollToCaret();
+			}
+		}
+
+		private void StartThreadCalculateBalance_ЗамовленняКлієнтів()
+		{
+			const string registr_name = "ЗамовленняКлієнтів";
+
+			List<DateTime> ListMonth;
+
+			lock (lockobject)
+			{
+				ListMonth = CalculateBalancesInRegister_ЗамовленняКлієнтів.ОтриматиСписокМісяців();
+			}
+
+			foreach (DateTime listMonthItem in ListMonth)
+			{
+				ApendLine($"[ {registr_name} ] ", " -> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+				lock (lockobject)
+				{
+					CalculateBalancesInRegister_ЗамовленняКлієнтів.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
+			}
+		}
+
+		private void StartThreadCalculateBalance_ТовариНаСкладах()
+		{
+			const string registr_name = "ТовариНаСкладах";
+
+			List<DateTime> ListMonth;
+
+			lock (lockobject)
+			{
+				ListMonth = CalculateBalancesInRegister_ТовариНаСкладах.ОтриматиСписокМісяців();
+			}
+
+			foreach (DateTime listMonthItem in ListMonth)
+			{
+				ApendLine($"[ {registr_name} ] ", " -> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+				lock (lockobject)
+				{
+					CalculateBalancesInRegister_ТовариНаСкладах.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
+			}
+		}
+
+		private void buttonCalculate_Click(object sender, EventArgs e)
         {
-            //Thread node = new Thread(new ThreadStart(CalculateBalancesInRegister.Запит_ЗамовленняКлієнтів));
-        }
+			CalculateBalancesInRegister.ПідключитиДодаток_UUID_OSSP();
+
+			Thread thread_ЗамовленняКлієнтів = new Thread(new ThreadStart(StartThreadCalculateBalance_ЗамовленняКлієнтів));
+			thread_ЗамовленняКлієнтів.Start();
+
+			Thread thread_ТовариНаСкладах = new Thread(new ThreadStart(StartThreadCalculateBalance_ТовариНаСкладах));
+			thread_ТовариНаСкладах.Start();
+		}
 
 
     }

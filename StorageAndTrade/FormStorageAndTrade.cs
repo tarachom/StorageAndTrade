@@ -190,16 +190,6 @@ namespace StorageAndTrade
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<DateTime> listMonth = CalculateBalancesInRegister.ОтриматиСписокМісяців();
-
-            foreach (DateTime dt in listMonth)
-            {
-                Console.WriteLine(dt);
-
-                CalculateBalancesInRegister.ОбчислитиЗалишкиЗаПеріод(dt);
-                //break;
-            }
-
 
         }
 
@@ -235,8 +225,17 @@ namespace StorageAndTrade
             form_ЗамовленняПостачальникам_Звіт.Show();
         }
 
+
         #endregion
 
+        #region Сервіс
 
+        private void обчислитиЗалишкиПоРегістрахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormService formService = new FormService();
+            formService.Show();
+        }
+
+        #endregion
     }
 }
