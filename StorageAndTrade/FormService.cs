@@ -333,7 +333,7 @@ namespace StorageAndTrade
         {
 			buttonCalculate.Enabled = true;
 			buttonCancel.Enabled = false;
-			
+
 			cancel = true;
 		}
     }
