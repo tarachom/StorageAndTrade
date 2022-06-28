@@ -117,6 +117,28 @@ namespace StorageAndTrade
 			}
 		}
 
+		private void StartThreadCalculateBalance_РозрахункиЗКлієнтами()
+		{
+			const string registr_name = "РозрахункиЗКлієнтами";
+
+			List<DateTime> ListMonth;
+
+			lock (lockobject)
+			{
+				ListMonth = CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОтриматиСписокМісяців();
+			}
+
+			foreach (DateTime listMonthItem in ListMonth)
+			{
+				ApendLine($"[ {registr_name} ] ", " -> " + listMonthItem.ToString("dd.MM.yyyy"));
+
+				lock (lockobject)
+				{
+					CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+				}
+			}
+		}
+
 		private void buttonCalculate_Click(object sender, EventArgs e)
         {
 			CalculateBalancesInRegister.ПідключитиДодаток_UUID_OSSP();
@@ -126,6 +148,9 @@ namespace StorageAndTrade
 
 			Thread thread_ТовариНаСкладах = new Thread(new ThreadStart(StartThreadCalculateBalance_ТовариНаСкладах));
 			thread_ТовариНаСкладах.Start();
+
+			Thread thread_РозрахункиЗКлієнтами = new Thread(new ThreadStart(StartThreadCalculateBalance_РозрахункиЗКлієнтами));
+			thread_РозрахункиЗКлієнтами.Start();
 		}
 
 

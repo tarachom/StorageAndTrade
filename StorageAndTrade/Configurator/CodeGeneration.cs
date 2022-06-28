@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 28.06.2022 13:54:51
+ * Дата конфігурації: 28.06.2022 14:13:20
  *
  */
 
@@ -911,7 +911,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string TABLE = "tab_a75";
             
-            public const string period = "col_a6";
+            public const string Період = "col_a6";
             public const string Валюта = "col_a1";
             public const string Контрагент = "col_a2";
             public const string Сума = "col_a3";
@@ -927,7 +927,7 @@ namespace StorageAndTrade_1_0.Константи
                     Record record = new Record();
                     record.UID = (Guid)fieldValue["uid"];
                     
-                    record.period = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
+                    record.Період = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
                     record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a1"]);
                     record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a2"]);
                     record.Сума = (fieldValue["col_a3"] != DBNull.Value) ? (decimal)fieldValue["col_a3"] : 0;
@@ -949,7 +949,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                    fieldValue.Add("col_a6", record.period);
+                    fieldValue.Add("col_a6", record.Період);
                     fieldValue.Add("col_a1", record.Валюта.UnigueID.UGuid);
                     fieldValue.Add("col_a2", record.Контрагент.UnigueID.UGuid);
                     fieldValue.Add("col_a3", record.Сума);
@@ -969,7 +969,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 public Record()
                 {
-                    period = DateTime.MinValue;
+                    Період = DateTime.MinValue;
                     Валюта = new Довідники.Валюти_Pointer();
                     Контрагент = new Довідники.Контрагенти_Pointer();
                     Сума = 0;
@@ -978,15 +978,15 @@ namespace StorageAndTrade_1_0.Константи
         
                 
                 public Record(
-                    DateTime?  _period = null, Довідники.Валюти_Pointer _Валюта = null, Довідники.Контрагенти_Pointer _Контрагент = null, decimal _Сума = 0)
+                    DateTime?  _Період = null, Довідники.Валюти_Pointer _Валюта = null, Довідники.Контрагенти_Pointer _Контрагент = null, decimal _Сума = 0)
                 {
-                    period = _period ?? DateTime.MinValue;
+                    Період = _Період ?? DateTime.MinValue;
                     Валюта = _Валюта ?? new Довідники.Валюти_Pointer();
                     Контрагент = _Контрагент ?? new Довідники.Контрагенти_Pointer();
                     Сума = _Сума;
                     
                 }
-                public DateTime period { get; set; }
+                public DateTime Період { get; set; }
                 public Довідники.Валюти_Pointer Валюта { get; set; }
                 public Довідники.Контрагенти_Pointer Контрагент { get; set; }
                 public decimal Сума { get; set; }
@@ -1004,7 +1004,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string TABLE = "tab_a76";
             
-            public const string period = "col_b1";
+            public const string Період = "col_b1";
             public const string Валюта = "col_a1";
             public const string Контрагент = "col_a2";
             public const string Сума = "col_a6";
@@ -1020,7 +1020,7 @@ namespace StorageAndTrade_1_0.Константи
                     Record record = new Record();
                     record.UID = (Guid)fieldValue["uid"];
                     
-                    record.period = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
+                    record.Період = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
                     record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_a1"]);
                     record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a2"]);
                     record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
@@ -1042,7 +1042,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
-                    fieldValue.Add("col_b1", record.period);
+                    fieldValue.Add("col_b1", record.Період);
                     fieldValue.Add("col_a1", record.Валюта.UnigueID.UGuid);
                     fieldValue.Add("col_a2", record.Контрагент.UnigueID.UGuid);
                     fieldValue.Add("col_a6", record.Сума);
@@ -1062,7 +1062,7 @@ namespace StorageAndTrade_1_0.Константи
             {
                 public Record()
                 {
-                    period = DateTime.MinValue;
+                    Період = DateTime.MinValue;
                     Валюта = new Довідники.Валюти_Pointer();
                     Контрагент = new Довідники.Контрагенти_Pointer();
                     Сума = 0;
@@ -1071,15 +1071,15 @@ namespace StorageAndTrade_1_0.Константи
         
                 
                 public Record(
-                    DateTime?  _period = null, Довідники.Валюти_Pointer _Валюта = null, Довідники.Контрагенти_Pointer _Контрагент = null, decimal _Сума = 0)
+                    DateTime?  _Період = null, Довідники.Валюти_Pointer _Валюта = null, Довідники.Контрагенти_Pointer _Контрагент = null, decimal _Сума = 0)
                 {
-                    period = _period ?? DateTime.MinValue;
+                    Період = _Період ?? DateTime.MinValue;
                     Валюта = _Валюта ?? new Довідники.Валюти_Pointer();
                     Контрагент = _Контрагент ?? new Довідники.Контрагенти_Pointer();
                     Сума = _Сума;
                     
                 }
-                public DateTime period { get; set; }
+                public DateTime Період { get; set; }
                 public Довідники.Валюти_Pointer Валюта { get; set; }
                 public Довідники.Контрагенти_Pointer Контрагент { get; set; }
                 public decimal Сума { get; set; }

@@ -235,6 +235,88 @@ OR
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
     }
+
+    class CalculateBalancesInRegister_РозрахункиЗКлієнтами
+    {
+        /// <summary>
+        /// Список місяців для яких є рухи по регістру
+        /// </summary>
+        /// <returns>Список місяців типу 01.05.2022 00:00:00</returns>
+        public static List<DateTime> ОтриматиСписокМісяців()
+        {
+            string query = $@"
+SELECT
+    date_trunc('month', Рег_РозрахункиЗКлієнтами.period) as period_month
+FROM 
+    {РозрахункиЗКлієнтами_Const.TABLE} AS Рег_РозрахункиЗКлієнтами
+GROUP BY period_month
+";
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, null, out columnsName, out listRow);
+
+            List<DateTime> listRowDateTime = new List<DateTime>();
+            foreach (object[] dateTimeObject in listRow)
+                listRowDateTime.Add((DateTime)dateTimeObject[0]);
+
+            return listRowDateTime;
+        }
+
+        private static void ВидалитиЗалишкиЗаМісяць(DateTime month)
+        {
+            string query = $@"
+DELETE 
+    FROM {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE}
+WHERE 
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.Період} = '{month}'
+";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+
+        /// <summary>
+        /// Обчислити залишки за період
+        /// </summary>
+        /// <param name="month">Дата типу 01.05.2022 00:00:00</param>
+        public static void ОбчислитиЗалишкиЗаМісяць(DateTime month)
+        {
+            ВидалитиЗалишкиЗаМісяць(month);
+
+            //Заповнення таблиці
+            string query = $@"
+INSERT INTO {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE}
+(
+    uid,
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.Період},
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.Валюта},
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.Контрагент},
+    {ВіртуальніТаблиціРегістрівНакопичення.РозрахункиЗКлієнтами_Місяць_TablePart.Сума}
+)
+SELECT 
+    uuid_generate_v4(),
+    date_trunc('month', Рег_РозрахункиЗКлієнтами.period) as period_month,
+    Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} AS Валюта, 
+    Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} AS Контрагент,
+
+    SUM(CASE WHEN Рег_РозрахункиЗКлієнтами.income = true THEN 
+        Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} ELSE 
+       -Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) AS Сума
+FROM 
+    {РозрахункиЗКлієнтами_Const.TABLE} AS Рег_РозрахункиЗКлієнтами
+WHERE
+    date_trunc('month', Рег_РозрахункиЗКлієнтами.period) = '{month}'
+GROUP BY 
+    period_month, Валюта, Контрагент
+HAVING
+
+   SUM(CASE WHEN Рег_РозрахункиЗКлієнтами.income = true THEN 
+        Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} ELSE 
+       -Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) != 0
+";
+            Config.Kernel.DataBase.ExecuteSQL(query);
+        }
+    }
 }
 
 
