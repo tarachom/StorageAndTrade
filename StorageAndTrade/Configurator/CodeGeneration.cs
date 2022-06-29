@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 28.06.2022 14:48:20
+ * Дата конфігурації: 29.06.2022 18:07:30
  *
  */
 
@@ -2267,7 +2267,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] { "tab_a02" });
         }
         
         public Організації_Pointer GetDirectoryPointer()
@@ -2589,7 +2589,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Номенклатура_Pointer GetDirectoryPointer()
@@ -2752,7 +2752,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Виробники_Pointer GetDirectoryPointer()
@@ -2925,7 +2925,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public ВидиНоменклатури_Pointer GetDirectoryPointer()
@@ -3095,7 +3095,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public ПакуванняОдиниціВиміру_Pointer GetDirectoryPointer()
@@ -3252,7 +3252,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Валюти_Pointer GetDirectoryPointer()
@@ -3428,7 +3428,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] { "tab_a09" });
         }
         
         public Контрагенти_Pointer GetDirectoryPointer()
@@ -3732,7 +3732,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] { "tab_a11" });
         }
         
         public Склади_Pointer GetDirectoryPointer()
@@ -4011,7 +4011,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public ВидиЦін_Pointer GetDirectoryPointer()
@@ -4173,7 +4173,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public ВидиЦінПостачальників_Pointer GetDirectoryPointer()
@@ -4344,7 +4344,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] { "tab_a15" });
         }
         
         public Користувачі_Pointer GetDirectoryPointer()
@@ -4635,7 +4635,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] { "tab_a17" });
         }
         
         public ФізичніОсоби_Pointer GetDirectoryPointer()
@@ -4912,7 +4912,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public СтруктураПідприємства_Pointer GetDirectoryPointer()
@@ -5074,7 +5074,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public КраїниСвіту_Pointer GetDirectoryPointer()
@@ -5230,7 +5230,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Файли_Pointer GetDirectoryPointer()
@@ -5397,7 +5397,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public ХарактеристикиНоменклатури_Pointer GetDirectoryPointer()
@@ -5560,7 +5560,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             Номенклатура_Папки_Triggers.BeforeDelete(this);
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Номенклатура_Папки_Pointer GetDirectoryPointer()
@@ -5722,7 +5722,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             Контрагенти_Папки_Triggers.BeforeDelete(this);
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Контрагенти_Папки_Pointer GetDirectoryPointer()
@@ -5884,7 +5884,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             Склади_Папки_Triggers.BeforeDelete(this);
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Склади_Папки_Pointer GetDirectoryPointer()
@@ -6052,7 +6052,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public Каси_Pointer GetDirectoryPointer()
@@ -6275,7 +6275,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public БанківськіРахункиОрганізацій_Pointer GetDirectoryPointer()
@@ -6543,7 +6543,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public ДоговориКонтрагентів_Pointer GetDirectoryPointer()
@@ -6793,7 +6793,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] {  });
         }
         
         public БанківськіРахункиКонтрагентів_Pointer GetDirectoryPointer()
@@ -6982,7 +6982,7 @@ namespace StorageAndTrade_1_0.Довідники
         public void Delete()
         {
             
-			base.BaseDelete();
+			base.BaseDelete(new string[] { "tab_a46" });
         }
         
         public СтаттяРухуКоштів_Pointer GetDirectoryPointer()
@@ -7499,7 +7499,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    ЗамовленняПостачальнику_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a30" });
         }
         
         public ЗамовленняПостачальнику_Pointer GetDocumentPointer()
@@ -7965,7 +7965,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    ПоступленняТоварівТаПослуг_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a33" });
         }
         
         public ПоступленняТоварівТаПослуг_Pointer GetDocumentPointer()
@@ -8422,7 +8422,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    ЗамовленняКлієнта_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a35" });
         }
         
         public ЗамовленняКлієнта_Pointer GetDocumentPointer()
@@ -8880,7 +8880,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    РеалізаціяТоварівТаПослуг_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a37" });
         }
         
         public РеалізаціяТоварівТаПослуг_Pointer GetDocumentPointer()
@@ -9216,7 +9216,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a43" });
         }
         
         public ВстановленняЦінНоменклатури_Pointer GetDocumentPointer()
@@ -9545,7 +9545,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    ПрихіднийКасовийОрдер_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a47" });
         }
         
         public ПрихіднийКасовийОрдер_Pointer GetDocumentPointer()
@@ -9885,7 +9885,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    РозхіднийКасовийОрдер_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a49" });
         }
         
         public РозхіднийКасовийОрдер_Pointer GetDocumentPointer()
@@ -10246,7 +10246,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a50" });
         }
         
         public ПереміщенняТоварів_Pointer GetDocumentPointer()
@@ -10609,7 +10609,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    ПоверненняТоварівПостачальнику_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a52" });
         }
         
         public ПоверненняТоварівПостачальнику_Pointer GetDocumentPointer()
@@ -10976,7 +10976,7 @@ namespace StorageAndTrade_1_0.Документи
         public void Delete()
         {
 		    ПоверненняТоварівВідКлієнта_Triggers.BeforeDelete(this);
-            base.BaseDelete();
+            base.BaseDelete(new string[] { "tab_a54" });
         }
         
         public ПоверненняТоварівВідКлієнта_Pointer GetDocumentPointer()
