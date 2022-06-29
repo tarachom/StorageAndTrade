@@ -239,10 +239,10 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells["ID"].Value.ToString();
 
-                    Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-                    if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
+                    Документи.ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = new Документи.ЗамовленняПостачальнику_Objest();
+                    if (замовленняПостачальнику_Objest.Read(new UnigueID(uid)))
                     {
-						ЗамовленняКлієнта_Objest.Delete();
+						замовленняПостачальнику_Objest.Delete();
                     }
                     else
                     {

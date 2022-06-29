@@ -75,25 +75,22 @@ namespace StorageAndTrade
 			Query querySelect = ДокументОбєкт.Товари_TablePart.QuerySelect;
 
 			//JOIN 1
-			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Номенклатура"].Table;
-			string ParentField = JoinTable + "." + Довідники.Номенклатура_Const.Назва;
-
-			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "tovar_name"));
-			querySelect.Joins.Add(new Join(JoinTable, Документи.ПоверненняТоварівВідКлієнта_Товари_TablePart.Номенклатура, querySelect.Table));
+			querySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Довідники.Номенклатура_Const.TABLE + "." + Довідники.Номенклатура_Const.Назва, "tovar_name"));
+			querySelect.Joins.Add(
+				new Join(Довідники.Номенклатура_Const.TABLE, Документи.ПоверненняТоварівВідКлієнта_Товари_TablePart.Номенклатура, querySelect.Table));
 
 			//JOIN 2
-			JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
-			ParentField = JoinTable + "." + Довідники.ПакуванняОдиниціВиміру_Const.Назва;
-
-			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "pak_name"));
-			querySelect.Joins.Add(new Join(JoinTable, Документи.ПоверненняТоварівВідКлієнта_Товари_TablePart.Пакування, querySelect.Table));
+			querySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Довідники.ПакуванняОдиниціВиміру_Const.TABLE + "." + Довідники.ПакуванняОдиниціВиміру_Const.Назва, "pak_name"));
+			querySelect.Joins.Add(
+				new Join(Довідники.ПакуванняОдиниціВиміру_Const.TABLE, Документи.ПоверненняТоварівВідКлієнта_Товари_TablePart.Пакування, querySelect.Table));
 
 			//JOIN 3
-			JoinTable = Конфа.Config.Kernel.Conf.Directories["ХарактеристикиНоменклатури"].Table;
-			ParentField = JoinTable + "." + Довідники.ХарактеристикиНоменклатури_Const.Назва;
-
-			querySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "xar_name"));
-			querySelect.Joins.Add(new Join(JoinTable, Документи.ПоверненняТоварівВідКлієнта_Товари_TablePart.ХарактеристикаНоменклатури, querySelect.Table));
+			querySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Довідники.ХарактеристикиНоменклатури_Const.TABLE + "." + Довідники.ХарактеристикиНоменклатури_Const.Назва, "xar_name"));
+			querySelect.Joins.Add(
+				new Join(Довідники.ХарактеристикиНоменклатури_Const.TABLE, Документи.ПоверненняТоварівВідКлієнта_Товари_TablePart.ХарактеристикаНоменклатури, querySelect.Table));
 
 			//ORDER
 			querySelect.Order.Add(Документи.ПоверненняТоварівВідКлієнта_Товари_TablePart.НомерРядка, SelectOrder.ASC);
@@ -201,6 +198,7 @@ namespace StorageAndTrade
 					НоменклатураНазва = запис.НоменклатураНазва,
 					Характеристика = запис.Характеристика,
 					ХарактеристикаНазва = запис.ХарактеристикаНазва,
+					КількістьУпаковок = запис.КількістьУпаковок,
 					Пакування = запис.Пакування,
 					ПакуванняНазва = запис.ПакуванняНазва,
 					Кількість = запис.Кількість,
