@@ -218,32 +218,32 @@ namespace StorageAndTrade
 			Записи запис = tag.Value;
 			запис.Номенклатура.Init(new UnigueID(tag.Key));
 
-			Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
-			if (номенклатура_Objest != null)
-			{
-				запис.НоменклатураНазва = номенклатура_Objest.Назва;
-				запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
-			}
-			else
-			{
-				запис.НоменклатураНазва = "";
-				запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
-			}
+            Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
+            if (номенклатура_Objest != null)
+            {
+                запис.НоменклатураНазва = номенклатура_Objest.Назва;
+                запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
+            }
+            else
+            {
+                запис.НоменклатураНазва = "";
+                запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+            }
 
-			Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
-			if (пакуванняОдиниціВиміру_Objest != null)
-			{
-				запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
-				запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
-			}
-			else
-			{
-				запис.ПакуванняНазва = "";
-				запис.КількістьУпаковок = 1;
-			}
+            Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
+            if (пакуванняОдиниціВиміру_Objest != null)
+            {
+                запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
+                запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
+            }
+            else
+            {
+                запис.ПакуванняНазва = "";
+                запис.КількістьУпаковок = 1;
+            }
 
-			dataGridViewRecords.Refresh();
-		}
+            dataGridViewRecords.Refresh();
+        }
 
 		private void ToolStripTextBox_TextChanged(object sender, EventArgs e)
 		{
@@ -283,7 +283,7 @@ LIMIT 10
 				{
 					mas[counter] = new ToolStripMenuItem(row[1].ToString(), Properties.Resources.page_white_text, CopyMenuItem_ClickFind, "find");
 					mas[counter].Tag = new KeyValuePair<string, Записи>(row[0].ToString(), запис);
-
+					mas[counter].Name = findMenuItem.Name;
 					counter++;
 				}
 
@@ -312,6 +312,7 @@ LIMIT 10
 
 				ToolStripTextBox findToolStripTextBox = new ToolStripTextBox();
 				findToolStripTextBox.ToolTipText = "Пошук";
+				findToolStripTextBox.Name = columnName;
 				findToolStripTextBox.Size = new Size(300, 0);
 				findToolStripTextBox.Tag = RecordsBindingList[e.RowIndex];
 				findToolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
