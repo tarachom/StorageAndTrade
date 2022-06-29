@@ -119,6 +119,7 @@ namespace StorageAndTrade
 				if (DirectoryPointerItem != null)
 				{
 					DirectoryPointerItem = new Довідники.Валюти_Pointer(new UnigueID(Uid));
+					this.DialogResult = DialogResult.OK;
 					this.Close();
 				}
 				else

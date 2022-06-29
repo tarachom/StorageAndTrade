@@ -279,46 +279,51 @@ namespace StorageAndTrade
 					{
 						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
 						form_Номенклатура.DirectoryPointerItem = запис.Номенклатура;
-						form_Номенклатура.ShowDialog();
-
-						запис.Номенклатура = (Довідники.Номенклатура_Pointer)form_Номенклатура.DirectoryPointerItem;
-
-						Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
-						if (номенклатура_Objest != null)
-						{
-							запис.НоменклатураНазва = номенклатура_Objest.Назва;
-							запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
-						}
-						else
+						
+						DialogResult dialogResult = form_Номенклатура.ShowDialog();
+						if (dialogResult == DialogResult.OK)
                         {
-							запис.НоменклатураНазва = "";
-							запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
-						}
+							запис.Номенклатура = (Довідники.Номенклатура_Pointer)form_Номенклатура.DirectoryPointerItem;
 
-						Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
-						if (пакуванняОдиниціВиміру_Objest != null)
-						{
-							запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
-							запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
-						}
-                        else
-                        {
-							запис.ПакуванняНазва = "";
-							запис.КількістьУпаковок = 1;
+							Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
+							if (номенклатура_Objest != null)
+							{
+								запис.НоменклатураНазва = номенклатура_Objest.Назва;
+								запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
+							}
+							else
+							{
+								запис.НоменклатураНазва = "";
+								запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+							}
+
+							Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
+							if (пакуванняОдиниціВиміру_Objest != null)
+							{
+								запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
+								запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
+							}
+							else
+							{
+								запис.ПакуванняНазва = "";
+								запис.КількістьУпаковок = 1;
+							}
 						}
 
 						dataGridViewRecords.Refresh();
-
 						break;
 					}
 				case "ХарактеристикаНазва":
 					{
 						Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
 						form_ХарактеристикиНоменклатури.DirectoryPointerItem = запис.Характеристика;
-						form_ХарактеристикиНоменклатури.ShowDialog();
+						DialogResult dialogResult = form_ХарактеристикиНоменклатури.ShowDialog();
 
-						запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)form_ХарактеристикиНоменклатури.DirectoryPointerItem;
-						запис.ХарактеристикаНазва = запис.Характеристика.GetPresentation();
+						if (dialogResult == DialogResult.OK)
+						{
+							запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)form_ХарактеристикиНоменклатури.DirectoryPointerItem;
+							запис.ХарактеристикаНазва = запис.Характеристика.GetPresentation();
+						}
 
 						break;
 					}
@@ -326,10 +331,13 @@ namespace StorageAndTrade
 					{
 						Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
 						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = запис.Пакування;
-						form_ПакуванняОдиниціВиміру.ShowDialog();
+						DialogResult dialogResult = form_ПакуванняОдиниціВиміру.ShowDialog();
 
-						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
-						запис.ПакуванняНазва = запис.Пакування.GetPresentation();
+						if (dialogResult == DialogResult.OK)
+						{
+							запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
+							запис.ПакуванняНазва = запис.Пакування.GetPresentation();
+						}
 
 						break;
 					}
@@ -340,11 +348,6 @@ namespace StorageAndTrade
 
         #endregion
 
-        private void dataGridViewRecords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-			
-		}
-
         private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
 			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
@@ -353,14 +356,15 @@ namespace StorageAndTrade
 
 			if (columnName == "Кількість" || columnName == "Ціна")
             {
-				запис.Сума = запис.Кількість * запис.Ціна;
+				запис.Сума = Math.Round(запис.Кількість * запис.Ціна, 2);
 				dataGridViewRecords.Refresh();
-			}	
-		}
+			}
 
-        private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-			
+			if (columnName == "Сума" && запис.Сума != 0 && запис.Кількість != 0)
+			{
+				запис.Ціна = Math.Round(запис.Сума / запис.Кількість, 2);
+				dataGridViewRecords.Refresh();
+			}
 		}
 
 		private void toolStripButtonAdd_Click(object sender, EventArgs e)

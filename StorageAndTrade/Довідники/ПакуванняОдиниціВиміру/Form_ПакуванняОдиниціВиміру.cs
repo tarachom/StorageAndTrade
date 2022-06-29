@@ -128,6 +128,7 @@ namespace StorageAndTrade
 				if (DirectoryPointerItem != null)
 				{
 					DirectoryPointerItem = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(Uid));
+					this.DialogResult = DialogResult.OK;
 					this.Close();
 				}
 				else
