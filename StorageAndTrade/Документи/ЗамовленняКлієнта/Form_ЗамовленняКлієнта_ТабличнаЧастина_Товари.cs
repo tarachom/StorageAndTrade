@@ -212,25 +212,83 @@ namespace StorageAndTrade
 
 		private void CopyMenuItem_ClickFind(object sender, EventArgs e)
 		{
-			Console.WriteLine("Find menu");
+			ToolStripMenuItem findMenuItem = (ToolStripMenuItem)sender;
+			KeyValuePair<string, Записи> tag = (KeyValuePair<string, Записи>)findMenuItem.Tag;
+
+			Записи запис = tag.Value;
+			запис.Номенклатура.Init(new UnigueID(tag.Key));
+
+			Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
+			if (номенклатура_Objest != null)
+			{
+				запис.НоменклатураНазва = номенклатура_Objest.Назва;
+				запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
+			}
+			else
+			{
+				запис.НоменклатураНазва = "";
+				запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+			}
+
+			Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
+			if (пакуванняОдиниціВиміру_Objest != null)
+			{
+				запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
+				запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
+			}
+			else
+			{
+				запис.ПакуванняНазва = "";
+				запис.КількістьУпаковок = 1;
+			}
+
+			dataGridViewRecords.Refresh();
 		}
 
 		private void ToolStripTextBox_TextChanged(object sender, EventArgs e)
 		{
 			ToolStripTextBox findMenuItem = (ToolStripTextBox)sender;
-			Console.WriteLine(findMenuItem.Text);
+			Записи запис = (Записи)findMenuItem.Tag;
 
-			foreach(ToolStripItem toolStripItem in contextMenuStrip1.Items.Find("find", false))
+			foreach (ToolStripItem toolStripItem in contextMenuStrip1.Items.Find("find", false))
 				contextMenuStrip1.Items.Remove(toolStripItem);
 
-			ToolStripItem[] mas = new ToolStripItem[10];
+			string query = $@"
+SELECT 
+    Номенклатура.uid AS Номенклатура,
+    Номенклатура.{Довідники.Номенклатура_Const.Назва} AS НоменклатураНазва
+FROM
+    {Довідники.Номенклатура_Const.TABLE} AS Номенклатура
+WHERE
+    LOWER(Номенклатура.{Довідники.Номенклатура_Const.Назва}) LIKE @like_param
+ORDER BY НоменклатураНазва
+LIMIT 10
+";
 
-			for (int i = 0; i < 10; i++)
+			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("like_param", findMenuItem.Text.ToLower() + "%");
+
+			string[] columnsName;
+			List<object[]> listRow;
+
+			Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+			if (listRow.Count > 0)
 			{
-				mas[i] = new ToolStripMenuItem("Варіанти: " + findMenuItem.Text, Properties.Resources.page_white_text, CopyMenuItem_ClickFind, "find");
-			}
+				ToolStripItem[] mas = new ToolStripItem[listRow.Count];
 
-			contextMenuStrip1.Items.AddRange(mas);
+				int counter = 0;
+
+				foreach (object[] row in listRow)
+				{
+					mas[counter] = new ToolStripMenuItem(row[1].ToString(), Properties.Resources.page_white_text, CopyMenuItem_ClickFind, "find");
+					mas[counter].Tag = new KeyValuePair<string, Записи>(row[0].ToString(), запис);
+
+					counter++;
+				}
+
+				contextMenuStrip1.Items.AddRange(mas);
+			}
 		}
 
         #region Контекстне меню вибору із списку
@@ -255,6 +313,7 @@ namespace StorageAndTrade
 				ToolStripTextBox findToolStripTextBox = new ToolStripTextBox();
 				findToolStripTextBox.ToolTipText = "Пошук";
 				findToolStripTextBox.Size = new Size(300, 0);
+				findToolStripTextBox.Tag = RecordsBindingList[e.RowIndex];
 				findToolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
 				contextMenuStrip1.Items.Add(findToolStripTextBox);
 
