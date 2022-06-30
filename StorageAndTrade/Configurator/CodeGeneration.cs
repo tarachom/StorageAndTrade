@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 30.06.2022 14:44:50
+ * Дата конфігурації: 30.06.2022 14:52:43
  *
  */
 
@@ -7464,16 +7464,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public ЗамовленняПостачальнику_Objest Copy()
@@ -7938,16 +7934,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public ПоступленняТоварівТаПослуг_Objest Copy()
@@ -8412,18 +8404,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            result = ЗамовленняКлієнта_SpendTheDocument.Spend(this);
-            BaseSpend(result);
+            BaseSpend(ЗамовленняКлієнта_SpendTheDocument.Spend(this));
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            result = ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this);
-            BaseSpend(result);
+            BaseSpend(ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this));
 		}
 
 		public ЗамовленняКлієнта_Objest Copy()
@@ -8884,16 +8870,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public РеалізаціяТоварівТаПослуг_Objest Copy()
@@ -9260,16 +9242,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public ВстановленняЦінНоменклатури_Objest Copy()
@@ -9592,16 +9570,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public ПрихіднийКасовийОрдер_Objest Copy()
@@ -9946,16 +9920,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public РозхіднийКасовийОрдер_Objest Copy()
@@ -10318,16 +10288,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public ПереміщенняТоварів_Objest Copy()
@@ -10694,16 +10660,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public ПоверненняТоварівПостачальнику_Objest Copy()
@@ -11078,16 +11040,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public ПоверненняТоварівВідКлієнта_Objest Copy()
@@ -11403,16 +11361,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            bool result = false;
-			
-            BaseSpend(result);
+            BaseSpend(false);
 		}
 
 		public кк_Objest Copy()

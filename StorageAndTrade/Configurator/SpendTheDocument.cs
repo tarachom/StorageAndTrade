@@ -39,14 +39,14 @@ namespace StorageAndTrade_1_0.Документи
 {
     class ЗамовленняКлієнта_SpendTheDocument
     {
-        public static void Spend(ЗамовленняКлієнта_Objest ДокументОбєкт)
+        public static bool Spend(ЗамовленняКлієнта_Objest ДокументОбєкт)
         {
-
+            return false;
         }
 
-        public static void ClearSpend(ЗамовленняКлієнта_Objest ДокументОбєкт)
+        public static bool ClearSpend(ЗамовленняКлієнта_Objest ДокументОбєкт)
         {
-
+            return false;
         }
     }
 }
