@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 30.06.2022 14:52:43
+ * Дата конфігурації: 30.06.2022 14:59:49
  *
  */
 
@@ -8409,7 +8409,8 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this));
+            ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false);
 		}
 
 		public ЗамовленняКлієнта_Objest Copy()
