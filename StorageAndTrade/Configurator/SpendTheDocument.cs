@@ -41,8 +41,6 @@ namespace StorageAndTrade_1_0.Документи
     {
         public static bool Spend(ЗамовленняКлієнта_Objest ДокументОбєкт)
         {
-			ClearSpend(ДокументОбєкт);
-
 			#region Рух по регістрах
 
 			//

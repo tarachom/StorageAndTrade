@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>30.06.2022 15:30:24</DateTimeSave>
+  <DateTimeSave>30.06.2022 16:04:06</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -4518,15 +4518,6 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_d2</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_b2</NameInTable>
           <Type>datetime</Type>
@@ -6812,53 +6803,6 @@
         </BeforeSave>
         <AfterSave>ПоверненняТоварівВідКлієнта_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПоверненняТоварівВідКлієнта_Triggers.BeforeDelete</BeforeDelete>
-      </TriggerFunctions>
-      <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
-      </SpendFunctions>
-    </Document>
-    <Document>
-      <Name>кк</Name>
-      <Table>tab_a78</Table>
-      <Desc>
-      </Desc>
-      <Fields>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>col_a4</NameInTable>
-          <Type>string</Type>
-          <Desc>Назва</Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>col_a5</NameInTable>
-          <Type>datetime</Type>
-          <Desc>ДатаДок</Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>col_a6</NameInTable>
-          <Type>integer</Type>
-          <Desc>НомерДок</Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-      </Fields>
-      <TabularParts />
-      <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
         <Spend>

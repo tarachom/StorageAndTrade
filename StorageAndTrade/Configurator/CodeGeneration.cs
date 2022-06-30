@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 30.06.2022 15:30:24
+ * Дата конфігурації: 30.06.2022 16:04:06
  *
  */
 
@@ -7464,16 +7464,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public ЗамовленняПостачальнику_Objest Copy()
@@ -7938,16 +7934,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public ПоступленняТоварівТаПослуг_Objest Copy()
@@ -8262,7 +8254,6 @@ namespace StorageAndTrade_1_0.Документи
         public const string TABLE = "tab_a34";
         
         public const string Назва = "col_d1";
-        public const string Проведений = "col_d2";
         public const string ДатаДок = "col_b2";
         public const string НомерДок = "col_b3";
         public const string Контрагент = "col_b4";
@@ -8296,10 +8287,9 @@ namespace StorageAndTrade_1_0.Документи
     public class ЗамовленняКлієнта_Objest : DocumentObject
     {
         public ЗамовленняКлієнта_Objest() : base(Config.Kernel, "tab_a34",
-             new string[] { "col_d1", "col_d2", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_c1" }) 
+             new string[] { "col_d1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_c1" }) 
         {
             Назва = "";
-            Проведений = false;
             ДатаДок = DateTime.MinValue;
             НомерДок = "";
             Контрагент = new Довідники.Контрагенти_Pointer();
@@ -8338,7 +8328,6 @@ namespace StorageAndTrade_1_0.Документи
             if (BaseRead(uid))
             {
                 Назва = base.FieldValue["col_d1"].ToString();
-                Проведений = (base.FieldValue["col_d2"] != DBNull.Value) ? bool.Parse(base.FieldValue["col_d2"].ToString()) : false;
                 ДатаДок = (base.FieldValue["col_b2"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_b2"].ToString()) : DateTime.MinValue;
                 НомерДок = base.FieldValue["col_b3"].ToString();
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_b4"]);
@@ -8377,7 +8366,6 @@ namespace StorageAndTrade_1_0.Документи
         public void Save()
         {
             base.FieldValue["col_d1"] = Назва;
-            base.FieldValue["col_d2"] = Проведений;
             base.FieldValue["col_b2"] = ДатаДок;
             base.FieldValue["col_b3"] = НомерДок;
             base.FieldValue["col_b4"] = Контрагент.UnigueID.UGuid;
@@ -8412,16 +8400,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(ЗамовленняКлієнта_SpendTheDocument.Spend(this)); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(ЗамовленняКлієнта_SpendTheDocument.Spend(this));
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this); BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this); BaseSpend(false);
 		}
 
 		public ЗамовленняКлієнта_Objest Copy()
@@ -8429,7 +8413,6 @@ namespace StorageAndTrade_1_0.Документи
             ЗамовленняКлієнта_Objest copy = new ЗамовленняКлієнта_Objest();
 			copy.New();
             copy.Назва = Назва;
-			copy.Проведений = Проведений;
 			copy.ДатаДок = ДатаДок;
 			copy.НомерДок = НомерДок;
 			copy.Контрагент = Контрагент;
@@ -8474,7 +8457,6 @@ namespace StorageAndTrade_1_0.Документи
         }
         
         public string Назва { get; set; }
-        public bool Проведений { get; set; }
         public DateTime ДатаДок { get; set; }
         public string НомерДок { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
@@ -8882,16 +8864,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public РеалізаціяТоварівТаПослуг_Objest Copy()
@@ -9258,16 +9236,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public ВстановленняЦінНоменклатури_Objest Copy()
@@ -9590,16 +9564,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public ПрихіднийКасовийОрдер_Objest Copy()
@@ -9944,16 +9914,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public РозхіднийКасовийОрдер_Objest Copy()
@@ -10316,16 +10282,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public ПереміщенняТоварів_Objest Copy()
@@ -10692,16 +10654,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public ПоверненняТоварівПостачальнику_Objest Copy()
@@ -11076,16 +11034,12 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
+            BaseSpend(false);
 		}
 
 		public ПоверненняТоварівВідКлієнта_Objest Copy()
@@ -11347,149 +11301,6 @@ namespace StorageAndTrade_1_0.Документи
             
         }
     }
-      
-    
-    #endregion
-    
-    #region DOCUMENT "кк"
-    
-    public static class кк_Const
-    {
-        public const string TABLE = "tab_a78";
-        
-        public const string Назва = "col_a4";
-        public const string ДатаДок = "col_a5";
-        public const string НомерДок = "col_a6";
-    }
-	
-    
-    public class кк_Objest : DocumentObject
-    {
-        public кк_Objest() : base(Config.Kernel, "tab_a78",
-             new string[] { "col_a4", "col_a5", "col_a6" }) 
-        {
-            Назва = "";
-            ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
-            
-        }
-        
-        public bool Read(UnigueID uid)
-        {
-            if (BaseRead(uid))
-            {
-                Назва = base.FieldValue["col_a4"].ToString();
-                ДатаДок = (base.FieldValue["col_a5"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_a5"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_a6"] != DBNull.Value) ? (int)base.FieldValue["col_a6"] : 0;
-                
-                BaseClear();
-                return true;
-            }
-            else
-                return false;
-        }
-        
-        public void Save()
-        {
-            base.FieldValue["col_a4"] = Назва;
-            base.FieldValue["col_a5"] = ДатаДок;
-            base.FieldValue["col_a6"] = НомерДок;
-            
-            BaseSave();
-			
-		}
-
-		public void SpendTheDocument()
-		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
-		}
-
-		public void ClearSpendTheDocument()
-		{
-            BaseBeginTransaction();
-            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
-            BaseCommitTransaction();
-		}
-
-		public кк_Objest Copy()
-        {
-            кк_Objest copy = new кк_Objest();
-			copy.New();
-            copy.Назва = Назва;
-			copy.ДатаДок = ДатаДок;
-			copy.НомерДок = НомерДок;
-			
-			return copy;
-        }
-
-        public void Delete()
-        {
-		    
-            base.BaseDelete(new string[] {  });
-        }
-        
-        public кк_Pointer GetDocumentPointer()
-        {
-            кк_Pointer directoryPointer = new кк_Pointer(UnigueID.UGuid);
-            return directoryPointer;
-        }
-        
-        public string Назва { get; set; }
-        public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
-        
-    }
-    
-    
-    public class кк_Pointer : DocumentPointer
-    {
-        public кк_Pointer(object uid = null) : base(Config.Kernel, "tab_a78")
-        {
-            base.Init(new UnigueID(uid), null);
-        }
-        
-        public кк_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a78")
-        {
-            base.Init(uid, fields);
-        }
-		
-		public string GetPresentation()
-        {
-		    return base.BasePresentation(
-				new string[] {  }
-			);
-        }
-		
-        public кк_Pointer GetEmptyPointer()
-        {
-            return new кк_Pointer();
-        }
-		
-        public кк_Objest GetDocumentObject(bool readAllTablePart = false)
-        {
-            кк_Objest ккObjestItem = new кк_Objest();
-            ккObjestItem.Read(base.UnigueID);
-			
-            return ккObjestItem;
-        }
-    }
-    
-    
-    public class кк_Select : DocumentSelect, IDisposable
-    {		
-        public кк_Select() : base(Config.Kernel, "tab_a78") { }
-        
-        public bool Select() { return base.BaseSelect(); }
-        
-        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
-        
-        public bool MoveNext() { if (MoveToPosition()) { Current = new кк_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
-        
-        public кк_Pointer Current { get; private set; }
-    }
-    
       
     
     #endregion

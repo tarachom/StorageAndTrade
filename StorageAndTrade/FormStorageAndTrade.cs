@@ -191,19 +191,7 @@ namespace StorageAndTrade
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Документи.кк_Objest кк_Objest = new Документи.кк_Objest();
-            //кк_Objest.New();
-            //кк_Objest.Save();
-            //кк_Objest.SpendTheDocument();
 
-            Документи.кк_Select кк_Select = new Документи.кк_Select();
-            if (кк_Select.SelectSingle())
-            {
-                Документи.кк_Objest кк_Objest = кк_Select.Current.GetDocumentObject();
-                Console.WriteLine(кк_Objest.Spend);
-
-                кк_Objest.ClearSpendTheDocument();
-            }
             
         }
 

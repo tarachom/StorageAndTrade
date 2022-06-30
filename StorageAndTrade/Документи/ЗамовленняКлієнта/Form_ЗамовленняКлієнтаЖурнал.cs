@@ -90,7 +90,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняКлієнта_Select замовленняКлієнта_Select = new Документи.ЗамовленняКлієнта_Select();
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Проведений);
+			замовленняКлієнта_Select.QuerySelect.Field.Add("spend");
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Назва);			
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.НомерДок);
 			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.ДатаДок);
@@ -119,7 +119,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.ЗамовленняКлієнта_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняКлієнта_Const.СумаДокументу], 2),
-					Проведений = (bool)cur.Fields[Документи.ЗамовленняКлієнта_Const.Проведений]
+					Проведений = (bool)cur.Fields["spend"]
 				});
 
 				if (DocumentPointerItem != null && selectRow == 0) 
@@ -210,7 +210,6 @@ namespace StorageAndTrade
 						замовленняКлієнта_Objest_Новий.Назва += " *";
 						замовленняКлієнта_Objest_Новий.ДатаДок = DateTime.Now;
 						замовленняКлієнта_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ЗамовленняКлієнта_Const).ToString("D8");
-						замовленняКлієнта_Objest_Новий.Проведений = false;
 
 						//Зчитати та скопіювати табличну частину Товари
 						замовленняКлієнта_Objest.Товари_TablePart.Read();
@@ -279,8 +278,13 @@ namespace StorageAndTrade
 					Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
 					Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
 
-					замовленняКлієнта_Objest.Проведений = spend;
-					замовленняКлієнта_Objest.Save();
+					//Очищення регістрів
+					замовленняКлієнта_Objest.ClearSpendTheDocument();
+
+					if (spend)
+						//Проведення
+						замовленняКлієнта_Objest.SpendTheDocument();
+						
 				}
 
 				LoadRecords();

@@ -206,7 +206,7 @@ namespace StorageAndTrade_1_0.Документи
 		/// <param name="ДокументОбєкт"></param>
 		public static void AfterRecording(ЗамовленняКлієнта_Objest ДокументОбєкт)
 		{
-
+			
 		}
 
 		/// <summary>
