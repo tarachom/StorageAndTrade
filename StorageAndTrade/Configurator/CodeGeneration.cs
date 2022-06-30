@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 30.06.2022 14:59:49
+ * Дата конфігурації: 30.06.2022 15:30:24
  *
  */
 
@@ -7464,12 +7464,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ЗамовленняПостачальнику_Objest Copy()
@@ -7934,12 +7938,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ПоступленняТоварівТаПослуг_Objest Copy()
@@ -8404,13 +8412,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(ЗамовленняКлієнта_SpendTheDocument.Spend(this));
+            BaseBeginTransaction();
+            try { BaseSpend(ЗамовленняКлієнта_SpendTheDocument.Spend(this)); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this);
-			BaseSpend(false);
+            BaseBeginTransaction();
+            try { ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this); BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ЗамовленняКлієнта_Objest Copy()
@@ -8871,12 +8882,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public РеалізаціяТоварівТаПослуг_Objest Copy()
@@ -9243,12 +9258,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ВстановленняЦінНоменклатури_Objest Copy()
@@ -9571,12 +9590,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ПрихіднийКасовийОрдер_Objest Copy()
@@ -9921,12 +9944,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public РозхіднийКасовийОрдер_Objest Copy()
@@ -10289,12 +10316,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ПереміщенняТоварів_Objest Copy()
@@ -10661,12 +10692,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ПоверненняТоварівПостачальнику_Objest Copy()
@@ -11041,12 +11076,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public ПоверненняТоварівВідКлієнта_Objest Copy()
@@ -11362,12 +11401,16 @@ namespace StorageAndTrade_1_0.Документи
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseBeginTransaction();
+            try { BaseSpend(false); } catch { BaseRollbackTransaction(); return; }
+            BaseCommitTransaction();
 		}
 
 		public кк_Objest Copy()

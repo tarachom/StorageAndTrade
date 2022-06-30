@@ -160,15 +160,7 @@ namespace StorageAndTrade
 					return;
 				}
 
-				//try
-				//            {
-				//	замовленняКлієнта_Objest.Spend();
-				//}
-				//catch (Exception exp)
-				//{
-				//	MessageBox.Show(exp.Message);
-				//	return;
-				//}
+				замовленняКлієнта_Objest.SpendTheDocument();
 
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();
