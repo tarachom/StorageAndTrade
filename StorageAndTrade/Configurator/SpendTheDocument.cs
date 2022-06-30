@@ -254,17 +254,24 @@ namespace StorageAndTrade_1_0.Документи
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record();
-				замовленняПостачальникам_RecordsSet.Records.Add(record);
+				//Якщо заданий документ замовлення
+				if (!Товари_Record.ЗамовленняПостачальнику.IsEmpty())
+                {
+					//Документи.ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest =
+					//Товари_Record.ЗамовленняПостачальнику.GetDocumentObject();
 
-				record.Income = false; // -
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+					РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record();
+					замовленняПостачальникам_RecordsSet.Records.Add(record);
 
-				record.ЗамовленняПостачальнику = record.ЗамовленняПостачальнику;
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.Замовлено = Товари_Record.Кількість;
+					record.Income = false; // -
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.ЗамовленняПостачальнику = record.ЗамовленняПостачальнику;
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Склад = ДокументОбєкт.Склад;
+					record.Замовлено = Товари_Record.Кількість;
+				}
 			}
 
 			замовленняПостачальникам_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
@@ -277,16 +284,25 @@ namespace StorageAndTrade_1_0.Документи
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
-				товариНаСкладах_RecordsSet.Records.Add(record);
+				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
 
-				record.Income = true; // + 
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+				//Товар
+				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					//Якщо склад вказаний в табличні частині, береться цей склад, інаше склад береться з шапки
+					Довідники.Склади_Pointer СкладПоступленняТовару = Товари_Record.Склад.IsEmpty() ? ДокументОбєкт.Склад : Товари_Record.Склад;
 
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.ВНаявності = Товари_Record.Кількість;
+					РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+					товариНаСкладах_RecordsSet.Records.Add(record);
+
+					record.Income = true; // + 
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Склад = СкладПоступленняТовару;
+					record.ВНаявності = Товари_Record.Кількість;
+				}				
 			}
 
 			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
@@ -299,16 +315,22 @@ namespace StorageAndTrade_1_0.Документи
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
-				вільніЗалишки_RecordsSet.Records.Add(record);
+				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
 
-				record.Income = true; // +
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+				//Товар
+				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+					вільніЗалишки_RecordsSet.Records.Add(record);
 
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.ВНаявності = Товари_Record.Кількість;
+					record.Income = true; // +
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Склад = ДокументОбєкт.Склад;
+					record.ВНаявності = Товари_Record.Кількість;
+				}
 			}
 
 			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
@@ -321,16 +343,22 @@ namespace StorageAndTrade_1_0.Документи
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ТовариДоПоступлення_RecordsSet.Record record = new РегістриНакопичення.ТовариДоПоступлення_RecordsSet.Record();
-				товариДоПоступлення_RecordsSet.Records.Add(record);
+				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
 
-				record.Income = false; // -
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+				//Товар
+				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					РегістриНакопичення.ТовариДоПоступлення_RecordsSet.Record record = new РегістриНакопичення.ТовариДоПоступлення_RecordsSet.Record();
+					товариДоПоступлення_RecordsSet.Records.Add(record);
 
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.ДоПоступлення = Товари_Record.Кількість;
+					record.Income = false; // -
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Склад = ДокументОбєкт.Склад;
+					record.ДоПоступлення = Товари_Record.Кількість;
+				}
 			}
 
 			товариДоПоступлення_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
