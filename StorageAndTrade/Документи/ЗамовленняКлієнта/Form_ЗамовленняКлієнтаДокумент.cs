@@ -149,16 +149,26 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 					замовленняКлієнта_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					замовленняКлієнта_Objest.Назва = $"Замовлення клієнта №{замовленняКлієнта_Objest.НомерДок} від {замовленняКлієнта_Objest.ДатаДок.ToShortDateString()}";
-					замовленняКлієнта_Objest.Проведений = true;
+					//замовленняКлієнта_Objest.Проведений = true;
 
-					ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 					замовленняКлієнта_Objest.Save();
+					ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 				}
 				catch (Exception exp)
 				{
 					MessageBox.Show(exp.Message);
 					return;
 				}
+
+				//try
+				//            {
+				//	замовленняКлієнта_Objest.Spend();
+				//}
+				//catch (Exception exp)
+				//{
+				//	MessageBox.Show(exp.Message);
+				//	return;
+				//}
 
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 29.06.2022 18:07:30
+ * Дата конфігурації: 30.06.2022 14:44:50
  *
  */
 
@@ -7460,9 +7460,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			ЗамовленняПостачальнику_Triggers.AfterRecording(this);
-        }
+		}
 
-        public ЗамовленняПостачальнику_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public ЗамовленняПостачальнику_Objest Copy()
         {
             ЗамовленняПостачальнику_Objest copy = new ЗамовленняПостачальнику_Objest();
 			copy.New();
@@ -7920,9 +7934,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			ПоступленняТоварівТаПослуг_Triggers.AfterRecording(this);
-        }
+		}
 
-        public ПоступленняТоварівТаПослуг_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public ПоступленняТоварівТаПослуг_Objest Copy()
         {
             ПоступленняТоварівТаПослуг_Objest copy = new ПоступленняТоварівТаПослуг_Objest();
 			copy.New();
@@ -8380,9 +8408,25 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			ЗамовленняКлієнта_Triggers.AfterRecording(this);
-        }
+		}
 
-        public ЗамовленняКлієнта_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            result = ЗамовленняКлієнта_SpendTheDocument.Spend(this);
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            result = ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this);
+            BaseSpend(result);
+		}
+
+		public ЗамовленняКлієнта_Objest Copy()
         {
             ЗамовленняКлієнта_Objest copy = new ЗамовленняКлієнта_Objest();
 			copy.New();
@@ -8836,9 +8880,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			РеалізаціяТоварівТаПослуг_Triggers.AfterRecording(this);
-        }
+		}
 
-        public РеалізаціяТоварівТаПослуг_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public РеалізаціяТоварівТаПослуг_Objest Copy()
         {
             РеалізаціяТоварівТаПослуг_Objest copy = new РеалізаціяТоварівТаПослуг_Objest();
 			copy.New();
@@ -9198,9 +9256,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			
-        }
+		}
 
-        public ВстановленняЦінНоменклатури_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public ВстановленняЦінНоменклатури_Objest Copy()
         {
             ВстановленняЦінНоменклатури_Objest copy = new ВстановленняЦінНоменклатури_Objest();
 			copy.New();
@@ -9516,9 +9588,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			ПрихіднийКасовийОрдер_Triggers.AfterRecording(this);
-        }
+		}
 
-        public ПрихіднийКасовийОрдер_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public ПрихіднийКасовийОрдер_Objest Copy()
         {
             ПрихіднийКасовийОрдер_Objest copy = new ПрихіднийКасовийОрдер_Objest();
 			copy.New();
@@ -9856,9 +9942,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			РозхіднийКасовийОрдер_Triggers.AfterRecording(this);
-        }
+		}
 
-        public РозхіднийКасовийОрдер_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public РозхіднийКасовийОрдер_Objest Copy()
         {
             РозхіднийКасовийОрдер_Objest copy = new РозхіднийКасовийОрдер_Objest();
 			copy.New();
@@ -10214,9 +10314,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			
-        }
+		}
 
-        public ПереміщенняТоварів_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public ПереміщенняТоварів_Objest Copy()
         {
             ПереміщенняТоварів_Objest copy = new ПереміщенняТоварів_Objest();
 			copy.New();
@@ -10576,9 +10690,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			ПоверненняТоварівПостачальнику_Triggers.AfterRecording(this);
-        }
+		}
 
-        public ПоверненняТоварівПостачальнику_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public ПоверненняТоварівПостачальнику_Objest Copy()
         {
             ПоверненняТоварівПостачальнику_Objest copy = new ПоверненняТоварівПостачальнику_Objest();
 			copy.New();
@@ -10946,9 +11074,23 @@ namespace StorageAndTrade_1_0.Документи
             
             BaseSave();
 			ПоверненняТоварівВідКлієнта_Triggers.AfterRecording(this);
-        }
+		}
 
-        public ПоверненняТоварівВідКлієнта_Objest Copy()
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public ПоверненняТоварівВідКлієнта_Objest Copy()
         {
             ПоверненняТоварівВідКлієнта_Objest copy = new ПоверненняТоварівВідКлієнта_Objest();
 			copy.New();
@@ -11207,6 +11349,149 @@ namespace StorageAndTrade_1_0.Документи
             
         }
     }
+      
+    
+    #endregion
+    
+    #region DOCUMENT "кк"
+    
+    public static class кк_Const
+    {
+        public const string TABLE = "tab_a78";
+        
+        public const string Назва = "col_a4";
+        public const string ДатаДок = "col_a5";
+        public const string НомерДок = "col_a6";
+    }
+	
+    
+    public class кк_Objest : DocumentObject
+    {
+        public кк_Objest() : base(Config.Kernel, "tab_a78",
+             new string[] { "col_a4", "col_a5", "col_a6" }) 
+        {
+            Назва = "";
+            ДатаДок = DateTime.MinValue;
+            НомерДок = 0;
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                Назва = base.FieldValue["col_a4"].ToString();
+                ДатаДок = (base.FieldValue["col_a5"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_a5"].ToString()) : DateTime.MinValue;
+                НомерДок = (base.FieldValue["col_a6"] != DBNull.Value) ? (int)base.FieldValue["col_a6"] : 0;
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_a4"] = Назва;
+            base.FieldValue["col_a5"] = ДатаДок;
+            base.FieldValue["col_a6"] = НомерДок;
+            
+            BaseSave();
+			
+		}
+
+		public void SpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public void ClearSpendTheDocument()
+		{
+            bool result = false;
+			
+            BaseSpend(result);
+		}
+
+		public кк_Objest Copy()
+        {
+            кк_Objest copy = new кк_Objest();
+			copy.New();
+            copy.Назва = Назва;
+			copy.ДатаДок = ДатаДок;
+			copy.НомерДок = НомерДок;
+			
+			return copy;
+        }
+
+        public void Delete()
+        {
+		    
+            base.BaseDelete(new string[] {  });
+        }
+        
+        public кк_Pointer GetDocumentPointer()
+        {
+            кк_Pointer directoryPointer = new кк_Pointer(UnigueID.UGuid);
+            return directoryPointer;
+        }
+        
+        public string Назва { get; set; }
+        public DateTime ДатаДок { get; set; }
+        public int НомерДок { get; set; }
+        
+    }
+    
+    
+    public class кк_Pointer : DocumentPointer
+    {
+        public кк_Pointer(object uid = null) : base(Config.Kernel, "tab_a78")
+        {
+            base.Init(new UnigueID(uid), null);
+        }
+        
+        public кк_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a78")
+        {
+            base.Init(uid, fields);
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+				new string[] {  }
+			);
+        }
+		
+        public кк_Pointer GetEmptyPointer()
+        {
+            return new кк_Pointer();
+        }
+		
+        public кк_Objest GetDocumentObject(bool readAllTablePart = false)
+        {
+            кк_Objest ккObjestItem = new кк_Objest();
+            ккObjestItem.Read(base.UnigueID);
+			
+            return ккObjestItem;
+        }
+    }
+    
+    
+    public class кк_Select : DocumentSelect, IDisposable
+    {		
+        public кк_Select() : base(Config.Kernel, "tab_a78") { }
+        
+        public bool Select() { return base.BaseSelect(); }
+        
+        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
+        
+        public bool MoveNext() { if (MoveToPosition()) { Current = new кк_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
+        
+        public кк_Pointer Current { get; private set; }
+    }
+    
       
     
     #endregion

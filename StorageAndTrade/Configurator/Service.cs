@@ -86,7 +86,7 @@ ORDER BY period_month
             string query = $@"DELETE FROM {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}";
             Config.Kernel.DataBase.ExecuteSQL(query);
 
-            query = $@"VACUUM (VERBOSE) {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}";
+            query = $@"VACUUM (FULL) {ВіртуальніТаблиціРегістрівНакопичення.ЗамовленняКлієнтів_Місяць_TablePart.TABLE}";
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
 

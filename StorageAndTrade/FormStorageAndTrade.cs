@@ -12,6 +12,7 @@ using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
+using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 using РегістриНакопичення = StorageAndTrade_1_0.РегістриНакопичення;
 using StorageAndTrade_1_0.Service;
@@ -190,7 +191,20 @@ namespace StorageAndTrade
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Документи.кк_Objest кк_Objest = new Документи.кк_Objest();
+            //кк_Objest.New();
+            //кк_Objest.Save();
+            //кк_Objest.SpendTheDocument();
 
+            Документи.кк_Select кк_Select = new Документи.кк_Select();
+            if (кк_Select.SelectSingle())
+            {
+                Документи.кк_Objest кк_Objest = кк_Select.Current.GetDocumentObject();
+                Console.WriteLine(кк_Objest.Spend);
+
+                кк_Objest.ClearSpendTheDocument();
+            }
+            
         }
 
         #region Звіти

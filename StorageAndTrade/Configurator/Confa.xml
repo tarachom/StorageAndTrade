@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>29.06.2022 18:07:30</DateTimeSave>
+  <DateTimeSave>30.06.2022 14:44:50</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -4049,6 +4049,12 @@
         <AfterSave>ЗамовленняПостачальнику_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ЗамовленняПостачальнику_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>ПоступленняТоварівТаПослуг</Name>
@@ -4489,6 +4495,12 @@
         <AfterSave>ПоступленняТоварівТаПослуг_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПоступленняТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>ЗамовленняКлієнта</Name>
@@ -4890,6 +4902,10 @@
         <AfterSave>ЗамовленняКлієнта_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ЗамовленняКлієнта_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>ЗамовленняКлієнта_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ЗамовленняКлієнта_SpendTheDocument.ClearSpend</ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>РеалізаціяТоварівТаПослуг</Name>
@@ -5320,6 +5336,12 @@
         <AfterSave>РеалізаціяТоварівТаПослуг_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>РеалізаціяТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>ВстановленняЦінНоменклатури</Name>
@@ -5447,6 +5469,12 @@
         <BeforeDelete>
         </BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>ПрихіднийКасовийОрдер</Name>
@@ -5679,6 +5707,12 @@
         <AfterSave>ПрихіднийКасовийОрдер_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПрихіднийКасовийОрдер_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>РозхіднийКасовийОрдер</Name>
@@ -5921,6 +5955,12 @@
         <AfterSave>РозхіднийКасовийОрдер_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>РозхіднийКасовийОрдер_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>ПереміщенняТоварів</Name>
@@ -6184,6 +6224,12 @@
         <BeforeDelete>
         </BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>ПоверненняТоварівПостачальнику</Name>
@@ -6482,6 +6528,12 @@
         <AfterSave>ПоверненняТоварівПостачальнику_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПоверненняТоварівПостачальнику_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
     <Document>
       <Name>ПоверненняТоварівВідКлієнта</Name>
@@ -6761,6 +6813,59 @@
         <AfterSave>ПоверненняТоварівВідКлієнта_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПоверненняТоварівВідКлієнта_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
+    </Document>
+    <Document>
+      <Name>кк</Name>
+      <Table>tab_a78</Table>
+      <Desc>
+      </Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>string</Type>
+          <Desc>Назва</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>col_a5</NameInTable>
+          <Type>datetime</Type>
+          <Desc>ДатаДок</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>col_a6</NameInTable>
+          <Type>integer</Type>
+          <Desc>НомерДок</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
     </Document>
   </Documents>
   <RegistersInformation>

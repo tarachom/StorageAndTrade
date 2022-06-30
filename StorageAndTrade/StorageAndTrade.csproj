@@ -62,6 +62,7 @@
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
     </Compile>
     <Compile Include="Configurator\Service.cs" />
+    <Compile Include="Configurator\SpendTheDocument.cs" />
     <Compile Include="FormService.cs">
       <SubType>Form</SubType>
     </Compile>
