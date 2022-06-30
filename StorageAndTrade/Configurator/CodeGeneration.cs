@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 30.06.2022 16:50:41
+ * Дата конфігурації: 30.06.2022 19:22:48
  *
  */
 
@@ -11277,7 +11277,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
              new string[] { "col_f5", "col_f6", "col_f7", "col_f8", "col_f9", "col_g2" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -11286,38 +11285,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Номенклатура != null)
-            {
-                base.BaseFilter.Add(new Where("col_f5", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.Характеристика != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f6", Comparison.EQ, Filter.Характеристика.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_f6", Comparison.EQ, Filter.Характеристика.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.ВидЦіни != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f7", Comparison.EQ, Filter.ВидЦіни.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_f7", Comparison.EQ, Filter.ВидЦіни.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -11372,9 +11339,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             base.BaseDelete();
             base.BaseCommitTransaction();
         }
-        
-        public SelectFilter Filter { get; set; }
-        
+                
         
         public class Record : RegisterRecord
         {
@@ -11395,22 +11360,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             public decimal Ціна { get; set; }
             public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public Довідники.Валюти_Pointer Валюта { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Номенклатура = null;
-                 Характеристика = null;
-                 ВидЦіни = null;
-                 
-            }
-        
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
-            public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
             
         }
     }
@@ -11435,7 +11384,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
              new string[] { "col_a1", "col_a2", "col_a3" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -11444,14 +11392,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
         {
             Records.Clear();
             
-            
-            if (Filter.Валюта != null)
-            {
-                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
-                
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -11500,9 +11440,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             base.BaseDelete();
             base.BaseCommitTransaction();
         }
-        
-        public SelectFilter Filter { get; set; }
-        
+                
         
         public class Record : RegisterRecord
         {
@@ -11517,18 +11455,6 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             public Довідники.Валюти_Pointer Валюта { get; set; }
             public decimal Курс { get; set; }
             public int Кратність { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Валюта = null;
-                 
-            }
-        
-            public Довідники.Валюти_Pointer Валюта { get; set; }
             
         }
     }
@@ -11560,7 +11486,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_e4", "col_e5", "col_e6", "col_e7", "col_e8" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -11569,38 +11494,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Номенклатура != null)
-            {
-                base.BaseFilter.Add(new Where("col_e4", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.ХарактеристикаНоменклатури != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_e5", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.Склад != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_e6", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_e6", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -11651,8 +11544,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -11671,22 +11562,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Склади_Pointer Склад { get; set; }
             public decimal ВНаявності { get; set; }
             public decimal ДоВідвантаження { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Номенклатура = null;
-                 ХарактеристикаНоменклатури = null;
-                 Склад = null;
-                 
-            }
-        
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
-            public Довідники.Склади_Pointer Склад { get; set; }
             
         }
     }
@@ -11713,7 +11588,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_e9", "col_f2", "col_f3", "col_f1", "col_f4" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -11722,38 +11596,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Організація != null)
-            {
-                base.BaseFilter.Add(new Where("col_e9", Comparison.EQ, Filter.Організація.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.Номенклатура != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f2", Comparison.EQ, Filter.Номенклатура, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_f2", Comparison.EQ, Filter.Номенклатура, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.ХарактеристикаНоменклатури != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_f3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -11804,8 +11646,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -11824,22 +11664,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public decimal Кількість { get; set; }
             public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Організація = null;
-                 Номенклатура = null;
-                 ХарактеристикаНоменклатури = null;
-                 
-            }
-        
-            public Довідники.Організації_Pointer Організація { get; set; }
-            public string Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             
         }
     }
@@ -11865,7 +11689,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_g3", "col_g4", "col_g5", "col_g6" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -11874,38 +11697,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Номенклатура != null)
-            {
-                base.BaseFilter.Add(new Where("col_g3", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.ХарактеристикаНоменклатури != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_g4", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.Склад != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_g5", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_g5", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -11954,8 +11745,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -11972,22 +11761,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
             public decimal Кількість { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Номенклатура = null;
-                 ХарактеристикаНоменклатури = null;
-                 Склад = null;
-                 
-            }
-        
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
-            public Довідники.Склади_Pointer Склад { get; set; }
             
         }
     }
@@ -12019,7 +11792,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -12028,49 +11800,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.ЗамовленняКлієнта != null)
-            {
-                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.ЗамовленняКлієнта.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.Номенклатура != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.ХарактеристикаНоменклатури != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.Склад != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -12123,8 +11852,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         ///<summary>
     ///Замовлення клієнтів.
@@ -12149,24 +11876,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal Сума { get; set; }
             
         }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 ЗамовленняКлієнта = null;
-                 Номенклатура = null;
-                 ХарактеристикаНоменклатури = null;
-                 Склад = null;
-                 
-            }
-        
-            public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
-            public Довідники.Склади_Pointer Склад { get; set; }
-            
-        }
     }
     
     #endregion
@@ -12189,7 +11898,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_a2", "col_a5", "col_a4" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -12198,27 +11906,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Валюта != null)
-            {
-                base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.Контрагент != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a5", Comparison.EQ, Filter.Контрагент.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.Контрагент.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -12265,8 +11952,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -12281,20 +11966,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Валюти_Pointer Валюта { get; set; }
             public Довідники.Контрагенти_Pointer Контрагент { get; set; }
             public decimal Сума { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Валюта = null;
-                 Контрагент = null;
-                 
-            }
-        
-            public Довідники.Валюти_Pointer Валюта { get; set; }
-            public Довідники.Контрагенти_Pointer Контрагент { get; set; }
             
         }
     }
@@ -12322,7 +11993,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a6", "col_a7" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -12331,38 +12001,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Договір != null)
-            {
-                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.Договір.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.Валюта != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.РозрахунковийДокумент != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.РозрахунковийДокумент, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.РозрахунковийДокумент, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -12415,8 +12053,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -12437,22 +12073,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal Заборгованість { get; set; }
             public decimal Передоплата { get; set; }
             public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Договір = null;
-                 Валюта = null;
-                 РозрахунковийДокумент = null;
-                 
-            }
-        
-            public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
-            public Довідники.Валюти_Pointer Валюта { get; set; }
-            public string РозрахунковийДокумент { get; set; }
             
         }
     }
@@ -12480,7 +12100,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_b2" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -12489,38 +12108,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Номенклатура != null)
-            {
-                base.BaseFilter.Add(new Where("col_a5", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.ХарактеристикаНоменклатури != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.Склад != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a7", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a7", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -12573,8 +12160,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -12595,22 +12180,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal ВНаявності { get; set; }
             public decimal ВРезервіЗіСкладу { get; set; }
             public decimal ВРезервіПідЗамовлення { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Номенклатура = null;
-                 ХарактеристикаНоменклатури = null;
-                 Склад = null;
-                 
-            }
-        
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
-            public Довідники.Склади_Pointer Склад { get; set; }
             
         }
     }
@@ -12637,7 +12206,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -12646,49 +12214,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.ЗамовленняПостачальнику != null)
-            {
-                base.BaseFilter.Add(new Where("col_a1", Comparison.EQ, Filter.ЗамовленняПостачальнику.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.Номенклатура != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.ХарактеристикаНоменклатури != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.Склад != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -12739,8 +12264,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -12759,24 +12282,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
             public decimal Замовлено { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 ЗамовленняПостачальнику = null;
-                 Номенклатура = null;
-                 ХарактеристикаНоменклатури = null;
-                 Склад = null;
-                 
-            }
-        
-            public Документи.ЗамовленняПостачальнику_Pointer ЗамовленняПостачальнику { get; set; }
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
-            public Довідники.Склади_Pointer Склад { get; set; }
             
         }
     }
@@ -12803,7 +12308,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_a6", "col_a7", "col_a8", "col_b1", "col_a1" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -12812,27 +12316,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Контрагент != null)
-            {
-                base.BaseFilter.Add(new Where("col_a6", Comparison.EQ, Filter.Контрагент.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.Валюта != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_a7", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_a7", Comparison.EQ, Filter.Валюта.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -12883,8 +12366,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -12903,20 +12384,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal Сума { get; set; }
             public Перелічення.ФормаОплати ФормаОплати { get; set; }
             public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Контрагент = null;
-                 Валюта = null;
-                 
-            }
-        
-            public Довідники.Контрагенти_Pointer Контрагент { get; set; }
-            public Довідники.Валюти_Pointer Валюта { get; set; }
             
         }
     }
@@ -12942,7 +12409,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
              new string[] { "col_b2", "col_b3", "col_b4", "col_b5" }) 
         {
             Records = new List<Record>();
-            Filter = new SelectFilter();
         }
 		
         public List<Record> Records { get; set; }
@@ -12951,38 +12417,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         {
             Records.Clear();
             
-            bool isExistPreceding = false;
-            if (Filter.Номенклатура != null)
-            {
-                base.BaseFilter.Add(new Where("col_b2", Comparison.EQ, Filter.Номенклатура.UnigueID.UGuid, false));
-                
-                isExistPreceding = true;
-                
-            }
-            
-            if (Filter.ХарактеристикаНоменклатури != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_b3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_b3", Comparison.EQ, Filter.ХарактеристикаНоменклатури.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-            if (Filter.Склад != null)
-            {
-                if (isExistPreceding)
-                    base.BaseFilter.Add(new Where(Comparison.AND, "col_b4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                else
-                {
-                    base.BaseFilter.Add(new Where("col_b4", Comparison.EQ, Filter.Склад.UnigueID.UGuid, false));
-                    isExistPreceding = true; 
-                }
-            }
-            
-
             base.BaseRead();
             
             foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
@@ -13031,8 +12465,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-
-        public SelectFilter Filter { get; set; }
         
         
         public class Record : RegisterRecord
@@ -13049,22 +12481,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
             public decimal ДоПоступлення { get; set; }
-            
-        }
-    
-        public class SelectFilter
-        {
-            public SelectFilter()
-            {
-                 Номенклатура = null;
-                 ХарактеристикаНоменклатури = null;
-                 Склад = null;
-                 
-            }
-        
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
-            public Довідники.Склади_Pointer Склад { get; set; }
             
         }
     }
