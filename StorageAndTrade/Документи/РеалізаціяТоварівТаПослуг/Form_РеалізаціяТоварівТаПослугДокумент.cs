@@ -134,28 +134,43 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					реалізаціяТоварівТаПослуг_Objest.New();
 
+				реалізаціяТоварівТаПослуг_Objest.НомерДок = textBox_НомерДок.Text;
+				реалізаціяТоварівТаПослуг_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				реалізаціяТоварівТаПослуг_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+				реалізаціяТоварівТаПослуг_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
+				реалізаціяТоварівТаПослуг_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+				реалізаціяТоварівТаПослуг_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
+				реалізаціяТоварівТаПослуг_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиРеалізаціїТоварівТаПослуг)comboBox_Статус.SelectedItem : 0;
+				реалізаціяТоварівТаПослуг_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
+				реалізаціяТоварівТаПослуг_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+				реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+				реалізаціяТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
+				реалізаціяТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+				реалізаціяТоварівТаПослуг_Objest.Назва = $"Реалізація товарів та послуг №{реалізаціяТоварівТаПослуг_Objest.НомерДок} від {реалізаціяТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
+				реалізаціяТоварівТаПослуг_Objest.Проведений = true;
+
 				try
 				{
-					реалізаціяТоварівТаПослуг_Objest.НомерДок = textBox_НомерДок.Text;
-					реалізаціяТоварівТаПослуг_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
-					реалізаціяТоварівТаПослуг_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-					реалізаціяТоварівТаПослуг_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
-					реалізаціяТоварівТаПослуг_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
-					реалізаціяТоварівТаПослуг_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
-					реалізаціяТоварівТаПослуг_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиРеалізаціїТоварівТаПослуг)comboBox_Статус.SelectedItem : 0;
-					реалізаціяТоварівТаПослуг_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
-					реалізаціяТоварівТаПослуг_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-					реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
-					реалізаціяТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-					реалізаціяТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
-					реалізаціяТоварівТаПослуг_Objest.Назва = $"Реалізація товарів та послуг №{реалізаціяТоварівТаПослуг_Objest.НомерДок} від {реалізаціяТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
-					реалізаціяТоварівТаПослуг_Objest.Проведений = true;
-
-					РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
 					реалізаціяТоварівТаПослуг_Objest.Save();
+					РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
 				}
 				catch (Exception exp)
 				{
+					MessageBox.Show(exp.Message);
+					return;
+				}
+
+				try
+				{
+					//Очищення регістрів
+					реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+					//Проведення
+					реалізаціяТоварівТаПослуг_Objest.SpendTheDocument();
+				}
+				catch (Exception exp)
+				{
+					реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
 					MessageBox.Show(exp.Message);
 					return;
 				}

@@ -115,24 +115,39 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					розхіднийКасовийОрдер_Objest.New();
 
+				розхіднийКасовийОрдер_Objest.НомерДок = textBox_НомерДок.Text;
+				розхіднийКасовийОрдер_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				розхіднийКасовийОрдер_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+				розхіднийКасовийОрдер_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
+				розхіднийКасовийОрдер_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+				розхіднийКасовийОрдер_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+				розхіднийКасовийОрдер_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
+				розхіднийКасовийОрдер_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+				розхіднийКасовийОрдер_Objest.СумаДокументу = decimal.Parse(textBox_СумаДокументу.Text);
+				розхіднийКасовийОрдер_Objest.Назва = $"Розхідний касовий ордер №{розхіднийКасовийОрдер_Objest.НомерДок} від {розхіднийКасовийОрдер_Objest.ДатаДок.ToShortDateString()}";
+				розхіднийКасовийОрдер_Objest.Проведений = true;
+
 				try
 				{
-					розхіднийКасовийОрдер_Objest.НомерДок = textBox_НомерДок.Text;
-					розхіднийКасовийОрдер_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
-					розхіднийКасовийОрдер_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-					розхіднийКасовийОрдер_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
-					розхіднийКасовийОрдер_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
-					розхіднийКасовийОрдер_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-					розхіднийКасовийОрдер_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-					розхіднийКасовийОрдер_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
-					розхіднийКасовийОрдер_Objest.СумаДокументу = decimal.Parse(textBox_СумаДокументу.Text);
-					розхіднийКасовийОрдер_Objest.Назва = $"Розхідний касовий ордер №{розхіднийКасовийОрдер_Objest.НомерДок} від {розхіднийКасовийОрдер_Objest.ДатаДок.ToShortDateString()}";
-					розхіднийКасовийОрдер_Objest.Проведений = true;
-
 					розхіднийКасовийОрдер_Objest.Save();
 				}
 				catch (Exception exp)
 				{
+					MessageBox.Show(exp.Message);
+					return;
+				}
+
+				try
+				{
+					//Очищення регістрів
+					розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+
+					//Проведення
+					розхіднийКасовийОрдер_Objest.SpendTheDocument();
+				}
+				catch (Exception exp)
+				{
+					розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 					MessageBox.Show(exp.Message);
 					return;
 				}

@@ -127,35 +127,49 @@ namespace StorageAndTrade
 			}
 		}
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
+		private void buttonSave_Click(object sender, EventArgs e)
+		{
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
 					замовленняПостачальнику_Objest.New();
 
+				замовленняПостачальнику_Objest.НомерДок = textBox_НомерДок.Text;
+				замовленняПостачальнику_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				замовленняПостачальнику_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+				замовленняПостачальнику_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
+				замовленняПостачальнику_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+				замовленняПостачальнику_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
+				замовленняПостачальнику_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиЗамовленьПостачальникам)comboBox_Статус.SelectedItem : 0;
+				замовленняПостачальнику_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
+				замовленняПостачальнику_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+				замовленняПостачальнику_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+				замовленняПостачальнику_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
+				замовленняПостачальнику_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+				замовленняПостачальнику_Objest.Назва = $"Замовлення постачальнику №{замовленняПостачальнику_Objest.НомерДок} від {замовленняПостачальнику_Objest.ДатаДок.ToShortDateString()}";
+
 				try
 				{
-					замовленняПостачальнику_Objest.НомерДок = textBox_НомерДок.Text;
-					замовленняПостачальнику_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
-					замовленняПостачальнику_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-					замовленняПостачальнику_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
-					замовленняПостачальнику_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
-					замовленняПостачальнику_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
-					замовленняПостачальнику_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиЗамовленьПостачальникам)comboBox_Статус.SelectedItem : 0;
-					замовленняПостачальнику_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
-					замовленняПостачальнику_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-					замовленняПостачальнику_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
-					замовленняПостачальнику_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-					замовленняПостачальнику_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
-					замовленняПостачальнику_Objest.Назва = $"Замовлення постачальнику №{замовленняПостачальнику_Objest.НомерДок} від {замовленняПостачальнику_Objest.ДатаДок.ToShortDateString()}";
-					замовленняПостачальнику_Objest.Проведений = true;
-
-					ЗамовленняПостачальнику_ТабличнаЧастина_Товари.SaveRecords();
 					замовленняПостачальнику_Objest.Save();
+					ЗамовленняПостачальнику_ТабличнаЧастина_Товари.SaveRecords();
 				}
 				catch (Exception exp)
 				{
+					MessageBox.Show(exp.Message);
+					return;
+				}
+
+				try
+				{
+					//Очищення регістрів
+					замовленняПостачальнику_Objest.ClearSpendTheDocument();
+
+					//Проведення
+					замовленняПостачальнику_Objest.SpendTheDocument();
+				}
+				catch (Exception exp)
+				{
+					замовленняПостачальнику_Objest.ClearSpendTheDocument();
 					MessageBox.Show(exp.Message);
 					return;
 				}

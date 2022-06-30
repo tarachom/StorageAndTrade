@@ -122,26 +122,41 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					поверненняТоварівПостачальнику_Objest.New();
 
+				поверненняТоварівПостачальнику_Objest.НомерДок = textBox_НомерДок.Text;
+				поверненняТоварівПостачальнику_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				поверненняТоварівПостачальнику_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+				поверненняТоварівПостачальнику_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
+				поверненняТоварівПостачальнику_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+				поверненняТоварівПостачальнику_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
+				поверненняТоварівПостачальнику_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+				поверненняТоварівПостачальнику_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+				поверненняТоварівПостачальнику_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
+				поверненняТоварівПостачальнику_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+				поверненняТоварівПостачальнику_Objest.Назва = $"Повернення постачальнику №{поверненняТоварівПостачальнику_Objest.НомерДок} від {поверненняТоварівПостачальнику_Objest.ДатаДок.ToShortDateString()}";
+				поверненняТоварівПостачальнику_Objest.Проведений = true;
+
 				try
 				{
-					поверненняТоварівПостачальнику_Objest.НомерДок = textBox_НомерДок.Text;
-					поверненняТоварівПостачальнику_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
-					поверненняТоварівПостачальнику_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-					поверненняТоварівПостачальнику_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
-					поверненняТоварівПостачальнику_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
-					поверненняТоварівПостачальнику_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
-					поверненняТоварівПостачальнику_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-					поверненняТоварівПостачальнику_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
-					поверненняТоварівПостачальнику_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-					поверненняТоварівПостачальнику_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
-					поверненняТоварівПостачальнику_Objest.Назва = $"Повернення постачальнику №{поверненняТоварівПостачальнику_Objest.НомерДок} від {поверненняТоварівПостачальнику_Objest.ДатаДок.ToShortDateString()}";
-					поверненняТоварівПостачальнику_Objest.Проведений = true;
-
-					ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.SaveRecords();
 					поверненняТоварівПостачальнику_Objest.Save();
+					ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.SaveRecords();
 				}
 				catch (Exception exp)
 				{
+					MessageBox.Show(exp.Message);
+					return;
+				}
+
+				try
+				{
+					//Очищення регістрів
+					поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
+
+					//Проведення
+					поверненняТоварівПостачальнику_Objest.SpendTheDocument();
+				}
+				catch (Exception exp)
+				{
+					поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
 					MessageBox.Show(exp.Message);
 					return;
 				}

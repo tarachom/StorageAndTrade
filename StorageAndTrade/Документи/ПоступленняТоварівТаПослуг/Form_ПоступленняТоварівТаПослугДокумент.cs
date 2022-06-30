@@ -127,29 +127,44 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					поступленняТоварівТаПослуг_Objest.New();
 
+				поступленняТоварівТаПослуг_Objest.НомерДок = textBox_НомерДок.Text;
+				поступленняТоварівТаПослуг_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				поступленняТоварівТаПослуг_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+				поступленняТоварівТаПослуг_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
+				поступленняТоварівТаПослуг_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+				поступленняТоварівТаПослуг_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
+				поступленняТоварівТаПослуг_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
+				поступленняТоварівТаПослуг_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+				поступленняТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
+				поступленняТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
+				поступленняТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+				поступленняТоварівТаПослуг_Objest.Назва = $"Поступлення товарів та послуг №{поступленняТоварівТаПослуг_Objest.НомерДок} від {поступленняТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
+				поступленняТоварівТаПослуг_Objest.Проведений = spendDoc;
+
 				try
 				{
-					поступленняТоварівТаПослуг_Objest.НомерДок = textBox_НомерДок.Text;
-					поступленняТоварівТаПослуг_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
-					поступленняТоварівТаПослуг_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-					поступленняТоварівТаПослуг_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
-					поступленняТоварівТаПослуг_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
-					поступленняТоварівТаПослуг_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
-					поступленняТоварівТаПослуг_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
-					поступленняТоварівТаПослуг_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-					поступленняТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
-					поступленняТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-					поступленняТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
-					поступленняТоварівТаПослуг_Objest.Назва = $"Поступлення товарів та послуг №{поступленняТоварівТаПослуг_Objest.НомерДок} від {поступленняТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
-					поступленняТоварівТаПослуг_Objest.Проведений = spendDoc;
-
-					ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
 					поступленняТоварівТаПослуг_Objest.Save();
+					ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
 				}
 				catch (Exception exp)
 				{
 					//Що буде якщо таб частина записана а док не записався? !!!
 					//треба подумати
+					MessageBox.Show(exp.Message);
+					return;
+				}
+
+				try
+				{
+					//Очищення регістрів
+					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+					//Проведення
+					поступленняТоварівТаПослуг_Objest.SpendTheDocument();
+				}
+				catch (Exception exp)
+				{
+					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 					MessageBox.Show(exp.Message);
 					return;
 				}

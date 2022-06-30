@@ -150,8 +150,8 @@ namespace StorageAndTrade
 
 				try
 				{
-					ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 					замовленняКлієнта_Objest.Save();
+					ЗамовленняКлієнта_ТабличнаЧастина_Товари.SaveRecords();
 				}
 				catch (Exception exp)
 				{
