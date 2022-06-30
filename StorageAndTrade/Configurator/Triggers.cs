@@ -37,16 +37,10 @@ using AccountingSoftware;
 
 namespace StorageAndTrade_1_0.Константи
 {
-	class test
-    {
-		void test2()
-        {
-			
-		}
-    }
+
 }
 
-	namespace StorageAndTrade_1_0.Довідники
+namespace StorageAndTrade_1_0.Довідники
 {
 	class Номенклатура_Папки_Triggers
 	{
