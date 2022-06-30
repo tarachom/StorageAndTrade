@@ -136,11 +136,11 @@ namespace StorageAndTrade
 					return;
 				}
 
+				//Очищення регістрів
+				розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+
 				try
 				{
-					//Очищення регістрів
-					розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
-
 					//Проведення
 					розхіднийКасовийОрдер_Objest.SpendTheDocument();
 				}

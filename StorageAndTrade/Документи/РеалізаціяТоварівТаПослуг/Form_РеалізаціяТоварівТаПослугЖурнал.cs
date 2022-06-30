@@ -282,8 +282,17 @@ namespace StorageAndTrade
 					реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
 					if (spend)
-						//Проведення
-						реалізаціяТоварівТаПослуг_Objest.SpendTheDocument();
+						try
+						{
+							//Проведення
+							реалізаціяТоварівТаПослуг_Objest.SpendTheDocument();
+						}
+						catch (Exception exp)
+						{
+							реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+							MessageBox.Show(exp.Message);
+							return;
+						}
 				}
 
 				LoadRecords();

@@ -281,8 +281,17 @@ namespace StorageAndTrade
 					замовленняПостачальнику_Objest.ClearSpendTheDocument();
 
 					if (spend)
-						//Проведення
-						замовленняПостачальнику_Objest.SpendTheDocument();
+						try
+						{
+							//Проведення
+							замовленняПостачальнику_Objest.SpendTheDocument();
+						}
+						catch (Exception exp)
+						{
+							замовленняПостачальнику_Objest.ClearSpendTheDocument();
+							MessageBox.Show(exp.Message);
+							return;
+						}
 				}
 
 				LoadRecords();

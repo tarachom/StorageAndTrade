@@ -266,7 +266,7 @@ namespace StorageAndTrade
 		}
 
 		private void SpendDocuments(bool spend, string message)
-        {
+		{
 			if (dataGridViewRecords.SelectedRows.Count != 0 &&
 				MessageBox.Show(message, "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
 			{
@@ -282,9 +282,17 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.ClearSpendTheDocument();
 
 					if (spend)
-						//Проведення
-						замовленняКлієнта_Objest.SpendTheDocument();
-						
+						try
+						{
+							//Проведення
+							замовленняКлієнта_Objest.SpendTheDocument();
+						}
+						catch (Exception exp)
+						{
+							замовленняКлієнта_Objest.ClearSpendTheDocument();
+							MessageBox.Show(exp.Message);
+							return;
+						}
 				}
 
 				LoadRecords();

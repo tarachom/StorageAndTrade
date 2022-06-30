@@ -159,11 +159,11 @@ namespace StorageAndTrade
 					return;
 				}
 
+				//Очищення регістрів
+				замовленняКлієнта_Objest.ClearSpendTheDocument();
+
 				try
 				{
-					//Очищення регістрів
-					замовленняКлієнта_Objest.ClearSpendTheDocument();
-
 					//Проведення
 					замовленняКлієнта_Objest.SpendTheDocument();
 				}

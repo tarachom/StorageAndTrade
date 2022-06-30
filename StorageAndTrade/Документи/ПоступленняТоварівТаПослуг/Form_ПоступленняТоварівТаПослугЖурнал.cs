@@ -282,8 +282,17 @@ namespace StorageAndTrade
 					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
 					if (spend)
-						//Проведення
-						поступленняТоварівТаПослуг_Objest.SpendTheDocument();
+						try
+						{
+							//Проведення
+							поступленняТоварівТаПослуг_Objest.SpendTheDocument();
+						}
+						catch (Exception exp)
+						{
+							поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
+							MessageBox.Show(exp.Message);
+							return;
+						}
 				}
 
 				LoadRecords();

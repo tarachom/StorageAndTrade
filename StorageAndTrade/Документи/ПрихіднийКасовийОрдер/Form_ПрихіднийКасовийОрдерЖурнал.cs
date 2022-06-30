@@ -282,8 +282,17 @@ namespace StorageAndTrade
 					прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
 					if (spend)
-						//Проведення
-						прихіднийКасовийОрдер_Objest.SpendTheDocument();
+						try
+						{
+							//Проведення
+							прихіднийКасовийОрдер_Objest.SpendTheDocument();
+						}
+						catch (Exception exp)
+						{
+							прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+							MessageBox.Show(exp.Message);
+							return;
+						}
 				}
 
 				LoadRecords();
