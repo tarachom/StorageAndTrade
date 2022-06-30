@@ -417,13 +417,11 @@ namespace StorageAndTrade
 
 			Записи запис = RecordsBindingList[e.RowIndex];
 
-			if (columnName == "Кількість" || columnName == "Ціна")
+			if (columnName == "Кількість" || columnName == "Ціна" || columnName == "Скидка")
             {
-				запис.Сума = запис.Кількість * запис.Ціна;
+				запис.Сума = (запис.Кількість * запис.Ціна) - запис.Скидка;
 				dataGridViewRecords.Refresh();
 			}
-
-			
 		}
 
         private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
