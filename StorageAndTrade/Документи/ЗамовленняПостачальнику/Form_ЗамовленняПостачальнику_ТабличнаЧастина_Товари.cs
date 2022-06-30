@@ -126,12 +126,21 @@ namespace StorageAndTrade
 			}
 		}
 
+		public decimal ОбчислитиСумуДокументу()
+		{
+			decimal documentSuma = 0;
+
+			foreach (Записи запис in RecordsBindingList)
+				documentSuma += запис.Сума;
+
+			return Math.Round(documentSuma, 2);
+		}
+
 		public void SaveRecords()
         {
 			ДокументОбєкт.Товари_TablePart.Records.Clear();
 
 			int sequenceNumber = 0;
-			decimal documentSuma = 0;
 
 			foreach (Записи запис in RecordsBindingList)
             {
@@ -139,9 +148,7 @@ namespace StorageAndTrade
 
 				Документи.ЗамовленняПостачальнику_Товари_TablePart.Record record = new Документи.ЗамовленняПостачальнику_Товари_TablePart.Record();
 
-				if (!String.IsNullOrEmpty(запис.ID))
-					record.UID = Guid.Parse(запис.ID);
-
+				record.UID = Guid.Parse(запис.ID);
 				record.НомерРядка = sequenceNumber;
 				record.Номенклатура = запис.Номенклатура;
 				record.ХарактеристикаНоменклатури = запис.Характеристика;
@@ -151,12 +158,8 @@ namespace StorageAndTrade
 				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
 
-				documentSuma += запис.Сума;
-
 				ДокументОбєкт.Товари_TablePart.Records.Add(record);
 			}
-
-			ДокументОбєкт.СумаДокументу = Math.Round(documentSuma, 2);
 
 			ДокументОбєкт.Товари_TablePart.Save(true);
 		}
