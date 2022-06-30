@@ -90,7 +90,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПрихіднийКасовийОрдер_Select прихіднийКасовийОрдер_Select = new Документи.ПрихіднийКасовийОрдер_Select();
-			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.Проведений);
+			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add("spend");
 			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.Назва);
 			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.НомерДок);
 			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.ДатаДок);
@@ -119,7 +119,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.СумаДокументу], 2),
-					Проведений = (bool)cur.Fields[Документи.ПрихіднийКасовийОрдер_Const.Проведений]
+					Проведений = (bool)cur.Fields["spend"]
 				});
 
 				if (DocumentPointerItem != null && selectRow == 0) 
@@ -210,7 +210,6 @@ namespace StorageAndTrade
 						прихіднийКасовийОрдер_Objest_Новий.Назва += " *";
 						прихіднийКасовийОрдер_Objest_Новий.ДатаДок = DateTime.Now;
 						прихіднийКасовийОрдер_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ПрихіднийКасовийОрдер_Const).ToString("D8");
-						прихіднийКасовийОрдер_Objest_Новий.Проведений = false;
 
 						//Зчитати та скопіювати табличну частину
 						прихіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Read();
@@ -279,8 +278,12 @@ namespace StorageAndTrade
 					Документи.ПрихіднийКасовийОрдер_Pointer прихіднийКасовийОрдер_Pointer = new Документи.ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid));
 					Документи.ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = прихіднийКасовийОрдер_Pointer.GetDocumentObject(true);
 
-					прихіднийКасовийОрдер_Objest.Проведений = spend;
-					прихіднийКасовийОрдер_Objest.Save();
+					//Очищення регістрів
+					прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+
+					if (spend)
+						//Проведення
+						прихіднийКасовийОрдер_Objest.SpendTheDocument();
 				}
 
 				LoadRecords();

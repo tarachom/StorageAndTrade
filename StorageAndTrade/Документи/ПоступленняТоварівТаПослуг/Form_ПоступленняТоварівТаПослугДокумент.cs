@@ -139,7 +139,6 @@ namespace StorageAndTrade
 				поступленняТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 				поступленняТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				поступленняТоварівТаПослуг_Objest.Назва = $"Поступлення товарів та послуг №{поступленняТоварівТаПослуг_Objest.НомерДок} від {поступленняТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
-				поступленняТоварівТаПослуг_Objest.Проведений = spendDoc;
 
 				try
 				{
@@ -148,26 +147,25 @@ namespace StorageAndTrade
 				}
 				catch (Exception exp)
 				{
-					//Що буде якщо таб частина записана а док не записався? !!!
-					//треба подумати
 					MessageBox.Show(exp.Message);
 					return;
 				}
 
-				try
-				{
-					//Очищення регістрів
-					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
+				//Очищення регістрів
+				поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
-					//Проведення
-					поступленняТоварівТаПослуг_Objest.SpendTheDocument();
-				}
-				catch (Exception exp)
-				{
-					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
-					MessageBox.Show(exp.Message);
-					return;
-				}
+				if (spendDoc)
+					try
+					{
+						//Проведення
+						поступленняТоварівТаПослуг_Objest.SpendTheDocument();
+					}
+					catch (Exception exp)
+					{
+						поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
+						MessageBox.Show(exp.Message);
+						return;
+					}
 
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();

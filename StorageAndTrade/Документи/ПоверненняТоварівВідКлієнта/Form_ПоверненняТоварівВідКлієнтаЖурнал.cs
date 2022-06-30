@@ -90,7 +90,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПоверненняТоварівВідКлієнта_Select поверненняТоварівВідКлієнта_Select = new Документи.ПоверненняТоварівВідКлієнта_Select();
-			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.Проведений);
+			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add("spend");
 			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.Назва);
 			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.НомерДок);
 			поверненняТоварівВідКлієнта_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок);
@@ -119,7 +119,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.СумаДокументу], 2),
-					Проведений = (bool)cur.Fields[Документи.ПоверненняТоварівВідКлієнта_Const.Проведений]
+					Проведений = (bool)cur.Fields["spend"]
 				});
 
 				if (DocumentPointerItem != null) 
@@ -210,7 +210,6 @@ namespace StorageAndTrade
 						поверненняТоварівВідКлієнта_Objest_Новий.Назва += " *";
 						поверненняТоварівВідКлієнта_Objest_Новий.ДатаДок = DateTime.Now;
 						поверненняТоварівВідКлієнта_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ПоверненняТоварівВідКлієнта_Const).ToString("D8");
-						поверненняТоварівВідКлієнта_Objest_Новий.Проведений = false;
 
 						//Зчитати та скопіювати табличну частину Товари
 						поверненняТоварівВідКлієнта_Objest.Товари_TablePart.Read();
@@ -279,8 +278,12 @@ namespace StorageAndTrade
 					Документи.ПоверненняТоварівВідКлієнта_Pointer поверненняТоварівВідКлієнта_Pointer = new Документи.ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid));
 					Документи.ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = поверненняТоварівВідКлієнта_Pointer.GetDocumentObject(true);
 
-					поверненняТоварівВідКлієнта_Objest.Проведений = spend;
-					поверненняТоварівВідКлієнта_Objest.Save();
+					//Очищення регістрів
+					поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
+
+					if (spend)
+						//Проведення
+						поверненняТоварівВідКлієнта_Objest.SpendTheDocument();
 				}
 
 				LoadRecords();

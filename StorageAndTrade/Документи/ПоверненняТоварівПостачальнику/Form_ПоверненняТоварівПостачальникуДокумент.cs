@@ -133,7 +133,6 @@ namespace StorageAndTrade
 				поверненняТоварівПостачальнику_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 				поверненняТоварівПостачальнику_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				поверненняТоварівПостачальнику_Objest.Назва = $"Повернення постачальнику №{поверненняТоварівПостачальнику_Objest.НомерДок} від {поверненняТоварівПостачальнику_Objest.ДатаДок.ToShortDateString()}";
-				поверненняТоварівПостачальнику_Objest.Проведений = true;
 
 				try
 				{

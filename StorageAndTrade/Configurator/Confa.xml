@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>30.06.2022 16:04:06</DateTimeSave>
+  <DateTimeSave>30.06.2022 16:50:41</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3683,15 +3683,6 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_b9</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_j9</NameInTable>
           <Type>datetime</Type>
@@ -4050,10 +4041,8 @@
         <BeforeDelete>ЗамовленняПостачальнику_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ЗамовленняПостачальнику_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ЗамовленняПостачальнику_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
@@ -4070,15 +4059,6 @@
           </Desc>
           <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_d5</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -4496,10 +4476,8 @@
         <BeforeDelete>ПоступленняТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ПоступленняТоварівТаПослуг_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ПоступленняТоварівТаПослуг_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
@@ -4914,15 +4892,6 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_d4</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
           <Name>ДатаДок</Name>
           <NameInTable>col_c9</NameInTable>
           <Type>datetime</Type>
@@ -5328,10 +5297,8 @@
         <BeforeDelete>РеалізаціяТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>РеалізаціяТоварівТаПослуг_SpendTheDocument.Spend</Spend>
+        <ClearSpend>РеалізаціяТоварівТаПослуг_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
@@ -5348,15 +5315,6 @@
           </Desc>
           <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_a2</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -5481,15 +5439,6 @@
           </Desc>
           <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_a5</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -5699,10 +5648,8 @@
         <BeforeDelete>ПрихіднийКасовийОрдер_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ПрихіднийКасовийОрдер_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ПрихіднийКасовийОрдер_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
@@ -5719,15 +5666,6 @@
           </Desc>
           <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_a2</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -5947,10 +5885,8 @@
         <BeforeDelete>РозхіднийКасовийОрдер_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>РозхіднийКасовийОрдер_SpendTheDocument.Spend</Spend>
+        <ClearSpend>РозхіднийКасовийОрдер_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
@@ -5967,15 +5903,6 @@
           </Desc>
           <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_c1</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -6236,15 +6163,6 @@
           </Desc>
           <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_a3</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -6520,10 +6438,8 @@
         <BeforeDelete>ПоверненняТоварівПостачальнику_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ПоверненняТоварівПостачальнику_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ПоверненняТоварівПостачальнику_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
@@ -6540,15 +6456,6 @@
           </Desc>
           <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Проведений</Name>
-          <NameInTable>col_a4</NameInTable>
-          <Type>boolean</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -6805,10 +6712,8 @@
         <BeforeDelete>ПоверненняТоварівВідКлієнта_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ПоверненняТоварівВідКлієнта_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ПоверненняТоварівВідКлієнта_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
   </Documents>

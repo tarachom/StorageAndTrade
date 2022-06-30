@@ -90,7 +90,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПоступленняТоварівТаПослуг_Select поступленняТоварівТаПослуг_Select = new Документи.ПоступленняТоварівТаПослуг_Select();
-			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.Проведений);
+			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add("spend");
 			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.Назва);
 			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.НомерДок);
 			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок);
@@ -119,7 +119,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ПоступленняТоварівТаПослуг_Const.СумаДокументу], 2),
-					Проведений = (bool)cur.Fields[Документи.ПоступленняТоварівТаПослуг_Const.Проведений]
+					Проведений = (bool)cur.Fields["spend"]
 				});
 
                 if (DocumentPointerItem != null)
@@ -210,7 +210,6 @@ namespace StorageAndTrade
 						поступленняТоварівТаПослуг_Objest_Новий.Назва += " *";
 						поступленняТоварівТаПослуг_Objest_Новий.ДатаДок = DateTime.Now;
 						поступленняТоварівТаПослуг_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ПоступленняТоварівТаПослуг_Const).ToString("D8");
-						поступленняТоварівТаПослуг_Objest_Новий.Проведений = false;
 
 						//Зчитати та скопіювати табличну частину Товари
 						поступленняТоварівТаПослуг_Objest.Товари_TablePart.Read();
@@ -279,8 +278,12 @@ namespace StorageAndTrade
 					Документи.ПоступленняТоварівТаПослуг_Pointer поступленняТоварівТаПослуг_Pointer = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid));
 					Документи.ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest = поступленняТоварівТаПослуг_Pointer.GetDocumentObject(true);
 
-					поступленняТоварівТаПослуг_Objest.Проведений = spend;
-					поступленняТоварівТаПослуг_Objest.Save();
+					//Очищення регістрів
+					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+					if (spend)
+						//Проведення
+						поступленняТоварівТаПослуг_Objest.SpendTheDocument();
 				}
 
 				LoadRecords();

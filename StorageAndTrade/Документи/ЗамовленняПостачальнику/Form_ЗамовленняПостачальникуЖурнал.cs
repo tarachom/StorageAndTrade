@@ -90,7 +90,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняПостачальнику_Select замовленняПостачальнику_Select = new Документи.ЗамовленняПостачальнику_Select();
-			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Const.Проведений);
+			замовленняПостачальнику_Select.QuerySelect.Field.Add("spend");
 			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Const.Назва);
 			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Const.НомерДок);
 			замовленняПостачальнику_Select.QuerySelect.Field.Add(Документи.ЗамовленняПостачальнику_Const.ДатаДок);
@@ -119,7 +119,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.ЗамовленняПостачальнику_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ЗамовленняПостачальнику_Const.СумаДокументу], 2),
-					Проведений = (bool)cur.Fields[Документи.ЗамовленняПостачальнику_Const.Проведений]
+					Проведений = (bool)cur.Fields["spend"]
 				});
 
                 if (DocumentPointerItem != null)
@@ -210,7 +210,6 @@ namespace StorageAndTrade
 						замовленняПостачальнику_Objest_Новий.Назва += " *";
 						замовленняПостачальнику_Objest_Новий.ДатаДок = DateTime.Now;
 						замовленняПостачальнику_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ЗамовленняПостачальнику_Const).ToString("D8");
-						замовленняПостачальнику_Objest_Новий.Проведений = false;
 
 						//Зчитати та скопіювати табличну частину Товари
 						замовленняПостачальнику_Objest.Товари_TablePart.Read();
@@ -278,8 +277,12 @@ namespace StorageAndTrade
 					Документи.ЗамовленняПостачальнику_Pointer замовленняПостачальнику_Pointer = new Документи.ЗамовленняПостачальнику_Pointer(new UnigueID(uid));
 					Документи.ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = замовленняПостачальнику_Pointer.GetDocumentObject(true);
 
-					замовленняПостачальнику_Objest.Проведений = spend;
-					замовленняПостачальнику_Objest.Save();
+					//Очищення регістрів
+					замовленняПостачальнику_Objest.ClearSpendTheDocument();
+
+					if (spend)
+						//Проведення
+						замовленняПостачальнику_Objest.SpendTheDocument();
 				}
 
 				LoadRecords();
