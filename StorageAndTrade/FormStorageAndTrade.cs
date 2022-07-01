@@ -142,6 +142,7 @@ namespace StorageAndTrade
         private void замовленняКлієнтаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ЗамовленняКлієнтаЖурнал form_ЗамовленняКлієнтаЖурнал = new Form_ЗамовленняКлієнтаЖурнал();
+            form_ЗамовленняКлієнтаЖурнал.MdiParent = this;
             form_ЗамовленняКлієнтаЖурнал.Show();
         }
 
@@ -200,6 +201,7 @@ namespace StorageAndTrade
         private void замовленняКлієнтівToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ЗамовленняКлієнтів_Звіт form_ЗамовленняКлієнтів_Звіт = new Form_ЗамовленняКлієнтів_Звіт();
+            form_ЗамовленняКлієнтів_Звіт.MdiParent = this;
             form_ЗамовленняКлієнтів_Звіт.Show();
         }
 
@@ -235,9 +237,45 @@ namespace StorageAndTrade
         private void обчислитиЗалишкиПоРегістрахToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormService formService = new FormService();
+            formService.MdiParent = this;
             formService.Show();
+
+            ToolStripMenuItem selectMenuItem = new ToolStripMenuItem("Вибрати із списку");
+            selectMenuItem.Image = Properties.Resources.data;
+            selectMenuItem.Click += SelectMenuItem_Click;
+            //selectMenuItem.Tag = this;
+            toolStrip1.Items.Add(selectMenuItem);
+
+            
         }
 
         #endregion
+
+        private void FormStorageAndTrade_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void SelectMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripMenuItem selectMenuItem = (ToolStripMenuItem)sender;
+           // Form form = (Form)selectMenuItem.Tag;
+
+            //form.Activate();
+            //this.Refresh();
+
+            foreach (Form form2 in this.MdiChildren)
+            {
+                //Console.WriteLine(form2.Name);
+               form2.Activate();
+                this.Refresh();
+
+                break;
+
+                }
+
+                Console.WriteLine("ok");
+
+        }
     }
 }
