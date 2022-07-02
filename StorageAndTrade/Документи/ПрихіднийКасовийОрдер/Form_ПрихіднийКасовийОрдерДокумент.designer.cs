@@ -30,12 +30,13 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.textBox_НомерДок = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker_ДатаДок = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.directoryControl_Договір = new StorageAndTrade.DirectoryControl();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox_СумаДокументу = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -53,8 +54,9 @@ namespace StorageAndTrade
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.directoryControl_Договір = new StorageAndTrade.DirectoryControl();
+            this.buttonSaveAndSpend = new System.Windows.Forms.Button();
+            this.buttonSpend = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -64,23 +66,13 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(173, 3);
+            this.buttonClose.Location = new System.Drawing.Point(485, 4);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(164, 28);
+            this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
             this.buttonClose.Text = "Закрити";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(3, 3);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(164, 28);
-            this.buttonSave.TabIndex = 15;
-            this.buttonSave.Text = "Зберегти і провести";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // textBox_НомерДок
             // 
@@ -138,6 +130,24 @@ namespace StorageAndTrade
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(996, 188);
             this.panel1.TabIndex = 23;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(9, 117);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(50, 13);
+            this.label11.TabIndex = 66;
+            this.label11.Text = "Договір:";
+            // 
+            // directoryControl_Договір
+            // 
+            this.directoryControl_Договір.DirectoryPointerItem = null;
+            this.directoryControl_Договір.Location = new System.Drawing.Point(83, 111);
+            this.directoryControl_Договір.Name = "directoryControl_Договір";
+            this.directoryControl_Договір.SelectForm = null;
+            this.directoryControl_Договір.Size = new System.Drawing.Size(399, 27);
+            this.directoryControl_Договір.TabIndex = 65;
             // 
             // label13
             // 
@@ -293,30 +303,44 @@ namespace StorageAndTrade
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.buttonClose);
+            this.panel3.Controls.Add(this.buttonSaveAndSpend);
+            this.panel3.Controls.Add(this.buttonSpend);
             this.panel3.Controls.Add(this.buttonSave);
+            this.panel3.Controls.Add(this.buttonClose);
             this.panel3.Location = new System.Drawing.Point(3, 592);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(996, 34);
             this.panel3.TabIndex = 25;
             // 
-            // label11
+            // buttonSaveAndSpend
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 117);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 13);
-            this.label11.TabIndex = 66;
-            this.label11.Text = "Договір:";
+            this.buttonSaveAndSpend.Location = new System.Drawing.Point(3, 4);
+            this.buttonSaveAndSpend.Name = "buttonSaveAndSpend";
+            this.buttonSaveAndSpend.Size = new System.Drawing.Size(133, 27);
+            this.buttonSaveAndSpend.TabIndex = 21;
+            this.buttonSaveAndSpend.Text = "Зберегти і провести";
+            this.buttonSaveAndSpend.UseVisualStyleBackColor = true;
+            this.buttonSaveAndSpend.Click += new System.EventHandler(this.buttonSaveAndSpend_Click);
             // 
-            // directoryControl_Договір
+            // buttonSpend
             // 
-            this.directoryControl_Договір.DirectoryPointerItem = null;
-            this.directoryControl_Договір.Location = new System.Drawing.Point(83, 111);
-            this.directoryControl_Договір.Name = "directoryControl_Договір";
-            this.directoryControl_Договір.SelectForm = null;
-            this.directoryControl_Договір.Size = new System.Drawing.Size(399, 27);
-            this.directoryControl_Договір.TabIndex = 65;
+            this.buttonSpend.Location = new System.Drawing.Point(312, 4);
+            this.buttonSpend.Name = "buttonSpend";
+            this.buttonSpend.Size = new System.Drawing.Size(91, 27);
+            this.buttonSpend.TabIndex = 20;
+            this.buttonSpend.Text = "Провести";
+            this.buttonSpend.UseVisualStyleBackColor = true;
+            this.buttonSpend.Click += new System.EventHandler(this.buttonSpend_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(215, 4);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(91, 27);
+            this.buttonSave.TabIndex = 19;
+            this.buttonSave.Text = "Зберегти";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // Form_ПрихіднийКасовийОрдерДокумент
             // 
@@ -344,7 +368,6 @@ namespace StorageAndTrade
         #endregion
 
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBox_НомерДок;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -369,5 +392,8 @@ namespace StorageAndTrade
         private System.Windows.Forms.TextBox textBox_СумаДокументу;
         private System.Windows.Forms.Label label11;
         private DirectoryControl directoryControl_Договір;
+        private System.Windows.Forms.Button buttonSaveAndSpend;
+        private System.Windows.Forms.Button buttonSpend;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
