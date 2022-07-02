@@ -140,6 +140,8 @@ namespace StorageAndTrade
 				{
 					поверненняТоварівВідКлієнта_Objest.Save();
 					ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.SaveRecords();
+
+					IsNew = false;
 				}
 				catch (Exception exp)
 				{

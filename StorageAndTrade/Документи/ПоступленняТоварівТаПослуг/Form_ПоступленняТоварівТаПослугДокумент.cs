@@ -146,6 +146,8 @@ namespace StorageAndTrade
 				{
 					поступленняТоварівТаПослуг_Objest.Save();
 					ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
+
+					IsNew = false;
 				}
 				catch (Exception exp)
 				{

@@ -154,6 +154,8 @@ namespace StorageAndTrade
 				{
 					замовленняПостачальнику_Objest.Save();
 					ЗамовленняПостачальнику_ТабличнаЧастина_Товари.SaveRecords();
+
+					IsNew = false;
 				}
 				catch (Exception exp)
 				{

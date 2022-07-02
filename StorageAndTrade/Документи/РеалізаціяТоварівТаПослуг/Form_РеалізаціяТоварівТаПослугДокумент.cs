@@ -154,6 +154,8 @@ namespace StorageAndTrade
 				{
 					реалізаціяТоварівТаПослуг_Objest.Save();
 					РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.SaveRecords();
+
+					IsNew = false;
 				}
 				catch (Exception exp)
 				{

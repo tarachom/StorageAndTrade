@@ -129,6 +129,8 @@ namespace StorageAndTrade
 				try
 				{
 					прихіднийКасовийОрдер_Objest.Save();
+
+					IsNew = false;
 				}
 				catch (Exception exp)
 				{
