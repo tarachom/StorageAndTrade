@@ -74,6 +74,7 @@ namespace StorageAndTrade
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.константиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -381,7 +382,8 @@ namespace StorageAndTrade
             // сервісToolStripMenuItem
             // 
             this.сервісToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem});
+            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem,
+            this.константиToolStripMenuItem});
             this.сервісToolStripMenuItem.Name = "сервісToolStripMenuItem";
             this.сервісToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.сервісToolStripMenuItem.Text = "Сервіс";
@@ -454,14 +456,21 @@ namespace StorageAndTrade
             // toolStrip1
             // 
             this.toolStrip1.AutoSize = false;
+            this.toolStrip1.BackColor = System.Drawing.SystemColors.Control;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Location = new System.Drawing.Point(0, 49);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(320, 647);
+            this.toolStrip1.Size = new System.Drawing.Size(330, 647);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // константиToolStripMenuItem
+            // 
+            this.константиToolStripMenuItem.Name = "константиToolStripMenuItem";
+            this.константиToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.константиToolStripMenuItem.Text = "Константи";
             // 
             // FormStorageAndTrade
             // 
@@ -475,6 +484,7 @@ namespace StorageAndTrade
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormStorageAndTrade";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Зберігання та Торгівля";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStorageAndTrade_FormClosing);
@@ -534,6 +544,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripMenuItem константиToolStripMenuItem;
     }
 }
 
