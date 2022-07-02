@@ -69,6 +69,8 @@ namespace StorageAndTrade
 			{
 				організації_Objest = new Довідники.Організації_Objest();
 
+				Організація_ТабличнаЧастина_Контакти.ДовідникОбєкт = організації_Objest;
+
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий";
@@ -94,6 +96,8 @@ namespace StorageAndTrade
 						textBox_КраїнаРеєстрації.Text = організації_Objest.КраїнаРеєстрації;
 						textBox_СвідоцтвоСеріяНомер.Text = організації_Objest.СвідоцтвоСеріяНомер;
 						textBox_СвідоцтвоДатаВидачі.Text = організації_Objest.СвідоцтвоДатаВидачі;
+
+						Організація_ТабличнаЧастина_Контакти.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
@@ -122,6 +126,7 @@ namespace StorageAndTrade
 				try
 				{
 					організації_Objest.Save();
+					Організація_ТабличнаЧастина_Контакти.SaveRecords();
 				}
 				catch (Exception exp)
 				{

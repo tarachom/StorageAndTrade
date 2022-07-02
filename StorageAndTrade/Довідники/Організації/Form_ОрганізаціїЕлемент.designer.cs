@@ -47,11 +47,12 @@ namespace StorageAndTrade
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_СвідоцтвоДатаВидачі = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.Організація_ТабличнаЧастина_Контакти = new StorageAndTrade.Form_Організація_ТабличнаЧастина_Контакти();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 220);
+            this.buttonClose.Location = new System.Drawing.Point(388, 468);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
@@ -61,7 +62,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(12, 220);
+            this.buttonSave.Location = new System.Drawing.Point(15, 468);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
@@ -197,11 +198,20 @@ namespace StorageAndTrade
             this.label8.TabIndex = 33;
             this.label8.Text = "Дата видачі:";
             // 
+            // Організація_ТабличнаЧастина_Контакти
+            // 
+            this.Організація_ТабличнаЧастина_Контакти.Location = new System.Drawing.Point(15, 210);
+            this.Організація_ТабличнаЧастина_Контакти.Name = "Організація_ТабличнаЧастина_Контакти";
+            this.Організація_ТабличнаЧастина_Контакти.Size = new System.Drawing.Size(900, 240);
+            this.Організація_ТабличнаЧастина_Контакти.TabIndex = 35;
+            this.Організація_ТабличнаЧастина_Контакти.ДовідникОбєкт = null;
+            // 
             // Form_ОрганізаціїЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(748, 259);
+            this.ClientSize = new System.Drawing.Size(927, 507);
+            this.Controls.Add(this.Організація_ТабличнаЧастина_Контакти);
             this.Controls.Add(this.textBox_СвідоцтвоДатаВидачі);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox_СвідоцтвоСеріяНомер);
@@ -250,5 +260,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox_СвідоцтвоДатаВидачі;
         private System.Windows.Forms.Label label8;
+        private Form_Організація_ТабличнаЧастина_Контакти Організація_ТабличнаЧастина_Контакти;
     }
 }
