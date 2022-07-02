@@ -210,6 +210,10 @@ ORDER BY Номенклатура_Назва
             Функції.XmlDocumentSaveAndTransform(xmlDoc,
                 @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt");
         }
-        
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

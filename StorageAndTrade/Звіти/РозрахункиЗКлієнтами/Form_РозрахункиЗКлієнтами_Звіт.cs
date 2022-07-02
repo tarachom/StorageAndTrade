@@ -158,6 +158,10 @@ ORDER BY Контрагент_Назва
             Функції.XmlDocumentSaveAndTransform(xmlDoc,
                 @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\РозрахункиЗКлієнтами\Template_РозрахункиЗКлієнтами_Звіт.xslt");
         }
-        
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

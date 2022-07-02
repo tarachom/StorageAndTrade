@@ -224,9 +224,9 @@ ORDER BY Номенклатура_Назва
                 @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt");
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void buttonClose_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }
