@@ -43,9 +43,9 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 127);
+            this.buttonClose.Location = new System.Drawing.Point(385, 101);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(164, 23);
+            this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
             this.buttonClose.Text = "Закрити";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -53,9 +53,9 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(124, 127);
+            this.buttonSave.Location = new System.Drawing.Point(124, 101);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(164, 23);
+            this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
             this.buttonSave.Text = "Зберегти";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -81,7 +81,7 @@ namespace StorageAndTrade
             // 
             this.textBox_НазваПовна.Location = new System.Drawing.Point(124, 38);
             this.textBox_НазваПовна.Name = "textBox_НазваПовна";
-            this.textBox_НазваПовна.Size = new System.Drawing.Size(425, 20);
+            this.textBox_НазваПовна.Size = new System.Drawing.Size(591, 20);
             this.textBox_НазваПовна.TabIndex = 22;
             // 
             // label1
@@ -97,7 +97,7 @@ namespace StorageAndTrade
             // 
             this.textBox_КількістьУпаковок.Location = new System.Drawing.Point(124, 64);
             this.textBox_КількістьУпаковок.Name = "textBox_КількістьУпаковок";
-            this.textBox_КількістьУпаковок.Size = new System.Drawing.Size(425, 20);
+            this.textBox_КількістьУпаковок.Size = new System.Drawing.Size(126, 20);
             this.textBox_КількістьУпаковок.TabIndex = 24;
             // 
             // label3
@@ -111,15 +111,15 @@ namespace StorageAndTrade
             // 
             // textBox_Код
             // 
-            this.textBox_Код.Location = new System.Drawing.Point(124, 90);
+            this.textBox_Код.Location = new System.Drawing.Point(588, 12);
             this.textBox_Код.Name = "textBox_Код";
-            this.textBox_Код.Size = new System.Drawing.Size(425, 20);
+            this.textBox_Код.Size = new System.Drawing.Size(127, 20);
             this.textBox_Код.TabIndex = 26;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 93);
+            this.label4.Location = new System.Drawing.Point(553, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(29, 13);
             this.label4.TabIndex = 25;
@@ -129,7 +129,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 171);
+            this.ClientSize = new System.Drawing.Size(730, 142);
             this.Controls.Add(this.textBox_Код);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox_КількістьУпаковок);

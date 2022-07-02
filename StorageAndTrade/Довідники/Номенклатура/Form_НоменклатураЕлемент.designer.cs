@@ -60,7 +60,7 @@ namespace StorageAndTrade
             // 
             this.buttonClose.Location = new System.Drawing.Point(398, 498);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(164, 23);
+            this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
             this.buttonClose.Text = "Закрити";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@ namespace StorageAndTrade
             // 
             this.buttonSave.Location = new System.Drawing.Point(22, 498);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(164, 23);
+            this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
             this.buttonSave.Text = "Зберегти";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -80,7 +80,7 @@ namespace StorageAndTrade
             // 
             this.textBox_Назва.Location = new System.Drawing.Point(129, 12);
             this.textBox_Назва.Name = "textBox_Назва";
-            this.textBox_Назва.Size = new System.Drawing.Size(969, 20);
+            this.textBox_Назва.Size = new System.Drawing.Size(804, 20);
             this.textBox_Назва.TabIndex = 20;
             // 
             // label2
@@ -152,7 +152,7 @@ namespace StorageAndTrade
             this.directoryControl_ВидНоменклатури.Location = new System.Drawing.Point(129, 125);
             this.directoryControl_ВидНоменклатури.Name = "directoryControl_ВидНоменклатури";
             this.directoryControl_ВидНоменклатури.SelectForm = null;
-            this.directoryControl_ВидНоменклатури.Size = new System.Drawing.Size(546, 27);
+            this.directoryControl_ВидНоменклатури.Size = new System.Drawing.Size(401, 27);
             this.directoryControl_ВидНоменклатури.TabIndex = 25;
             // 
             // directoryControl_Виробник
@@ -201,7 +201,7 @@ namespace StorageAndTrade
             this.textBox_Опис.Location = new System.Drawing.Point(22, 339);
             this.textBox_Опис.Multiline = true;
             this.textBox_Опис.Name = "textBox_Опис";
-            this.textBox_Опис.Size = new System.Drawing.Size(653, 144);
+            this.textBox_Опис.Size = new System.Drawing.Size(540, 144);
             this.textBox_Опис.TabIndex = 36;
             // 
             // label8
@@ -228,7 +228,7 @@ namespace StorageAndTrade
             this.directoryControl_НоменклатураПапка.Location = new System.Drawing.Point(129, 155);
             this.directoryControl_НоменклатураПапка.Name = "directoryControl_НоменклатураПапка";
             this.directoryControl_НоменклатураПапка.SelectForm = null;
-            this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(546, 27);
+            this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(401, 27);
             this.directoryControl_НоменклатураПапка.TabIndex = 53;
             // 
             // pictureBox1
@@ -252,15 +252,15 @@ namespace StorageAndTrade
             // 
             // textBox_Код
             // 
-            this.textBox_Код.Location = new System.Drawing.Point(500, 64);
+            this.textBox_Код.Location = new System.Drawing.Point(974, 12);
             this.textBox_Код.Name = "textBox_Код";
-            this.textBox_Код.Size = new System.Drawing.Size(175, 20);
+            this.textBox_Код.Size = new System.Drawing.Size(123, 20);
             this.textBox_Код.TabIndex = 58;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(465, 67);
+            this.label11.Location = new System.Drawing.Point(939, 15);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(29, 13);
             this.label11.TabIndex = 57;
@@ -270,7 +270,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 533);
+            this.ClientSize = new System.Drawing.Size(1110, 536);
             this.Controls.Add(this.textBox_Код);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);

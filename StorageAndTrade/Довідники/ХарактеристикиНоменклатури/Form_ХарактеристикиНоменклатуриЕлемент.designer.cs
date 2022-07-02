@@ -39,9 +39,9 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 75);
+            this.buttonClose.Location = new System.Drawing.Point(385, 54);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(164, 23);
+            this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
             this.buttonClose.Text = "Закрити";
             this.buttonClose.UseVisualStyleBackColor = true;
@@ -49,9 +49,9 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(60, 75);
+            this.buttonSave.Location = new System.Drawing.Point(60, 54);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(164, 23);
+            this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
             this.buttonSave.Text = "Зберегти";
             this.buttonSave.UseVisualStyleBackColor = true;
@@ -75,15 +75,15 @@ namespace StorageAndTrade
             // 
             // textBox_Код
             // 
-            this.textBox_Код.Location = new System.Drawing.Point(60, 38);
+            this.textBox_Код.Location = new System.Drawing.Point(588, 12);
             this.textBox_Код.Name = "textBox_Код";
-            this.textBox_Код.Size = new System.Drawing.Size(489, 20);
+            this.textBox_Код.Size = new System.Drawing.Size(128, 20);
             this.textBox_Код.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 41);
+            this.label1.Location = new System.Drawing.Point(553, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 21;
@@ -93,7 +93,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 119);
+            this.ClientSize = new System.Drawing.Size(741, 96);
             this.Controls.Add(this.textBox_Код);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
