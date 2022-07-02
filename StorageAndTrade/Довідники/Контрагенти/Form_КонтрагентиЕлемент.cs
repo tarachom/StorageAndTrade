@@ -78,14 +78,14 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = контрагенти_Objest.Код = (++Константи.НумераціяДовідників.Контрагенти_Const).ToString("D6");
 				}
 				else
 				{
 					if (контрагенти_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + контрагенти_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBoxName.Text = контрагенти_Objest.Назва;
 						textBox_Код.Text = контрагенти_Objest.Код;

@@ -91,7 +91,7 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = договориКонтрагентів_Objest.Код = (++Константи.НумераціяДовідників.ДоговориКонтрагентів_Const).ToString("D6");
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
@@ -101,7 +101,7 @@ namespace StorageAndTrade
 				{
 					if (договориКонтрагентів_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + договориКонтрагентів_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBoxName.Text = договориКонтрагентів_Objest.Назва;
 						textBox_Код.Text = договориКонтрагентів_Objest.Код;

@@ -82,7 +82,7 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_НомерДок.Text = прихіднийКасовийОрдер_Objest.НомерДок = (++Константи.НумераціяДокументів.ПрихіднийКасовийОрдер_Const).ToString("D8");
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
@@ -90,7 +90,7 @@ namespace StorageAndTrade
 				{
 					if (прихіднийКасовийОрдер_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + прихіднийКасовийОрдер_Objest.НомерДок;
+						this.Text = прихіднийКасовийОрдер_Objest.Назва;
 
 						textBox_НомерДок.Text = прихіднийКасовийОрдер_Objest.НомерДок;
 						dateTimePicker_ДатаДок.Value = прихіднийКасовийОрдер_Objest.ДатаДок;

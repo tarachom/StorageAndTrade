@@ -86,7 +86,7 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = номенклатура_Objest.Код = (++Константи.НумераціяДовідників.Номенклатура_Const).ToString("D6");
 					comboBox_ТипНоменклатури.SelectedItem = Перелічення.ТипиНоменклатури.Товар;
 				}
@@ -94,7 +94,7 @@ namespace StorageAndTrade
 				{
 					if (номенклатура_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + номенклатура_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBox_Назва.Text = номенклатура_Objest.Назва;
 						textBox_НазваПовна.Text = номенклатура_Objest.НазваПовна;

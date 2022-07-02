@@ -78,7 +78,7 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = склади_Папки_Objest.Код = (++Константи.НумераціяДовідників.Склади_Папки_Const).ToString("D6");
 					directoryControl_СкладиПапка.DirectoryPointerItem = new Довідники.Склади_Папки_Pointer(new UnigueID(ParentUid));
 				}
@@ -86,7 +86,7 @@ namespace StorageAndTrade
 				{
 					if (склади_Папки_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + склади_Папки_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBoxName.Text = склади_Папки_Objest.Назва;
 						textBox_Код.Text = склади_Папки_Objest.Код;

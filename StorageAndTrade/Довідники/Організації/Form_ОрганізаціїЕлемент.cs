@@ -71,14 +71,14 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = організації_Objest.Код = (++Константи.НумераціяДовідників.Організації_Const).ToString("D6");
 				}
 				else
 				{
 					if (організації_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + організації_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBoxName.Text = організації_Objest.Назва;
 						textBox_Код.Text = організації_Objest.Код;

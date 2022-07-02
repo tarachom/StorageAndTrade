@@ -94,7 +94,7 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_НомерДок.Text = реалізаціяТоварівТаПослуг_Objest.НомерДок = (++Константи.НумераціяДокументів.РеалізаціяТоварівТаПослуг_Const).ToString("D8");
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ФормаОплати.SelectedIndex = 0;
@@ -104,7 +104,7 @@ namespace StorageAndTrade
 				{
 					if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + реалізаціяТоварівТаПослуг_Objest.НомерДок;
+						this.Text = реалізаціяТоварівТаПослуг_Objest.Назва;
 
 						textBox_НомерДок.Text = реалізаціяТоварівТаПослуг_Objest.НомерДок;
 						dateTimePicker_ДатаДок.Value = реалізаціяТоварівТаПослуг_Objest.ДатаДок;

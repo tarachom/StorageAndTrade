@@ -73,14 +73,14 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = структураПідприємства_Objest.Код = (++Константи.НумераціяДовідників.СтруктураПідприємства_Const).ToString("D6");
 				}
 				else
 				{
 					if (структураПідприємства_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + структураПідприємства_Objest.Назва;
+						this.Text += " - Редагування";
 						textBoxName.Text = структураПідприємства_Objest.Назва;
 						textBox_Код.Text = структураПідприємства_Objest.Код;
 						directoryControl_Керівник.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(структураПідприємства_Objest.Керівник.UnigueID);

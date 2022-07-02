@@ -77,7 +77,7 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = видиНоменклатури_Objest.Код = (++Константи.НумераціяДовідників.ВидиНоменклатури_Const).ToString("D6");
 					comboBox_ТипНоменклатури.SelectedIndex = 0;
 				}
@@ -85,7 +85,7 @@ namespace StorageAndTrade
 				{
 					if (видиНоменклатури_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + видиНоменклатури_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBoxName.Text = видиНоменклатури_Objest.Назва;
 						textBox_Код.Text = видиНоменклатури_Objest.Код;

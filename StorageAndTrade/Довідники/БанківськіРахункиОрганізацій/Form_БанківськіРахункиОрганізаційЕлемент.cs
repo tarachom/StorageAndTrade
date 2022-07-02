@@ -75,14 +75,14 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = банківськіРахункиОрганізацій_Objest.Код = (++Константи.НумераціяДовідників.БанківськіРахункиОрганізацій_Const).ToString("D6");
 				}
 				else
 				{
 					if (банківськіРахункиОрганізацій_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + банківськіРахункиОрганізацій_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBoxName.Text = банківськіРахункиОрганізацій_Objest.Назва;
 						textBox_Код.Text = банківськіРахункиОрганізацій_Objest.Код;

@@ -71,7 +71,7 @@ namespace StorageAndTrade
 
 				if (IsNew.Value)
 				{
-					this.Text += " - Новий запис";
+					this.Text += " - Новий";
 					textBox_Код.Text = пакуванняОдиниціВиміру_Objest.Код = (++Константи.НумераціяДовідників.ПакуванняОдиниціВиміру_Const).ToString("D6");
 					textBox_КількістьУпаковок.Text = "1";
 				}
@@ -79,7 +79,7 @@ namespace StorageAndTrade
 				{
 					if (пакуванняОдиниціВиміру_Objest.Read(new UnigueID(Uid)))
 					{
-						this.Text += " - Редагування запису - " + пакуванняОдиниціВиміру_Objest.Назва;
+						this.Text += " - Редагування";
 
 						textBox_Назва.Text = пакуванняОдиниціВиміру_Objest.Назва;
 						textBox_Код.Text = пакуванняОдиниціВиміру_Objest.Код;
