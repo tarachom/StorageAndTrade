@@ -74,10 +74,8 @@ namespace StorageAndTrade
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -455,23 +453,15 @@ namespace StorageAndTrade
             // 
             // toolStrip1
             // 
+            this.toolStrip1.AutoSize = false;
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton3});
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Location = new System.Drawing.Point(0, 49);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(213, 647);
+            this.toolStrip1.Size = new System.Drawing.Size(300, 647);
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(210, 20);
-            this.toolStripButton3.Text = "toolStripButton3 fdgtde fgdfgdfg d";
             // 
             // FormStorageAndTrade
             // 
@@ -491,8 +481,6 @@ namespace StorageAndTrade
             this.menuStrip1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -544,7 +532,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }
 

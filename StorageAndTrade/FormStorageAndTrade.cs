@@ -36,6 +36,7 @@ namespace StorageAndTrade
         private void валютиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Валюти form_Валюти = new Form_Валюти();
+            form_Валюти.MdiParent = this;
             form_Валюти.Show();
         }
 
@@ -238,44 +239,78 @@ namespace StorageAndTrade
         {
             FormService formService = new FormService();
             formService.MdiParent = this;
-            formService.Show();
-
-            ToolStripMenuItem selectMenuItem = new ToolStripMenuItem("Вибрати із списку");
-            selectMenuItem.Image = Properties.Resources.data;
-            selectMenuItem.Click += SelectMenuItem_Click;
-            //selectMenuItem.Tag = this;
-            toolStrip1.Items.Add(selectMenuItem);
-
-            
+            formService.Show();            
         }
 
         #endregion
 
         private void FormStorageAndTrade_Load(object sender, EventArgs e)
         {
-            
+            this.MdiChildActivate += FormStorageAndTrade_MdiChildActivate;
         }
 
-        private void SelectMenuItem_Click(object sender, EventArgs e)
+        #region Mdi
+
+        private List<Form> ChildFormList = new List<Form>();
+
+        private void ChildFormClosed(object sender, FormClosedEventArgs e)
         {
-            ToolStripMenuItem selectMenuItem = (ToolStripMenuItem)sender;
-           // Form form = (Form)selectMenuItem.Tag;
-
-            //form.Activate();
-            //this.Refresh();
-
-            foreach (Form form2 in this.MdiChildren)
-            {
-                //Console.WriteLine(form2.Name);
-               form2.Activate();
-                this.Refresh();
-
-                break;
-
-                }
-
-                Console.WriteLine("ok");
-
+            Form f = (Form)sender;
+            ChildFormList.Remove(f);
+            ReloadMdiChild();
         }
+
+        private void ReloadMdiChild()
+        {
+            int counter = 0;
+
+            toolStrip1.Items.Clear();
+
+            foreach (Form form in ChildFormList)
+            {
+                ToolStripButton toolStripButton =
+                    new ToolStripButton(form.Text, Properties.Resources.calculator, ToolStripButton_Click, counter.ToString())
+                    { ImageAlign = ContentAlignment.MiddleLeft };
+
+                toolStrip1.Items.Add(toolStripButton);
+
+                counter++;
+            }
+        }
+
+        private void FormStorageAndTrade_MdiChildActivate(object sender, EventArgs e)
+        {
+            Form f = this.ActiveMdiChild;
+
+            if (f == null)
+            {
+                ChildFormList.Clear();
+                ReloadMdiChild();
+            }
+            else if (!ChildFormList.Contains(f))
+            {
+                ChildFormList.Add(f);
+                f.FormClosed += new FormClosedEventHandler(ChildFormClosed);
+
+                ReloadMdiChild();
+            }
+        }
+
+        private void ToolStripButton_Click(object sender, EventArgs e)
+        {
+            ToolStripButton toolStripButton = (ToolStripButton)sender;
+            int counter = int.Parse(toolStripButton.Name);
+
+            Form form = this.MdiChildren[counter];
+
+            if (form != null)
+            {
+                form.Activate();
+                this.Refresh();
+            }
+        }
+
+        #endregion
+
     }
 }
