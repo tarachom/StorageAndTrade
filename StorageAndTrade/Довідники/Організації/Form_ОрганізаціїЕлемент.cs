@@ -82,6 +82,18 @@ namespace StorageAndTrade
 
 						textBoxName.Text = організації_Objest.Назва;
 						textBox_Код.Text = організації_Objest.Код;
+						
+						textBox_ПовнаНазва.Text = організації_Objest.НазваПовна;
+						textBox_НазваСкорочена.Text = організації_Objest.НазваСкорочена;
+						textBox_НазваСкорочена.Text = організації_Objest.НазваСкорочена;
+
+						dateTimePicker_ДатаРеєстрації.Value = 
+							(організації_Objest.ДатаРеєстрації < dateTimePicker_ДатаРеєстрації.MinDate ? 
+							DateTime.Today : організації_Objest.ДатаРеєстрації);
+
+						textBox_КраїнаРеєстрації.Text = організації_Objest.КраїнаРеєстрації;
+						textBox_СвідоцтвоСеріяНомер.Text = організації_Objest.СвідоцтвоСеріяНомер;
+						textBox_СвідоцтвоДатаВидачі.Text = організації_Objest.СвідоцтвоДатаВидачі;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -96,10 +108,19 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					організації_Objest.New();
 
+				організації_Objest.Назва = textBoxName.Text;
+				організації_Objest.Код = textBox_Код.Text;
+
+				організації_Objest.НазваПовна = textBox_ПовнаНазва.Text;
+				організації_Objest.НазваСкорочена = textBox_НазваСкорочена.Text;
+				організації_Objest.НазваСкорочена = textBox_НазваСкорочена.Text;
+				організації_Objest.ДатаРеєстрації = dateTimePicker_ДатаРеєстрації.Value;
+				організації_Objest.КраїнаРеєстрації = textBox_КраїнаРеєстрації.Text;
+				організації_Objest.СвідоцтвоСеріяНомер = textBox_СвідоцтвоСеріяНомер.Text;
+				організації_Objest.СвідоцтвоДатаВидачі = textBox_СвідоцтвоДатаВидачі.Text;
+
 				try
 				{
-					організації_Objest.Назва = textBoxName.Text;
-					організації_Objest.Код = textBox_Код.Text;
 					організації_Objest.Save();
 				}
 				catch (Exception exp)
