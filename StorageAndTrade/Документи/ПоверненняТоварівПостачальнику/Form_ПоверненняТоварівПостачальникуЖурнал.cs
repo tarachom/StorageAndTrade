@@ -169,9 +169,10 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_ПоверненняТоварівПостачальникуДокумент form_ПоверненняТоварівПостачальникуДокумент = new Form_ПоверненняТоварівПостачальникуДокумент();
+			form_ПоверненняТоварівПостачальникуДокумент.MdiParent = this.MdiParent;
 			form_ПоверненняТоварівПостачальникуДокумент.IsNew = true;
 			form_ПоверненняТоварівПостачальникуДокумент.OwnerForm = this;
-			form_ПоверненняТоварівПостачальникуДокумент.ShowDialog();
+			form_ПоверненняТоварівПостачальникуДокумент.Show();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -181,10 +182,11 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_ПоверненняТоварівПостачальникуДокумент form_ПоверненняТоварівПостачальникуДокумент = new Form_ПоверненняТоварівПостачальникуДокумент();
+				form_ПоверненняТоварівПостачальникуДокумент.MdiParent = this.MdiParent;
 				form_ПоверненняТоварівПостачальникуДокумент.IsNew = false;
 				form_ПоверненняТоварівПостачальникуДокумент.OwnerForm = this;
 				form_ПоверненняТоварівПостачальникуДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_ПоверненняТоварівПостачальникуДокумент.ShowDialog();
+				form_ПоверненняТоварівПостачальникуДокумент.Show();
 			}			
 		}
 

@@ -169,9 +169,10 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_ПрихіднийКасовийОрдерДокумент form_ПрихіднийКасовийОрдерДокумент = new Form_ПрихіднийКасовийОрдерДокумент();
+			form_ПрихіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
 			form_ПрихіднийКасовийОрдерДокумент.IsNew = true;
 			form_ПрихіднийКасовийОрдерДокумент.OwnerForm = this;
-			form_ПрихіднийКасовийОрдерДокумент.ShowDialog();
+			form_ПрихіднийКасовийОрдерДокумент.Show();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -181,10 +182,11 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_ПрихіднийКасовийОрдерДокумент form_ПрихіднийКасовийОрдерДокумент = new Form_ПрихіднийКасовийОрдерДокумент();
+				form_ПрихіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
 				form_ПрихіднийКасовийОрдерДокумент.IsNew = false;
 				form_ПрихіднийКасовийОрдерДокумент.OwnerForm = this;
 				form_ПрихіднийКасовийОрдерДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_ПрихіднийКасовийОрдерДокумент.ShowDialog();
+				form_ПрихіднийКасовийОрдерДокумент.Show();
 			}
 		}
 
