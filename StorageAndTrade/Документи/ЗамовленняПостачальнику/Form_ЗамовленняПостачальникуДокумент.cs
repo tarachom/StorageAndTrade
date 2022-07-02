@@ -127,7 +127,7 @@ namespace StorageAndTrade
 			}
 		}
 
-		private void buttonSave_Click(object sender, EventArgs e)
+		private void SaveDoc(bool spendDoc, bool closeForm)
 		{
 			if (IsNew.HasValue)
 			{
@@ -166,28 +166,45 @@ namespace StorageAndTrade
 				//Очищення регістрів
 				замовленняПостачальнику_Objest.ClearSpendTheDocument();
 
-				try
-				{
-					//Проведення
-					замовленняПостачальнику_Objest.SpendTheDocument();
-				}
-				catch (Exception exp)
-				{
-					замовленняПостачальнику_Objest.ClearSpendTheDocument();
-					MessageBox.Show(exp.Message);
-					return;
-				}
+				if (spendDoc)
+					try
+					{
+						//Проведення
+						замовленняПостачальнику_Objest.SpendTheDocument();
+					}
+					catch (Exception exp)
+					{
+						замовленняПостачальнику_Objest.ClearSpendTheDocument();
+						MessageBox.Show(exp.Message);
+						return;
+					}
 
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();
 
-				this.Close();
+				if (closeForm)
+					this.Close();
 			}
 		}
 
 		private void buttonClose_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void buttonSave_Click(object sender, EventArgs e)
+		{
+			SaveDoc(false, false);
+		}
+
+		private void buttonSpend_Click(object sender, EventArgs e)
+		{
+			SaveDoc(true, false);
+		}
+
+		private void buttonSaveAndSpend_Click(object sender, EventArgs e)
+		{
+			SaveDoc(true, true);
 		}
 	}
 }

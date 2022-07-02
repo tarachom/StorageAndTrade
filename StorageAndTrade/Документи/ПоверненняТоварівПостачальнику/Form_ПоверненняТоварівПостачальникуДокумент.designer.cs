@@ -30,7 +30,6 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
             this.textBox_НомерДок = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,6 +57,9 @@ namespace StorageAndTrade
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.directoryControl_Підрозділ = new StorageAndTrade.DirectoryControl();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonSaveAndSpend = new System.Windows.Forms.Button();
+            this.buttonSpend = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -68,23 +70,13 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(173, 3);
+            this.buttonClose.Location = new System.Drawing.Point(487, 3);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(164, 28);
+            this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
             this.buttonClose.Text = "Закрити";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // buttonSave
-            // 
-            this.buttonSave.Location = new System.Drawing.Point(3, 3);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(164, 28);
-            this.buttonSave.TabIndex = 15;
-            this.buttonSave.Text = "Зберегти";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // textBox_НомерДок
             // 
@@ -329,7 +321,7 @@ namespace StorageAndTrade
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1023, 374);
+            this.tabPage2.Size = new System.Drawing.Size(1027, 374);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Додаток";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -347,12 +339,44 @@ namespace StorageAndTrade
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.buttonClose);
+            this.panel3.Controls.Add(this.buttonSaveAndSpend);
+            this.panel3.Controls.Add(this.buttonSpend);
             this.panel3.Controls.Add(this.buttonSave);
+            this.panel3.Controls.Add(this.buttonClose);
             this.panel3.Location = new System.Drawing.Point(3, 601);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1035, 34);
             this.panel3.TabIndex = 25;
+            // 
+            // buttonSaveAndSpend
+            // 
+            this.buttonSaveAndSpend.Location = new System.Drawing.Point(3, 4);
+            this.buttonSaveAndSpend.Name = "buttonSaveAndSpend";
+            this.buttonSaveAndSpend.Size = new System.Drawing.Size(133, 27);
+            this.buttonSaveAndSpend.TabIndex = 21;
+            this.buttonSaveAndSpend.Text = "Зберегти і провести";
+            this.buttonSaveAndSpend.UseVisualStyleBackColor = true;
+            this.buttonSaveAndSpend.Click += new System.EventHandler(this.buttonSaveAndSpend_Click);
+            // 
+            // buttonSpend
+            // 
+            this.buttonSpend.Location = new System.Drawing.Point(312, 4);
+            this.buttonSpend.Name = "buttonSpend";
+            this.buttonSpend.Size = new System.Drawing.Size(91, 27);
+            this.buttonSpend.TabIndex = 20;
+            this.buttonSpend.Text = "Провести";
+            this.buttonSpend.UseVisualStyleBackColor = true;
+            this.buttonSpend.Click += new System.EventHandler(this.buttonSpend_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(215, 4);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(91, 27);
+            this.buttonSave.TabIndex = 19;
+            this.buttonSave.Text = "Зберегти";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // Form_ПоверненняТоварівПостачальникуДокумент
             // 
@@ -381,7 +405,6 @@ namespace StorageAndTrade
         #endregion
 
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.TextBox textBox_НомерДок;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -409,5 +432,8 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Підрозділ;
         private StorageAndTrade.Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button buttonSaveAndSpend;
+        private System.Windows.Forms.Button buttonSpend;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
