@@ -45,7 +45,7 @@ namespace StorageAndTrade
             // 
             // dateTimeStart
             // 
-            this.dateTimeStart.Location = new System.Drawing.Point(79, 18);
+            this.dateTimeStart.Location = new System.Drawing.Point(113, 24);
             this.dateTimeStart.Name = "dateTimeStart";
             this.dateTimeStart.Size = new System.Drawing.Size(147, 20);
             this.dateTimeStart.TabIndex = 0;
@@ -53,7 +53,7 @@ namespace StorageAndTrade
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 24);
+            this.label1.Location = new System.Drawing.Point(24, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace StorageAndTrade
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(233, 25);
+            this.label2.Location = new System.Drawing.Point(266, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 2;
@@ -70,7 +70,7 @@ namespace StorageAndTrade
             // 
             // dateTimeStop
             // 
-            this.dateTimeStop.Location = new System.Drawing.Point(258, 18);
+            this.dateTimeStop.Location = new System.Drawing.Point(292, 24);
             this.dateTimeStop.Name = "dateTimeStop";
             this.dateTimeStop.Size = new System.Drawing.Size(151, 20);
             this.dateTimeStop.TabIndex = 3;
