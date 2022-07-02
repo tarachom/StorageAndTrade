@@ -23,11 +23,33 @@ namespace StorageAndTrade
         {
             InitializeComponent();
 
-            RecordsBindingList = new BindingList<Записи>();
+			ComboBoxColumn = new List<NameValue<int>>();
+
+			//ТипиКонтактноїІнформації
+			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиКонтактноїІнформації"].Fields.Values)
+				ComboBoxColumn.Add(new NameValue<int>(field.Name, field.Value));
+
+			RecordsBindingList = new BindingList<Записи>();
             dataGridViewRecords.DataSource = RecordsBindingList;
 
-            dataGridViewRecords.Columns["ID"].Visible = false;
-        }
+			DataGridViewComboBoxColumn comboBoxColumn = new DataGridViewComboBoxColumn();
+			comboBoxColumn.Name = "comboBoxColumn";
+
+            foreach (NameValue<int> nameValue in ComboBoxColumn)
+				comboBoxColumn.Items.Add(nameValue.Name);
+
+			dataGridViewRecords.Columns.Add(comboBoxColumn);
+			dataGridViewRecords.Columns["comboBoxColumn"].DisplayIndex = 0;
+			dataGridViewRecords.Columns["comboBoxColumn"].HeaderText = "Тип";
+
+			dataGridViewRecords.Columns["ID"].Visible = false;
+			dataGridViewRecords.Columns["Тип"].Visible = false;
+
+			dataGridViewRecords.Columns["Телефон"].Width = 150;
+
+			dataGridViewRecords.Columns["ЕлектроннаПошта"].Width = 150;
+			dataGridViewRecords.Columns["ЕлектроннаПошта"].HeaderText = "@ Email";
+		}
 
 		/// <summary>
 		/// Власне довідник якому належить таблична частина
@@ -35,6 +57,8 @@ namespace StorageAndTrade
 		public Довідники.Організації_Objest ДовідникОбєкт { get; set; }
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
+
+		private List<NameValue<int>> ComboBoxColumn { get; set; }
 
 		public void LoadRecords()
 		{
@@ -61,6 +85,8 @@ namespace StorageAndTrade
 					ЕлектроннаПошта = record.ЕлектроннаПошта,
 					Область = record.Область
 				});
+
+				dataGridViewRecords["comboBoxColumn", dataGridViewRecords.RowCount - 1].Value = record.Тип.ToString();
 			}
 		}
 
@@ -71,11 +97,16 @@ namespace StorageAndTrade
 
 			організації_Контакти_TablePart.Records.Clear();
 
+			int counter = 0;
+
 			foreach (Записи запис in RecordsBindingList)
             {
+				string comboBoxColumnName = (string)dataGridViewRecords["comboBoxColumn", counter].Value;
+				int comboBoxColumnValue = ComboBoxColumn.Find(x => x.Name == comboBoxColumnName).Value;
+
 				організації_Контакти_TablePart.Records.Add(
 					new Довідники.Організації_Контакти_TablePart.Record(
-						Перелічення.ТипиКонтактноїІнформації.Адрес,
+						(Перелічення.ТипиКонтактноїІнформації)comboBoxColumnValue,
 						запис.Країна,
 						запис.Район,
 						запис.Місто,
@@ -84,6 +115,8 @@ namespace StorageAndTrade
 						запис.Область
 					)
 			    );
+
+				counter++;
 			}
 
 			організації_Контакти_TablePart.Save(true);
@@ -133,7 +166,10 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-			RecordsBindingList.Add(Записи.New());
+			Записи НовийЗапис = Записи.New();
+			RecordsBindingList.Add(НовийЗапис);
+
+			dataGridViewRecords["comboBoxColumn", dataGridViewRecords.RowCount - 1].Value = НовийЗапис.Тип.ToString();
 		}
 
         private void toolStripButtonCopy_Click(object sender, EventArgs e)
