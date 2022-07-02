@@ -467,6 +467,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(993, 696);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.toolStrip2);
@@ -475,6 +476,7 @@ namespace StorageAndTrade
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormStorageAndTrade";
             this.Text = "Зберігання та Торгівля";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStorageAndTrade_FormClosing);
             this.Load += new System.EventHandler(this.FormStorageAndTrade_Load);
             this.menuStrip1.ResumeLayout(false);

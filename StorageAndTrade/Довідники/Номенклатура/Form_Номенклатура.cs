@@ -196,12 +196,16 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_НоменклатураЕлемент form_НоменклатураЕлемент = new Form_НоменклатураЕлемент();
+			form_НоменклатураЕлемент.MdiParent = this.MdiParent;
 			form_НоменклатураЕлемент.IsNew = true;
 			form_НоменклатураЕлемент.OwnerForm = this;
 			if (Номенклатура_Папки_Дерево.Parent_Pointer != null)
 				form_НоменклатураЕлемент.ParentUid = Номенклатура_Папки_Дерево.Parent_Pointer.UnigueID.UGuid.ToString();
-			form_НоменклатураЕлемент.ShowDialog();
-        }
+			if (DirectoryPointerItem != null && form_НоменклатураЕлемент.MdiParent == null)
+				form_НоменклатураЕлемент.ShowDialog();
+			else
+				form_НоменклатураЕлемент.Show();
+		}
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
@@ -210,10 +214,14 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_НоменклатураЕлемент form_НоменклатураЕлемент = new Form_НоменклатураЕлемент();
+				form_НоменклатураЕлемент.MdiParent = this.MdiParent;
 				form_НоменклатураЕлемент.IsNew = false;
 				form_НоменклатураЕлемент.OwnerForm = this;
 				form_НоменклатураЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_НоменклатураЕлемент.ShowDialog();
+				if (DirectoryPointerItem != null && form_НоменклатураЕлемент.MdiParent == null)
+					form_НоменклатураЕлемент.ShowDialog();
+				else
+					form_НоменклатураЕлемент.Show();
 			}			
 		}
 

@@ -34,11 +34,11 @@ namespace StorageAndTrade
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonClearSpend = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonДрукПроводок = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonClearSpend = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
@@ -100,24 +100,6 @@ namespace StorageAndTrade
             this.toolStripButtonRefresh.Text = "Обновити";
             this.toolStripButtonRefresh.Click += new System.EventHandler(this.toolStripButtonRefresh_Click);
             // 
-            // toolStripButtonClearSpend
-            // 
-            this.toolStripButtonClearSpend.Image = global::StorageAndTrade.Properties.Resources.report;
-            this.toolStripButtonClearSpend.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonClearSpend.Name = "toolStripButtonClearSpend";
-            this.toolStripButtonClearSpend.Size = new System.Drawing.Size(111, 22);
-            this.toolStripButtonClearSpend.Text = "Не проведений";
-            this.toolStripButtonClearSpend.Click += new System.EventHandler(this.toolStripButtonClearSpend_Click);
-            // 
-            // toolStripButtonSpend
-            // 
-            this.toolStripButtonSpend.Image = global::StorageAndTrade.Properties.Resources.report;
-            this.toolStripButtonSpend.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonSpend.Name = "toolStripButtonSpend";
-            this.toolStripButtonSpend.Size = new System.Drawing.Size(80, 22);
-            this.toolStripButtonSpend.Text = "Провести";
-            this.toolStripButtonSpend.Click += new System.EventHandler(this.toolStripButtonSpend_Click);
-            // 
             // toolStripButtonCopy
             // 
             this.toolStripButtonCopy.Image = global::StorageAndTrade.Properties.Resources.page_copy;
@@ -144,6 +126,24 @@ namespace StorageAndTrade
             this.toolStripButtonДрукПроводок.Size = new System.Drawing.Size(82, 22);
             this.toolStripButtonДрукПроводок.Text = "Проводки";
             this.toolStripButtonДрукПроводок.Click += new System.EventHandler(this.toolStripButtonДрукПроводок_Click);
+            // 
+            // toolStripButtonClearSpend
+            // 
+            this.toolStripButtonClearSpend.Image = global::StorageAndTrade.Properties.Resources.report;
+            this.toolStripButtonClearSpend.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonClearSpend.Name = "toolStripButtonClearSpend";
+            this.toolStripButtonClearSpend.Size = new System.Drawing.Size(111, 22);
+            this.toolStripButtonClearSpend.Text = "Не проведений";
+            this.toolStripButtonClearSpend.Click += new System.EventHandler(this.toolStripButtonClearSpend_Click);
+            // 
+            // toolStripButtonSpend
+            // 
+            this.toolStripButtonSpend.Image = global::StorageAndTrade.Properties.Resources.report;
+            this.toolStripButtonSpend.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonSpend.Name = "toolStripButtonSpend";
+            this.toolStripButtonSpend.Size = new System.Drawing.Size(80, 22);
+            this.toolStripButtonSpend.Text = "Провести";
+            this.toolStripButtonSpend.Click += new System.EventHandler(this.toolStripButtonSpend_Click);
             // 
             // panel2
             // 

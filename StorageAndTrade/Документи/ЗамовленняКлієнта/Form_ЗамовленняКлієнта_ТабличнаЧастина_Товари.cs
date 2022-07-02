@@ -342,7 +342,6 @@ LIMIT 10
 					{
 						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
 						form_Номенклатура.DirectoryPointerItem = запис.Номенклатура;
-						
 						DialogResult dialogResult = form_Номенклатура.ShowDialog();
 						if (dialogResult == DialogResult.OK)
                         {

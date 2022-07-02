@@ -31,9 +31,9 @@ namespace StorageAndTrade
         {
             this.buttonCalculate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBoxInfo = new System.Windows.Forms.RichTextBox();
-            this.buttonCancel = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,17 @@ namespace StorageAndTrade
             this.panel1.Size = new System.Drawing.Size(786, 33);
             this.panel1.TabIndex = 1;
             // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Enabled = false;
+            this.buttonCancel.Location = new System.Drawing.Point(195, 3);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(97, 27);
+            this.buttonCancel.TabIndex = 1;
+            this.buttonCancel.Text = "Зупинити";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -82,17 +93,6 @@ namespace StorageAndTrade
             this.richTextBoxInfo.TabIndex = 1;
             this.richTextBoxInfo.Text = "";
             // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Enabled = false;
-            this.buttonCancel.Location = new System.Drawing.Point(195, 3);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(97, 27);
-            this.buttonCancel.TabIndex = 1;
-            this.buttonCancel.Text = "Зупинити";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
-            // 
             // FormService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,7 +101,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "FormService";
-            this.Text = "FormService";
+            this.Text = "Сервіс";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

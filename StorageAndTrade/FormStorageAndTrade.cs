@@ -43,96 +43,112 @@ namespace StorageAndTrade
         private void пакуванняОдиниціВиміруToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру =new Form_ПакуванняОдиниціВиміру();
+            form_ПакуванняОдиниціВиміру.MdiParent = this;
             form_ПакуванняОдиниціВиміру.Show();
         }
 
         private void оганізаціїToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Організації form_Організації = new Form_Організації();
+            form_Організації.MdiParent = this;
             form_Організації.Show();
         }
 
         private void номенклатураToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
+            form_Номенклатура.MdiParent = this;
             form_Номенклатура.Show();
         }
 
         private void контрагентиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Контрагенти form_Контрагенти = new Form_Контрагенти();
+            form_Контрагенти.MdiParent = this;
             form_Контрагенти.Show();
         }
 
         private void касиToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Form_Каси formCash = new Form_Каси();
+            formCash.MdiParent = this;
             formCash.Show();
         }
 
         private void складиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Склади form_Склади = new Form_Склади();
+            form_Склади.MdiParent = this;
             form_Склади.Show();
         }
 
         private void видиЦінToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ВидиЦін form_ВидиЦін = new Form_ВидиЦін();
+            form_ВидиЦін.MdiParent = this;
             form_ВидиЦін.Show();
         }
 
         private void фізичніОсобиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ФізичніОсоби form_ФізичніОсоби = new Form_ФізичніОсоби();
+            form_ФізичніОсоби.MdiParent = this;
             form_ФізичніОсоби.Show();
         }
 
         private void користувачіToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Користувачі form_Користувачі = new Form_Користувачі();
+            form_Користувачі.MdiParent = this;
             form_Користувачі.Show();
         }
 
         private void виробникиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_Виробники form_Виробники = new Form_Виробники();
+            form_Виробники.MdiParent = this;
             form_Виробники.Show();
         }
 
         private void видиНоменклатуриToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ВидиНоменклатури form_ВидиНоменклатури = new Form_ВидиНоменклатури();
+            form_ВидиНоменклатури.MdiParent = this;
             form_ВидиНоменклатури.Show();
         }
 
         private void структураПідприємстваToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_СтруктураПідприємства form_СтруктураПідприємства = new Form_СтруктураПідприємства();
+            form_СтруктураПідприємства.MdiParent = this;
             form_СтруктураПідприємства.Show();
         }
 
         private void банківськіРахункиОрганізаційToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_БанківськіРахункиОрганізацій form_БанківськіРахункиОрганізацій = new Form_БанківськіРахункиОрганізацій();
+            form_БанківськіРахункиОрганізацій.MdiParent = this;
             form_БанківськіРахункиОрганізацій.Show();
         }
 
         private void договориКонтрагентівToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ДоговориКонтрагентів form_ДоговориКонтрагентів = new Form_ДоговориКонтрагентів();
+            form_ДоговориКонтрагентів.MdiParent = this;
             form_ДоговориКонтрагентів.Show();
         }
 
         private void банківськіРахункиКонтрагентівToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_БанківськіРахункиКонтрагентів form_БанківськіРахункиКонтрагентів = new Form_БанківськіРахункиКонтрагентів();
+            form_БанківськіРахункиКонтрагентів.MdiParent = this;
             form_БанківськіРахункиКонтрагентів.Show();
         }
 
         private void характеристикиНоменклатуриToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
+            form_ХарактеристикиНоменклатури.MdiParent = this;
             form_ХарактеристикиНоменклатури.Show();
         }
 
@@ -150,42 +166,49 @@ namespace StorageAndTrade
         private void реалізаціяТоварівТаПослугToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_РеалізаціяТоварівТаПослугЖурнал form_РеалізаціяТоварівТаПослугЖурнал = new Form_РеалізаціяТоварівТаПослугЖурнал();
+            form_РеалізаціяТоварівТаПослугЖурнал.MdiParent = this;
             form_РеалізаціяТоварівТаПослугЖурнал.Show();
         }
 
         private void замовленняПостачальникуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ЗамовленняПостачальникуЖурнал form_ЗамовленняПостачальникуЖурнал = new Form_ЗамовленняПостачальникуЖурнал();
+            form_ЗамовленняПостачальникуЖурнал.MdiParent = this;
             form_ЗамовленняПостачальникуЖурнал.Show();
         }
 
         private void поступленняТоварівТаПослугToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ПоступленняТоварівТаПослугЖурнал form_ПоступленняТоварівТаПослугЖурнал = new Form_ПоступленняТоварівТаПослугЖурнал();
+            form_ПоступленняТоварівТаПослугЖурнал.MdiParent = this;
             form_ПоступленняТоварівТаПослугЖурнал.Show();
         }
 
         private void поверненняТоварівПостачальникуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ПоверненняТоварівПостачальникуЖурнал form_ПоверненняТоварівПостачальникуЖурнал = new Form_ПоверненняТоварівПостачальникуЖурнал();
+            form_ПоверненняТоварівПостачальникуЖурнал.MdiParent = this;
             form_ПоверненняТоварівПостачальникуЖурнал.Show();
         }
 
         private void поверненняТоварівКлієнтуToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ПоверненняТоварівВідКлієнтаЖурнал form_ПоверненняТоварівВідКлієнтаЖурнал = new Form_ПоверненняТоварівВідКлієнтаЖурнал();
+            form_ПоверненняТоварівВідКлієнтаЖурнал.MdiParent = this;
             form_ПоверненняТоварівВідКлієнтаЖурнал.Show();
         }
 
         private void прихіднийКасовийОрдерToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ПрихіднийКасовийОрдерЖурнал form_ПрихіднийКасовийОрдерЖурнал = new Form_ПрихіднийКасовийОрдерЖурнал();
+            form_ПрихіднийКасовийОрдерЖурнал.MdiParent = this;
             form_ПрихіднийКасовийОрдерЖурнал.Show();
         }
 
         private void розхіднийКасовийОрдерToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_РозхіднийКасовийОрдерЖурнал form_РозхіднийКасовийОрдерЖурнал = new Form_РозхіднийКасовийОрдерЖурнал();
+            form_РозхіднийКасовийОрдерЖурнал.MdiParent = this;
             form_РозхіднийКасовийОрдерЖурнал.Show();
         }
 
@@ -209,24 +232,28 @@ namespace StorageAndTrade
         private void розрахункиЗКлієнтамиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_РозрахункиЗКлієнтами_Звіт form_РозрахункиЗКлієнтами_Звіт = new Form_РозрахункиЗКлієнтами_Звіт();
+            form_РозрахункиЗКлієнтами_Звіт.MdiParent = this;
             form_РозрахункиЗКлієнтами_Звіт.Show();
         }
 
         private void розрахункиЗПостачальникамиToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_РозрахункиЗПостачальниками_Звіт form_РозрахункиЗПостачальниками_Звіт = new Form_РозрахункиЗПостачальниками_Звіт();
+            form_РозрахункиЗПостачальниками_Звіт.MdiParent = this;
             form_РозрахункиЗПостачальниками_Звіт.Show();
         }
 
         private void товариНаСкладахToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ТовариНаСкладах_Звіт form_ТовариНаСкладах_Звіт = new Form_ТовариНаСкладах_Звіт();
+            form_ТовариНаСкладах_Звіт.MdiParent = this;
             form_ТовариНаСкладах_Звіт.Show();
         }
 
         private void замовленняПостачальникамToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ЗамовленняПостачальникам_Звіт form_ЗамовленняПостачальникам_Звіт = new Form_ЗамовленняПостачальникам_Звіт();
+            form_ЗамовленняПостачальникам_Звіт.MdiParent = this;
             form_ЗамовленняПостачальникам_Звіт.Show();
         }
 
