@@ -155,12 +155,16 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_КонтрагентиЕлемент form_КонтрагентиЕлемент = new Form_КонтрагентиЕлемент();
+			form_КонтрагентиЕлемент.MdiParent = this.MdiParent;
 			form_КонтрагентиЕлемент.IsNew = true;
 			form_КонтрагентиЕлемент.OwnerForm = this;
 			if (Контрагенти_Папки_Дерево.Parent_Pointer != null)
 				form_КонтрагентиЕлемент.ParentUid = Контрагенти_Папки_Дерево.Parent_Pointer.UnigueID.UGuid.ToString();
-			form_КонтрагентиЕлемент.ShowDialog();
-        }
+			if (DirectoryPointerItem != null && this.MdiParent == null)
+				form_КонтрагентиЕлемент.ShowDialog();
+			else
+				form_КонтрагентиЕлемент.Show();
+		}
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
@@ -169,11 +173,15 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_КонтрагентиЕлемент form_КонтрагентиЕлемент = new Form_КонтрагентиЕлемент();
+				form_КонтрагентиЕлемент.MdiParent = this.MdiParent;
 				form_КонтрагентиЕлемент.IsNew = false;
 				form_КонтрагентиЕлемент.OwnerForm = this;
 				form_КонтрагентиЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_КонтрагентиЕлемент.ShowDialog();
-			}			
+				if (DirectoryPointerItem != null && this.MdiParent == null)
+					form_КонтрагентиЕлемент.ShowDialog();
+				else
+					form_КонтрагентиЕлемент.Show();
+			}
 		}
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)

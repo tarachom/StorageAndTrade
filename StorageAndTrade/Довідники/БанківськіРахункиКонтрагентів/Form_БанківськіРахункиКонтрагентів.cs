@@ -134,10 +134,14 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_БанківськіРахункиКонтрагентівЕлемент form_БанківськіРахункиКонтрагентівЕлемент = new Form_БанківськіРахункиКонтрагентівЕлемент();
+			form_БанківськіРахункиКонтрагентівЕлемент.MdiParent = this.MdiParent;
 			form_БанківськіРахункиКонтрагентівЕлемент.IsNew = true;
 			form_БанківськіРахункиКонтрагентівЕлемент.OwnerForm = this;
-			form_БанківськіРахункиКонтрагентівЕлемент.ShowDialog();
-        }
+			if (DirectoryPointerItem != null && this.MdiParent == null)
+				form_БанківськіРахункиКонтрагентівЕлемент.ShowDialog();
+			else
+				form_БанківськіРахункиКонтрагентівЕлемент.Show();
+		}
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
@@ -146,10 +150,14 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_БанківськіРахункиКонтрагентівЕлемент form_БанківськіРахункиКонтрагентівЕлемент = new Form_БанківськіРахункиКонтрагентівЕлемент();
+				form_БанківськіРахункиКонтрагентівЕлемент.MdiParent = this.MdiParent;
 				form_БанківськіРахункиКонтрагентівЕлемент.IsNew = false;
 				form_БанківськіРахункиКонтрагентівЕлемент.OwnerForm = this;
 				form_БанківськіРахункиКонтрагентівЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_БанківськіРахункиКонтрагентівЕлемент.ShowDialog();
+				if (DirectoryPointerItem != null && this.MdiParent == null)
+					form_БанківськіРахункиКонтрагентівЕлемент.ShowDialog();
+				else
+					form_БанківськіРахункиКонтрагентівЕлемент.Show();
 			}			
 		}
 

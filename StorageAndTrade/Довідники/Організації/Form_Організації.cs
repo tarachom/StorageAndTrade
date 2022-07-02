@@ -134,10 +134,14 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_ОрганізаціїЕлемент form_ОрганізаціїЕлемент = new Form_ОрганізаціїЕлемент();
+			form_ОрганізаціїЕлемент.MdiParent = this.MdiParent;
 			form_ОрганізаціїЕлемент.IsNew = true;
 			form_ОрганізаціїЕлемент.OwnerForm = this;
-			form_ОрганізаціїЕлемент.ShowDialog();
-        }
+			if (DirectoryPointerItem != null && this.MdiParent == null)
+				form_ОрганізаціїЕлемент.ShowDialog();
+			else
+				form_ОрганізаціїЕлемент.Show();
+		}
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
@@ -146,10 +150,14 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_ОрганізаціїЕлемент form_ОрганізаціїЕлемент = new Form_ОрганізаціїЕлемент();
+				form_ОрганізаціїЕлемент.MdiParent = this.MdiParent;
 				form_ОрганізаціїЕлемент.IsNew = false;
 				form_ОрганізаціїЕлемент.OwnerForm = this;
 				form_ОрганізаціїЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_ОрганізаціїЕлемент.ShowDialog();
+				if (DirectoryPointerItem != null && this.MdiParent == null)
+					form_ОрганізаціїЕлемент.ShowDialog();
+				else
+					form_ОрганізаціїЕлемент.Show();
 			}			
 		}
 

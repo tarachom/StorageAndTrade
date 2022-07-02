@@ -134,10 +134,14 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_ХарактеристикиНоменклатуриЕлемент form_ХарактеристикиНоменклатуриЕлемент = new Form_ХарактеристикиНоменклатуриЕлемент();
+			form_ХарактеристикиНоменклатуриЕлемент.MdiParent = this.MdiParent;
 			form_ХарактеристикиНоменклатуриЕлемент.IsNew = true;
 			form_ХарактеристикиНоменклатуриЕлемент.OwnerForm = this;
-			form_ХарактеристикиНоменклатуриЕлемент.ShowDialog();
-        }
+			if (DirectoryPointerItem != null && this.MdiParent == null)
+				form_ХарактеристикиНоменклатуриЕлемент.ShowDialog();
+			else
+				form_ХарактеристикиНоменклатуриЕлемент.Show();
+		}
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
@@ -146,10 +150,14 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_ХарактеристикиНоменклатуриЕлемент form_ХарактеристикиНоменклатуриЕлемент = new Form_ХарактеристикиНоменклатуриЕлемент();
+				form_ХарактеристикиНоменклатуриЕлемент.MdiParent = this.MdiParent;
 				form_ХарактеристикиНоменклатуриЕлемент.IsNew = false;
 				form_ХарактеристикиНоменклатуриЕлемент.OwnerForm = this;
 				form_ХарактеристикиНоменклатуриЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_ХарактеристикиНоменклатуриЕлемент.ShowDialog();
+				if (DirectoryPointerItem != null && this.MdiParent == null)
+					form_ХарактеристикиНоменклатуриЕлемент.ShowDialog();
+				else
+					form_ХарактеристикиНоменклатуриЕлемент.Show();
 			}			
 		}
 

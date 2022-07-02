@@ -141,10 +141,14 @@ namespace StorageAndTrade
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
 			Form_ПакуванняОдиниціВиміруЕлемент form_ПакуванняОдиниціВиміруЕлемент = new Form_ПакуванняОдиниціВиміруЕлемент();
+			form_ПакуванняОдиниціВиміруЕлемент.MdiParent = this.MdiParent;
 			form_ПакуванняОдиниціВиміруЕлемент.IsNew = true;
 			form_ПакуванняОдиниціВиміруЕлемент.OwnerForm = this;
-			form_ПакуванняОдиниціВиміруЕлемент.ShowDialog();
-        }
+			if (DirectoryPointerItem != null && this.MdiParent == null)
+				form_ПакуванняОдиниціВиміруЕлемент.ShowDialog();
+			else
+				form_ПакуванняОдиниціВиміруЕлемент.Show();
+		}
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
@@ -153,10 +157,14 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
 				Form_ПакуванняОдиниціВиміруЕлемент form_ПакуванняОдиниціВиміруЕлемент = new Form_ПакуванняОдиниціВиміруЕлемент();
+				form_ПакуванняОдиниціВиміруЕлемент.MdiParent = this.MdiParent;
 				form_ПакуванняОдиниціВиміруЕлемент.IsNew = false;
 				form_ПакуванняОдиниціВиміруЕлемент.OwnerForm = this;
 				form_ПакуванняОдиниціВиміруЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_ПакуванняОдиниціВиміруЕлемент.ShowDialog();
+				if (DirectoryPointerItem != null && this.MdiParent == null)
+					form_ПакуванняОдиниціВиміруЕлемент.ShowDialog();
+				else
+					form_ПакуванняОдиниціВиміруЕлемент.Show();
 			}			
 		}
 

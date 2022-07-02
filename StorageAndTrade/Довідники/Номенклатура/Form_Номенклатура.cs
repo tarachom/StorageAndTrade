@@ -201,7 +201,7 @@ namespace StorageAndTrade
 			form_НоменклатураЕлемент.OwnerForm = this;
 			if (Номенклатура_Папки_Дерево.Parent_Pointer != null)
 				form_НоменклатураЕлемент.ParentUid = Номенклатура_Папки_Дерево.Parent_Pointer.UnigueID.UGuid.ToString();
-			if (DirectoryPointerItem != null && form_НоменклатураЕлемент.MdiParent == null)
+			if (DirectoryPointerItem != null && this.MdiParent == null)
 				form_НоменклатураЕлемент.ShowDialog();
 			else
 				form_НоменклатураЕлемент.Show();
@@ -218,7 +218,7 @@ namespace StorageAndTrade
 				form_НоменклатураЕлемент.IsNew = false;
 				form_НоменклатураЕлемент.OwnerForm = this;
 				form_НоменклатураЕлемент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				if (DirectoryPointerItem != null && form_НоменклатураЕлемент.MdiParent == null)
+				if (DirectoryPointerItem != null && this.MdiParent == null)
 					form_НоменклатураЕлемент.ShowDialog();
 				else
 					form_НоменклатураЕлемент.Show();
