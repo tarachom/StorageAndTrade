@@ -901,7 +901,25 @@ namespace StorageAndTrade_1_0.Документи
 		{
 			#region Рух по регістрах
 
-			
+			РегістриВідомостей.ЦіниНоменклатури_RecordsSet ціниНоменклатури_RecordsSet = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet();
+
+            foreach (ВстановленняЦінНоменклатури_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+            {
+				Довідники.ВидиЦін_Objest видиЦін_Objest = Товари_Record.ВидЦіни.GetDirectoryObject();
+
+				РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record record = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record();
+                ціниНоменклатури_RecordsSet.Records.Add(record);
+
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.ВидЦіни = Товари_Record.ВидЦіни;
+
+				record.Ціна = Товари_Record.Ціна;
+				record.Пакування = Товари_Record.Пакування;
+				record.Валюта = (видиЦін_Objest != null ? видиЦін_Objest.Валюта : new Довідники.Валюти_Pointer());
+			}
+
+			ціниНоменклатури_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
 			#endregion
 
