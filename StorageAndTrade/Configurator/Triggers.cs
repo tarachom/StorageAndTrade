@@ -360,4 +360,23 @@ namespace StorageAndTrade_1_0.Документи
 		}
 
 	}
+
+	class ВстановленняЦінНоменклатури_Triggers
+	{
+		public static void BeforeRecording(ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
+		{
+			ДокументОбєкт.ClearSpendTheDocument();
+		}
+
+	}
 }

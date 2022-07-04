@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 04.07.2022 10:38:52
+ * Дата конфігурації: 04.07.2022 11:27:13
  *
  */
 
@@ -9167,18 +9167,20 @@ namespace StorageAndTrade_1_0.Документи
         public const string ДатаДок = "col_g7";
         public const string НомерДок = "col_g8";
         public const string Коментар = "col_g9";
+        public const string Організація = "col_a2";
     }
 	
     
     public class ВстановленняЦінНоменклатури_Objest : DocumentObject
     {
         public ВстановленняЦінНоменклатури_Objest() : base(Config.Kernel, "tab_a42",
-             new string[] { "col_a1", "col_g7", "col_g8", "col_g9" }) 
+             new string[] { "col_a1", "col_g7", "col_g8", "col_g9", "col_a2" }) 
         {
             Назва = "";
             ДатаДок = DateTime.MinValue;
             НомерДок = "";
             Коментар = "";
+            Організація = new Довідники.Організації_Pointer();
             
             //Табличні частини
             Товари_TablePart = new ВстановленняЦінНоменклатури_Товари_TablePart(this);
@@ -9193,6 +9195,7 @@ namespace StorageAndTrade_1_0.Документи
                 ДатаДок = (base.FieldValue["col_g7"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_g7"].ToString()) : DateTime.MinValue;
                 НомерДок = base.FieldValue["col_g8"].ToString();
                 Коментар = base.FieldValue["col_g9"].ToString();
+                Організація = new Довідники.Організації_Pointer(base.FieldValue["col_a2"]);
                 
                 BaseClear();
                 return true;
@@ -9207,19 +9210,20 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_g7"] = ДатаДок;
             base.FieldValue["col_g8"] = НомерДок;
             base.FieldValue["col_g9"] = Коментар;
-            
+            base.FieldValue["col_a2"] = Організація.UnigueID.UGuid;
+            ВстановленняЦінНоменклатури_Triggers.BeforeRecording(this);
             BaseSave();
-			
+			ВстановленняЦінНоменклатури_Triggers.AfterRecording(this);
 		}
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseSpend(ВстановленняЦінНоменклатури_SpendTheDocument.Spend(this));
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            ВстановленняЦінНоменклатури_SpendTheDocument.ClearSpend(this); BaseSpend(false);
 		}
 
 		public ВстановленняЦінНоменклатури_Objest Copy()
@@ -9230,13 +9234,14 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ДатаДок = ДатаДок;
 			copy.НомерДок = НомерДок;
 			copy.Коментар = Коментар;
+			copy.Організація = Організація;
 			
 			return copy;
         }
 
         public void Delete()
         {
-		    
+		    ВстановленняЦінНоменклатури_Triggers.BeforeDelete(this);
             base.BaseDelete(new string[] { "tab_a43" });
         }
         
@@ -9250,6 +9255,7 @@ namespace StorageAndTrade_1_0.Документи
         public DateTime ДатаДок { get; set; }
         public string НомерДок { get; set; }
         public string Коментар { get; set; }
+        public Довідники.Організації_Pointer Організація { get; set; }
         
         //Табличні частини
         public ВстановленняЦінНоменклатури_Товари_TablePart Товари_TablePart { get; set; }

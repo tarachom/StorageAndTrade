@@ -894,4 +894,24 @@ namespace StorageAndTrade_1_0.Документи
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
 	}
+
+	class ВстановленняЦінНоменклатури_SpendTheDocument
+	{
+		public static bool Spend(ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
+		{
+			#region Рух по регістрах
+
+			
+
+			#endregion
+
+			return true;
+		}
+
+		public static void ClearSpend(ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
+		{
+			//РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			//товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+		}
+	}
 }

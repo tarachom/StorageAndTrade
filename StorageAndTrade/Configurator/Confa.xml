@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>04.07.2022 10:38:52</DateTimeSave>
+  <DateTimeSave>04.07.2022 11:27:13</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -5341,6 +5341,16 @@
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
+        <Field>
+          <Name>Організація</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Організації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -5411,18 +5421,13 @@
         </TablePart>
       </TabularParts>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <BeforeSave>ВстановленняЦінНоменклатури_Triggers.BeforeRecording</BeforeSave>
+        <AfterSave>ВстановленняЦінНоменклатури_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ВстановленняЦінНоменклатури_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ВстановленняЦінНоменклатури_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ВстановленняЦінНоменклатури_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
