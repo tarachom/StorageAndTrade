@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 04.07.2022 14:06:01
+ * Дата конфігурації: 04.07.2022 22:31:13
  *
  */
 
@@ -11352,9 +11352,9 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-                
+
         
-        public class Record : RegisterRecord
+        public class Record : RegisterInformationRecord
         {
             public Record()
             {
@@ -11452,9 +11452,9 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             base.BaseDelete(owner);
             base.BaseCommitTransaction();
         }
-                
+
         
-        public class Record : RegisterRecord
+        public class Record : RegisterInformationRecord
         {
             public Record()
             {
@@ -11559,7 +11559,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -11662,7 +11662,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -11762,7 +11762,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -11872,7 +11872,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         ///<summary>
     ///Замовлення клієнтів.
     ///</summary>
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -11971,7 +11971,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -12073,7 +12073,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -12181,7 +12181,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -12286,7 +12286,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -12389,7 +12389,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {
@@ -12489,7 +12489,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         }
         
         
-        public class Record : RegisterRecord
+        public class Record : RegisterAccumulationRecord
         {
             public Record()
             {

@@ -932,4 +932,5 @@ namespace StorageAndTrade_1_0.Документи
 			ціниНоменклатури_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
 	}
+
 }

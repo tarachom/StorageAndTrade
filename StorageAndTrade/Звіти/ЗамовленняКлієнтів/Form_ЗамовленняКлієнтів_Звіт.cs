@@ -207,7 +207,7 @@ OR
 ORDER BY Номенклатура_Назва
 ";
 
-            Console.WriteLine(query);
+            //Console.WriteLine(query);
             
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 

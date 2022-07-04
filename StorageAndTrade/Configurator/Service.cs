@@ -586,6 +586,7 @@ OR
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
     }
+
 }
 
 

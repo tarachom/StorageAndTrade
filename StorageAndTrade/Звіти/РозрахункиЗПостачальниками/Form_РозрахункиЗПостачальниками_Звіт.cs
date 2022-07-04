@@ -142,7 +142,7 @@ HAVING
 ORDER BY Контрагент_Назва
 ";
 
-            Console.WriteLine(query);
+            //Console.WriteLine(query);
             
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 
