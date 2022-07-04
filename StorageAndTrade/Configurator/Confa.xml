@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>30.06.2022 19:22:48</DateTimeSave>
+  <DateTimeSave>04.07.2022 07:56:12</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -1322,33 +1322,6 @@
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
-              <Name>Країна</Name>
-              <NameInTable>col_a1</NameInTable>
-              <Type>string</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
-              <Name>Район</Name>
-              <NameInTable>col_a2</NameInTable>
-              <Type>string</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
-              <Name>Місто</Name>
-              <NameInTable>col_a3</NameInTable>
-              <Type>string</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
               <Name>Телефон</Name>
               <NameInTable>col_a4</NameInTable>
               <Type>string</Type>
@@ -1367,8 +1340,35 @@
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
+              <Name>Країна</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>string</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
               <Name>Область</Name>
               <NameInTable>col_a6</NameInTable>
+              <Type>string</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Район</Name>
+              <NameInTable>col_a2</NameInTable>
+              <Type>string</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Місто</Name>
+              <NameInTable>col_a3</NameInTable>
               <Type>string</Type>
               <Desc>
               </Desc>
@@ -1739,35 +1739,8 @@
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
-              <Name>Країна</Name>
-              <NameInTable>col_d3</NameInTable>
-              <Type>string</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
-              <Name>Район</Name>
-              <NameInTable>col_d4</NameInTable>
-              <Type>string</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
-              <Name>Область</Name>
-              <NameInTable>col_d5</NameInTable>
-              <Type>string</Type>
-              <Desc>
-              </Desc>
-              <IsPresentation>0</IsPresentation>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
-              <Name>Місто</Name>
-              <NameInTable>col_d6</NameInTable>
+              <Name>Телефон</Name>
+              <NameInTable>col_d8</NameInTable>
               <Type>string</Type>
               <Desc>
               </Desc>
@@ -1784,8 +1757,35 @@
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
-              <Name>Телефон</Name>
-              <NameInTable>col_d8</NameInTable>
+              <Name>Країна</Name>
+              <NameInTable>col_d3</NameInTable>
+              <Type>string</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Область</Name>
+              <NameInTable>col_d5</NameInTable>
+              <Type>string</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Район</Name>
+              <NameInTable>col_d4</NameInTable>
+              <Type>string</Type>
+              <Desc>
+              </Desc>
+              <IsPresentation>0</IsPresentation>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Місто</Name>
+              <NameInTable>col_d6</NameInTable>
               <Type>string</Type>
               <Desc>
               </Desc>
