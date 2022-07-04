@@ -90,6 +90,18 @@ namespace StorageAndTrade
 			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.НомерДок);
 			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.ДатаДок);
 
+			//СкладВідправник
+			переміщенняТоварів_Select.QuerySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Довідники.Склади_Const.TABLE + "." + Довідники.Склади_Const.Назва, "sklad_sender"));
+			переміщенняТоварів_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Склади_Const.TABLE, Документи.ПереміщенняТоварів_Const.СкладВідправник, Документи.ПереміщенняТоварів_Const.TABLE));
+
+			//СкладОдержувач
+			переміщенняТоварів_Select.QuerySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>("sklad2." + Довідники.Склади_Const.Назва, "sklad_receiver"));
+			переміщенняТоварів_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Склади_Const.TABLE, Документи.ПереміщенняТоварів_Const.СкладОтримувач, Документи.ПереміщенняТоварів_Const.TABLE, "sklad2"));
+
 			//ORDER
 			переміщенняТоварів_Select.QuerySelect.Order.Add(Документи.ПереміщенняТоварів_Const.ДатаДок, SelectOrder.ASC);
 			переміщенняТоварів_Select.QuerySelect.Order.Add(Документи.ПереміщенняТоварів_Const.НомерДок, SelectOrder.ASC);
@@ -105,6 +117,8 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Документи.ПереміщенняТоварів_Const.Назва].ToString(),
 					НомерДок = cur.Fields[Документи.ПереміщенняТоварів_Const.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.ПереміщенняТоварів_Const.ДатаДок].ToString(),
+					СкладВідправник = cur.Fields["sklad_sender"].ToString(),
+					СкладОдержувач = cur.Fields["sklad_receiver"].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
 
@@ -129,6 +143,8 @@ namespace StorageAndTrade
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
+			public string СкладВідправник { get; set; }
+			public string СкладОдержувач { get; set; }
 			public bool Проведений { get; set; }
 		}
 
