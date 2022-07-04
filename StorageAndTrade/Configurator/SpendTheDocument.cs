@@ -928,8 +928,8 @@ namespace StorageAndTrade_1_0.Документи
 
 		public static void ClearSpend(ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
 		{
-			//РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
-			//товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+			РегістриВідомостей.ЦіниНоменклатури_RecordsSet ціниНоменклатури_RecordsSet = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet();
+			ціниНоменклатури_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
 	}
 }
