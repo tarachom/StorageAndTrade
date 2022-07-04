@@ -86,6 +86,12 @@
     <Compile Include="Довідники\Організації\Form_Організація_ТабличнаЧастина_Контакти.Designer.cs">
       <DependentUpon>Form_Організація_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.Designer.cs">
+      <DependentUpon>Form_Склади_ТабличнаЧастина_Контакти.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -574,6 +580,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Організації\Form_Організація_ТабличнаЧастина_Контакти.resx">
       <DependentUpon>Form_Організація_ТабличнаЧастина_Контакти.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.resx">
+      <DependentUpon>Form_Склади_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Склади\Form_СкладиПапкиВибір.resx">
       <DependentUpon>Form_СкладиПапкиВибір.cs</DependentUpon>

@@ -83,6 +83,8 @@ namespace StorageAndTrade
 			{
 				склади_Objest = new Довідники.Склади_Objest();
 
+				Склади_ТабличнаЧастина_Контакти.ДовідникОбєкт = склади_Objest;
+
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий";
@@ -102,6 +104,8 @@ namespace StorageAndTrade
 						directoryControl_Відповідальний.DirectoryPointerItem = new Довідники.ФізичніОсоби_Pointer(склади_Objest.Відповідальний.UnigueID);
 						directoryControl_ВидЦін.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer(склади_Objest.ВидЦін.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(склади_Objest.Підрозділ.UnigueID);
+
+						Склади_ТабличнаЧастина_Контакти.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
@@ -116,15 +120,17 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					склади_Objest.New();
 
+				склади_Objest.Назва = textBoxНазва.Text;
+				склади_Objest.ТипСкладу = comboBox_ТипСкладу.SelectedItem != null ? (Перелічення.ТипиСкладів)comboBox_ТипСкладу.SelectedItem : 0;
+				склади_Objest.Папка = (Довідники.Склади_Папки_Pointer)directoryControl_СкладиПапка.DirectoryPointerItem;
+				склади_Objest.Відповідальний = (Довідники.ФізичніОсоби_Pointer)directoryControl_Відповідальний.DirectoryPointerItem;
+				склади_Objest.ВидЦін = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦін.DirectoryPointerItem;
+				склади_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+
 				try
 				{
-					склади_Objest.Назва = textBoxНазва.Text;
-					склади_Objest.ТипСкладу = comboBox_ТипСкладу.SelectedItem != null ? (Перелічення.ТипиСкладів)comboBox_ТипСкладу.SelectedItem : 0;
-					склади_Objest.Папка = (Довідники.Склади_Папки_Pointer)directoryControl_СкладиПапка.DirectoryPointerItem;
-					склади_Objest.Відповідальний = (Довідники.ФізичніОсоби_Pointer)directoryControl_Відповідальний.DirectoryPointerItem;
-					склади_Objest.ВидЦін = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦін.DirectoryPointerItem;
-					склади_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					склади_Objest.Save();
+					Склади_ТабличнаЧастина_Контакти.SaveRecords();
 				}
 				catch (Exception exp)
 				{

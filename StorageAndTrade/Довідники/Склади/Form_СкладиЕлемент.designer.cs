@@ -45,11 +45,12 @@ namespace StorageAndTrade
             this.directoryControl_СкладиПапка = new StorageAndTrade.DirectoryControl();
             this.textBox_Код = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.Склади_ТабличнаЧастина_Контакти = new StorageAndTrade.Form_Склади_ТабличнаЧастина_Контакти();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(384, 210);
+            this.buttonClose.Location = new System.Drawing.Point(284, 522);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
@@ -59,7 +60,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(110, 210);
+            this.buttonSave.Location = new System.Drawing.Point(10, 522);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
@@ -191,11 +192,20 @@ namespace StorageAndTrade
             this.label6.TabIndex = 57;
             this.label6.Text = "Код:";
             // 
+            // Склади_ТабличнаЧастина_Контакти
+            // 
+            this.Склади_ТабличнаЧастина_Контакти.Location = new System.Drawing.Point(10, 213);
+            this.Склади_ТабличнаЧастина_Контакти.Name = "Склади_ТабличнаЧастина_Контакти";
+            this.Склади_ТабличнаЧастина_Контакти.Size = new System.Drawing.Size(849, 293);
+            this.Склади_ТабличнаЧастина_Контакти.TabIndex = 59;
+            this.Склади_ТабличнаЧастина_Контакти.ДовідникОбєкт = null;
+            // 
             // Form_СкладиЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(733, 251);
+            this.ClientSize = new System.Drawing.Size(871, 561);
+            this.Controls.Add(this.Склади_ТабличнаЧастина_Контакти);
             this.Controls.Add(this.textBox_Код);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label9);
@@ -240,5 +250,6 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_СкладиПапка;
         private System.Windows.Forms.TextBox textBox_Код;
         private System.Windows.Forms.Label label6;
+        private Form_Склади_ТабличнаЧастина_Контакти Склади_ТабличнаЧастина_Контакти;
     }
 }

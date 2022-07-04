@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 04.07.2022 07:56:12
+ * Дата конфігурації: 04.07.2022 08:04:20
  *
  */
 
@@ -3824,7 +3824,7 @@ namespace StorageAndTrade_1_0.Довідники
     public class Склади_Контакти_TablePart : DirectoryTablePart
     {
         public Склади_Контакти_TablePart(Склади_Objest owner) : base(Config.Kernel, "tab_a11",
-             new string[] { "col_e2", "col_e3", "col_e4", "col_e5", "col_e6", "col_e7", "col_e8" }) 
+             new string[] { "col_e2", "col_e8", "col_e7", "col_e3", "col_e5", "col_e4", "col_e6" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -3847,12 +3847,12 @@ namespace StorageAndTrade_1_0.Довідники
                 record.UID = (Guid)fieldValue["uid"];
                 
                 record.Тип = (fieldValue["col_e2"] != DBNull.Value) ? (Перелічення.ТипиКонтактноїІнформації)fieldValue["col_e2"] : 0;
-                record.Країна = fieldValue["col_e3"].ToString();
-                record.Район = fieldValue["col_e4"].ToString();
-                record.Область = fieldValue["col_e5"].ToString();
-                record.Місто = fieldValue["col_e6"].ToString();
-                record.ЕлектроннаПошта = fieldValue["col_e7"].ToString();
                 record.Телефон = fieldValue["col_e8"].ToString();
+                record.ЕлектроннаПошта = fieldValue["col_e7"].ToString();
+                record.Країна = fieldValue["col_e3"].ToString();
+                record.Область = fieldValue["col_e5"].ToString();
+                record.Район = fieldValue["col_e4"].ToString();
+                record.Місто = fieldValue["col_e6"].ToString();
                 
                 Records.Add(record);
             }
@@ -3872,12 +3872,12 @@ namespace StorageAndTrade_1_0.Довідники
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                 fieldValue.Add("col_e2", (int)record.Тип);
-                fieldValue.Add("col_e3", record.Країна);
-                fieldValue.Add("col_e4", record.Район);
-                fieldValue.Add("col_e5", record.Область);
-                fieldValue.Add("col_e6", record.Місто);
-                fieldValue.Add("col_e7", record.ЕлектроннаПошта);
                 fieldValue.Add("col_e8", record.Телефон);
+                fieldValue.Add("col_e7", record.ЕлектроннаПошта);
+                fieldValue.Add("col_e3", record.Країна);
+                fieldValue.Add("col_e5", record.Область);
+                fieldValue.Add("col_e4", record.Район);
+                fieldValue.Add("col_e6", record.Місто);
                 
                 base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
@@ -3898,35 +3898,35 @@ namespace StorageAndTrade_1_0.Довідники
             public Record()
             {
                 Тип = 0;
-                Країна = "";
-                Район = "";
-                Область = "";
-                Місто = "";
-                ЕлектроннаПошта = "";
                 Телефон = "";
+                ЕлектроннаПошта = "";
+                Країна = "";
+                Область = "";
+                Район = "";
+                Місто = "";
                 
             }
         
             
             public Record(
-                Перелічення.ТипиКонтактноїІнформації _Тип = 0, string _Країна = "", string _Район = "", string _Область = "", string _Місто = "", string _ЕлектроннаПошта = "", string _Телефон = "")
+                Перелічення.ТипиКонтактноїІнформації _Тип = 0, string _Телефон = "", string _ЕлектроннаПошта = "", string _Країна = "", string _Область = "", string _Район = "", string _Місто = "")
             {
                 Тип = _Тип;
-                Країна = _Країна;
-                Район = _Район;
-                Область = _Область;
-                Місто = _Місто;
-                ЕлектроннаПошта = _ЕлектроннаПошта;
                 Телефон = _Телефон;
+                ЕлектроннаПошта = _ЕлектроннаПошта;
+                Країна = _Країна;
+                Область = _Область;
+                Район = _Район;
+                Місто = _Місто;
                 
             }
             public Перелічення.ТипиКонтактноїІнформації Тип { get; set; }
-            public string Країна { get; set; }
-            public string Район { get; set; }
-            public string Область { get; set; }
-            public string Місто { get; set; }
-            public string ЕлектроннаПошта { get; set; }
             public string Телефон { get; set; }
+            public string ЕлектроннаПошта { get; set; }
+            public string Країна { get; set; }
+            public string Область { get; set; }
+            public string Район { get; set; }
+            public string Місто { get; set; }
             
         }
     }
@@ -4433,7 +4433,7 @@ namespace StorageAndTrade_1_0.Довідники
     public class Користувачі_Контакти_TablePart : DirectoryTablePart
     {
         public Користувачі_Контакти_TablePart(Користувачі_Objest owner) : base(Config.Kernel, "tab_a15",
-             new string[] { "col_f8", "col_f9", "col_g1", "col_g2", "col_g3", "col_g4", "col_g5" }) 
+             new string[] { "col_f8", "col_g5", "col_g4", "col_f9", "col_g1", "col_g2", "col_g3" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -4456,12 +4456,12 @@ namespace StorageAndTrade_1_0.Довідники
                 record.UID = (Guid)fieldValue["uid"];
                 
                 record.Тип = (fieldValue["col_f8"] != DBNull.Value) ? (Перелічення.ТипиКонтактноїІнформації)fieldValue["col_f8"] : 0;
+                record.Телефон = fieldValue["col_g5"].ToString();
+                record.ЕлектроннаПошта = fieldValue["col_g4"].ToString();
                 record.Країна = fieldValue["col_f9"].ToString();
                 record.Область = fieldValue["col_g1"].ToString();
                 record.Район = fieldValue["col_g2"].ToString();
                 record.Місто = fieldValue["col_g3"].ToString();
-                record.ЕлектроннаПошта = fieldValue["col_g4"].ToString();
-                record.Телефон = fieldValue["col_g5"].ToString();
                 
                 Records.Add(record);
             }
@@ -4481,12 +4481,12 @@ namespace StorageAndTrade_1_0.Довідники
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                 fieldValue.Add("col_f8", (int)record.Тип);
+                fieldValue.Add("col_g5", record.Телефон);
+                fieldValue.Add("col_g4", record.ЕлектроннаПошта);
                 fieldValue.Add("col_f9", record.Країна);
                 fieldValue.Add("col_g1", record.Область);
                 fieldValue.Add("col_g2", record.Район);
                 fieldValue.Add("col_g3", record.Місто);
-                fieldValue.Add("col_g4", record.ЕлектроннаПошта);
-                fieldValue.Add("col_g5", record.Телефон);
                 
                 base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
@@ -4507,35 +4507,35 @@ namespace StorageAndTrade_1_0.Довідники
             public Record()
             {
                 Тип = 0;
+                Телефон = "";
+                ЕлектроннаПошта = "";
                 Країна = "";
                 Область = "";
                 Район = "";
                 Місто = "";
-                ЕлектроннаПошта = "";
-                Телефон = "";
                 
             }
         
             
             public Record(
-                Перелічення.ТипиКонтактноїІнформації _Тип = 0, string _Країна = "", string _Область = "", string _Район = "", string _Місто = "", string _ЕлектроннаПошта = "", string _Телефон = "")
+                Перелічення.ТипиКонтактноїІнформації _Тип = 0, string _Телефон = "", string _ЕлектроннаПошта = "", string _Країна = "", string _Область = "", string _Район = "", string _Місто = "")
             {
                 Тип = _Тип;
+                Телефон = _Телефон;
+                ЕлектроннаПошта = _ЕлектроннаПошта;
                 Країна = _Країна;
                 Область = _Область;
                 Район = _Район;
                 Місто = _Місто;
-                ЕлектроннаПошта = _ЕлектроннаПошта;
-                Телефон = _Телефон;
                 
             }
             public Перелічення.ТипиКонтактноїІнформації Тип { get; set; }
+            public string Телефон { get; set; }
+            public string ЕлектроннаПошта { get; set; }
             public string Країна { get; set; }
             public string Область { get; set; }
             public string Район { get; set; }
             public string Місто { get; set; }
-            public string ЕлектроннаПошта { get; set; }
-            public string Телефон { get; set; }
             
         }
     }
@@ -4725,7 +4725,7 @@ namespace StorageAndTrade_1_0.Довідники
     public class ФізичніОсоби_Контакти_TablePart : DirectoryTablePart
     {
         public ФізичніОсоби_Контакти_TablePart(ФізичніОсоби_Objest owner) : base(Config.Kernel, "tab_a17",
-             new string[] { "col_h1", "col_h2", "col_h3", "col_h4", "col_h5", "col_h6", "col_h7" }) 
+             new string[] { "col_h1", "col_h7", "col_h6", "col_h2", "col_h3", "col_h4", "col_h5" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -4748,12 +4748,12 @@ namespace StorageAndTrade_1_0.Довідники
                 record.UID = (Guid)fieldValue["uid"];
                 
                 record.Тип = (fieldValue["col_h1"] != DBNull.Value) ? (Перелічення.ТипиКонтактноїІнформації)fieldValue["col_h1"] : 0;
+                record.Телефон = fieldValue["col_h7"].ToString();
+                record.ЕлектроннаПошта = fieldValue["col_h6"].ToString();
                 record.Країна = fieldValue["col_h2"].ToString();
                 record.Область = fieldValue["col_h3"].ToString();
                 record.Район = fieldValue["col_h4"].ToString();
                 record.Місто = fieldValue["col_h5"].ToString();
-                record.ЕлектроннаПошта = fieldValue["col_h6"].ToString();
-                record.Телефон = fieldValue["col_h7"].ToString();
                 
                 Records.Add(record);
             }
@@ -4773,12 +4773,12 @@ namespace StorageAndTrade_1_0.Довідники
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                 fieldValue.Add("col_h1", (int)record.Тип);
+                fieldValue.Add("col_h7", record.Телефон);
+                fieldValue.Add("col_h6", record.ЕлектроннаПошта);
                 fieldValue.Add("col_h2", record.Країна);
                 fieldValue.Add("col_h3", record.Область);
                 fieldValue.Add("col_h4", record.Район);
                 fieldValue.Add("col_h5", record.Місто);
-                fieldValue.Add("col_h6", record.ЕлектроннаПошта);
-                fieldValue.Add("col_h7", record.Телефон);
                 
                 base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
@@ -4799,35 +4799,35 @@ namespace StorageAndTrade_1_0.Довідники
             public Record()
             {
                 Тип = 0;
+                Телефон = "";
+                ЕлектроннаПошта = "";
                 Країна = "";
                 Область = "";
                 Район = "";
                 Місто = "";
-                ЕлектроннаПошта = "";
-                Телефон = "";
                 
             }
         
             
             public Record(
-                Перелічення.ТипиКонтактноїІнформації _Тип = 0, string _Країна = "", string _Область = "", string _Район = "", string _Місто = "", string _ЕлектроннаПошта = "", string _Телефон = "")
+                Перелічення.ТипиКонтактноїІнформації _Тип = 0, string _Телефон = "", string _ЕлектроннаПошта = "", string _Країна = "", string _Область = "", string _Район = "", string _Місто = "")
             {
                 Тип = _Тип;
+                Телефон = _Телефон;
+                ЕлектроннаПошта = _ЕлектроннаПошта;
                 Країна = _Країна;
                 Область = _Область;
                 Район = _Район;
                 Місто = _Місто;
-                ЕлектроннаПошта = _ЕлектроннаПошта;
-                Телефон = _Телефон;
                 
             }
             public Перелічення.ТипиКонтактноїІнформації Тип { get; set; }
+            public string Телефон { get; set; }
+            public string ЕлектроннаПошта { get; set; }
             public string Країна { get; set; }
             public string Область { get; set; }
             public string Район { get; set; }
             public string Місто { get; set; }
-            public string ЕлектроннаПошта { get; set; }
-            public string Телефон { get; set; }
             
         }
     }
