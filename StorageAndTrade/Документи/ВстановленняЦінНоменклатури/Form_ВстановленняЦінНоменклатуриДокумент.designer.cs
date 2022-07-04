@@ -38,10 +38,6 @@ namespace StorageAndTrade
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
-            this.label12 = new System.Windows.Forms.Label();
-            this.directoryControl_Підрозділ = new StorageAndTrade.DirectoryControl();
-            this.comboBox_ГосподарськаОперація = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -54,7 +50,6 @@ namespace StorageAndTrade
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -143,42 +138,6 @@ namespace StorageAndTrade
             this.directoryControl_Організація.Size = new System.Drawing.Size(375, 27);
             this.directoryControl_Організація.TabIndex = 45;
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(60, 51);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(58, 13);
-            this.label12.TabIndex = 62;
-            this.label12.Text = "Підрозділ:";
-            // 
-            // directoryControl_Підрозділ
-            // 
-            this.directoryControl_Підрозділ.DirectoryPointerItem = null;
-            this.directoryControl_Підрозділ.Location = new System.Drawing.Point(153, 44);
-            this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
-            this.directoryControl_Підрозділ.SelectForm = null;
-            this.directoryControl_Підрозділ.Size = new System.Drawing.Size(399, 27);
-            this.directoryControl_Підрозділ.TabIndex = 61;
-            // 
-            // comboBox_ГосподарськаОперація
-            // 
-            this.comboBox_ГосподарськаОперація.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ГосподарськаОперація.FormattingEnabled = true;
-            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(153, 17);
-            this.comboBox_ГосподарськаОперація.Name = "comboBox_ГосподарськаОперація";
-            this.comboBox_ГосподарськаОперація.Size = new System.Drawing.Size(351, 21);
-            this.comboBox_ГосподарськаОперація.TabIndex = 58;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 20);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(129, 13);
-            this.label10.TabIndex = 57;
-            this.label10.Text = "Господарська операція:";
-            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -223,14 +182,10 @@ namespace StorageAndTrade
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.directoryControl_Підрозділ);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.comboBox_ГосподарськаОперація);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1023, 414);
+            this.tabPage2.Size = new System.Drawing.Size(1023, 448);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Додаток";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -285,8 +240,6 @@ namespace StorageAndTrade
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -307,10 +260,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label3;
         private DirectoryControl directoryControl_Організація;
-        private System.Windows.Forms.ComboBox comboBox_ГосподарськаОперація;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label12;
-        private DirectoryControl directoryControl_Підрозділ;
         private StorageAndTrade.Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button buttonSpend;

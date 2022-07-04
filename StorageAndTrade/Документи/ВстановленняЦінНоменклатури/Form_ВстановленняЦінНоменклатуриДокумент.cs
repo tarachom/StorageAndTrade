@@ -66,14 +66,7 @@ namespace StorageAndTrade
 
         private void FormAddCash_Load(object sender, EventArgs e)
         {
-			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
-
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
-			directoryControl_СкладВідправник.Init(new Form_Склади(), new Довідники.Склади_Pointer());
-			directoryControl_СкладОтримувач.Init(new Form_Склади(), new Довідники.Склади_Pointer());
-			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)
 			{

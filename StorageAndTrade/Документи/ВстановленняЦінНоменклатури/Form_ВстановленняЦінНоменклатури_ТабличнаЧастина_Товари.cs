@@ -54,6 +54,11 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 100;
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
+
+			dataGridViewRecords.Columns["ВидиЦін"].Visible = false;
+			dataGridViewRecords.Columns["ВидиЦінНазва"].Width = 200;
+			dataGridViewRecords.Columns["ВидиЦінНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["ВидиЦінНазва"].HeaderText = "Види цін";
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -227,7 +232,7 @@ namespace StorageAndTrade
         {
 			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
 
-			string[] allowColumn = new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва", "ВидиЦін" };
+			string[] allowColumn = new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва", "ВидиЦінНазва" };
 
 			contextMenuStrip1.Items.Clear();
 
@@ -321,7 +326,7 @@ namespace StorageAndTrade
 
 						break;
 					}
-				case "ВидиЦін":
+				case "ВидиЦінНазва":
 					{
 						Form_ВидиЦін form_ВидиЦін = new Form_ВидиЦін();
 						form_ВидиЦін.DirectoryPointerItem = запис.ВидиЦін;

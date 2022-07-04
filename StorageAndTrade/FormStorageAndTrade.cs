@@ -219,6 +219,13 @@ namespace StorageAndTrade
             form_ПереміщенняТоварівЖурнал.Show();
         }
 
+        private void встановленняЦінНоменклатуриToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ВстановленняЦінНоменклатуриЖурнал form_ВстановленняЦінНоменклатуриЖурнал = new Form_ВстановленняЦінНоменклатуриЖурнал();
+            form_ВстановленняЦінНоменклатуриЖурнал.MdiParent = this;
+            form_ВстановленняЦінНоменклатуриЖурнал.Show();
+        }
+
         #endregion
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -343,6 +350,7 @@ namespace StorageAndTrade
                 this.Refresh();
             }
         }
+
 
         #endregion
 
