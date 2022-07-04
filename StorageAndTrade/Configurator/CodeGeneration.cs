@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 04.07.2022 13:41:02
+ * Дата конфігурації: 04.07.2022 14:06:01
  *
  */
 
@@ -7547,12 +7547,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ЗамовленняПостачальнику_Pointer : DocumentPointer
     {
-        public ЗамовленняПостачальнику_Pointer(object uid = null) : base(Config.Kernel, "tab_a25")
+        public ЗамовленняПостачальнику_Pointer(object uid = null) : base(Config.Kernel, "tab_a25", "ЗамовленняПостачальнику")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ЗамовленняПостачальнику_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a25")
+        public ЗамовленняПостачальнику_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a25", "ЗамовленняПостачальнику")
         {
             base.Init(uid, fields);
         }
@@ -8023,12 +8023,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПоступленняТоварівТаПослуг_Pointer : DocumentPointer
     {
-        public ПоступленняТоварівТаПослуг_Pointer(object uid = null) : base(Config.Kernel, "tab_a32")
+        public ПоступленняТоварівТаПослуг_Pointer(object uid = null) : base(Config.Kernel, "tab_a32", "ПоступленняТоварівТаПослуг")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ПоступленняТоварівТаПослуг_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a32")
+        public ПоступленняТоварівТаПослуг_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a32", "ПоступленняТоварівТаПослуг")
         {
             base.Init(uid, fields);
         }
@@ -8481,12 +8481,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ЗамовленняКлієнта_Pointer : DocumentPointer
     {
-        public ЗамовленняКлієнта_Pointer(object uid = null) : base(Config.Kernel, "tab_a34")
+        public ЗамовленняКлієнта_Pointer(object uid = null) : base(Config.Kernel, "tab_a34", "ЗамовленняКлієнта")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ЗамовленняКлієнта_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a34")
+        public ЗамовленняКлієнта_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a34", "ЗамовленняКлієнта")
         {
             base.Init(uid, fields);
         }
@@ -8945,12 +8945,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class РеалізаціяТоварівТаПослуг_Pointer : DocumentPointer
     {
-        public РеалізаціяТоварівТаПослуг_Pointer(object uid = null) : base(Config.Kernel, "tab_a36")
+        public РеалізаціяТоварівТаПослуг_Pointer(object uid = null) : base(Config.Kernel, "tab_a36", "РеалізаціяТоварівТаПослуг")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public РеалізаціяТоварівТаПослуг_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a36")
+        public РеалізаціяТоварівТаПослуг_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a36", "РеалізаціяТоварівТаПослуг")
         {
             base.Init(uid, fields);
         }
@@ -9265,12 +9265,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ВстановленняЦінНоменклатури_Pointer : DocumentPointer
     {
-        public ВстановленняЦінНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a42")
+        public ВстановленняЦінНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a42", "ВстановленняЦінНоменклатури")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ВстановленняЦінНоменклатури_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a42")
+        public ВстановленняЦінНоменклатури_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a42", "ВстановленняЦінНоменклатури")
         {
             base.Init(uid, fields);
         }
@@ -9609,12 +9609,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПрихіднийКасовийОрдер_Pointer : DocumentPointer
     {
-        public ПрихіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a44")
+        public ПрихіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a44", "ПрихіднийКасовийОрдер")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ПрихіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a44")
+        public ПрихіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a44", "ПрихіднийКасовийОрдер")
         {
             base.Init(uid, fields);
         }
@@ -9953,12 +9953,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class РозхіднийКасовийОрдер_Pointer : DocumentPointer
     {
-        public РозхіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a48")
+        public РозхіднийКасовийОрдер_Pointer(object uid = null) : base(Config.Kernel, "tab_a48", "РозхіднийКасовийОрдер")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public РозхіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a48")
+        public РозхіднийКасовийОрдер_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a48", "РозхіднийКасовийОрдер")
         {
             base.Init(uid, fields);
         }
@@ -10327,12 +10327,12 @@ namespace StorageAndTrade_1_0.Документи
     ///</summary>
     public class ПереміщенняТоварів_Pointer : DocumentPointer
     {
-        public ПереміщенняТоварів_Pointer(object uid = null) : base(Config.Kernel, "tab_a31")
+        public ПереміщенняТоварів_Pointer(object uid = null) : base(Config.Kernel, "tab_a31", "ПереміщенняТоварів")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ПереміщенняТоварів_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a31")
+        public ПереміщенняТоварів_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a31", "ПереміщенняТоварів")
         {
             base.Init(uid, fields);
         }
@@ -10697,12 +10697,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПоверненняТоварівПостачальнику_Pointer : DocumentPointer
     {
-        public ПоверненняТоварівПостачальнику_Pointer(object uid = null) : base(Config.Kernel, "tab_a51")
+        public ПоверненняТоварівПостачальнику_Pointer(object uid = null) : base(Config.Kernel, "tab_a51", "ПоверненняТоварівПостачальнику")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ПоверненняТоварівПостачальнику_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a51")
+        public ПоверненняТоварівПостачальнику_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a51", "ПоверненняТоварівПостачальнику")
         {
             base.Init(uid, fields);
         }
@@ -11065,12 +11065,12 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПоверненняТоварівВідКлієнта_Pointer : DocumentPointer
     {
-        public ПоверненняТоварівВідКлієнта_Pointer(object uid = null) : base(Config.Kernel, "tab_a53")
+        public ПоверненняТоварівВідКлієнта_Pointer(object uid = null) : base(Config.Kernel, "tab_a53", "ПоверненняТоварівВідКлієнта")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ПоверненняТоварівВідКлієнта_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a53")
+        public ПоверненняТоварівВідКлієнта_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a53", "ПоверненняТоварівВідКлієнта")
         {
             base.Init(uid, fields);
         }

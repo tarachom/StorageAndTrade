@@ -51,8 +51,9 @@ namespace StorageAndTrade_1_0.Звіти
         {
             //Словник [ Назва групи, Функція]
             Dictionary<string, Func<string>> funcQuery = new Dictionary<string, Func<string>>();
+
             funcQuery.Add("ТовариНаСкладах", Запит_ТовариНаСкладах);
-            funcQuery.Add("РухТоварів", Запит_РухТоварів);
+            //funcQuery.Add("РухТоварів", Запит_РухТоварів);
             funcQuery.Add("ЗамовленняКлієнтів", Запит_ЗамовленняКлієнтів);
             funcQuery.Add("РозрахункиЗКлієнтами", Запит_РозрахункиЗКлієнтами);
             funcQuery.Add("ВільніЗалишки", Запит_ВільніЗалишки);
@@ -79,7 +80,7 @@ namespace StorageAndTrade_1_0.Звіти
                     Функції.DataToXML(xmlDoc, func.Key, columnsName, listRow);
             }
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, 
+            Функції.XmlDocumentSaveAndTransform(xmlDoc,
                 @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt");
         }
 
