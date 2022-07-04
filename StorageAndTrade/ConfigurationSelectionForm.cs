@@ -356,6 +356,14 @@ namespace StorageAndTrade
 				System.Diagnostics.Process.Start("Configurator.exe", itemConfigurationParam.ConfigurationKey);
 			}
 		}
+
+        private void listBoxConfiguration_KeyDown(object sender, KeyEventArgs e)
+        {
+			if (e.KeyCode == Keys.Enter)
+            {
+				buttonOpenConf_Click(this, new EventArgs());
+			}
+        }
     }
 
     /// <summary>

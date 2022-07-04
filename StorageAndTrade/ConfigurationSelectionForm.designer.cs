@@ -46,6 +46,7 @@
             this.listBoxConfiguration.Name = "listBoxConfiguration";
             this.listBoxConfiguration.Size = new System.Drawing.Size(502, 270);
             this.listBoxConfiguration.TabIndex = 0;
+            this.listBoxConfiguration.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxConfiguration_KeyDown);
             this.listBoxConfiguration.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxConfiguration_MouseDoubleClick);
             // 
             // buttonAddConf
