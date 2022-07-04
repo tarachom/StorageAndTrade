@@ -212,6 +212,13 @@ namespace StorageAndTrade
             form_РозхіднийКасовийОрдерЖурнал.Show();
         }
 
+        private void переміщенняТоварівМіжСкладамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПереміщенняТоварівЖурнал form_ПереміщенняТоварівЖурнал = new Form_ПереміщенняТоварівЖурнал();
+            form_ПереміщенняТоварівЖурнал.MdiParent = this;
+            form_ПереміщенняТоварівЖурнал.Show();
+        }
+
         #endregion
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -339,5 +346,6 @@ namespace StorageAndTrade
 
         #endregion
 
+        
     }
 }

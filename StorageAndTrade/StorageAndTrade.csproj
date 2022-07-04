@@ -92,6 +92,24 @@
     <Compile Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.Designer.cs">
       <DependentUpon>Form_Склади_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівДокумент.designer.cs">
+      <DependentUpon>Form_ПереміщенняТоварівДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівЖурнал.designer.cs">
+      <DependentUpon>Form_ПереміщенняТоварівЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -593,6 +611,15 @@
     <EmbeddedResource Include="Довідники\Склади\Form_Склади_Папки_Дерево.resx">
       <DependentUpon>Form_Склади_Папки_Дерево.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівДокумент.resx">
+      <DependentUpon>Form_ПереміщенняТоварівДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівЖурнал.resx">
+      <DependentUpon>Form_ПереміщенняТоварівЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
     </EmbeddedResource>
@@ -865,7 +892,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Документи\ВстановленняЦінНоменклатури\" />
-    <Folder Include="Документи\ПереміщенняТоварів\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\down.ico" />

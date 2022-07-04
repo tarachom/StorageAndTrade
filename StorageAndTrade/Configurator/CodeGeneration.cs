@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 04.07.2022 08:04:20
+ * Дата конфігурації: 04.07.2022 08:36:58
  *
  */
 
@@ -10163,7 +10163,7 @@ namespace StorageAndTrade_1_0.Документи
         {
             Назва = "";
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Організація = new Довідники.Організації_Pointer();
             БанківськийРахунокОрганізації = new Довідники.БанківськіРахункиОрганізацій_Pointer();
             ВидЦіни = new Довідники.ВидиЦін_Pointer();
@@ -10191,7 +10191,7 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Назва = base.FieldValue["col_b9"].ToString();
                 ДатаДок = (base.FieldValue["col_a1"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_a1"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_a2"] != DBNull.Value) ? (int)base.FieldValue["col_a2"] : 0;
+                НомерДок = base.FieldValue["col_a2"].ToString();
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_a3"]);
                 БанківськийРахунокОрганізації = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_a4"]);
                 ВидЦіни = new Довідники.ВидиЦін_Pointer(base.FieldValue["col_a5"]);
@@ -10290,7 +10290,7 @@ namespace StorageAndTrade_1_0.Документи
         
         public string Назва { get; set; }
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунокОрганізації { get; set; }
         public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
