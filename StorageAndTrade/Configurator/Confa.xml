@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>05.07.2022 00:45:24</DateTimeSave>
+  <DateTimeSave>05.07.2022 01:17:12</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -185,7 +185,7 @@
       </Constants>
     </ConstantsBlock>
     <ConstantsBlock>
-      <Name>ВіртуальніТаблиціРегістрівНакопичення</Name>
+      <Name>ВіртуальніТаблиціРегістрів</Name>
       <Desc>Віртуальні таблиці регістрів накопичення - це таблиці згрупованих даних.
 Дані групуються по періоду: День, Місяць</Desc>
       <Constants>
@@ -421,7 +421,7 @@
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ХарактеристикиНоменклатури</Name>
+                  <Name>ХарактеристикаНоменклатури</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>

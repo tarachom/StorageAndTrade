@@ -35,6 +35,7 @@ using System.Xml;
 using System.Xml.Xsl;
 
 using StorageAndTrade_1_0;
+using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
@@ -211,9 +212,154 @@ ORDER BY Номенклатура_Назва
                 @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt");
         }
 
+        private void buttonCreatePidsumok_Click(object sender, EventArgs e)
+        {
+            bool isExistParent = false;
+
+            string query = $@"
+SELECT 
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Номенклатура} AS Номенклатура, 
+    Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва, 
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Склад} AS Склад,
+    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва, 
+    SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ВНаявності}) AS ВНаявності,
+    SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ДоВідвантаження}) AS ДоВідвантаження
+FROM 
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.TABLE} AS ТовариНаСкладах_Місяць
+
+    LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = 
+        ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Номенклатура}
+
+    LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = 
+        ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ХарактеристикаНоменклатури}
+
+    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
+        ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Склад}
+";
+            #region WHERE
+
+            //Відбір по всіх вкладених папках вибраної папки Номенклатури
+            if (!directoryControl_НоменклатураПапка.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Номенклатура.{Номенклатура_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+            WHERE {Номенклатура_Папки_Const.TABLE}.uid = '{directoryControl_НоменклатураПапка.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Номенклатура_Папки_Const.TABLE}.uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+                JOIN r ON {Номенклатура_Папки_Const.TABLE}.{Номенклатура_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+            }
+
+            //Відбір по вибраному елементу Номенклатура
+            if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Номенклатура.uid = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Характеристики Номенклатури
+            if (!directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_ХарактеристикиНоменклатури.uid = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по всіх вкладених папках вибраної папки Склади
+            if (!directoryControl_СкладиПапки.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Склади.{Склади_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Склади_Папки_Const.TABLE}
+            WHERE {Склади_Папки_Const.TABLE}.uid = '{directoryControl_СкладиПапки.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Склади_Папки_Const.TABLE}.uid
+            FROM {Склади_Папки_Const.TABLE}
+                JOIN r ON {Склади_Папки_Const.TABLE}.{Склади_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+            }
+
+            //Відбір по вибраному елементу Склади
+            if (!directoryControl_Склади.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Склади.uid = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
+
+            query += $@"
+GROUP BY Номенклатура, Номенклатура_Назва, 
+         ХарактеристикаНоменклатури, ХарактеристикаНоменклатури_Назва,
+         Склад, Склад_Назва
+
+HAVING
+     SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ВНаявності}) != 0
+OR
+    SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ДоВідвантаження}) != 0   
+
+ORDER BY Номенклатура_Назва
+";
+
+            Console.WriteLine(query);
+
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+            Функції.DataToXML(xmlDoc, "ТовариНаСкладах", columnsName, listRow);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc,
+                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt");
+        }
+
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        
     }
 }

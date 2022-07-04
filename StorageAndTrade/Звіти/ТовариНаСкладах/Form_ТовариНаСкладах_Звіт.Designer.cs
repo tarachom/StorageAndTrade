@@ -45,6 +45,7 @@ namespace StorageAndTrade
             this.label6 = new System.Windows.Forms.Label();
             this.directoryControl_ХарактеристикаНоменклатури = new StorageAndTrade.DirectoryControl();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonCreatePidsumok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dateTimeStart
@@ -189,11 +190,22 @@ namespace StorageAndTrade
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
+            // buttonCreatePidsumok
+            // 
+            this.buttonCreatePidsumok.Location = new System.Drawing.Point(219, 266);
+            this.buttonCreatePidsumok.Name = "buttonCreatePidsumok";
+            this.buttonCreatePidsumok.Size = new System.Drawing.Size(90, 27);
+            this.buttonCreatePidsumok.TabIndex = 73;
+            this.buttonCreatePidsumok.Text = "Сформувати";
+            this.buttonCreatePidsumok.UseVisualStyleBackColor = true;
+            this.buttonCreatePidsumok.Click += new System.EventHandler(this.buttonCreatePidsumok_Click);
+            // 
             // Form_ТовариНаСкладах_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 309);
+            this.Controls.Add(this.buttonCreatePidsumok);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.directoryControl_ХарактеристикаНоменклатури);
@@ -236,5 +248,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label6;
         private DirectoryControl directoryControl_ХарактеристикаНоменклатури;
         private System.Windows.Forms.Button buttonClose;
+        private System.Windows.Forms.Button buttonCreatePidsumok;
     }
 }

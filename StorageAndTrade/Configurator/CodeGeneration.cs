@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 05.07.2022 00:45:24
+ * Дата конфігурації: 05.07.2022 01:17:12
  *
  */
 
@@ -44,7 +44,7 @@ namespace StorageAndTrade_1_0
         {
             Константи.ЗначенняПоЗамовчуванню.ReadAll();
             Константи.Системні.ReadAll();
-            Константи.ВіртуальніТаблиціРегістрівНакопичення.ReadAll();
+            Константи.ВіртуальніТаблиціРегістрів.ReadAll();
             Константи.НумераціяДокументів.ReadAll();
             Константи.НумераціяДовідників.ReadAll();
             
@@ -369,8 +369,8 @@ namespace StorageAndTrade_1_0.Константи
     }
     #endregion
     
-	#region CONSTANTS BLOCK "ВіртуальніТаблиціРегістрівНакопичення"
-    public static class ВіртуальніТаблиціРегістрівНакопичення
+	#region CONSTANTS BLOCK "ВіртуальніТаблиціРегістрів"
+    public static class ВіртуальніТаблиціРегістрів
     {
         public static void ReadAll()
         {
@@ -747,7 +747,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Період = "col_a1";
             public const string Номенклатура = "col_a2";
-            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string ВНаявності = "col_a5";
             public const string ДоВідвантаження = "col_a6";
@@ -765,7 +765,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Період = (fieldValue["col_a1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a1"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
-                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.ВНаявності = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     record.ДоВідвантаження = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
@@ -789,7 +789,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a1", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.ВНаявності);
                     fieldValue.Add("col_a6", record.ДоВідвантаження);
@@ -811,7 +811,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
-                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     ВНаявності = 0;
                     ДоВідвантаження = 0;
@@ -819,7 +819,7 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal ВНаявності { get; set; }
                 public decimal ДоВідвантаження { get; set; }
