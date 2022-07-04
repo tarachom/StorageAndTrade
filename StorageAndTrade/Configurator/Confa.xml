@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>04.07.2022 08:36:58</DateTimeSave>
+  <DateTimeSave>04.07.2022 09:12:40</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -5892,8 +5892,7 @@
     <Document>
       <Name>ПереміщенняТоварів</Name>
       <Table>tab_a31</Table>
-      <Desc>
-      </Desc>
+      <Desc>Переміщення товарів між складами</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -6135,18 +6134,13 @@
         </TablePart>
       </TabularParts>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <BeforeSave>ПереміщенняТоварів_Triggers.BeforeRecording</BeforeSave>
+        <AfterSave>ПереміщенняТоварів_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ПереміщенняТоварів_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ПереміщенняТоварів_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ПереміщенняТоварів_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>

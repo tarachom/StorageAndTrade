@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 04.07.2022 08:36:58
+ * Дата конфігурації: 04.07.2022 09:12:40
  *
  */
 
@@ -10130,7 +10130,9 @@ namespace StorageAndTrade_1_0.Документи
     #endregion
     
     #region DOCUMENT "ПереміщенняТоварів"
-    
+    ///<summary>
+    ///Переміщення товарів між складами.
+    ///</summary>
     public static class ПереміщенняТоварів_Const
     {
         public const string TABLE = "tab_a31";
@@ -10155,7 +10157,9 @@ namespace StorageAndTrade_1_0.Документи
         public const string Коментар = "col_a6";
     }
 	
-    
+    ///<summary>
+    ///Переміщення товарів між складами.
+    ///</summary>
     public class ПереміщенняТоварів_Objest : DocumentObject
     {
         public ПереміщенняТоварів_Objest() : base(Config.Kernel, "tab_a31",
@@ -10235,19 +10239,19 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_b7"] = ЧасДоставкиЗ;
             base.FieldValue["col_b8"] = ЧасДоставкиДо;
             base.FieldValue["col_a6"] = Коментар;
-            
+            ПереміщенняТоварів_Triggers.BeforeRecording(this);
             BaseSave();
-			
+			ПереміщенняТоварів_Triggers.AfterRecording(this);
 		}
 
 		public void SpendTheDocument()
 		{
-            BaseSpend(false);
+            BaseSpend(ПереміщенняТоварів_SpendTheDocument.Spend(this));
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false);
+            ПереміщенняТоварів_SpendTheDocument.ClearSpend(this); BaseSpend(false);
 		}
 
 		public ПереміщенняТоварів_Objest Copy()
@@ -10278,7 +10282,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
-		    
+		    ПереміщенняТоварів_Triggers.BeforeDelete(this);
             base.BaseDelete(new string[] { "tab_a50" });
         }
         
@@ -10312,7 +10316,9 @@ namespace StorageAndTrade_1_0.Документи
         
     }
     
-    
+    ///<summary>
+    ///Переміщення товарів між складами.
+    ///</summary>
     public class ПереміщенняТоварів_Pointer : DocumentPointer
     {
         public ПереміщенняТоварів_Pointer(object uid = null) : base(Config.Kernel, "tab_a31")
@@ -10351,7 +10357,9 @@ namespace StorageAndTrade_1_0.Документи
         }
     }
     
-    
+    ///<summary>
+    ///Переміщення товарів між складами.
+    ///</summary>
     public class ПереміщенняТоварів_Select : DocumentSelect, IDisposable
     {		
         public ПереміщенняТоварів_Select() : base(Config.Kernel, "tab_a31") { }

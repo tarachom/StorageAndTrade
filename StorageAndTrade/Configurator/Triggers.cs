@@ -341,4 +341,23 @@ namespace StorageAndTrade_1_0.Документи
 		}
 
 	}
+
+	class ПереміщенняТоварів_Triggers
+	{
+		public static void BeforeRecording(ПереміщенняТоварів_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(ПереміщенняТоварів_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(ПереміщенняТоварів_Objest ДокументОбєкт)
+		{
+			ДокументОбєкт.ClearSpendTheDocument();
+		}
+
+	}
 }

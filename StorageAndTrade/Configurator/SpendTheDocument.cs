@@ -829,4 +829,69 @@ namespace StorageAndTrade_1_0.Документи
 			}
 		}
 	}
+
+	class ПереміщенняТоварів_SpendTheDocument
+	{
+		public static bool Spend(ПереміщенняТоварів_Objest ДокументОбєкт)
+		{
+			#region Рух по регістрах
+
+			//
+			//Товари на складах
+			//
+
+			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+
+			foreach (ПереміщенняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
+
+				//Товар
+				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					//
+					//СкладВідправник
+					//
+
+					РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record1 = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+					товариНаСкладах_RecordsSet.Records.Add(record1);
+
+					record1.Income = false; // - 
+					record1.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record1.Номенклатура = Товари_Record.Номенклатура;
+					record1.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record1.Склад = ДокументОбєкт.СкладВідправник;
+					record1.ВНаявності = Товари_Record.Кількість;
+
+					//
+					//СкладОтримувач
+					//
+
+					РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record2 = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+					товариНаСкладах_RecordsSet.Records.Add(record2);
+
+					record2.Income = true; // - 
+					record2.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record2.Номенклатура = Товари_Record.Номенклатура;
+					record2.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record2.Склад = ДокументОбєкт.СкладОтримувач;
+					record2.ВНаявності = Товари_Record.Кількість;
+				}
+			}
+
+			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			#endregion
+
+			return true;
+		}
+
+		public static void ClearSpend(ПереміщенняТоварів_Objest ДокументОбєкт)
+		{
+			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+		}
+	}
 }
