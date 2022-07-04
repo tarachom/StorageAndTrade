@@ -171,7 +171,7 @@ namespace StorageAndTrade
 				form_ВстановленняЦінНоменклатуриДокумент.OwnerForm = this;
 				form_ВстановленняЦінНоменклатуриДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 				form_ВстановленняЦінНоменклатуриДокумент.Show();
-			}			
+			}
 		}
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
