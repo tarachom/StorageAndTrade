@@ -179,6 +179,7 @@ namespace StorageAndTrade_1_0.Довідники
 			}
 		}
 	}
+
 }
 
 namespace StorageAndTrade_1_0.Документи
@@ -379,4 +380,5 @@ namespace StorageAndTrade_1_0.Документи
 		}
 
 	}
+
 }
