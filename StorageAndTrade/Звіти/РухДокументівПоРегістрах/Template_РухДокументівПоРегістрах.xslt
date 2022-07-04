@@ -40,6 +40,8 @@
 
 					<xsl:apply-templates select="ТовариДоПоступлення" />
 
+					<xsl:apply-templates select="ЦіниНоменклатури" />
+
 					<br/>
 					<br/>
 					<br/>
@@ -379,6 +381,47 @@
 					</td>
 				</tr>
 
+			</xsl:for-each>
+
+		</table>
+
+	</xsl:template>
+
+	<xsl:template match="ЦіниНоменклатури">
+		<br/>
+		<h5>Ціни номенклатури</h5>
+
+		<table class="table table-bordered table-sm">
+			<tr>
+				<th>Номенклатура</th>
+				<th>Характеристика номенклатури</th>
+				<th>Види цін</th>
+				<th>Ціна</th>
+				<th>Пакування</th>
+				<th>Валюта</th>
+			</tr>
+
+			<xsl:for-each select="row">
+				<tr>
+					<td>
+						<xsl:value-of select="Номенклатура_Назва"/>
+					</td>
+					<td>
+						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+					</td>
+					<td>
+						<xsl:value-of select="ВидЦіни_Назва"/>
+					</td>
+					<td>
+						<xsl:value-of select="Ціна"/>
+					</td>
+					<td>
+						<xsl:value-of select="Пакування_Назва"/>
+					</td>
+					<td>
+						<xsl:value-of select="Валюта_Назва"/>
+					</td>
+				</tr>
 			</xsl:for-each>
 
 		</table>
