@@ -99,6 +99,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form_Організація_ТабличнаЧастина_Контакти";
             this.Size = new System.Drawing.Size(629, 204);
+            this.Load += new System.EventHandler(this.Form_Організація_ТабличнаЧастина_Контакти_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
