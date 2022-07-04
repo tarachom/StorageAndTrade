@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 04.07.2022 09:12:40
+ * Дата конфігурації: 04.07.2022 10:38:52
  *
  */
 
@@ -9177,7 +9177,7 @@ namespace StorageAndTrade_1_0.Документи
         {
             Назва = "";
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Коментар = "";
             
             //Табличні частини
@@ -9191,7 +9191,7 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Назва = base.FieldValue["col_a1"].ToString();
                 ДатаДок = (base.FieldValue["col_g7"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_g7"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_g8"] != DBNull.Value) ? (int)base.FieldValue["col_g8"] : 0;
+                НомерДок = base.FieldValue["col_g8"].ToString();
                 Коментар = base.FieldValue["col_g9"].ToString();
                 
                 BaseClear();
@@ -9248,7 +9248,7 @@ namespace StorageAndTrade_1_0.Документи
         
         public string Назва { get; set; }
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини

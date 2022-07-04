@@ -92,6 +92,24 @@
     <Compile Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.Designer.cs">
       <DependentUpon>Form_Склади_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриДокумент.designer.cs">
+      <DependentUpon>Form_ВстановленняЦінНоменклатуриДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриЖурнал.designer.cs">
+      <DependentUpon>Form_ВстановленняЦінНоменклатуриЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -611,6 +629,15 @@
     <EmbeddedResource Include="Довідники\Склади\Form_Склади_Папки_Дерево.resx">
       <DependentUpon>Form_Склади_Папки_Дерево.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриДокумент.resx">
+      <DependentUpon>Form_ВстановленняЦінНоменклатуриДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриЖурнал.resx">
+      <DependentUpon>Form_ВстановленняЦінНоменклатуриЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs</DependentUpon>
     </EmbeddedResource>
@@ -890,9 +917,7 @@
   <ItemGroup>
     <None Include="Resources\user.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Документи\ВстановленняЦінНоменклатури\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\down.ico" />
     <None Include="Resources\plus.ico" />
