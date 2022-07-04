@@ -64,6 +64,9 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["Назва"].Width = 350;
 
+			dataGridViewRecords.Columns["СкладВідправник"].Width = 250;
+			dataGridViewRecords.Columns["СкладОдержувач"].Width = 250;
+
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
 		}
