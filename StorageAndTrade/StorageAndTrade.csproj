@@ -74,6 +74,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_Контрагенти_ТабличнаЧастина_Контакти.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_Контрагенти_ТабличнаЧастина_Контакти.Designer.cs">
+      <DependentUpon>Form_Контрагенти_ТабличнаЧастина_Контакти.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\Організації\Form_Організація_ТабличнаЧастина_Контакти.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -550,6 +556,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Контрагенти\Form_Контрагенти_Папки_Дерево.resx">
       <DependentUpon>Form_Контрагенти_Папки_Дерево.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\Контрагенти\Form_Контрагенти_ТабличнаЧастина_Контакти.resx">
+      <DependentUpon>Form_Контрагенти_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\Номенклатура\Form_НоменклатураПапкиВибір.resx">
       <DependentUpon>Form_НоменклатураПапкиВибір.cs</DependentUpon>

@@ -52,7 +52,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(388, 468);
+            this.buttonClose.Location = new System.Drawing.Point(385, 500);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
@@ -62,7 +62,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(15, 468);
+            this.buttonSave.Location = new System.Drawing.Point(12, 500);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
@@ -202,7 +202,7 @@ namespace StorageAndTrade
             // 
             this.Організація_ТабличнаЧастина_Контакти.Location = new System.Drawing.Point(15, 210);
             this.Організація_ТабличнаЧастина_Контакти.Name = "Організація_ТабличнаЧастина_Контакти";
-            this.Організація_ТабличнаЧастина_Контакти.Size = new System.Drawing.Size(900, 240);
+            this.Організація_ТабличнаЧастина_Контакти.Size = new System.Drawing.Size(900, 275);
             this.Організація_ТабличнаЧастина_Контакти.TabIndex = 35;
             this.Організація_ТабличнаЧастина_Контакти.ДовідникОбєкт = null;
             // 
@@ -210,7 +210,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(927, 507);
+            this.ClientSize = new System.Drawing.Size(927, 539);
             this.Controls.Add(this.Організація_ТабличнаЧастина_Контакти);
             this.Controls.Add(this.textBox_СвідоцтвоДатаВидачі);
             this.Controls.Add(this.label8);

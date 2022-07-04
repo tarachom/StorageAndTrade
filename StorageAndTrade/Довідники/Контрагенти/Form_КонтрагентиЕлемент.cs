@@ -76,6 +76,8 @@ namespace StorageAndTrade
 			{
 				контрагенти_Objest = new Довідники.Контрагенти_Objest();
 
+				Контрагенти_ТабличнаЧастина_Контакти.ДовідникОбєкт = контрагенти_Objest;
+
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий";
@@ -90,6 +92,8 @@ namespace StorageAndTrade
 						textBoxName.Text = контрагенти_Objest.Назва;
 						textBox_Код.Text = контрагенти_Objest.Код;
 						directoryControl_КонтрагентПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer(контрагенти_Objest.Папка.UnigueID);
+
+						Контрагенти_ТабличнаЧастина_Контакти.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
@@ -104,11 +108,13 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					контрагенти_Objest.New();
 
+				контрагенти_Objest.Назва = textBoxName.Text;
+				контрагенти_Objest.Папка = (Довідники.Контрагенти_Папки_Pointer)directoryControl_КонтрагентПапка.DirectoryPointerItem;
+
 				try
 				{
-					контрагенти_Objest.Назва = textBoxName.Text;
-					контрагенти_Objest.Папка = (Довідники.Контрагенти_Папки_Pointer)directoryControl_КонтрагентПапка.DirectoryPointerItem;
 					контрагенти_Objest.Save();
+					Контрагенти_ТабличнаЧастина_Контакти.SaveRecords();
 				}
 				catch (Exception exp)
 				{

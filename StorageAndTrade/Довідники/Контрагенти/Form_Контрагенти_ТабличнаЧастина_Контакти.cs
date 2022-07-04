@@ -17,9 +17,9 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
-    public partial class Form_Організація_ТабличнаЧастина_Контакти : UserControl
+    public partial class Form_Контрагенти_ТабличнаЧастина_Контакти : UserControl
     {
-        public Form_Організація_ТабличнаЧастина_Контакти()
+        public Form_Контрагенти_ТабличнаЧастина_Контакти()
         {
             InitializeComponent();
 
@@ -44,7 +44,7 @@ namespace StorageAndTrade
 		/// <summary>
 		/// Власне довідник якому належить таблична частина
 		/// </summary>
-		public Довідники.Організації_Objest ДовідникОбєкт { get; set; }
+		public Довідники.Контрагенти_Objest ДовідникОбєкт { get; set; }
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
 
@@ -54,12 +54,12 @@ namespace StorageAndTrade
 		{
 			RecordsBindingList.Clear();
 
-			Довідники.Організації_Контакти_TablePart організації_Контакти_TablePart =
-				new Довідники.Організації_Контакти_TablePart(ДовідникОбєкт);
+			Довідники.Контрагенти_Контакти_TablePart контрагенти_Контакти_TablePart =
+				new Довідники.Контрагенти_Контакти_TablePart(ДовідникОбєкт);
 
-			організації_Контакти_TablePart.Read();
+			контрагенти_Контакти_TablePart.Read();
 
-            foreach (Довідники.Організації_Контакти_TablePart.Record record in організації_Контакти_TablePart.Records)
+            foreach (Довідники.Контрагенти_Контакти_TablePart.Record record in контрагенти_Контакти_TablePart.Records)
             {
 				RecordsBindingList.Add(new Записи
 				{
@@ -79,10 +79,10 @@ namespace StorageAndTrade
 
 		public void SaveRecords()
         {
-			Довідники.Організації_Контакти_TablePart організації_Контакти_TablePart =
-				new Довідники.Організації_Контакти_TablePart(ДовідникОбєкт);
+			Довідники.Контрагенти_Контакти_TablePart контрагенти_Контакти_TablePart =
+				new Довідники.Контрагенти_Контакти_TablePart(ДовідникОбєкт);
 
-			організації_Контакти_TablePart.Records.Clear();
+			контрагенти_Контакти_TablePart.Records.Clear();
 
 			int counter = 0;
 
@@ -90,11 +90,11 @@ namespace StorageAndTrade
             {
 				string comboBoxColumnName = (string)dataGridViewRecords["comboBoxColumn", counter].Value;
 
-				Перелічення.ТипиКонтактноїІнформації ТипКІ  = 
+				Перелічення.ТипиКонтактноїІнформації ТипКІ = 
 					(Перелічення.ТипиКонтактноїІнформації)Enum.Parse(typeof(Перелічення.ТипиКонтактноїІнформації), comboBoxColumnName);
 
-				організації_Контакти_TablePart.Records.Add(
-					new Довідники.Організації_Контакти_TablePart.Record()
+				контрагенти_Контакти_TablePart.Records.Add(
+					new Довідники.Контрагенти_Контакти_TablePart.Record()
 					{
 						Тип = ТипКІ,
 						Країна = запис.Країна,
@@ -104,12 +104,12 @@ namespace StorageAndTrade
 						ЕлектроннаПошта = запис.ЕлектроннаПошта,
 						Телефон = запис.Телефон
 					}
-			    );
+				);
 
 				counter++;
 			}
 
-			організації_Контакти_TablePart.Save(true);
+			контрагенти_Контакти_TablePart.Save(true);
 		}
 
 		private class Записи
