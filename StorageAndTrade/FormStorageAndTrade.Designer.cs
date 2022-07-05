@@ -76,6 +76,7 @@ namespace StorageAndTrade
             this.toolStripButton_ПакуванняОдиниціВиміру = new System.Windows.Forms.ToolStripButton();
             this.toolStrip_Документи = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_ЗамовленняКлієнта = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Оганізації = new System.Windows.Forms.ToolStripButton();
             this.menuStrip_ГоловнеМеню.SuspendLayout();
             this.toolStrip_Довідники.SuspendLayout();
             this.toolStrip_Документи.SuspendLayout();
@@ -448,7 +449,8 @@ namespace StorageAndTrade
             // 
             this.toolStrip_Довідники.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton_Валюти,
-            this.toolStripButton_ПакуванняОдиниціВиміру});
+            this.toolStripButton_ПакуванняОдиниціВиміру,
+            this.toolStripButton_Оганізації});
             this.toolStrip_Довідники.Location = new System.Drawing.Point(0, 24);
             this.toolStrip_Довідники.Name = "toolStrip_Довідники";
             this.toolStrip_Довідники.Size = new System.Drawing.Size(993, 25);
@@ -494,6 +496,16 @@ namespace StorageAndTrade
             this.toolStripButton_ЗамовленняКлієнта.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton_ЗамовленняКлієнта.Text = "Документ \"Замовлення клієнта\"";
             this.toolStripButton_ЗамовленняКлієнта.Click += new System.EventHandler(this.toolStripButton_ЗамовленняКлієнта_Click);
+            // 
+            // toolStripButton_Оганізації
+            // 
+            this.toolStripButton_Оганізації.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Оганізації.Image = global::StorageAndTrade.Properties.Resources.user;
+            this.toolStripButton_Оганізації.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Оганізації.Name = "toolStripButton_Оганізації";
+            this.toolStripButton_Оганізації.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Оганізації.Text = "Довідник \"Оганізації\"";
+            this.toolStripButton_Оганізації.Click += new System.EventHandler(this.toolStripButton_Оганізації_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -574,6 +586,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButton_ПакуванняОдиниціВиміру;
         private System.Windows.Forms.ToolStrip toolStrip_Документи;
         private System.Windows.Forms.ToolStripButton toolStripButton_ЗамовленняКлієнта;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Оганізації;
     }
 }
 

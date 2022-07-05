@@ -352,6 +352,8 @@ namespace StorageAndTrade
 
         #endregion
 
+        // ДОВІДНИКИ
+
         private void toolStripButton_Валюти_Click(object sender, EventArgs e)
         {
             валютиToolStripMenuItem_Click(this, new EventArgs());
@@ -362,9 +364,18 @@ namespace StorageAndTrade
             пакуванняОдиниціВиміруToolStripMenuItem_Click(this, new EventArgs());
         }
 
+        private void toolStripButton_Оганізації_Click(object sender, EventArgs e)
+        {
+            оганізаціїToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        // ДОКУМЕНТИ
+
         private void toolStripButton_ЗамовленняКлієнта_Click(object sender, EventArgs e)
         {
             замовленняКлієнтаToolStripMenuItem_Click(this, new EventArgs());
         }
+
+        
     }
 }
