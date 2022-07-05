@@ -179,6 +179,12 @@
     <Compile Include="Журнали\Повний\Form_ПовнийЖурнал.designer.cs">
       <DependentUpon>Form_ПовнийЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Журнали\Склад\Form_СкладЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Журнали\Склад\Form_СкладЖурнал.designer.cs">
+      <DependentUpon>Form_СкладЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Журнали\Фінанси\Form_ФінансиЖурнал.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -870,6 +876,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Журнали\Повний\Form_ПовнийЖурнал.resx">
       <DependentUpon>Form_ПовнийЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Журнали\Склад\Form_СкладЖурнал.resx">
+      <DependentUpon>Form_СкладЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Журнали\Фінанси\Form_ФінансиЖурнал.resx">
       <DependentUpon>Form_ФінансиЖурнал.cs</DependentUpon>
