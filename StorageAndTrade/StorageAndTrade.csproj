@@ -64,23 +64,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationSelectionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ConfigurationSelectionForm.cs" />
     <Compile Include="ConfigurationSelectionForm.designer.cs">
       <DependentUpon>ConfigurationSelectionForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigurationSelectionParam.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ConfigurationSelectionParam.cs" />
     <Compile Include="ConfigurationSelectionParam.designer.cs">
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
     </Compile>
     <Compile Include="Configurator\Service.cs" />
     <Compile Include="Configurator\SpendTheDocument.cs" />
-    <Compile Include="FormService.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormService.cs" />
     <Compile Include="FormService.Designer.cs">
       <DependentUpon>FormService.cs</DependentUpon>
     </Compile>
@@ -89,503 +83,339 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Контрагенти\Form_Контрагенти_ТабличнаЧастина_Контакти.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_Контрагенти_ТабличнаЧастина_Контакти.cs" />
     <Compile Include="Довідники\Контрагенти\Form_Контрагенти_ТабличнаЧастина_Контакти.Designer.cs">
       <DependentUpon>Form_Контрагенти_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Організації\Form_Організація_ТабличнаЧастина_Контакти.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Довідники\Організації\Form_Організація_ТабличнаЧастина_Контакти.cs" />
     <Compile Include="Довідники\Організації\Form_Організація_ТабличнаЧастина_Контакти.Designer.cs">
       <DependentUpon>Form_Організація_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.cs" />
     <Compile Include="Довідники\Склади\Form_Склади_ТабличнаЧастина_Контакти.Designer.cs">
       <DependentUpon>Form_Склади_ТабличнаЧастина_Контакти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриДокумент.cs" />
     <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриДокумент.designer.cs">
       <DependentUpon>Form_ВстановленняЦінНоменклатуриДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриЖурнал.cs" />
     <Compile Include="Документи\ВстановленняЦінНоменклатури\Form_ВстановленняЦінНоменклатуриЖурнал.designer.cs">
       <DependentUpon>Form_ВстановленняЦінНоменклатуриЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ПереміщенняТоварів_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівДокумент.cs" />
     <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівДокумент.designer.cs">
       <DependentUpon>Form_ПереміщенняТоварівДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівЖурнал.cs" />
     <Compile Include="Документи\ПереміщенняТоварів\Form_ПереміщенняТоварівЖурнал.designer.cs">
       <DependentUpon>Form_ПереміщенняТоварівЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.cs" />
     <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерДокумент.designer.cs">
       <DependentUpon>Form_ПрихіднийКасовийОрдерДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерЖурнал.cs" />
     <Compile Include="Документи\ПрихіднийКасовийОрдер\Form_ПрихіднийКасовийОрдерЖурнал.designer.cs">
       <DependentUpon>Form_ПрихіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерДокумент.cs" />
     <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерДокумент.designer.cs">
       <DependentUpon>Form_РозхіднийКасовийОрдерДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.cs" />
     <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.designer.cs">
       <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.cs" />
     <Compile Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.Designer.cs">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладах_Звіт.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладах_Звіт.cs" />
     <Compile Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладах_Звіт.Designer.cs">
       <DependentUpon>Form_ТовариНаСкладах_Звіт.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\РозрахункиЗПостачальниками\Form_РозрахункиЗПостачальниками_Звіт.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Звіти\РозрахункиЗПостачальниками\Form_РозрахункиЗПостачальниками_Звіт.cs" />
     <Compile Include="Звіти\РозрахункиЗПостачальниками\Form_РозрахункиЗПостачальниками_Звіт.Designer.cs">
       <DependentUpon>Form_РозрахункиЗПостачальниками_Звіт.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.cs" />
     <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.Designer.cs">
       <DependentUpon>Form_РозрахункиЗКлієнтами_Звіт.cs</DependentUpon>
     </Compile>
     <Compile Include="Звіти\РухДокументівПоРегістрах\РухПоРугістрахНакопичення.cs" />
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
-    <Compile Include="DocumentControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DocumentControl.cs" />
     <Compile Include="DocumentControl.designer.cs">
       <DependentUpon>DocumentControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectoryControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DirectoryControl.cs" />
     <Compile Include="DirectoryControl.designer.cs">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trash\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Trash\Form1.cs" />
     <Compile Include="Trash\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Контрагенти\Form_КонтрагентиПапкиВибір.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_КонтрагентиПапкиВибір.cs" />
     <Compile Include="Довідники\Контрагенти\Form_КонтрагентиПапкиВибір.designer.cs">
       <DependentUpon>Form_КонтрагентиПапкиВибір.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Контрагенти\Form_Контрагенти_Папки_Дерево.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_Контрагенти_Папки_Дерево.cs" />
     <Compile Include="Довідники\Контрагенти\Form_Контрагенти_Папки_Дерево.Designer.cs">
       <DependentUpon>Form_Контрагенти_Папки_Дерево.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиВибір.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиВибір.cs" />
     <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиВибір.designer.cs">
       <DependentUpon>Form_НоменклатураПапкиВибір.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Номенклатура\Form_Номенклатура_Папки_Дерево.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Довідники\Номенклатура\Form_Номенклатура_Папки_Дерево.cs" />
     <Compile Include="Довідники\Номенклатура\Form_Номенклатура_Папки_Дерево.Designer.cs">
       <DependentUpon>Form_Номенклатура_Папки_Дерево.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Контрагенти\Form_КонтрагентиПапкиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_КонтрагентиПапкиЕлемент.cs" />
     <Compile Include="Довідники\Контрагенти\Form_КонтрагентиПапкиЕлемент.designer.cs">
       <DependentUpon>Form_КонтрагентиПапкиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.cs" />
     <Compile Include="Довідники\Номенклатура\Form_НоменклатураПапкиЕлемент.designer.cs">
       <DependentUpon>Form_НоменклатураПапкиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Склади\Form_СкладиПапкиВибір.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Склади\Form_СкладиПапкиВибір.cs" />
     <Compile Include="Довідники\Склади\Form_СкладиПапкиВибір.designer.cs">
       <DependentUpon>Form_СкладиПапкиВибір.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Склади\Form_СкладиПапкиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Склади\Form_СкладиПапкиЕлемент.cs" />
     <Compile Include="Довідники\Склади\Form_СкладиПапкиЕлемент.designer.cs">
       <DependentUpon>Form_СкладиПапкиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Склади\Form_Склади_Папки_Дерево.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Довідники\Склади\Form_Склади_Папки_Дерево.cs" />
     <Compile Include="Довідники\Склади\Form_Склади_Папки_Дерево.Designer.cs">
       <DependentUpon>Form_Склади_Папки_Дерево.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнтаДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнтаДокумент.cs" />
     <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнтаДокумент.designer.cs">
       <DependentUpon>Form_ПоверненняТоварівВідКлієнтаДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальникуДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальникуДокумент.cs" />
     <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальникуДокумент.designer.cs">
       <DependentUpon>Form_ПоверненняТоварівПостачальникуДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнтаЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнтаЖурнал.cs" />
     <Compile Include="Документи\ПоверненняТоварівВідКлієнта\Form_ПоверненняТоварівВідКлієнтаЖурнал.designer.cs">
       <DependentUpon>Form_ПоверненняТоварівВідКлієнтаЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальникуЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальникуЖурнал.cs" />
     <Compile Include="Документи\ПоверненняТоварівПостачальнику\Form_ПоверненняТоварівПостачальникуЖурнал.designer.cs">
       <DependentUpon>Form_ПоверненняТоварівПостачальникуЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослугДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослугДокумент.cs" />
     <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослугДокумент.designer.cs">
       <DependentUpon>Form_ПоступленняТоварівТаПослугДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослугЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослугЖурнал.cs" />
     <Compile Include="Документи\ПоступленняТоварівТаПослуг\Form_ПоступленняТоварівТаПослугЖурнал.designer.cs">
       <DependentUpon>Form_ПоступленняТоварівТаПослугЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ЗамовленняПостачальнику_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальникуДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальникуДокумент.cs" />
     <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальникуДокумент.designer.cs">
       <DependentUpon>Form_ЗамовленняПостачальникуДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальникуЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальникуЖурнал.cs" />
     <Compile Include="Документи\ЗамовленняПостачальнику\Form_ЗамовленняПостачальникуЖурнал.designer.cs">
       <DependentUpon>Form_ЗамовленняПостачальникуЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослугДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослугДокумент.cs" />
     <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослугДокумент.designer.cs">
       <DependentUpon>Form_РеалізаціяТоварівТаПослугДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослугЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослугЖурнал.cs" />
     <Compile Include="Документи\РеалізаціяТоварівТаПослуг\Form_РеалізаціяТоварівТаПослугЖурнал.designer.cs">
       <DependentUpon>Form_РеалізаціяТоварівТаПослугЖурнал.cs</DependentUpon>
     </Compile>
     <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаЖурнал.designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтаЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\БанківськіРахункиКонтрагентів\Form_БанківськіРахункиКонтрагентів.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\БанківськіРахункиКонтрагентів\Form_БанківськіРахункиКонтрагентів.cs" />
     <Compile Include="Довідники\БанківськіРахункиКонтрагентів\Form_БанківськіРахункиКонтрагентів.designer.cs">
       <DependentUpon>Form_БанківськіРахункиКонтрагентів.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\БанківськіРахункиОрганізацій\Form_БанківськіРахункиОрганізацій.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\БанківськіРахункиОрганізацій\Form_БанківськіРахункиОрганізацій.cs" />
     <Compile Include="Довідники\БанківськіРахункиОрганізацій\Form_БанківськіРахункиОрганізацій.designer.cs">
       <DependentUpon>Form_БанківськіРахункиОрганізацій.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\БанківськіРахункиКонтрагентів\Form_БанківськіРахункиКонтрагентівЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\БанківськіРахункиКонтрагентів\Form_БанківськіРахункиКонтрагентівЕлемент.cs" />
     <Compile Include="Довідники\БанківськіРахункиКонтрагентів\Form_БанківськіРахункиКонтрагентівЕлемент.designer.cs">
       <DependentUpon>Form_БанківськіРахункиКонтрагентівЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\БанківськіРахункиОрганізацій\Form_БанківськіРахункиОрганізаційЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\БанківськіРахункиОрганізацій\Form_БанківськіРахункиОрганізаційЕлемент.cs" />
     <Compile Include="Довідники\БанківськіРахункиОрганізацій\Form_БанківськіРахункиОрганізаційЕлемент.designer.cs">
       <DependentUpon>Form_БанківськіРахункиОрганізаційЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаДокумент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаДокумент.cs" />
     <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаДокумент.designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтаДокумент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.cs" />
     <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатури.designer.cs">
       <DependentUpon>Form_ХарактеристикиНоменклатури.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.cs" />
     <Compile Include="Довідники\ХарактеристикиНоменклатури\Form_ХарактеристикиНоменклатуриЕлемент.designer.cs">
       <DependentUpon>Form_ХарактеристикиНоменклатуриЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентів.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентів.cs" />
     <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентів.designer.cs">
       <DependentUpon>Form_ДоговориКонтрагентів.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентівЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентівЕлемент.cs" />
     <Compile Include="Довідники\ДоговориКонтрагентів\Form_ДоговориКонтрагентівЕлемент.designer.cs">
       <DependentUpon>Form_ДоговориКонтрагентівЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\СтруктураПідприємства\Form_СтруктураПідприємства.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\СтруктураПідприємства\Form_СтруктураПідприємства.cs" />
     <Compile Include="Довідники\СтруктураПідприємства\Form_СтруктураПідприємства.designer.cs">
       <DependentUpon>Form_СтруктураПідприємства.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\СтруктураПідприємства\Form_СтруктураПідприємстваЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\СтруктураПідприємства\Form_СтруктураПідприємстваЕлемент.cs" />
     <Compile Include="Довідники\СтруктураПідприємства\Form_СтруктураПідприємстваЕлемент.designer.cs">
       <DependentUpon>Form_СтруктураПідприємстваЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ВидиНоменклатури\Form_ВидиНоменклатури.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ВидиНоменклатури\Form_ВидиНоменклатури.cs" />
     <Compile Include="Довідники\ВидиНоменклатури\Form_ВидиНоменклатури.designer.cs">
       <DependentUpon>Form_ВидиНоменклатури.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ВидиНоменклатури\Form_ВидиНоменклатуриЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ВидиНоменклатури\Form_ВидиНоменклатуриЕлемент.cs" />
     <Compile Include="Довідники\ВидиНоменклатури\Form_ВидиНоменклатуриЕлемент.designer.cs">
       <DependentUpon>Form_ВидиНоменклатуриЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Виробники\Form_Виробники.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Виробники\Form_Виробники.cs" />
     <Compile Include="Довідники\Виробники\Form_Виробники.designer.cs">
       <DependentUpon>Form_Виробники.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Виробники\Form_ВиробникиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Виробники\Form_ВиробникиЕлемент.cs" />
     <Compile Include="Довідники\Виробники\Form_ВиробникиЕлемент.designer.cs">
       <DependentUpon>Form_ВиробникиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Користувачі\Form_Користувачі.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Користувачі\Form_Користувачі.cs" />
     <Compile Include="Довідники\Користувачі\Form_Користувачі.designer.cs">
       <DependentUpon>Form_Користувачі.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Користувачі\Form_КористувачіЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Користувачі\Form_КористувачіЕлемент.cs" />
     <Compile Include="Довідники\Користувачі\Form_КористувачіЕлемент.designer.cs">
       <DependentUpon>Form_КористувачіЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ФізичніОсоби\Form_ФізичніОсоби.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ФізичніОсоби\Form_ФізичніОсоби.cs" />
     <Compile Include="Довідники\ФізичніОсоби\Form_ФізичніОсоби.designer.cs">
       <DependentUpon>Form_ФізичніОсоби.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ФізичніОсоби\Form_ФізичніОсобиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ФізичніОсоби\Form_ФізичніОсобиЕлемент.cs" />
     <Compile Include="Довідники\ФізичніОсоби\Form_ФізичніОсобиЕлемент.designer.cs">
       <DependentUpon>Form_ФізичніОсобиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ВидиЦін\Form_ВидиЦін.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ВидиЦін\Form_ВидиЦін.cs" />
     <Compile Include="Довідники\ВидиЦін\Form_ВидиЦін.designer.cs">
       <DependentUpon>Form_ВидиЦін.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ВидиЦін\Form_ВидиЦінЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ВидиЦін\Form_ВидиЦінЕлемент.cs" />
     <Compile Include="Довідники\ВидиЦін\Form_ВидиЦінЕлемент.designer.cs">
       <DependentUpon>Form_ВидиЦінЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Склади\Form_Склади.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Склади\Form_Склади.cs" />
     <Compile Include="Довідники\Склади\Form_Склади.designer.cs">
       <DependentUpon>Form_Склади.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Склади\Form_СкладиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Склади\Form_СкладиЕлемент.cs" />
     <Compile Include="Довідники\Склади\Form_СкладиЕлемент.designer.cs">
       <DependentUpon>Form_СкладиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Контрагенти\Form_Контрагенти.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_Контрагенти.cs" />
     <Compile Include="Довідники\Контрагенти\Form_Контрагенти.designer.cs">
       <DependentUpon>Form_Контрагенти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Контрагенти\Form_КонтрагентиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Контрагенти\Form_КонтрагентиЕлемент.cs" />
     <Compile Include="Довідники\Контрагенти\Form_КонтрагентиЕлемент.designer.cs">
       <DependentUpon>Form_КонтрагентиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Номенклатура\Form_Номенклатура.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Номенклатура\Form_Номенклатура.cs" />
     <Compile Include="Довідники\Номенклатура\Form_Номенклатура.designer.cs">
       <DependentUpon>Form_Номенклатура.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Номенклатура\Form_НоменклатураЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Номенклатура\Form_НоменклатураЕлемент.cs" />
     <Compile Include="Довідники\Номенклатура\Form_НоменклатураЕлемент.designer.cs">
       <DependentUpon>Form_НоменклатураЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Організації\Form_Організації.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Організації\Form_Організації.cs" />
     <Compile Include="Довідники\Організації\Form_Організації.designer.cs">
       <DependentUpon>Form_Організації.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Організації\Form_ОрганізаціїЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Організації\Form_ОрганізаціїЕлемент.cs" />
     <Compile Include="Довідники\Організації\Form_ОрганізаціїЕлемент.designer.cs">
       <DependentUpon>Form_ОрганізаціїЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ПакуванняОдиниціВиміру\Form_ПакуванняОдиниціВиміру.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ПакуванняОдиниціВиміру\Form_ПакуванняОдиниціВиміру.cs" />
     <Compile Include="Довідники\ПакуванняОдиниціВиміру\Form_ПакуванняОдиниціВиміру.designer.cs">
       <DependentUpon>Form_ПакуванняОдиниціВиміру.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ПакуванняОдиниціВиміру\Form_ПакуванняОдиниціВиміруЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\ПакуванняОдиниціВиміру\Form_ПакуванняОдиниціВиміруЕлемент.cs" />
     <Compile Include="Довідники\ПакуванняОдиниціВиміру\Form_ПакуванняОдиниціВиміруЕлемент.designer.cs">
       <DependentUpon>Form_ПакуванняОдиниціВиміруЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Валюти\Form_ВалютиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Валюти\Form_ВалютиЕлемент.cs" />
     <Compile Include="Довідники\Валюти\Form_ВалютиЕлемент.designer.cs">
       <DependentUpon>Form_ВалютиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Каси\Form_КасиЕлемент.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Каси\Form_КасиЕлемент.cs" />
     <Compile Include="Довідники\Каси\Form_КасиЕлемент.designer.cs">
       <DependentUpon>Form_КасиЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Валюти\Form_Валюти.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Валюти\Form_Валюти.cs" />
     <Compile Include="Довідники\Валюти\Form_Валюти.designer.cs">
       <DependentUpon>Form_Валюти.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\Каси\Form_Каси.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Довідники\Каси\Form_Каси.cs" />
     <Compile Include="Довідники\Каси\Form_Каси.designer.cs">
       <DependentUpon>Form_Каси.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormStorageAndTrade.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormStorageAndTrade.cs" />
     <Compile Include="FormStorageAndTrade.Designer.cs">
       <DependentUpon>FormStorageAndTrade.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.cs" />
     <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.Designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.cs" />
     <Compile Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.Designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
     </Compile>
@@ -829,9 +659,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаЖурнал.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнтаЖурнал.cs" />
     <EmbeddedResource Include="Документи\ЗамовленняКлієнта\Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ЗамовленняКлієнта_ТабличнаЧастина_Товари.cs</DependentUpon>
     </EmbeddedResource>
@@ -985,6 +813,12 @@ copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\C
 
 
 
+copy $(ProjectDir)Configurator\Confa.xml      $(TargetDir)\Confa.xml
+
+
+
+
+mkdir $(TargetDir)Template
 
 copy   $(ProjectDir)Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt                                            $(TargetDir)Template\Template_ЗамовленняКлієнта_Звіт.xslt
 copy   $(ProjectDir)Звіти\ЗамовленняПостачальникам\Template_ЗамовленняПостачальникам_Звіт.xslt         $(TargetDir)Template\Template_ЗамовленняПостачальникам_Звіт.xslt

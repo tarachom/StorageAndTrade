@@ -347,15 +347,15 @@ namespace StorageAndTrade
 			}
 		}
 
-		private void buttonOpenConfigurator_Click(object sender, EventArgs e)
-		{
-			if (listBoxConfiguration.SelectedItem != null)
-			{
-				ConfigurationParam itemConfigurationParam = (ConfigurationParam)listBoxConfiguration.SelectedItem;
+		//private void buttonOpenConfigurator_Click(object sender, EventArgs e)
+		//{
+		//	if (listBoxConfiguration.SelectedItem != null)
+		//	{
+		//		ConfigurationParam itemConfigurationParam = (ConfigurationParam)listBoxConfiguration.SelectedItem;
 
-				System.Diagnostics.Process.Start("Configurator.exe", itemConfigurationParam.ConfigurationKey);
-			}
-		}
+		//		System.Diagnostics.Process.Start("Configurator.exe", itemConfigurationParam.ConfigurationKey);
+		//	}
+		//}
 
         private void listBoxConfiguration_KeyDown(object sender, KeyEventArgs e)
         {

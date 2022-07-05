@@ -33,7 +33,6 @@
             this.textBoxPostgreSQLServer = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonConnect = new System.Windows.Forms.Button();
-            this.buttonTryConnect = new System.Windows.Forms.Button();
             this.textBoxPostgreSQLPort = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPostgreSQLDataBase = new System.Windows.Forms.TextBox();
@@ -68,7 +67,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.buttonConnect);
-            this.groupBox1.Controls.Add(this.buttonTryConnect);
             this.groupBox1.Controls.Add(this.textBoxPostgreSQLPort);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxPostgreSQLDataBase);
@@ -95,16 +93,6 @@
             this.buttonConnect.Text = "Створити базу даних";
             this.buttonConnect.UseVisualStyleBackColor = true;
             this.buttonConnect.Click += new System.EventHandler(this.buttonConnect_Click);
-            // 
-            // buttonTryConnect
-            // 
-            this.buttonTryConnect.Location = new System.Drawing.Point(431, 22);
-            this.buttonTryConnect.Name = "buttonTryConnect";
-            this.buttonTryConnect.Size = new System.Drawing.Size(157, 28);
-            this.buttonTryConnect.TabIndex = 10;
-            this.buttonTryConnect.Text = "Перевірити підключення";
-            this.buttonTryConnect.UseVisualStyleBackColor = true;
-            this.buttonTryConnect.Click += new System.EventHandler(this.buttonTryConnect_Click);
             // 
             // textBoxPostgreSQLPort
             // 
@@ -248,6 +236,5 @@
 		private System.Windows.Forms.Button buttonConnect;
 		private System.Windows.Forms.TextBox textBoxPostgreSQLPort;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Button buttonTryConnect;
 	}
 }

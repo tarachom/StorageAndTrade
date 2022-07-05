@@ -117,29 +117,29 @@ namespace StorageAndTrade
 			}
 		}
 
-		private void buttonTryConnect_Click(object sender, EventArgs e)
-		{
-			UpdateItemConfigurationParam();
+		//private void buttonTryConnect_Click(object sender, EventArgs e)
+		//{
+		//	UpdateItemConfigurationParam();
 
-			Конфа.Config.Kernel = new Kernel();
+		//	Конфа.Config.Kernel = new Kernel();
 
-			Exception exception = null;
+		//	Exception exception = null;
 
-			bool flag = Конфа.Config.Kernel.TryConnectToServer(
-                ItemConfigurationParam.DataBaseServer,
-                ItemConfigurationParam.DataBaseLogin,
-                ItemConfigurationParam.DataBasePassword,
-                ItemConfigurationParam.DataBasePort,
-				ItemConfigurationParam.DataBaseBaseName, out exception);
+		//	bool flag = Конфа.Config.Kernel.TryConnectToServer(
+  //              ItemConfigurationParam.DataBaseServer,
+  //              ItemConfigurationParam.DataBaseLogin,
+  //              ItemConfigurationParam.DataBasePassword,
+  //              ItemConfigurationParam.DataBasePort,
+		//		ItemConfigurationParam.DataBaseBaseName, out exception);
 
-			if (flag)
-            {
-				MessageBox.Show("ОК. Є підключення!");
-			}
-            else
-            {
-				MessageBox.Show("Помилка! " + (exception != null ? exception.Message : ""));
-			}
-        }
+		//	if (flag)
+  //          {
+		//		MessageBox.Show("ОК. Є підключення!");
+		//	}
+  //          else
+  //          {
+		//		MessageBox.Show("Помилка! " + (exception != null ? exception.Message : ""));
+		//	}
+  //      }
 	}
 }
