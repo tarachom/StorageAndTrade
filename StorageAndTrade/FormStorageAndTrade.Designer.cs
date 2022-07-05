@@ -51,22 +51,25 @@ namespace StorageAndTrade
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_ЗамовленняКлієнта = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_РеалізаціяТоварівТаПослуг = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ЗамовленняПостачальнику = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ПоступленняТоварівТаПослуг = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ПоверненняТоварівПостачальнику = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ПрихіднийКасовийОрдер = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_РозхіднийКасовийОрдер = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ПереміщенняТоварівМіжСкладами = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_Валюти = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_ПакуванняОдиниціВиміру = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Оганізації = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Номенклатура = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Контрагенти = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_Склади = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Валюти = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_ПакуванняОдиниціВиміру = new System.Windows.Forms.ToolStripButton();
             this.оганізаціїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.номенклатураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.контрагентиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,6 +104,8 @@ namespace StorageAndTrade
             this.розрахункиЗПостачальникамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обчислитиЗалишкиПоРегістрахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.константиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.повнийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip_ГоловнеМеню.SuspendLayout();
             this.toolStrip_Довідники.SuspendLayout();
             this.toolStrip_Документи.SuspendLayout();
@@ -208,13 +213,13 @@ namespace StorageAndTrade
             // toolStrip_Довідники
             // 
             this.toolStrip_Довідники.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton_Валюти,
-            this.toolStripButton_ПакуванняОдиниціВиміру,
             this.toolStripButton_Оганізації,
             this.toolStripButton_Номенклатура,
             this.toolStripButton_Контрагенти,
             this.toolStripButton_Склади,
-            this.toolStripSeparator1});
+            this.toolStripButton_Валюти,
+            this.toolStripSeparator1,
+            this.toolStripButton_ПакуванняОдиниціВиміру});
             this.toolStrip_Довідники.Location = new System.Drawing.Point(0, 24);
             this.toolStrip_Довідники.Name = "toolStrip_Довідники";
             this.toolStrip_Довідники.Size = new System.Drawing.Size(993, 25);
@@ -231,12 +236,15 @@ namespace StorageAndTrade
             this.toolStrip_Документи.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton_ЗамовленняКлієнта,
             this.toolStripButton_РеалізаціяТоварівТаПослуг,
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів,
+            this.toolStripSeparator8,
             this.toolStripButton_ЗамовленняПостачальнику,
             this.toolStripButton_ПоступленняТоварівТаПослуг,
             this.toolStripButton_ПоверненняТоварівПостачальнику,
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів,
+            this.toolStripSeparator9,
             this.toolStripButton_ПрихіднийКасовийОрдер,
             this.toolStripButton_РозхіднийКасовийОрдер,
+            this.toolStripSeparator10,
             this.toolStripButton_ПереміщенняТоварівМіжСкладами,
             this.toolStripButton_ВстановленняЦінНоменклатури});
             this.toolStrip_Документи.Location = new System.Drawing.Point(0, 49);
@@ -248,6 +256,8 @@ namespace StorageAndTrade
             // журналиToolStripMenuItem
             // 
             this.журналиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.повнийToolStripMenuItem,
+            this.toolStripSeparator11,
             this.продажіToolStripMenuItem,
             this.закупкиToolStripMenuItem,
             this.фінансиToolStripMenuItem,
@@ -275,6 +285,7 @@ namespace StorageAndTrade
             this.фінансиToolStripMenuItem.Name = "фінансиToolStripMenuItem";
             this.фінансиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.фінансиToolStripMenuItem.Text = "Фінанси";
+            this.фінансиToolStripMenuItem.Click += new System.EventHandler(this.фінансиToolStripMenuItem_Click);
             // 
             // складToolStripMenuItem
             // 
@@ -312,6 +323,21 @@ namespace StorageAndTrade
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(247, 6);
             // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButton_ЗамовленняКлієнта
             // 
             this.toolStripButton_ЗамовленняКлієнта.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -331,6 +357,16 @@ namespace StorageAndTrade
             this.toolStripButton_РеалізаціяТоварівТаПослуг.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton_РеалізаціяТоварівТаПослуг.Text = "Документ \"Реалізація товарів та послуг\"";
             this.toolStripButton_РеалізаціяТоварівТаПослуг.Click += new System.EventHandler(this.toolStripButton_РеалізаціяТоварівТаПослуг_Click);
+            // 
+            // toolStripButton_ПоверненняТоварівВідКлієнтів
+            // 
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Name = "toolStripButton_ПоверненняТоварівВідКлієнтів";
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Text = "Документ \"Повернення товарів від клієнтів\"";
+            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Click += new System.EventHandler(this.toolStripButton_ПоверненняТоварівВідКлієнтів_Click);
             // 
             // toolStripButton_ЗамовленняПостачальнику
             // 
@@ -361,16 +397,6 @@ namespace StorageAndTrade
             this.toolStripButton_ПоверненняТоварівПостачальнику.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton_ПоверненняТоварівПостачальнику.Text = "Документ \"Повернення товарів постачальнику\"";
             this.toolStripButton_ПоверненняТоварівПостачальнику.Click += new System.EventHandler(this.toolStripButton_ПоверненняТоварівПостачальнику_Click);
-            // 
-            // toolStripButton_ПоверненняТоварівВідКлієнтів
-            // 
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Name = "toolStripButton_ПоверненняТоварівВідКлієнтів";
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Text = "Документ \"Повернення товарів від клієнтів\"";
-            this.toolStripButton_ПоверненняТоварівВідКлієнтів.Click += new System.EventHandler(this.toolStripButton_ПоверненняТоварівВідКлієнтів_Click);
             // 
             // toolStripButton_ПрихіднийКасовийОрдер
             // 
@@ -412,26 +438,6 @@ namespace StorageAndTrade
             this.toolStripButton_ВстановленняЦінНоменклатури.Text = "Документ \"Встановлення цін номенклатури\"";
             this.toolStripButton_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.toolStripButton_ВстановленняЦінНоменклатури_Click);
             // 
-            // toolStripButton_Валюти
-            // 
-            this.toolStripButton_Валюти.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_Валюти.Image = global::StorageAndTrade.Properties.Resources.coins;
-            this.toolStripButton_Валюти.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_Валюти.Name = "toolStripButton_Валюти";
-            this.toolStripButton_Валюти.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_Валюти.Text = "Довідник \"Валюти\"";
-            this.toolStripButton_Валюти.Click += new System.EventHandler(this.toolStripButton_Валюти_Click);
-            // 
-            // toolStripButton_ПакуванняОдиниціВиміру
-            // 
-            this.toolStripButton_ПакуванняОдиниціВиміру.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_ПакуванняОдиниціВиміру.Image = global::StorageAndTrade.Properties.Resources.drawer;
-            this.toolStripButton_ПакуванняОдиниціВиміру.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_ПакуванняОдиниціВиміру.Name = "toolStripButton_ПакуванняОдиниціВиміру";
-            this.toolStripButton_ПакуванняОдиниціВиміру.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_ПакуванняОдиниціВиміру.Text = "Довідник \"Пакування одиниці виміру\"";
-            this.toolStripButton_ПакуванняОдиниціВиміру.Click += new System.EventHandler(this.toolStripButton_ПакуванняОдиниціВиміру_Click);
-            // 
             // toolStripButton_Оганізації
             // 
             this.toolStripButton_Оганізації.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -471,6 +477,26 @@ namespace StorageAndTrade
             this.toolStripButton_Склади.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton_Склади.Text = "Довідник \"Склади\"";
             this.toolStripButton_Склади.Click += new System.EventHandler(this.toolStripButton_Склади_Click);
+            // 
+            // toolStripButton_Валюти
+            // 
+            this.toolStripButton_Валюти.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Валюти.Image = global::StorageAndTrade.Properties.Resources.coins;
+            this.toolStripButton_Валюти.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Валюти.Name = "toolStripButton_Валюти";
+            this.toolStripButton_Валюти.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Валюти.Text = "Довідник \"Валюти\"";
+            this.toolStripButton_Валюти.Click += new System.EventHandler(this.toolStripButton_Валюти_Click);
+            // 
+            // toolStripButton_ПакуванняОдиниціВиміру
+            // 
+            this.toolStripButton_ПакуванняОдиниціВиміру.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_ПакуванняОдиниціВиміру.Image = global::StorageAndTrade.Properties.Resources.drawer;
+            this.toolStripButton_ПакуванняОдиниціВиміру.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_ПакуванняОдиниціВиміру.Name = "toolStripButton_ПакуванняОдиниціВиміру";
+            this.toolStripButton_ПакуванняОдиниціВиміру.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_ПакуванняОдиниціВиміру.Text = "Довідник \"Пакування одиниці виміру\"";
+            this.toolStripButton_ПакуванняОдиниціВиміру.Click += new System.EventHandler(this.toolStripButton_ПакуванняОдиниціВиміру_Click);
             // 
             // оганізаціїToolStripMenuItem
             // 
@@ -743,6 +769,18 @@ namespace StorageAndTrade
             this.константиToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
             this.константиToolStripMenuItem.Text = "Константи";
             // 
+            // повнийToolStripMenuItem
+            // 
+            this.повнийToolStripMenuItem.Name = "повнийToolStripMenuItem";
+            this.повнийToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.повнийToolStripMenuItem.Text = "Повний";
+            this.повнийToolStripMenuItem.Click += new System.EventHandler(this.повнийToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            this.toolStripSeparator11.Size = new System.Drawing.Size(177, 6);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -847,6 +885,11 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+        private System.Windows.Forms.ToolStripMenuItem повнийToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator11;
     }
 }
 

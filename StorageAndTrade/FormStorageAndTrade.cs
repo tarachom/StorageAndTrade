@@ -290,6 +290,13 @@ namespace StorageAndTrade
 
         #region Журнали
 
+        private void повнийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПовнийЖурнал form_ПовнийЖурнал = new Form_ПовнийЖурнал();
+            form_ПовнийЖурнал.MdiParent = this;
+            form_ПовнийЖурнал.Show();
+        }
+
         private void продажіToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_ПродажіЖурнал form_ПродажіЖурнал = new Form_ПродажіЖурнал();
@@ -302,6 +309,13 @@ namespace StorageAndTrade
             Form_ЗакупкиЖурнал form_ЗакупкиЖурнал = new Form_ЗакупкиЖурнал();
             form_ЗакупкиЖурнал.MdiParent = this;
             form_ЗакупкиЖурнал.Show();
+        }
+
+        private void фінансиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ФінансиЖурнал form_ФінансиЖурнал = new Form_ФінансиЖурнал();
+            form_ФінансиЖурнал.MdiParent = this;
+            form_ФінансиЖурнал.Show();
         }
 
         #endregion
@@ -458,6 +472,8 @@ namespace StorageAndTrade
         {
             встановленняЦінНоменклатуриToolStripMenuItem_Click(this, new EventArgs());
         }
+
+
 
 
 
