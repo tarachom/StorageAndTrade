@@ -167,6 +167,12 @@
     <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.designer.cs">
       <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Журнали\Закупки\Form_ЗакупкиЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Журнали\Закупки\Form_ЗакупкиЖурнал.designer.cs">
+      <DependentUpon>Form_ЗакупкиЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Журнали\Продажі\Form_ПродажіЖурнал.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -846,6 +852,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.resx">
       <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Журнали\Закупки\Form_ЗакупкиЖурнал.resx">
+      <DependentUpon>Form_ЗакупкиЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Журнали\Продажі\Form_ПродажіЖурнал.resx">
       <DependentUpon>Form_ПродажіЖурнал.cs</DependentUpon>

@@ -297,6 +297,13 @@ namespace StorageAndTrade
             form_ПродажіЖурнал.Show();
         }
 
+        private void закупкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ЗакупкиЖурнал form_ЗакупкиЖурнал = new Form_ЗакупкиЖурнал();
+            form_ЗакупкиЖурнал.MdiParent = this;
+            form_ЗакупкиЖурнал.Show();
+        }
+
         #endregion
 
         #region Mdi
@@ -451,6 +458,7 @@ namespace StorageAndTrade
         {
             встановленняЦінНоменклатуриToolStripMenuItem_Click(this, new EventArgs());
         }
+
 
 
 
