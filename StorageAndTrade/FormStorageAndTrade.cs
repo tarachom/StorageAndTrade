@@ -36,7 +36,7 @@ namespace StorageAndTrade
             Application.Exit();
         }
 
-        #region Довідники
+        #region Довідники Меню
 
         private void валютиToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -159,7 +159,7 @@ namespace StorageAndTrade
 
         #endregion
 
-        #region Документи
+        #region Документи Меню
 
         private void замовленняКлієнтаToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -233,7 +233,7 @@ namespace StorageAndTrade
 
         #endregion
 
-        #region Звіти
+        #region Звіти Меню
 
         private void замовленняКлієнтівToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -272,7 +272,7 @@ namespace StorageAndTrade
 
         #endregion
 
-        #region Сервіс
+        #region Сервіс Меню
 
         private void обчислитиЗалишкиПоРегістрахToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -283,7 +283,6 @@ namespace StorageAndTrade
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
 
         }
 
@@ -352,6 +351,8 @@ namespace StorageAndTrade
 
         #endregion
 
+        #region ДОВІДНИКИ Панель
+
         // ДОВІДНИКИ
 
         private void toolStripButton_Валюти_Click(object sender, EventArgs e)
@@ -369,6 +370,10 @@ namespace StorageAndTrade
             оганізаціїToolStripMenuItem_Click(this, new EventArgs());
         }
 
+        #endregion
+
+        #region ДОКУМЕНТИ Панель
+
         // ДОКУМЕНТИ
 
         private void toolStripButton_ЗамовленняКлієнта_Click(object sender, EventArgs e)
@@ -376,6 +381,51 @@ namespace StorageAndTrade
             замовленняКлієнтаToolStripMenuItem_Click(this, new EventArgs());
         }
 
-        
+        private void toolStripButton_РеалізаціяТоварівТаПослуг_Click(object sender, EventArgs e)
+        {
+            реалізаціяТоварівТаПослугToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ЗамовленняПостачальнику_Click(object sender, EventArgs e)
+        {
+            замовленняПостачальникуToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ПоступленняТоварівТаПослуг_Click(object sender, EventArgs e)
+        {
+            поступленняТоварівТаПослугToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ПоверненняТоварівПостачальнику_Click(object sender, EventArgs e)
+        {
+            поверненняТоварівПостачальникуToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ПоверненняТоварівВідКлієнтів_Click(object sender, EventArgs e)
+        {
+            поверненняТоварівКлієнтуToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ПрихіднийКасовийОрдер_Click(object sender, EventArgs e)
+        {
+            прихіднийКасовийОрдерToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_РозхіднийКасовийОрдер_Click(object sender, EventArgs e)
+        {
+            розхіднийКасовийОрдерToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ПереміщенняТоварівМіжСкладами_Click(object sender, EventArgs e)
+        {
+            переміщенняТоварівМіжСкладамиToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ВстановленняЦінНоменклатури_Click(object sender, EventArgs e)
+        {
+            встановленняЦінНоменклатуриToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        #endregion
     }
 }
