@@ -86,6 +86,9 @@ namespace StorageAndTrade
             this.toolStripButton_РозхіднийКасовийОрдер = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ПереміщенняТоварівМіжСкладами = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Номенклатура = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Контрагенти = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_Склади = new System.Windows.Forms.ToolStripButton();
             this.menuStrip_ГоловнеМеню.SuspendLayout();
             this.toolStrip_Довідники.SuspendLayout();
             this.toolStrip_Документи.SuspendLayout();
@@ -459,7 +462,10 @@ namespace StorageAndTrade
             this.toolStrip_Довідники.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton_Валюти,
             this.toolStripButton_ПакуванняОдиниціВиміру,
-            this.toolStripButton_Оганізації});
+            this.toolStripButton_Оганізації,
+            this.toolStripButton_Номенклатура,
+            this.toolStripButton_Контрагенти,
+            this.toolStripButton_Склади});
             this.toolStrip_Довідники.Location = new System.Drawing.Point(0, 24);
             this.toolStrip_Довідники.Name = "toolStrip_Довідники";
             this.toolStrip_Довідники.Size = new System.Drawing.Size(993, 25);
@@ -578,7 +584,7 @@ namespace StorageAndTrade
             // toolStripButton_ПрихіднийКасовийОрдер
             // 
             this.toolStripButton_ПрихіднийКасовийОрдер.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_ПрихіднийКасовийОрдер.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
+            this.toolStripButton_ПрихіднийКасовийОрдер.Image = global::StorageAndTrade.Properties.Resources.coins;
             this.toolStripButton_ПрихіднийКасовийОрдер.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_ПрихіднийКасовийОрдер.Name = "toolStripButton_ПрихіднийКасовийОрдер";
             this.toolStripButton_ПрихіднийКасовийОрдер.Size = new System.Drawing.Size(23, 22);
@@ -588,7 +594,7 @@ namespace StorageAndTrade
             // toolStripButton_РозхіднийКасовийОрдер
             // 
             this.toolStripButton_РозхіднийКасовийОрдер.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_РозхіднийКасовийОрдер.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
+            this.toolStripButton_РозхіднийКасовийОрдер.Image = global::StorageAndTrade.Properties.Resources.coins;
             this.toolStripButton_РозхіднийКасовийОрдер.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton_РозхіднийКасовийОрдер.Name = "toolStripButton_РозхіднийКасовийОрдер";
             this.toolStripButton_РозхіднийКасовийОрдер.Size = new System.Drawing.Size(23, 22);
@@ -614,6 +620,36 @@ namespace StorageAndTrade
             this.toolStripButton_ВстановленняЦінНоменклатури.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton_ВстановленняЦінНоменклатури.Text = "Документ \"Встановлення цін номенклатури\"";
             this.toolStripButton_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.toolStripButton_ВстановленняЦінНоменклатури_Click);
+            // 
+            // toolStripButton_Номенклатура
+            // 
+            this.toolStripButton_Номенклатура.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Номенклатура.Image = global::StorageAndTrade.Properties.Resources.photo_album;
+            this.toolStripButton_Номенклатура.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Номенклатура.Name = "toolStripButton_Номенклатура";
+            this.toolStripButton_Номенклатура.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Номенклатура.Text = "Довідник \"Номенклатура\"";
+            this.toolStripButton_Номенклатура.Click += new System.EventHandler(this.toolStripButton_Номенклатура_Click);
+            // 
+            // toolStripButton_Контрагенти
+            // 
+            this.toolStripButton_Контрагенти.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Контрагенти.Image = global::StorageAndTrade.Properties.Resources.user;
+            this.toolStripButton_Контрагенти.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Контрагенти.Name = "toolStripButton_Контрагенти";
+            this.toolStripButton_Контрагенти.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Контрагенти.Text = "Довідник \"Контрагенти\"";
+            this.toolStripButton_Контрагенти.Click += new System.EventHandler(this.toolStripButton_Контрагенти_Click);
+            // 
+            // toolStripButton_Склади
+            // 
+            this.toolStripButton_Склади.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Склади.Image = global::StorageAndTrade.Properties.Resources.bookmark_folder;
+            this.toolStripButton_Склади.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Склади.Name = "toolStripButton_Склади";
+            this.toolStripButton_Склади.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Склади.Text = "Довідник \"Склади\"";
+            this.toolStripButton_Склади.Click += new System.EventHandler(this.toolStripButton_Склади_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -704,6 +740,9 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButton_РозхіднийКасовийОрдер;
         private System.Windows.Forms.ToolStripButton toolStripButton_ПереміщенняТоварівМіжСкладами;
         private System.Windows.Forms.ToolStripButton toolStripButton_ВстановленняЦінНоменклатури;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Номенклатура;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Контрагенти;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Склади;
     }
 }
 

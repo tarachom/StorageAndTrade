@@ -370,6 +370,21 @@ namespace StorageAndTrade
             оганізаціїToolStripMenuItem_Click(this, new EventArgs());
         }
 
+        private void toolStripButton_Номенклатура_Click(object sender, EventArgs e)
+        {
+            номенклатураToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_Контрагенти_Click(object sender, EventArgs e)
+        {
+            контрагентиToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_Склади_Click(object sender, EventArgs e)
+        {
+            складиToolStripMenuItem_Click(this, new EventArgs());
+        }
+
         #endregion
 
         #region ДОКУМЕНТИ Панель
@@ -426,6 +441,10 @@ namespace StorageAndTrade
             встановленняЦінНоменклатуриToolStripMenuItem_Click(this, new EventArgs());
         }
 
+
+
         #endregion
+
+        
     }
 }
