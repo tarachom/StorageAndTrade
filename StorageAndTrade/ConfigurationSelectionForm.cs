@@ -245,23 +245,23 @@ namespace StorageAndTrade
 				ConfigurationParam itemConfigurationParam = (ConfigurationParam)listBoxConfiguration.SelectedItem;
 
 				Exception exception;
-				bool IsExistsDatabase = false;
+				//bool IsExistsDatabase = false;
 
 				Конфа.Config.Kernel = new Kernel();
 
-				//Створення бази даних
-				bool flagCreateDatabase = Конфа.Config.Kernel.CreateDatabaseIfNotExist(
-						itemConfigurationParam.DataBaseServer,
-						itemConfigurationParam.DataBaseLogin,
-						itemConfigurationParam.DataBasePassword,
-						itemConfigurationParam.DataBasePort,
-						itemConfigurationParam.DataBaseBaseName, out exception, out IsExistsDatabase);
+				////Створення бази даних
+				//bool flagCreateDatabase = Конфа.Config.Kernel.CreateDatabaseIfNotExist(
+				//		itemConfigurationParam.DataBaseServer,
+				//		itemConfigurationParam.DataBaseLogin,
+				//		itemConfigurationParam.DataBasePassword,
+				//		itemConfigurationParam.DataBasePort,
+				//		itemConfigurationParam.DataBaseBaseName, out exception, out IsExistsDatabase);
 
-				if (exception != null)
-				{
-					MessageBox.Show(exception.Message);
-					return;
-				}
+				//if (exception != null)
+				//{
+				//	MessageBox.Show(exception.Message);
+				//	return;
+				//}
 
 				//Підключення до бази даних
 				bool flagOpen2 = Конфа.Config.Kernel.Open2(

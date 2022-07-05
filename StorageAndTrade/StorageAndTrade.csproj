@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -917,7 +932,18 @@
   <ItemGroup>
     <None Include="Resources\user.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\down.ico" />
     <None Include="Resources\plus.ico" />
@@ -956,6 +982,15 @@ copy %25conf_folder%25\Configurator.exe.config           %25st_folder%25\Configu
 copy %25conf_folder_code%25\CodeGeneration.xslt                    %25st_folder%25\CodeGeneration.xslt
 copy %25conf_folder_code%25\Comparison.xslt                          %25st_folder%25\Comparison.xslt
 copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\ComparisonAnalize.xslt
-</PreBuildEvent>
+
+
+
+
+copy   $(ProjectDir)Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt                                            $(TargetDir)Template\Template_ЗамовленняКлієнта_Звіт.xslt
+copy   $(ProjectDir)Звіти\ЗамовленняПостачальникам\Template_ЗамовленняПостачальникам_Звіт.xslt         $(TargetDir)Template\Template_ЗамовленняПостачальникам_Звіт.xslt
+copy   $(ProjectDir)Звіти\РозрахункиЗКлієнтами\Template_РозрахункиЗКлієнтами_Звіт.xslt                                 $(TargetDir)Template\Template_РозрахункиЗКлієнтами_Звіт.xslt
+copy   $(ProjectDir)Звіти\РозрахункиЗПостачальниками\Template_РозрахункиЗПостачальниками_Звіт.xslt    $(TargetDir)Template\Template_РозрахункиЗПостачальниками_Звіт.xslt
+copy   $(ProjectDir)Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt                            $(TargetDir)Template\Template_РухДокументівПоРегістрах.xslt
+copy   $(ProjectDir)Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt                                                   $(TargetDir)Template\Template_ТовариНаСкладах_Звіт.xslt</PreBuildEvent>
   </PropertyGroup>
 </Project>

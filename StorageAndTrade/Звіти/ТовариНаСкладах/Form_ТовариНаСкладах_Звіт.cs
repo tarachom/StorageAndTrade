@@ -30,10 +30,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using AccountingSoftware;
 using System.Xml;
-using System.Xml.Xsl;
+using System.IO;
 
+using AccountingSoftware;
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.Довідники;
@@ -208,8 +208,9 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ТовариНаСкладах", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc,
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt");
+            string PathToTemplate = Path.Combine( Path.GetDirectoryName(Application.ExecutablePath), "Template", "Template_ТовариНаСкладах_Звіт.xslt");
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, PathToTemplate);
         }
 
         private void buttonCreatePidsumok_Click(object sender, EventArgs e)
@@ -338,7 +339,7 @@ OR
 ORDER BY Номенклатура_Назва
 ";
 
-            Console.WriteLine(query);
+            //Console.WriteLine(query);
 
             XmlDocument xmlDoc = Функції.CreateXmlDocument();
 
@@ -351,8 +352,9 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ТовариНаСкладах", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc,
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt");
+            string PathToTemplate = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Template", "Template_ТовариНаСкладах_Звіт.xslt");
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, PathToTemplate);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

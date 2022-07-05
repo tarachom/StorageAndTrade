@@ -98,8 +98,8 @@ namespace StorageAndTrade_1_0.Звіти
         public static void XmlDocumentSaveAndTransform(XmlDocument xmlDoc, string pathToTemplate)
         {
             string pathToFolder = Path.GetDirectoryName(Application.ExecutablePath);
-            string pathToXmlFile = Path.Combine(pathToFolder, "SaveXML_Report.xml");
-            string pathToHtmlFile = Path.Combine(pathToFolder, "SaveXML_Report.html");
+            string pathToXmlFile = Path.Combine(pathToFolder, "Report.xml");
+            string pathToHtmlFile = Path.Combine(pathToFolder, "Report.html");
 
             xmlDoc.Save(pathToXmlFile);
 
@@ -108,7 +108,7 @@ namespace StorageAndTrade_1_0.Звіти
 
             xsltTransform.Transform(pathToXmlFile, pathToHtmlFile);
 
-            System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile);
+            System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile); //"iexplore.exe"
         }
 
     }
