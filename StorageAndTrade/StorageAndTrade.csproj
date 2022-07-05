@@ -167,6 +167,12 @@
     <Compile Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.designer.cs">
       <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Журнали\Продажі\Form_ПродажіЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Журнали\Продажі\Form_ПродажіЖурнал.designer.cs">
+      <DependentUpon>Form_ПродажіЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -841,6 +847,9 @@
     <EmbeddedResource Include="Документи\РозхіднийКасовийОрдер\Form_РозхіднийКасовийОрдерЖурнал.resx">
       <DependentUpon>Form_РозхіднийКасовийОрдерЖурнал.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Журнали\Продажі\Form_ПродажіЖурнал.resx">
+      <DependentUpon>Form_ПродажіЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.resx">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>
     </EmbeddedResource>
@@ -966,6 +975,7 @@
     <Content Include="Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt" />
     <Content Include="Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>
