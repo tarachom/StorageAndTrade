@@ -29,6 +29,7 @@ namespace StorageAndTrade
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_КонтрагентиПапкиВибір));
             this.panel2 = new System.Windows.Forms.Panel();
             this.Контрагенти_Папки_Дерево = new StorageAndTrade.Form_Контрагенти_Папки_Дерево();
             this.panel2.SuspendLayout();
@@ -60,6 +61,7 @@ namespace StorageAndTrade
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 738);
             this.Controls.Add(this.panel2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_КонтрагентиПапкиВибір";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Контрагенти Папки";

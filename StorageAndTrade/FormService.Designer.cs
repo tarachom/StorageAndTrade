@@ -29,6 +29,7 @@ namespace StorageAndTrade
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormService));
             this.buttonCalculate = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
@@ -56,7 +57,7 @@ namespace StorageAndTrade
             this.panel1.Controls.Add(this.buttonCalculate);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(786, 33);
+            this.panel1.Size = new System.Drawing.Size(931, 33);
             this.panel1.TabIndex = 1;
             // 
             // buttonCancel
@@ -78,7 +79,7 @@ namespace StorageAndTrade
             this.panel2.Controls.Add(this.richTextBoxInfo);
             this.panel2.Location = new System.Drawing.Point(3, 36);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(783, 697);
+            this.panel2.Size = new System.Drawing.Size(928, 477);
             this.panel2.TabIndex = 1;
             // 
             // richTextBoxInfo
@@ -89,7 +90,7 @@ namespace StorageAndTrade
             this.richTextBoxInfo.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxInfo.Name = "richTextBoxInfo";
             this.richTextBoxInfo.ReadOnly = true;
-            this.richTextBoxInfo.Size = new System.Drawing.Size(783, 697);
+            this.richTextBoxInfo.Size = new System.Drawing.Size(928, 477);
             this.richTextBoxInfo.TabIndex = 1;
             this.richTextBoxInfo.Text = "";
             // 
@@ -97,9 +98,10 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(789, 737);
+            this.ClientSize = new System.Drawing.Size(934, 517);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormService";
             this.Text = "Сервіс";
             this.panel1.ResumeLayout(false);
