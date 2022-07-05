@@ -952,6 +952,9 @@
     <None Include="Resources\calculator.ico" />
     <None Include="Resources\document_not_spend.ico" />
     <None Include="Resources\refresh.ico" />
+    <None Include="Resources\Icojam-Blue-Bits-Document-photo.ico" />
+    <None Include="Resources\Document-checkbox.ico" />
+    <None Include="Resources\Document-photo.ico" />
     <Content Include="Звіти\ЗамовленняПостачальникам\Template_ЗамовленняПостачальникам_Звіт.xslt" />
     <Content Include="Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt" />
     <Content Include="Звіти\РозрахункиЗПостачальниками\Template_РозрахункиЗПостачальниками_Звіт.xslt">

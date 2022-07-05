@@ -26,6 +26,11 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
+        private void FormStorageAndTrade_Load(object sender, EventArgs e)
+        {
+            this.MdiChildActivate += FormStorageAndTrade_MdiChildActivate;
+        }
+
         private void FormStorageAndTrade_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -228,12 +233,6 @@ namespace StorageAndTrade
 
         #endregion
 
-        private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            
-        }
-
         #region Звіти
 
         private void замовленняКлієнтівToolStripMenuItem_Click(object sender, EventArgs e)
@@ -271,7 +270,6 @@ namespace StorageAndTrade
             form_ЗамовленняПостачальникам_Звіт.Show();
         }
 
-
         #endregion
 
         #region Сервіс
@@ -283,12 +281,13 @@ namespace StorageAndTrade
             formService.Show();            
         }
 
-        #endregion
-
-        private void FormStorageAndTrade_Load(object sender, EventArgs e)
+        private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.MdiChildActivate += FormStorageAndTrade_MdiChildActivate;
+
+
         }
+
+        #endregion
 
         #region Mdi
 
@@ -296,8 +295,8 @@ namespace StorageAndTrade
 
         private void ChildFormClosed(object sender, FormClosedEventArgs e)
         {
-            Form f = (Form)sender;
-            ChildFormList.Remove(f);
+            Form form = (Form)sender;
+            ChildFormList.Remove(form);
             ReloadMdiChild();
         }
 
@@ -305,7 +304,7 @@ namespace StorageAndTrade
         {
             int counter = 0;
 
-            toolStrip1.Items.Clear();
+            toolStrip_ВідкритіФорми.Items.Clear();
 
             foreach (Form form in ChildFormList)
             {
@@ -313,7 +312,7 @@ namespace StorageAndTrade
                     new ToolStripButton(form.Text, Properties.Resources.doc_text_image, ToolStripButton_Click, counter.ToString())
                     { ImageAlign = ContentAlignment.MiddleLeft };
 
-                toolStrip1.Items.Add(toolStripButton);
+                toolStrip_ВідкритіФорми.Items.Add(toolStripButton);
 
                 counter++;
             }
@@ -321,17 +320,17 @@ namespace StorageAndTrade
 
         private void FormStorageAndTrade_MdiChildActivate(object sender, EventArgs e)
         {
-            Form f = this.ActiveMdiChild;
+            Form form = this.ActiveMdiChild;
 
-            if (f == null)
+            if (form == null)
             {
                 ChildFormList.Clear();
                 ReloadMdiChild();
             }
-            else if (!ChildFormList.Contains(f))
+            else if (!ChildFormList.Contains(form))
             {
-                ChildFormList.Add(f);
-                f.FormClosed += new FormClosedEventHandler(ChildFormClosed);
+                ChildFormList.Add(form);
+                form.FormClosed += new FormClosedEventHandler(ChildFormClosed);
 
                 ReloadMdiChild();
             }
@@ -351,9 +350,21 @@ namespace StorageAndTrade
             }
         }
 
-
         #endregion
 
-        
+        private void toolStripButton_Валюти_Click(object sender, EventArgs e)
+        {
+            валютиToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ПакуванняОдиниціВиміру_Click(object sender, EventArgs e)
+        {
+            пакуванняОдиниціВиміруToolStripMenuItem_Click(this, new EventArgs());
+        }
+
+        private void toolStripButton_ЗамовленняКлієнта_Click(object sender, EventArgs e)
+        {
+            замовленняКлієнтаToolStripMenuItem_Click(this, new EventArgs());
+        }
     }
 }
