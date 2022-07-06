@@ -53,6 +53,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
+			dataGridViewRecords.Columns["DocName"].Visible = false;
 
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
 			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
@@ -80,69 +81,74 @@ namespace StorageAndTrade
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
 
-		private int PageIndex { get; set; }
+		private struct LoadRecordsLimit
+		{
+			public int PageIndex;
+			public int Limit;
+			public int LastCountRow;
+        }
 
-		private const int Limit = 50;
-		private int LastCountRow { get; set; }
+		private LoadRecordsLimit loadRecordsLimit = new LoadRecordsLimit() { Limit = 50};
 
 		public void LoadRecords()
 		{
 			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
 				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
 
-			//RecordsBindingList.Clear();
-
 			string query_Продажі = $@"
 SELECT
-    Док_ЗамовленняПостачальнику.uid,
-    Док_ЗамовленняПостачальнику.spend,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Назва} AS Назва,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.НомерДок} AS НомерДок,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.ДатаДок} AS ДатаДок,
+    'ЗамовленняКлієнта',
+    Док_ЗамовленняКлієнта.uid,
+    Док_ЗамовленняКлієнта.spend,
+    Док_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.Назва} AS Назва,
+    Док_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.НомерДок} AS НомерДок,
+    Док_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.ДатаДок} AS ДатаДок,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.СумаДокументу} AS Сума
+    Док_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.СумаДокументу} AS Сума
 FROM
-	{ЗамовленняПостачальнику_Const.TABLE} AS Док_ЗамовленняПостачальнику
+	{ЗамовленняКлієнта_Const.TABLE} AS Док_ЗамовленняКлієнта
 
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Контрагент}
+        Док_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.Контрагент}
 
 UNION
 
 SELECT
-    Док_ПоступленняТоварівТаПослуг.uid,
-    Док_ПоступленняТоварівТаПослуг.spend,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.Назва} AS Назва,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.НомерДок} AS НомерДок,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.ДатаДок} AS ДатаДок,
+    'РеалізаціяТоварівТаПослуг',
+    Док_РеалізаціяТоварівТаПослуг.uid,
+    Док_РеалізаціяТоварівТаПослуг.spend,
+    Док_РеалізаціяТоварівТаПослуг.{РеалізаціяТоварівТаПослуг_Const.Назва} AS Назва,
+    Док_РеалізаціяТоварівТаПослуг.{РеалізаціяТоварівТаПослуг_Const.НомерДок} AS НомерДок,
+    Док_РеалізаціяТоварівТаПослуг.{РеалізаціяТоварівТаПослуг_Const.ДатаДок} AS ДатаДок,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.СумаДокументу} AS Сума
+    Док_РеалізаціяТоварівТаПослуг.{РеалізаціяТоварівТаПослуг_Const.СумаДокументу} AS Сума
 FROM
-	{ПоступленняТоварівТаПослуг_Const.TABLE} AS Док_ПоступленняТоварівТаПослуг
+	{РеалізаціяТоварівТаПослуг_Const.TABLE} AS Док_РеалізаціяТоварівТаПослуг
 
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.Контрагент}
+        Док_РеалізаціяТоварівТаПослуг.{РеалізаціяТоварівТаПослуг_Const.Контрагент}
 
 UNION
 
 SELECT
-    Док_ПоверненняТоварівПостачальнику.uid,
-    Док_ПоверненняТоварівПостачальнику.spend,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Назва} AS Назва,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.НомерДок} AS НомерДок,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.ДатаДок} AS ДатаДок,
+    'ПоверненняТоварівВідКлієнта',
+    Док_ПоверненняТоварівВідКлієнта.uid,
+    Док_ПоверненняТоварівВідКлієнта.spend,
+    Док_ПоверненняТоварівВідКлієнта.{ПоверненняТоварівВідКлієнта_Const.Назва} AS Назва,
+    Док_ПоверненняТоварівВідКлієнта.{ПоверненняТоварівВідКлієнта_Const.НомерДок} AS НомерДок,
+    Док_ПоверненняТоварівВідКлієнта.{ПоверненняТоварівВідКлієнта_Const.ДатаДок} AS ДатаДок,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.СумаДокументу} AS Сума
+    Док_ПоверненняТоварівВідКлієнта.{ПоверненняТоварівВідКлієнта_Const.СумаДокументу} AS Сума
 FROM
-	{ПоверненняТоварівПостачальнику_Const.TABLE} AS Док_ПоверненняТоварівПостачальнику
+	{ПоверненняТоварівВідКлієнта_Const.TABLE} AS Док_ПоверненняТоварівВідКлієнта
 
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Контрагент}
-
+        Док_ПоверненняТоварівВідКлієнта.{ПоверненняТоварівВідКлієнта_Const.Контрагент}
 ";
 
 			string query_Закупки = $@"
 SELECT
+    'ЗамовленняПостачальнику',
     Док_ЗамовленняПостачальнику.uid,
     Док_ЗамовленняПостачальнику.spend,
     Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Назва} AS Назва,
@@ -159,6 +165,7 @@ FROM
 UNION
 
 SELECT
+    'ПоступленняТоварівТаПослуг',
     Док_ПоступленняТоварівТаПослуг.uid,
     Док_ПоступленняТоварівТаПослуг.spend,
     Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.Назва} AS Назва,
@@ -175,6 +182,7 @@ FROM
 UNION
 
 SELECT
+    'ПоверненняТоварівПостачальнику',
     Док_ПоверненняТоварівПостачальнику.uid,
     Док_ПоверненняТоварівПостачальнику.spend,
     Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Назва} AS Назва,
@@ -187,11 +195,11 @@ FROM
 
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
         Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Контрагент}
-
 ";
 
 			string query_Фінанси = $@"
 SELECT
+    'ПрихіднийКасовийОрдер',
     Док_ПрихіднийКасовийОрдер.uid,
     Док_ПрихіднийКасовийОрдер.spend,
     Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Назва} AS Назва,
@@ -208,6 +216,7 @@ FROM
 UNION
 
 SELECT
+    'РозхіднийКасовийОрдер',
     Док_РозхіднийКасовийОрдер.uid,
     Док_РозхіднийКасовийОрдер.spend,
     Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Назва} AS Назва,
@@ -224,19 +233,24 @@ FROM
 
 			string query_Склад =$@"
 SELECT
-    Док_ПереміщенняТоварів.uid,
-    Док_ПереміщенняТоварів.spend,
-    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.Назва} AS Назва,
-    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.НомерДок} AS НомерДок,
-    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.ДатаДок} AS ДатаДок,
+    'ПрихіднийКасовийОрдер',
+    Док_ПрихіднийКасовийОрдер.uid,
+    Док_ПрихіднийКасовийОрдер.spend,
+    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Назва} AS Назва,
+    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.НомерДок} AS НомерДок,
+    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.ДатаДок} AS ДатаДок,
     '' AS КонтрагентНазва,
     0 AS Сума
 FROM
-	{ПереміщенняТоварів_Const.TABLE} AS Док_ПереміщенняТоварів
+	{ПрихіднийКасовийОрдер_Const.TABLE} AS Док_ПрихіднийКасовийОрдер
+
+    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
+        Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Контрагент}
 ";
 
 			string query_Ціноутворення = $@"
 SELECT
+    'ВстановленняЦінНоменклатури',
     Док_ВстановленняЦінНоменклатури.uid,
     Док_ВстановленняЦінНоменклатури.spend,
     Док_ВстановленняЦінНоменклатури.{ВстановленняЦінНоменклатури_Const.Назва} AS Назва,
@@ -260,8 +274,8 @@ UNION
 {query_Ціноутворення}
 
 ORDER BY ДатаДок
-LIMIT {Limit}
-OFFSET {Limit * PageIndex}
+LIMIT {loadRecordsLimit.Limit}
+OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
@@ -271,31 +285,31 @@ OFFSET {Limit * PageIndex}
 
 			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-			LastCountRow = listRow.Count;
-
-			Console.WriteLine(LastCountRow);
+			loadRecordsLimit.LastCountRow = listRow.Count;
 
 			foreach (object[] row in listRow)
 			{
 				RecordsBindingList.Add(new Записи
 				{
-					ID = row[0].ToString(),
-					Проведений = (bool)row[1],
-					Назва = row[2].ToString(),
-					НомерДок = row[3].ToString(),
-					ДатаДок = row[4].ToString(),
-					Контрагент = row[5].ToString(),
-					Сума = (decimal)row[6]
+					DocName = row[0].ToString(),
+					ID = row[1].ToString(),
+					Проведений = (bool)row[2],
+					Назва = row[3].ToString(),
+					НомерДок = row[4].ToString(),
+					ДатаДок = row[5].ToString(),
+					Контрагент = row[6].ToString(),
+					Сума = (decimal)row[7]
 				});
 			}
 
-			PageIndex++;
+			loadRecordsLimit.PageIndex++;
 		}
 
 		private class Записи
 		{
 			public Записи() { Image = Properties.Resources.doc_text_image; }
 			public Bitmap Image { get; set; }
+			public string DocName { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
@@ -343,7 +357,7 @@ OFFSET {Limit * PageIndex}
         {
 			RecordsBindingList.Clear();
 
-			PageIndex = 0;
+			loadRecordsLimit.PageIndex = 0;
 
 			LoadRecords();
 		}
@@ -464,22 +478,18 @@ OFFSET {Limit * PageIndex}
 			SpendDocuments(false, "Відмінити проведення?");
 		}
 
-		private int GetDisplayedRowsCount()
-		{
-			int count = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
-			count = dataGridViewRecords.Height / count;
-			return count;
-		}
-
 		private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
         {
-			int display = dataGridViewRecords.Rows.Count - dataGridViewRecords.DisplayedRowCount(false);
+			//int display = dataGridViewRecords.Rows.Count - dataGridViewRecords.DisplayedRowCount(false);
 			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
 			{
-				if (e.NewValue >= dataGridViewRecords.Rows.Count - GetDisplayedRowsCount() && LastCountRow == Limit)
+				int rowHeight = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
+				int countVisibleRows = dataGridViewRecords.Height / rowHeight;
+
+				if (e.NewValue >= dataGridViewRecords.Rows.Count - countVisibleRows && loadRecordsLimit.LastCountRow == loadRecordsLimit.Limit)
 				{
 					LoadRecords();
-					Console.WriteLine("LoadRecords");
+					//Console.WriteLine("LoadRecords");
 					//dataGridViewRecords.ClearSelection();
 					//dataGridViewRecords.FirstDisplayedScrollingRowIndex = display;
 				}

@@ -81,12 +81,19 @@ namespace StorageAndTrade
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
 
+		private struct LoadRecordsLimit
+		{
+			public int PageIndex;
+			public int Limit;
+			public int LastCountRow;
+		}
+
+		private LoadRecordsLimit loadRecordsLimit = new LoadRecordsLimit() { Limit = 50 };
+
 		public void LoadRecords()
 		{
 			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
 				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
-			RecordsBindingList.Clear();
 
 			string query = $@"
 SELECT
@@ -139,6 +146,8 @@ FROM
         Док_ПоверненняТоварівВідКлієнта.{ПоверненняТоварівВідКлієнта_Const.Контрагент}
 
 ORDER BY ДатаДок
+LIMIT {loadRecordsLimit.Limit}
+OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
@@ -148,7 +157,9 @@ ORDER BY ДатаДок
 
 			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-			foreach(object[] row in listRow)
+			loadRecordsLimit.LastCountRow = listRow.Count;
+
+			foreach (object[] row in listRow)
 			{
 				RecordsBindingList.Add(new Записи
 				{
@@ -162,6 +173,8 @@ ORDER BY ДатаДок
 					Сума = (decimal)row[7]
 				});
 			}
+
+			loadRecordsLimit.PageIndex++;
 		}
 
 		private class Записи
@@ -274,6 +287,10 @@ ORDER BY ДатаДок
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
+			RecordsBindingList.Clear();
+
+			loadRecordsLimit.PageIndex = 0;
+
 			LoadRecords();
 		}
 
@@ -528,6 +545,24 @@ ORDER BY ДатаДок
         private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
         {
 			SpendDocuments(false, "Відмінити проведення?");
+		}
+
+        private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
+        {
+			//int display = dataGridViewRecords.Rows.Count - dataGridViewRecords.DisplayedRowCount(false);
+			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+			{
+				int rowHeight = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
+				int countVisibleRows = dataGridViewRecords.Height / rowHeight;
+
+				if (e.NewValue >= dataGridViewRecords.Rows.Count - countVisibleRows && loadRecordsLimit.LastCountRow == loadRecordsLimit.Limit)
+				{
+					LoadRecords();
+					//Console.WriteLine("LoadRecords");
+					//dataGridViewRecords.ClearSelection();
+					//dataGridViewRecords.FirstDisplayedScrollingRowIndex = display;
+				}
+			}
 		}
     }
 }
