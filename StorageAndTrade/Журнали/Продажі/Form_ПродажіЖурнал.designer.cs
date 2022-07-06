@@ -32,7 +32,6 @@ namespace StorageAndTrade
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ПродажіЖурнал));
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
@@ -42,6 +41,10 @@ namespace StorageAndTrade
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ToolStripMenuItem_ЗамовленняКлієнта = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,7 +63,7 @@ namespace StorageAndTrade
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonAdd,
+            this.toolStripDropDownButtonAdd,
             this.toolStripButtonEdit,
             this.toolStripButtonRefresh,
             this.toolStripButtonCopy,
@@ -73,15 +76,6 @@ namespace StorageAndTrade
             this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonAdd
-            // 
-            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAdd.Name = "toolStripButtonAdd";
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(66, 22);
-            this.toolStripButtonAdd.Text = "Додати";
-            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
             // toolStripButtonEdit
             // 
@@ -171,6 +165,39 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
+            // toolStripDropDownButtonAdd
+            // 
+            this.toolStripDropDownButtonAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_ЗамовленняКлієнта,
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг,
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта});
+            this.toolStripDropDownButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.toolStripDropDownButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonAdd.Name = "toolStripDropDownButtonAdd";
+            this.toolStripDropDownButtonAdd.Size = new System.Drawing.Size(75, 22);
+            this.toolStripDropDownButtonAdd.Text = "Додати";
+            // 
+            // ToolStripMenuItem_ЗамовленняКлієнта
+            // 
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Name = "ToolStripMenuItem_ЗамовленняКлієнта";
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Size = new System.Drawing.Size(246, 22);
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Text = "Замовлення клієнта";
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняКлієнта_Click);
+            // 
+            // ToolStripMenuItem_РеалізаціяТоварівТаПослуг
+            // 
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Name = "ToolStripMenuItem_РеалізаціяТоварівТаПослуг";
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Size = new System.Drawing.Size(246, 22);
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Text = "Реалізація товарів та послуг";
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг_Click);
+            // 
+            // ToolStripMenuItem_ПоверненняТоварівВідКлієнта
+            // 
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Name = "ToolStripMenuItem_ПоверненняТоварівВідКлієнта";
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Size = new System.Drawing.Size(246, 22);
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Text = "Повернення товарів від клієнта";
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Click += new System.EventHandler(this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта_Click);
+            // 
             // Form_ПродажіЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,7 +226,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridViewRecords;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
         private System.Windows.Forms.ToolStripButton toolStripButtonEdit;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
@@ -207,5 +233,9 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonДрукПроводок;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpend;
         private System.Windows.Forms.ToolStripButton toolStripButtonClearSpend;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonAdd;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ЗамовленняКлієнта;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_РеалізаціяТоварівТаПослуг;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ПоверненняТоварівВідКлієнта;
     }
 }

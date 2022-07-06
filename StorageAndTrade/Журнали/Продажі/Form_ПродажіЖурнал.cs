@@ -53,6 +53,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
+			dataGridViewRecords.Columns["DocName"].Visible = false;
 
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
 			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
@@ -89,6 +90,7 @@ namespace StorageAndTrade
 
 			string query = $@"
 SELECT
+    'ЗамовленняКлієнта',
     Док_ЗамовленняКлієнта.uid,
     Док_ЗамовленняКлієнта.spend,
     Док_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.Назва} AS Назва,
@@ -105,6 +107,7 @@ FROM
 UNION
 
 SELECT
+    'РеалізаціяТоварівТаПослуг',
     Док_РеалізаціяТоварівТаПослуг.uid,
     Док_РеалізаціяТоварівТаПослуг.spend,
     Док_РеалізаціяТоварівТаПослуг.{РеалізаціяТоварівТаПослуг_Const.Назва} AS Назва,
@@ -121,6 +124,7 @@ FROM
 UNION
 
 SELECT
+    'ПоверненняТоварівВідКлієнта',
     Док_ПоверненняТоварівВідКлієнта.uid,
     Док_ПоверненняТоварівВідКлієнта.spend,
     Док_ПоверненняТоварівВідКлієнта.{ПоверненняТоварівВідКлієнта_Const.Назва} AS Назва,
@@ -148,13 +152,14 @@ ORDER BY ДатаДок
 			{
 				RecordsBindingList.Add(new Записи
 				{
-					ID = row[0].ToString(),
-					Проведений = (bool)row[1],
-					Назва = row[2].ToString(),
-					НомерДок = row[3].ToString(),
-					ДатаДок = row[4].ToString(),
-					Контрагент = row[5].ToString(),
-					Сума = (decimal)row[6]
+					DocName = row[0].ToString(),
+					ID = row[1].ToString(),
+					Проведений = (bool)row[2],
+					Назва = row[3].ToString(),
+					НомерДок = row[4].ToString(),
+					ДатаДок = row[5].ToString(),
+					Контрагент = row[6].ToString(),
+					Сума = (decimal)row[7]
 				});
 			}
 		}
@@ -163,6 +168,7 @@ ORDER BY ДатаДок
 		{
 			public Записи() { Image = Properties.Resources.doc_text_image; }
 			public Bitmap Image { get; set; }
+			public string DocName { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
@@ -182,29 +188,88 @@ ORDER BY ДатаДок
 			}
 		}
 
-        private void toolStripButtonAdd_Click(object sender, EventArgs e)
-        {
-			//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-			//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-			//form_ЗамовленняКлієнтаДокумент.IsNew = true;
-			//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-			//form_ЗамовленняКлієнтаДокумент.Show();
+        #region Add
+
+        private void ToolStripMenuItem_ЗамовленняКлієнта_Click(object sender, EventArgs e)
+		{
+            Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+            form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
+            form_ЗамовленняКлієнтаДокумент.IsNew = true;
+            //form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+            form_ЗамовленняКлієнтаДокумент.Show();
         }
+
+		private void ToolStripMenuItem_РеалізаціяТоварівТаПослуг_Click(object sender, EventArgs e)
+		{
+			Form_РеалізаціяТоварівТаПослугДокумент form_РеалізаціяТоварівТаПослугДокумент = new Form_РеалізаціяТоварівТаПослугДокумент();
+			form_РеалізаціяТоварівТаПослугДокумент.MdiParent = this.MdiParent;
+			form_РеалізаціяТоварівТаПослугДокумент.IsNew = true;
+			//form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
+			form_РеалізаціяТоварівТаПослугДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ПоверненняТоварівВідКлієнта_Click(object sender, EventArgs e)
+		{
+			Form_ПоверненняТоварівВідКлієнтаДокумент form_ПоверненняТоварівВідКлієнтаДокумент = new Form_ПоверненняТоварівВідКлієнтаДокумент();
+			form_ПоверненняТоварівВідКлієнтаДокумент.MdiParent = this.MdiParent;
+			form_ПоверненняТоварівВідКлієнтаДокумент.IsNew = true;
+			//form_ПоверненняТоварівВідКлієнтаДокумент.OwnerForm = this;
+			form_ПоверненняТоварівВідКлієнтаДокумент.Show();
+		}
+
+        #endregion
+
+        #region Edit
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+				string DocName = dataGridViewRecords.Rows[RowIndex].Cells["DocName"].Value.ToString();
 
-				//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-				//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-				//form_ЗамовленняКлієнтаДокумент.IsNew = false;
-				//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-				//form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				//form_ЗамовленняКлієнтаДокумент.Show();
+                switch (DocName)
+                {
+					case "ЗамовленняКлієнта":
+						{
+							Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+							form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
+							form_ЗамовленняКлієнтаДокумент.IsNew = false;
+							//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+							form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+							form_ЗамовленняКлієнтаДокумент.Show();
+
+							break;
+						}
+
+					case "РеалізаціяТоварівТаПослуг":
+						{
+							Form_РеалізаціяТоварівТаПослугДокумент form_РеалізаціяТоварівТаПослугДокумент = new Form_РеалізаціяТоварівТаПослугДокумент();
+							form_РеалізаціяТоварівТаПослугДокумент.MdiParent = this.MdiParent;
+							form_РеалізаціяТоварівТаПослугДокумент.IsNew = false;
+							//form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
+							form_РеалізаціяТоварівТаПослугДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+							form_РеалізаціяТоварівТаПослугДокумент.Show();
+
+							break;
+						}
+
+					case "ПоверненняТоварівВідКлієнта":
+						{
+							Form_ПоверненняТоварівВідКлієнтаДокумент form_ПоверненняТоварівВідКлієнтаДокумент = new Form_ПоверненняТоварівВідКлієнтаДокумент();
+							form_ПоверненняТоварівВідКлієнтаДокумент.MdiParent = this.MdiParent;
+							form_ПоверненняТоварівВідКлієнтаДокумент.IsNew = false;
+							//form_ПоверненняТоварівВідКлієнтаДокумент.OwnerForm = this;
+							form_ПоверненняТоварівВідКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+							form_ПоверненняТоварівВідКлієнтаДокумент.Show();
+
+							break;
+						}
+				}
 			}
 		}
+
+        #endregion
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
@@ -254,18 +319,42 @@ ORDER BY ДатаДок
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-      //              Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-      //              if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
-      //              {
-						//ЗамовленняКлієнта_Objest.Delete();
-      //              }
-      //              else
-      //              {
-      //                  MessageBox.Show("Error read");
-      //                  break;
-      //              }
+					switch (DocName)
+					{
+						case "ЗамовленняКлієнта":
+							{
+								ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new ЗамовленняКлієнта_Objest();
+								if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
+									ЗамовленняКлієнта_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "РеалізаціяТоварівТаПослуг":
+							{
+								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new РеалізаціяТоварівТаПослуг_Objest();
+								if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
+									реалізаціяТоварівТаПослуг_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "ПоверненняТоварівВідКлієнта":
+							{
+								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new ПоверненняТоварівВідКлієнта_Objest();
+								if (поверненняТоварівВідКлієнта_Objest.Read(new UnigueID(uid)))
+									поверненняТоварівВідКлієнта_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+					}
                 }
 
 				LoadRecords();
@@ -276,10 +365,28 @@ ORDER BY ДатаДок
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
-				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
-				//Звіти.РухПоРугістрах.PrintRecords(new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
+				switch (DocName)
+				{
+					case "ЗамовленняКлієнта":
+						{
+							РухПоРугістрах.PrintRecords(new ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
+							break;
+						}
+					case "РеалізаціяТоварівТаПослуг":
+						{
+							РухПоРугістрах.PrintRecords(new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
+							break;
+						}
+					case "ПоверненняТоварівВідКлієнта":
+						{
+							РухПоРугістрах.PrintRecords(new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid)));
+							break;
+						}
+				}
 			}
 		}
 
@@ -291,32 +398,78 @@ ORDER BY ДатаДок
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-					//Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
-					//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
+					switch (DocName)
+					{
+						case "ЗамовленняКлієнта":
+							{
+								ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new ЗамовленняКлієнта_Pointer(new UnigueID(uid));
+								ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
 
-					////Очищення регістрів
-					//замовленняКлієнта_Objest.ClearSpendTheDocument();
+								//Очищення регістрів
+								замовленняКлієнта_Objest.ClearSpendTheDocument();
 
-					//if (spend)
-					//	try
-					//	{
-					//		//Проведення
-					//		замовленняКлієнта_Objest.SpendTheDocument();
-					//	}
-					//	catch (Exception exp)
-					//	{
-					//		замовленняКлієнта_Objest.ClearSpendTheDocument();
-					//		MessageBox.Show(exp.Message);
-					//		return;
-					//	}
-				}
+								if (spend)
+									try
+									{
+										замовленняКлієнта_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										замовленняКлієнта_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
 
-				LoadRecords();
+								break;
+							}
+						case "РеалізаціяТоварівТаПослуг":
+							{
+								РеалізаціяТоварівТаПослуг_Pointer реалізаціяТоварівТаПослуг_Pointer = new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid));
+								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = реалізаціяТоварівТаПослуг_Pointer.GetDocumentObject(true);
+
+								//Очищення регістрів
+								реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										реалізаціяТоварівТаПослуг_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								break;
+							}
+						case "ПоверненняТоварівВідКлієнта":
+							{
+								ПоверненняТоварівВідКлієнта_Pointer поверненняТоварівВідКлієнта_Pointer = new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid));
+								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = поверненняТоварівВідКлієнта_Pointer.GetDocumentObject(true);
+
+								//Очищення регістрів
+								поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										поверненняТоварівВідКлієнта_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								break;
+							}
+					}
+                }
+
+                LoadRecords();
 			}
 		}
-
 
 		private void toolStripButtonSpend_Click(object sender, EventArgs e)
         {
