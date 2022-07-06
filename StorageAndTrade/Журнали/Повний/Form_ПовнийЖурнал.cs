@@ -407,7 +407,6 @@ ORDER BY ДатаДок
 			}
 		}
 
-
 		private void toolStripButtonSpend_Click(object sender, EventArgs e)
         {
 			SpendDocuments(true, "Провести?");
