@@ -412,7 +412,7 @@ ORDER BY ДатаДок
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
 				string DocName = row.Cells["DocName"].Value.ToString();
 				string uid = row.Cells["ID"].Value.ToString();
 
