@@ -170,6 +170,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.Size = new System.Drawing.Size(1084, 632);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
+            this.dataGridViewRecords.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridViewRecords_Scroll);
             // 
             // Form_ПовнийЖурнал
             // 

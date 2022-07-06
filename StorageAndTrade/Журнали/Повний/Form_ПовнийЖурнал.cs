@@ -85,7 +85,7 @@ namespace StorageAndTrade
 			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
 				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
 
-			RecordsBindingList.Clear();
+			//RecordsBindingList.Clear();
 
 			string query_Продажі = $@"
 SELECT
@@ -415,6 +415,28 @@ ORDER BY ДатаДок
         private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
         {
 			SpendDocuments(false, "Відмінити проведення?");
+		}
+
+		private int GetDisplayedRowsCount()
+		{
+			int count = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
+			count = dataGridViewRecords.Height / count;
+			return count;
+		}
+
+		private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
+        {
+			int display = dataGridViewRecords.Rows.Count - dataGridViewRecords.DisplayedRowCount(false);
+			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+			{
+				if (e.NewValue >= dataGridViewRecords.Rows.Count - GetDisplayedRowsCount())
+				{
+					LoadRecords();
+					dataGridViewRecords.ClearSelection();
+					dataGridViewRecords.FirstDisplayedScrollingRowIndex = display;
+					//pageIndex++;
+				}
+			}
 		}
     }
 }
