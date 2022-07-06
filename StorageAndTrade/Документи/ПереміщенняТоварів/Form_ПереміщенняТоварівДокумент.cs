@@ -83,7 +83,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий";
-					textBox_НомерДок.Text = переміщенняТоварів_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоступленняТоварівТаПослуг_Const).ToString("D8");
+					textBox_НомерДок.Text = переміщенняТоварів_Objest.НомерДок = (++Константи.НумераціяДокументів.ПереміщенняТоварів_Const).ToString("D8");
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
@@ -122,7 +122,7 @@ namespace StorageAndTrade
 				переміщенняТоварів_Objest.СкладОтримувач = (Довідники.Склади_Pointer)directoryControl_СкладОтримувач.DirectoryPointerItem;
 				переміщенняТоварів_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				переміщенняТоварів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
-				переміщенняТоварів_Objest.Назва = $"Поступлення товарів та послуг №{переміщенняТоварів_Objest.НомерДок} від {переміщенняТоварів_Objest.ДатаДок.ToShortDateString()}";
+				переміщенняТоварів_Objest.Назва = $"Переміщення товарів №{переміщенняТоварів_Objest.НомерДок} від {переміщенняТоварів_Objest.ДатаДок.ToShortDateString()}";
 
 				try
 				{
