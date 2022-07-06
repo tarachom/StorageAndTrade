@@ -225,8 +225,9 @@ ORDER BY ДатаДок
 		{
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
-				string DocName = dataGridViewRecords.Rows[RowIndex].Cells["DocName"].Value.ToString();
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
 				switch (DocName)
 				{
@@ -236,7 +237,7 @@ ORDER BY ДатаДок
 							form_ЗамовленняПостачальникуДокумент.MdiParent = this.MdiParent;
 							form_ЗамовленняПостачальникуДокумент.IsNew = false;
 							//form_ЗамовленняПостачальникуДокумент.OwnerForm = this;
-							form_ЗамовленняПостачальникуДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+							form_ЗамовленняПостачальникуДокумент.Uid = uid;
 							form_ЗамовленняПостачальникуДокумент.Show();
 
                             break;
@@ -247,7 +248,7 @@ ORDER BY ДатаДок
 							form_ПоступленняТоварівТаПослугДокумент.MdiParent = this.MdiParent;
 							form_ПоступленняТоварівТаПослугДокумент.IsNew = false;
 							//form_ПоступленняТоварівТаПослугДокумент.OwnerForm = this;	
-							form_ПоступленняТоварівТаПослугДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+							form_ПоступленняТоварівТаПослугДокумент.Uid = uid;
 							form_ПоступленняТоварівТаПослугДокумент.Show();
 
 							break;
@@ -258,7 +259,7 @@ ORDER BY ДатаДок
 							form_ПоверненняТоварівПостачальникуДокумент.MdiParent = this.MdiParent;
 							form_ПоверненняТоварівПостачальникуДокумент.IsNew = false;
 							//form_ПоверненняТоварівПостачальникуДокумент.OwnerForm = this;
-							form_ПоверненняТоварівПостачальникуДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+							form_ПоверненняТоварівПостачальникуДокумент.Uid = uid;
 							form_ПоверненняТоварівПостачальникуДокумент.Show();
 
 							break;

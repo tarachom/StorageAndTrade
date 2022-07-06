@@ -32,7 +32,6 @@ namespace StorageAndTrade
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ФінансиЖурнал));
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
@@ -42,6 +41,9 @@ namespace StorageAndTrade
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,7 +62,7 @@ namespace StorageAndTrade
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonAdd,
+            this.toolStripDropDownButtonAdd,
             this.toolStripButtonEdit,
             this.toolStripButtonRefresh,
             this.toolStripButtonCopy,
@@ -73,15 +75,6 @@ namespace StorageAndTrade
             this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // toolStripButtonAdd
-            // 
-            this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.toolStripButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonAdd.Name = "toolStripButtonAdd";
-            this.toolStripButtonAdd.Size = new System.Drawing.Size(66, 22);
-            this.toolStripButtonAdd.Text = "Додати";
-            this.toolStripButtonAdd.Click += new System.EventHandler(this.toolStripButtonAdd_Click);
             // 
             // toolStripButtonEdit
             // 
@@ -171,6 +164,31 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
+            // toolStripDropDownButtonAdd
+            // 
+            this.toolStripDropDownButtonAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер,
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер});
+            this.toolStripDropDownButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.toolStripDropDownButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonAdd.Name = "toolStripDropDownButtonAdd";
+            this.toolStripDropDownButtonAdd.Size = new System.Drawing.Size(75, 22);
+            this.toolStripDropDownButtonAdd.Text = "Додати";
+            // 
+            // ToolStripMenuItem_ПрихіднийКасовийОрдер
+            // 
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Name = "ToolStripMenuItem_ПрихіднийКасовийОрдер";
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Size = new System.Drawing.Size(216, 22);
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Text = "Прихідний касовий ордер";
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Click += new System.EventHandler(this.ToolStripMenuItem_ПрихіднийКасовийОрдер_Click);
+            // 
+            // ToolStripMenuItem_РозхіднийКасовийОрдер
+            // 
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Name = "ToolStripMenuItem_РозхіднийКасовийОрдер";
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Size = new System.Drawing.Size(216, 22);
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Text = "Розхідний касовий ордер";
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Click += new System.EventHandler(this.ToolStripMenuItem_РозхіднийКасовийОрдер_Click);
+            // 
             // Form_ФінансиЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,7 +217,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridViewRecords;
-        private System.Windows.Forms.ToolStripButton toolStripButtonAdd;
         private System.Windows.Forms.ToolStripButton toolStripButtonEdit;
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
@@ -207,5 +224,8 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonДрукПроводок;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpend;
         private System.Windows.Forms.ToolStripButton toolStripButtonClearSpend;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonAdd;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ПрихіднийКасовийОрдер;
+        private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_РозхіднийКасовийОрдер;
     }
 }

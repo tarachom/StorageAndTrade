@@ -53,6 +53,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
+			dataGridViewRecords.Columns["DocName"].Visible = false;
 
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
 			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
@@ -89,6 +90,7 @@ namespace StorageAndTrade
 
 			string query = $@"
 SELECT
+    'ПрихіднийКасовийОрдер',
     Док_ПрихіднийКасовийОрдер.uid,
     Док_ПрихіднийКасовийОрдер.spend,
     Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Назва} AS Назва,
@@ -105,6 +107,7 @@ FROM
 UNION
 
 SELECT
+    'РозхіднийКасовийОрдер',
     Док_РозхіднийКасовийОрдер.uid,
     Док_РозхіднийКасовийОрдер.spend,
     Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Назва} AS Назва,
@@ -132,13 +135,14 @@ ORDER BY ДатаДок
 			{
 				RecordsBindingList.Add(new Записи
 				{
-					ID = row[0].ToString(),
-					Проведений = (bool)row[1],
-					Назва = row[2].ToString(),
-					НомерДок = row[3].ToString(),
-					ДатаДок = row[4].ToString(),
-					Контрагент = row[5].ToString(),
-					Сума = (decimal)row[6]
+					DocName = row[0].ToString(),
+					ID = row[1].ToString(),
+					Проведений = (bool)row[2],
+					Назва = row[3].ToString(),
+					НомерДок = row[4].ToString(),
+					ДатаДок = row[5].ToString(),
+					Контрагент = row[6].ToString(),
+					Сума = (decimal)row[7]
 				});
 			}
 		}
@@ -147,6 +151,7 @@ ORDER BY ДатаДок
 		{
 			public Записи() { Image = Properties.Resources.doc_text_image; }
 			public Bitmap Image { get; set; }
+			public string DocName { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
@@ -166,29 +171,67 @@ ORDER BY ДатаДок
 			}
 		}
 
-        private void toolStripButtonAdd_Click(object sender, EventArgs e)
-        {
-			//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-			//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-			//form_ЗамовленняКлієнтаДокумент.IsNew = true;
-			//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-			//form_ЗамовленняКлієнтаДокумент.Show();
-        }
+        #region Add
+
+        private void ToolStripMenuItem_ПрихіднийКасовийОрдер_Click(object sender, EventArgs e)
+		{
+			Form_ПрихіднийКасовийОрдерДокумент form_ПрихіднийКасовийОрдерДокумент = new Form_ПрихіднийКасовийОрдерДокумент();
+			form_ПрихіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+			form_ПрихіднийКасовийОрдерДокумент.IsNew = true;
+			//form_ПрихіднийКасовийОрдерДокумент.OwnerForm = this;
+			form_ПрихіднийКасовийОрдерДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_РозхіднийКасовийОрдер_Click(object sender, EventArgs e)
+		{
+			Form_РозхіднийКасовийОрдерДокумент form_РозхіднийКасовийОрдерДокумент = new Form_РозхіднийКасовийОрдерДокумент();
+			form_РозхіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+			form_РозхіднийКасовийОрдерДокумент.IsNew = true;
+			//form_РозхіднийКасовийОрдерДокумент.OwnerForm = this;
+			form_РозхіднийКасовийОрдерДокумент.Show();
+		}
+
+        #endregion
+
+        #region Edit
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
-        {
+		{
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
-				//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-				//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-				//form_ЗамовленняКлієнтаДокумент.IsNew = false;
-				//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-				//form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				//form_ЗамовленняКлієнтаДокумент.Show();
+				switch (DocName)
+				{
+					case "ПрихіднийКасовийОрдер":
+						{
+							Form_ПрихіднийКасовийОрдерДокумент form_ПрихіднийКасовийОрдерДокумент = new Form_ПрихіднийКасовийОрдерДокумент();
+							form_ПрихіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+							form_ПрихіднийКасовийОрдерДокумент.IsNew = false;
+							//form_ПрихіднийКасовийОрдерДокумент.OwnerForm = this;
+							form_ПрихіднийКасовийОрдерДокумент.Uid = uid;
+							form_ПрихіднийКасовийОрдерДокумент.Show();
+
+							break;
+						}
+					case "РозхіднийКасовийОрдер":
+						{
+							Form_РозхіднийКасовийОрдерДокумент form_РозхіднийКасовийОрдерДокумент = new Form_РозхіднийКасовийОрдерДокумент();
+							form_РозхіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+							form_РозхіднийКасовийОрдерДокумент.IsNew = false;
+							//form_РозхіднийКасовийОрдерДокумент.OwnerForm = this;
+							form_РозхіднийКасовийОрдерДокумент.Uid = uid;
+							form_РозхіднийКасовийОрдерДокумент.Show();
+
+							break;
+						}
+				}
 			}
 		}
+
+        #endregion
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
@@ -203,28 +246,55 @@ ORDER BY ДатаДок
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-      //              Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-      //              if (замовленняКлієнта_Objest.Read(new UnigueID(uid)))
-      //              {
-						//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest_Новий = замовленняКлієнта_Objest.Copy();
-						//замовленняКлієнта_Objest_Новий.Назва += " *";
-						//замовленняКлієнта_Objest_Новий.ДатаДок = DateTime.Now;
-						//замовленняКлієнта_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ЗамовленняКлієнта_Const).ToString("D8");
+					switch (DocName)
+					{
+						case "ПрихіднийКасовийОрдер":
+							{
+                                ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = new ПрихіднийКасовийОрдер_Objest();
+                                if (прихіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+                                {
+                                    ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest_Новий = прихіднийКасовийОрдер_Objest.Copy();
+                                    прихіднийКасовийОрдер_Objest_Новий.Назва += " *";
+                                    прихіднийКасовийОрдер_Objest_Новий.ДатаДок = DateTime.Now;
+                                    прихіднийКасовийОрдер_Objest_Новий.НомерДок = (++НумераціяДокументів.ПрихіднийКасовийОрдер_Const).ToString("D8");
 
-						////Зчитати та скопіювати табличну частину Товари
-						//замовленняКлієнта_Objest.Товари_TablePart.Read();
-						//замовленняКлієнта_Objest_Новий.Товари_TablePart.Records = замовленняКлієнта_Objest.Товари_TablePart.Copy();
-						//замовленняКлієнта_Objest_Новий.Товари_TablePart.Save(true);
-						//замовленняКлієнта_Objest_Новий.Save();
-					//}
-     //               else
-     //               {
-     //                   MessageBox.Show("Error read");
-     //                   break;
-     //               }
-                }
+                                    //Зчитати та скопіювати табличну частину
+									прихіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Read();
+                                    прихіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Records = прихіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Copy();
+                                    прихіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Save(true);
+                                    прихіднийКасовийОрдер_Objest_Новий.Save();
+                                }
+                                else
+                                    MessageBox.Show("Error read");
+
+                                break;
+							}
+						case "РозхіднийКасовийОрдер":
+							{
+								РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = new РозхіднийКасовийОрдер_Objest();
+								if (розхіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+								{
+									РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest_Новий = розхіднийКасовийОрдер_Objest.Copy();
+									розхіднийКасовийОрдер_Objest_Новий.Назва += " *";
+									розхіднийКасовийОрдер_Objest_Новий.ДатаДок = DateTime.Now;
+									розхіднийКасовийОрдер_Objest_Новий.НомерДок = (++НумераціяДокументів.РозхіднийКасовийОрдер_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину
+									розхіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Read();
+									розхіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Records = розхіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Copy();
+									розхіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Save(true);
+									розхіднийКасовийОрдер_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+					}
+				}
 
 				LoadRecords();
 			}
@@ -238,21 +308,39 @@ ORDER BY ДатаДок
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-      //              Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-      //              if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
-      //              {
-						//ЗамовленняКлієнта_Objest.Delete();
-      //              }
-      //              else
-      //              {
-      //                  MessageBox.Show("Error read");
-      //                  break;
-      //              }
-                }
+					switch (DocName)
+					{
+						case "ПрихіднийКасовийОрдер":
+							{
+								ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = new ПрихіднийКасовийОрдер_Objest();
+								if (прихіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+								{
+									прихіднийКасовийОрдер_Objest.Delete();
+								}
+								else
+									MessageBox.Show("Error read");
 
-				LoadRecords();
+								break;
+							}
+						case "РозхіднийКасовийОрдер":
+							{
+								РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = new РозхіднийКасовийОрдер_Objest();
+								if (розхіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+								{
+									розхіднийКасовийОрдер_Objest.Delete();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+					}
+
+					LoadRecords();
+				}
 			}
 		}
 
@@ -260,10 +348,25 @@ ORDER BY ДатаДок
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
-				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
-				//Звіти.РухПоРугістрах.PrintRecords(new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
+				switch (DocName)
+				{
+					case "ПрихіднийКасовийОрдер":
+						{
+							РухПоРугістрах.PrintRecords(new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+					case "РозхіднийКасовийОрдер":
+						{
+							РухПоРугістрах.PrintRecords(new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+				}
 			}
 		}
 
@@ -275,32 +378,57 @@ ORDER BY ДатаДок
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-					//Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
-					//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
+					switch (DocName)
+					{
+						case "ПрихіднийКасовийОрдер":
+							{
+								ПрихіднийКасовийОрдер_Pointer прихіднийКасовийОрдер_Pointer = new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid));
+								ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = прихіднийКасовийОрдер_Pointer.GetDocumentObject(true);
 
-					////Очищення регістрів
-					//замовленняКлієнта_Objest.ClearSpendTheDocument();
+								прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
-					//if (spend)
-					//	try
-					//	{
-					//		//Проведення
-					//		замовленняКлієнта_Objest.SpendTheDocument();
-					//	}
-					//	catch (Exception exp)
-					//	{
-					//		замовленняКлієнта_Objest.ClearSpendTheDocument();
-					//		MessageBox.Show(exp.Message);
-					//		return;
-					//	}
+                                if (spend)
+                                    try
+                                    {
+										прихіднийКасовийОрдер_Objest.SpendTheDocument();
+                                    }
+                                    catch (Exception exp)
+                                    {
+										прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+                                        MessageBox.Show(exp.Message);
+                                    }
+
+                                break;
+							}
+						case "РозхіднийКасовийОрдер":
+							{
+								РозхіднийКасовийОрдер_Pointer розхіднийКасовийОрдер_Pointer = new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid));
+								РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = розхіднийКасовийОрдер_Pointer.GetDocumentObject(true);
+
+								розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										розхіднийКасовийОрдер_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+					}
 				}
 
 				LoadRecords();
 			}
 		}
-
 
 		private void toolStripButtonSpend_Click(object sender, EventArgs e)
         {
