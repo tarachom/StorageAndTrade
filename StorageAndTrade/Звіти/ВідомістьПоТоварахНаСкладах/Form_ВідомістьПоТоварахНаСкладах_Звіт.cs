@@ -53,7 +53,7 @@ namespace StorageAndTrade
         private void Form_РозрахункиЗПостачальниками_Звіт_Load(object sender, EventArgs e)
         {
             //directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer());
-            //directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer());
+            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer());
             //directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
         }
 
@@ -105,7 +105,7 @@ UNION
     FROM 
         {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
     WHERE 
-        Рег_ТовариНаСкладах.period BETWEEN @date_start AND @date_stop 
+        Рег_ТовариНаСкладах.period BETWEEN @date_start2 AND @date_stop2
 
 UNION
 
@@ -137,6 +137,17 @@ UNION
 
 ";
 
+            //Відбір по вибраному елементу Номенклатура
+            if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Номенклатура.uid = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+";
+            }
+
             query += $@"
 GROUP BY Склад, Склад_Назва,
          Номенклатура, Номенклатура_Назва, 
@@ -145,18 +156,22 @@ GROUP BY Склад, Склад_Назва,
 ORDER BY Номенклатура_Назва
 ";
 
-            
-
-            Console.WriteLine(query);
+            //Console.WriteLine(query);
 
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 
             DateTime dateStart = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, dateTimeStart.Value.Day, 0, 0, 0);
             DateTime dateStop = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, dateTimeStart.Value.Day, 23, 59, 59);
 
+            DateTime dateStart2 = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, 1, 0, 0, 0);
+            DateTime dateStop2 = dateStop.AddDays(-1);
+
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("date_start", dateStart);
             paramQuery.Add("date_stop", dateStop);
+
+            paramQuery.Add("date_start2", dateStart2);
+            paramQuery.Add("date_stop2", dateStop2);
 
             string[] columnsName;
             List<object[]> listRow;

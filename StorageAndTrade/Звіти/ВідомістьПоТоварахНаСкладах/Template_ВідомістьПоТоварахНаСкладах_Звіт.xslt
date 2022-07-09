@@ -29,7 +29,6 @@
 							<th>Склад</th>
 							<th>Номенклатура</th>
 							<th>Характеристика номенклатури</th>
-							
 							<th>Початковий</th>
 							<th>Прихід</th>
 							<th>Розхід</th>
@@ -47,7 +46,6 @@
 								<td>
 									<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
 								</td>
-								
 								<td align="right">
 									<xsl:value-of select="ПочатковийЗалишок"/>
 								</td>
@@ -60,7 +58,6 @@
 								<td align="right">
 									<xsl:value-of select="КінцевийЗалишок"/>
 								</td>
-								
 							</tr>
 						</xsl:for-each>
 

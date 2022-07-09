@@ -39,7 +39,7 @@ namespace StorageAndTrade
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.directoryControl_Валюти = new StorageAndTrade.DirectoryControl();
-            this.directoryControl_Контрагенти = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
             this.directoryControl_КонтрагентиПапка = new StorageAndTrade.DirectoryControl();
             this.buttonClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -100,9 +100,9 @@ namespace StorageAndTrade
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(24, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(74, 13);
+            this.label3.Size = new System.Drawing.Size(84, 13);
             this.label3.TabIndex = 58;
-            this.label3.Text = "Контрагенти:";
+            this.label3.Text = "Номенклатура:";
             // 
             // label5
             // 
@@ -122,14 +122,14 @@ namespace StorageAndTrade
             this.directoryControl_Валюти.Size = new System.Drawing.Size(402, 27);
             this.directoryControl_Валюти.TabIndex = 61;
             // 
-            // directoryControl_Контрагенти
+            // directoryControl_Номенклатура
             // 
-            this.directoryControl_Контрагенти.DirectoryPointerItem = null;
-            this.directoryControl_Контрагенти.Location = new System.Drawing.Point(114, 89);
-            this.directoryControl_Контрагенти.Name = "directoryControl_Контрагенти";
-            this.directoryControl_Контрагенти.SelectForm = null;
-            this.directoryControl_Контрагенти.Size = new System.Drawing.Size(402, 27);
-            this.directoryControl_Контрагенти.TabIndex = 57;
+            this.directoryControl_Номенклатура.DirectoryPointerItem = null;
+            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(114, 89);
+            this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
+            this.directoryControl_Номенклатура.SelectForm = null;
+            this.directoryControl_Номенклатура.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Номенклатура.TabIndex = 57;
             // 
             // directoryControl_КонтрагентиПапка
             // 
@@ -159,7 +159,7 @@ namespace StorageAndTrade
             this.Controls.Add(this.label5);
             this.Controls.Add(this.directoryControl_Валюти);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.directoryControl_Контрагенти);
+            this.Controls.Add(this.directoryControl_Номенклатура);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.directoryControl_КонтрагентиПапка);
             this.Controls.Add(this.buttonCreate);
@@ -186,7 +186,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label9;
         private DirectoryControl directoryControl_КонтрагентиПапка;
         private System.Windows.Forms.Label label3;
-        private DirectoryControl directoryControl_Контрагенти;
+        private DirectoryControl directoryControl_Номенклатура;
         private System.Windows.Forms.Label label5;
         private DirectoryControl directoryControl_Валюти;
         private System.Windows.Forms.Button buttonClose;
