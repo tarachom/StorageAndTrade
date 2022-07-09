@@ -23,7 +23,7 @@ limitations under the License.
 
 /*
  
-Модуль функцій
+Модуль ...
 
 */
 

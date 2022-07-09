@@ -577,8 +577,8 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			LoadRecords();
 		}
 
-        private void toolStripButtonCopy_Click(object sender, EventArgs e)
-        {
+		private void toolStripButtonCopy_Click(object sender, EventArgs e)
+		{
 			if (dataGridViewRecords.SelectedRows.Count != 0 &&
 				MessageBox.Show("Копіювати записи?", "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
 			{
@@ -656,11 +656,11 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								break;
 							}
 
-                        #endregion
+						#endregion
 
-                        #region Закупки
+						#region Закупки
 
-                        case "ЗамовленняПостачальнику":
+						case "ЗамовленняПостачальнику":
 							{
 								ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = new ЗамовленняПостачальнику_Objest();
 								if (замовленняПостачальнику_Objest.Read(new UnigueID(uid)))
@@ -733,7 +733,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								ПереміщенняТоварів_Objest переміщенняТоварів_Objest = new ПереміщенняТоварів_Objest();
 								if (переміщенняТоварів_Objest.Read(new UnigueID(uid)))
 								{
-									ПереміщенняТоварів_Objest переміщенняТоварів_Objest_Новий = new ПереміщенняТоварів_Objest();
+									ПереміщенняТоварів_Objest переміщенняТоварів_Objest_Новий = переміщенняТоварів_Objest.Copy();
 									переміщенняТоварів_Objest_Новий.Назва += " *";
 									переміщенняТоварів_Objest_Новий.ДатаДок = DateTime.Now;
 									переміщенняТоварів_Objest_Новий.НомерДок = (++НумераціяДокументів.ПереміщенняТоварів_Const).ToString("D8");
@@ -798,10 +798,36 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							}
 
 						#endregion
-					}
-                }
 
-					LoadRecords();
+						#region Ціноутворення
+
+						case "ВстановленняЦінНоменклатури":
+							{
+								ВстановленняЦінНоменклатури_Objest встановленняЦінНоменклатури_Objest = new ВстановленняЦінНоменклатури_Objest();
+								if (встановленняЦінНоменклатури_Objest.Read(new UnigueID(uid)))
+								{
+									ВстановленняЦінНоменклатури_Objest встановленняЦінНоменклатури_Objest_Новий = встановленняЦінНоменклатури_Objest.Copy();
+									встановленняЦінНоменклатури_Objest_Новий.Назва += " *";
+									встановленняЦінНоменклатури_Objest_Новий.ДатаДок = DateTime.Now;
+									встановленняЦінНоменклатури_Objest_Новий.НомерДок = (++НумераціяДокументів.ВстановленняЦінНоменклатури_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									встановленняЦінНоменклатури_Objest.Товари_TablePart.Read();
+									встановленняЦінНоменклатури_Objest_Новий.Товари_TablePart.Records = встановленняЦінНоменклатури_Objest.Товари_TablePart.Copy();
+									встановленняЦінНоменклатури_Objest_Новий.Товари_TablePart.Save(true);
+									встановленняЦінНоменклатури_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+							#endregion
+					}
+				}
+
+				LoadRecords();
 			}
 		}
 
@@ -818,9 +844,9 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 					switch (DocName)
 					{
-                        #region Продажі
+						#region Продажі
 
-                        case "ЗамовленняКлієнта":
+						case "ЗамовленняКлієнта":
 							{
 								ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new ЗамовленняКлієнта_Objest();
 								if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
@@ -931,8 +957,24 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							}
 
 						#endregion
+
+						#region Ціноутворення
+
+						case "ВстановленняЦінНоменклатури":
+							{
+								ВстановленняЦінНоменклатури_Objest встановленняЦінНоменклатури_Objest = new ВстановленняЦінНоменклатури_Objest();
+								if (встановленняЦінНоменклатури_Objest.Read(new UnigueID(uid)))
+								{
+									встановленняЦінНоменклатури_Objest.Delete();
+								}
+								else
+									MessageBox.Show("Error read");
+								break;
+							}
+
+					    #endregion
 					}
-				}
+                }
 
 				LoadRecords();
 			}
@@ -1010,6 +1052,17 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 					case "РозхіднийКасовийОрдер":
 						{
 							РухПоРугістрах.PrintRecords(new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+
+					#endregion
+
+					#region Ціноутворення
+
+					case "ВстановленняЦінНоменклатури":
+						{
+							РухПоРугістрах.PrintRecords(new ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid)));
 
 							break;
 						}
@@ -1227,6 +1280,31 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									catch (Exception exp)
 									{
 										розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+
+						#endregion
+
+						#region Ціноутворення
+
+						case "ВстановленняЦінНоменклатури":
+							{
+								ВстановленняЦінНоменклатури_Pointer встановленняЦінНоменклатури_Pointer = new ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid));
+								ВстановленняЦінНоменклатури_Objest встановленняЦінНоменклатури_Objest = встановленняЦінНоменклатури_Pointer.GetDocumentObject(true);
+
+								встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										встановленняЦінНоменклатури_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
 										MessageBox.Show(exp.Message);
 									}
 

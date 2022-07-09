@@ -242,7 +242,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
                                 ПереміщенняТоварів_Objest переміщенняТоварів_Objest = new ПереміщенняТоварів_Objest();
                                 if (переміщенняТоварів_Objest.Read(new UnigueID(uid)))
                                 {
-									ПереміщенняТоварів_Objest переміщенняТоварів_Objest_Новий = new ПереміщенняТоварів_Objest();
+									ПереміщенняТоварів_Objest переміщенняТоварів_Objest_Новий = переміщенняТоварів_Objest.Copy();
 									переміщенняТоварів_Objest_Новий.Назва += " *";
 									переміщенняТоварів_Objest_Новий.ДатаДок = DateTime.Now;
 									переміщенняТоварів_Objest_Новий.НомерДок = (++НумераціяДокументів.ПереміщенняТоварів_Const).ToString("D8");
