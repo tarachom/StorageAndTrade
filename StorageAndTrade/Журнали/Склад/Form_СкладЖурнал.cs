@@ -144,8 +144,8 @@ ORDER BY ДатаДок
 			public bool Проведений { get; set; }
 		}
 
-        private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
+		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
 			if (e.RowIndex >= 0 && e.RowIndex < dataGridViewRecords.RowCount)
 			{
 				string Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString();
@@ -154,31 +154,49 @@ ORDER BY ДатаДок
 			}
 		}
 
-        private void toolStripButtonAdd_Click(object sender, EventArgs e)
-        {
-			//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-			//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-			//form_ЗамовленняКлієнтаДокумент.IsNew = true;
-			//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-			//form_ЗамовленняКлієнтаДокумент.Show();
-        }
+        #region Add
 
-        private void toolStripButtonEdit_Click(object sender, EventArgs e)
-        {
+        private void ToolStripMenuItem_ПереміщенняТоварів_Click(object sender, EventArgs e)
+		{
+			Form_ПереміщенняТоварівДокумент form_ПереміщенняТоварівДокумент = new Form_ПереміщенняТоварівДокумент();
+			form_ПереміщенняТоварівДокумент.MdiParent = this.MdiParent;
+			form_ПереміщенняТоварівДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_ПереміщенняТоварівДокумент.Show();
+		}
+
+		#endregion
+
+		#region Edit
+
+		private void toolStripButtonEdit_Click(object sender, EventArgs e)
+		{
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
-				//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-				//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-				//form_ЗамовленняКлієнтаДокумент.IsNew = false;
-				//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-				//form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				//form_ЗамовленняКлієнтаДокумент.Show();
+				switch (DocName)
+				{
+					case "ПереміщенняТоварів":
+						{
+							Form_ПереміщенняТоварівДокумент form_ПереміщенняТоварівДокумент = new Form_ПереміщенняТоварівДокумент();
+							form_ПереміщенняТоварівДокумент.MdiParent = this.MdiParent;
+							form_ПереміщенняТоварівДокумент.IsNew = false;
+							//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+							form_ПереміщенняТоварівДокумент.Uid = uid;
+							form_ПереміщенняТоварівДокумент.Show();
+
+							break;
+						}
+				}
 			}
 		}
 
-        private void toolStripButtonRefresh_Click(object sender, EventArgs e)
+		#endregion
+
+		private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -190,55 +208,65 @@ ORDER BY ДатаДок
 			{
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
-					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-      //              Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-      //              if (замовленняКлієнта_Objest.Read(new UnigueID(uid)))
-      //              {
-						//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest_Новий = замовленняКлієнта_Objest.Copy();
-						//замовленняКлієнта_Objest_Новий.Назва += " *";
-						//замовленняКлієнта_Objest_Новий.ДатаДок = DateTime.Now;
-						//замовленняКлієнта_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ЗамовленняКлієнта_Const).ToString("D8");
+					switch (DocName)
+					{
+						case "ПереміщенняТоварів":
+							{
+                                ПереміщенняТоварів_Objest переміщенняТоварів_Objest = new ПереміщенняТоварів_Objest();
+                                if (переміщенняТоварів_Objest.Read(new UnigueID(uid)))
+                                {
+									ПереміщенняТоварів_Objest переміщенняТоварів_Objest_Новий = new ПереміщенняТоварів_Objest();
+									переміщенняТоварів_Objest_Новий.Назва += " *";
+									переміщенняТоварів_Objest_Новий.ДатаДок = DateTime.Now;
+									переміщенняТоварів_Objest_Новий.НомерДок = (++НумераціяДокументів.ПереміщенняТоварів_Const).ToString("D8");
 
-						////Зчитати та скопіювати табличну частину Товари
-						//замовленняКлієнта_Objest.Товари_TablePart.Read();
-						//замовленняКлієнта_Objest_Новий.Товари_TablePart.Records = замовленняКлієнта_Objest.Товари_TablePart.Copy();
-						//замовленняКлієнта_Objest_Новий.Товари_TablePart.Save(true);
-						//замовленняКлієнта_Objest_Новий.Save();
-					//}
-     //               else
-     //               {
-     //                   MessageBox.Show("Error read");
-     //                   break;
-     //               }
-                }
+									//Зчитати та скопіювати табличну частину Товари
+									переміщенняТоварів_Objest.Товари_TablePart.Read();
+									переміщенняТоварів_Objest_Новий.Товари_TablePart.Records = переміщенняТоварів_Objest.Товари_TablePart.Copy();
+									переміщенняТоварів_Objest_Новий.Товари_TablePart.Save(true);
+									переміщенняТоварів_Objest_Новий.Save();
+                                }
+                                else
+                                    MessageBox.Show("Error read");
+
+                                break;
+							}
+					}
+				}
 
 				LoadRecords();
 			}
 		}
 
-        private void toolStripButtonDelete_Click(object sender, EventArgs e)
-        {
+		private void toolStripButtonDelete_Click(object sender, EventArgs e)
+		{
 			if (dataGridViewRecords.SelectedRows.Count != 0 &&
 				MessageBox.Show("Видалити записи?", "Повідомлення", MessageBoxButtons.YesNo) == DialogResult.Yes)
 			{
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
-					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-      //              Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-      //              if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
-      //              {
-						//ЗамовленняКлієнта_Objest.Delete();
-      //              }
-      //              else
-      //              {
-      //                  MessageBox.Show("Error read");
-      //                  break;
-      //              }
-                }
+					switch (DocName)
+					{
+						case "ПереміщенняТоварів":
+							{
+								ПереміщенняТоварів_Objest переміщенняТоварів_Objest = new ПереміщенняТоварів_Objest();
+								if (переміщенняТоварів_Objest.Read(new UnigueID(uid)))
+									переміщенняТоварів_Objest.Delete();
+                                else
+                                    MessageBox.Show("Error read");
+
+                                break;
+							}
+					}
+				}
 
 				LoadRecords();
 			}
@@ -248,10 +276,19 @@ ORDER BY ДатаДок
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
-				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
-				//Звіти.РухПоРугістрах.PrintRecords(new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
+				switch (DocName)
+				{
+					case "ПереміщенняТоварів":
+						{
+							РухПоРугістрах.PrintRecords(new ПереміщенняТоварів_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+				}
 			}
 		}
 
@@ -262,27 +299,35 @@ ORDER BY ДатаДок
 			{
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
-					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-					//Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
-					//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
+					switch (DocName)
+					{
+						case "ПереміщенняТоварів":
+							{
+								ПереміщенняТоварів_Pointer переміщенняТоварів_Pointer = new ПереміщенняТоварів_Pointer(new UnigueID(uid));
+								ПереміщенняТоварів_Objest переміщенняТоварів_Objest = переміщенняТоварів_Pointer.GetDocumentObject(true);
 
-					////Очищення регістрів
-					//замовленняКлієнта_Objest.ClearSpendTheDocument();
+								//Очищення регістрів
+								переміщенняТоварів_Objest.ClearSpendTheDocument();
 
-					//if (spend)
-					//	try
-					//	{
-					//		//Проведення
-					//		замовленняКлієнта_Objest.SpendTheDocument();
-					//	}
-					//	catch (Exception exp)
-					//	{
-					//		замовленняКлієнта_Objest.ClearSpendTheDocument();
-					//		MessageBox.Show(exp.Message);
-					//		return;
-					//	}
+                                if (spend)
+                                    try
+                                    {
+										//Проведення
+										переміщенняТоварів_Objest.SpendTheDocument();
+                                    }
+                                    catch (Exception exp)
+                                    {
+										переміщенняТоварів_Objest.ClearSpendTheDocument();
+                                        MessageBox.Show(exp.Message);
+                                    }
+
+                                break;
+							}
+					}
 				}
 
 				LoadRecords();
