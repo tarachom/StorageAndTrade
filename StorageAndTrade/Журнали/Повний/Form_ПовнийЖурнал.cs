@@ -562,6 +562,22 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 						}
 
 					#endregion
+
+					#region Ціноутворення
+
+					case "ВстановленняЦінНоменклатури":
+						{
+							Form_ВстановленняЦінНоменклатуриДокумент form_ВстановленняЦінНоменклатуриДокумент = new Form_ВстановленняЦінНоменклатуриДокумент();
+							form_ВстановленняЦінНоменклатуриДокумент.MdiParent = this.MdiParent;
+							form_ВстановленняЦінНоменклатуриДокумент.IsNew = false;
+							//form_ВстановленняЦінНоменклатуриДокумент.OwnerForm = this;
+							form_ВстановленняЦінНоменклатуриДокумент.Uid = uid;
+							form_ВстановленняЦінНоменклатуриДокумент.Show();
+
+							break;
+						}
+
+					#endregion
 				}
             }
 		}
