@@ -270,6 +270,13 @@ namespace StorageAndTrade
             form_ЗамовленняПостачальникам_Звіт.Show();
         }
 
+        private void відомістьПоТоварахНаСкладахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ВідомістьПоТоварахНаСкладах_Звіт form_ВідомістьПоТоварахНаСкладах_Звіт = new Form_ВідомістьПоТоварахНаСкладах_Звіт();
+            form_ВідомістьПоТоварахНаСкладах_Звіт.MdiParent = this;
+            form_ВідомістьПоТоварахНаСкладах_Звіт.Show();
+        }
+
         #endregion
 
         #region Сервіс Меню
@@ -499,5 +506,6 @@ SELECT pg_advisory_unlock(id) FROM test WHERE id = '1';
 
         #endregion
 
+        
     }
 }

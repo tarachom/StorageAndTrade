@@ -222,6 +222,12 @@
     <Compile Include="Журнали\Продажі\Form_ПродажіЖурнал.designer.cs">
       <DependentUpon>Form_ПродажіЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Звіти\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.Designer.cs">
+      <DependentUpon>Form_ВідомістьПоТоварахНаСкладах_Звіт.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -911,6 +917,9 @@
     <EmbeddedResource Include="Журнали\Продажі\Form_ПродажіЖурнал.resx">
       <DependentUpon>Form_ПродажіЖурнал.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.resx">
+      <DependentUpon>Form_ВідомістьПоТоварахНаСкладах_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.resx">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>
     </EmbeddedResource>
@@ -1026,6 +1035,7 @@
     <None Include="Resources\Icojam-Blue-Bits-Document-photo.ico" />
     <None Include="Resources\Document-checkbox.ico" />
     <None Include="Resources\Document-photo.ico" />
+    <Content Include="Звіти\ВідомістьПоТоварахНаСкладах\Template_ВідомістьПоТоварахНаСкладах_Звіт.xslt" />
     <Content Include="Звіти\ЗамовленняПостачальникам\Template_ЗамовленняПостачальникам_Звіт.xslt" />
     <Content Include="Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt" />
     <Content Include="Звіти\РозрахункиЗПостачальниками\Template_РозрахункиЗПостачальниками_Звіт.xslt">
