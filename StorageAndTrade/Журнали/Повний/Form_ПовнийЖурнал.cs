@@ -326,31 +326,239 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			}
 		}
 
-        private void toolStripButtonAdd_Click(object sender, EventArgs e)
-        {
-			//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-			//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-			//form_ЗамовленняКлієнтаДокумент.IsNew = true;
-			//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-			//form_ЗамовленняКлієнтаДокумент.Show();
-        }
+		#region Add
 
-        private void toolStripButtonEdit_Click(object sender, EventArgs e)
+		private void ToolStripMenuItem_ЗамовленняКлієнта_Click(object sender, EventArgs e)
+		{
+			Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+			form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
+			form_ЗамовленняКлієнтаДокумент.IsNew = true;
+			//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+			form_ЗамовленняКлієнтаДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_РеалізаціяТоварівТаПослуг_Click(object sender, EventArgs e)
+		{
+			Form_РеалізаціяТоварівТаПослугДокумент form_РеалізаціяТоварівТаПослугДокумент = new Form_РеалізаціяТоварівТаПослугДокумент();
+			form_РеалізаціяТоварівТаПослугДокумент.MdiParent = this.MdiParent;
+			form_РеалізаціяТоварівТаПослугДокумент.IsNew = true;
+			//form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
+			form_РеалізаціяТоварівТаПослугДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ПоверненняТоварівВідКлієнта_Click(object sender, EventArgs e)
+		{
+			Form_ПоверненняТоварівВідКлієнтаДокумент form_ПоверненняТоварівВідКлієнтаДокумент = new Form_ПоверненняТоварівВідКлієнтаДокумент();
+			form_ПоверненняТоварівВідКлієнтаДокумент.MdiParent = this.MdiParent;
+			form_ПоверненняТоварівВідКлієнтаДокумент.IsNew = true;
+			//form_ПоверненняТоварівВідКлієнтаДокумент.OwnerForm = this;
+			form_ПоверненняТоварівВідКлієнтаДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ЗамовленняПостачальнику_Click(object sender, EventArgs e)
+		{
+			Form_ЗамовленняПостачальникуДокумент form_ЗамовленняПостачальникуДокумент = new Form_ЗамовленняПостачальникуДокумент();
+			form_ЗамовленняПостачальникуДокумент.MdiParent = this.MdiParent;
+			form_ЗамовленняПостачальникуДокумент.IsNew = true;
+			//form_ЗамовленняПостачальникуДокумент.OwnerForm = this;
+			form_ЗамовленняПостачальникуДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ПоступленняТоварівТаПослуг_Click(object sender, EventArgs e)
+		{
+			Form_ПоступленняТоварівТаПослугДокумент form_ПоступленняТоварівТаПослугДокумент = new Form_ПоступленняТоварівТаПослугДокумент();
+			form_ПоступленняТоварівТаПослугДокумент.MdiParent = this.MdiParent;
+			form_ПоступленняТоварівТаПослугДокумент.IsNew = true;
+			//form_ПоступленняТоварівТаПослугДокумент.OwnerForm = this;
+			form_ПоступленняТоварівТаПослугДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ПоверненняТоварівПостачальнику_Click(object sender, EventArgs e)
+		{
+			Form_ПоверненняТоварівПостачальникуДокумент form_ПоверненняТоварівПостачальникуДокумент = new Form_ПоверненняТоварівПостачальникуДокумент();
+			form_ПоверненняТоварівПостачальникуДокумент.MdiParent = this.MdiParent;
+			form_ПоверненняТоварівПостачальникуДокумент.IsNew = true;
+			//form_ПоверненняТоварівПостачальникуДокумент.OwnerForm = this;
+			form_ПоверненняТоварівПостачальникуДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ПрихіднийКасовийОрдер_Click(object sender, EventArgs e)
+		{
+			Form_ПрихіднийКасовийОрдерДокумент form_ПрихіднийКасовийОрдерДокумент = new Form_ПрихіднийКасовийОрдерДокумент();
+			form_ПрихіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+			form_ПрихіднийКасовийОрдерДокумент.IsNew = true;
+			//form_ПрихіднийКасовийОрдерДокумент.OwnerForm = this;
+			form_ПрихіднийКасовийОрдерДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_РозхіднийКасовийОрдер_Click(object sender, EventArgs e)
+		{
+			Form_РозхіднийКасовийОрдерДокумент form_РозхіднийКасовийОрдерДокумент = new Form_РозхіднийКасовийОрдерДокумент();
+			form_РозхіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+			form_РозхіднийКасовийОрдерДокумент.IsNew = true;
+			//form_РозхіднийКасовийОрдерДокумент.OwnerForm = this;
+			form_РозхіднийКасовийОрдерДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ПереміщенняТоварів_Click(object sender, EventArgs e)
+		{
+			Form_ПереміщенняТоварівДокумент form_ПереміщенняТоварівДокумент = new Form_ПереміщенняТоварівДокумент();
+			form_ПереміщенняТоварівДокумент.MdiParent = this.MdiParent;
+			form_ПереміщенняТоварівДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_ПереміщенняТоварівДокумент.Show();
+		}
+
+		private void ToolStripMenuItem_ВстановленняЦінНоменклатури_Click(object sender, EventArgs e)
+		{
+			Form_ВстановленняЦінНоменклатуриДокумент form_ВстановленняЦінНоменклатуриДокумент = new Form_ВстановленняЦінНоменклатуриДокумент();
+			form_ВстановленняЦінНоменклатуриДокумент.MdiParent = this.MdiParent;
+			form_ВстановленняЦінНоменклатуриДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_ВстановленняЦінНоменклатуриДокумент.Show();
+		}
+
+		#endregion
+
+		#region Edit
+
+		private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
-				//Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
-				//form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
-				//form_ЗамовленняКлієнтаДокумент.IsNew = false;
-				//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
-				//form_ЗамовленняКлієнтаДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				//form_ЗамовленняКлієнтаДокумент.Show();
-			}
+				switch (DocName)
+				{
+                    #region Продажі
+
+                    case "ЗамовленняКлієнта":
+						{
+							Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
+							form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
+							form_ЗамовленняКлієнтаДокумент.IsNew = false;
+							//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+							form_ЗамовленняКлієнтаДокумент.Uid = uid;
+							form_ЗамовленняКлієнтаДокумент.Show();
+
+							break;
+						}
+
+					case "РеалізаціяТоварівТаПослуг":
+						{
+							Form_РеалізаціяТоварівТаПослугДокумент form_РеалізаціяТоварівТаПослугДокумент = new Form_РеалізаціяТоварівТаПослугДокумент();
+							form_РеалізаціяТоварівТаПослугДокумент.MdiParent = this.MdiParent;
+							form_РеалізаціяТоварівТаПослугДокумент.IsNew = false;
+							//form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
+							form_РеалізаціяТоварівТаПослугДокумент.Uid = uid;
+							form_РеалізаціяТоварівТаПослугДокумент.Show();
+
+							break;
+						}
+
+					case "ПоверненняТоварівВідКлієнта":
+						{
+							Form_ПоверненняТоварівВідКлієнтаДокумент form_ПоверненняТоварівВідКлієнтаДокумент = new Form_ПоверненняТоварівВідКлієнтаДокумент();
+							form_ПоверненняТоварівВідКлієнтаДокумент.MdiParent = this.MdiParent;
+							form_ПоверненняТоварівВідКлієнтаДокумент.IsNew = false;
+							//form_ПоверненняТоварівВідКлієнтаДокумент.OwnerForm = this;
+							form_ПоверненняТоварівВідКлієнтаДокумент.Uid = uid;
+							form_ПоверненняТоварівВідКлієнтаДокумент.Show();
+
+							break;
+						}
+
+					#endregion
+
+					#region Закупки
+
+					case "ЗамовленняПостачальнику":
+						{
+							Form_ЗамовленняПостачальникуДокумент form_ЗамовленняПостачальникуДокумент = new Form_ЗамовленняПостачальникуДокумент();
+							form_ЗамовленняПостачальникуДокумент.MdiParent = this.MdiParent;
+							form_ЗамовленняПостачальникуДокумент.IsNew = false;
+							//form_ЗамовленняПостачальникуДокумент.OwnerForm = this;
+							form_ЗамовленняПостачальникуДокумент.Uid = uid;
+							form_ЗамовленняПостачальникуДокумент.Show();
+
+							break;
+						}
+					case "ПоступленняТоварівТаПослуг":
+						{
+							Form_ПоступленняТоварівТаПослугДокумент form_ПоступленняТоварівТаПослугДокумент = new Form_ПоступленняТоварівТаПослугДокумент();
+							form_ПоступленняТоварівТаПослугДокумент.MdiParent = this.MdiParent;
+							form_ПоступленняТоварівТаПослугДокумент.IsNew = false;
+							//form_ПоступленняТоварівТаПослугДокумент.OwnerForm = this;	
+							form_ПоступленняТоварівТаПослугДокумент.Uid = uid;
+							form_ПоступленняТоварівТаПослугДокумент.Show();
+
+							break;
+						}
+					case "ПоверненняТоварівПостачальнику":
+						{
+							Form_ПоверненняТоварівПостачальникуДокумент form_ПоверненняТоварівПостачальникуДокумент = new Form_ПоверненняТоварівПостачальникуДокумент();
+							form_ПоверненняТоварівПостачальникуДокумент.MdiParent = this.MdiParent;
+							form_ПоверненняТоварівПостачальникуДокумент.IsNew = false;
+							//form_ПоверненняТоварівПостачальникуДокумент.OwnerForm = this;
+							form_ПоверненняТоварівПостачальникуДокумент.Uid = uid;
+							form_ПоверненняТоварівПостачальникуДокумент.Show();
+
+							break;
+						}
+
+					#endregion
+
+					#region Склад
+
+					case "ПереміщенняТоварів":
+						{
+							Form_ПереміщенняТоварівДокумент form_ПереміщенняТоварівДокумент = new Form_ПереміщенняТоварівДокумент();
+							form_ПереміщенняТоварівДокумент.MdiParent = this.MdiParent;
+							form_ПереміщенняТоварівДокумент.IsNew = false;
+							//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+							form_ПереміщенняТоварівДокумент.Uid = uid;
+							form_ПереміщенняТоварівДокумент.Show();
+
+							break;
+						}
+
+					#endregion
+
+					#region Фінанси
+
+					case "ПрихіднийКасовийОрдер":
+						{
+							Form_ПрихіднийКасовийОрдерДокумент form_ПрихіднийКасовийОрдерДокумент = new Form_ПрихіднийКасовийОрдерДокумент();
+							form_ПрихіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+							form_ПрихіднийКасовийОрдерДокумент.IsNew = false;
+							//form_ПрихіднийКасовийОрдерДокумент.OwnerForm = this;
+							form_ПрихіднийКасовийОрдерДокумент.Uid = uid;
+							form_ПрихіднийКасовийОрдерДокумент.Show();
+
+							break;
+						}
+					case "РозхіднийКасовийОрдер":
+						{
+							Form_РозхіднийКасовийОрдерДокумент form_РозхіднийКасовийОрдерДокумент = new Form_РозхіднийКасовийОрдерДокумент();
+							form_РозхіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
+							form_РозхіднийКасовийОрдерДокумент.IsNew = false;
+							//form_РозхіднийКасовийОрдерДокумент.OwnerForm = this;
+							form_РозхіднийКасовийОрдерДокумент.Uid = uid;
+							form_РозхіднийКасовийОрдерДокумент.Show();
+
+							break;
+						}
+
+					#endregion
+				}
+            }
 		}
 
-        private void toolStripButtonRefresh_Click(object sender, EventArgs e)
+		#endregion
+
+		private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
 			RecordsBindingList.Clear();
 
@@ -492,5 +700,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				}
 			}
 		}
+
+       
     }
 }
