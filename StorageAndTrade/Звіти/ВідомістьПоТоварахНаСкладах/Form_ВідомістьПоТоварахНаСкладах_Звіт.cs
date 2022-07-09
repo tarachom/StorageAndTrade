@@ -87,7 +87,7 @@ FROM
     FROM
         {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.TABLE} AS ТовариНаСкладах_Місяць
     WHERE
-        ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Період} < date_trunc('month', @date_start)
+        ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Період} < @date_start_month
 
 UNION
 
@@ -98,14 +98,14 @@ UNION
         Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
         CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
             Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
-           -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END AS ПочатковийЗалишок,   
-        0 AS Прихід,    
+           -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END AS ПочатковийЗалишок,
+        0 AS Прихід,
         0 AS Розхід,
         0 AS КінцевийЗалишок
     FROM 
         {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
     WHERE 
-        Рег_ТовариНаСкладах.period BETWEEN @date_start2 AND @date_stop2
+        Рег_ТовариНаСкладах.period >= @date_start2 AND Рег_ТовариНаСкладах.period < @date_start
 
 UNION
 
@@ -125,7 +125,7 @@ UNION
     FROM 
         {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
     WHERE 
-        Рег_ТовариНаСкладах.period BETWEEN @date_start AND @date_stop
+        Рег_ТовариНаСкладах.period >= @date_start AND Рег_ТовариНаСкладах.period <= @date_stop
 ) AS ВсіЗалишки
 
     LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади 
@@ -161,17 +161,26 @@ ORDER BY Номенклатура_Назва
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 
             DateTime dateStart = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, dateTimeStart.Value.Day, 0, 0, 0);
-            DateTime dateStop = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, dateTimeStart.Value.Day, 23, 59, 59);
+            Console.WriteLine("dateStart " + dateStart);
+
+            DateTime dateStop = new DateTime(dateTimeStop.Value.Year, dateTimeStop.Value.Month, dateTimeStop.Value.Day, 23, 59, 59);
+            Console.WriteLine("dateStop " + dateStop);
+
+            DateTime dateStartMonth = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, 1, 0, 0, 0);
+            Console.WriteLine("dateStartMonth " + dateStartMonth);
 
             DateTime dateStart2 = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, 1, 0, 0, 0);
-            DateTime dateStop2 = dateStop.AddDays(-1);
+            Console.WriteLine("dateStart2 " + dateStart2);
+
+            //DateTime dateStop2 = dateStop.AddDays(-1);
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+
+            paramQuery.Add("date_start_month", dateStartMonth);
             paramQuery.Add("date_start", dateStart);
             paramQuery.Add("date_stop", dateStop);
-
             paramQuery.Add("date_start2", dateStart2);
-            paramQuery.Add("date_stop2", dateStop2);
+            //paramQuery.Add("date_stop2", dateStop2);
 
             string[] columnsName;
             List<object[]> listRow;
