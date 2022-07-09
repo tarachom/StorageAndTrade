@@ -53,6 +53,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
+			dataGridViewRecords.Columns["DocName"].Visible = false;
 
 			dataGridViewRecords.Columns["НомерДок"].Width = 100;
 			dataGridViewRecords.Columns["НомерДок"].HeaderText = "Номер";
@@ -63,7 +64,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 			dataGridViewRecords.Columns["Назва"].Width = 350;
-			dataGridViewRecords.Columns["Контрагент"].Width = 300;
+			dataGridViewRecords.Columns["Склад"].Width = 300;
 
 			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -89,18 +90,19 @@ namespace StorageAndTrade
 
 			string query = $@"
 SELECT
-    Док_ПрихіднийКасовийОрдер.uid,
-    Док_ПрихіднийКасовийОрдер.spend,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Назва} AS Назва,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.НомерДок} AS НомерДок,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.ДатаДок} AS ДатаДок,
-    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.СумаДокументу} AS Сума
+    'ПереміщенняТоварів',
+    Док_ПереміщенняТоварів.uid,
+    Док_ПереміщенняТоварів.spend,
+    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.Назва} AS Назва,
+    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.НомерДок} AS НомерДок,
+    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.ДатаДок} AS ДатаДок,
+    Довідник_Склади.{Склади_Const.Назва} AS СкладНазва,
+    0 AS Сума
 FROM
-	{ПрихіднийКасовийОрдер_Const.TABLE} AS Док_ПрихіднийКасовийОрдер
+	{ПереміщенняТоварів_Const.TABLE} AS Док_ПереміщенняТоварів
 
-    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Контрагент}
+	LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
+        Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.СкладВідправник}
 
 ORDER BY ДатаДок
 ";
@@ -116,14 +118,15 @@ ORDER BY ДатаДок
 			{
 				RecordsBindingList.Add(new Записи
 				{
-					ID = row[0].ToString(),
-					Проведений = (bool)row[1],
-					Назва = row[2].ToString(),
-					НомерДок = row[3].ToString(),
-					ДатаДок = row[4].ToString(),
-					Контрагент = row[5].ToString(),
-					Сума = (decimal)row[6]
-				});
+					DocName = row[0].ToString(),
+					ID = row[1].ToString(),
+					Проведений = (bool)row[2],
+					Назва = row[3].ToString(),
+					НомерДок = row[4].ToString(),
+					ДатаДок = row[5].ToString(),
+					Склад = row[6].ToString(),
+					Сума = decimal.Parse(row[7].ToString())
+			    });
 			}
 		}
 
@@ -131,11 +134,12 @@ ORDER BY ДатаДок
 		{
 			public Записи() { Image = Properties.Resources.doc_text_image; }
 			public Bitmap Image { get; set; }
+			public string DocName { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
-			public string Контрагент { get; set; }
+			public string Склад { get; set; }
 			public decimal Сума { get; set; }
 			public bool Проведений { get; set; }
 		}

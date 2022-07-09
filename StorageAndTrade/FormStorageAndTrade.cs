@@ -328,6 +328,13 @@ SELECT pg_advisory_unlock(id) FROM test WHERE id = '1';
             form_ФінансиЖурнал.Show();
         }
 
+        private void складToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_СкладЖурнал form_СкладЖурнал = new Form_СкладЖурнал();
+            form_СкладЖурнал.MdiParent = this;
+            form_СкладЖурнал.Show();
+        }
+
         #endregion
 
         #region Mdi
@@ -489,8 +496,8 @@ SELECT pg_advisory_unlock(id) FROM test WHERE id = '1';
 
 
 
+
         #endregion
 
-        
     }
 }

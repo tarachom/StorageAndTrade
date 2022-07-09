@@ -143,29 +143,9 @@ namespace StorageAndTrade.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Document_checkbox {
-            get {
-                object obj = ResourceManager.GetObject("Document-checkbox", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap document_not_spend {
             get {
                 object obj = ResourceManager.GetObject("document_not_spend", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Document_photo {
-            get {
-                object obj = ResourceManager.GetObject("Document-photo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,16 +176,6 @@ namespace StorageAndTrade.Properties {
         internal static System.Drawing.Bitmap folder {
             get {
                 object obj = ResourceManager.GetObject("folder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Icojam_Blue_Bits_Document_photo {
-            get {
-                object obj = ResourceManager.GetObject("Icojam-Blue-Bits-Document-photo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
