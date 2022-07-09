@@ -38,11 +38,25 @@ using System.Xml.Xsl;
 
 namespace StorageAndTrade
 {
-
+    /// <summary>
+    /// Структура для обмеження кількості завантажених даних
+    /// для журналів.
+    /// </summary>
     public struct LoadRecordsLimit
     {
+        /// <summary>
+        /// Індекс сторінки
+        /// </summary>
         public int PageIndex;
+
+        /// <summary>
+        /// Обмеження для запиту
+        /// </summary>
         public int Limit;
+
+        /// <summary>
+        /// Кількість даних завантажених останній раз
+        /// </summary>
         public int LastCountRow;
     }
 
