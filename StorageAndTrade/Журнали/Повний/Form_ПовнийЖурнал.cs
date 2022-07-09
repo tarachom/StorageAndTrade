@@ -575,30 +575,223 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-      //              Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-      //              if (замовленняКлієнта_Objest.Read(new UnigueID(uid)))
-      //              {
-						//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest_Новий = замовленняКлієнта_Objest.Copy();
-						//замовленняКлієнта_Objest_Новий.Назва += " *";
-						//замовленняКлієнта_Objest_Новий.ДатаДок = DateTime.Now;
-						//замовленняКлієнта_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ЗамовленняКлієнта_Const).ToString("D8");
+					switch (DocName)
+					{
+						#region Продажі
 
-						////Зчитати та скопіювати табличну частину Товари
-						//замовленняКлієнта_Objest.Товари_TablePart.Read();
-						//замовленняКлієнта_Objest_Новий.Товари_TablePart.Records = замовленняКлієнта_Objest.Товари_TablePart.Copy();
-						//замовленняКлієнта_Objest_Новий.Товари_TablePart.Save(true);
-						//замовленняКлієнта_Objest_Новий.Save();
-					//}
-     //               else
-     //               {
-     //                   MessageBox.Show("Error read");
-     //                   break;
-     //               }
+						case "ЗамовленняКлієнта":
+							{
+								ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = new ЗамовленняКлієнта_Objest();
+								if (замовленняКлієнта_Objest.Read(new UnigueID(uid)))
+								{
+									ЗамовленняКлієнта_Objest замовленняКлієнта_Objest_Новий = замовленняКлієнта_Objest.Copy();
+									замовленняКлієнта_Objest_Новий.Назва += " *";
+									замовленняКлієнта_Objest_Новий.ДатаДок = DateTime.Now;
+									замовленняКлієнта_Objest_Новий.НомерДок = (++НумераціяДокументів.ЗамовленняКлієнта_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									замовленняКлієнта_Objest.Товари_TablePart.Read();
+									замовленняКлієнта_Objest_Новий.Товари_TablePart.Records = замовленняКлієнта_Objest.Товари_TablePart.Copy();
+									замовленняКлієнта_Objest_Новий.Товари_TablePart.Save(true);
+									замовленняКлієнта_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "РеалізаціяТоварівТаПослуг":
+							{
+								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new РеалізаціяТоварівТаПослуг_Objest();
+								if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
+								{
+									РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest_Новий = реалізаціяТоварівТаПослуг_Objest.Copy();
+									реалізаціяТоварівТаПослуг_Objest_Новий.Назва += " *";
+									реалізаціяТоварівТаПослуг_Objest_Новий.ДатаДок = DateTime.Now;
+									реалізаціяТоварівТаПослуг_Objest_Новий.НомерДок = (++НумераціяДокументів.РеалізаціяТоварівТаПослуг_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									реалізаціяТоварівТаПослуг_Objest.Товари_TablePart.Read();
+									реалізаціяТоварівТаПослуг_Objest_Новий.Товари_TablePart.Records = реалізаціяТоварівТаПослуг_Objest.Товари_TablePart.Copy();
+									реалізаціяТоварівТаПослуг_Objest_Новий.Товари_TablePart.Save(true);
+									реалізаціяТоварівТаПослуг_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "ПоверненняТоварівВідКлієнта":
+							{
+								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new ПоверненняТоварівВідКлієнта_Objest();
+								if (поверненняТоварівВідКлієнта_Objest.Read(new UnigueID(uid)))
+								{
+									ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest_Новий = поверненняТоварівВідКлієнта_Objest.Copy();
+									поверненняТоварівВідКлієнта_Objest_Новий.Назва += " *";
+									поверненняТоварівВідКлієнта_Objest_Новий.ДатаДок = DateTime.Now;
+									поверненняТоварівВідКлієнта_Objest_Новий.НомерДок = (++НумераціяДокументів.ПоверненняТоварівВідКлієнта_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									поверненняТоварівВідКлієнта_Objest.Товари_TablePart.Read();
+									поверненняТоварівВідКлієнта_Objest_Новий.Товари_TablePart.Records = поверненняТоварівВідКлієнта_Objest.Товари_TablePart.Copy();
+									поверненняТоварівВідКлієнта_Objest_Новий.Товари_TablePart.Save(true);
+									поверненняТоварівВідКлієнта_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+                        #endregion
+
+                        #region Закупки
+
+                        case "ЗамовленняПостачальнику":
+							{
+								ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = new ЗамовленняПостачальнику_Objest();
+								if (замовленняПостачальнику_Objest.Read(new UnigueID(uid)))
+								{
+									ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest_Новий = замовленняПостачальнику_Objest.Copy();
+									замовленняПостачальнику_Objest_Новий.Назва += " *";
+									замовленняПостачальнику_Objest_Новий.ДатаДок = DateTime.Now;
+									замовленняПостачальнику_Objest_Новий.НомерДок = (++НумераціяДокументів.ЗамовленняПостачальнику_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									замовленняПостачальнику_Objest.Товари_TablePart.Read();
+									замовленняПостачальнику_Objest_Новий.Товари_TablePart.Records = замовленняПостачальнику_Objest.Товари_TablePart.Copy();
+									замовленняПостачальнику_Objest_Новий.Товари_TablePart.Save(true);
+									замовленняПостачальнику_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "ПоступленняТоварівТаПослуг":
+							{
+								ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest = new ПоступленняТоварівТаПослуг_Objest();
+								if (поступленняТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
+								{
+									ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest_Новий = поступленняТоварівТаПослуг_Objest.Copy();
+									поступленняТоварівТаПослуг_Objest_Новий.Назва += " *";
+									поступленняТоварівТаПослуг_Objest_Новий.ДатаДок = DateTime.Now;
+									поступленняТоварівТаПослуг_Objest_Новий.НомерДок = (++НумераціяДокументів.ПоступленняТоварівТаПослуг_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									поступленняТоварівТаПослуг_Objest.Товари_TablePart.Read();
+									поступленняТоварівТаПослуг_Objest_Новий.Товари_TablePart.Records = поступленняТоварівТаПослуг_Objest.Товари_TablePart.Copy();
+									поступленняТоварівТаПослуг_Objest_Новий.Товари_TablePart.Save(true);
+									поступленняТоварівТаПослуг_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "ПоверненняТоварівПостачальнику":
+							{
+								ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = new ПоверненняТоварівПостачальнику_Objest();
+								if (поверненняТоварівПостачальнику_Objest.Read(new UnigueID(uid)))
+								{
+									ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest_Новий = поверненняТоварівПостачальнику_Objest.Copy();
+									поверненняТоварівПостачальнику_Objest_Новий.Назва += " *";
+									поверненняТоварівПостачальнику_Objest_Новий.ДатаДок = DateTime.Now;
+									поверненняТоварівПостачальнику_Objest_Новий.НомерДок = (++НумераціяДокументів.ПоверненняТоварівПостачальнику_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									поверненняТоварівПостачальнику_Objest.Товари_TablePart.Read();
+									поверненняТоварівПостачальнику_Objest_Новий.Товари_TablePart.Records = поверненняТоварівПостачальнику_Objest.Товари_TablePart.Copy();
+									поверненняТоварівПостачальнику_Objest_Новий.Товари_TablePart.Save(true);
+									поверненняТоварівПостачальнику_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+						#endregion
+
+						#region Склад
+
+						case "ПереміщенняТоварів":
+							{
+								ПереміщенняТоварів_Objest переміщенняТоварів_Objest = new ПереміщенняТоварів_Objest();
+								if (переміщенняТоварів_Objest.Read(new UnigueID(uid)))
+								{
+									ПереміщенняТоварів_Objest переміщенняТоварів_Objest_Новий = new ПереміщенняТоварів_Objest();
+									переміщенняТоварів_Objest_Новий.Назва += " *";
+									переміщенняТоварів_Objest_Новий.ДатаДок = DateTime.Now;
+									переміщенняТоварів_Objest_Новий.НомерДок = (++НумераціяДокументів.ПереміщенняТоварів_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									переміщенняТоварів_Objest.Товари_TablePart.Read();
+									переміщенняТоварів_Objest_Новий.Товари_TablePart.Records = переміщенняТоварів_Objest.Товари_TablePart.Copy();
+									переміщенняТоварів_Objest_Новий.Товари_TablePart.Save(true);
+									переміщенняТоварів_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+						#endregion
+
+						#region Фінанси
+
+						case "ПрихіднийКасовийОрдер":
+							{
+								ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = new ПрихіднийКасовийОрдер_Objest();
+								if (прихіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+								{
+									ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest_Новий = прихіднийКасовийОрдер_Objest.Copy();
+									прихіднийКасовийОрдер_Objest_Новий.Назва += " *";
+									прихіднийКасовийОрдер_Objest_Новий.ДатаДок = DateTime.Now;
+									прихіднийКасовийОрдер_Objest_Новий.НомерДок = (++НумераціяДокументів.ПрихіднийКасовийОрдер_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину
+									прихіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Read();
+									прихіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Records = прихіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Copy();
+									прихіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Save(true);
+									прихіднийКасовийОрдер_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "РозхіднийКасовийОрдер":
+							{
+								РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = new РозхіднийКасовийОрдер_Objest();
+								if (розхіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+								{
+									РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest_Новий = розхіднийКасовийОрдер_Objest.Copy();
+									розхіднийКасовийОрдер_Objest_Новий.Назва += " *";
+									розхіднийКасовийОрдер_Objest_Новий.ДатаДок = DateTime.Now;
+									розхіднийКасовийОрдер_Objest_Новий.НомерДок = (++НумераціяДокументів.РозхіднийКасовийОрдер_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину
+									розхіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Read();
+									розхіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Records = розхіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Copy();
+									розхіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Save(true);
+									розхіднийКасовийОрдер_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+						#endregion
+					}
                 }
 
-				LoadRecords();
+					LoadRecords();
 			}
 		}
 
@@ -610,19 +803,126 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-      //              Документи.ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new Документи.ЗамовленняКлієнта_Objest();
-      //              if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
-      //              {
-						//ЗамовленняКлієнта_Objest.Delete();
-      //              }
-      //              else
-      //              {
-      //                  MessageBox.Show("Error read");
-      //                  break;
-      //              }
-                }
+					switch (DocName)
+					{
+                        #region Продажі
+
+                        case "ЗамовленняКлієнта":
+							{
+								ЗамовленняКлієнта_Objest ЗамовленняКлієнта_Objest = new ЗамовленняКлієнта_Objest();
+								if (ЗамовленняКлієнта_Objest.Read(new UnigueID(uid)))
+									ЗамовленняКлієнта_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "РеалізаціяТоварівТаПослуг":
+							{
+								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new РеалізаціяТоварівТаПослуг_Objest();
+								if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
+									реалізаціяТоварівТаПослуг_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "ПоверненняТоварівВідКлієнта":
+							{
+								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new ПоверненняТоварівВідКлієнта_Objest();
+								if (поверненняТоварівВідКлієнта_Objest.Read(new UnigueID(uid)))
+									поверненняТоварівВідКлієнта_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+						#endregion
+
+						#region Закупки
+
+						case "ЗамовленняПостачальнику":
+							{
+								ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = new ЗамовленняПостачальнику_Objest();
+								if (замовленняПостачальнику_Objest.Read(new UnigueID(uid)))
+									замовленняПостачальнику_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "ПоступленняТоварівТаПослуг":
+							{
+								ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest = new ПоступленняТоварівТаПослуг_Objest();
+								if (поступленняТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
+									поступленняТоварівТаПослуг_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "ПоверненняТоварівПостачальнику":
+							{
+								ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = new ПоверненняТоварівПостачальнику_Objest();
+								if (поверненняТоварівПостачальнику_Objest.Read(new UnigueID(uid)))
+									поверненняТоварівПостачальнику_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+						#endregion
+
+						#region Склад
+
+						case "ПереміщенняТоварів":
+							{
+								ПереміщенняТоварів_Objest переміщенняТоварів_Objest = new ПереміщенняТоварів_Objest();
+								if (переміщенняТоварів_Objest.Read(new UnigueID(uid)))
+									переміщенняТоварів_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+						#endregion
+
+						#region Фінанси
+
+						case "ПрихіднийКасовийОрдер":
+							{
+								ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = new ПрихіднийКасовийОрдер_Objest();
+								if (прихіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+								{
+									прихіднийКасовийОрдер_Objest.Delete();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "РозхіднийКасовийОрдер":
+							{
+								РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = new РозхіднийКасовийОрдер_Objest();
+								if (розхіднийКасовийОрдер_Objest.Read(new UnigueID(uid)))
+								{
+									розхіднийКасовийОрдер_Objest.Delete();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
+						#endregion
+					}
+				}
 
 				LoadRecords();
 			}
@@ -632,10 +932,80 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
-				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+				string DocName = row.Cells["DocName"].Value.ToString();
+				string uid = row.Cells["ID"].Value.ToString();
 
-				//Звіти.РухПоРугістрах.PrintRecords(new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
+				switch (DocName)
+				{
+                    #region Продажі
+
+                    case "ЗамовленняКлієнта":
+						{
+							РухПоРугістрах.PrintRecords(new ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
+							break;
+						}
+					case "РеалізаціяТоварівТаПослуг":
+						{
+							РухПоРугістрах.PrintRecords(new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
+							break;
+						}
+					case "ПоверненняТоварівВідКлієнта":
+						{
+							РухПоРугістрах.PrintRecords(new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid)));
+							break;
+						}
+
+					#endregion
+
+					#region Закупки
+
+					case "ЗамовленняПостачальнику":
+						{
+							РухПоРугістрах.PrintRecords(new ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
+							break;
+						}
+					case "ПоступленняТоварівТаПослуг":
+						{
+							РухПоРугістрах.PrintRecords(new ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid)));
+							break;
+						}
+					case "ПоверненняТоварівПостачальнику":
+						{
+							РухПоРугістрах.PrintRecords(new ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid)));
+							break;
+						}
+
+					#endregion
+
+					#region Склад
+
+					case "ПереміщенняТоварів":
+						{
+							РухПоРугістрах.PrintRecords(new ПереміщенняТоварів_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+
+					#endregion
+
+					#region Фінанси
+
+					case "ПрихіднийКасовийОрдер":
+						{
+							РухПоРугістрах.PrintRecords(new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+					case "РозхіднийКасовийОрдер":
+						{
+							РухПоРугістрах.PrintRecords(new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+
+					#endregion
+				}
 			}
 		}
 
@@ -647,26 +1017,214 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				for (int i = 0; i < dataGridViewRecords.SelectedRows.Count; i++)
 				{
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
+					string DocName = row.Cells["DocName"].Value.ToString();
 					string uid = row.Cells["ID"].Value.ToString();
 
-					//Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
-					//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
+					switch (DocName)
+					{
+                        #region Продажі
 
-					////Очищення регістрів
-					//замовленняКлієнта_Objest.ClearSpendTheDocument();
+                        case "ЗамовленняКлієнта":
+							{
+								ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new ЗамовленняКлієнта_Pointer(new UnigueID(uid));
+								ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
 
-					//if (spend)
-					//	try
-					//	{
-					//		//Проведення
-					//		замовленняКлієнта_Objest.SpendTheDocument();
-					//	}
-					//	catch (Exception exp)
-					//	{
-					//		замовленняКлієнта_Objest.ClearSpendTheDocument();
-					//		MessageBox.Show(exp.Message);
-					//		return;
-					//	}
+								//Очищення регістрів
+								замовленняКлієнта_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										замовленняКлієнта_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										замовленняКлієнта_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+						case "РеалізаціяТоварівТаПослуг":
+							{
+								РеалізаціяТоварівТаПослуг_Pointer реалізаціяТоварівТаПослуг_Pointer = new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid));
+								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = реалізаціяТоварівТаПослуг_Pointer.GetDocumentObject(true);
+
+								//Очищення регістрів
+								реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										реалізаціяТоварівТаПослуг_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								break;
+							}
+						case "ПоверненняТоварівВідКлієнта":
+							{
+								ПоверненняТоварівВідКлієнта_Pointer поверненняТоварівВідКлієнта_Pointer = new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid));
+								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = поверненняТоварівВідКлієнта_Pointer.GetDocumentObject(true);
+
+								//Очищення регістрів
+								поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										поверненняТоварівВідКлієнта_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								break;
+							}
+
+						#endregion
+
+						#region Закупки
+
+						case "ЗамовленняПостачальнику":
+							{
+								ЗамовленняПостачальнику_Pointer замовленняПостачальнику_Pointer = new ЗамовленняПостачальнику_Pointer(new UnigueID(uid));
+								ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = замовленняПостачальнику_Pointer.GetDocumentObject(true);
+
+								замовленняПостачальнику_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										замовленняПостачальнику_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										замовленняПостачальнику_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+						case "ПоступленняТоварівТаПослуг":
+							{
+								ПоступленняТоварівТаПослуг_Pointer поступленняТоварівТаПослуг_Pointer = new ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid));
+								ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest = поступленняТоварівТаПослуг_Pointer.GetDocumentObject(true);
+
+								поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										поступленняТоварівТаПослуг_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+						case "ПоверненняТоварівПостачальнику":
+							{
+								ПоверненняТоварівПостачальнику_Pointer поверненняТоварівПостачальнику_Pointer = new ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid));
+								ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = поверненняТоварівПостачальнику_Pointer.GetDocumentObject(true);
+
+								поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										поверненняТоварівПостачальнику_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+
+						#endregion
+
+						#region Склад
+
+						case "ПереміщенняТоварів":
+							{
+								ПереміщенняТоварів_Pointer переміщенняТоварів_Pointer = new ПереміщенняТоварів_Pointer(new UnigueID(uid));
+								ПереміщенняТоварів_Objest переміщенняТоварів_Objest = переміщенняТоварів_Pointer.GetDocumentObject(true);
+
+								//Очищення регістрів
+								переміщенняТоварів_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										//Проведення
+										переміщенняТоварів_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										переміщенняТоварів_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+
+						#endregion
+
+						#region Фінанси
+
+						case "ПрихіднийКасовийОрдер":
+							{
+								ПрихіднийКасовийОрдер_Pointer прихіднийКасовийОрдер_Pointer = new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid));
+								ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = прихіднийКасовийОрдер_Pointer.GetDocumentObject(true);
+
+								прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										прихіднийКасовийОрдер_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+						case "РозхіднийКасовийОрдер":
+							{
+								РозхіднийКасовийОрдер_Pointer розхіднийКасовийОрдер_Pointer = new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid));
+								РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = розхіднийКасовийОрдер_Pointer.GetDocumentObject(true);
+
+								розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+
+								if (spend)
+									try
+									{
+										розхіднийКасовийОрдер_Objest.SpendTheDocument();
+									}
+									catch (Exception exp)
+									{
+										розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+
+								break;
+							}
+
+						#endregion
+					}
 				}
 
 				LoadRecords();
