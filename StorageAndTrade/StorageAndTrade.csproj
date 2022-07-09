@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Configurator\Service.cs" />
     <Compile Include="Configurator\SpendTheDocument.cs" />
+    <Compile Include="Configurator\Function.cs" />
     <Compile Include="FormService.cs">
       <SubType>Form</SubType>
     </Compile>

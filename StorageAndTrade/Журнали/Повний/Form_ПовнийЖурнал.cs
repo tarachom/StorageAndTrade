@@ -80,14 +80,6 @@ namespace StorageAndTrade
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
-
-		private struct LoadRecordsLimit
-		{
-			public int PageIndex;
-			public int Limit;
-			public int LastCountRow;
-        }
-
 		private LoadRecordsLimit loadRecordsLimit = new LoadRecordsLimit() { Limit = 50};
 
 		public void LoadRecords()
@@ -323,6 +315,24 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				string Uid = dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString();
 
 				toolStripButtonEdit_Click(this, null);
+			}
+		}
+
+		private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
+		{
+			//int display = dataGridViewRecords.Rows.Count - dataGridViewRecords.DisplayedRowCount(false);
+			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+			{
+				int rowHeight = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
+				int countVisibleRows = dataGridViewRecords.Height / rowHeight;
+
+				if (e.NewValue >= dataGridViewRecords.Rows.Count - countVisibleRows && loadRecordsLimit.LastCountRow == loadRecordsLimit.Limit)
+				{
+					LoadRecords();
+					//Console.WriteLine("LoadRecords");
+					//dataGridViewRecords.ClearSelection();
+					//dataGridViewRecords.FirstDisplayedScrollingRowIndex = display;
+				}
 			}
 		}
 
@@ -1240,25 +1250,5 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
         {
 			SpendDocuments(false, "Відмінити проведення?");
 		}
-
-		private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
-        {
-			//int display = dataGridViewRecords.Rows.Count - dataGridViewRecords.DisplayedRowCount(false);
-			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
-			{
-				int rowHeight = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
-				int countVisibleRows = dataGridViewRecords.Height / rowHeight;
-
-				if (e.NewValue >= dataGridViewRecords.Rows.Count - countVisibleRows && loadRecordsLimit.LastCountRow == loadRecordsLimit.Limit)
-				{
-					LoadRecords();
-					//Console.WriteLine("LoadRecords");
-					//dataGridViewRecords.ClearSelection();
-					//dataGridViewRecords.FirstDisplayedScrollingRowIndex = display;
-				}
-			}
-		}
-
-       
     }
 }

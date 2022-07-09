@@ -80,14 +80,6 @@ namespace StorageAndTrade
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
-
-		private struct LoadRecordsLimit
-		{
-			public int PageIndex;
-			public int Limit;
-			public int LastCountRow;
-		}
-
 		private LoadRecordsLimit loadRecordsLimit = new LoadRecordsLimit() { Limit = 50 };
 
 		public void LoadRecords()
@@ -201,9 +193,23 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			}
 		}
 
-        #region Add
+		private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
+		{
+			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+			{
+				int rowHeight = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
+				int countVisibleRows = dataGridViewRecords.Height / rowHeight;
 
-        private void ToolStripMenuItem_ЗамовленняКлієнта_Click(object sender, EventArgs e)
+				if (e.NewValue >= dataGridViewRecords.Rows.Count - countVisibleRows && loadRecordsLimit.LastCountRow == loadRecordsLimit.Limit)
+				{
+					LoadRecords();
+				}
+			}
+		}
+
+		#region Add
+
+		private void ToolStripMenuItem_ЗамовленняКлієнта_Click(object sender, EventArgs e)
 		{
             Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
             form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
@@ -545,24 +551,6 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
         private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
         {
 			SpendDocuments(false, "Відмінити проведення?");
-		}
-
-        private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
-        {
-			//int display = dataGridViewRecords.Rows.Count - dataGridViewRecords.DisplayedRowCount(false);
-			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
-			{
-				int rowHeight = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
-				int countVisibleRows = dataGridViewRecords.Height / rowHeight;
-
-				if (e.NewValue >= dataGridViewRecords.Rows.Count - countVisibleRows && loadRecordsLimit.LastCountRow == loadRecordsLimit.Limit)
-				{
-					LoadRecords();
-					//Console.WriteLine("LoadRecords");
-					//dataGridViewRecords.ClearSelection();
-					//dataGridViewRecords.FirstDisplayedScrollingRowIndex = display;
-				}
-			}
 		}
     }
 }

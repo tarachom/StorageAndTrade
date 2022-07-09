@@ -80,6 +80,7 @@ namespace StorageAndTrade
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
+		private LoadRecordsLimit loadRecordsLimit = new LoadRecordsLimit() { Limit = 50 };
 
 		public void LoadRecords()
 		{
@@ -122,6 +123,8 @@ FROM
         Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Контрагент}
 
 ORDER BY ДатаДок
+LIMIT {loadRecordsLimit.Limit}
+OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
@@ -131,7 +134,9 @@ ORDER BY ДатаДок
 
 			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-			foreach(object[] row in listRow)
+			loadRecordsLimit.LastCountRow = listRow.Count;
+
+			foreach (object[] row in listRow)
 			{
 				RecordsBindingList.Add(new Записи
 				{
@@ -171,9 +176,23 @@ ORDER BY ДатаДок
 			}
 		}
 
-        #region Add
+		private void dataGridViewRecords_Scroll(object sender, ScrollEventArgs e)
+		{
+			if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+			{
+				int rowHeight = dataGridViewRecords.Rows[dataGridViewRecords.FirstDisplayedScrollingRowIndex].Height;
+				int countVisibleRows = dataGridViewRecords.Height / rowHeight;
 
-        private void ToolStripMenuItem_ПрихіднийКасовийОрдер_Click(object sender, EventArgs e)
+				if (e.NewValue >= dataGridViewRecords.Rows.Count - countVisibleRows && loadRecordsLimit.LastCountRow == loadRecordsLimit.Limit)
+				{
+					LoadRecords();
+				}
+			}
+		}
+
+		#region Add
+
+		private void ToolStripMenuItem_ПрихіднийКасовийОрдер_Click(object sender, EventArgs e)
 		{
 			Form_ПрихіднийКасовийОрдерДокумент form_ПрихіднийКасовийОрдерДокумент = new Form_ПрихіднийКасовийОрдерДокумент();
 			form_ПрихіднийКасовийОрдерДокумент.MdiParent = this.MdiParent;
@@ -235,6 +254,10 @@ ORDER BY ДатаДок
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
         {
+			RecordsBindingList.Clear();
+
+			loadRecordsLimit.PageIndex = 0;
+
 			LoadRecords();
 		}
 
