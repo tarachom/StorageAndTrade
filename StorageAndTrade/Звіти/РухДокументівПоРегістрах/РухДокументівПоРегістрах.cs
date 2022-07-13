@@ -285,7 +285,7 @@ namespace StorageAndTrade_1_0.Звіти
                     Функції.DataToXML(xmlDoc, func.Key, columnsName, listRow);
             }
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухДокументівПоРегістрах.xslt", true, "");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухДокументівПоРегістрах.xslt", true, "Рух документу по регістрах");
         }
 
         #region Запити по регістрах накопичення

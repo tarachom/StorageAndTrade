@@ -24,6 +24,9 @@
 				<div class="container">
 					<h2>Рух документу по регістрах</h2>
 
+					<xsl:apply-templates select="Заголовок" />
+					
+					<!--  -->
 					<xsl:apply-templates select="ТовариНаСкладах" />
 
 					<xsl:apply-templates select="РухТоварів" />
@@ -52,6 +55,27 @@
 			</body>
 		</html>
 
+	</xsl:template>
+	
+	<xsl:template match="Заголовок">
+		 <br/>
+	     <table>
+			<xsl:for-each select="row">
+				<tr>
+					<th>Документ:</th>
+					<td><xsl:value-of select="Назва"/></td>
+				</tr>
+				<tr>
+					<th>Дата:</th>
+					<td><xsl:value-of select="ДатаДок"/></td>
+				</tr>
+				<tr>	
+					<th>Номер:</th>
+				    <td><xsl:value-of select="НомерДок"/></td>
+				</tr>
+			</xsl:for-each>
+		</table>
+	
 	</xsl:template>
 	
 	<xsl:template match="ТовариНаСкладах">

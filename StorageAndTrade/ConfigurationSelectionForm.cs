@@ -62,6 +62,8 @@ namespace StorageAndTrade
 			LoadConfigurationParamFromXML();
 
 			Fill_listBoxConfiguration();
+
+			buttonOpenConf_Click(this, new EventArgs());
 		}
 
 		private void LoadConfigurationParamFromXML()
@@ -325,12 +327,12 @@ namespace StorageAndTrade
 
                 Конфа.Config.ReadAllConstants();
 
+				//this.DialogResult = DialogResult.OK;
+				this.Hide();
+
 				FormStorageAndTrade formStorageAndTrade = new FormStorageAndTrade();
 				//formRecordFinance.OpenDataBaseName = " - " + itemConfigurationParam.ConfigurationName;
 				formStorageAndTrade.Show();
-
-				this.DialogResult = DialogResult.OK;
-				this.Hide();
 			}
 		}
 

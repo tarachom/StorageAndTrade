@@ -121,7 +121,7 @@ namespace StorageAndTrade_1_0.Звіти
             Form MdiParent = Application.OpenForms["FormStorageAndTrade"];
 
             StorageAndTrade.Form_Report form_Report = new StorageAndTrade.Form_Report();
-            form_Report.Name += " - " + name;
+            form_Report.Text += " - " + name;
             form_Report.HtmlDocumentPath = pathToHtmlFile;
 
             if (MdiParent != null)
