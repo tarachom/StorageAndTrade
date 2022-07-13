@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 05.07.2022 01:17:12
+ * Дата конфігурації: 14.07.2022 00:08:10
  *
  */
 
@@ -168,12 +168,13 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_a8", "col_a9" }, fieldValue);
+                 new string[] { "col_a8", "col_a9", "col_c3" }, fieldValue);
             
             if (IsSelect)
             {
                 m_ЖурналРеєстрації_Const = fieldValue["col_a8"].ToString();
                 m_ФоновіЗадачі_Const = fieldValue["col_a9"].ToString();
+                m_ДатаАктуальності_Const = (fieldValue["col_c3"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_c3"].ToString()) : DateTime.MinValue;
                 
             }
 			
@@ -199,6 +200,17 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ФоновіЗадачі_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a9", m_ФоновіЗадачі_Const);
+            }
+        }
+        
+        static DateTime m_ДатаАктуальності_Const = DateTime.MinValue;
+        public static DateTime ДатаАктуальності_Const
+        {
+            get { return m_ДатаАктуальності_Const; }
+            set
+            {
+                m_ДатаАктуальності_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c3", m_ДатаАктуальності_Const);
             }
         }
         
