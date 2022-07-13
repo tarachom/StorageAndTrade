@@ -90,11 +90,13 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПереміщенняТоварів_Select переміщенняТоварів_Select = new Документи.ПереміщенняТоварів_Select();
-			переміщенняТоварів_Select.QuerySelect.Field.Add("spend");
-			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.Назва);
-			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.НомерДок);
-			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.ДатаДок);
-			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.Коментар);
+			переміщенняТоварів_Select.QuerySelect.Field.AddRange(new string[] {
+				"spend",
+				Документи.ПереміщенняТоварів_Const.Назва,
+				Документи.ПереміщенняТоварів_Const.НомерДок,
+				Документи.ПереміщенняТоварів_Const.ДатаДок,
+				Документи.ПереміщенняТоварів_Const.Коментар
+			});
 
 			//СкладВідправник
 			переміщенняТоварів_Select.QuerySelect.FieldAndAlias.Add(

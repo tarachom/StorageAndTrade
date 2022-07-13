@@ -92,12 +92,14 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняКлієнта_Select замовленняКлієнта_Select = new Документи.ЗамовленняКлієнта_Select();
-			замовленняКлієнта_Select.QuerySelect.Field.Add("spend");
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Назва);			
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.НомерДок);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.ДатаДок);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.СумаДокументу);
-			замовленняКлієнта_Select.QuerySelect.Field.Add(Документи.ЗамовленняКлієнта_Const.Коментар);
+			замовленняКлієнта_Select.QuerySelect.Field.AddRange(new string[] {
+				"spend",
+				Документи.ЗамовленняКлієнта_Const.Назва,
+				Документи.ЗамовленняКлієнта_Const.НомерДок,
+				Документи.ЗамовленняКлієнта_Const.ДатаДок,
+				Документи.ЗамовленняКлієнта_Const.СумаДокументу,
+				Документи.ЗамовленняКлієнта_Const.Коментар
+			});
 
 			//Контрагент
 			замовленняКлієнта_Select.QuerySelect.FieldAndAlias.Add(

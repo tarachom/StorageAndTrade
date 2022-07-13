@@ -69,7 +69,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].Width = 100;
 
-			dataGridViewRecords.Columns["Коментар"].Width = 400;
+			dataGridViewRecords.Columns["Коментар"].Width = 350;
 
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
@@ -92,12 +92,14 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПоступленняТоварівТаПослуг_Select поступленняТоварівТаПослуг_Select = new Документи.ПоступленняТоварівТаПослуг_Select();
-			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add("spend");
-			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.Назва);
-			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.НомерДок);
-			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок);
-			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.СумаДокументу);
-			поступленняТоварівТаПослуг_Select.QuerySelect.Field.Add(Документи.ПоступленняТоварівТаПослуг_Const.Коментар);
+			поступленняТоварівТаПослуг_Select.QuerySelect.Field.AddRange(new string[] {
+			    "spend",
+				Документи.ПоступленняТоварівТаПослуг_Const.Назва,
+				Документи.ПоступленняТоварівТаПослуг_Const.НомерДок,
+				Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок,
+				Документи.ПоступленняТоварівТаПослуг_Const.СумаДокументу,
+				Документи.ПоступленняТоварівТаПослуг_Const.Коментар
+			});
 
 			//Контрагент
 			поступленняТоварівТаПослуг_Select.QuerySelect.FieldAndAlias.Add(

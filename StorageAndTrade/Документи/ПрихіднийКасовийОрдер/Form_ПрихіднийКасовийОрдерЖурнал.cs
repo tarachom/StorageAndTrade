@@ -92,12 +92,14 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.ПрихіднийКасовийОрдер_Select прихіднийКасовийОрдер_Select = new Документи.ПрихіднийКасовийОрдер_Select();
-			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add("spend");
-			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.Назва);
-			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.НомерДок);
-			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.ДатаДок);
-			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.СумаДокументу);
-			прихіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.ПрихіднийКасовийОрдер_Const.Коментар);
+			прихіднийКасовийОрдер_Select.QuerySelect.Field.AddRange(new string[] {
+				"spend",
+				Документи.ПрихіднийКасовийОрдер_Const.Назва,
+				Документи.ПрихіднийКасовийОрдер_Const.НомерДок,
+				Документи.ПрихіднийКасовийОрдер_Const.ДатаДок,
+				Документи.ПрихіднийКасовийОрдер_Const.СумаДокументу,
+				Документи.ПрихіднийКасовийОрдер_Const.Коментар
+			});
 
 			//Контрагент
 			прихіднийКасовийОрдер_Select.QuerySelect.FieldAndAlias.Add(
