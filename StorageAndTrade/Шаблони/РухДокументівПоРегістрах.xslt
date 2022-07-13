@@ -22,6 +22,8 @@
 			<body>
 
 				<div class="container">
+					
+					<br/>
 					<h2>Рух документу по регістрах</h2>
 
 					<xsl:apply-templates select="Заголовок" />
@@ -59,7 +61,7 @@
 	
 	<xsl:template match="Заголовок">
 		 <br/>
-	     <table>
+	     <table class="table table-sm">
 			<xsl:for-each select="row">
 				<tr>
 					<th>Документ:</th>

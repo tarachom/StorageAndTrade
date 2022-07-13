@@ -208,9 +208,7 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ТовариНаСкладах", columnsName, listRow);
 
-            string PathToTemplate = Path.Combine( Path.GetDirectoryName(Application.ExecutablePath), "Template", "Template_ТовариНаСкладах_Звіт.xslt");
-
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, PathToTemplate);
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ТовариНаСкладах.xslt", true, "Товари на складах");
         }
 
         private void buttonCreatePidsumok_Click(object sender, EventArgs e)
@@ -352,9 +350,7 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ТовариНаСкладах", columnsName, listRow);
 
-            string PathToTemplate = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Template", "Template_ТовариНаСкладах_Звіт.xslt");
-
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, PathToTemplate);
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ТовариНаСкладах.xslt", true, "Товари на складах");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
