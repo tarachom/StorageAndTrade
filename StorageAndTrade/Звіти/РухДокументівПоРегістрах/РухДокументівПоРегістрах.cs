@@ -44,12 +44,216 @@ namespace StorageAndTrade_1_0.Звіти
     /// </summary>
     class РухДокументівПоРегістрах
     {
+        private static void AddCaptionInfo(XmlDocument xmlDoc, DocumentPointer ДокументВказівник)
+        {
+            string[] columnsName = new string[] { "uid", "Назва", "ДатаДок", "НомерДок" }; ;
+            List<object[]> listRow = new List<object[]>();
+
+            switch (ДокументВказівник.Name)
+            {
+                case "ЗамовленняПостачальнику":
+                    {
+                        ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = new ЗамовленняПостачальнику_Objest();
+                        замовленняПостачальнику_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                замовленняПостачальнику_Objest.Назва,
+                                замовленняПостачальнику_Objest.ДатаДок,
+                                замовленняПостачальнику_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "ПоступленняТоварівТаПослуг":
+                    {
+                        ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest = new ПоступленняТоварівТаПослуг_Objest();
+                        поступленняТоварівТаПослуг_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                поступленняТоварівТаПослуг_Objest.Назва,
+                                поступленняТоварівТаПослуг_Objest.ДатаДок,
+                                поступленняТоварівТаПослуг_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "ЗамовленняКлієнта":
+                    {
+                        ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = new ЗамовленняКлієнта_Objest();
+                        замовленняКлієнта_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                замовленняКлієнта_Objest.Назва,
+                                замовленняКлієнта_Objest.ДатаДок,
+                                замовленняКлієнта_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "РеалізаціяТоварівТаПослуг":
+                    {
+                        РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new РеалізаціяТоварівТаПослуг_Objest();
+                        реалізаціяТоварівТаПослуг_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                реалізаціяТоварівТаПослуг_Objest.Назва,
+                                реалізаціяТоварівТаПослуг_Objest.ДатаДок,
+                                реалізаціяТоварівТаПослуг_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "ВстановленняЦінНоменклатури":
+                    {
+                        ВстановленняЦінНоменклатури_Objest встановленняЦінНоменклатури_Objest = new ВстановленняЦінНоменклатури_Objest();
+                        встановленняЦінНоменклатури_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                встановленняЦінНоменклатури_Objest.Назва,
+                                встановленняЦінНоменклатури_Objest.ДатаДок,
+                                встановленняЦінНоменклатури_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "ПрихіднийКасовийОрдер":
+                    {
+                        ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = new ПрихіднийКасовийОрдер_Objest();
+                        прихіднийКасовийОрдер_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                прихіднийКасовийОрдер_Objest.Назва,
+                                прихіднийКасовийОрдер_Objest.ДатаДок,
+                                прихіднийКасовийОрдер_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "РозхіднийКасовийОрдер":
+                    {
+                        РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = new РозхіднийКасовийОрдер_Objest();
+                        розхіднийКасовийОрдер_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                розхіднийКасовийОрдер_Objest.Назва,
+                                розхіднийКасовийОрдер_Objest.ДатаДок,
+                                розхіднийКасовийОрдер_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "ПереміщенняТоварів":
+                    {
+                        ПереміщенняТоварів_Objest переміщенняТоварів_Objest = new ПереміщенняТоварів_Objest();
+                        переміщенняТоварів_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                переміщенняТоварів_Objest.Назва,
+                                переміщенняТоварів_Objest.ДатаДок,
+                                переміщенняТоварів_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "ПоверненняТоварівПостачальнику":
+                    {
+                        ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = new ПоверненняТоварівПостачальнику_Objest();
+                        поверненняТоварівПостачальнику_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                поверненняТоварівПостачальнику_Objest.Назва,
+                                поверненняТоварівПостачальнику_Objest.ДатаДок,
+                                поверненняТоварівПостачальнику_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                case "ПоверненняТоварівВідКлієнта":
+                    {
+                        ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new ПоверненняТоварівВідКлієнта_Objest();
+                        поверненняТоварівВідКлієнта_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                поверненняТоварівВідКлієнта_Objest.Назва,
+                                поверненняТоварівВідКлієнта_Objest.ДатаДок,
+                                поверненняТоварівВідКлієнта_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
+                default:
+                    {
+                        object[] fieldValue = new object[] { ДокументВказівник.UnigueID.ToString(), "<Не оприділений тип документу>", "", "" };
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+            }
+
+            Функції.DataToXML(xmlDoc, "Заголовок", columnsName, listRow);
+        }
+
         /// <summary>
         /// Функція формує звіт рухів документу по регістрах
         /// </summary>
         /// <param name="ДокументВказівник">Документ для якого формується звіт</param>
         public static void PrintRecords(DocumentPointer ДокументВказівник)
         {
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+
+            //Заголовок
+            AddCaptionInfo(xmlDoc, ДокументВказівник);
+
             //Словник [ Назва групи, Функція]
             Dictionary<string, Func<string>> funcQuery = new Dictionary<string, Func<string>>();
 
@@ -64,16 +268,14 @@ namespace StorageAndTrade_1_0.Звіти
 
             funcQuery.Add("ЦіниНоменклатури", Запит_ЦіниНоменклатури);
 
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
-
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("ДокументВказівник", ДокументВказівник.UnigueID.UGuid);
 
+            string[] columnsName;
+            List<object[]> listRow;
+
             foreach (KeyValuePair<string, Func<string>> func in funcQuery)
             {
-                string[] columnsName;
-                List<object[]> listRow;
-
                 string query = func.Value.Invoke();
                 //Console.WriteLine(query);
 
