@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 14.07.2022 00:08:10
+ * Дата конфігурації: 14.07.2022 00:51:31
  *
  */
 
@@ -217,7 +217,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ЖурналРеєстрації_Журнал_TablePart : ConstantsTablePart
         {
             public ЖурналРеєстрації_Журнал_TablePart() : base(Config.Kernel, "tab_a69",
-                 new string[] { "col_a7", "col_a8" }) 
+                 new string[] { "col_a7", "col_a8", "col_a1", "col_a2" }) 
             {
                 Records = new List<Record>();
             }
@@ -226,6 +226,8 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Дата = "col_a7";
             public const string Коментар = "col_a8";
+            public const string Обєкт = "col_a1";
+            public const string Користувач = "col_a2";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -240,6 +242,8 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Дата = (fieldValue["col_a7"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a7"].ToString()) : DateTime.MinValue;
                     record.Коментар = fieldValue["col_a8"].ToString();
+                    record.Обєкт = fieldValue["col_a1"].ToString();
+                    record.Користувач = fieldValue["col_a2"].ToString();
                     
                     Records.Add(record);
                 }
@@ -260,6 +264,8 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a7", record.Дата);
                     fieldValue.Add("col_a8", record.Коментар);
+                    fieldValue.Add("col_a1", record.Обєкт);
+                    fieldValue.Add("col_a2", record.Користувач);
                     
                     base.BaseSave(record.UID, fieldValue);
                 }
@@ -278,10 +284,14 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Дата = DateTime.MinValue;
                     Коментар = "";
+                    Обєкт = "";
+                    Користувач = "";
                     
                 }
                 public DateTime Дата { get; set; }
                 public string Коментар { get; set; }
+                public string Обєкт { get; set; }
+                public string Користувач { get; set; }
                 
             }            
         }
@@ -374,6 +384,103 @@ namespace StorageAndTrade_1_0.Константи
                 public bool Виконано { get; set; }
                 public bool Заблоковано { get; set; }
                 public string Результат { get; set; }
+                
+            }            
+        }
+          
+        public class ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart : ConstantsTablePart
+        {
+            public ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart() : base(Config.Kernel, "tab_a77",
+                 new string[] { "col_a2", "col_a1", "col_a4", "col_a3", "col_a5", "col_a6", "col_a7" }) 
+            {
+                Records = new List<Record>();
+            }
+            
+            public const string TABLE = "tab_a77";
+            
+            public const string Дата = "col_a2";
+            public const string НазваРегістру = "col_a1";
+            public const string ГрупаОбчислення = "col_a4";
+            public const string ПеріодОбчислення = "col_a3";
+            public const string Заблоковано = "col_a5";
+            public const string Виконано = "col_a6";
+            public const string Користувач = "col_a7";
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.Дата = (fieldValue["col_a2"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a2"].ToString()) : DateTime.MinValue;
+                    record.НазваРегістру = fieldValue["col_a1"].ToString();
+                    record.ГрупаОбчислення = fieldValue["col_a4"].ToString();
+                    record.ПеріодОбчислення = (fieldValue["col_a3"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a3"].ToString()) : DateTime.MinValue;
+                    record.Заблоковано = (fieldValue["col_a5"] != DBNull.Value) ? bool.Parse(fieldValue["col_a5"].ToString()) : false;
+                    record.Виконано = (fieldValue["col_a6"] != DBNull.Value) ? bool.Parse(fieldValue["col_a6"].ToString()) : false;
+                    record.Користувач = fieldValue["col_a7"].ToString();
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a2", record.Дата);
+                    fieldValue.Add("col_a1", record.НазваРегістру);
+                    fieldValue.Add("col_a4", record.ГрупаОбчислення);
+                    fieldValue.Add("col_a3", record.ПеріодОбчислення);
+                    fieldValue.Add("col_a5", record.Заблоковано);
+                    fieldValue.Add("col_a6", record.Виконано);
+                    fieldValue.Add("col_a7", record.Користувач);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    Дата = DateTime.MinValue;
+                    НазваРегістру = "";
+                    ГрупаОбчислення = "";
+                    ПеріодОбчислення = DateTime.MinValue;
+                    Заблоковано = false;
+                    Виконано = false;
+                    Користувач = "";
+                    
+                }
+                public DateTime Дата { get; set; }
+                public string НазваРегістру { get; set; }
+                public string ГрупаОбчислення { get; set; }
+                public DateTime ПеріодОбчислення { get; set; }
+                public bool Заблоковано { get; set; }
+                public bool Виконано { get; set; }
+                public string Користувач { get; set; }
                 
             }            
         }

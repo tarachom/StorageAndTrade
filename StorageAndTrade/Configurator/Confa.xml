@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>14.07.2022 00:08:10</DateTimeSave>
+  <DateTimeSave>14.07.2022 00:51:31</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -109,6 +109,24 @@
                   <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
+                <Field>
+                  <Name>Обєкт</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>string</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Користувач</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>string</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
               </Fields>
             </TablePart>
           </TabularParts>
@@ -172,6 +190,76 @@
                 <Field>
                   <Name>Результат</Name>
                   <NameInTable>col_a6</NameInTable>
+                  <Type>string</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+            <TablePart>
+              <Name>ОбчисленняВіртуальнихЗалишків</Name>
+              <Table>tab_a77</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Дата</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>datetime</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>НазваРегістру</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>string</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ГрупаОбчислення</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>string</Type>
+                  <Desc>Місяць, День</Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ПеріодОбчислення</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Заблоковано</Name>
+                  <NameInTable>col_a5</NameInTable>
+                  <Type>boolean</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Виконано</Name>
+                  <NameInTable>col_a6</NameInTable>
+                  <Type>boolean</Type>
+                  <Desc>
+                  </Desc>
+                  <IsPresentation>0</IsPresentation>
+                  <IsIndex>1</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Користувач</Name>
+                  <NameInTable>col_a7</NameInTable>
                   <Type>string</Type>
                   <Desc>
                   </Desc>
