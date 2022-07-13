@@ -26,7 +26,7 @@
     <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <PublishWizardCompleted>false</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -111,6 +111,12 @@
     <Compile Include="Configurator\Service.cs" />
     <Compile Include="Configurator\SpendTheDocument.cs" />
     <Compile Include="Configurator\Function.cs" />
+    <Compile Include="СпільніФорми\Form_Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="СпільніФорми\Form_Report.Designer.cs">
+      <DependentUpon>Form_Report.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,7 +266,7 @@
     <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.Designer.cs">
       <DependentUpon>Form_РозрахункиЗКлієнтами_Звіт.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\РухДокументівПоРегістрах\РухПоРугістрахНакопичення.cs" />
+    <Compile Include="Звіти\РухДокументівПоРегістрах\РухДокументівПоРегістрах.cs" />
     <Compile Include="Configurator\CodeGeneration.cs" />
     <Compile Include="Configurator\Triggers.cs" />
     <Compile Include="DocumentControl.cs">
@@ -671,6 +677,9 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="СпільніФорми\Form_Report.resx">
+      <DependentUpon>Form_Report.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormService.resx">
       <DependentUpon>FormService.cs</DependentUpon>
     </EmbeddedResource>
@@ -1044,17 +1053,17 @@
     <None Include="Resources\Icojam-Blue-Bits-Document-photo.ico" />
     <None Include="Resources\Document-checkbox.ico" />
     <None Include="Resources\Document-photo.ico" />
-    <Content Include="Звіти\ВідомістьПоТоварахНаСкладах\Template_ВідомістьПоТоварахНаСкладах_Звіт.xslt" />
-    <Content Include="Звіти\ЗамовленняПостачальникам\Template_ЗамовленняПостачальникам_Звіт.xslt" />
-    <Content Include="Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt" />
-    <Content Include="Звіти\РозрахункиЗПостачальниками\Template_РозрахункиЗПостачальниками_Звіт.xslt">
+    <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
+    <Content Include="Шаблони\ЗамовленняПостачальникам.xslt" />
+    <Content Include="Шаблони\ТовариНаСкладах.xslt" />
+    <Content Include="Шаблони\РозрахункиЗПостачальниками.xslt">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Звіти\РозрахункиЗКлієнтами\Template_РозрахункиЗКлієнтами_Звіт.xslt">
+    <Content Include="Шаблони\РозрахункиЗКлієнтами.xslt">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt" />
-    <Content Include="Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt" />
+    <Content Include="Шаблони\РухДокументівПоРегістрах.xslt" />
+    <Content Include="Шаблони\ЗамовленняКлієнта.xslt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -1082,16 +1091,9 @@ copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\C
 copy $(ProjectDir)Configurator\Confa.xml      $(TargetDir)\Confa.xml
 
 
+mkdir $(TargetDir)Шаблони
+copy  $(ProjectDir)Шаблони\*.*  $(TargetDir)Шаблони
 
-
-mkdir $(TargetDir)Template
-
-copy   $(ProjectDir)Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt                                            $(TargetDir)Template\Template_ЗамовленняКлієнта_Звіт.xslt
-copy   $(ProjectDir)Звіти\ЗамовленняПостачальникам\Template_ЗамовленняПостачальникам_Звіт.xslt         $(TargetDir)Template\Template_ЗамовленняПостачальникам_Звіт.xslt
-copy   $(ProjectDir)Звіти\РозрахункиЗКлієнтами\Template_РозрахункиЗКлієнтами_Звіт.xslt                                 $(TargetDir)Template\Template_РозрахункиЗКлієнтами_Звіт.xslt
-copy   $(ProjectDir)Звіти\РозрахункиЗПостачальниками\Template_РозрахункиЗПостачальниками_Звіт.xslt    $(TargetDir)Template\Template_РозрахункиЗПостачальниками_Звіт.xslt
-copy   $(ProjectDir)Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt                            $(TargetDir)Template\Template_РухДокументівПоРегістрах.xslt
-copy   $(ProjectDir)Звіти\ТовариНаСкладах\Template_ТовариНаСкладах_Звіт.xslt                                                   $(TargetDir)Template\Template_ТовариНаСкладах_Звіт.xslt
 </PreBuildEvent>
   </PropertyGroup>
   <Import Project="..\packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets" Condition="Exists('..\packages\Baseclass.Contrib.Nuget.Output.2.4.3\build\Baseclass.Contrib.Nuget.Output.targets')" />

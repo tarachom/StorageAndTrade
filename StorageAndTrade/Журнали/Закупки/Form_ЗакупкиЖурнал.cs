@@ -444,17 +444,17 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				{
 					case "ЗамовленняПостачальнику":
 						{
-							РухПоРугістрах.PrintRecords(new ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
 							break;
 						}
 					case "ПоступленняТоварівТаПослуг":
 						{
-							РухПоРугістрах.PrintRecords(new ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid)));
 							break;
 						}
 					case "ПоверненняТоварівПостачальнику":
 						{
-							РухПоРугістрах.PrintRecords(new ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid)));
 							break;
 						}
 				}

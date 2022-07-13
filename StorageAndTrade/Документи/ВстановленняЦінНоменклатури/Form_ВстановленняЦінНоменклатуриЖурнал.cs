@@ -247,7 +247,7 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 
-				Звіти.РухПоРугістрах.PrintRecords(new Документи.ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid)));
+				Звіти.РухДокументівПоРегістрах.PrintRecords(new Документи.ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid)));
 			}
 		}
 

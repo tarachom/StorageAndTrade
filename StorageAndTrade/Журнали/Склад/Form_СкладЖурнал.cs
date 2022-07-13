@@ -307,7 +307,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				{
 					case "ПереміщенняТоварів":
 						{
-							РухПоРугістрах.PrintRecords(new ПереміщенняТоварів_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПереміщенняТоварів_Pointer(new UnigueID(uid)));
 
 							break;
 						}

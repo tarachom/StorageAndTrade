@@ -42,7 +42,7 @@ namespace StorageAndTrade_1_0.Звіти
     /// <summary>
     /// Рух документу по регістрах
     /// </summary>
-    class РухПоРугістрах
+    class РухДокументівПоРегістрах
     {
         /// <summary>
         /// Функція формує звіт рухів документу по регістрах
@@ -83,8 +83,7 @@ namespace StorageAndTrade_1_0.Звіти
                     Функції.DataToXML(xmlDoc, func.Key, columnsName, listRow);
             }
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc,
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\РухДокументівПоРегістрах\Template_РухДокументівПоРегістрах.xslt");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухДокументівПоРегістрах.xslt", true, "");
         }
 
         #region Запити по регістрах накопичення

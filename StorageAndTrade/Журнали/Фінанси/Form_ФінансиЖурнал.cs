@@ -379,13 +379,13 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 				{
 					case "ПрихіднийКасовийОрдер":
 						{
-							РухПоРугістрах.PrintRecords(new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid)));
 
 							break;
 						}
 					case "РозхіднийКасовийОрдер":
 						{
-							РухПоРугістрах.PrintRecords(new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid)));
 
 							break;
 						}

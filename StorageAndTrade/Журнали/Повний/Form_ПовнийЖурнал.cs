@@ -1010,17 +1010,17 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
                     case "ЗамовленняКлієнта":
 						{
-							РухПоРугістрах.PrintRecords(new ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
 							break;
 						}
 					case "РеалізаціяТоварівТаПослуг":
 						{
-							РухПоРугістрах.PrintRecords(new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
 							break;
 						}
 					case "ПоверненняТоварівВідКлієнта":
 						{
-							РухПоРугістрах.PrintRecords(new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid)));
 							break;
 						}
 
@@ -1030,17 +1030,17 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 					case "ЗамовленняПостачальнику":
 						{
-							РухПоРугістрах.PrintRecords(new ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
 							break;
 						}
 					case "ПоступленняТоварівТаПослуг":
 						{
-							РухПоРугістрах.PrintRecords(new ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid)));
 							break;
 						}
 					case "ПоверненняТоварівПостачальнику":
 						{
-							РухПоРугістрах.PrintRecords(new ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid)));
 							break;
 						}
 
@@ -1050,7 +1050,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 					case "ПереміщенняТоварів":
 						{
-							РухПоРугістрах.PrintRecords(new ПереміщенняТоварів_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПереміщенняТоварів_Pointer(new UnigueID(uid)));
 
 							break;
 						}
@@ -1061,13 +1061,13 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 					case "ПрихіднийКасовийОрдер":
 						{
-							РухПоРугістрах.PrintRecords(new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid)));
 
 							break;
 						}
 					case "РозхіднийКасовийОрдер":
 						{
-							РухПоРугістрах.PrintRecords(new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid)));
 
 							break;
 						}
@@ -1078,7 +1078,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 					case "ВстановленняЦінНоменклатури":
 						{
-							РухПоРугістрах.PrintRecords(new ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid)));
+							РухДокументівПоРегістрах.PrintRecords(new ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid)));
 
 							break;
 						}

@@ -263,7 +263,7 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 
-				Звіти.РухПоРугістрах.PrintRecords(new Документи.ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
+				Звіти.РухДокументівПоРегістрах.PrintRecords(new Документи.ЗамовленняПостачальнику_Pointer(new UnigueID(uid)));
 			}
 		}
 		private void SpendDocuments(bool spend, string message)

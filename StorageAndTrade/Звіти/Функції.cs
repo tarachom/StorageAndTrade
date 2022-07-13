@@ -94,12 +94,14 @@ namespace StorageAndTrade_1_0.Звіти
         /// Записує хмл документ та трансформує його в HTML
         /// </summary>
         /// <param name="xmlDoc">хмл документ</param>
-        /// <param name="pathToTemplate">шлях до шаблону XSLT</param>
-        public static void XmlDocumentSaveAndTransform(XmlDocument xmlDoc, string pathToTemplate)
+        /// <param name="template">шлях до шаблону XSLT</param>
+        /// <param name="openFormReport">Відкрити звіт</param>
+        public static void XmlDocumentSaveAndTransform(XmlDocument xmlDoc, string template, bool openFormReport = true, string formReportName = "")
         {
             string pathToFolder = Path.GetDirectoryName(Application.ExecutablePath);
             string pathToXmlFile = Path.Combine(pathToFolder, "Report.xml");
             string pathToHtmlFile = Path.Combine(pathToFolder, "Report.html");
+            string pathToTemplate = Path.Combine(pathToFolder, template);
 
             xmlDoc.Save(pathToXmlFile);
 
@@ -108,9 +110,25 @@ namespace StorageAndTrade_1_0.Звіти
 
             xsltTransform.Transform(pathToXmlFile, pathToHtmlFile);
 
-            System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile); //"iexplore.exe"
+            //System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile); //"iexplore.exe"
+
+            if (openFormReport)
+                OpenFormReport(formReportName, pathToHtmlFile);
         }
 
+        public static void OpenFormReport(string name, string pathToHtmlFile)
+        {
+            Form MdiParent = Application.OpenForms["FormStorageAndTrade"];
+
+            StorageAndTrade.Form_Report form_Report = new StorageAndTrade.Form_Report();
+            form_Report.Name += " - " + name;
+            form_Report.HtmlDocumentPath = pathToHtmlFile;
+
+            if (MdiParent != null)
+                form_Report.MdiParent = MdiParent;
+
+            form_Report.Show();
+        }
     }
 }
 
