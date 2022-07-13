@@ -63,7 +63,7 @@ namespace StorageAndTrade
 
 			Fill_listBoxConfiguration();
 
-			buttonOpenConf_Click(this, new EventArgs());
+			//buttonOpenConf_Click(this, new EventArgs());
 		}
 
 		private void LoadConfigurationParamFromXML()

@@ -67,8 +67,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>form.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -1053,6 +1052,7 @@
     <None Include="Resources\Icojam-Blue-Bits-Document-photo.ico" />
     <None Include="Resources\Document-checkbox.ico" />
     <None Include="Resources\Document-photo.ico" />
+    <Content Include="form.ico" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ЗамовленняПостачальникам.xslt" />
     <Content Include="Шаблони\ТовариНаСкладах.xslt" />
