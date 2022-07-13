@@ -70,6 +70,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].Width = 100;
 
+			dataGridViewRecords.Columns["Коментар"].Width = 350;
+
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80; 
 		}
@@ -98,7 +100,8 @@ SELECT
     Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.НомерДок} AS НомерДок,
     Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.ДатаДок} AS ДатаДок,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.СумаДокументу} AS Сума
+    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.СумаДокументу} AS Сума,
+    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Коментар} AS Коментар
 FROM
 	{ПрихіднийКасовийОрдер_Const.TABLE} AS Док_ПрихіднийКасовийОрдер
 
@@ -115,7 +118,8 @@ SELECT
     Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.НомерДок} AS НомерДок,
     Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.ДатаДок} AS ДатаДок,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.СумаДокументу} AS Сума
+    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.СумаДокументу} AS Сума,
+    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Коментар} AS Коментар
 FROM
 	{РозхіднийКасовийОрдер_Const.TABLE} AS Док_РозхіднийКасовийОрдер
 
@@ -147,7 +151,8 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 					НомерДок = row[4].ToString(),
 					ДатаДок = row[5].ToString(),
 					Контрагент = row[6].ToString(),
-					Сума = (decimal)row[7]
+					Сума = (decimal)row[7],
+					Коментар = row[8].ToString()
 				});
 			}
 		}
@@ -163,6 +168,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			public string ДатаДок { get; set; }
 			public string Контрагент { get; set; }
 			public decimal Сума { get; set; }
+			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
 		}
 

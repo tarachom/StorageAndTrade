@@ -70,6 +70,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].Width = 100;
 
+			dataGridViewRecords.Columns["Коментар"].Width = 350;
+
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80; 
 		}
@@ -98,7 +100,8 @@ SELECT
     Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.НомерДок} AS НомерДок,
     Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.ДатаДок} AS ДатаДок,
     Довідник_Склади.{Склади_Const.Назва} AS СкладНазва,
-    0 AS Сума
+    0 AS Сума,
+    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.Коментар} AS Коментар
 FROM
 	{ПереміщенняТоварів_Const.TABLE} AS Док_ПереміщенняТоварів
 
@@ -130,8 +133,9 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 					НомерДок = row[4].ToString(),
 					ДатаДок = row[5].ToString(),
 					Склад = row[6].ToString(),
-					Сума = decimal.Parse(row[7].ToString())
-			    });
+					Сума = decimal.Parse(row[7].ToString()),
+					Коментар = row[8].ToString()
+				});
 			}
 		}
 
@@ -146,6 +150,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			public string ДатаДок { get; set; }
 			public string Склад { get; set; }
 			public decimal Сума { get; set; }
+			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
 		}
 
