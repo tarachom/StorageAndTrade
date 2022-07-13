@@ -118,6 +118,7 @@ namespace StorageAndTrade
 						comboBox_ГосподарськаОперація.SelectedItem = замовленняКлієнта_Objest.ГосподарськаОперація;
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(замовленняКлієнта_Objest.Договір.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(замовленняКлієнта_Objest.Підрозділ.UnigueID);
+						textBox_Коментар.Text = замовленняКлієнта_Objest.Коментар;
 
 						ЗамовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -149,6 +150,7 @@ namespace StorageAndTrade
 				замовленняКлієнта_Objest.Назва = $"Замовлення клієнта №{замовленняКлієнта_Objest.НомерДок} від {замовленняКлієнта_Objest.ДатаДок.ToShortDateString()}";
 
 				замовленняКлієнта_Objest.СумаДокументу = ЗамовленняКлієнта_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу();
+				замовленняКлієнта_Objest.Коментар = textBox_Коментар.Text;
 
 				try
 				{

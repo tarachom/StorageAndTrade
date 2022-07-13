@@ -47,6 +47,8 @@ namespace StorageAndTrade
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_Коментар = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -76,7 +78,7 @@ namespace StorageAndTrade
             // 
             // textBox_НомерДок
             // 
-            this.textBox_НомерДок.Location = new System.Drawing.Point(106, 19);
+            this.textBox_НомерДок.Location = new System.Drawing.Point(108, 19);
             this.textBox_НомерДок.Name = "textBox_НомерДок";
             this.textBox_НомерДок.Size = new System.Drawing.Size(182, 20);
             this.textBox_НомерДок.TabIndex = 20;
@@ -84,7 +86,7 @@ namespace StorageAndTrade
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 22);
+            this.label2.Location = new System.Drawing.Point(58, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 19;
@@ -110,6 +112,8 @@ namespace StorageAndTrade
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.textBox_Коментар);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.directoryControl_Організація);
             this.panel1.Controls.Add(this.label2);
@@ -118,7 +122,7 @@ namespace StorageAndTrade
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1031, 103);
+            this.panel1.Size = new System.Drawing.Size(1031, 123);
             this.panel1.TabIndex = 23;
             // 
             // label3
@@ -145,9 +149,9 @@ namespace StorageAndTrade
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.tabControl1);
-            this.panel2.Location = new System.Drawing.Point(3, 111);
+            this.panel2.Location = new System.Drawing.Point(3, 131);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1031, 474);
+            this.panel2.Size = new System.Drawing.Size(1031, 454);
             this.panel2.TabIndex = 24;
             // 
             // tabControl1
@@ -158,7 +162,7 @@ namespace StorageAndTrade
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1031, 474);
+            this.tabControl1.Size = new System.Drawing.Size(1031, 454);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -167,7 +171,7 @@ namespace StorageAndTrade
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1023, 448);
+            this.tabPage1.Size = new System.Drawing.Size(1023, 428);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Товари";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -177,7 +181,7 @@ namespace StorageAndTrade
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Name = "ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари";
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 442);
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 422);
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.TabIndex = 0;
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ДокументОбєкт = null;
             // 
@@ -224,6 +228,22 @@ namespace StorageAndTrade
             this.buttonSpend.UseVisualStyleBackColor = true;
             this.buttonSpend.Click += new System.EventHandler(this.buttonSpend_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(42, 88);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 63;
+            this.label7.Text = "Коментар:";
+            // 
+            // textBox_Коментар
+            // 
+            this.textBox_Коментар.Location = new System.Drawing.Point(108, 85);
+            this.textBox_Коментар.Name = "textBox_Коментар";
+            this.textBox_Коментар.Size = new System.Drawing.Size(916, 20);
+            this.textBox_Коментар.TabIndex = 64;
+            // 
             // Form_ВстановленняЦінНоменклатуриДокумент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,5 +286,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button buttonSpend;
         private System.Windows.Forms.Button buttonSaveAndSpend;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox_Коментар;
     }
 }

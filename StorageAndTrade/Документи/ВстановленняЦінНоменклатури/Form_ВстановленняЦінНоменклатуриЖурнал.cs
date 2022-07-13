@@ -63,6 +63,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 			dataGridViewRecords.Columns["Назва"].Width = 350;
+			dataGridViewRecords.Columns["Коментар"].Width = 350;
 
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
@@ -89,6 +90,7 @@ namespace StorageAndTrade
 			встановленняЦінНоменклатури_Select.QuerySelect.Field.Add(Документи.ВстановленняЦінНоменклатури_Const.Назва);
 			встановленняЦінНоменклатури_Select.QuerySelect.Field.Add(Документи.ВстановленняЦінНоменклатури_Const.НомерДок);
 			встановленняЦінНоменклатури_Select.QuerySelect.Field.Add(Документи.ВстановленняЦінНоменклатури_Const.ДатаДок);
+			встановленняЦінНоменклатури_Select.QuerySelect.Field.Add(Документи.ВстановленняЦінНоменклатури_Const.Коментар);
 
 			//ORDER
 			встановленняЦінНоменклатури_Select.QuerySelect.Order.Add(Документи.ВстановленняЦінНоменклатури_Const.ДатаДок, SelectOrder.ASC);
@@ -105,6 +107,7 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Документи.ВстановленняЦінНоменклатури_Const.Назва].ToString(),
 					НомерДок = cur.Fields[Документи.ВстановленняЦінНоменклатури_Const.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.ВстановленняЦінНоменклатури_Const.ДатаДок].ToString(),
+					Коментар = cur.Fields[Документи.ВстановленняЦінНоменклатури_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
 
@@ -129,6 +132,7 @@ namespace StorageAndTrade
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
+			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
 		}
 

@@ -32,8 +32,6 @@ namespace StorageAndTrade
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ПоступленняТоварівТаПослугДокумент));
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBox_НомерДок = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker_ДатаДок = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -63,6 +61,10 @@ namespace StorageAndTrade
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
+            this.textBox_НомерДок = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox_Коментар = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -91,22 +93,6 @@ namespace StorageAndTrade
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBox_НомерДок
-            // 
-            this.textBox_НомерДок.Location = new System.Drawing.Point(106, 19);
-            this.textBox_НомерДок.Name = "textBox_НомерДок";
-            this.textBox_НомерДок.Size = new System.Drawing.Size(182, 20);
-            this.textBox_НомерДок.TabIndex = 20;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Номер:";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -127,6 +113,8 @@ namespace StorageAndTrade
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.textBox_Коментар);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.directoryControl_Договір);
             this.panel1.Controls.Add(this.label9);
@@ -207,7 +195,7 @@ namespace StorageAndTrade
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(53, 151);
+            this.label6.Location = new System.Drawing.Point(494, 118);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 13);
             this.label6.TabIndex = 50;
@@ -216,7 +204,7 @@ namespace StorageAndTrade
             // directoryControl_Склад
             // 
             this.directoryControl_Склад.DirectoryPointerItem = null;
-            this.directoryControl_Склад.Location = new System.Drawing.Point(107, 144);
+            this.directoryControl_Склад.Location = new System.Drawing.Point(548, 111);
             this.directoryControl_Склад.Name = "directoryControl_Склад";
             this.directoryControl_Склад.SelectForm = null;
             this.directoryControl_Склад.Size = new System.Drawing.Size(376, 27);
@@ -401,6 +389,38 @@ namespace StorageAndTrade
             this.buttonSpend.UseVisualStyleBackColor = true;
             this.buttonSpend.Click += new System.EventHandler(this.buttonSpend_Click);
             // 
+            // textBox_НомерДок
+            // 
+            this.textBox_НомерДок.Location = new System.Drawing.Point(106, 19);
+            this.textBox_НомерДок.Name = "textBox_НомерДок";
+            this.textBox_НомерДок.Size = new System.Drawing.Size(182, 20);
+            this.textBox_НомерДок.TabIndex = 20;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(50, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Номер:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(40, 147);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 61;
+            this.label7.Text = "Коментар:";
+            // 
+            // textBox_Коментар
+            // 
+            this.textBox_Коментар.Location = new System.Drawing.Point(106, 144);
+            this.textBox_Коментар.Name = "textBox_Коментар";
+            this.textBox_Коментар.Size = new System.Drawing.Size(818, 20);
+            this.textBox_Коментар.TabIndex = 62;
+            // 
             // Form_ПоступленняТоварівТаПослугДокумент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,8 +450,6 @@ namespace StorageAndTrade
 
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBox_НомерДок;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker_ДатаДок;
         private System.Windows.Forms.Panel panel1;
@@ -461,5 +479,9 @@ namespace StorageAndTrade
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button buttonSpend;
         private System.Windows.Forms.Button buttonSaveAndSpend;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox_Коментар;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox_НомерДок;
     }
 }

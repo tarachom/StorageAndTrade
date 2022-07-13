@@ -87,6 +87,7 @@ namespace StorageAndTrade
 						textBox_НомерДок.Text = встановленняЦінНоменклатури_Objest.НомерДок;
 						dateTimePicker_ДатаДок.Value = встановленняЦінНоменклатури_Objest.ДатаДок;
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(встановленняЦінНоменклатури_Objest.Організація.UnigueID);
+						textBox_Коментар.Text = встановленняЦінНоменклатури_Objest.Коментар;
 
 						ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -107,6 +108,7 @@ namespace StorageAndTrade
 				встановленняЦінНоменклатури_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
 				встановленняЦінНоменклатури_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				встановленняЦінНоменклатури_Objest.Назва = $"Встановлення цін номенклатури №{встановленняЦінНоменклатури_Objest.НомерДок} від {встановленняЦінНоменклатури_Objest.ДатаДок.ToShortDateString()}";
+				встановленняЦінНоменклатури_Objest.Коментар = textBox_Коментар.Text;
 
 				try
 				{
