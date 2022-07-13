@@ -220,8 +220,7 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ЗамовленняКлієнтів", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, 
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ЗамовленняКлієнтів\Template_ЗамовленняКлієнта_Звіт.xslt");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта.xslt", true, "Замовлення клієнта");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

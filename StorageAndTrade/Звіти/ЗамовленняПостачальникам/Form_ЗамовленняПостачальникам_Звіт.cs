@@ -212,8 +212,7 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ЗамовленняПостачальникам", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc,
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ЗамовленняПостачальникам\Template_ЗамовленняПостачальникам_Звіт.xslt");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняПостачальникам.xslt", true, "Замовлення постачальникам");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

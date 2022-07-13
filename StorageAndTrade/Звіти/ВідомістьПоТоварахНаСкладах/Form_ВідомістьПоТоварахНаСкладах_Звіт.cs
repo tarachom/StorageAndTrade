@@ -189,8 +189,7 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ВідомістьПоТоварахНаСкладах", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc,
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\ВідомістьПоТоварахНаСкладах\Template_ВідомістьПоТоварахНаСкладах_Звіт.xslt");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВідомістьПоТоварахНаСкладах.xslt", true, "Відомість по товарах на складах");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

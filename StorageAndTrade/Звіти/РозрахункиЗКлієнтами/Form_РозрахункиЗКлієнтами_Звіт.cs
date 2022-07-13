@@ -155,8 +155,7 @@ ORDER BY Контрагент_Назва
 
             Функції.DataToXML(xmlDoc, "РозрахункиЗКлієнтами", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc,
-                @"E:\Project\StorageAndTrade\StorageAndTrade\Звіти\РозрахункиЗКлієнтами\Template_РозрахункиЗКлієнтами_Звіт.xslt");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами.xslt", true, "Розрахунки з клієнтами");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
