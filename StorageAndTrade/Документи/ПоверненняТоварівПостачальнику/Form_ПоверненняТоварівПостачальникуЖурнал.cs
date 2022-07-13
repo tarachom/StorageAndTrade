@@ -69,6 +69,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].Width = 100;
 
+			dataGridViewRecords.Columns["Коментар"].Width = 350;
+
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
 		}
@@ -95,6 +97,7 @@ namespace StorageAndTrade
 			поверненняТоварівПостачальнику_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівПостачальнику_Const.НомерДок);
 			поверненняТоварівПостачальнику_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок);
 			поверненняТоварівПостачальнику_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівПостачальнику_Const.СумаДокументу);
+			поверненняТоварівПостачальнику_Select.QuerySelect.Field.Add(Документи.ПоверненняТоварівПостачальнику_Const.Коментар);
 
 			//Контрагент
 			поверненняТоварівПостачальнику_Select.QuerySelect.FieldAndAlias.Add(
@@ -119,6 +122,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.СумаДокументу], 2),
+					Коментар = cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
 
@@ -145,6 +149,7 @@ namespace StorageAndTrade
 			public string ДатаДок { get; set; }
 			public string Контрагент { get; set; }
 			public decimal Сума { get; set; }
+			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
 		}
 

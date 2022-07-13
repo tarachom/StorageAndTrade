@@ -67,6 +67,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["СкладВідправник"].Width = 250;
 			dataGridViewRecords.Columns["СкладОдержувач"].Width = 250;
 
+			dataGridViewRecords.Columns["Коментар"].Width = 350;
+
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
 		}
@@ -92,6 +94,7 @@ namespace StorageAndTrade
 			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.Назва);
 			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.НомерДок);
 			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.ДатаДок);
+			переміщенняТоварів_Select.QuerySelect.Field.Add(Документи.ПереміщенняТоварів_Const.Коментар);
 
 			//СкладВідправник
 			переміщенняТоварів_Select.QuerySelect.FieldAndAlias.Add(
@@ -122,6 +125,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.ПереміщенняТоварів_Const.ДатаДок].ToString(),
 					СкладВідправник = cur.Fields["sklad_sender"].ToString(),
 					СкладОдержувач = cur.Fields["sklad_receiver"].ToString(),
+					Коментар = cur.Fields[Документи.ПереміщенняТоварів_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
 
@@ -148,6 +152,7 @@ namespace StorageAndTrade
 			public string ДатаДок { get; set; }
 			public string СкладВідправник { get; set; }
 			public string СкладОдержувач { get; set; }
+			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
 		}
 

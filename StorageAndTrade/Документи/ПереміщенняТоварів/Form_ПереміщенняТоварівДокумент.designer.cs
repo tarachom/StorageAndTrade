@@ -55,6 +55,8 @@ namespace StorageAndTrade
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox_Коментар = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -119,6 +121,8 @@ namespace StorageAndTrade
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.textBox_Коментар);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.directoryControl_СкладОтримувач);
             this.panel1.Controls.Add(this.label6);
@@ -131,7 +135,7 @@ namespace StorageAndTrade
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1031, 137);
+            this.panel1.Size = new System.Drawing.Size(1031, 155);
             this.panel1.TabIndex = 23;
             // 
             // label11
@@ -230,9 +234,9 @@ namespace StorageAndTrade
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.tabControl1);
-            this.panel2.Location = new System.Drawing.Point(3, 145);
+            this.panel2.Location = new System.Drawing.Point(3, 163);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1031, 440);
+            this.panel2.Size = new System.Drawing.Size(1031, 422);
             this.panel2.TabIndex = 24;
             // 
             // tabControl1
@@ -243,7 +247,7 @@ namespace StorageAndTrade
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1031, 440);
+            this.tabControl1.Size = new System.Drawing.Size(1031, 422);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -252,7 +256,7 @@ namespace StorageAndTrade
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1023, 414);
+            this.tabPage1.Size = new System.Drawing.Size(1023, 396);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Товари";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -262,7 +266,7 @@ namespace StorageAndTrade
             this.ПереміщенняТоварів_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ПереміщенняТоварів_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
             this.ПереміщенняТоварів_ТабличнаЧастина_Товари.Name = "ПереміщенняТоварів_ТабличнаЧастина_Товари";
-            this.ПереміщенняТоварів_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 408);
+            this.ПереміщенняТоварів_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 390);
             this.ПереміщенняТоварів_ТабличнаЧастина_Товари.TabIndex = 0;
             this.ПереміщенняТоварів_ТабличнаЧастина_Товари.ДокументОбєкт = null;
             // 
@@ -312,6 +316,22 @@ namespace StorageAndTrade
             this.buttonSpend.Text = "Провести";
             this.buttonSpend.UseVisualStyleBackColor = true;
             this.buttonSpend.Click += new System.EventHandler(this.buttonSpend_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(37, 124);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(60, 13);
+            this.label13.TabIndex = 69;
+            this.label13.Text = "Коментар:";
+            // 
+            // textBox_Коментар
+            // 
+            this.textBox_Коментар.Location = new System.Drawing.Point(106, 121);
+            this.textBox_Коментар.Name = "textBox_Коментар";
+            this.textBox_Коментар.Size = new System.Drawing.Size(918, 20);
+            this.textBox_Коментар.TabIndex = 70;
             // 
             // Form_ПереміщенняТоварівДокумент
             // 
@@ -365,5 +385,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button buttonSpend;
         private System.Windows.Forms.Button buttonSaveAndSpend;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox_Коментар;
     }
 }
