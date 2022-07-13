@@ -21,14 +21,16 @@
 			<body>
 
 				<div class="container">
-					<h2>Звіт</h2>
-					<p>Відомість по товарах на складах</p>
+
+					<br/>
+					<h2>Відомість по товарах на складах</h2>
+					<br/>
 
 					<table class="table table-bordered table-sm">
-						<tr>
+						<tr class="table-success">
 							<th>Склад</th>
 							<th>Номенклатура</th>
-							<th>Характеристика номенклатури</th>
+							<th>Характеристика</th>
 							<th>Початковий</th>
 							<th>Прихід</th>
 							<th>Розхід</th>

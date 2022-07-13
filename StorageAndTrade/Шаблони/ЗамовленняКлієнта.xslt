@@ -21,16 +21,18 @@
 			<body>
 
 				<div class="container">
-					<h2>Звіт</h2>
-					<p>Замовлення клієнтів</p>
+
+					<br/>
+					<h2>Замовлення клієнтів</h2>
+					<br/>
 
 					<table class="table table-bordered table-sm">
-						<tr>
+						<tr class="table-success">
 							<th>Номенклатура</th>
-							<th>Характеристика номенклатури</th>
+							<th>Характеристика</th>
 							<th>Склад</th>
-							<th>Замовлено</th>
-							<th>Сума</th>
+							<th style="text-align:center">Замовлено</th>
+							<th style="text-align:center">Сума</th>
 						</tr>
 
 						<xsl:for-each select="ЗамовленняКлієнтів/row">

@@ -40,7 +40,7 @@ namespace StorageAndTrade
 {
     /// <summary>
     /// Структура для обмеження кількості завантажених даних
-    /// для журналів.
+    /// для журналів і автоматичної підгрузки при прокрутці
     /// </summary>
     public struct LoadRecordsLimit
     {

@@ -25,7 +25,8 @@
 					
 					<br/>
 					<h2>Рух документу по регістрах</h2>
-
+					<br/>
+					
 					<xsl:apply-templates select="Заголовок" />
 					
 					<!--  -->
@@ -60,10 +61,10 @@
 	</xsl:template>
 	
 	<xsl:template match="Заголовок">
-		 <br/>
+
 	     <table class="table table-sm">
 			<xsl:for-each select="row">
-				<tr>
+				<tr class="table-info">
 					<th>Документ:</th>
 					<td><xsl:value-of select="Назва"/></td>
 				</tr>
@@ -85,19 +86,22 @@
 		<h5>Товари на cкладах</h5>
 
 		<table class="table table-bordered table-sm">
-			<tr>
-				<th>income</th>
+			<tr class="table-success">
+				<th></th>
 				<th>Номенклатура</th>
-				<th>Характеристика номенклатури</th>
+				<th>Характеристика</th>
 				<th>Склад</th>
-				<th>ВНаявності</th>
-				<th>ДоВідвантаження</th>
+				<th style="text-align:center">В наявності</th>
+				<th style="text-align:center">До відвантаження</th>
 			</tr>
 
 			<xsl:for-each select="row">
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="Номенклатура_Назва"/>
@@ -108,10 +112,10 @@
 					<td>
 						<xsl:value-of select="Склад_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="ВНаявності"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="ДоВідвантаження"/>
 					</td>
 				</tr>
@@ -127,19 +131,22 @@
 
 		<table class="table table-bordered table-sm">
 
-			<tr>
-				<th>income</th>
+			<tr class="table-success">
+				<th></th>
 				<th>Номенклатура</th>
-				<th>Характеристика номенклатури</th>
+				<th>Характеристика</th>
 				<th>Склад</th>
-				<th>Кількість</th>
+				<th style="text-align:center">Кількість</th>
 			</tr>
 
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="Номенклатура_Назва"/>
@@ -150,7 +157,7 @@
 					<td>
 						<xsl:value-of select="Склад_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="Кількість"/>
 					</td>
 				</tr>
@@ -167,21 +174,24 @@
 		
 		<table class="table table-bordered table-sm">
 
-			<tr>
-				<th>income</th>
+			<tr class="table-success">
+				<th></th>
 				<th>ЗамовленняКлієнта</th>
 				<th>Номенклатура</th>
-				<th>Характеристика номенклатури</th>
+				<th>Характеристика</th>
 				<th>Склад</th>
-				<th>Замовлено</th>
-				<th>Сума</th>
+				<th style="text-align:center">Замовлено</th>
+				<th style="text-align:center">Сума</th>
 			</tr>
 
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="ЗамовленняКлієнта_Назва"/>
@@ -195,10 +205,10 @@
 					<td>
 						<xsl:value-of select="Склад_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="Замовлено"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="Сума"/>
 					</td>
 				</tr>
@@ -215,18 +225,21 @@
 		
 		<table class="table table-bordered table-sm">
 
-			<tr>
-				<th>income</th>
+			<tr class="table-success">
+				<th></th>
 				<th>Контрагент</th>
 				<th>Валюта</th>
-				<th>Сума</th>
+				<th style="text-align:center">Сума</th>
 			</tr>
 
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="Контрагент_Назва"/>
@@ -234,7 +247,7 @@
 					<td>
 						<xsl:value-of select="Валюта_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="Сума"/>
 					</td>
 				</tr>
@@ -251,21 +264,24 @@
 		
 		<table class="table table-bordered table-sm">
 
-			<tr>
-				<th>income</th>
+			<tr class="table-success">
+				<th></th>
 				<th>Номенклатура</th>
-				<th>Характеристика номенклатури</th>
+				<th>Характеристика</th>
 				<th>Склад</th>
-				<th>ВНаявності</th>
-				<th>ВРезервіЗіСкладу</th>
-				<th>ВРезервіПідЗамовлення</th>
+				<th style="text-align:center">В наявності</th>
+				<th style="text-align:center">В резерві зі складу</th>
+				<th style="text-align:center">В резерві під замовлення</th>
 			</tr>
 
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="Номенклатура_Назва"/>
@@ -276,13 +292,13 @@
 					<td>
 						<xsl:value-of select="Склад_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="ВНаявності"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="ВРезервіЗіСкладу"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="ВРезервіПідЗамовлення"/>
 					</td>
 				</tr>
@@ -299,20 +315,23 @@
 
 		<table class="table table-bordered table-sm">
 
-			<tr>
-				<th>income</th>
-				<th>ЗамовленняПостачальнику</th>
+			<tr class="table-success">
+				<th></th>
+				<th>Замовлення постачальнику</th>
 				<th>Номенклатура</th>
-				<th>Характеристика номенклатури</th>
+				<th>Характеристика</th>
 				<th>Склад</th>
-				<th>Замовлено</th>
+				<th style="text-align:center">Замовлено</th>
 			</tr>
 
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="ЗамовленняПостачальнику_Назва"/>
@@ -326,7 +345,7 @@
 					<td>
 						<xsl:value-of select="Склад_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="Замовлено"/>
 					</td>
 				</tr>
@@ -343,18 +362,21 @@
 
 		<table class="table table-bordered table-sm">
 
-			<tr>
-				<th>income</th>
+			<tr class="table-success">
+				<th></th>
 				<th>Контрагент</th>
 				<th>Валюта</th>
-				<th>Сума</th>
+				<th style="text-align:center">Сума</th>
 			</tr>
 
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="Контрагент_Назва"/>
@@ -362,7 +384,7 @@
 					<td>
 						<xsl:value-of select="Валюта_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="Сума"/>
 					</td>
 				</tr>
@@ -379,19 +401,22 @@
 
 		<table class="table table-bordered table-sm">
 
-			<tr>
-				<th>income</th>
+			<tr class="table-success">
+				<th></th>
 				<th>Номенклатура</th>
-				<th>Характеристика номенклатури</th>
+				<th>Характеристика</th>
 				<th>Склад</th>
-				<th>ДоПоступлення</th>
+				<th style="text-align:center">До поступлення</th>
 			</tr>
 
 			<xsl:for-each select="row">
 
 				<tr>
-					<td>
-						<xsl:value-of select="income"/>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
 					</td>
 					<td>
 						<xsl:value-of select="Номенклатура_Назва"/>
@@ -402,7 +427,7 @@
 					<td>
 						<xsl:value-of select="Склад_Назва"/>
 					</td>
-					<td>
+					<td style="text-align:center">
 						<xsl:value-of select="ДоПоступлення"/>
 					</td>
 				</tr>
@@ -418,9 +443,9 @@
 		<h5>Ціни номенклатури</h5>
 
 		<table class="table table-bordered table-sm">
-			<tr>
+			<tr class="table-success">
 				<th>Номенклатура</th>
-				<th>Характеристика номенклатури</th>
+				<th>Характеристика</th>
 				<th>Види цін</th>
 				<th>Ціна</th>
 				<th>Пакування</th>
