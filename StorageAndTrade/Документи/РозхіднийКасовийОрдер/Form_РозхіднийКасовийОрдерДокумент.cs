@@ -101,6 +101,7 @@ namespace StorageAndTrade
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(розхіднийКасовийОрдер_Objest.Договір.UnigueID);
 						comboBox_ГосподарськаОперація.SelectedItem = розхіднийКасовийОрдер_Objest.ГосподарськаОперація;
 						textBox_СумаДокументу.Text = розхіднийКасовийОрдер_Objest.СумаДокументу.ToString();
+						textBox_Коментар.Text = розхіднийКасовийОрдер_Objest.Коментар;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -125,6 +126,7 @@ namespace StorageAndTrade
 				розхіднийКасовийОрдер_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				розхіднийКасовийОрдер_Objest.СумаДокументу = decimal.Parse(textBox_СумаДокументу.Text);
 				розхіднийКасовийОрдер_Objest.Назва = $"Розхідний касовий ордер №{розхіднийКасовийОрдер_Objest.НомерДок} від {розхіднийКасовийОрдер_Objest.ДатаДок.ToShortDateString()}";
+				розхіднийКасовийОрдер_Objest.Коментар = textBox_Коментар.Text;
 
 				try
 				{

@@ -69,6 +69,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].Width = 100;
 
+			dataGridViewRecords.Columns["Коментар"].Width = 350;
+
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Проведений"].Width = 80; 
 		}
@@ -90,11 +92,14 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Документи.РозхіднийКасовийОрдер_Select розхіднийКасовийОрдер_Select = new Документи.РозхіднийКасовийОрдер_Select();
-			розхіднийКасовийОрдер_Select.QuerySelect.Field.Add("spend");
-			розхіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.РозхіднийКасовийОрдер_Const.Назва);
-			розхіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.РозхіднийКасовийОрдер_Const.НомерДок);
-			розхіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.РозхіднийКасовийОрдер_Const.ДатаДок);
-			розхіднийКасовийОрдер_Select.QuerySelect.Field.Add(Документи.РозхіднийКасовийОрдер_Const.СумаДокументу);
+			розхіднийКасовийОрдер_Select.QuerySelect.Field.AddRange(new string[] {
+				"spend",
+				Документи.РозхіднийКасовийОрдер_Const.Назва,
+				Документи.РозхіднийКасовийОрдер_Const.НомерДок,
+				Документи.РозхіднийКасовийОрдер_Const.ДатаДок,
+				Документи.РозхіднийКасовийОрдер_Const.СумаДокументу,
+				Документи.РозхіднийКасовийОрдер_Const.Коментар 
+			});
 
 			//Контрагент
 			розхіднийКасовийОрдер_Select.QuerySelect.FieldAndAlias.Add(
@@ -119,6 +124,7 @@ namespace StorageAndTrade
 					ДатаДок = cur.Fields[Документи.РозхіднийКасовийОрдер_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.РозхіднийКасовийОрдер_Const.СумаДокументу], 2),
+					Коментар = cur.Fields[Документи.РозхіднийКасовийОрдер_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
 
@@ -145,6 +151,7 @@ namespace StorageAndTrade
 			public string ДатаДок { get; set; }
 			public string Контрагент { get; set; }
 			public decimal Сума { get; set; }
+			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
 		}
 
