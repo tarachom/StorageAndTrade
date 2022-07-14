@@ -486,8 +486,6 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								ЗамовленняПостачальнику_Pointer замовленняПостачальнику_Pointer = new ЗамовленняПостачальнику_Pointer(new UnigueID(uid));
 								ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest = замовленняПостачальнику_Pointer.GetDocumentObject(true);
 
-								замовленняПостачальнику_Objest.ClearSpendTheDocument();
-
                                 if (spend)
                                     try
                                     {
@@ -498,15 +496,15 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										замовленняПостачальнику_Objest.ClearSpendTheDocument();
                                         MessageBox.Show(exp.Message);
                                     }
+								else
+									замовленняПостачальнику_Objest.ClearSpendTheDocument();
 
-                                break;
+								break;
 							}
 						case "ПоступленняТоварівТаПослуг":
 							{
 								ПоступленняТоварівТаПослуг_Pointer поступленняТоварівТаПослуг_Pointer = new ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid));
 								ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest = поступленняТоварівТаПослуг_Pointer.GetDocumentObject(true);
-
-								поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
 								if (spend)
 									try
@@ -518,6 +516,8 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 										MessageBox.Show(exp.Message);
 									}
+								else
+									поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
 								break;
 							}
@@ -525,8 +525,6 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							{
 								ПоверненняТоварівПостачальнику_Pointer поверненняТоварівПостачальнику_Pointer = new ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid));
 								ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = поверненняТоварівПостачальнику_Pointer.GetDocumentObject(true);
-
-								поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
 
 								if (spend)
 									try
@@ -538,6 +536,8 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
 										MessageBox.Show(exp.Message);
 									}
+								else
+									поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
 
 								break;
 							}

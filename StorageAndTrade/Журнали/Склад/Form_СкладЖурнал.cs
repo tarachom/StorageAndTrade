@@ -338,9 +338,6 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								ПереміщенняТоварів_Pointer переміщенняТоварів_Pointer = new ПереміщенняТоварів_Pointer(new UnigueID(uid));
 								ПереміщенняТоварів_Objest переміщенняТоварів_Objest = переміщенняТоварів_Pointer.GetDocumentObject(true);
 
-								//Очищення регістрів
-								переміщенняТоварів_Objest.ClearSpendTheDocument();
-
                                 if (spend)
                                     try
                                     {
@@ -352,8 +349,10 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										переміщенняТоварів_Objest.ClearSpendTheDocument();
                                         MessageBox.Show(exp.Message);
                                     }
+								else
+									переміщенняТоварів_Objest.ClearSpendTheDocument();
 
-                                break;
+								break;
 							}
 					}
 				}

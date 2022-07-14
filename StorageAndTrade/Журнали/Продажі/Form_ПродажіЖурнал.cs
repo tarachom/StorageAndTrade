@@ -487,9 +487,6 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new ЗамовленняКлієнта_Pointer(new UnigueID(uid));
 								ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
 
-								//Очищення регістрів
-								замовленняКлієнта_Objest.ClearSpendTheDocument();
-
 								if (spend)
 									try
 									{
@@ -500,6 +497,8 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										замовленняКлієнта_Objest.ClearSpendTheDocument();
 										MessageBox.Show(exp.Message);
 									}
+								else
+									замовленняКлієнта_Objest.ClearSpendTheDocument();
 
 								break;
 							}
@@ -507,9 +506,6 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							{
 								РеалізаціяТоварівТаПослуг_Pointer реалізаціяТоварівТаПослуг_Pointer = new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid));
 								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = реалізаціяТоварівТаПослуг_Pointer.GetDocumentObject(true);
-
-								//Очищення регістрів
-								реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
 								if (spend)
 									try
@@ -521,15 +517,15 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
 										MessageBox.Show(exp.Message);
 									}
+								else
+									реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
 								break;
 							}
 						case "ПоверненняТоварівВідКлієнта":
 							{
 								ПоверненняТоварівВідКлієнта_Pointer поверненняТоварівВідКлієнта_Pointer = new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid));
 								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = поверненняТоварівВідКлієнта_Pointer.GetDocumentObject(true);
-
-								//Очищення регістрів
-								поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
 
 								if (spend)
 									try
@@ -541,6 +537,9 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
 										MessageBox.Show(exp.Message);
 									}
+								else
+									поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
+
 								break;
 							}
 					}

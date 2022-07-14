@@ -417,8 +417,6 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								ПрихіднийКасовийОрдер_Pointer прихіднийКасовийОрдер_Pointer = new ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid));
 								ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = прихіднийКасовийОрдер_Pointer.GetDocumentObject(true);
 
-								прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
-
                                 if (spend)
                                     try
                                     {
@@ -429,15 +427,15 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
                                         MessageBox.Show(exp.Message);
                                     }
+								else
+									прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
-                                break;
+								break;
 							}
 						case "РозхіднийКасовийОрдер":
 							{
 								РозхіднийКасовийОрдер_Pointer розхіднийКасовийОрдер_Pointer = new РозхіднийКасовийОрдер_Pointer(new UnigueID(uid));
 								РозхіднийКасовийОрдер_Objest розхіднийКасовийОрдер_Objest = розхіднийКасовийОрдер_Pointer.GetDocumentObject(true);
-
-								розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
 								if (spend)
 									try
@@ -449,6 +447,8 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 										розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 										MessageBox.Show(exp.Message);
 									}
+								else
+									розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
 								break;
 							}
