@@ -54,7 +54,7 @@ namespace StorageAndTrade
             {
                 CalculationBalances.СписокЗадач();
 
-                Thread.Sleep(5000);
+                Thread.Sleep(10000);
             }
         }
 
