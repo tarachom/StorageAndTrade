@@ -212,7 +212,10 @@ OR
                             string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Період}) = '{Період}';
-
+";
+                            if (ТипРуху == "Add")
+                            {
+                                query += $@"
 INSERT INTO {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.TABLE}
 (
     uid,
@@ -240,6 +243,7 @@ HAVING
         Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} ELSE 
        -Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) != 0
 ";
+                            }
 
                             //Console.WriteLine(query);
                             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
@@ -251,7 +255,10 @@ HAVING
                             string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_День_TablePart.Період}) = '{Період}';
-
+";
+                            if (ТипРуху == "Add")
+                            {
+                                query += $@"
 INSERT INTO {ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_День_TablePart.TABLE}
 (
     uid,
@@ -279,6 +286,7 @@ HAVING
         Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} ELSE 
        -Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} END) != 0
 ";
+                            }
 
                             //Console.WriteLine(query);
                             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
@@ -290,7 +298,10 @@ HAVING
                             string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.ЗамовленняПостачальникам_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.ЗамовленняПостачальникам_День_TablePart.Період}) = '{Період}';
-
+";
+                            if (ТипРуху == "Add")
+                            {
+                                query += $@"
 INSERT INTO {ВіртуальніТаблиціРегістрів.ЗамовленняПостачальникам_День_TablePart.TABLE}
 (
     uid,
@@ -320,6 +331,7 @@ HAVING
         Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} ELSE 
        -Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} END) != 0
 ";
+                            }
 
                             //Console.WriteLine(query);
                             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
@@ -331,7 +343,11 @@ HAVING
                             string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.ВільніЗалишки_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.ВільніЗалишки_День_TablePart.Період}) = '{Період}';
+";
 
+                            if (ТипРуху == "Add")
+                            {
+                                query += $@"
 INSERT INTO {ВіртуальніТаблиціРегістрів.ВільніЗалишки_День_TablePart.TABLE}
 (
     uid,
@@ -377,6 +393,7 @@ OR
         Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} ELSE 
        -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} END) != 0
 ";
+                            }
 
                             //Console.WriteLine(query);
                             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
