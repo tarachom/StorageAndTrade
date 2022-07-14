@@ -78,7 +78,7 @@ FROM
 GROUP BY
     Регістр, Група, Період;
 ";
-            Console.WriteLine(queryTempTable + querySelectTask);
+            //Console.WriteLine(queryTempTable + querySelectTask);
 
             string[] columnsName;
             List<object[]> listRow;
@@ -94,7 +94,7 @@ GROUP BY
                 string Група = row[1].ToString();
                 string Період = row[2].ToString();
 
-                Console.WriteLine(Регістр);
+                Console.WriteLine($"Регістр: {Регістр} Група: {Група} Період:{Період}");
 
                 switch(Регістр)
                 {
@@ -120,11 +120,9 @@ SELECT
     Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} AS Номенклатура, 
     Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
     Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} AS Склад,
-
     SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
         Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
        -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) AS ВНаявності,
-
     SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
         Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
        -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) AS ДоВідвантаження
@@ -135,18 +133,16 @@ WHERE
 GROUP BY 
     period_day, Номенклатура, ХарактеристикаНоменклатури, Склад
 HAVING 
-
    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
         Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
        -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) != 0
 OR
-
     SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
         Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
        -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) != 0
 ";
 
-                            Console.WriteLine(query);
+                            //Console.WriteLine(query);
                             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
                             break;
@@ -163,7 +159,7 @@ WHERE
 
 DROP TABLE {TempTable};
 ";
-            Console.WriteLine(queryUpdate);
+            //Console.WriteLine(queryUpdate);
             Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryUpdate);
             Config.KernelBackgroundTask.DataBase.CommitTransaction();
         }
