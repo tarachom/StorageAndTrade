@@ -45,7 +45,46 @@ namespace StorageAndTrade_1_0.Service
     {
         public static void СписокЗадач()
         {
-            Console.WriteLine("СписокЗадач");
+            string TempTable = "tmp_" + Guid.NewGuid().ToString().Replace("-", "");
+
+            Config.KernelBackgroundTask.DataBase.BeginTransaction();
+
+            string queryUID = $@"
+CREATE TEMP TABLE {TempTable} AS
+SELECT
+    Задачі.uid,
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.НазваРегістру} AS Регістр,
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.ГрупаОбчислення} AS Група,
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.ПеріодОбчислення} AS Період
+FROM
+    {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE} AS Задачі
+WHERE
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = false AND
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false;
+";
+            Console.WriteLine(queryUID);
+
+            string queryUpdate = $@"
+UPDATE {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}
+    SET {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = true
+WHERE 
+    uid IN (SELECT uid FROM {TempTable}); 
+";
+            Console.WriteLine(queryUpdate);
+
+            string query = $@"
+SELECT
+    Задачі.Регістр,
+    Задачі.Група,
+    Задачі.Період
+FROM
+    {TempTable} AS Задачі
+GROUP BY
+    Регістр, Група, Період;
+";
+            Console.WriteLine(query);
+
+            Config.KernelBackgroundTask.DataBase.CommitTransaction();
         }
     }
 

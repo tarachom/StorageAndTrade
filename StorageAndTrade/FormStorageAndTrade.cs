@@ -50,12 +50,12 @@ namespace StorageAndTrade
 
         void CalculationVirtualBalances()
         {
-            while (true)
-            {
+            //while (true)
+            //{
                 CalculationBalances.СписокЗадач();
 
-                Thread.Sleep(1000);
-            }
+                Thread.Sleep(5000);
+           // }
         }
 
         #endregion
