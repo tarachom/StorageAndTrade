@@ -40,6 +40,17 @@ using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade_1_0.Service
 {
+
+    class CalculationBalances
+    {
+        public static void СписокЗадач()
+        {
+            Console.WriteLine("СписокЗадач");
+        }
+    }
+
+    /************************/
+
     class CalculateBalancesInRegister
     {
         public static void ПідключитиДодаток_UUID_OSSP()
@@ -586,7 +597,6 @@ OR
             Config.Kernel.DataBase.ExecuteSQL(query);
         }
     }
-
 }
 
 

@@ -250,6 +250,7 @@ namespace StorageAndTrade
 				//bool IsExistsDatabase = false;
 
 				Конфа.Config.Kernel = new Kernel();
+				Конфа.Config.KernelBackgroundTask = new Kernel();
 
 				////Створення бази даних
 				//bool flagCreateDatabase = Конфа.Config.Kernel.CreateDatabaseIfNotExist(
@@ -265,8 +266,8 @@ namespace StorageAndTrade
 				//	return;
 				//}
 
-				//Підключення до бази даних
-				bool flagOpen2 = Конфа.Config.Kernel.Open2(
+				//Підключення до бази даних та завантаження конфігурації
+				bool flagOpen = Конфа.Config.Kernel.Open(
 						PathToConfXML,
 						itemConfigurationParam.DataBaseServer,
 						itemConfigurationParam.DataBaseLogin,
@@ -280,7 +281,21 @@ namespace StorageAndTrade
 					return;
 				}
 
-                #region Перевірка наявності таблиць
+				//Підключення до бази даних для фонових завдань
+				bool flagOpenBackgroundTask = Конфа.Config.Kernel.OpenOnlyDataBase(
+						itemConfigurationParam.DataBaseServer,
+						itemConfigurationParam.DataBaseLogin,
+						itemConfigurationParam.DataBasePassword,
+						itemConfigurationParam.DataBasePort,
+						itemConfigurationParam.DataBaseBaseName, out exception);
+
+				if (exception != null)
+				{
+					MessageBox.Show(exception.Message);
+					return;
+				}
+
+				#region Перевірка наявності таблиць
 				/*
                 ConfigurationInformationSchema configurationInformationSchema = Конфа.Config.Kernel.DataBase.SelectInformationSchema();
 
@@ -323,9 +338,9 @@ namespace StorageAndTrade
 					}
 				}
 				*/
-                #endregion
+				#endregion
 
-                Конфа.Config.ReadAllConstants();
+				Конфа.Config.ReadAllConstants();
 
 				//this.DialogResult = DialogResult.OK;
 				this.Hide();

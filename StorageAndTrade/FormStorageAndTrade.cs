@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Threading;
+
 using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
@@ -26,15 +28,37 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
+        private Thread ThreadBackgroundTask { get; set; }
+
         private void FormStorageAndTrade_Load(object sender, EventArgs e)
         {
             this.MdiChildActivate += FormStorageAndTrade_MdiChildActivate;
+
+            ThreadBackgroundTask = new Thread(new ThreadStart(CalculationVirtualBalances));
+            ThreadBackgroundTask.Start();
         }
 
         private void FormStorageAndTrade_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (ThreadBackgroundTask != null)
+                ThreadBackgroundTask.Abort();
+
             Application.Exit();
         }
+
+        #region BackgroundTask
+
+        void CalculationVirtualBalances()
+        {
+            while (true)
+            {
+                CalculationBalances.СписокЗадач();
+
+                Thread.Sleep(1000);
+            }
+        }
+
+        #endregion
 
         #region Довідники Меню
 

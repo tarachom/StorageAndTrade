@@ -61,7 +61,7 @@ namespace StorageAndTrade
 
 namespace StorageAndTrade_1_0
 { 
-    public static class Function
+    public class Function
     {
         /// <summary>
         /// Функція добавляє в таблицю фонових задач
