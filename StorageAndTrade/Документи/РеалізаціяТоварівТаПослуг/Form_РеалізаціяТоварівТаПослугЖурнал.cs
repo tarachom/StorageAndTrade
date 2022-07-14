@@ -287,9 +287,6 @@ namespace StorageAndTrade
 					Документи.РеалізаціяТоварівТаПослуг_Pointer реалізаціяТоварівТаПослуг_Pointer = new Документи.РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid));
 					Документи.РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = реалізаціяТоварівТаПослуг_Pointer.GetDocumentObject(true);
 
-					// Очищення регістрів
-					реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
-
 					if (spend)
 						try
 						{
@@ -302,6 +299,8 @@ namespace StorageAndTrade
 							MessageBox.Show(exp.Message);
 							return;
 						}
+					else
+						реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
 				}
 
 				LoadRecords();

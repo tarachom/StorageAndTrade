@@ -270,9 +270,6 @@ namespace StorageAndTrade
 					Документи.ВстановленняЦінНоменклатури_Pointer встановленняЦінНоменклатури_Pointer = new Документи.ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid));
 					Документи.ВстановленняЦінНоменклатури_Objest встановленняЦінНоменклатури_Objest = встановленняЦінНоменклатури_Pointer.GetDocumentObject(true);
 
-					//Очищення регістрів
-					встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
-
 					if (spend)
 						try
 						{
@@ -285,6 +282,8 @@ namespace StorageAndTrade
 							MessageBox.Show(exp.Message);
 							return;
 						}
+					else
+						встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
 				}
 
 				LoadRecords();

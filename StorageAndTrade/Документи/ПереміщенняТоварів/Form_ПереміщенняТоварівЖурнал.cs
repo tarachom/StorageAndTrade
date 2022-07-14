@@ -290,9 +290,6 @@ namespace StorageAndTrade
 					Документи.ПереміщенняТоварів_Pointer переміщенняТоварів_Pointer = new Документи.ПереміщенняТоварів_Pointer(new UnigueID(uid));
 					Документи.ПереміщенняТоварів_Objest переміщенняТоварів_Objest = переміщенняТоварів_Pointer.GetDocumentObject(true);
 
-					//Очищення регістрів
-					переміщенняТоварів_Objest.ClearSpendTheDocument();
-
 					if (spend)
 						try
 						{
@@ -305,6 +302,8 @@ namespace StorageAndTrade
 							MessageBox.Show(exp.Message);
 							return;
 						}
+					else
+						переміщенняТоварів_Objest.ClearSpendTheDocument();
 				}
 
 				LoadRecords();

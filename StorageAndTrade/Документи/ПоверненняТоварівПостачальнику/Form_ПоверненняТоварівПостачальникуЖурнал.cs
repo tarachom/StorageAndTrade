@@ -287,9 +287,6 @@ namespace StorageAndTrade
 					Документи.ПоверненняТоварівПостачальнику_Pointer поверненняТоварівПостачальнику_Pointer = new Документи.ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid));
 					Документи.ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = поверненняТоварівПостачальнику_Pointer.GetDocumentObject(true);
 
-					//Очищення регістрів
-					поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
-
 					if (spend)
 						try
 						{
@@ -302,6 +299,8 @@ namespace StorageAndTrade
 							MessageBox.Show(exp.Message);
 							return;
 						}
+					else
+						поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
 				}
 
 				LoadRecords();

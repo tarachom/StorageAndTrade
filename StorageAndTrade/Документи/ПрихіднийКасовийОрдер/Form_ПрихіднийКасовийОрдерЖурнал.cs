@@ -287,9 +287,6 @@ namespace StorageAndTrade
 					Документи.ПрихіднийКасовийОрдер_Pointer прихіднийКасовийОрдер_Pointer = new Документи.ПрихіднийКасовийОрдер_Pointer(new UnigueID(uid));
 					Документи.ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest = прихіднийКасовийОрдер_Pointer.GetDocumentObject(true);
 
-					//Очищення регістрів
-					прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
-
 					if (spend)
 						try
 						{
@@ -302,6 +299,8 @@ namespace StorageAndTrade
 							MessageBox.Show(exp.Message);
 							return;
 						}
+					else
+						прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 				}
 
 				LoadRecords();

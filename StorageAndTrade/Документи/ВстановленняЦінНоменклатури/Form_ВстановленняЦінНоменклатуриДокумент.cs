@@ -123,9 +123,6 @@ namespace StorageAndTrade
 					return;
 				}
 
-				//Очищення регістрів
-				встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
-
 				if (spendDoc)
 					try
 					{
@@ -138,6 +135,8 @@ namespace StorageAndTrade
 						MessageBox.Show(exp.Message);
 						return;
 					}
+				else
+					встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();

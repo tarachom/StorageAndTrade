@@ -140,9 +140,6 @@ namespace StorageAndTrade
 					return;
 				}
 
-				//Очищення регістрів
-				розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
-
 				if (spendDoc)
 					try
 					{
@@ -155,6 +152,8 @@ namespace StorageAndTrade
 						MessageBox.Show(exp.Message);
 						return;
 					}
+				else
+					розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();

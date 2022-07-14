@@ -287,9 +287,6 @@ namespace StorageAndTrade
 					Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
 					Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
 
-					//Очищення регістрів
-					замовленняКлієнта_Objest.ClearSpendTheDocument();
-
 					if (spend)
 						try
 						{
@@ -302,6 +299,8 @@ namespace StorageAndTrade
 							MessageBox.Show(exp.Message);
 							return;
 						}
+					else
+						замовленняКлієнта_Objest.ClearSpendTheDocument();
 				}
 
 				LoadRecords();

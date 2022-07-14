@@ -151,9 +151,6 @@ namespace StorageAndTrade
 					return;
 				}
 
-				//Очищення регістрів
-				поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
-
 				if (spendDoc)
 					try
 					{
@@ -166,6 +163,8 @@ namespace StorageAndTrade
 						MessageBox.Show(exp.Message);
 						return;
 					}
+				else
+					поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
 					OwnerForm.LoadRecords();
