@@ -112,7 +112,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ЗамовленняКлієнтів",
 				"ВільніЗалишки",
 				"РозрахункиЗКлієнтами"
-			}, "День", "Add", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 
 			return true;
 		}
@@ -133,7 +133,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ЗамовленняКлієнтів",
 				"ВільніЗалишки",
 				"РозрахункиЗКлієнтами"
-			}, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 		}
 	}
 
@@ -241,7 +241,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ВільніЗалишки",
 				"ТовариНаСкладах",
 				"РозрахункиЗКлієнтами"
-			}, "День", "Add", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 
 			return true;
 		}
@@ -266,7 +266,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ВільніЗалишки",
 				"ТовариНаСкладах",
 				"РозрахункиЗКлієнтами"
-			}, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 		}
 	}
 
@@ -438,7 +438,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ВільніЗалишки",
 				"ТовариДоПоступлення",
 				"РозрахункиЗПостачальниками"
-			}, "День", "Add", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 
 			return true;
 		}
@@ -467,7 +467,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ВільніЗалишки",
 				"ТовариДоПоступлення",
 				"РозрахункиЗПостачальниками"
-			}, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 		}
 	}
 
@@ -547,7 +547,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ЗамовленняПостачальникам",
 				"РозрахункиЗПостачальниками",
 				"ТовариДоПоступлення"
-			}, "День", "Add", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 
 			return true;
 		}
@@ -568,7 +568,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ЗамовленняПостачальникам",
 				"РозрахункиЗПостачальниками",
 				"ТовариДоПоступлення"
-			}, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 		}
 	}
 
@@ -654,7 +654,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ВільніЗалишки",
 				"ТовариНаСкладах",
 				"РозрахункиЗКлієнтами"
-			}, "День", "Add", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 
 			return true;
 		}
@@ -675,7 +675,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ВільніЗалишки",
 				"ТовариНаСкладах",
 				"РозрахункиЗКлієнтами"
-			}, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 		}
 	}
 
@@ -758,7 +758,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ТовариНаСкладах",
 				"ВільніЗалишки",
 				"РозрахункиЗПостачальниками"
-			}, "День", "Add", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 
 			return true;
 		}
@@ -779,7 +779,7 @@ namespace StorageAndTrade_1_0.Документи
 				"ТовариНаСкладах",
 				"ВільніЗалишки",
 				"РозрахункиЗПостачальниками"
-			}, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+			}, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 		}
 	}
 
@@ -812,7 +812,7 @@ namespace StorageAndTrade_1_0.Документи
 
 				розрахункиЗПостачальниками_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Add", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}
 
 			if (типДоговору == Перелічення.ТипДоговорів.ЗПокупцями)
@@ -835,7 +835,7 @@ namespace StorageAndTrade_1_0.Документи
 
 				розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Add", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}
 
 			#endregion
@@ -853,7 +853,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
 				розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}
 
 			if (типДоговору == Перелічення.ТипДоговорів.ЗПокупцями)
@@ -861,7 +861,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 				розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}			
 		}
 	}
@@ -895,7 +895,7 @@ namespace StorageAndTrade_1_0.Документи
 
 				розрахункиЗПостачальниками_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Add", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}
 
 			if (типДоговору == Перелічення.ТипДоговорів.ЗПокупцями)
@@ -918,7 +918,7 @@ namespace StorageAndTrade_1_0.Документи
 
 				розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Add", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}
 
 			#endregion
@@ -936,7 +936,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
 				розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗПостачальниками" }, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}
 
 			if (типДоговору == Перелічення.ТипДоговорів.ЗПокупцями)
@@ -944,7 +944,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 				розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+				Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "РозрахункиЗКлієнтами" }, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 			}
 		}
 	}
@@ -1004,7 +1004,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "ТовариНаСкладах" }, "День", "Add", ДокументОбєкт.ДатаДок, "");
+			Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "ТовариНаСкладах" }, "День", "Add", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 
 			return true;
 		}
@@ -1014,7 +1014,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "ТовариНаСкладах" }, "День", "Delete", ДокументОбєкт.ДатаДок, "");
+			Function.AddBackgroundTask_CalculationVirtualBalances(new string[] { "ТовариНаСкладах" }, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
 		}
 	}
 

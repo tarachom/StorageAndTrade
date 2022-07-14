@@ -128,6 +128,11 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					поступленняТоварівТаПослуг_Objest.New();
 
+				if (поступленняТоварівТаПослуг_Objest.IsSave && поступленняТоварівТаПослуг_Objest.Spend)
+                {
+					Console.WriteLine("SaveAndSpend");
+                }
+
 				поступленняТоварівТаПослуг_Objest.НомерДок = textBox_НомерДок.Text;
 				поступленняТоварівТаПослуг_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
 				поступленняТоварівТаПослуг_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;

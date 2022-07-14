@@ -51,6 +51,7 @@ namespace StorageAndTrade_1_0.Service
 CREATE TEMP TABLE {TempTable} AS
 SELECT
     Задачі.uid,
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Дата} AS Дата,
     Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.НазваРегістру} AS Регістр,
     Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.ГрупаОбчислення} AS Група,
     Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.ПеріодОбчислення} AS Період,
@@ -59,7 +60,9 @@ FROM
     {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE} AS Задачі
 WHERE
     Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = false AND 
-    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false;
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false
+ORDER BY Дата ASC
+;
 
 UPDATE {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}
     SET {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = true
@@ -76,12 +79,15 @@ SELECT
 FROM
     {TempTable} AS Задачі
 GROUP BY
-    Регістр, Група, Період, ТипРуху;
+    Регістр, Група, Період, ТипРуху
+;
 ";
             //Console.WriteLine(queryTempTable + querySelectTask);
 
             string[] columnsName;
             List<object[]> listRow;
+
+            Console.WriteLine("----------------");
 
             Config.KernelBackgroundTask.DataBase.BeginTransaction();
             Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryTempTable);

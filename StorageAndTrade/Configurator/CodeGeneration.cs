@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 14.07.2022 11:32:12
+ * Дата конфігурації: 14.07.2022 16:46:37
  *
  */
 
@@ -392,7 +392,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart : ConstantsTablePart
         {
             public ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart() : base(Config.Kernel, "tab_a77",
-                 new string[] { "col_a2", "col_a1", "col_a4", "col_a3", "col_a5", "col_a6", "col_a7", "col_a8" }) 
+                 new string[] { "col_a2", "col_a9", "col_a1", "col_a4", "col_a3", "col_a5", "col_a6", "col_a7", "col_a8" }) 
             {
                 Records = new List<Record>();
             }
@@ -400,6 +400,7 @@ namespace StorageAndTrade_1_0.Константи
             public const string TABLE = "tab_a77";
             
             public const string Дата = "col_a2";
+            public const string Документ = "col_a9";
             public const string НазваРегістру = "col_a1";
             public const string ГрупаОбчислення = "col_a4";
             public const string ПеріодОбчислення = "col_a3";
@@ -420,6 +421,7 @@ namespace StorageAndTrade_1_0.Константи
                     record.UID = (Guid)fieldValue["uid"];
                     
                     record.Дата = (fieldValue["col_a2"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a2"].ToString()) : DateTime.MinValue;
+                    record.Документ = fieldValue["col_a9"].ToString();
                     record.НазваРегістру = fieldValue["col_a1"].ToString();
                     record.ГрупаОбчислення = fieldValue["col_a4"].ToString();
                     record.ПеріодОбчислення = (fieldValue["col_a3"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a3"].ToString()) : DateTime.MinValue;
@@ -446,6 +448,7 @@ namespace StorageAndTrade_1_0.Константи
                     Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
                     fieldValue.Add("col_a2", record.Дата);
+                    fieldValue.Add("col_a9", record.Документ);
                     fieldValue.Add("col_a1", record.НазваРегістру);
                     fieldValue.Add("col_a4", record.ГрупаОбчислення);
                     fieldValue.Add("col_a3", record.ПеріодОбчислення);
@@ -470,6 +473,7 @@ namespace StorageAndTrade_1_0.Константи
                 public Record()
                 {
                     Дата = DateTime.MinValue;
+                    Документ = "";
                     НазваРегістру = "";
                     ГрупаОбчислення = "";
                     ПеріодОбчислення = DateTime.MinValue;
@@ -480,6 +484,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                 }
                 public DateTime Дата { get; set; }
+                public string Документ { get; set; }
                 public string НазваРегістру { get; set; }
                 public string ГрупаОбчислення { get; set; }
                 public DateTime ПеріодОбчислення { get; set; }
