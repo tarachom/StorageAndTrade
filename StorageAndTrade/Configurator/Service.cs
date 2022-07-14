@@ -47,9 +47,7 @@ namespace StorageAndTrade_1_0.Service
         {
             string TempTable = "tmp_" + Guid.NewGuid().ToString().Replace("-", "");
 
-            Config.KernelBackgroundTask.DataBase.BeginTransaction();
-
-            string queryUID = $@"
+            string queryTempTable = $@"
 CREATE TEMP TABLE {TempTable} AS
 SELECT
     Задачі.uid,
@@ -59,20 +57,17 @@ SELECT
 FROM
     {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE} AS Задачі
 WHERE
-    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = false AND
-    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false;
-";
-            Console.WriteLine(queryUID);
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = false 
+--  AND Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false
+;
 
-            string queryUpdate = $@"
 UPDATE {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}
     SET {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = true
 WHERE 
-    uid IN (SELECT uid FROM {TempTable}); 
+    uid IN (SELECT uid FROM {TempTable});
 ";
-            Console.WriteLine(queryUpdate);
 
-            string query = $@"
+            string querySelectTask = $@"
 SELECT
     Задачі.Регістр,
     Задачі.Група,
@@ -82,9 +77,36 @@ FROM
 GROUP BY
     Регістр, Група, Період;
 ";
-            Console.WriteLine(query);
+            Console.WriteLine(queryTempTable + querySelectTask);
 
-            Config.KernelBackgroundTask.DataBase.CommitTransaction();
+            string[] columnsName;
+            List<object[]> listRow;
+
+            //Config.KernelBackgroundTask.DataBase.BeginTransaction();
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryTempTable);
+            //Config.KernelBackgroundTask.DataBase.CommitTransaction();
+
+            Config.KernelBackgroundTask.DataBase.SelectRequest(querySelectTask, null, out columnsName, out listRow);
+
+            foreach (object[] row in listRow)
+            {
+                string Регістр = row[0].ToString();
+                string Група = row[1].ToString();
+                string Період = row[2].ToString();
+
+                Console.WriteLine(Регістр);
+
+                switch(Регістр)
+                {
+                    case "ТовариНаСкладах":
+                        {
+
+
+                            break;
+                        }
+                }
+
+            }
         }
     }
 

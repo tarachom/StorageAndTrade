@@ -282,7 +282,7 @@ namespace StorageAndTrade
 				}
 
 				//Підключення до бази даних для фонових завдань
-				bool flagOpenBackgroundTask = Конфа.Config.Kernel.OpenOnlyDataBase(
+				bool flagOpenBackgroundTask = Конфа.Config.KernelBackgroundTask.OpenOnlyDataBase(
 						itemConfigurationParam.DataBaseServer,
 						itemConfigurationParam.DataBaseLogin,
 						itemConfigurationParam.DataBasePassword,
