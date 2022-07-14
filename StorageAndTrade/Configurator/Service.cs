@@ -58,7 +58,8 @@ FROM
     {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE} AS Задачі
 WHERE
     Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = false 
---  AND Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false
+    AND 
+    Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false
 ;
 
 UPDATE {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}
@@ -82,10 +83,9 @@ GROUP BY
             string[] columnsName;
             List<object[]> listRow;
 
-            //Config.KernelBackgroundTask.DataBase.BeginTransaction();
+            Config.KernelBackgroundTask.DataBase.BeginTransaction();
             Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryTempTable);
-            //Config.KernelBackgroundTask.DataBase.CommitTransaction();
-
+            
             Config.KernelBackgroundTask.DataBase.SelectRequest(querySelectTask, null, out columnsName, out listRow);
 
             foreach (object[] row in listRow)
@@ -100,13 +100,72 @@ GROUP BY
                 {
                     case "ТовариНаСкладах":
                         {
+                            string query = $@"
+DELETE FROM {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.TABLE}
+WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.Період}) = '{Період}';
 
+INSERT INTO {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.TABLE}
+(
+    uid,
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.Період},
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.Номенклатура},
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.ХарактеристикаНоменклатури},
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.Склад},
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.ВНаявності},
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.ДоВідвантаження}
+)
+SELECT 
+    uuid_generate_v4(),
+    date_trunc('day', Рег_ТовариНаСкладах.period) as period_day,
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} AS Номенклатура, 
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} AS Склад,
+
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) AS ВНаявності,
+
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) AS ДоВідвантаження
+FROM 
+    {ТовариНаСкладах_Const.TABLE} AS Рег_ТовариНаСкладах
+WHERE
+    date_trunc('day', Рег_ТовариНаСкладах.period) = '{Період}'
+GROUP BY 
+    period_day, Номенклатура, ХарактеристикаНоменклатури, Склад
+HAVING 
+
+   SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) != 0
+OR
+
+    SUM(CASE WHEN Рег_ТовариНаСкладах.income = true THEN 
+        Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} ELSE 
+       -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) != 0
+";
+
+                            Console.WriteLine(query);
+                            Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
                             break;
                         }
                 }
-
             }
+
+            string queryUpdate = $@"
+UPDATE {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}
+    SET {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = true,
+        {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Заблоковано} = false
+WHERE 
+    uid IN (SELECT uid FROM {TempTable});
+
+DROP TABLE {TempTable};
+";
+            Console.WriteLine(queryUpdate);
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryUpdate);
+            Config.KernelBackgroundTask.DataBase.CommitTransaction();
         }
     }
 
