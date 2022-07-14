@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 14.07.2022 00:51:31
+ * Дата конфігурації: 14.07.2022 09:36:31
  *
  */
 
@@ -391,7 +391,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart : ConstantsTablePart
         {
             public ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart() : base(Config.Kernel, "tab_a77",
-                 new string[] { "col_a2", "col_a1", "col_a4", "col_a3", "col_a5", "col_a6", "col_a7" }) 
+                 new string[] { "col_a2", "col_a1", "col_a4", "col_a3", "col_a5", "col_a6", "col_a7", "col_a8" }) 
             {
                 Records = new List<Record>();
             }
@@ -405,6 +405,7 @@ namespace StorageAndTrade_1_0.Константи
             public const string Заблоковано = "col_a5";
             public const string Виконано = "col_a6";
             public const string Користувач = "col_a7";
+            public const string ТипРухуПоРегістру = "col_a8";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -424,6 +425,7 @@ namespace StorageAndTrade_1_0.Константи
                     record.Заблоковано = (fieldValue["col_a5"] != DBNull.Value) ? bool.Parse(fieldValue["col_a5"].ToString()) : false;
                     record.Виконано = (fieldValue["col_a6"] != DBNull.Value) ? bool.Parse(fieldValue["col_a6"].ToString()) : false;
                     record.Користувач = fieldValue["col_a7"].ToString();
+                    record.ТипРухуПоРегістру = fieldValue["col_a8"].ToString();
                     
                     Records.Add(record);
                 }
@@ -449,6 +451,7 @@ namespace StorageAndTrade_1_0.Константи
                     fieldValue.Add("col_a5", record.Заблоковано);
                     fieldValue.Add("col_a6", record.Виконано);
                     fieldValue.Add("col_a7", record.Користувач);
+                    fieldValue.Add("col_a8", record.ТипРухуПоРегістру);
                     
                     base.BaseSave(record.UID, fieldValue);
                 }
@@ -472,6 +475,7 @@ namespace StorageAndTrade_1_0.Константи
                     Заблоковано = false;
                     Виконано = false;
                     Користувач = "";
+                    ТипРухуПоРегістру = "";
                     
                 }
                 public DateTime Дата { get; set; }
@@ -481,6 +485,7 @@ namespace StorageAndTrade_1_0.Константи
                 public bool Заблоковано { get; set; }
                 public bool Виконано { get; set; }
                 public string Користувач { get; set; }
+                public string ТипРухуПоРегістру { get; set; }
                 
             }            
         }

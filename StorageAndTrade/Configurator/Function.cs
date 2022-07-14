@@ -30,11 +30,8 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using AccountingSoftware;
-
-using System.Windows.Forms;
-using System.IO;
-using System.Xml;
-using System.Xml.Xsl;
+using StorageAndTrade_1_0;
+using StorageAndTrade_1_0.Константи;
 
 namespace StorageAndTrade
 {
@@ -60,9 +57,42 @@ namespace StorageAndTrade
         public int LastCountRow;
     }
 
-    public class Function
+}
+
+namespace StorageAndTrade_1_0
+{ 
+    public static class Function
     {
-        
+        /// <summary>
+        /// Функція добавляє в таблицю фонових задач
+        /// нову задачу для обчислення залишків по регістрах
+        /// </summary>
+        /// <param name="registerName">Назва регістру</param>
+        /// <param name="groupName">Група (Місяць, День)</param>
+        /// <param name="typeMovement">Тип руху по регістру (добавлення, видалення)</param>
+        /// <param name="periodCalculation">Період розрахунку</param>
+        /// <param name="userName">Користувач</param>
+        public static void AddBackgroundTask_CalculationVirtualBalances(
+            string[] registerName, string groupName, string typeMovement, DateTime periodCalculation, string userName)
+        {
+            Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart обчисленняВіртуальнихЗалишків_TablePart =
+                new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart();
+
+            foreach (string register in registerName)
+            {
+                Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record record = new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record();
+                record.НазваРегістру = register;
+                record.ПеріодОбчислення = periodCalculation;
+                record.ГрупаОбчислення = groupName;
+                record.ТипРухуПоРегістру = typeMovement;
+                record.Користувач = userName;
+                record.Дата = DateTime.Now;
+
+                обчисленняВіртуальнихЗалишків_TablePart.Records.Add(record);
+            }
+
+            обчисленняВіртуальнихЗалишків_TablePart.Save(false);
+        }
     }
 }
 
