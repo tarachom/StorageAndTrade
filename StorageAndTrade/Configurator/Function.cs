@@ -72,6 +72,7 @@ namespace StorageAndTrade_1_0
         /// <param name="typeMovement">Тип руху по регістру (добавлення, видалення)</param>
         /// <param name="periodCalculation">Період розрахунку</param>
         /// <param name="userName">Користувач</param>
+        /// <param name="documentUID">UID Документу</param>
         public static void AddBackgroundTask_CalculationVirtualBalances(
             string[] registerName, string groupName, string typeMovement, DateTime periodCalculation, string userName, string documentUID)
         {

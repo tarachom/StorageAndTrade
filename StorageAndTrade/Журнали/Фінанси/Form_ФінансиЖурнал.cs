@@ -420,7 +420,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
                                 if (spend)
                                     try
                                     {
-										прихіднийКасовийОрдер_Objest.SpendTheDocument();
+										прихіднийКасовийОрдер_Objest.SpendTheDocument(прихіднийКасовийОрдер_Objest.ДатаДок);
                                     }
                                     catch (Exception exp)
                                     {
@@ -440,7 +440,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								if (spend)
 									try
 									{
-										розхіднийКасовийОрдер_Objest.SpendTheDocument();
+										розхіднийКасовийОрдер_Objest.SpendTheDocument(розхіднийКасовийОрдер_Objest.ДатаДок);
 									}
 									catch (Exception exp)
 									{

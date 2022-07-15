@@ -169,7 +169,7 @@ namespace StorageAndTrade
 					try
 					{
 						//Проведення
-						реалізаціяТоварівТаПослуг_Objest.SpendTheDocument();
+						реалізаціяТоварівТаПослуг_Objest.SpendTheDocument(реалізаціяТоварівТаПослуг_Objest.ДатаДок);
 					}
 					catch (Exception exp)
 					{

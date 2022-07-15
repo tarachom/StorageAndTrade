@@ -274,7 +274,7 @@ namespace StorageAndTrade
 						try
 						{
 							//Проведення
-							встановленняЦінНоменклатури_Objest.SpendTheDocument();
+							встановленняЦінНоменклатури_Objest.SpendTheDocument(встановленняЦінНоменклатури_Objest.ДатаДок);
 						}
 						catch (Exception exp)
 						{

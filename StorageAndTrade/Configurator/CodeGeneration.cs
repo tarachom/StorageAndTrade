@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 15.07.2022 14:39:18
+ * Дата конфігурації: 15.07.2022 15:44:46
  *
  */
 
@@ -7339,14 +7339,15 @@ namespace StorageAndTrade_1_0.Документи
 			ЗамовленняПостачальнику_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ЗамовленняПостачальнику_SpendTheDocument.Spend(this));
+            BaseSpend(ЗамовленняПостачальнику_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ЗамовленняПостачальнику_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ЗамовленняПостачальнику_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ЗамовленняПостачальнику_Objest Copy()
@@ -7784,14 +7785,15 @@ namespace StorageAndTrade_1_0.Документи
 			ПоступленняТоварівТаПослуг_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ПоступленняТоварівТаПослуг_SpendTheDocument.Spend(this));
+            BaseSpend(ПоступленняТоварівТаПослуг_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ПоступленняТоварівТаПослуг_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ПоступленняТоварівТаПослуг_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ПоступленняТоварівТаПослуг_Objest Copy()
@@ -8229,14 +8231,15 @@ namespace StorageAndTrade_1_0.Документи
 			ЗамовленняКлієнта_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ЗамовленняКлієнта_SpendTheDocument.Spend(this));
+            BaseSpend(ЗамовленняКлієнта_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ЗамовленняКлієнта_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ЗамовленняКлієнта_Objest Copy()
@@ -8671,14 +8674,15 @@ namespace StorageAndTrade_1_0.Документи
 			РеалізаціяТоварівТаПослуг_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(РеалізаціяТоварівТаПослуг_SpendTheDocument.Spend(this));
+            BaseSpend(РеалізаціяТоварівТаПослуг_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            РеалізаціяТоварівТаПослуг_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            РеалізаціяТоварівТаПослуг_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public РеалізаціяТоварівТаПослуг_Objest Copy()
@@ -9022,14 +9026,15 @@ namespace StorageAndTrade_1_0.Документи
 			ВстановленняЦінНоменклатури_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ВстановленняЦінНоменклатури_SpendTheDocument.Spend(this));
+            BaseSpend(ВстановленняЦінНоменклатури_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ВстановленняЦінНоменклатури_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ВстановленняЦінНоменклатури_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ВстановленняЦінНоменклатури_Objest Copy()
@@ -9333,14 +9338,15 @@ namespace StorageAndTrade_1_0.Документи
 			ПрихіднийКасовийОрдер_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ПрихіднийКасовийОрдер_SpendTheDocument.Spend(this));
+            BaseSpend(ПрихіднийКасовийОрдер_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ПрихіднийКасовийОрдер_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ПрихіднийКасовийОрдер_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ПрихіднийКасовийОрдер_Objest Copy()
@@ -9664,14 +9670,15 @@ namespace StorageAndTrade_1_0.Документи
 			РозхіднийКасовийОрдер_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(РозхіднийКасовийОрдер_SpendTheDocument.Spend(this));
+            BaseSpend(РозхіднийКасовийОрдер_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            РозхіднийКасовийОрдер_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            РозхіднийКасовийОрдер_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public РозхіднийКасовийОрдер_Objest Copy()
@@ -10016,14 +10023,15 @@ namespace StorageAndTrade_1_0.Документи
 			ПереміщенняТоварів_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ПереміщенняТоварів_SpendTheDocument.Spend(this));
+            BaseSpend(ПереміщенняТоварів_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ПереміщенняТоварів_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ПереміщенняТоварів_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ПереміщенняТоварів_Objest Copy()
@@ -10373,14 +10381,15 @@ namespace StorageAndTrade_1_0.Документи
 			ПоверненняТоварівПостачальнику_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ПоверненняТоварівПостачальнику_SpendTheDocument.Spend(this));
+            BaseSpend(ПоверненняТоварівПостачальнику_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ПоверненняТоварівПостачальнику_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ПоверненняТоварівПостачальнику_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ПоверненняТоварівПостачальнику_Objest Copy()
@@ -10731,14 +10740,15 @@ namespace StorageAndTrade_1_0.Документи
 			ПоверненняТоварівВідКлієнта_Triggers.AfterRecording(this);
 		}
 
-		public void SpendTheDocument()
+		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(ПоверненняТоварівВідКлієнта_SpendTheDocument.Spend(this));
+            BaseSpend(ПоверненняТоварівВідКлієнта_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            ПоверненняТоварівВідКлієнта_SpendTheDocument.ClearSpend(this); BaseSpend(false);
+            ПоверненняТоварівВідКлієнта_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ПоверненняТоварівВідКлієнта_Objest Copy()

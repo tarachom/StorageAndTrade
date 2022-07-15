@@ -144,7 +144,7 @@ namespace StorageAndTrade
 					try
 					{
 						//Проведення
-						розхіднийКасовийОрдер_Objest.SpendTheDocument();
+						розхіднийКасовийОрдер_Objest.SpendTheDocument(розхіднийКасовийОрдер_Objest.ДатаДок);
 					}
 					catch (Exception exp)
 					{

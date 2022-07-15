@@ -291,7 +291,7 @@ namespace StorageAndTrade
 						try
 						{
 							//Проведення
-							замовленняКлієнта_Objest.SpendTheDocument();
+							замовленняКлієнта_Objest.SpendTheDocument(замовленняКлієнта_Objest.ДатаДок);
 						}
 						catch (Exception exp)
 						{

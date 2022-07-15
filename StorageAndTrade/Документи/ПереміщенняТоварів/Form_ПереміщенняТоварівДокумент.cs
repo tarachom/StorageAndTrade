@@ -143,7 +143,7 @@ namespace StorageAndTrade
 					try
 					{
 						//Проведення
-						переміщенняТоварів_Objest.SpendTheDocument();
+						переміщенняТоварів_Objest.SpendTheDocument(переміщенняТоварів_Objest.ДатаДок);
 					}
 					catch (Exception exp)
 					{

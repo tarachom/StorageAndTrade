@@ -291,7 +291,7 @@ namespace StorageAndTrade
 						try
 						{
 							//Проведення
-							прихіднийКасовийОрдер_Objest.SpendTheDocument();
+							прихіднийКасовийОрдер_Objest.SpendTheDocument(прихіднийКасовийОрдер_Objest.ДатаДок);
 						}
 						catch (Exception exp)
 						{

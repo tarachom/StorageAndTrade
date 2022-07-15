@@ -155,7 +155,7 @@ namespace StorageAndTrade
 					try
 					{
 						//Проведення
-						поверненняТоварівПостачальнику_Objest.SpendTheDocument();
+						поверненняТоварівПостачальнику_Objest.SpendTheDocument(поверненняТоварівПостачальнику_Objest.ДатаДок);
 					}
 					catch (Exception exp)
 					{

@@ -277,6 +277,7 @@ namespace StorageAndTrade_1_0.Документи
 			//Якщо документ вже був проведений
 			if (ДокументОбєкт.Spend)
             {
+				Console.WriteLine(ДокументОбєкт.SpendDate);
 				//Function.AddBackgroundTask_CalculationVirtualBalances(new string[]
 				//{
 				//	"ЗамовленняПостачальникам",

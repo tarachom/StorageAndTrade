@@ -490,7 +490,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								if (spend)
 									try
 									{
-										замовленняКлієнта_Objest.SpendTheDocument();
+										замовленняКлієнта_Objest.SpendTheDocument(замовленняКлієнта_Objest.ДатаДок);
 									}
 									catch (Exception exp)
 									{
@@ -510,7 +510,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								if (spend)
 									try
 									{
-										реалізаціяТоварівТаПослуг_Objest.SpendTheDocument();
+										реалізаціяТоварівТаПослуг_Objest.SpendTheDocument(реалізаціяТоварівТаПослуг_Objest.ДатаДок);
 									}
 									catch (Exception exp)
 									{
@@ -530,7 +530,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								if (spend)
 									try
 									{
-										поверненняТоварівВідКлієнта_Objest.SpendTheDocument();
+										поверненняТоварівВідКлієнта_Objest.SpendTheDocument(поверненняТоварівВідКлієнта_Objest.ДатаДок);
 									}
 									catch (Exception exp)
 									{
