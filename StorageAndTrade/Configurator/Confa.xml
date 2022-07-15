@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>15.07.2022 15:44:46</DateTimeSave>
+  <DateTimeSave>15.07.2022 18:50:49</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -97,7 +97,6 @@
                   <Type>datetime</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -106,7 +105,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -115,7 +113,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -124,7 +121,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -149,7 +145,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -158,7 +153,6 @@
                   <Type>datetime</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -167,7 +161,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -176,7 +169,6 @@
                   <Type>boolean</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -184,7 +176,6 @@
                   <NameInTable>col_a4</NameInTable>
                   <Type>boolean</Type>
                   <Desc>Задача виконується</Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -193,7 +184,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -210,7 +200,6 @@
                   <Type>datetime</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -219,7 +208,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -228,7 +216,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -236,7 +223,6 @@
                   <NameInTable>col_a4</NameInTable>
                   <Type>string</Type>
                   <Desc>Місяць, День</Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -245,7 +231,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -253,7 +238,6 @@
                   <NameInTable>col_a8</NameInTable>
                   <Type>string</Type>
                   <Desc>Запис в регістер або видалення</Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -262,7 +246,6 @@
                   <Type>boolean</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -271,7 +254,6 @@
                   <Type>boolean</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -280,7 +262,6 @@
                   <Type>string</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -318,7 +299,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -328,7 +308,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -338,7 +317,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -348,7 +326,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -357,7 +334,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -366,7 +342,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -382,7 +357,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -392,7 +366,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -402,7 +375,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -412,7 +384,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -421,7 +392,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -430,7 +400,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -455,7 +424,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -465,7 +433,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -475,7 +442,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -485,7 +451,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -494,7 +459,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -503,7 +467,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -519,7 +482,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -529,7 +491,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -539,7 +500,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -549,7 +509,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -558,7 +517,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -567,7 +525,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -591,7 +548,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -601,7 +557,6 @@
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -611,7 +566,6 @@
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -620,7 +574,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -636,7 +589,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -646,7 +598,6 @@
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -656,7 +607,6 @@
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -665,7 +615,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -689,7 +638,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -699,7 +647,6 @@
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -709,7 +656,6 @@
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -718,7 +664,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -734,7 +679,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -744,7 +688,6 @@
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -754,7 +697,6 @@
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -763,7 +705,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -787,7 +728,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -797,7 +737,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -807,7 +746,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -817,7 +755,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -826,7 +763,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -842,7 +778,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -852,7 +787,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -862,7 +796,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -872,7 +805,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -881,7 +813,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -890,7 +821,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -914,7 +844,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -924,7 +853,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -934,7 +862,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -944,7 +871,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -953,7 +879,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -962,7 +887,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -971,7 +895,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -987,7 +910,6 @@
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
@@ -997,7 +919,6 @@
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -1007,7 +928,6 @@
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -1017,7 +937,6 @@
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -1026,7 +945,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -1035,7 +953,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -1044,7 +961,6 @@
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
-                  <IsPresentation>0</IsPresentation>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -1430,7 +1346,6 @@
               <Pointer>Перелічення.ТипиКонтактноїІнформації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1439,7 +1354,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1448,7 +1362,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1457,7 +1370,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1466,7 +1378,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1475,7 +1386,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1484,7 +1394,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
@@ -1847,7 +1756,6 @@
               <Pointer>Перелічення.ТипиКонтактноїІнформації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1856,7 +1764,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1865,7 +1772,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1874,7 +1780,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1883,7 +1788,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1892,7 +1796,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -1901,7 +1804,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
@@ -2002,7 +1904,6 @@
               <Pointer>Перелічення.ТипиКонтактноїІнформації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2011,7 +1912,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2020,7 +1920,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2029,7 +1928,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2038,7 +1936,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2047,7 +1944,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2056,7 +1952,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
@@ -2210,7 +2105,6 @@
               <Pointer>Перелічення.ТипиКонтактноїІнформації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2219,7 +2113,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2228,7 +2121,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2237,7 +2129,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2246,7 +2137,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2255,7 +2145,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2264,7 +2153,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
@@ -2343,7 +2231,6 @@
               <Pointer>Перелічення.ТипиКонтактноїІнформації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2352,7 +2239,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2361,7 +2247,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2370,7 +2255,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2379,7 +2263,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2388,7 +2271,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -2397,7 +2279,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
@@ -3294,7 +3175,6 @@
               <Pointer>Перелічення.ГосподарськіОперації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
@@ -4036,7 +3916,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4046,7 +3925,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4056,7 +3934,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4066,7 +3943,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4075,7 +3951,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4084,7 +3959,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4093,7 +3967,6 @@
               <Type>date</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4102,7 +3975,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4111,7 +3983,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4120,7 +3991,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4130,7 +4000,6 @@
               <Pointer>Довідники.Склади</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4140,12 +4009,16 @@
               <Pointer>Довідники.СтруктураПідприємства</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ЗамовленняПостачальникам</Name>
+        <Name>РозрахункиЗПостачальниками</Name>
+        <Name>ТовариДоПоступлення</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -4470,7 +4343,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4480,7 +4352,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4490,7 +4361,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4500,7 +4370,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4509,7 +4378,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4518,7 +4386,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4527,7 +4394,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4536,7 +4402,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4546,7 +4411,6 @@
               <Pointer>Довідники.Склади</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4556,7 +4420,6 @@
               <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4565,7 +4428,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4575,12 +4437,18 @@
               <Pointer>Довідники.СтруктураПідприємства</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+        <Name>ВільніЗалишки</Name>
+        <Name>ЗамовленняПостачальникам</Name>
+        <Name>РозрахункиЗПостачальниками</Name>
+        <Name>ТовариДоПоступлення</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -4876,7 +4744,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4886,7 +4753,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4896,7 +4762,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4906,7 +4771,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4915,7 +4779,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4924,7 +4787,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4934,7 +4796,6 @@
               <Pointer>Довідники.ВидиЦін</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4943,7 +4804,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4952,7 +4812,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4961,7 +4820,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -4971,12 +4829,16 @@
               <Pointer>Довідники.Склади</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ЗамовленняКлієнтів</Name>
+        <Name>РозрахункиЗКлієнтами</Name>
+        <Name>ВільніЗалишки</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -5291,7 +5153,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5301,7 +5162,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5311,7 +5171,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5321,7 +5180,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5330,7 +5188,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5339,7 +5196,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5349,7 +5205,6 @@
               <Pointer>Довідники.ВидиЦін</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5358,7 +5213,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5367,7 +5221,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5377,7 +5230,6 @@
               <Pointer>Довідники.Склади</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5387,7 +5239,6 @@
               <Pointer>Документи.ЗамовленняКлієнта</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5396,12 +5247,17 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+        <Name>ЗамовленняКлієнтів</Name>
+        <Name>РозрахункиЗКлієнтами</Name>
+        <Name>ВільніЗалишки</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -5477,7 +5333,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5487,7 +5342,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5497,7 +5351,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5507,7 +5360,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5517,7 +5369,6 @@
               <Pointer>Довідники.ВидиЦін</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5526,12 +5377,12 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation />
       <TriggerFunctions>
         <BeforeSave>ВстановленняЦінНоменклатури_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ВстановленняЦінНоменклатури_Triggers.AfterRecording</AfterSave>
@@ -5704,7 +5555,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5713,7 +5563,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5722,7 +5571,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5732,7 +5580,6 @@
               <Pointer>Довідники.СтруктураПідприємства</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5742,7 +5589,6 @@
               <Pointer>Довідники.Валюти</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5752,12 +5598,15 @@
               <Pointer>Довідники.Організації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>РозрахункиЗКлієнтами</Name>
+        <Name>РозрахункиЗПостачальниками</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -5932,7 +5781,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5941,7 +5789,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5950,7 +5797,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5960,7 +5806,6 @@
               <Pointer>Довідники.Валюти</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5970,7 +5815,6 @@
               <Pointer>Довідники.СтруктураПідприємства</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5979,7 +5823,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -5989,12 +5832,15 @@
               <Pointer>Довідники.Організації</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>РозрахункиЗКлієнтами</Name>
+        <Name>РозрахункиЗПостачальниками</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -6196,7 +6042,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6206,7 +6051,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6216,7 +6060,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6226,7 +6069,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6235,7 +6077,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6244,12 +6085,14 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>ПереміщенняТоварів_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ПереміщенняТоварів_Triggers.AfterRecording</AfterSave>
@@ -6460,7 +6303,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6470,7 +6312,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6480,7 +6321,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6490,7 +6330,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6499,7 +6338,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6508,7 +6346,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6517,7 +6354,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6526,7 +6362,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6536,12 +6371,16 @@
               <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+        <Name>ВільніЗалишки</Name>
+        <Name>РозрахункиЗПостачальниками</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -6725,7 +6564,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6735,7 +6573,6 @@
               <Pointer>Довідники.Номенклатура</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6745,7 +6582,6 @@
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6755,7 +6591,6 @@
               <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6764,7 +6599,6 @@
               <Type>integer</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6773,7 +6607,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6782,7 +6615,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6791,7 +6623,6 @@
               <Type>numeric</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6800,7 +6631,6 @@
               <Type>string</Type>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
@@ -6810,12 +6640,16 @@
               <Pointer>Документи.РеалізаціяТоварівТаПослуг</Pointer>
               <Desc>
               </Desc>
-              <IsPresentation>0</IsPresentation>
               <IsIndex>0</IsIndex>
             </Field>
           </Fields>
         </TablePart>
       </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+        <Name>РозрахункиЗКлієнтами</Name>
+        <Name>ВільніЗалишки</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -6843,7 +6677,6 @@
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -6853,7 +6686,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -6863,7 +6695,6 @@
             <Pointer>Довідники.ВидиЦін</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -6876,7 +6707,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -6886,7 +6716,6 @@
             <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -6896,7 +6725,6 @@
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -6919,7 +6747,6 @@
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -6932,7 +6759,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -6941,7 +6767,6 @@
             <Type>integer</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -6967,7 +6792,6 @@
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -6977,7 +6801,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -6987,7 +6810,6 @@
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7000,7 +6822,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7009,7 +6830,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7033,7 +6853,6 @@
             <Pointer>Довідники.Організації</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7042,7 +6861,6 @@
             <Type>string</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7052,7 +6870,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7065,7 +6882,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7079,7 +6895,6 @@
             <Pointer>Перелічення.ГосподарськіОперації</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7100,7 +6915,6 @@
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7110,7 +6924,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7120,7 +6933,6 @@
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7133,7 +6945,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7156,7 +6967,6 @@
             <Pointer>Документи.ЗамовленняКлієнта</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7166,7 +6976,6 @@
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7176,7 +6985,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7186,7 +6994,6 @@
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7199,7 +7006,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7208,7 +7014,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7232,7 +7037,6 @@
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7242,7 +7046,6 @@
             <Pointer>Довідники.Контрагенти</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7255,7 +7058,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7279,7 +7081,6 @@
             <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7289,7 +7090,6 @@
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7298,7 +7098,6 @@
             <Type>string</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7311,7 +7110,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7320,7 +7118,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7334,7 +7131,6 @@
             <Pointer>Перелічення.ГосподарськіОперації</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7355,7 +7151,6 @@
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7365,7 +7160,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7375,7 +7169,6 @@
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7388,7 +7181,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7397,7 +7189,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7406,7 +7197,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7430,7 +7220,6 @@
             <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7440,7 +7229,6 @@
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7450,7 +7238,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7460,7 +7247,6 @@
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7473,7 +7259,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7497,7 +7282,6 @@
             <Pointer>Довідники.Контрагенти</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7507,7 +7291,6 @@
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7520,7 +7303,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7534,7 +7316,6 @@
             <Pointer>Перелічення.ФормаОплати</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7544,7 +7325,6 @@
             <Pointer>Перелічення.ГосподарськіОперації</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7565,7 +7345,6 @@
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7575,7 +7354,6 @@
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
@@ -7585,7 +7363,6 @@
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
@@ -7598,7 +7375,6 @@
             <Type>numeric</Type>
             <Desc>
             </Desc>
-            <IsPresentation>0</IsPresentation>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>
