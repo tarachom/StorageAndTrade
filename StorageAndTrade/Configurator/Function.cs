@@ -67,32 +67,25 @@ namespace StorageAndTrade_1_0
         /// Функція добавляє в таблицю фонових задач
         /// нову задачу для обчислення залишків по регістрах
         /// </summary>
-        /// <param name="registerName">Назва регістру</param>
-        /// <param name="groupName">Група (Місяць, День)</param>
+        /// <param name="documentUid">UID Документу</param>
         /// <param name="typeMovement">Тип руху по регістру (добавлення, видалення)</param>
         /// <param name="periodCalculation">Період розрахунку</param>
         /// <param name="userName">Користувач</param>
-        /// <param name="documentUID">UID Документу</param>
-        public static void AddBackgroundTask_CalculationVirtualBalances(
-            string[] registerName, string groupName, string typeMovement, DateTime periodCalculation, string userName, string documentUID)
+        public static void AddBackgroundTask_CalculationVirtualBalances(string documentUid, string typeMovement, DateTime periodCalculation, string userName)
         {
             Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart обчисленняВіртуальнихЗалишків_TablePart =
                 new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart();
 
-            foreach (string register in registerName)
-            {
-                Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record record = new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record();
-                record.НазваРегістру = register;
-                record.ПеріодОбчислення = periodCalculation;
-                record.ГрупаОбчислення = groupName;
-                record.ТипРухуПоРегістру = typeMovement;
-                record.Користувач = userName;
-                record.Дата = DateTime.Now;
-                record.Документ = documentUID;
+            Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record record =
+                new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record();
 
-                обчисленняВіртуальнихЗалишків_TablePart.Records.Add(record);
-            }
+            record.Дата = DateTime.Now;
+            record.Документ = documentUid;
+            record.ПеріодОбчислення = periodCalculation;
+            record.ТипРухуПоРегістру = typeMovement;
+            record.Користувач = userName;
 
+            обчисленняВіртуальнихЗалишків_TablePart.Records.Add(record);
             обчисленняВіртуальнихЗалишків_TablePart.Save(false);
         }
     }

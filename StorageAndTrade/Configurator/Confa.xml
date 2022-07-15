@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>15.07.2022 18:50:49</DateTimeSave>
+  <DateTimeSave>15.07.2022 19:02:31</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -198,39 +198,21 @@
                   <Name>Дата</Name>
                   <NameInTable>col_a2</NameInTable>
                   <Type>datetime</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Дата запису</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
                   <Name>Документ</Name>
                   <NameInTable>col_a9</NameInTable>
                   <Type>string</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>НазваРегістру</Name>
-                  <NameInTable>col_a1</NameInTable>
-                  <Type>string</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>ГрупаОбчислення</Name>
-                  <NameInTable>col_a4</NameInTable>
-                  <Type>string</Type>
-                  <Desc>Місяць, День</Desc>
+                  <Desc>Uid Документу</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
                   <Name>ПеріодОбчислення</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>date</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Дата на яку потрібно зробити розрахунок</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>

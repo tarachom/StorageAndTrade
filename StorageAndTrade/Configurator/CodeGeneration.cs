@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 15.07.2022 18:50:49
+ * Дата конфігурації: 15.07.2022 19:02:31
  *
  */
 
@@ -392,7 +392,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart : ConstantsTablePart
         {
             public ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart() : base(Config.Kernel, "tab_a77",
-                 new string[] { "col_a2", "col_a9", "col_a1", "col_a4", "col_a3", "col_a8", "col_a5", "col_a6", "col_a7" }) 
+                 new string[] { "col_a2", "col_a9", "col_a3", "col_a8", "col_a5", "col_a6", "col_a7" }) 
             {
                 Records = new List<Record>();
             }
@@ -401,8 +401,6 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Дата = "col_a2";
             public const string Документ = "col_a9";
-            public const string НазваРегістру = "col_a1";
-            public const string ГрупаОбчислення = "col_a4";
             public const string ПеріодОбчислення = "col_a3";
             public const string ТипРухуПоРегістру = "col_a8";
             public const string Заблоковано = "col_a5";
@@ -422,8 +420,6 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Дата = (fieldValue["col_a2"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a2"].ToString()) : DateTime.MinValue;
                     record.Документ = fieldValue["col_a9"].ToString();
-                    record.НазваРегістру = fieldValue["col_a1"].ToString();
-                    record.ГрупаОбчислення = fieldValue["col_a4"].ToString();
                     record.ПеріодОбчислення = (fieldValue["col_a3"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a3"].ToString()) : DateTime.MinValue;
                     record.ТипРухуПоРегістру = fieldValue["col_a8"].ToString();
                     record.Заблоковано = (fieldValue["col_a5"] != DBNull.Value) ? bool.Parse(fieldValue["col_a5"].ToString()) : false;
@@ -449,8 +445,6 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a2", record.Дата);
                     fieldValue.Add("col_a9", record.Документ);
-                    fieldValue.Add("col_a1", record.НазваРегістру);
-                    fieldValue.Add("col_a4", record.ГрупаОбчислення);
                     fieldValue.Add("col_a3", record.ПеріодОбчислення);
                     fieldValue.Add("col_a8", record.ТипРухуПоРегістру);
                     fieldValue.Add("col_a5", record.Заблоковано);
@@ -474,8 +468,6 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Дата = DateTime.MinValue;
                     Документ = "";
-                    НазваРегістру = "";
-                    ГрупаОбчислення = "";
                     ПеріодОбчислення = DateTime.MinValue;
                     ТипРухуПоРегістру = "";
                     Заблоковано = false;
@@ -485,8 +477,6 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Дата { get; set; }
                 public string Документ { get; set; }
-                public string НазваРегістру { get; set; }
-                public string ГрупаОбчислення { get; set; }
                 public DateTime ПеріодОбчислення { get; set; }
                 public string ТипРухуПоРегістру { get; set; }
                 public bool Заблоковано { get; set; }
