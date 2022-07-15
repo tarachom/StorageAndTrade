@@ -277,16 +277,20 @@ namespace StorageAndTrade_1_0.Документи
 			//Якщо документ вже був проведений
 			if (ДокументОбєкт.Spend)
             {
-				Console.WriteLine(ДокументОбєкт.SpendDate);
-				//Function.AddBackgroundTask_CalculationVirtualBalances(new string[]
-				//{
-				//	"ЗамовленняПостачальникам",
-				//	"ТовариНаСкладах",
-				//	"ВільніЗалишки",
-				//	"ТовариДоПоступлення",
-				//	"РозрахункиЗПостачальниками"
-				//}, "День", "Delete", ДокументОбєкт.ДатаДок, "");
-			}
+				string dateDoc = ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy");
+				string dateSpend = ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy");
+
+				//Якщо дата проведення відрізняється від дати документу
+				if (dateDoc != dateSpend)
+                    Function.AddBackgroundTask_CalculationVirtualBalances(new string[]
+                    {
+						"ЗамовленняПостачальникам",
+						"ТовариНаСкладах",
+						"ВільніЗалишки",
+						"ТовариДоПоступлення",
+						"РозрахункиЗПостачальниками"
+                    }, "День", "Delete", ДокументОбєкт.ДатаДок, "", ДокументОбєкт.UnigueID.ToString());
+            }
 
 			#region Рух по регістрах
 
