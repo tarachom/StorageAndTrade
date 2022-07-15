@@ -37,6 +37,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(ЗамовленняКлієнта_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			//
@@ -131,6 +138,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			//
@@ -252,14 +266,10 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
 		{
-			//Якщо документ вже був проведений
 			if (ДокументОбєкт.Spend)
-            {
-				string dateDoc = ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy");
-				string dateSpend = ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy");
-
+			{
 				//Якщо дата проведення відрізняється від дати документу
-				if (dateDoc != dateSpend)
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
 					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
@@ -275,7 +285,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо заданий документ замовлення
 				if (!Товари_Record.ЗамовленняПостачальнику.IsEmpty())
-                {
+				{
 					//Документи.ЗамовленняПостачальнику_Objest замовленняПостачальнику_Objest =
 					//Товари_Record.ЗамовленняПостачальнику.GetDocumentObject();
 
@@ -321,7 +331,7 @@ namespace StorageAndTrade_1_0.Документи
 					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
 					record.Склад = СкладПоступленняТовару;
 					record.ВНаявності = Товари_Record.Кількість;
-				}				
+				}
 			}
 
 			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
@@ -437,6 +447,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(ЗамовленняПостачальнику_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			//
@@ -528,6 +545,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(ПоверненняТоварівВідКлієнта_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			//
@@ -625,6 +649,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(ПоверненняТоварівПостачальнику_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			//
@@ -719,6 +750,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(ПрихіднийКасовийОрдер_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			Довідники.ДоговориКонтрагентів_Objest Договір = ДокументОбєкт.Договір.GetDirectoryObject();
@@ -798,6 +836,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(РозхіднийКасовийОрдер_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			Довідники.ДоговориКонтрагентів_Objest Договір = ДокументОбєкт.Договір.GetDirectoryObject();
@@ -877,6 +922,13 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static bool Spend(ПереміщенняТоварів_Objest ДокументОбєкт)
 		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
 			#region Рух по регістрах
 
 			//

@@ -44,12 +44,17 @@ namespace StorageAndTrade_1_0.Звіти
     /// </summary>
     class РухДокументівПоРегістрах
     {
+        /// <summary>
+        /// Добавляє інформацію про документ
+        /// </summary>
+        /// <param name="xmlDoc">xmlDoc</param>
+        /// <param name="ДокументВказівник">Вказівник</param>
         private static void AddCaptionInfo(XmlDocument xmlDoc, DocumentPointer ДокументВказівник)
         {
             string[] columnsName = new string[] { "uid", "Назва", "ДатаДок", "НомерДок" }; ;
             List<object[]> listRow = new List<object[]>();
 
-            switch (ДокументВказівник.Name)
+            switch (ДокументВказівник.TypeDocument)
             {
                 case "ЗамовленняПостачальнику":
                     {
@@ -254,11 +259,15 @@ namespace StorageAndTrade_1_0.Звіти
             //Заголовок
             AddCaptionInfo(xmlDoc, ДокументВказівник);
 
+            //Список регістрів доступних для документу
+            List<string> allowRegisterAccumulation = Config.Kernel.Conf.Documents[ДокументВказівник.TypeDocument].AllowRegisterAccumulation;
+
             //Словник [ Назва групи, Функція]
             Dictionary<string, Func<string>> funcQuery = new Dictionary<string, Func<string>>();
 
+            //Регістри накопичення
             funcQuery.Add("ТовариНаСкладах", Запит_ТовариНаСкладах);
-            //funcQuery.Add("РухТоварів", Запит_РухТоварів);
+            funcQuery.Add("РухТоварів", Запит_РухТоварів);
             funcQuery.Add("ЗамовленняКлієнтів", Запит_ЗамовленняКлієнтів);
             funcQuery.Add("РозрахункиЗКлієнтами", Запит_РозрахункиЗКлієнтами);
             funcQuery.Add("ВільніЗалишки", Запит_ВільніЗалишки);
@@ -266,6 +275,7 @@ namespace StorageAndTrade_1_0.Звіти
             funcQuery.Add("РозрахункиЗПостачальниками", Запит_РозрахункиЗПостачальниками);
             funcQuery.Add("ТовариДоПоступлення", Запит_ТовариДоПоступлення);
 
+            //Регістри інформації
             funcQuery.Add("ЦіниНоменклатури", Запит_ЦіниНоменклатури);
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
@@ -276,19 +286,23 @@ namespace StorageAndTrade_1_0.Звіти
 
             foreach (KeyValuePair<string, Func<string>> func in funcQuery)
             {
-                string query = func.Value.Invoke();
-                //Console.WriteLine(query);
+                if (allowRegisterAccumulation.Contains(func.Key))
+                {
+                    Console.WriteLine(func.Key);
 
-                Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+                    string query = func.Value.Invoke();
 
-                if (listRow.Count > 0)
-                    Функції.DataToXML(xmlDoc, func.Key, columnsName, listRow);
+                    Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+                    if (listRow.Count > 0)
+                        Функції.DataToXML(xmlDoc, func.Key, columnsName, listRow);
+                }
             }
 
             Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухДокументівПоРегістрах.xslt", true, "Рух документу по регістрах");
         }
 
-        #region Запити по регістрах накопичення
+        #region Запити по регістрах інформації
 
         private static string Запит_ЦіниНоменклатури()
         {
