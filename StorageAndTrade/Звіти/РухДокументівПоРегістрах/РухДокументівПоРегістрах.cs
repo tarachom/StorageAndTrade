@@ -288,7 +288,7 @@ namespace StorageAndTrade_1_0.Звіти
             {
                 if (allowRegisterAccumulation.Contains(func.Key))
                 {
-                    Console.WriteLine(func.Key);
+                    //Console.WriteLine(func.Key);
 
                     string query = func.Value.Invoke();
 

@@ -68,10 +68,11 @@ namespace StorageAndTrade_1_0
         /// нову задачу для обчислення залишків по регістрах
         /// </summary>
         /// <param name="documentUid">UID Документу</param>
+        /// <param name="documentType">Тип документу</param>
         /// <param name="typeMovement">Тип руху по регістру (добавлення, видалення)</param>
         /// <param name="periodCalculation">Період розрахунку</param>
         /// <param name="userName">Користувач</param>
-        public static void AddBackgroundTask_CalculationVirtualBalances(string documentUid, string typeMovement, DateTime periodCalculation, string userName)
+        public static void AddBackgroundTask_CalculationVirtualBalances(string documentUid, string documentType, string typeMovement, DateTime periodCalculation, string userName)
         {
             Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart обчисленняВіртуальнихЗалишків_TablePart =
                 new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart();
@@ -81,6 +82,7 @@ namespace StorageAndTrade_1_0
 
             record.Дата = DateTime.Now;
             record.Документ = documentUid;
+            record.ТипДокументу = documentType;
             record.ПеріодОбчислення = periodCalculation;
             record.ТипРухуПоРегістру = typeMovement;
             record.Користувач = userName;

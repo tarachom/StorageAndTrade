@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 15.07.2022 19:02:31
+ * Дата конфігурації: 15.07.2022 19:56:03
  *
  */
 
@@ -392,7 +392,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart : ConstantsTablePart
         {
             public ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart() : base(Config.Kernel, "tab_a77",
-                 new string[] { "col_a2", "col_a9", "col_a3", "col_a8", "col_a5", "col_a6", "col_a7" }) 
+                 new string[] { "col_a2", "col_a9", "col_a1", "col_a3", "col_a8", "col_a5", "col_a6", "col_a7" }) 
             {
                 Records = new List<Record>();
             }
@@ -401,6 +401,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Дата = "col_a2";
             public const string Документ = "col_a9";
+            public const string ТипДокументу = "col_a1";
             public const string ПеріодОбчислення = "col_a3";
             public const string ТипРухуПоРегістру = "col_a8";
             public const string Заблоковано = "col_a5";
@@ -420,6 +421,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Дата = (fieldValue["col_a2"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a2"].ToString()) : DateTime.MinValue;
                     record.Документ = fieldValue["col_a9"].ToString();
+                    record.ТипДокументу = fieldValue["col_a1"].ToString();
                     record.ПеріодОбчислення = (fieldValue["col_a3"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a3"].ToString()) : DateTime.MinValue;
                     record.ТипРухуПоРегістру = fieldValue["col_a8"].ToString();
                     record.Заблоковано = (fieldValue["col_a5"] != DBNull.Value) ? bool.Parse(fieldValue["col_a5"].ToString()) : false;
@@ -445,6 +447,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a2", record.Дата);
                     fieldValue.Add("col_a9", record.Документ);
+                    fieldValue.Add("col_a1", record.ТипДокументу);
                     fieldValue.Add("col_a3", record.ПеріодОбчислення);
                     fieldValue.Add("col_a8", record.ТипРухуПоРегістру);
                     fieldValue.Add("col_a5", record.Заблоковано);
@@ -468,6 +471,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Дата = DateTime.MinValue;
                     Документ = "";
+                    ТипДокументу = "";
                     ПеріодОбчислення = DateTime.MinValue;
                     ТипРухуПоРегістру = "";
                     Заблоковано = false;
@@ -477,6 +481,7 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Дата { get; set; }
                 public string Документ { get; set; }
+                public string ТипДокументу { get; set; }
                 public DateTime ПеріодОбчислення { get; set; }
                 public string ТипРухуПоРегістру { get; set; }
                 public bool Заблоковано { get; set; }
@@ -7226,7 +7231,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ЗамовленняПостачальнику_Objest : DocumentObject
     {
-        public ЗамовленняПостачальнику_Objest() : base(Config.Kernel, "tab_a25",
+        public ЗамовленняПостачальнику_Objest() : base(Config.Kernel, "tab_a25", "ЗамовленняПостачальнику",
              new string[] { "col_b8", "col_j9", "col_k1", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_a1", "col_a3", "col_a4", "col_a5", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_a6", "col_b5", "col_b6", "col_b7", "col_a2" }) 
         {
             Назва = "";
@@ -7654,7 +7659,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПоступленняТоварівТаПослуг_Objest : DocumentObject
     {
-        public ПоступленняТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a32",
+        public ПоступленняТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a32", "ПоступленняТоварівТаПослуг",
              new string[] { "col_d4", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1", "col_d2", "col_d3", "col_b1" }) 
         {
             Назва = "";
@@ -8109,7 +8114,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ЗамовленняКлієнта_Objest : DocumentObject
     {
-        public ЗамовленняКлієнта_Objest() : base(Config.Kernel, "tab_a34",
+        public ЗамовленняКлієнта_Objest() : base(Config.Kernel, "tab_a34", "ЗамовленняКлієнта",
              new string[] { "col_d1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_a9", "col_b9", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_c1" }) 
         {
             Назва = "";
@@ -8546,7 +8551,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class РеалізаціяТоварівТаПослуг_Objest : DocumentObject
     {
-        public РеалізаціяТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a36",
+        public РеалізаціяТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a36", "РеалізаціяТоварівТаПослуг",
              new string[] { "col_d3", "col_c9", "col_d1", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_d2", "col_b2" }) 
         {
             Назва = "";
@@ -8973,7 +8978,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ВстановленняЦінНоменклатури_Objest : DocumentObject
     {
-        public ВстановленняЦінНоменклатури_Objest() : base(Config.Kernel, "tab_a42",
+        public ВстановленняЦінНоменклатури_Objest() : base(Config.Kernel, "tab_a42", "ВстановленняЦінНоменклатури",
              new string[] { "col_a1", "col_g7", "col_g8", "col_g9", "col_a2" }) 
         {
             Назва = "";
@@ -9255,7 +9260,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПрихіднийКасовийОрдер_Objest : DocumentObject
     {
-        public ПрихіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a44",
+        public ПрихіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a44", "ПрихіднийКасовийОрдер",
              new string[] { "col_a4", "col_h6", "col_h7", "col_h8", "col_h9", "col_i1", "col_i2", "col_i3", "col_i4", "col_a6", "col_i5", "col_i6", "col_a1", "col_a2", "col_a3" }) 
         {
             Назва = "";
@@ -9587,7 +9592,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class РозхіднийКасовийОрдер_Objest : DocumentObject
     {
-        public РозхіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a48",
+        public РозхіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a48", "РозхіднийКасовийОрдер",
              new string[] { "col_a1", "col_j9", "col_k1", "col_k2", "col_k3", "col_a3", "col_k5", "col_k4", "col_k7", "col_a4", "col_k8", "col_k9", "col_l2", "col_k6", "col_l1" }) 
         {
             Назва = "";
@@ -9931,7 +9936,7 @@ namespace StorageAndTrade_1_0.Документи
     ///</summary>
     public class ПереміщенняТоварів_Objest : DocumentObject
     {
-        public ПереміщенняТоварів_Objest() : base(Config.Kernel, "tab_a31",
+        public ПереміщенняТоварів_Objest() : base(Config.Kernel, "tab_a31", "ПереміщенняТоварів",
              new string[] { "col_b9", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_a6" }) 
         {
             Назва = "";
@@ -10286,7 +10291,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПоверненняТоварівПостачальнику_Objest : DocumentObject
     {
-        public ПоверненняТоварівПостачальнику_Objest() : base(Config.Kernel, "tab_a51",
+        public ПоверненняТоварівПостачальнику_Objest() : base(Config.Kernel, "tab_a51", "ПоверненняТоварівПостачальнику",
              new string[] { "col_a2", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c9", "col_d1", "col_d2", "col_d3", "col_d4", "col_d5", "col_d6", "col_d7", "col_a1", "col_c8" }) 
         {
             Назва = "";
@@ -10654,7 +10659,7 @@ namespace StorageAndTrade_1_0.Документи
     
     public class ПоверненняТоварівВідКлієнта_Objest : DocumentObject
     {
-        public ПоверненняТоварівВідКлієнта_Objest() : base(Config.Kernel, "tab_a53",
+        public ПоверненняТоварівВідКлієнта_Objest() : base(Config.Kernel, "tab_a53", "ПоверненняТоварівВідКлієнта",
              new string[] { "col_a2", "col_e6", "col_e7", "col_e8", "col_e9", "col_f1", "col_f2", "col_f3", "col_f5", "col_f7", "col_f8", "col_f9", "col_g1", "col_g2", "col_a1", "col_f6" }) 
         {
             Назва = "";

@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>15.07.2022 19:02:31</DateTimeSave>
+  <DateTimeSave>15.07.2022 19:56:03</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -206,6 +206,14 @@
                   <NameInTable>col_a9</NameInTable>
                   <Type>string</Type>
                   <Desc>Uid Документу</Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ТипДокументу</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>string</Type>
+                  <Desc>
+                  </Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
