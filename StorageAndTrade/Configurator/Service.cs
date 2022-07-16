@@ -61,6 +61,7 @@ WHERE
     Задачі.{Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = false
 ORDER BY Дата ASC
 ";
+            Dictionary<string, List<string>> documentProcessedList = new Dictionary<string, List<string>>();
 
             string[] columnsName;
             List<object[]> listRow;
@@ -79,16 +80,32 @@ ORDER BY Дата ASC
 
                 Console.WriteLine($"Документ: {Документ} ТипДокументу: {ТипДокументу} Період:{Період}");
 
+                bool documentProcessed = false;
+
+                if (documentProcessedList.ContainsKey(Період))
+                {
+                    if (documentProcessedList[Період].Contains(ТипДокументу))
+                    {
+                        Console.WriteLine($"continue: {Період} {ТипДокументу}");
+                        documentProcessed = true;
+                    }
+                    else
+                        documentProcessedList[Період].Add(ТипДокументу);
+                }
+                else
+                    documentProcessedList.Add(Період, new List<string>() { ТипДокументу });
+
                 //Список регістрів доступних для документу
                 List<string> allowRegisterAccumulation = Config.Kernel.Conf.Documents[ТипДокументу].AllowRegisterAccumulation;
 
-                foreach (string registerAccumulation in allowRegisterAccumulation)
-                {
-                    switch (registerAccumulation)
+                if (!documentProcessed)
+                    foreach (string registerAccumulation in allowRegisterAccumulation)
                     {
-                        case "ЗамовленняКлієнтів":
-                            {
-                                string query = $@"
+                        switch (registerAccumulation)
+                        {
+                            case "ЗамовленняКлієнтів":
+                                {
+                                    string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.ЗамовленняКлієнтів_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.ЗамовленняКлієнтів_День_TablePart.Період}) = '{Період}';
 
@@ -130,14 +147,14 @@ OR
        -Рег_ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} END) != 0
 ";
 
-                                //Console.WriteLine(query);
-                                Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+                                    //Console.WriteLine(query);
+                                    Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
-                                break;
-                            }
-                        case "ТовариНаСкладах":
-                            {
-                                string query = $@"
+                                    break;
+                                }
+                            case "ТовариНаСкладах":
+                                {
+                                    string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_День_TablePart.Період}) = '{Період}';
 
@@ -179,14 +196,14 @@ OR
        -Рег_ТовариНаСкладах.{ТовариНаСкладах_Const.ДоВідвантаження} END) != 0
 ";
 
-                                //Console.WriteLine(query);
-                                Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+                                    //Console.WriteLine(query);
+                                    Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
-                                break;
-                            }
-                        case "РозрахункиЗКлієнтами":
-                            {
-                                string query = $@"
+                                    break;
+                                }
+                            case "РозрахункиЗКлієнтами":
+                                {
+                                    string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Період}) = '{Період}';
 
@@ -218,14 +235,14 @@ HAVING
        -Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) != 0
 ";
 
-                                //Console.WriteLine(query);
-                                Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+                                    //Console.WriteLine(query);
+                                    Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
-                                break;
-                            }
-                        case "РозрахункиЗПостачальниками":
-                            {
-                                string query = $@"
+                                    break;
+                                }
+                            case "РозрахункиЗПостачальниками":
+                                {
+                                    string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_День_TablePart.Період}) = '{Період}';
 
@@ -257,14 +274,14 @@ HAVING
        -Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} END) != 0
 ";
 
-                                //Console.WriteLine(query);
-                                Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+                                    //Console.WriteLine(query);
+                                    Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
-                                break;
-                            }
-                        case "ЗамовленняПостачальникам":
-                            {
-                                string query = $@"
+                                    break;
+                                }
+                            case "ЗамовленняПостачальникам":
+                                {
+                                    string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.ЗамовленняПостачальникам_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.ЗамовленняПостачальникам_День_TablePart.Період}) = '{Період}';
 
@@ -298,14 +315,14 @@ HAVING
        -Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} END) != 0
 ";
 
-                                //Console.WriteLine(query);
-                                Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+                                    //Console.WriteLine(query);
+                                    Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
-                                break;
-                            }
-                        case "ВільніЗалишки":
-                            {
-                                string query = $@"
+                                    break;
+                                }
+                            case "ВільніЗалишки":
+                                {
+                                    string query = $@"
 DELETE FROM {ВіртуальніТаблиціРегістрів.ВільніЗалишки_День_TablePart.TABLE}
 WHERE date_trunc('day', {ВіртуальніТаблиціРегістрів.ВільніЗалишки_День_TablePart.Період}) = '{Період}';
 
@@ -355,13 +372,13 @@ OR
        -Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} END) != 0
 ";
 
-                                //Console.WriteLine(query);
-                                Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+                                    //Console.WriteLine(query);
+                                    Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
-                                break;
-                            }
+                                    break;
+                                }
+                        }
                     }
-                }
 
                 string queryUpdate = $@"
 UPDATE {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}
