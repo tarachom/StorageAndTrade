@@ -46,8 +46,6 @@ namespace StorageAndTrade_1_0.Service
 
         public static void ОбчисленняРегістрів()
         {
-            Console.WriteLine("----------------");
-
             string querySelectTask = $@"
 SELECT
     Задачі.uid,
