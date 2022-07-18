@@ -64,6 +64,7 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["Назва"].Width = 350;
 			dataGridViewRecords.Columns["Контрагент"].Width = 300;
+			dataGridViewRecords.Columns["Каса"].Width = 300;
 
 			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -98,7 +99,8 @@ namespace StorageAndTrade
 				Документи.РозхіднийКасовийОрдер_Const.НомерДок,
 				Документи.РозхіднийКасовийОрдер_Const.ДатаДок,
 				Документи.РозхіднийКасовийОрдер_Const.СумаДокументу,
-				Документи.РозхіднийКасовийОрдер_Const.Коментар 
+				Документи.РозхіднийКасовийОрдер_Const.Коментар,
+				Документи.РозхіднийКасовийОрдер_Const.Каса
 			});
 
 			//Контрагент
@@ -106,6 +108,12 @@ namespace StorageAndTrade
 				new KeyValuePair<string, string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
 			розхіднийКасовийОрдер_Select.QuerySelect.Joins.Add(
 				new Join(Довідники.Контрагенти_Const.TABLE, Документи.РозхіднийКасовийОрдер_Const.Контрагент, Документи.РозхіднийКасовийОрдер_Const.TABLE));
+
+			//Каса
+			розхіднийКасовийОрдер_Select.QuerySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Довідники.Каси_Const.TABLE + "." + Довідники.Каси_Const.Назва, "joinCasa"));
+			розхіднийКасовийОрдер_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Каси_Const.TABLE, Документи.РозхіднийКасовийОрдер_Const.Каса, Документи.РозхіднийКасовийОрдер_Const.TABLE));
 
 			//ORDER
 			розхіднийКасовийОрдер_Select.QuerySelect.Order.Add(Документи.РозхіднийКасовийОрдер_Const.ДатаДок, SelectOrder.ASC);
@@ -123,6 +131,7 @@ namespace StorageAndTrade
 					НомерДок = cur.Fields[Документи.РозхіднийКасовийОрдер_Const.НомерДок].ToString(),
 					ДатаДок = cur.Fields[Документи.РозхіднийКасовийОрдер_Const.ДатаДок].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
+					Каса = cur.Fields["joinCasa"].ToString(),
 					Сума = Math.Round((decimal)cur.Fields[Документи.РозхіднийКасовийОрдер_Const.СумаДокументу], 2),
 					Коментар = cur.Fields[Документи.РозхіднийКасовийОрдер_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
@@ -150,6 +159,7 @@ namespace StorageAndTrade
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
 			public string Контрагент { get; set; }
+			public string Каса { get; set; }
 			public decimal Сума { get; set; }
 			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
