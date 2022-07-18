@@ -838,6 +838,9 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
+			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
 			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
@@ -934,6 +937,9 @@ namespace StorageAndTrade_1_0.Документи
 
 			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
