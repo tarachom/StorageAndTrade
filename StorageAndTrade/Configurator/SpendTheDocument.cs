@@ -804,6 +804,25 @@ namespace StorageAndTrade_1_0.Документи
 
 			розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
+			//
+			//РухКоштів
+			//
+
+			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			
+			РегістриНакопичення.РухКоштів_RecordsSet.Record record_РухКоштів = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+			рухКоштів_RecordsSet.Records.Add(record_РухКоштів);
+
+			record_РухКоштів.Income = true;
+			record_РухКоштів.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+			record_РухКоштів.Організація = ДокументОбєкт.Організація;
+			record_РухКоштів.Каса = ДокументОбєкт.Каса;
+			record_РухКоштів.Валюта = ДокументОбєкт.Валюта;
+			record_РухКоштів.Сума = ДокументОбєкт.СумаДокументу;
+
+			рухКоштів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
 			#endregion
 
 			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
@@ -881,6 +900,25 @@ namespace StorageAndTrade_1_0.Документи
 			}
 
 			розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			//
+			//РухКоштів
+			//
+
+			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+
+			РегістриНакопичення.РухКоштів_RecordsSet.Record record_РухКоштів = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+			рухКоштів_RecordsSet.Records.Add(record_РухКоштів);
+
+			record_РухКоштів.Income = false;
+			record_РухКоштів.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+			record_РухКоштів.Організація = ДокументОбєкт.Організація;
+			record_РухКоштів.Каса = ДокументОбєкт.Каса;
+			record_РухКоштів.Валюта = ДокументОбєкт.Валюта;
+			record_РухКоштів.Сума = ДокументОбєкт.СумаДокументу;
+
+			рухКоштів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
 			#endregion
 

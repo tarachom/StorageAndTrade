@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>18.07.2022 13:27:21</DateTimeSave>
+  <DateTimeSave>18.07.2022 16:39:41</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -966,6 +966,117 @@
                 <Field>
                   <Name>ВРезервіПідЗамовлення</Name>
                   <NameInTable>col_a1</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+          </TabularParts>
+        </Constant>
+        <Constant>
+          <Name>РухКоштів</Name>
+          <NameInTable>col_c3</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>string</Type>
+          <TabularParts>
+            <TablePart>
+              <Name>Місяць</Name>
+              <Table>tab_a98</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Період</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Організація</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Організації</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Каса</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Каси</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Валюта</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Валюти</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Сума</Name>
+                  <NameInTable>col_a5</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+            <TablePart>
+              <Name>День</Name>
+              <Table>tab_a99</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Період</Name>
+                  <NameInTable>col_a6</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Організація</Name>
+                  <NameInTable>col_a7</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Організації</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Каса</Name>
+                  <NameInTable>col_a8</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Каси</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Валюта</Name>
+                  <NameInTable>col_a9</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Валюти</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Сума</Name>
+                  <NameInTable>col_b1</NameInTable>
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
@@ -5614,6 +5725,7 @@
       <AllowRegisterAccumulation>
         <Name>РозрахункиЗКлієнтами</Name>
         <Name>РозрахункиЗПостачальниками</Name>
+        <Name>РухКоштів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
@@ -5848,6 +5960,7 @@
       <AllowRegisterAccumulation>
         <Name>РозрахункиЗКлієнтами</Name>
         <Name>РозрахункиЗПостачальниками</Name>
+        <Name>РухКоштів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>

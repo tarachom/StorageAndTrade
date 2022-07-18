@@ -110,6 +110,12 @@
     <Compile Include="Configurator\Service.cs" />
     <Compile Include="Configurator\SpendTheDocument.cs" />
     <Compile Include="Configurator\Function.cs" />
+    <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.Designer.cs">
+      <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
+    </Compile>
     <Compile Include="СпільніФорми\Form_Report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -676,6 +682,9 @@
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.resx">
+      <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="СпільніФорми\Form_Report.resx">
       <DependentUpon>Form_Report.cs</DependentUpon>
     </EmbeddedResource>
@@ -1055,6 +1064,9 @@
     <Content Include="form.ico" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ЗамовленняПостачальникам.xslt" />
+    <Content Include="Шаблони\РухКоштів.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Шаблони\ТовариНаСкладах.xslt" />
     <Content Include="Шаблони\РозрахункиЗПостачальниками.xslt">
       <SubType>Designer</SubType>

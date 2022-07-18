@@ -46,6 +46,8 @@
 
 					<xsl:apply-templates select="ТовариДоПоступлення" />
 
+					<xsl:apply-templates select="РухКоштів" />
+					
 					<xsl:apply-templates select="ЦіниНоменклатури" />
 
 					<br/>
@@ -438,6 +440,49 @@
 
 	</xsl:template>
 
+	<xsl:template match="РухКоштів">
+		<br/>
+		<h5>Рух коштів</h5>
+
+		<table class="table table-bordered table-sm">
+
+			<tr class="table-success">
+				<th></th>
+				<th>Організація</th>
+				<th>Каса</th>
+				<th>Валюта</th>
+				<th style="text-align:center">Сума</th>
+			</tr>
+
+			<xsl:for-each select="row">
+
+				<tr>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
+					</td>
+					<td>
+						<xsl:value-of select="Організація_Назва"/>
+					</td>
+					<td>
+						<xsl:value-of select="Каса_Назва"/>
+					</td>
+					<td>
+						<xsl:value-of select="Валюта_Назва"/>
+					</td>
+					<td style="text-align:center">
+						<xsl:value-of select="Сума"/>
+					</td>
+				</tr>
+
+			</xsl:for-each>
+
+		</table>
+
+	</xsl:template>
+	
 	<xsl:template match="ЦіниНоменклатури">
 		<br/>
 		<h5>Ціни номенклатури</h5>

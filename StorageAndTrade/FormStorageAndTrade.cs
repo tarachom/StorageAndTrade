@@ -307,6 +307,13 @@ namespace StorageAndTrade
             form_ВідомістьПоТоварахНаСкладах_Звіт.Show();
         }
 
+        private void рухКоштівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_РухКоштів_Звіт form_РухКоштів_Звіт = new Form_РухКоштів_Звіт();
+            form_РухКоштів_Звіт.MdiParent = this;
+            form_РухКоштів_Звіт.Show();
+        }
+
         #endregion
 
         #region Сервіс Меню
@@ -526,6 +533,7 @@ SELECT pg_advisory_unlock(id) FROM test WHERE id = '1';
         {
             встановленняЦінНоменклатуриToolStripMenuItem_Click(this, new EventArgs());
         }
+
 
 
 
