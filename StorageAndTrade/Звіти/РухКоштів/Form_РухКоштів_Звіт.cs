@@ -135,7 +135,61 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
 ";
 
             //Console.WriteLine(query);
-            
+
+            Dictionary<string,string> allowDocuments = new Dictionary<string, string>();
+
+            foreach (ConfigurationDocuments configurationDocuments in Config.Kernel.Conf.Documents.Values)
+            {
+                if (configurationDocuments.AllowRegisterAccumulation.Contains("РухКоштів"))
+                    allowDocuments.Add(configurationDocuments.Table, configurationDocuments.Fields["Назва"].NameInTable);
+            }
+
+            string queryDoc = "";
+            int counter = 0;
+
+            foreach (KeyValuePair<string, string> document in allowDocuments)
+            {
+                queryDoc += counter > 0 ? "UNION" : "";
+                counter++;
+
+                queryDoc += $@"
+(
+SELECT
+    Рег_РухКоштів.owner AS uid,
+    {document.Key}.{document.Value} AS Назва
+FROM
+    {РухКоштів_Const.TABLE} AS Рег_РухКоштів
+        INNER JOIN {document.Key} ON {document.Key}.uid = Рег_РухКоштів.owner
+)
+";
+            }
+
+            Console.WriteLine(queryDoc);
+
+            //            string queryDoc = $@"
+            //SELECT
+            //    Рег_РухКоштів.owner,
+            //    ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Назва} AS Назва
+            //FROM
+            //    {РухКоштів_Const.TABLE} AS Рег_РухКоштів
+
+            //    INNER JOIN {ПрихіднийКасовийОрдер_Const.TABLE} AS ПрихіднийКасовийОрдер ON ПрихіднийКасовийОрдер.uid = 
+            //        Рег_РухКоштів.owner
+
+            //UNION
+
+            //SELECT
+            //    Рег_РухКоштів.owner,
+            //    РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Назва} AS Назва
+            //FROM
+            //    {РухКоштів_Const.TABLE} AS Рег_РухКоштів
+
+            //    INNER JOIN {РозхіднийКасовийОрдер_Const.TABLE} AS РозхіднийКасовийОрдер ON РозхіднийКасовийОрдер.uid = 
+            //        Рег_РухКоштів.owner
+            //";
+
+
+
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
@@ -144,8 +198,10 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
             List<object[]> listRow;
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-
             Функції.DataToXML(xmlDoc, "РухКоштів", columnsName, listRow);
+
+            Config.Kernel.DataBase.SelectRequest(queryDoc, paramQuery, out columnsName, out listRow);
+            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
             Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів.xslt", false, "Рух коштів");
 
