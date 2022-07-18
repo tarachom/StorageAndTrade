@@ -59,6 +59,7 @@ namespace StorageAndTrade
             while (true)
             {
                 CalculationBalances.ОбчисленняВіртуальнихЗалишківПоДнях();
+                CalculationBalances.ОбчисленняВіртуальнихЗалишківПоМісяцях();
                 Thread.Sleep(5000);
             }
         }

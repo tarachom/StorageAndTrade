@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>18.07.2022 11:02:09</DateTimeSave>
+  <DateTimeSave>18.07.2022 13:27:21</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -319,7 +319,7 @@
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ХарактеристикиНоменклатури</Name>
+                  <Name>ХарактеристикаНоменклатури</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
@@ -377,7 +377,7 @@
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ХарактеристикиНоменклатури</Name>
+                  <Name>ХарактеристикаНоменклатури</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
@@ -748,7 +748,7 @@
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ХарактеристикиНоменклатури</Name>
+                  <Name>ХарактеристикаНоменклатури</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
@@ -798,7 +798,7 @@
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ХарактеристикиНоменклатури</Name>
+                  <Name>ХарактеристикаНоменклатури</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
@@ -864,7 +864,7 @@
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ХарактеристикиНоменклатури</Name>
+                  <Name>ХарактеристикаНоменклатури</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
@@ -930,7 +930,7 @@
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ХарактеристикиНоменклатури</Name>
+                  <Name>ХарактеристикаНоменклатури</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>

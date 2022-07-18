@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 18.07.2022 11:02:09
+ * Дата конфігурації: 18.07.2022 13:27:21
  *
  */
 
@@ -661,7 +661,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Період = "col_a6";
             public const string Номенклатура = "col_a2";
-            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string Замовлено = "col_a5";
             public const string Сума = "col_a7";
@@ -679,7 +679,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Період = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
-                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     record.Сума = (fieldValue["col_a7"] != DBNull.Value) ? (decimal)fieldValue["col_a7"] : 0;
@@ -703,7 +703,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a6", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.Замовлено);
                     fieldValue.Add("col_a7", record.Сума);
@@ -725,7 +725,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
-                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     Замовлено = 0;
                     Сума = 0;
@@ -733,7 +733,7 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal Замовлено { get; set; }
                 public decimal Сума { get; set; }
@@ -753,7 +753,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Період = "col_b1";
             public const string Номенклатура = "col_a2";
-            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string Замовлено = "col_a5";
             public const string Сума = "col_a6";
@@ -771,7 +771,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Період = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
-                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
@@ -795,7 +795,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_b1", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.Замовлено);
                     fieldValue.Add("col_a6", record.Сума);
@@ -817,7 +817,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
-                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     Замовлено = 0;
                     Сума = 0;
@@ -825,7 +825,7 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal Замовлено { get; set; }
                 public decimal Сума { get; set; }
@@ -1357,7 +1357,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Період = "col_a6";
             public const string Номенклатура = "col_a2";
-            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string Замовлено = "col_a5";
             public List<Record> Records { get; set; }
@@ -1374,7 +1374,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Період = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
-                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     
@@ -1397,7 +1397,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a6", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.Замовлено);
                     
@@ -1418,14 +1418,14 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
-                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     Замовлено = 0;
                     
                 }
                 public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal Замовлено { get; set; }
                 
@@ -1444,7 +1444,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Період = "col_b1";
             public const string Номенклатура = "col_a2";
-            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string Замовлено = "col_a5";
             public const string Сума = "col_a6";
@@ -1462,7 +1462,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Період = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
-                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
@@ -1486,7 +1486,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_b1", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.Замовлено);
                     fieldValue.Add("col_a6", record.Сума);
@@ -1508,7 +1508,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
-                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     Замовлено = 0;
                     Сума = 0;
@@ -1516,7 +1516,7 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal Замовлено { get; set; }
                 public decimal Сума { get; set; }
@@ -1536,7 +1536,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Період = "col_a6";
             public const string Номенклатура = "col_a2";
-            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string ВНаявності = "col_a5";
             public const string ВРезервіЗіСкладу = "col_a7";
@@ -1555,7 +1555,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Період = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
-                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.ВНаявності = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     record.ВРезервіЗіСкладу = (fieldValue["col_a7"] != DBNull.Value) ? (decimal)fieldValue["col_a7"] : 0;
@@ -1580,7 +1580,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a6", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.ВНаявності);
                     fieldValue.Add("col_a7", record.ВРезервіЗіСкладу);
@@ -1603,7 +1603,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
-                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     ВНаявності = 0;
                     ВРезервіЗіСкладу = 0;
@@ -1612,7 +1612,7 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal ВНаявності { get; set; }
                 public decimal ВРезервіЗіСкладу { get; set; }
@@ -1633,7 +1633,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Період = "col_b1";
             public const string Номенклатура = "col_a2";
-            public const string ХарактеристикиНоменклатури = "col_a3";
+            public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string ВНаявності = "col_a5";
             public const string ВРезервіЗіСкладу = "col_a6";
@@ -1652,7 +1652,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Період = (fieldValue["col_b1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_b1"].ToString()) : DateTime.MinValue;
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
-                    record.ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.ВНаявності = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     record.ВРезервіЗіСкладу = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
@@ -1677,7 +1677,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_b1", record.Період);
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
-                    fieldValue.Add("col_a3", record.ХарактеристикиНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.ВНаявності);
                     fieldValue.Add("col_a6", record.ВРезервіЗіСкладу);
@@ -1700,7 +1700,7 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Період = DateTime.MinValue;
                     Номенклатура = new Довідники.Номенклатура_Pointer();
-                    ХарактеристикиНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     ВНаявності = 0;
                     ВРезервіЗіСкладу = 0;
@@ -1709,7 +1709,7 @@ namespace StorageAndTrade_1_0.Константи
                 }
                 public DateTime Період { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
-                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикиНоменклатури { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal ВНаявності { get; set; }
                 public decimal ВРезервіЗіСкладу { get; set; }

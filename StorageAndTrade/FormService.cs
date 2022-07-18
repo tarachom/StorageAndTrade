@@ -107,7 +107,7 @@ namespace StorageAndTrade
 					lock (lockobject)
 					{
 						if (cancel) thread.Abort();
-						CalculateBalancesInRegister_ЗамовленняКлієнтів.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+						//CalculateBalancesInRegister_ЗамовленняКлієнтів.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
 					}
 				}
 			}
@@ -145,7 +145,7 @@ namespace StorageAndTrade
 					lock (lockobject)
 					{
 						if (cancel) thread.Abort();
-						CalculateBalancesInRegister_ТовариНаСкладах.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+						//CalculateBalancesInRegister_ТовариНаСкладах.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
 					}
 				}
 			}
@@ -183,7 +183,7 @@ namespace StorageAndTrade
 					lock (lockobject)
 					{
 						if (cancel) thread.Abort();
-						CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+						//CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
 					}
 				}
 			}
@@ -221,7 +221,7 @@ namespace StorageAndTrade
 					lock (lockobject)
 					{
 						if (cancel) thread.Abort();
-						CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+						//CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
 					}
 				}
 			}
@@ -259,7 +259,7 @@ namespace StorageAndTrade
 					lock (lockobject)
 					{
 						if (cancel) thread.Abort();
-						CalculateBalancesInRegister_ЗамовленняПостачальникам.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+						//CalculateBalancesInRegister_ЗамовленняПостачальникам.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
 					}
 				}
 			}
@@ -297,7 +297,7 @@ namespace StorageAndTrade
 					lock (lockobject)
 					{
 						if (cancel) thread.Abort();
-						CalculateBalancesInRegister_ВільніЗалишки.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
+						//CalculateBalancesInRegister_ВільніЗалишки.ОбчислитиЗалишкиЗаМісяць(listMonthItem);
 					}
 				}
 			}
