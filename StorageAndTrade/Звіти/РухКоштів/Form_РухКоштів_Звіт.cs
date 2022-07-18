@@ -33,6 +33,7 @@ using System.Windows.Forms;
 using AccountingSoftware;
 using System.Xml;
 using System.Xml.Xsl;
+using System.IO;
 
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Константи;
@@ -55,6 +56,8 @@ namespace StorageAndTrade
             directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer());
             directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer());
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
+
+            geckoWebBrowser.LoadHtml("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><p>Звіт не сформований</p>");
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -107,7 +110,10 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
 
             Функції.DataToXML(xmlDoc, "РухКоштів", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів.xslt", true, "Рух коштів");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів.xslt", false, "Рух коштів");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

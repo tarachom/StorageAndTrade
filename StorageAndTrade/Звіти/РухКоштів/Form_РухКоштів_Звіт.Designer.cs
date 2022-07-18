@@ -38,10 +38,11 @@ namespace StorageAndTrade
             this.label9 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.directoryControl_Валюти = new StorageAndTrade.DirectoryControl();
             this.directoryControl_Контрагенти = new StorageAndTrade.DirectoryControl();
             this.directoryControl_КонтрагентиПапка = new StorageAndTrade.DirectoryControl();
-            this.buttonClose = new System.Windows.Forms.Button();
+            this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
             this.SuspendLayout();
             // 
             // dateTimeStart
@@ -113,6 +114,16 @@ namespace StorageAndTrade
             this.label5.TabIndex = 62;
             this.label5.Text = "Валюта:";
             // 
+            // buttonClose
+            // 
+            this.buttonClose.Location = new System.Drawing.Point(355, 165);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(90, 27);
+            this.buttonClose.TabIndex = 70;
+            this.buttonClose.Text = "Закрити";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
             // directoryControl_Валюти
             // 
             this.directoryControl_Валюти.DirectoryPointerItem = null;
@@ -140,21 +151,23 @@ namespace StorageAndTrade
             this.directoryControl_КонтрагентиПапка.Size = new System.Drawing.Size(402, 27);
             this.directoryControl_КонтрагентиПапка.TabIndex = 55;
             // 
-            // buttonClose
+            // geckoWebBrowser
             // 
-            this.buttonClose.Location = new System.Drawing.Point(355, 165);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(90, 27);
-            this.buttonClose.TabIndex = 70;
-            this.buttonClose.Text = "Закрити";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.geckoWebBrowser.Location = new System.Drawing.Point(12, 208);
+            this.geckoWebBrowser.Name = "geckoWebBrowser";
+            this.geckoWebBrowser.Size = new System.Drawing.Size(949, 537);
+            this.geckoWebBrowser.TabIndex = 71;
+            this.geckoWebBrowser.UseHttpActivityObserver = false;
             // 
             // Form_РухКоштів_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 212);
+            this.ClientSize = new System.Drawing.Size(973, 757);
+            this.Controls.Add(this.geckoWebBrowser);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.directoryControl_Валюти);
@@ -190,5 +203,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label5;
         private DirectoryControl directoryControl_Валюти;
         private System.Windows.Forms.Button buttonClose;
+        private Gecko.GeckoWebBrowser geckoWebBrowser;
     }
 }
