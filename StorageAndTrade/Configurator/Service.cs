@@ -60,6 +60,8 @@ namespace StorageAndTrade_1_0.Service
         /// </summary>
         public static void ОбчисленняВіртуальнихЗалишківПоДнях()
         {
+            //Console.WriteLine("ОбчисленняВіртуальнихЗалишківПоДнях");
+
             string querySelectTask = $@"
 SELECT
     Задачі.uid,
@@ -422,6 +424,15 @@ WHERE uid = '{uid}'
             }
 
             Config.KernelBackgroundTask.DataBase.CommitTransaction();
+
+            //Очистка
+            string queryClear = $@"
+DELETE FROM {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}
+WHERE 
+    {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Виконано} = true AND
+    {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Дата} < current_date
+";
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryClear);
         }
 
         /// <summary>
@@ -468,6 +479,8 @@ VALUES
         /// </summary>
         public static void ОбчисленняВіртуальнихЗалишківПоМісяцях()
         {
+            //Console.WriteLine("ОбчисленняВіртуальнихЗалишківПоМісяцях");
+
             string querySelect = $@"
 SELECT
     Актуальність.uid,
@@ -476,10 +489,10 @@ SELECT
 FROM
     {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.TABLE} AS Актуальність
 WHERE
-    Актуальність.{Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Актуально} = false AND 
-    Актуальність.{Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Місяць} < date_trunc('month', '{DateTime.Now}'::timestamp)
+    Актуальність.{Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Актуально} = false
 ORDER BY Місяць ASC
 ";
+            //AND Актуальність.{Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Місяць} < date_trunc('month', '{DateTime.Now}'::timestamp)
 
             string[] columnsName;
             List<object[]> listRow;
@@ -493,7 +506,7 @@ ORDER BY Місяць ASC
                 string Регістр = row[1].ToString();
                 string Місяць = row[2].ToString();
 
-                Console.WriteLine($"Регістр {Регістр} Місяць {Місяць}");
+                //Console.WriteLine($"Регістр {Регістр} Місяць {Місяць}");
 
                 switch (Регістр)
                 {
