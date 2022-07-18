@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 16.07.2022 17:30:52
+ * Дата конфігурації: 18.07.2022 10:28:38
  *
  */
 
@@ -487,6 +487,83 @@ namespace StorageAndTrade_1_0.Константи
                 public bool Заблоковано { get; set; }
                 public bool Виконано { get; set; }
                 public string Користувач { get; set; }
+                
+            }            
+        }
+          
+        public class ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart : ConstantsTablePart
+        {
+            public ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart() : base(Config.Kernel, "tab_a96",
+                 new string[] { "col_a1", "col_a2", "col_a3" }) 
+            {
+                Records = new List<Record>();
+            }
+            
+            public const string TABLE = "tab_a96";
+            
+            public const string Регістр = "col_a1";
+            public const string Місяць = "col_a2";
+            public const string Обчислено = "col_a3";
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.Регістр = fieldValue["col_a1"].ToString();
+                    record.Місяць = (fieldValue["col_a2"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a2"].ToString()) : DateTime.MinValue;
+                    record.Обчислено = (fieldValue["col_a3"] != DBNull.Value) ? bool.Parse(fieldValue["col_a3"].ToString()) : false;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.Регістр);
+                    fieldValue.Add("col_a2", record.Місяць);
+                    fieldValue.Add("col_a3", record.Обчислено);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    Регістр = "";
+                    Місяць = DateTime.MinValue;
+                    Обчислено = false;
+                    
+                }
+                public string Регістр { get; set; }
+                public DateTime Місяць { get; set; }
+                public bool Обчислено { get; set; }
                 
             }            
         }

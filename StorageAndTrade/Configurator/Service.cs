@@ -44,7 +44,8 @@ namespace StorageAndTrade_1_0.Service
     class CalculationBalances
     {
 
-        public static void ОбчисленняРегістрів()
+
+        public static void ОбчисленняВіртуальнихЗалишківПоДнях()
         {
             string querySelectTask = $@"
 SELECT
@@ -76,7 +77,7 @@ ORDER BY Дата ASC
                 string ТипДокументу = row[3].ToString();
                 string Період = row[4].ToString();
 
-                Console.WriteLine($"Документ: {Документ} ТипДокументу: {ТипДокументу} Період:{Період}");
+                //Console.WriteLine($"Документ: {Документ} ТипДокументу: {ТипДокументу} Період:{Період}");
 
                 bool documentProcessed = false;
 
@@ -84,7 +85,7 @@ ORDER BY Дата ASC
                 {
                     if (documentProcessedList[Період].Contains(ТипДокументу))
                     {
-                        Console.WriteLine($"continue: {Період} {ТипДокументу}");
+                        //Console.WriteLine($"continue: {Період} {ТипДокументу}");
                         documentProcessed = true;
                     }
                     else

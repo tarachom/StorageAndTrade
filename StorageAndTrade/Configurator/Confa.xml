@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>16.07.2022 17:30:52</DateTimeSave>
+  <DateTimeSave>18.07.2022 10:28:38</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -191,8 +191,8 @@
             <TablePart>
               <Name>ОбчисленняВіртуальнихЗалишків</Name>
               <Table>tab_a77</Table>
-              <Desc>
-              </Desc>
+              <Desc>В таблицю записується інформація про документи які змінили регістри накопичення.
+Обчислення віртуальних залишків відбувається на дату документу.</Desc>
               <Fields>
                 <Field>
                   <Name>Дата</Name>
@@ -250,6 +250,37 @@
                   <Name>Користувач</Name>
                   <NameInTable>col_a7</NameInTable>
                   <Type>string</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+            <TablePart>
+              <Name>АктуальністьВіртуальнихЗалишків</Name>
+              <Table>tab_a96</Table>
+              <Desc>Акутальність віртуальних залишків по місяцях.</Desc>
+              <Fields>
+                <Field>
+                  <Name>Регістр</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>string</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Місяць</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Обчислено</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>boolean</Type>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>

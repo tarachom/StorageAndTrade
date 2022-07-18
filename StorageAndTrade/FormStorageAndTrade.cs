@@ -52,7 +52,7 @@ namespace StorageAndTrade
         {
             while (true)
             {
-                CalculationBalances.ОбчисленняРегістрів();
+                CalculationBalances.ОбчисленняВіртуальнихЗалишківПоДнях();
                 Thread.Sleep(5000);
             }
         }
