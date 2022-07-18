@@ -144,15 +144,20 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
                     allowDocuments.Add(configurationDocuments.Table, configurationDocuments.Fields["Назва"].NameInTable);
             }
 
-            string queryDoc = "";
+            string queryDoc = $@"
+SELECT
+    uid,
+    Назва
+FROM (";
             int counter = 0;
 
             foreach (KeyValuePair<string, string> document in allowDocuments)
             {
-                queryDoc += counter > 0 ? "UNION" : "";
+                string UNION = counter > 0 ? "UNION" : "";
                 counter++;
 
                 queryDoc += $@"
+{UNION} 
 (
 SELECT
     Рег_РухКоштів.owner AS uid,
@@ -160,35 +165,15 @@ SELECT
 FROM
     {РухКоштів_Const.TABLE} AS Рег_РухКоштів
         INNER JOIN {document.Key} ON {document.Key}.uid = Рег_РухКоштів.owner
-)
-";
+)";
             }
 
+            queryDoc += $@"
+) AS all_documents
+ORDER BY Назва
+";
+
             Console.WriteLine(queryDoc);
-
-            //            string queryDoc = $@"
-            //SELECT
-            //    Рег_РухКоштів.owner,
-            //    ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Назва} AS Назва
-            //FROM
-            //    {РухКоштів_Const.TABLE} AS Рег_РухКоштів
-
-            //    INNER JOIN {ПрихіднийКасовийОрдер_Const.TABLE} AS ПрихіднийКасовийОрдер ON ПрихіднийКасовийОрдер.uid = 
-            //        Рег_РухКоштів.owner
-
-            //UNION
-
-            //SELECT
-            //    Рег_РухКоштів.owner,
-            //    РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Назва} AS Назва
-            //FROM
-            //    {РухКоштів_Const.TABLE} AS Рег_РухКоштів
-
-            //    INNER JOIN {РозхіднийКасовийОрдер_Const.TABLE} AS РозхіднийКасовийОрдер ON РозхіднийКасовийОрдер.uid = 
-            //        Рег_РухКоштів.owner
-            //";
-
-
 
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 

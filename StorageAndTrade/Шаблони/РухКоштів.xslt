@@ -53,6 +53,20 @@
 
 					</table>
 
+					<table class="table table-bordered table-sm">
+						<tr class="table-success">
+							<th>Документи</th>
+						</tr>
+						<xsl:for-each select="Документи/row">
+							<tr>
+								<td>
+									<xsl:value-of select="Назва"/>
+								</td>
+							</tr>
+						</xsl:for-each>
+
+					</table>
+
 					<br/>
 					<br/>
 					<br/>
