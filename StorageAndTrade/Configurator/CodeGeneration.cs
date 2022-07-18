@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 18.07.2022 10:28:38
+ * Дата конфігурації: 18.07.2022 11:02:09
  *
  */
 
@@ -169,13 +169,12 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_a8", "col_a9", "col_c3" }, fieldValue);
+                 new string[] { "col_a8", "col_a9" }, fieldValue);
             
             if (IsSelect)
             {
                 m_ЖурналРеєстрації_Const = fieldValue["col_a8"].ToString();
                 m_ФоновіЗадачі_Const = fieldValue["col_a9"].ToString();
-                m_ДатаАктуальності_Const = (fieldValue["col_c3"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_c3"].ToString()) : DateTime.MinValue;
                 
             }
 			
@@ -201,17 +200,6 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ФоновіЗадачі_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a9", m_ФоновіЗадачі_Const);
-            }
-        }
-        
-        static DateTime m_ДатаАктуальності_Const = DateTime.MinValue;
-        public static DateTime ДатаАктуальності_Const
-        {
-            get { return m_ДатаАктуальності_Const; }
-            set
-            {
-                m_ДатаАктуальності_Const = value;
-                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c3", m_ДатаАктуальності_Const);
             }
         }
         
@@ -503,7 +491,7 @@ namespace StorageAndTrade_1_0.Константи
             
             public const string Регістр = "col_a1";
             public const string Місяць = "col_a2";
-            public const string Обчислено = "col_a3";
+            public const string Актуально = "col_a3";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -518,7 +506,7 @@ namespace StorageAndTrade_1_0.Константи
                     
                     record.Регістр = fieldValue["col_a1"].ToString();
                     record.Місяць = (fieldValue["col_a2"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a2"].ToString()) : DateTime.MinValue;
-                    record.Обчислено = (fieldValue["col_a3"] != DBNull.Value) ? bool.Parse(fieldValue["col_a3"].ToString()) : false;
+                    record.Актуально = (fieldValue["col_a3"] != DBNull.Value) ? bool.Parse(fieldValue["col_a3"].ToString()) : false;
                     
                     Records.Add(record);
                 }
@@ -539,7 +527,7 @@ namespace StorageAndTrade_1_0.Константи
 
                     fieldValue.Add("col_a1", record.Регістр);
                     fieldValue.Add("col_a2", record.Місяць);
-                    fieldValue.Add("col_a3", record.Обчислено);
+                    fieldValue.Add("col_a3", record.Актуально);
                     
                     base.BaseSave(record.UID, fieldValue);
                 }
@@ -558,12 +546,12 @@ namespace StorageAndTrade_1_0.Константи
                 {
                     Регістр = "";
                     Місяць = DateTime.MinValue;
-                    Обчислено = false;
+                    Актуально = false;
                     
                 }
                 public string Регістр { get; set; }
                 public DateTime Місяць { get; set; }
-                public bool Обчислено { get; set; }
+                public bool Актуально { get; set; }
                 
             }            
         }

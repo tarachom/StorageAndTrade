@@ -43,10 +43,19 @@ namespace StorageAndTrade_1_0.Service
 
     class CalculationBalances
     {
-
-
+        /// <summary>
+        /// Функція перевіряє список фонових задач для обчислення віртуальних залишків
+        /// та обчислює залишки на дату проведення документу.
+        /// Алгоритм обчислення:
+        /// 1. Отримати список задач
+        /// 2. Отримати список регістрів доступних для документу який вказаний в задачі
+        /// 3. Розрахувати залишки на дату проведення документу по всіх доступних регістрах
+        /// 4. Зафікусувати що задача виконана
+        /// </summary>
         public static void ОбчисленняВіртуальнихЗалишківПоДнях()
         {
+            CalculateBalancesInRegister.ПідключитиДодаток_UUID_OSSP();
+
             string querySelectTask = $@"
 SELECT
     Задачі.uid,
@@ -385,9 +394,50 @@ UPDATE {Системні.ФоновіЗадачі_ОбчисленняВірту
 WHERE uid = '{uid}'
 ";
                 Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryUpdate);
+
+                ОбновитиЗначенняАктуальностіВіртуальнихЗалишківПоМісяцях(Період, allowRegisterAccumulation);
             }
 
             Config.KernelBackgroundTask.DataBase.CommitTransaction();
+        }
+
+        /// <summary>
+        /// Функція обновляє значення актуальності для ВіртальнихТаблицьРегістрів по місяцях.
+        /// 
+        /// </summary>
+        public static void ОбновитиЗначенняАктуальностіВіртуальнихЗалишківПоМісяцях(string period, List<string> allowRegisterAccumulation)
+        {
+            string queryPartRegisterAccumulation = "'" + string.Join("','", allowRegisterAccumulation) + "'";
+
+            string queryDelete = $@"
+DELETE FROM {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.TABLE}
+WHERE date_trunc('month', '{period}'::timestamp) = {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Місяць} AND
+    {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Регістр} IN({ queryPartRegisterAccumulation});
+";
+            Console.WriteLine(queryDelete);
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryDelete);
+
+            foreach (string registerAccumulation in allowRegisterAccumulation)
+            {
+                string queryInsert = $@"
+INSERT INTO {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.TABLE}
+(
+    uid,
+    {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Регістр},
+    {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Місяць},
+    {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Актуально}
+)
+VALUES
+(
+    uuid_generate_v4(),
+    '{registerAccumulation}',
+    date_trunc('month', '{period}'::timestamp),
+    false
+);
+";
+                Console.WriteLine(queryInsert);
+                Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryInsert);
+            }
         }
     }
 

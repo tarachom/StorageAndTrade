@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>18.07.2022 10:28:38</DateTimeSave>
+  <DateTimeSave>18.07.2022 11:02:09</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -212,8 +212,7 @@
                   <Name>ТипДокументу</Name>
                   <NameInTable>col_a1</NameInTable>
                   <Type>string</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Тип документу як задано в конфігураторі</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
@@ -234,24 +233,21 @@
                   <Name>Заблоковано</Name>
                   <NameInTable>col_a5</NameInTable>
                   <Type>boolean</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Не використовується на даний момент</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
                   <Name>Виконано</Name>
                   <NameInTable>col_a6</NameInTable>
                   <Type>boolean</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Вже виконано</Desc>
                   <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Користувач</Name>
                   <NameInTable>col_a7</NameInTable>
                   <Type>string</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Користоувач</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
@@ -259,42 +255,33 @@
             <TablePart>
               <Name>АктуальністьВіртуальнихЗалишків</Name>
               <Table>tab_a96</Table>
-              <Desc>Акутальність віртуальних залишків по місяцях.</Desc>
+              <Desc>Актутальність віртуальних залишків по місяцях.</Desc>
               <Fields>
                 <Field>
                   <Name>Регістр</Name>
                   <NameInTable>col_a1</NameInTable>
                   <Type>string</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Регістр</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
                   <Name>Місяць</Name>
                   <NameInTable>col_a2</NameInTable>
                   <Type>date</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Дата типу 01.05.2022
+Використовується місяць та рік</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>Обчислено</Name>
+                  <Name>Актуально</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>boolean</Type>
-                  <Desc>
-                  </Desc>
+                  <Desc>Залишки обчислені та актуальні</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
             </TablePart>
           </TabularParts>
-        </Constant>
-        <Constant>
-          <Name>ДатаАктуальності</Name>
-          <NameInTable>col_c3</NameInTable>
-          <Desc>Дата актуальності даних у віртуальних таблицях регістрів</Desc>
-          <Type>date</Type>
-          <TabularParts />
         </Constant>
       </Constants>
     </ConstantsBlock>
