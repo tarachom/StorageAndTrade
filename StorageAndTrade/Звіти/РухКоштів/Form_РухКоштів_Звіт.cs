@@ -53,8 +53,8 @@ namespace StorageAndTrade
 
         private void Form_РухКоштів_Звіт_Load(object sender, EventArgs e)
         {
-            directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer());
-            directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer());
+            directoryControl_Організація.Init(new Form_Організації(), new Організації_Pointer());
+            directoryControl_Каса.Init(new Form_Каси(), new Каси_Pointer());
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
 
             geckoWebBrowser.LoadHtml("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><p>Звіт не сформований</p>");
@@ -85,6 +85,43 @@ FROM
     LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = 
         РухКоштів_Місяць.{ВіртуальніТаблиціРегістрів.РухКоштів_Місяць_TablePart.Валюта}
 ";
+
+            #region WHERE
+
+            //Відбір по вибраному елементу Організації
+            if (!directoryControl_Організація.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Організації.uid = '{directoryControl_Організація.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Валюти
+            if (!directoryControl_Каса.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Каси.uid = '{directoryControl_Каса.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Валюти
+            if (!directoryControl_Валюти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Валюти.uid = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
 
             query += $@"
 GROUP BY Організація, Організація_Назва, 
