@@ -43,6 +43,12 @@ namespace StorageAndTrade_1_0.Service
 
     class CalculationBalances
     {
+        public static void ПідключитиДодаток_UUID_OSSP()
+        {
+            string query = "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"";
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+        }
+
         /// <summary>
         /// Функція перевіряє список фонових задач для обчислення віртуальних залишків
         /// та обчислює залишки на дату проведення документу.
@@ -54,8 +60,6 @@ namespace StorageAndTrade_1_0.Service
         /// </summary>
         public static void ОбчисленняВіртуальнихЗалишківПоДнях()
         {
-            CalculateBalancesInRegister.ПідключитиДодаток_UUID_OSSP();
-
             string querySelectTask = $@"
 SELECT
     Задачі.uid,
@@ -78,6 +82,7 @@ ORDER BY Дата ASC
 
             Config.KernelBackgroundTask.DataBase.BeginTransaction();
 
+            //Обробка задач
             foreach (object[] row in listRow)
             {
                 string uid = row[0].ToString();
@@ -394,8 +399,26 @@ UPDATE {Системні.ФоновіЗадачі_ОбчисленняВірту
 WHERE uid = '{uid}'
 ";
                 Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryUpdate);
+            }
 
-                ОбновитиЗначенняАктуальностіВіртуальнихЗалишківПоМісяцях(Період, allowRegisterAccumulation);
+            //Обновлення актуальності віртуальних залишків по місяцях
+            foreach (KeyValuePair<string, List<string>> documentProcessed in documentProcessedList)
+            {
+                List<string> allAllowRegisterAccumulation = new List<string>();
+
+                foreach (string documentType in documentProcessed.Value)
+                {
+                    //Список регістрів доступних для документу
+                    List<string> allowRegisterAccumulation = Config.Kernel.Conf.Documents[documentType].AllowRegisterAccumulation;
+
+                    foreach (string registerAccumulation in allowRegisterAccumulation)
+                    {
+                        if (!allAllowRegisterAccumulation.Contains(registerAccumulation))
+                            allAllowRegisterAccumulation.Add(registerAccumulation);
+                    }
+                }
+
+                ОбновитиЗначенняАктуальностіВіртуальнихЗалишківПоМісяцях(documentProcessed.Key, allAllowRegisterAccumulation);
             }
 
             Config.KernelBackgroundTask.DataBase.CommitTransaction();
@@ -414,7 +437,7 @@ DELETE FROM {Системні.ФоновіЗадачі_Актуальність�
 WHERE date_trunc('month', '{period}'::timestamp) = {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Місяць} AND
     {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Регістр} IN({ queryPartRegisterAccumulation});
 ";
-            Console.WriteLine(queryDelete);
+            //Console.WriteLine(queryDelete);
             Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryDelete);
 
             foreach (string registerAccumulation in allowRegisterAccumulation)
@@ -435,7 +458,7 @@ VALUES
     false
 );
 ";
-                Console.WriteLine(queryInsert);
+                //Console.WriteLine(queryInsert);
                 Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryInsert);
             }
         }

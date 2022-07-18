@@ -34,6 +34,12 @@ namespace StorageAndTrade
         {
             this.MdiChildActivate += FormStorageAndTrade_MdiChildActivate;
 
+            //
+            // Обробка фонових задач розрахунку віртуальних залишків
+            //
+
+            CalculationBalances.ПідключитиДодаток_UUID_OSSP();
+
             ThreadBackgroundTask = new Thread(new ThreadStart(CalculationVirtualBalances));
             ThreadBackgroundTask.Start();
         }
