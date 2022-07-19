@@ -275,7 +275,7 @@ namespace StorageAndTrade
         {
 			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
 
-			string[] allowColumn = new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва" };
+			string[] allowColumn = new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва", "ЗамовленняКлієнтаНазва", "СкладНазва" };
 
 			contextMenuStrip1.Items.Clear();
 
