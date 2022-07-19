@@ -334,7 +334,7 @@ LIMIT 10
 			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
 			Записи запис = (Записи)copyMenuItem.Tag;
 
-			Console.WriteLine(copyMenuItem.Name);
+			//Console.WriteLine(copyMenuItem.Name);
 
 			switch (copyMenuItem.Name)
 			{

@@ -794,7 +794,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record record_Клієнт = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
 				розрахункиЗКлієнтами_RecordsSet.Records.Add(record_Клієнт);
 
-				record_Клієнт.Income = true;
+				record_Клієнт.Income = false;
 				record_Клієнт.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record_Клієнт.Контрагент = ДокументОбєкт.Контрагент;

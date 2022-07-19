@@ -202,13 +202,13 @@ namespace StorageAndTrade
 
 		private void CopyMenuItem_ClickFind(object sender, EventArgs e)
 		{
-			Console.WriteLine("Find menu");
+			//Console.WriteLine("Find menu");
 		}
 
 		private void ToolStripTextBox_TextChanged(object sender, EventArgs e)
 		{
 			ToolStripTextBox findMenuItem = (ToolStripTextBox)sender;
-			Console.WriteLine(findMenuItem.Text);
+			//Console.WriteLine(findMenuItem.Text);
 
 			foreach(ToolStripItem toolStripItem in contextMenuStrip1.Items.Find("find", false))
 				contextMenuStrip1.Items.Remove(toolStripItem);
@@ -261,7 +261,7 @@ namespace StorageAndTrade
 			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
 			Записи запис = (Записи)copyMenuItem.Tag;
 
-			Console.WriteLine(copyMenuItem.Name);
+			//Console.WriteLine(copyMenuItem.Name);
 
 			switch (copyMenuItem.Name)
 			{

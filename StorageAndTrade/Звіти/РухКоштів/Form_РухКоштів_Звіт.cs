@@ -173,7 +173,7 @@ FROM
 ORDER BY Назва
 ";
 
-            Console.WriteLine(queryDoc);
+            //Console.WriteLine(queryDoc);
 
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 

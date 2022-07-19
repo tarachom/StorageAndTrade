@@ -161,16 +161,16 @@ ORDER BY Номенклатура_Назва
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 
             DateTime dateStart = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, dateTimeStart.Value.Day, 0, 0, 0);
-            Console.WriteLine("dateStart " + dateStart);
+            //Console.WriteLine("dateStart " + dateStart);
 
             DateTime dateStop = new DateTime(dateTimeStop.Value.Year, dateTimeStop.Value.Month, dateTimeStop.Value.Day, 23, 59, 59);
-            Console.WriteLine("dateStop " + dateStop);
+            //Console.WriteLine("dateStop " + dateStop);
 
             DateTime dateStartMonth = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, 1, 0, 0, 0);
-            Console.WriteLine("dateStartMonth " + dateStartMonth);
+            //Console.WriteLine("dateStartMonth " + dateStartMonth);
 
             DateTime dateStart2 = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, 1, 0, 0, 0);
-            Console.WriteLine("dateStart2 " + dateStart2);
+            //Console.WriteLine("dateStart2 " + dateStart2);
 
             //DateTime dateStop2 = dateStop.AddDays(-1);
 
