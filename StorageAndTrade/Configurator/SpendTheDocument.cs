@@ -157,18 +157,21 @@ namespace StorageAndTrade_1_0.Документи
 
 			foreach (РеалізаціяТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record();
-				замовленняКлієнтів_RecordsSet.Records.Add(record);
+				if (!Товари_Record.ЗамовленняКлієнта.IsEmpty())
+				{
+					РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record();
+					замовленняКлієнтів_RecordsSet.Records.Add(record);
 
-				record.Income = false; // -     | Документ зменшує замовлення
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+					record.Income = false; // -     | Документ зменшує замовлення
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
-				record.ЗамовленняКлієнта = Товари_Record.ЗамовленняКлієнта;
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.Замовлено = Товари_Record.Кількість;
-				record.Сума = Товари_Record.Сума;
+					record.ЗамовленняКлієнта = Товари_Record.ЗамовленняКлієнта;
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Склад = ДокументОбєкт.Склад;
+					record.Замовлено = Товари_Record.Кількість;
+					record.Сума = Товари_Record.Сума;
+				}
 			}
 
 			замовленняКлієнтів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);

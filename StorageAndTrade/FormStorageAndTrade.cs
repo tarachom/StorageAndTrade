@@ -320,23 +320,23 @@ namespace StorageAndTrade
 
         private void обчислитиЗалишкиПоРегістрахToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormService formService = new FormService();
-            formService.MdiParent = this;
-            formService.Show();            
+            //FormService formService = new FormService();
+            //formService.MdiParent = this;
+            //formService.Show();            
         }
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string query = $@"
-SELECT pg_try_advisory_lock(id) FROM test WHERE id = '1';
-Update test Set name= 'test 4' Where id = 1;
-SELECT pg_advisory_unlock(id) FROM test WHERE id = '1';
-";
+//            string query = $@"
+//SELECT pg_try_advisory_lock(id) FROM test WHERE id = '1';
+//Update test Set name= 'test 4' Where id = 1;
+//SELECT pg_advisory_unlock(id) FROM test WHERE id = '1';
+//";
 
-            string[] cols;
-            List<object[]> rows;
+//            string[] cols;
+//            List<object[]> rows;
 
-            Конфа.Config.Kernel.DataBase.SelectRequest(query, null, out cols, out rows);
+//            Конфа.Config.Kernel.DataBase.SelectRequest(query, null, out cols, out rows);
 
         }
 

@@ -41,13 +41,11 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["НомерРядка"].HeaderText = "№";
 
 			dataGridViewRecords.Columns["Номенклатура"].Visible = false;
-			dataGridViewRecords.Columns["Характеристика"].Visible = false;
-			dataGridViewRecords.Columns["Пакування"].Visible = false;
-
 			dataGridViewRecords.Columns["НоменклатураНазва"].Width = 200;
 			dataGridViewRecords.Columns["НоменклатураНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["НоменклатураНазва"].HeaderText = "Номенклатура";
 
+			dataGridViewRecords.Columns["Характеристика"].Visible = false;
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].Width = 200;
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].HeaderText = "Характеристика";
@@ -55,12 +53,23 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["КількістьУпаковок"].Width = 50;
 			dataGridViewRecords.Columns["КількістьУпаковок"].HeaderText = "Кво.Упак.";
 
+			dataGridViewRecords.Columns["Пакування"].Visible = false;
 			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 100;
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
 
 			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+
+			dataGridViewRecords.Columns["ЗамовленняКлієнта"].Visible = false;
+			dataGridViewRecords.Columns["ЗамовленняКлієнтаНазва"].Width = 350;
+			dataGridViewRecords.Columns["ЗамовленняКлієнтаНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["ЗамовленняКлієнтаНазва"].HeaderText = "Замовлення";
+
+			dataGridViewRecords.Columns["Склад"].Visible = false;
+			dataGridViewRecords.Columns["СкладНазва"].Width = 200;
+			dataGridViewRecords.Columns["СкладНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["СкладНазва"].HeaderText = "Склад";
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -92,6 +101,18 @@ namespace StorageAndTrade
 			querySelect.Joins.Add(
 				new Join(Довідники.ХарактеристикиНоменклатури_Const.TABLE, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.ХарактеристикаНоменклатури, querySelect.Table));
 
+			//JOIN 4
+			querySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Документи.ЗамовленняКлієнта_Const.TABLE + "." + Документи.ЗамовленняКлієнта_Const.Назва, "doc_name"));
+			querySelect.Joins.Add(
+				new Join(Документи.ЗамовленняКлієнта_Const.TABLE, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.ЗамовленняКлієнта, querySelect.Table));
+
+			//JOIN 5
+			querySelect.FieldAndAlias.Add(
+				new KeyValuePair<string, string>(Довідники.Склади_Const.TABLE + "." + Довідники.Склади_Const.Назва, "sklad_name"));
+			querySelect.Joins.Add(
+				new Join(Довідники.Склади_Const.TABLE, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Склад, querySelect.Table));
+
 			//ORDER
 			querySelect.Order.Add(Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.НомерРядка, SelectOrder.ASC);
 
@@ -114,8 +135,12 @@ namespace StorageAndTrade
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
 					Кількість = record.Кількість,
 					Ціна = Math.Round(record.Ціна, 2),
-					Сума = Math.Round(record.Сума, 2)
-				});
+					Сума = Math.Round(record.Сума, 2),
+					ЗамовленняКлієнта = record.ЗамовленняКлієнта,
+					ЗамовленняКлієнтаНазва = JoinValue[record.UID.ToString()]["doc_name"],
+					Склад = record.Склад,
+					СкладНазва = JoinValue[record.UID.ToString()]["sklad_name"]
+				}); 
 			}
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
@@ -157,6 +182,8 @@ namespace StorageAndTrade
 				record.Кількість = запис.Кількість;
 				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
+				record.ЗамовленняКлієнта = запис.ЗамовленняКлієнта;
+				record.Склад = запис.Склад;
 
 				ДокументОбєкт.Товари_TablePart.Records.Add(record);
 			}
@@ -178,6 +205,10 @@ namespace StorageAndTrade
 			public decimal Кількість { get; set; }
 			public decimal Ціна { get; set; }
 			public decimal Сума { get; set; }
+			public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+			public string ЗамовленняКлієнтаНазва { get; set; }
+			public Довідники.Склади_Pointer Склад { get; set; }
+			public string СкладНазва { get; set; }
 
 			public static Записи New()
             {
@@ -188,7 +219,9 @@ namespace StorageAndTrade
 					Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(),
 					КількістьУпаковок = 1,
 					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(),
-					Кількість = 1
+					Кількість = 1,
+					ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(),
+					Склад = new Довідники.Склади_Pointer()
 				};
 			}
 
@@ -206,7 +239,9 @@ namespace StorageAndTrade
 					ПакуванняНазва = запис.ПакуванняНазва,
 					Кількість = запис.Кількість,
 					Ціна = запис.Ціна,
-					Сума = запис.Сума
+					Сума = запис.Сума,
+					ЗамовленняКлієнта = запис.ЗамовленняКлієнта,
+					Склад = запис.Склад
 				};
             }
         }
@@ -331,6 +366,28 @@ namespace StorageAndTrade
 
 						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
 						запис.ПакуванняНазва = запис.Пакування.GetPresentation();
+
+						break;
+					}
+				case "ЗамовленняКлієнтаНазва":
+					{
+						Form_ЗамовленняКлієнтаЖурнал form_ЗамовленняКлієнтаЖурнал = new Form_ЗамовленняКлієнтаЖурнал();
+						form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem = запис.ЗамовленняКлієнта;
+						form_ЗамовленняКлієнтаЖурнал.ShowDialog();
+
+						запис.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem;
+						запис.ЗамовленняКлієнтаНазва = запис.ЗамовленняКлієнта.GetPresentation();
+
+						break;
+					}
+				case "СкладНазва":
+					{
+						Form_Склади form_Склади = new Form_Склади();
+						form_Склади.DirectoryPointerItem = запис.Склад;
+						form_Склади.ShowDialog();
+
+						запис.Склад = (Довідники.Склади_Pointer)form_Склади.DirectoryPointerItem;
+						запис.СкладНазва = запис.Склад.GetPresentation();
 
 						break;
 					}
