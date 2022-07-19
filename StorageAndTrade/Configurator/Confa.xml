@@ -3,7 +3,7 @@
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>18.07.2022 16:39:41</DateTimeSave>
+  <DateTimeSave>19.07.2022 11:23:54</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -1086,6 +1086,167 @@
             </TablePart>
           </TabularParts>
         </Constant>
+        <Constant>
+          <Name>Закупівлі</Name>
+          <NameInTable>col_g3</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>string</Type>
+          <TabularParts>
+            <TablePart>
+              <Name>Місяць</Name>
+              <Table>tab_a97</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Період</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Організація</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Організації</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Склад</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Склади</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Контрагент</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Контрагенти</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Договір</Name>
+                  <NameInTable>col_a5</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Кількість</Name>
+                  <NameInTable>col_a6</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Сума</Name>
+                  <NameInTable>col_a7</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Вартість</Name>
+                  <NameInTable>col_a8</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+            <TablePart>
+              <Name>День</Name>
+              <Table>tab_b01</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Період</Name>
+                  <NameInTable>col_a6</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Організація</Name>
+                  <NameInTable>col_a7</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Організації</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Склад</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Склади</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Контрагент</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Контрагенти</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Договір</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Кількість</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Сума</Name>
+                  <NameInTable>col_a5</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Вартість</Name>
+                  <NameInTable>col_a8</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+          </TabularParts>
+        </Constant>
       </Constants>
     </ConstantsBlock>
     <ConstantsBlock>
@@ -1168,6 +1329,54 @@
         <Constant>
           <Name>ПоверненняТоварівВідКлієнта</Name>
           <NameInTable>col_c9</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>АктВиконанихРобіт</Name>
+          <NameInTable>col_f6</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ВведенняЗалишків</Name>
+          <NameInTable>col_f7</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>НадлишкиТоварів</Name>
+          <NameInTable>col_f8</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ПересортицяТоварів</Name>
+          <NameInTable>col_f9</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ПерерахунокТоварів</Name>
+          <NameInTable>col_g1</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ПорчаТоварів</Name>
+          <NameInTable>col_g2</NameInTable>
           <Desc>
           </Desc>
           <Type>integer</Type>

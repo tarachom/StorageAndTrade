@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com
- * Дата конфігурації: 18.07.2022 16:39:41
+ * Дата конфігурації: 19.07.2022 11:23:54
  *
  */
 
@@ -567,7 +567,7 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_b1", "col_b3", "col_b4", "col_b2", "col_b5", "col_b6", "col_c3" }, fieldValue);
+                 new string[] { "col_b1", "col_b3", "col_b4", "col_b2", "col_b5", "col_b6", "col_c3", "col_g3" }, fieldValue);
             
             if (IsSelect)
             {
@@ -578,6 +578,7 @@ namespace StorageAndTrade_1_0.Константи
                 m_ЗамовленняПостачальникам_Const = fieldValue["col_b5"].ToString();
                 m_ВільніЗалишки_Const = fieldValue["col_b6"].ToString();
                 m_РухКоштів_Const = fieldValue["col_c3"].ToString();
+                m_Закупівлі_Const = fieldValue["col_g3"].ToString();
                 
             }
 			
@@ -658,6 +659,17 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_РухКоштів_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c3", m_РухКоштів_Const);
+            }
+        }
+        
+        static string m_Закупівлі_Const = "";
+        public static string Закупівлі_Const
+        {
+            get { return m_Закупівлі_Const; }
+            set
+            {
+                m_Закупівлі_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g3", m_Закупівлі_Const);
             }
         }
         
@@ -1903,6 +1915,210 @@ namespace StorageAndTrade_1_0.Константи
                 
             }            
         }
+          
+        public class Закупівлі_Місяць_TablePart : ConstantsTablePart
+        {
+            public Закупівлі_Місяць_TablePart() : base(Config.Kernel, "tab_a97",
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8" }) 
+            {
+                Records = new List<Record>();
+            }
+            
+            public const string TABLE = "tab_a97";
+            
+            public const string Період = "col_a1";
+            public const string Організація = "col_a2";
+            public const string Склад = "col_a3";
+            public const string Контрагент = "col_a4";
+            public const string Договір = "col_a5";
+            public const string Кількість = "col_a6";
+            public const string Сума = "col_a7";
+            public const string Вартість = "col_a8";
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.Період = (fieldValue["col_a1"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a1"].ToString()) : DateTime.MinValue;
+                    record.Організація = new Довідники.Організації_Pointer(fieldValue["col_a2"]);
+                    record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a3"]);
+                    record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a4"]);
+                    record.Договір = new Довідники.ДоговориКонтрагентів_Pointer(fieldValue["col_a5"]);
+                    record.Кількість = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
+                    record.Сума = (fieldValue["col_a7"] != DBNull.Value) ? (decimal)fieldValue["col_a7"] : 0;
+                    record.Вартість = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.Період);
+                    fieldValue.Add("col_a2", record.Організація.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Контрагент.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.Договір.UnigueID.UGuid);
+                    fieldValue.Add("col_a6", record.Кількість);
+                    fieldValue.Add("col_a7", record.Сума);
+                    fieldValue.Add("col_a8", record.Вартість);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    Період = DateTime.MinValue;
+                    Організація = new Довідники.Організації_Pointer();
+                    Склад = new Довідники.Склади_Pointer();
+                    Контрагент = new Довідники.Контрагенти_Pointer();
+                    Договір = new Довідники.ДоговориКонтрагентів_Pointer();
+                    Кількість = 0;
+                    Сума = 0;
+                    Вартість = 0;
+                    
+                }
+                public DateTime Період { get; set; }
+                public Довідники.Організації_Pointer Організація { get; set; }
+                public Довідники.Склади_Pointer Склад { get; set; }
+                public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+                public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
+                public decimal Кількість { get; set; }
+                public decimal Сума { get; set; }
+                public decimal Вартість { get; set; }
+                
+            }            
+        }
+          
+        public class Закупівлі_День_TablePart : ConstantsTablePart
+        {
+            public Закупівлі_День_TablePart() : base(Config.Kernel, "tab_b01",
+                 new string[] { "col_a6", "col_a7", "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a8" }) 
+            {
+                Records = new List<Record>();
+            }
+            
+            public const string TABLE = "tab_b01";
+            
+            public const string Період = "col_a6";
+            public const string Організація = "col_a7";
+            public const string Склад = "col_a1";
+            public const string Контрагент = "col_a2";
+            public const string Договір = "col_a3";
+            public const string Кількість = "col_a4";
+            public const string Сума = "col_a5";
+            public const string Вартість = "col_a8";
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.Період = (fieldValue["col_a6"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a6"].ToString()) : DateTime.MinValue;
+                    record.Організація = new Довідники.Організації_Pointer(fieldValue["col_a7"]);
+                    record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a1"]);
+                    record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_a2"]);
+                    record.Договір = new Довідники.ДоговориКонтрагентів_Pointer(fieldValue["col_a3"]);
+                    record.Кількість = (fieldValue["col_a4"] != DBNull.Value) ? (decimal)fieldValue["col_a4"] : 0;
+                    record.Сума = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
+                    record.Вартість = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a6", record.Період);
+                    fieldValue.Add("col_a7", record.Організація.UnigueID.UGuid);
+                    fieldValue.Add("col_a1", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Контрагент.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.Договір.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Кількість);
+                    fieldValue.Add("col_a5", record.Сума);
+                    fieldValue.Add("col_a8", record.Вартість);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    Період = DateTime.MinValue;
+                    Організація = new Довідники.Організації_Pointer();
+                    Склад = new Довідники.Склади_Pointer();
+                    Контрагент = new Довідники.Контрагенти_Pointer();
+                    Договір = new Довідники.ДоговориКонтрагентів_Pointer();
+                    Кількість = 0;
+                    Сума = 0;
+                    Вартість = 0;
+                    
+                }
+                public DateTime Період { get; set; }
+                public Довідники.Організації_Pointer Організація { get; set; }
+                public Довідники.Склади_Pointer Склад { get; set; }
+                public Довідники.Контрагенти_Pointer Контрагент { get; set; }
+                public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
+                public decimal Кількість { get; set; }
+                public decimal Сума { get; set; }
+                public decimal Вартість { get; set; }
+                
+            }            
+        }
                
     }
     #endregion
@@ -1915,7 +2131,7 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_b7", "col_b9", "col_c1", "col_c2", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9" }, fieldValue);
+                 new string[] { "col_b7", "col_b9", "col_c1", "col_c2", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_f6", "col_f7", "col_f8", "col_f9", "col_g1", "col_g2" }, fieldValue);
             
             if (IsSelect)
             {
@@ -1929,6 +2145,12 @@ namespace StorageAndTrade_1_0.Константи
                 m_ПереміщенняТоварів_Const = (fieldValue["col_c7"] != DBNull.Value) ? (int)fieldValue["col_c7"] : 0;
                 m_ПоверненняТоварівПостачальнику_Const = (fieldValue["col_c8"] != DBNull.Value) ? (int)fieldValue["col_c8"] : 0;
                 m_ПоверненняТоварівВідКлієнта_Const = (fieldValue["col_c9"] != DBNull.Value) ? (int)fieldValue["col_c9"] : 0;
+                m_АктВиконанихРобіт_Const = (fieldValue["col_f6"] != DBNull.Value) ? (int)fieldValue["col_f6"] : 0;
+                m_ВведенняЗалишків_Const = (fieldValue["col_f7"] != DBNull.Value) ? (int)fieldValue["col_f7"] : 0;
+                m_НадлишкиТоварів_Const = (fieldValue["col_f8"] != DBNull.Value) ? (int)fieldValue["col_f8"] : 0;
+                m_ПересортицяТоварів_Const = (fieldValue["col_f9"] != DBNull.Value) ? (int)fieldValue["col_f9"] : 0;
+                m_ПерерахунокТоварів_Const = (fieldValue["col_g1"] != DBNull.Value) ? (int)fieldValue["col_g1"] : 0;
+                m_ПорчаТоварів_Const = (fieldValue["col_g2"] != DBNull.Value) ? (int)fieldValue["col_g2"] : 0;
                 
             }
 			
@@ -2042,6 +2264,72 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ПоверненняТоварівВідКлієнта_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_c9", m_ПоверненняТоварівВідКлієнта_Const);
+            }
+        }
+        
+        static int m_АктВиконанихРобіт_Const = 0;
+        public static int АктВиконанихРобіт_Const
+        {
+            get { return m_АктВиконанихРобіт_Const; }
+            set
+            {
+                m_АктВиконанихРобіт_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f6", m_АктВиконанихРобіт_Const);
+            }
+        }
+        
+        static int m_ВведенняЗалишків_Const = 0;
+        public static int ВведенняЗалишків_Const
+        {
+            get { return m_ВведенняЗалишків_Const; }
+            set
+            {
+                m_ВведенняЗалишків_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f7", m_ВведенняЗалишків_Const);
+            }
+        }
+        
+        static int m_НадлишкиТоварів_Const = 0;
+        public static int НадлишкиТоварів_Const
+        {
+            get { return m_НадлишкиТоварів_Const; }
+            set
+            {
+                m_НадлишкиТоварів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f8", m_НадлишкиТоварів_Const);
+            }
+        }
+        
+        static int m_ПересортицяТоварів_Const = 0;
+        public static int ПересортицяТоварів_Const
+        {
+            get { return m_ПересортицяТоварів_Const; }
+            set
+            {
+                m_ПересортицяТоварів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f9", m_ПересортицяТоварів_Const);
+            }
+        }
+        
+        static int m_ПерерахунокТоварів_Const = 0;
+        public static int ПерерахунокТоварів_Const
+        {
+            get { return m_ПерерахунокТоварів_Const; }
+            set
+            {
+                m_ПерерахунокТоварів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g1", m_ПерерахунокТоварів_Const);
+            }
+        }
+        
+        static int m_ПорчаТоварів_Const = 0;
+        public static int ПорчаТоварів_Const
+        {
+            get { return m_ПорчаТоварів_Const; }
+            set
+            {
+                m_ПорчаТоварів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g2", m_ПорчаТоварів_Const);
             }
         }
              
