@@ -178,7 +178,7 @@ namespace StorageAndTrade
             // 
             this.toolStripDropDownButton_ВвестиНаОснові.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.розхіднийКасовийОрдерToolStripMenuItem});
-            this.toolStripDropDownButton_ВвестиНаОснові.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton_ВвестиНаОснові.Image")));
+            this.toolStripDropDownButton_ВвестиНаОснові.Image = global::StorageAndTrade.Properties.Resources.down;
             this.toolStripDropDownButton_ВвестиНаОснові.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButton_ВвестиНаОснові.Name = "toolStripDropDownButton_ВвестиНаОснові";
             this.toolStripDropDownButton_ВвестиНаОснові.Size = new System.Drawing.Size(128, 22);
@@ -186,6 +186,7 @@ namespace StorageAndTrade
             // 
             // розхіднийКасовийОрдерToolStripMenuItem
             // 
+            this.розхіднийКасовийОрдерToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
             this.розхіднийКасовийОрдерToolStripMenuItem.Name = "розхіднийКасовийОрдерToolStripMenuItem";
             this.розхіднийКасовийОрдерToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.розхіднийКасовийОрдерToolStripMenuItem.Text = "Розхідний касовий ордер";
