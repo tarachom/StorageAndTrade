@@ -42,6 +42,8 @@ namespace StorageAndTrade
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.toolStripDropDownButton_ВвестиНаОснові = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ПоступленняТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,7 +69,8 @@ namespace StorageAndTrade
             this.toolStripButtonDelete,
             this.toolStripButtonДрукПроводок,
             this.toolStripButtonClearSpend,
-            this.toolStripButtonSpend});
+            this.toolStripButtonSpend,
+            this.toolStripDropDownButton_ВвестиНаОснові});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
@@ -171,6 +174,24 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
+            // toolStripDropDownButton_ВвестиНаОснові
+            // 
+            this.toolStripDropDownButton_ВвестиНаОснові.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ПоступленняТоварівТаПослугToolStripMenuItem});
+            this.toolStripDropDownButton_ВвестиНаОснові.Image = global::StorageAndTrade.Properties.Resources.down;
+            this.toolStripDropDownButton_ВвестиНаОснові.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton_ВвестиНаОснові.Name = "toolStripDropDownButton_ВвестиНаОснові";
+            this.toolStripDropDownButton_ВвестиНаОснові.Size = new System.Drawing.Size(128, 22);
+            this.toolStripDropDownButton_ВвестиНаОснові.Text = "Ввести на основі";
+            // 
+            // ПоступленняТоварівТаПослугToolStripMenuItem
+            // 
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Name = "ПоступленняТоварівТаПослугToolStripMenuItem";
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Text = "Поступлення товарів та послуг";
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.ПоступленняТоварівТаПослугToolStripMenuItem_Click);
+            // 
             // Form_ЗамовленняПостачальникуЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -207,5 +228,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonДрукПроводок;
         private System.Windows.Forms.ToolStripButton toolStripButtonClearSpend;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpend;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButton_ВвестиНаОснові;
+        private System.Windows.Forms.ToolStripMenuItem ПоступленняТоварівТаПослугToolStripMenuItem;
     }
 }
