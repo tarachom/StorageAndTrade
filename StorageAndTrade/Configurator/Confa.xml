@@ -2,8 +2,10 @@
 <Configuration>
   <Name>Зберігання та Торгівля</Name>
   <NameSpace>StorageAndTrade_1_0</NameSpace>
-  <Author>Тарахомин Юрій Іванович, Україна, м. Львів, accounting.org.ua, tarachom@gmail.com</Author>
-  <DateTimeSave>19.07.2022 11:23:54</DateTimeSave>
+  <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
+  <Desc>Конфігурація "Зберігання та Торгівля"
+</Desc>
+  <DateTimeSave>21.07.2022 15:49:02</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
