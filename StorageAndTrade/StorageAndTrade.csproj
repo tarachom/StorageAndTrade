@@ -122,10 +122,10 @@
     <Compile Include="СпільніФорми\Form_Report.Designer.cs">
       <DependentUpon>Form_Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormService.cs">
+    <Compile Include="Trash\FormService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormService.Designer.cs">
+    <Compile Include="Trash\FormService.Designer.cs">
       <DependentUpon>FormService.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -688,7 +688,7 @@
     <EmbeddedResource Include="СпільніФорми\Form_Report.resx">
       <DependentUpon>Form_Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormService.resx">
+    <EmbeddedResource Include="Trash\FormService.resx">
       <DependentUpon>FormService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trash\Form1.resx">
@@ -1062,6 +1062,7 @@
     <None Include="Resources\Document-checkbox.ico" />
     <None Include="Resources\Document-photo.ico" />
     <Content Include="form.ico" />
+    <Content Include="Trash\Service.txt" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ЗамовленняПостачальникам.xslt" />
     <Content Include="Шаблони\РухКоштів.xslt">

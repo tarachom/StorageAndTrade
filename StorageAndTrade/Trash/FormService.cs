@@ -85,7 +85,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				CalculateBalancesInRegister_ЗамовленняКлієнтів.ВидалитиЗалишки();
+				//CalculateBalancesInRegister_ЗамовленняКлієнтів.ВидалитиЗалишки();
 			}
 
 			List<DateTime> ListMonth;
@@ -93,7 +93,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				ListMonth = CalculateBalancesInRegister_ЗамовленняКлієнтів.ОтриматиСписокМісяців();
+				ListMonth = null;// CalculateBalancesInRegister_ЗамовленняКлієнтів.ОтриматиСписокМісяців();
 			}
 
 			if (ListMonth.Count > 0)
@@ -123,7 +123,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				CalculateBalancesInRegister_ТовариНаСкладах.ВидалитиЗалишки();
+				//CalculateBalancesInRegister_ТовариНаСкладах.ВидалитиЗалишки();
 			}
 
 			List<DateTime> ListMonth;
@@ -131,7 +131,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				ListMonth = CalculateBalancesInRegister_ТовариНаСкладах.ОтриматиСписокМісяців();
+				ListMonth = null;// CalculateBalancesInRegister_ТовариНаСкладах.ОтриматиСписокМісяців();
 			}
 
 			if (ListMonth.Count > 0)
@@ -161,7 +161,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				CalculateBalancesInRegister_РозрахункиЗКлієнтами.ВидалитиЗалишки();
+				//CalculateBalancesInRegister_РозрахункиЗКлієнтами.ВидалитиЗалишки();
 			}
 
 			List<DateTime> ListMonth;
@@ -169,7 +169,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				ListMonth = CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОтриматиСписокМісяців();
+				ListMonth = null;// CalculateBalancesInRegister_РозрахункиЗКлієнтами.ОтриматиСписокМісяців();
 			}
 
 			if (ListMonth.Count > 0)
@@ -199,7 +199,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				CalculateBalancesInRegister_РозрахункиЗПостачальниками.ВидалитиЗалишки();
+				//CalculateBalancesInRegister_РозрахункиЗПостачальниками.ВидалитиЗалишки();
 			}
 
 			List<DateTime> ListMonth;
@@ -207,7 +207,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				ListMonth = CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОтриматиСписокМісяців();
+				ListMonth = null; // CalculateBalancesInRegister_РозрахункиЗПостачальниками.ОтриматиСписокМісяців();
 			}
 
 			if (ListMonth.Count > 0)
@@ -237,7 +237,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				CalculateBalancesInRegister_ЗамовленняПостачальникам.ВидалитиЗалишки();
+				//CalculateBalancesInRegister_ЗамовленняПостачальникам.ВидалитиЗалишки();
 			}
 
 			List<DateTime> ListMonth;
@@ -245,7 +245,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				ListMonth = CalculateBalancesInRegister_ЗамовленняПостачальникам.ОтриматиСписокМісяців();
+				ListMonth = null; // CalculateBalancesInRegister_ЗамовленняПостачальникам.ОтриматиСписокМісяців();
 			}
 
 			if (ListMonth.Count > 0)
@@ -275,7 +275,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				CalculateBalancesInRegister_ВільніЗалишки.ВидалитиЗалишки();
+				//CalculateBalancesInRegister_ВільніЗалишки.ВидалитиЗалишки();
 			}
 
 			List<DateTime> ListMonth;
@@ -283,7 +283,7 @@ namespace StorageAndTrade
 			lock (lockobject)
 			{
 				if (cancel) thread.Abort();
-				ListMonth = CalculateBalancesInRegister_ВільніЗалишки.ОтриматиСписокМісяців();
+				ListMonth = null; // CalculateBalancesInRegister_ВільніЗалишки.ОтриматиСписокМісяців();
 			}
 
 			if (ListMonth.Count > 0)
@@ -323,7 +323,7 @@ namespace StorageAndTrade
 			buttonCalculate.Enabled = false;
 			buttonCancel.Enabled = true;
 
-			CalculateBalancesInRegister.ПідключитиДодаток_UUID_OSSP();
+			//CalculateBalancesInRegister.ПідключитиДодаток_UUID_OSSP();
 
 			thread = new Thread(new ThreadStart(StartThreadCalculateBalance));
 			thread.Start();
