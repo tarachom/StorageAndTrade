@@ -74,7 +74,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccountingSoftware">
-      <HintPath>..\..\AccountingSoftware_29_05_21\bin\Debug\AccountingSoftware.dll</HintPath>
+      <HintPath>..\..\AccountingSoftware\bin\Debug\AccountingSoftware.dll</HintPath>
     </Reference>
     <Reference Include="Geckofx-Core, Version=45.0.6.0, Culture=neutral, PublicKeyToken=3209ac31600d1857, processorArchitecture=x86">
       <HintPath>..\packages\GeckoFX.1.0.5\lib\Geckofx-Core.dll</HintPath>
@@ -1095,7 +1095,7 @@
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
-set conf_folder_code=E:\Project\AccountingSoftware_29_05_21\Configurator
+set conf_folder_code=E:\Project\AccountingSoftware\Configurator
 set conf_folder=%25conf_folder_code%25\bin\Release
 
 set st_folder=$(TargetDir)
