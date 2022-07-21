@@ -318,11 +318,9 @@ namespace StorageAndTrade
 
         #region Сервіс Меню
 
-        private void обчислитиЗалишкиПоРегістрахToolStripMenuItem_Click(object sender, EventArgs e)
+        private void константиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //FormService formService = new FormService();
-            //formService.MdiParent = this;
-            //formService.Show();            
+
         }
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
@@ -533,6 +531,7 @@ namespace StorageAndTrade
         {
             встановленняЦінНоменклатуриToolStripMenuItem_Click(this, new EventArgs());
         }
+
 
 
 

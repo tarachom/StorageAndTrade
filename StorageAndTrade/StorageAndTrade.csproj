@@ -110,6 +110,12 @@
     <Compile Include="Configurator\Service.cs" />
     <Compile Include="Configurator\SpendTheDocument.cs" />
     <Compile Include="Configurator\Function.cs" />
+    <Compile Include="NumericControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NumericControl.designer.cs">
+      <DependentUpon>NumericControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -681,6 +687,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DirectoryControl.resx">
       <DependentUpon>DirectoryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NumericControl.resx">
+      <DependentUpon>NumericControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.resx">
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>

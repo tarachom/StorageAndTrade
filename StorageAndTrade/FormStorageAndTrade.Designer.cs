@@ -82,7 +82,6 @@ namespace StorageAndTrade
             this.відомістьПоТоварахНаСкладахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рухКоштівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сервісToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.константиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip_ВідкритіФорми = new System.Windows.Forms.ToolStrip();
@@ -545,26 +544,18 @@ namespace StorageAndTrade
             // сервісToolStripMenuItem
             // 
             this.сервісToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem,
             this.константиToolStripMenuItem});
             this.сервісToolStripMenuItem.Name = "сервісToolStripMenuItem";
             this.сервісToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.сервісToolStripMenuItem.Text = "Сервіс";
             // 
-            // обчислитиЗалишкиПоРегістрахToolStripMenuItem
-            // 
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem.Name = "обчислитиЗалишкиПоРегістрахToolStripMenuItem";
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem.Text = "Обчислити залишки по регістрах";
-            this.обчислитиЗалишкиПоРегістрахToolStripMenuItem.Click += new System.EventHandler(this.обчислитиЗалишкиПоРегістрахToolStripMenuItem_Click);
-            // 
             // константиToolStripMenuItem
             // 
             this.константиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
             this.константиToolStripMenuItem.Name = "константиToolStripMenuItem";
-            this.константиToolStripMenuItem.Size = new System.Drawing.Size(258, 22);
+            this.константиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.константиToolStripMenuItem.Text = "Константи";
+            this.константиToolStripMenuItem.Click += new System.EventHandler(this.константиToolStripMenuItem_Click);
             // 
             // проПрограмуToolStripMenuItem
             // 
@@ -869,7 +860,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem товариНаСкладахToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem замовленняПостачальникамToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сервісToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem обчислитиЗалишкиПоРегістрахToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem константиToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip_ВідкритіФорми;
         private System.Windows.Forms.ToolStripMenuItem переміщенняТоварівМіжСкладамиToolStripMenuItem;
