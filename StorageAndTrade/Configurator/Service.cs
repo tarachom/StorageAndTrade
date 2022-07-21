@@ -536,16 +536,16 @@ ORDER BY Місяць ASC
             //AND Актуальність.{Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Місяць} < date_trunc('month', '{DateTime.Now}'::timestamp)
 
             string[] columnsName;
-            List<object[]> listRow;
+            List<Dictionary<string, object>> listRow;
 
             Config.KernelBackgroundTask.DataBase.SelectRequest(querySelect, null, out columnsName, out listRow);
 
             //Обробка
-            foreach (object[] row in listRow)
+            foreach (Dictionary<string, object> row in listRow)
             {
-                string uid = row[0].ToString();
-                string Регістр = row[1].ToString();
-                string Місяць = row[2].ToString();
+                string uid = row["uid"].ToString();
+                string Регістр = row["Регістр"].ToString();
+                string Місяць = row["Місяць"].ToString();
 
                 //Console.WriteLine($"Регістр {Регістр} Місяць {Місяць}");
 
@@ -585,7 +585,7 @@ HAVING
     SUM(ЗамовленняКлієнтів_День.{ВіртуальніТаблиціРегістрів.ЗамовленняКлієнтів_День_TablePart.Замовлено}) != 0 OR
     SUM(ЗамовленняКлієнтів_День.{ВіртуальніТаблиціРегістрів.ЗамовленняКлієнтів_День_TablePart.Сума}) != 0
 ";
-                            
+
                             //Console.WriteLine(query);
                             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
