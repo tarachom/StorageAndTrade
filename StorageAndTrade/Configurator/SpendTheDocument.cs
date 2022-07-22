@@ -668,7 +668,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
 				товариНаСкладах_RecordsSet.Records.Add(record);
 
-				record.Income = false; // - 
+				record.Income = true; 
 				record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record.Номенклатура = Товари_Record.Номенклатура;
@@ -690,7 +690,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
 				вільніЗалишки_RecordsSet.Records.Add(record);
 
-				record.Income = false; // -
+				record.Income = true;
 				record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record.Номенклатура = Товари_Record.Номенклатура;
@@ -713,7 +713,7 @@ namespace StorageAndTrade_1_0.Документи
 				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record розрахункиЗПостачальниками_Record = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
 				розрахункиЗПостачальниками_RecordsSet.Records.Add(розрахункиЗПостачальниками_Record);
 
-				розрахункиЗПостачальниками_Record.Income = false; // -
+				розрахункиЗПостачальниками_Record.Income = false;
 				розрахункиЗПостачальниками_Record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				//розрахункиЗПостачальниками_Record.ЗамовленняПостачальнику = Товари_Record.ДокументПоступлення;
