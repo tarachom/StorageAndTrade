@@ -66,14 +66,43 @@ namespace StorageAndTrade
 
         private void Form_ЗамовленняКлієнтаДокумент_Load(object sender, EventArgs e)
         {
+			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
+
 			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ОплатаПостачальнику"].Desc,
+					Перелічення.ГосподарськіОперації.ОплатаПостачальнику));
+
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ВидачаКоштівВІншуКасу"].Desc,
+					Перелічення.ГосподарськіОперації.ВидачаКоштівВІншуКасу));
+
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ЗдачаКоштівВБанк"].Desc,
+					Перелічення.ГосподарськіОперації.ЗдачаКоштівВБанк));
+
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ІншіВитрати"].Desc,
+					Перелічення.ГосподарськіОперації.ІншіВитрати));
+
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПоверненняОплатиКлієнту"].Desc,
+					Перелічення.ГосподарськіОперації.ПоверненняОплатиКлієнту));
+
+			//ПоступленняОплатиВідКлієнта
+			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
 			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
 			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_КасаОтримувач.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
 
 			if (IsNew.HasValue)
@@ -84,7 +113,6 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = розхіднийКасовийОрдер_Objest.НомерДок = (++Константи.НумераціяДокументів.РозхіднийКасовийОрдер_Const).ToString("D8");
-					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -98,10 +126,18 @@ namespace StorageAndTrade
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(розхіднийКасовийОрдер_Objest.Організація.UnigueID);
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(розхіднийКасовийОрдер_Objest.Валюта.UnigueID);
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(розхіднийКасовийОрдер_Objest.Каса.UnigueID);
+						directoryControl_КасаОтримувач.DirectoryPointerItem = new Довідники.Каси_Pointer(розхіднийКасовийОрдер_Objest.КасаОтримувач.UnigueID);
+						directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer(розхіднийКасовийОрдер_Objest.БанківськийРахунок.UnigueID);
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(розхіднийКасовийОрдер_Objest.Договір.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = розхіднийКасовийОрдер_Objest.ГосподарськаОперація;
 						textBox_СумаДокументу.Text = розхіднийКасовийОрдер_Objest.СумаДокументу.ToString();
 						textBox_Коментар.Text = розхіднийКасовийОрдер_Objest.Коментар;
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == розхіднийКасовийОрдер_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
 					}
 					else
 						MessageBox.Show("Error read");
@@ -122,11 +158,13 @@ namespace StorageAndTrade
 				розхіднийКасовийОрдер_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				розхіднийКасовийОрдер_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 				розхіднийКасовийОрдер_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+				розхіднийКасовийОрдер_Objest.КасаОтримувач = (Довідники.Каси_Pointer)directoryControl_КасаОтримувач.DirectoryPointerItem;
+				розхіднийКасовийОрдер_Objest.БанківськийРахунок = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
 				розхіднийКасовийОрдер_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-				розхіднийКасовийОрдер_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				розхіднийКасовийОрдер_Objest.СумаДокументу = decimal.Parse(textBox_СумаДокументу.Text);
 				розхіднийКасовийОрдер_Objest.Назва = $"Розхідний касовий ордер №{розхіднийКасовийОрдер_Objest.НомерДок} від {розхіднийКасовийОрдер_Objest.ДатаДок.ToShortDateString()}";
 				розхіднийКасовийОрдер_Objest.Коментар = textBox_Коментар.Text;
+				розхіднийКасовийОрдер_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
 
 				try
 				{
