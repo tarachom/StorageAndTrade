@@ -66,6 +66,16 @@ namespace StorageAndTrade
 
         private void FormAddCash_Load(object sender, EventArgs e)
         {
+			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
+
+			//ГосподарськіОперації
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["РеалізаціяКлієнту"].Desc,
+					Перелічення.ГосподарськіОперації.РеалізаціяКлієнту));
+
+			comboBox_ГосподарськаОперація.SelectedIndex = 0;
+
 			//Статус
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиРеалізаціїТоварівТаПослуг"].Fields.Values)
 				comboBox_Статус.Items.Add((Перелічення.СтатусиРеалізаціїТоварівТаПослуг)field.Value);
@@ -73,10 +83,6 @@ namespace StorageAndTrade
 			//Форма Оплати
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ФормаОплати"].Fields.Values)
 				comboBox_ФормаОплати.Items.Add((Перелічення.ФормаОплати)field.Value);
-
-			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
 
 			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
@@ -98,7 +104,6 @@ namespace StorageAndTrade
 					textBox_НомерДок.Text = реалізаціяТоварівТаПослуг_Objest.НомерДок = (++Константи.НумераціяДокументів.РеалізаціяТоварівТаПослуг_Const).ToString("D8");
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ФормаОплати.SelectedIndex = 0;
-					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -115,10 +120,16 @@ namespace StorageAndTrade
 						comboBox_Статус.SelectedItem = реалізаціяТоварівТаПослуг_Objest.Статус;
 						comboBox_ФормаОплати.SelectedItem = реалізаціяТоварівТаПослуг_Objest.ФормаОплати;
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(реалізаціяТоварівТаПослуг_Objest.Каса.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація;
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(реалізаціяТоварівТаПослуг_Objest.Договір.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(реалізаціяТоварівТаПослуг_Objest.Підрозділ.UnigueID);
 						textBox_Коментар.Text = реалізаціяТоварівТаПослуг_Objest.Коментар;
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
 
 						РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -144,10 +155,10 @@ namespace StorageAndTrade
 				реалізаціяТоварівТаПослуг_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиРеалізаціїТоварівТаПослуг)comboBox_Статус.SelectedItem : 0;
 				реалізаціяТоварівТаПослуг_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
 				реалізаціяТоварівТаПослуг_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-				реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				реалізаціяТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 				реалізаціяТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				реалізаціяТоварівТаПослуг_Objest.Назва = $"Реалізація товарів та послуг №{реалізаціяТоварівТаПослуг_Objest.НомерДок} від {реалізаціяТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
+				реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
 
 				реалізаціяТоварівТаПослуг_Objest.СумаДокументу = РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу();
 				реалізаціяТоварівТаПослуг_Objest.Коментар = textBox_Коментар.Text;
