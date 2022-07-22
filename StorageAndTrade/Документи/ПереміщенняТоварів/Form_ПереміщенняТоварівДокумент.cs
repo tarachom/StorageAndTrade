@@ -66,9 +66,15 @@ namespace StorageAndTrade
 
         private void FormAddCash_Load(object sender, EventArgs e)
         {
+			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
+
 			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПереміщенняТоварів"].Desc,
+					Перелічення.ГосподарськіОперації.ПереміщенняТоварів));
+
+			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
 			directoryControl_СкладВідправник.Init(new Form_Склади(), new Довідники.Склади_Pointer());
@@ -84,7 +90,6 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = переміщенняТоварів_Objest.НомерДок = (++Константи.НумераціяДокументів.ПереміщенняТоварів_Const).ToString("D8");
-					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -97,9 +102,15 @@ namespace StorageAndTrade
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(переміщенняТоварів_Objest.Організація.UnigueID);
 						directoryControl_СкладВідправник.DirectoryPointerItem = new Довідники.Склади_Pointer(переміщенняТоварів_Objest.СкладВідправник.UnigueID);
 						directoryControl_СкладОтримувач.DirectoryPointerItem = new Довідники.Склади_Pointer(переміщенняТоварів_Objest.СкладОтримувач.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = переміщенняТоварів_Objest.ГосподарськаОперація;
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(переміщенняТоварів_Objest.Підрозділ.UnigueID);
 						textBox_Коментар.Text = переміщенняТоварів_Objest.Коментар;
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == переміщенняТоварів_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
 
 						ПереміщенняТоварів_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -121,10 +132,10 @@ namespace StorageAndTrade
 				переміщенняТоварів_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				переміщенняТоварів_Objest.СкладВідправник = (Довідники.Склади_Pointer)directoryControl_СкладВідправник.DirectoryPointerItem;
 				переміщенняТоварів_Objest.СкладОтримувач = (Довідники.Склади_Pointer)directoryControl_СкладОтримувач.DirectoryPointerItem;
-				переміщенняТоварів_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				переміщенняТоварів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				переміщенняТоварів_Objest.Назва = $"Переміщення товарів №{переміщенняТоварів_Objest.НомерДок} від {переміщенняТоварів_Objest.ДатаДок.ToShortDateString()}";
 				переміщенняТоварів_Objest.Коментар = textBox_Коментар.Text;
+				переміщенняТоварів_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
 
 				try
 				{
