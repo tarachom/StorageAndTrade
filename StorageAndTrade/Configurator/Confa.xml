@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>22.07.2022 15:05:17</DateTimeSave>
+  <DateTimeSave>22.07.2022 15:20:01</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3673,7 +3673,7 @@
       <Name>ГосподарськіОперації</Name>
       <Desc>
       </Desc>
-      <SerialNumber>21</SerialNumber>
+      <SerialNumber>23</SerialNumber>
       <Fields>
         <Field>
           <Name>ЗамовленняВПостачальника</Name>
@@ -3779,6 +3779,16 @@
           <Name>ПлануванняПоЗамовленнямКлієнта</Name>
           <Value>21</Value>
           <Desc>Планування по замовленням клієнта</Desc>
+        </Field>
+        <Field>
+          <Name>ПоверненняТоварівВідКлієнта</Name>
+          <Value>22</Value>
+          <Desc>Повернення товарів від клієнта</Desc>
+        </Field>
+        <Field>
+          <Name>ПоверненняТоварівПостачальнику</Name>
+          <Value>23</Value>
+          <Desc>Повернення товарів постачальнику</Desc>
         </Field>
       </Fields>
     </Enum>

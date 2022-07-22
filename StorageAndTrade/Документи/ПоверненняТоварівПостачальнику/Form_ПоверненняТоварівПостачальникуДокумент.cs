@@ -66,9 +66,15 @@ namespace StorageAndTrade
 
         private void FormAddCash_Load(object sender, EventArgs e)
         {
+			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
+
 			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПоверненняТоварівПостачальнику"].Desc,
+					Перелічення.ГосподарськіОперації.ПоверненняТоварівПостачальнику));
+
+			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
 			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
@@ -88,7 +94,6 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = поверненняТоварівПостачальнику_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоверненняТоварівПостачальнику_Const).ToString("D8");
-					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -103,10 +108,16 @@ namespace StorageAndTrade
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(поверненняТоварівПостачальнику_Objest.Валюта.UnigueID);
 						directoryControl_Склад.DirectoryPointerItem = new Довідники.Склади_Pointer(поверненняТоварівПостачальнику_Objest.Склад.UnigueID);
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(поверненняТоварівПостачальнику_Objest.Каса.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = поверненняТоварівПостачальнику_Objest.ГосподарськаОперація;
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(поверненняТоварівПостачальнику_Objest.Договір.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(поверненняТоварівПостачальнику_Objest.Підрозділ.UnigueID);
 						textBox_Коментар.Text = поверненняТоварівПостачальнику_Objest.Коментар;
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == поверненняТоварівПостачальнику_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
 
 						ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -130,10 +141,10 @@ namespace StorageAndTrade
 				поверненняТоварівПостачальнику_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 				поверненняТоварівПостачальнику_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
 				поверненняТоварівПостачальнику_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-				поверненняТоварівПостачальнику_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				поверненняТоварівПостачальнику_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 				поверненняТоварівПостачальнику_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				поверненняТоварівПостачальнику_Objest.Назва = $"Повернення постачальнику №{поверненняТоварівПостачальнику_Objest.НомерДок} від {поверненняТоварівПостачальнику_Objest.ДатаДок.ToShortDateString()}";
+				поверненняТоварівПостачальнику_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
 
 				поверненняТоварівПостачальнику_Objest.СумаДокументу = ПоверненняТоварівПостачальнику_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу();
 				поверненняТоварівПостачальнику_Objest.Коментар = textBox_Коментар.Text;

@@ -66,9 +66,15 @@ namespace StorageAndTrade
 
         private void FormAddCash_Load(object sender, EventArgs e)
         {
+			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
+
 			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПоверненняТоварівВідКлієнта"].Desc,
+					Перелічення.ГосподарськіОперації.ПоверненняТоварівВідКлієнта));
+
+			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
 			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
@@ -88,7 +94,6 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = поверненняТоварівВідКлієнта_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоверненняТоварівВідКлієнта_Const).ToString("D8");
-					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -103,10 +108,16 @@ namespace StorageAndTrade
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(поверненняТоварівВідКлієнта_Objest.Валюта.UnigueID);
 						directoryControl_Склад.DirectoryPointerItem = new Довідники.Склади_Pointer(поверненняТоварівВідКлієнта_Objest.Склад.UnigueID);
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(поверненняТоварівВідКлієнта_Objest.Каса.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = поверненняТоварівВідКлієнта_Objest.ГосподарськаОперація;
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(поверненняТоварівВідКлієнта_Objest.Договір.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(поверненняТоварівВідКлієнта_Objest.Підрозділ.UnigueID);
 						textBox_Коментар.Text = поверненняТоварівВідКлієнта_Objest.Коментар;
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == поверненняТоварівВідКлієнта_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
 
 						ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -130,10 +141,10 @@ namespace StorageAndTrade
 				поверненняТоварівВідКлієнта_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 				поверненняТоварівВідКлієнта_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
 				поверненняТоварівВідКлієнта_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-				поверненняТоварівВідКлієнта_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				поверненняТоварівВідКлієнта_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 				поверненняТоварівВідКлієнта_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				поверненняТоварівВідКлієнта_Objest.Назва = $"Повернення товарів від клієнта №{поверненняТоварівВідКлієнта_Objest.НомерДок} від {поверненняТоварівВідКлієнта_Objest.ДатаДок.ToShortDateString()}";
+				поверненняТоварівВідКлієнта_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
 
 				поверненняТоварівВідКлієнта_Objest.СумаДокументу = ПоверненняТоварівВідКлієнта_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу();
 				поверненняТоварівВідКлієнта_Objest.Коментар = textBox_Коментар.Text;
