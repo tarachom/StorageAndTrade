@@ -205,7 +205,7 @@ namespace StorageAndTrade
 				}
 			}
 
-			LoadConfigurationParamFromXML();
+			//LoadConfigurationParamFromXML();
 			Fill_listBoxConfiguration(itemConfigurationParam.ConfigurationKey);
 		}
 
