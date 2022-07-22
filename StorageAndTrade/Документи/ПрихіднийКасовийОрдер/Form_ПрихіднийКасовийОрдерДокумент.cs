@@ -66,9 +66,26 @@ namespace StorageAndTrade
 
         private void Form_ЗамовленняКлієнтаДокумент_Load(object sender, EventArgs e)
         {
+			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
+
 			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПоступленняОплатиВідКлієнта"].Desc,
+					Перелічення.ГосподарськіОперації.ПоступленняОплатиВідКлієнта));
+
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПоступленняКоштівЗІншоїКаси"].Desc,
+					Перелічення.ГосподарськіОперації.ПоступленняКоштівЗІншоїКаси));
+
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПоступленняКоштівЗБанку"].Desc,
+					Перелічення.ГосподарськіОперації.ПоступленняКоштівЗБанку));
+
+			//ПоступленняОплатиВідКлієнта
+			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
 			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
@@ -84,7 +101,6 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = прихіднийКасовийОрдер_Objest.НомерДок = (++Константи.НумераціяДокументів.ПрихіднийКасовийОрдер_Const).ToString("D8");
-					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -99,9 +115,15 @@ namespace StorageAndTrade
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(прихіднийКасовийОрдер_Objest.Валюта.UnigueID);
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(прихіднийКасовийОрдер_Objest.Каса.UnigueID);
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(прихіднийКасовийОрдер_Objest.Договір.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = прихіднийКасовийОрдер_Objest.ГосподарськаОперація;
 						textBox_СумаДокументу.Text = прихіднийКасовийОрдер_Objest.СумаДокументу.ToString();
 						textBox_Коментар.Text = прихіднийКасовийОрдер_Objest.Коментар;
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == прихіднийКасовийОрдер_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
 					}
 					else
 						MessageBox.Show("Error read");
@@ -123,10 +145,10 @@ namespace StorageAndTrade
 				прихіднийКасовийОрдер_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 				прихіднийКасовийОрдер_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
 				прихіднийКасовийОрдер_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
-				прихіднийКасовийОрдер_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				прихіднийКасовийОрдер_Objest.СумаДокументу = decimal.Parse(textBox_СумаДокументу.Text);
 				прихіднийКасовийОрдер_Objest.Назва = $"Прихідний касовий ордер №{прихіднийКасовийОрдер_Objest.НомерДок} від {прихіднийКасовийОрдер_Objest.ДатаДок.ToShortDateString()}";
 				прихіднийКасовийОрдер_Objest.Коментар = textBox_Коментар.Text;
+				прихіднийКасовийОрдер_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
 
 				try
 				{

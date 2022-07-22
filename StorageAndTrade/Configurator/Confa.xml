@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>21.07.2022 15:49:02</DateTimeSave>
+  <DateTimeSave>22.07.2022 11:15:33</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3673,67 +3673,72 @@
       <Name>ГосподарськіОперації</Name>
       <Desc>
       </Desc>
-      <SerialNumber>10</SerialNumber>
+      <SerialNumber>13</SerialNumber>
       <Fields>
         <Field>
-          <Name>ЗамовленняУПостачальника</Name>
+          <Name>ЗамовленняВПостачальника</Name>
           <Value>1</Value>
-          <Desc>
-          </Desc>
+          <Desc>Замовлення в постачальника</Desc>
         </Field>
         <Field>
           <Name>ОплатаПостачальнику</Name>
           <Value>2</Value>
-          <Desc>
-          </Desc>
+          <Desc>Оплата постачальнику</Desc>
         </Field>
         <Field>
           <Name>ОприбуткуванняТоварів</Name>
           <Value>3</Value>
-          <Desc>
-          </Desc>
+          <Desc>Оприбуткування товарів</Desc>
         </Field>
         <Field>
           <Name>ПереміщенняТоварів</Name>
           <Value>4</Value>
-          <Desc>
-          </Desc>
+          <Desc>Переміщення товарів</Desc>
         </Field>
         <Field>
           <Name>НадходженняПослуг</Name>
           <Value>5</Value>
-          <Desc>
-          </Desc>
+          <Desc>Надходження послуг</Desc>
         </Field>
         <Field>
           <Name>ІншеНадходженняТоварів</Name>
           <Value>6</Value>
-          <Desc>
-          </Desc>
+          <Desc>Інше надходження товарів</Desc>
         </Field>
         <Field>
           <Name>ІншіДоходи</Name>
           <Value>7</Value>
-          <Desc>
-          </Desc>
+          <Desc>Інші доходи</Desc>
         </Field>
         <Field>
           <Name>ІншіВитрати</Name>
           <Value>8</Value>
-          <Desc>
-          </Desc>
+          <Desc>Інші витрати</Desc>
         </Field>
         <Field>
           <Name>РеалізаціяКлієнту</Name>
           <Value>9</Value>
-          <Desc>
-          </Desc>
+          <Desc>Реалізація клієнту</Desc>
         </Field>
         <Field>
           <Name>СписанняТоварів</Name>
           <Value>10</Value>
-          <Desc>
-          </Desc>
+          <Desc>Списання товарів</Desc>
+        </Field>
+        <Field>
+          <Name>ПоступленняОплатиВідКлієнта</Name>
+          <Value>11</Value>
+          <Desc>Поступлення оплати від клієнта</Desc>
+        </Field>
+        <Field>
+          <Name>ПоступленняКоштівЗІншоїКаси</Name>
+          <Value>12</Value>
+          <Desc>Поступлення коштів з іншої каси</Desc>
+        </Field>
+        <Field>
+          <Name>ПоступленняКоштівЗБанку</Name>
+          <Value>13</Value>
+          <Desc>Поступлення коштів з банку</Desc>
         </Field>
       </Fields>
     </Enum>

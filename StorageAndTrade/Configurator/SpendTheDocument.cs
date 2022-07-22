@@ -401,7 +401,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record recordContragent = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
 			розрахункиЗПостачальниками_RecordsSet.Records.Add(recordContragent);
 
-			recordContragent.Income = true;
+			recordContragent.Income = false;
 			recordContragent.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 			recordContragent.Контрагент = ДокументОбєкт.Контрагент;
