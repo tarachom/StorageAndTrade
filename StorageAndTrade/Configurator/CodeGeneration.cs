@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 22.07.2022 16:10:29
+ * Дата конфігурації: 22.07.2022 16:23:15
  *
  */
 
@@ -13300,9 +13300,9 @@ namespace StorageAndTrade_1_0.Документи
     
     #endregion
     
-    #region DOCUMENT "ПорчаТоварів"
+    #region DOCUMENT "ПсуванняТоварів"
     
-    public static class ПорчаТоварів_Const
+    public static class ПсуванняТоварів_Const
     {
         public const string TABLE = "tab_a94";
         
@@ -13318,9 +13318,9 @@ namespace StorageAndTrade_1_0.Документи
     }
 	
     
-    public class ПорчаТоварів_Objest : DocumentObject
+    public class ПсуванняТоварів_Objest : DocumentObject
     {
-        public ПорчаТоварів_Objest() : base(Config.Kernel, "tab_a94", "ПорчаТоварів",
+        public ПсуванняТоварів_Objest() : base(Config.Kernel, "tab_a94", "ПсуванняТоварів",
              new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_b1" }) 
         {
             Назва = "";
@@ -13334,7 +13334,7 @@ namespace StorageAndTrade_1_0.Документи
             ВидЦіни = new Довідники.ВидиЦін_Pointer();
             
             //Табличні частини
-            Товари_TablePart = new ПорчаТоварів_Товари_TablePart(this);
+            Товари_TablePart = new ПсуванняТоварів_Товари_TablePart(this);
             
         }
         
@@ -13385,9 +13385,9 @@ namespace StorageAndTrade_1_0.Документи
             BaseSpend(false, DateTime.MinValue);
 		}
 
-		public ПорчаТоварів_Objest Copy()
+		public ПсуванняТоварів_Objest Copy()
         {
-            ПорчаТоварів_Objest copy = new ПорчаТоварів_Objest();
+            ПсуванняТоварів_Objest copy = new ПсуванняТоварів_Objest();
 			copy.New();
             copy.Назва = Назва;
 			copy.ДатаДок = ДатаДок;
@@ -13408,9 +13408,9 @@ namespace StorageAndTrade_1_0.Документи
             base.BaseDelete(new string[] { "tab_a95" });
         }
         
-        public ПорчаТоварів_Pointer GetDocumentPointer()
+        public ПсуванняТоварів_Pointer GetDocumentPointer()
         {
-            ПорчаТоварів_Pointer directoryPointer = new ПорчаТоварів_Pointer(UnigueID.UGuid);
+            ПсуванняТоварів_Pointer directoryPointer = new ПсуванняТоварів_Pointer(UnigueID.UGuid);
             return directoryPointer;
         }
         
@@ -13425,19 +13425,19 @@ namespace StorageAndTrade_1_0.Документи
         public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
         
         //Табличні частини
-        public ПорчаТоварів_Товари_TablePart Товари_TablePart { get; set; }
+        public ПсуванняТоварів_Товари_TablePart Товари_TablePart { get; set; }
         
     }
     
     
-    public class ПорчаТоварів_Pointer : DocumentPointer
+    public class ПсуванняТоварів_Pointer : DocumentPointer
     {
-        public ПорчаТоварів_Pointer(object uid = null) : base(Config.Kernel, "tab_a94", "ПорчаТоварів")
+        public ПсуванняТоварів_Pointer(object uid = null) : base(Config.Kernel, "tab_a94", "ПсуванняТоварів")
         {
             base.Init(new UnigueID(uid), null);
         }
         
-        public ПорчаТоварів_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a94", "ПорчаТоварів")
+        public ПсуванняТоварів_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_a94", "ПсуванняТоварів")
         {
             base.Init(uid, fields);
         }
@@ -13449,43 +13449,43 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
-        public ПорчаТоварів_Pointer GetEmptyPointer()
+        public ПсуванняТоварів_Pointer GetEmptyPointer()
         {
-            return new ПорчаТоварів_Pointer();
+            return new ПсуванняТоварів_Pointer();
         }
 		
-        public ПорчаТоварів_Objest GetDocumentObject(bool readAllTablePart = false)
+        public ПсуванняТоварів_Objest GetDocumentObject(bool readAllTablePart = false)
         {
-            ПорчаТоварів_Objest ПорчаТоварівObjestItem = new ПорчаТоварів_Objest();
-            ПорчаТоварівObjestItem.Read(base.UnigueID);
+            ПсуванняТоварів_Objest ПсуванняТоварівObjestItem = new ПсуванняТоварів_Objest();
+            ПсуванняТоварівObjestItem.Read(base.UnigueID);
 			
 			if (readAllTablePart)
 			{   
-				ПорчаТоварівObjestItem.Товари_TablePart.Read();
+				ПсуванняТоварівObjestItem.Товари_TablePart.Read();
 			}
 			
-            return ПорчаТоварівObjestItem;
+            return ПсуванняТоварівObjestItem;
         }
     }
     
     
-    public class ПорчаТоварів_Select : DocumentSelect, IDisposable
+    public class ПсуванняТоварів_Select : DocumentSelect, IDisposable
     {		
-        public ПорчаТоварів_Select() : base(Config.Kernel, "tab_a94") { }
+        public ПсуванняТоварів_Select() : base(Config.Kernel, "tab_a94") { }
         
         public bool Select() { return base.BaseSelect(); }
         
         public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
         
-        public bool MoveNext() { if (MoveToPosition()) { Current = new ПорчаТоварів_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
+        public bool MoveNext() { if (MoveToPosition()) { Current = new ПсуванняТоварів_Pointer(base.DocumentPointerPosition.UnigueID, base.DocumentPointerPosition.Fields); return true; } else { Current = null; return false; } }
         
-        public ПорчаТоварів_Pointer Current { get; private set; }
+        public ПсуванняТоварів_Pointer Current { get; private set; }
     }
     
       
-    public class ПорчаТоварів_Товари_TablePart : DocumentTablePart
+    public class ПсуванняТоварів_Товари_TablePart : DocumentTablePart
     {
-        public ПорчаТоварів_Товари_TablePart(ПорчаТоварів_Objest owner) : base(Config.Kernel, "tab_a95",
+        public ПсуванняТоварів_Товари_TablePart(ПсуванняТоварів_Objest owner) : base(Config.Kernel, "tab_a95",
              new string[] { "col_b2", "col_b3", "col_b4", "col_b5" }) 
         {
             if (owner == null) throw new Exception("owner null");
@@ -13499,7 +13499,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Кількість = "col_b4";
         public const string Ціна = "col_b5";
 
-        public ПорчаТоварів_Objest Owner { get; private set; }
+        public ПсуванняТоварів_Objest Owner { get; private set; }
         
         public List<Record> Records { get; set; }
         
