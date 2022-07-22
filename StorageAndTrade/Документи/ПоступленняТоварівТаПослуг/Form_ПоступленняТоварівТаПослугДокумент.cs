@@ -66,13 +66,19 @@ namespace StorageAndTrade
 
         private void FormAddCash_Load(object sender, EventArgs e)
         {
+			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
+
+			//ГосподарськіОперації
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ЗакупівляВПостачальника"].Desc,
+					Перелічення.ГосподарськіОперації.ЗакупівляВПостачальника));
+
+			comboBox_ГосподарськаОперація.SelectedIndex = 0;
+
 			//Форма Оплати
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ФормаОплати"].Fields.Values)
 				comboBox_ФормаОплати.Items.Add((Перелічення.ФормаОплати)field.Value);
-
-			//ГосподарськіОперації
-			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
 
 			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
@@ -92,7 +98,6 @@ namespace StorageAndTrade
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = поступленняТоварівТаПослуг_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоступленняТоварівТаПослуг_Const).ToString("D8");
 					comboBox_ФормаОплати.SelectedIndex = 0;
-					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 				}
 				else
 				{
@@ -108,10 +113,16 @@ namespace StorageAndTrade
 						directoryControl_Склад.DirectoryPointerItem = new Довідники.Склади_Pointer(поступленняТоварівТаПослуг_Objest.Склад.UnigueID);
 						comboBox_ФормаОплати.SelectedItem = поступленняТоварівТаПослуг_Objest.ФормаОплати;
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(поступленняТоварівТаПослуг_Objest.Каса.UnigueID);
-						comboBox_ГосподарськаОперація.SelectedItem = поступленняТоварівТаПослуг_Objest.ГосподарськаОперація;
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(поступленняТоварівТаПослуг_Objest.Договір.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(поступленняТоварівТаПослуг_Objest.Підрозділ.UnigueID);
 						textBox_Коментар.Text = поступленняТоварівТаПослуг_Objest.Коментар;
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == поступленняТоварівТаПослуг_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
 
 						ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
 					}
@@ -136,10 +147,10 @@ namespace StorageAndTrade
 				поступленняТоварівТаПослуг_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
 				поступленняТоварівТаПослуг_Objest.ФормаОплати = comboBox_ФормаОплати.SelectedItem != null ? (Перелічення.ФормаОплати)comboBox_ФормаОплати.SelectedItem : 0;
 				поступленняТоварівТаПослуг_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
-				поступленняТоварівТаПослуг_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
 				поступленняТоварівТаПослуг_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 				поступленняТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				поступленняТоварівТаПослуг_Objest.Назва = $"Поступлення товарів та послуг №{поступленняТоварівТаПослуг_Objest.НомерДок} від {поступленняТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
+				поступленняТоварівТаПослуг_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
 
 				поступленняТоварівТаПослуг_Objest.СумаДокументу = ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу();
 				поступленняТоварівТаПослуг_Objest.Коментар = textBox_Коментар.Text;

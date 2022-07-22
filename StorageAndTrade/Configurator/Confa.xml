@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>22.07.2022 12:54:08</DateTimeSave>
+  <DateTimeSave>22.07.2022 13:30:57</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3673,7 +3673,7 @@
       <Name>ГосподарськіОперації</Name>
       <Desc>
       </Desc>
-      <SerialNumber>18</SerialNumber>
+      <SerialNumber>19</SerialNumber>
       <Fields>
         <Field>
           <Name>ЗамовленняВПостачальника</Name>
@@ -3764,6 +3764,11 @@
           <Name>ВидачаКоштівВІншуКасу</Name>
           <Value>18</Value>
           <Desc>Видача коштів в іншу касу</Desc>
+        </Field>
+        <Field>
+          <Name>ЗакупівляВПостачальника</Name>
+          <Value>19</Value>
+          <Desc>Закупівля в постачальника</Desc>
         </Field>
       </Fields>
     </Enum>
