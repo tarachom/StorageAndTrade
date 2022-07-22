@@ -82,7 +82,11 @@ namespace StorageAndTrade
 
 					XPathNavigator currentNode = ConfigurationParamNodes.Current;
 
-					ItemConfigurationParam.ConfigurationKey = currentNode.SelectSingleNode("Key").Value;
+                    string SelectAttribute = currentNode.GetAttribute("Select", "");
+					if (!String.IsNullOrEmpty(SelectAttribute))
+						ItemConfigurationParam.Select = bool.Parse(SelectAttribute);
+
+                    ItemConfigurationParam.ConfigurationKey = currentNode.SelectSingleNode("Key").Value;
 					ItemConfigurationParam.ConfigurationName = currentNode.SelectSingleNode("Name").Value;
 					ItemConfigurationParam.DataBaseServer = currentNode.SelectSingleNode("Server").Value;
 					ItemConfigurationParam.DataBasePort = int.Parse(currentNode.SelectSingleNode("Port").Value);
@@ -107,6 +111,10 @@ namespace StorageAndTrade
 			{
 				XmlElement configurationNode = xmlConfParamDocument.CreateElement("Configuration");
 				rootNode.AppendChild(configurationNode);
+
+				XmlAttribute selectAttribute = xmlConfParamDocument.CreateAttribute("Select");
+				selectAttribute.Value = ItemConfigurationParam.Select.ToString();
+				configurationNode.Attributes.Append(selectAttribute);
 
 				XmlElement nodeKey = xmlConfParamDocument.CreateElement("Key");
 				nodeKey.InnerText = ItemConfigurationParam.ConfigurationKey;
@@ -149,10 +157,14 @@ namespace StorageAndTrade
 				listBoxConfiguration.Items.Add(ItemConfigurationParam);
 
 				if (!String.IsNullOrEmpty(selectConfKey))
-                {
+				{
 					if (ItemConfigurationParam.ConfigurationKey == selectConfKey)
 						listBoxConfiguration.SelectedItem = ItemConfigurationParam;
-
+				}
+				else
+				{
+					if (ItemConfigurationParam.Select)
+						listBoxConfiguration.SelectedItem = ItemConfigurationParam;
 				}
 			}
 
@@ -164,8 +176,12 @@ namespace StorageAndTrade
 
 		void CallBack_Update(ConfigurationParam itemConfigurationParam, bool isNew)
 		{
+			foreach (ConfigurationParam ItemConfigurationParam in ListConfigurationParam)
+				ItemConfigurationParam.Select = false;
+
 			if (isNew)
 			{
+				itemConfigurationParam.Select = true;
 				ListConfigurationParam.Add(itemConfigurationParam);
 				SaveConfigurationParamFromXML();
 			}
@@ -181,6 +197,7 @@ namespace StorageAndTrade
 						ItemConfigurationParam.DataBasePassword = itemConfigurationParam.DataBasePassword;
 						ItemConfigurationParam.DataBaseBaseName = itemConfigurationParam.DataBaseBaseName;
 						ItemConfigurationParam.DataBasePort = itemConfigurationParam.DataBasePort;
+						ItemConfigurationParam.Select = true;
 
 						SaveConfigurationParamFromXML();
 						break;
@@ -245,6 +262,9 @@ namespace StorageAndTrade
 			if (listBoxConfiguration.SelectedItem != null)
 			{
 				ConfigurationParam itemConfigurationParam = (ConfigurationParam)listBoxConfiguration.SelectedItem;
+				foreach (ConfigurationParam ItemConfigurationParam in ListConfigurationParam)
+					ItemConfigurationParam.Select = ItemConfigurationParam.ConfigurationKey == itemConfigurationParam.ConfigurationKey;
+				SaveConfigurationParamFromXML();
 
 				Exception exception;
 				//bool IsExistsDatabase = false;
@@ -393,6 +413,7 @@ namespace StorageAndTrade
 			DataBaseServer = "localhost";
 			DataBaseLogin = "postgres";
 			DataBasePort = 5432;
+			Select = false;
 		}
 
 		public string ConfigurationKey { get; set; }
@@ -408,6 +429,8 @@ namespace StorageAndTrade
 		public string DataBasePassword { get; set; }
 
 		public string DataBaseBaseName { get; set; }
+
+		public bool Select { get; set; }
 
 		public override string ToString()
 		{
