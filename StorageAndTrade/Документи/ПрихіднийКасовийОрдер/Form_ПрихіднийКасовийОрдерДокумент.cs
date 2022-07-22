@@ -84,6 +84,16 @@ namespace StorageAndTrade
 					ГосподарськіОперації.Fields["ПоступленняКоштівЗБанку"].Desc,
 					Перелічення.ГосподарськіОперації.ПоступленняКоштівЗБанку));
 
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ПоверненняКоштівПостачальнику"].Desc,
+					Перелічення.ГосподарськіОперації.ПоверненняКоштівПостачальнику));
+
+			comboBox_ГосподарськаОперація.Items.Add(
+				new NameValue<Перелічення.ГосподарськіОперації>(
+					ГосподарськіОперації.Fields["ІншіДоходи"].Desc,
+					Перелічення.ГосподарськіОперації.ІншіДоходи));
+
 			//ПоступленняОплатиВідКлієнта
 			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
@@ -91,6 +101,8 @@ namespace StorageAndTrade
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
 			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_КасаВідправник.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
 
 			if (IsNew.HasValue)
@@ -114,6 +126,8 @@ namespace StorageAndTrade
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(прихіднийКасовийОрдер_Objest.Організація.UnigueID);
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(прихіднийКасовийОрдер_Objest.Валюта.UnigueID);
 						directoryControl_Каса.DirectoryPointerItem = new Довідники.Каси_Pointer(прихіднийКасовийОрдер_Objest.Каса.UnigueID);
+						directoryControl_КасаВідправник.DirectoryPointerItem = new Довідники.Каси_Pointer(прихіднийКасовийОрдер_Objest.КасаВідправник.UnigueID);
+						directoryControl_БанківськийРахунок.DirectoryPointerItem = new Довідники.БанківськіРахункиОрганізацій_Pointer(прихіднийКасовийОрдер_Objest.БанківськийРахунок.UnigueID);
 						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer(прихіднийКасовийОрдер_Objest.Договір.UnigueID);
 						textBox_СумаДокументу.Text = прихіднийКасовийОрдер_Objest.СумаДокументу.ToString();
 						textBox_Коментар.Text = прихіднийКасовийОрдер_Objest.Коментар;
@@ -144,6 +158,8 @@ namespace StorageAndTrade
 				прихіднийКасовийОрдер_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				прихіднийКасовийОрдер_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 				прихіднийКасовийОрдер_Objest.Каса = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
+				прихіднийКасовийОрдер_Objest.КасаВідправник = (Довідники.Каси_Pointer)directoryControl_КасаВідправник.DirectoryPointerItem;
+				прихіднийКасовийОрдер_Objest.БанківськийРахунок = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
 				прихіднийКасовийОрдер_Objest.Договір = (Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem;
 				прихіднийКасовийОрдер_Objest.СумаДокументу = decimal.Parse(textBox_СумаДокументу.Text);
 				прихіднийКасовийОрдер_Objest.Назва = $"Прихідний касовий ордер №{прихіднийКасовийОрдер_Objest.НомерДок} від {прихіднийКасовийОрдер_Objest.ДатаДок.ToShortDateString()}";
