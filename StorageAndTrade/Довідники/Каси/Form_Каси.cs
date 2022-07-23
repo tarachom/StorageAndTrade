@@ -75,13 +75,12 @@ namespace StorageAndTrade
 			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Назва);
 			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Код);
 			каси_Select.QuerySelect.Field.Add(Довідники.Каси_Const.Валюта);
-			
-			//JOIN
-			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Валюти"].Table;
-			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Валюти"].Fields["Назва"].NameInTable;
 
-			каси_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "field2"));
-			каси_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Каси_Const.Валюта, каси_Select.QuerySelect.Table));
+			//JOIN
+			каси_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.Валюти_Const.TABLE + "." + Довідники.Валюти_Const.Назва, "field2"));
+			каси_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Валюти_Const.TABLE, Довідники.Каси_Const.Валюта, Довідники.Каси_Const.TABLE));
 
 			//ORDER
 			каси_Select.QuerySelect.Order.Add(Довідники.Каси_Const.Назва, SelectOrder.ASC);

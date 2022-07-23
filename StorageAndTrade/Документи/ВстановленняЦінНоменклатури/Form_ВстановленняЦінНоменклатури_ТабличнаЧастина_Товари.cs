@@ -74,25 +74,25 @@ namespace StorageAndTrade
 
 			//JOIN 1
 			querySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.Номенклатура_Const.TABLE + "." + Довідники.Номенклатура_Const.Назва, "tovar_name"));
+				new NameValue<string>(Довідники.Номенклатура_Const.TABLE + "." + Довідники.Номенклатура_Const.Назва, "tovar_name"));
 			querySelect.Joins.Add(
 				new Join(Довідники.Номенклатура_Const.TABLE, Документи.ВстановленняЦінНоменклатури_Товари_TablePart.Номенклатура, querySelect.Table));
 
 			//JOIN 2
 			querySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.ПакуванняОдиниціВиміру_Const.TABLE + "." + Довідники.ПакуванняОдиниціВиміру_Const.Назва, "pak_name"));
+				new NameValue<string>(Довідники.ПакуванняОдиниціВиміру_Const.TABLE + "." + Довідники.ПакуванняОдиниціВиміру_Const.Назва, "pak_name"));
 			querySelect.Joins.Add(
 				new Join(Довідники.ПакуванняОдиниціВиміру_Const.TABLE, Документи.ВстановленняЦінНоменклатури_Товари_TablePart.Пакування, querySelect.Table));
 
 			//JOIN 3
 			querySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.ХарактеристикиНоменклатури_Const.TABLE + "." + Довідники.ХарактеристикиНоменклатури_Const.Назва, "xar_name"));
+				new NameValue<string>(Довідники.ХарактеристикиНоменклатури_Const.TABLE + "." + Довідники.ХарактеристикиНоменклатури_Const.Назва, "xar_name"));
 			querySelect.Joins.Add(
 				new Join(Довідники.ХарактеристикиНоменклатури_Const.TABLE, Документи.ВстановленняЦінНоменклатури_Товари_TablePart.ХарактеристикаНоменклатури, querySelect.Table));
 
 			//JOIN 4
 			querySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.ВидиЦін_Const.TABLE + "." + Довідники.ВидиЦін_Const.Назва, "vid_cen_name"));
+				new NameValue<string>(Довідники.ВидиЦін_Const.TABLE + "." + Довідники.ВидиЦін_Const.Назва, "vid_cen_name"));
 			querySelect.Joins.Add(
 				new Join(Довідники.ВидиЦін_Const.TABLE, Документи.ВстановленняЦінНоменклатури_Товари_TablePart.ВидЦіни, querySelect.Table));
 

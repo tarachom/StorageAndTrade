@@ -100,13 +100,13 @@ namespace StorageAndTrade
 
 			//СкладВідправник
 			переміщенняТоварів_Select.QuerySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.Склади_Const.TABLE + "." + Довідники.Склади_Const.Назва, "sklad_sender"));
+				new NameValue<string>(Довідники.Склади_Const.TABLE + "." + Довідники.Склади_Const.Назва, "sklad_sender"));
 			переміщенняТоварів_Select.QuerySelect.Joins.Add(
 				new Join(Довідники.Склади_Const.TABLE, Документи.ПереміщенняТоварів_Const.СкладВідправник, Документи.ПереміщенняТоварів_Const.TABLE));
 
 			//СкладОдержувач
 			переміщенняТоварів_Select.QuerySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>("sklad2." + Довідники.Склади_Const.Назва, "sklad_receiver"));
+				new NameValue<string>("sklad2." + Довідники.Склади_Const.Назва, "sklad_receiver"));
 			переміщенняТоварів_Select.QuerySelect.Joins.Add(
 				new Join(Довідники.Склади_Const.TABLE, Документи.ПереміщенняТоварів_Const.СкладОтримувач, Документи.ПереміщенняТоварів_Const.TABLE, "sklad2"));
 

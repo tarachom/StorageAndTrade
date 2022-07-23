@@ -78,11 +78,10 @@ namespace StorageAndTrade
 			видиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ВидиНоменклатури_Const.ТипНоменклатури);
 
 			//JOIN 1
-			string JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
-			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Fields["Назва"].NameInTable;
-
-			видиНоменклатури_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join1"));
-			видиНоменклатури_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.ВидиНоменклатури_Const.ОдиницяВиміру, видиНоменклатури_Select.QuerySelect.Table));
+			видиНоменклатури_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.ПакуванняОдиниціВиміру_Const.TABLE + "." + Довідники.ПакуванняОдиниціВиміру_Const.Назва, "join1"));
+			видиНоменклатури_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.ПакуванняОдиниціВиміру_Const.TABLE, Довідники.ВидиНоменклатури_Const.ОдиницяВиміру, Довідники.ВидиНоменклатури_Const.TABLE));
 
 			//ORDER
 			видиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ВидиНоменклатури_Const.Назва, SelectOrder.ASC);

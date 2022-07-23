@@ -76,11 +76,10 @@ namespace StorageAndTrade
 			видиЦін_Select.QuerySelect.Field.Add(Довідники.ВидиЦін_Const.Валюта);
 			
 			//JOIN
-			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Валюти"].Table;
-			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Валюти"].Fields["Назва"].NameInTable;
-
-			видиЦін_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "field2"));
-			видиЦін_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.ВидиЦін_Const.Валюта, видиЦін_Select.QuerySelect.Table));
+			видиЦін_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.Валюти_Const.TABLE + "." + Довідники.Валюти_Const.Назва, "field2"));
+			видиЦін_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Валюти_Const.TABLE, Довідники.ВидиЦін_Const.Валюта, Довідники.ВидиЦін_Const.TABLE));
 
 			//ORDER
 			видиЦін_Select.QuerySelect.Order.Add(Довідники.ВидиЦін_Const.Назва, SelectOrder.ASC);

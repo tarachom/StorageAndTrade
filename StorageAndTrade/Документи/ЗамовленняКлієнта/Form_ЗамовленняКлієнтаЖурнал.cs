@@ -103,7 +103,7 @@ namespace StorageAndTrade
 
 			//Контрагент
 			замовленняКлієнта_Select.QuerySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
+				new NameValue<string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
 			замовленняКлієнта_Select.QuerySelect.Joins.Add(
 				new Join(Довідники.Контрагенти_Const.TABLE, Документи.ЗамовленняКлієнта_Const.Контрагент, Документи.ЗамовленняКлієнта_Const.TABLE));
 

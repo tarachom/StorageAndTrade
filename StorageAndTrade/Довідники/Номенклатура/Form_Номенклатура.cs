@@ -100,25 +100,22 @@ namespace StorageAndTrade
 			номенклатура_Select.QuerySelect.Field.Add(Довідники.Номенклатура_Const.ТипНоменклатури);
 
 			//JOIN 1
-			string JoinTable = Конфа.Config.Kernel.Conf.Directories["Виробники"].Table;
-			string ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["Виробники"].Fields["Назва"].NameInTable;
-
-			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join1"));
-			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Const.Виробник, номенклатура_Select.QuerySelect.Table));
+			номенклатура_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.Виробники_Const.TABLE + "." + Довідники.Виробники_Const.Назва, "join1"));
+			номенклатура_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Виробники_Const.TABLE, Довідники.Номенклатура_Const.Виробник, Довідники.Номенклатура_Const.TABLE));
 
 			//JOIN 2
-			JoinTable = Конфа.Config.Kernel.Conf.Directories["ВидиНоменклатури"].Table;
-			ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ВидиНоменклатури"].Fields["Назва"].NameInTable;
-
-			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join2"));
-			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Const.ВидНоменклатури, номенклатура_Select.QuerySelect.Table));
+			номенклатура_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.ВидиНоменклатури_Const.TABLE + "." + Довідники.ВидиНоменклатури_Const.Назва, "join2"));
+			номенклатура_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.ВидиНоменклатури_Const.TABLE, Довідники.Номенклатура_Const.ВидНоменклатури, Довідники.Номенклатура_Const.TABLE));
 
 			//JOIN 3
-			JoinTable = Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Table;
-			ParentField = JoinTable + "." + Конфа.Config.Kernel.Conf.Directories["ПакуванняОдиниціВиміру"].Fields["Назва"].NameInTable;
-
-			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new KeyValuePair<string, string>(ParentField, "join3"));
-			номенклатура_Select.QuerySelect.Joins.Add(new Join(JoinTable, Довідники.Номенклатура_Const.ОдиницяВиміру, номенклатура_Select.QuerySelect.Table));
+			номенклатура_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.ПакуванняОдиниціВиміру_Const.TABLE + "." + Довідники.ПакуванняОдиниціВиміру_Const.Назва, "join3"));
+			номенклатура_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.ПакуванняОдиниціВиміру_Const.TABLE, Довідники.Номенклатура_Const.ОдиницяВиміру, Довідники.Номенклатура_Const.TABLE));
 
 			//WHERE
 			if (Номенклатура_Папки_Дерево.Parent_Pointer != null)

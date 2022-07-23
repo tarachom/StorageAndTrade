@@ -105,13 +105,13 @@ namespace StorageAndTrade
 
 			//Контрагент
 			прихіднийКасовийОрдер_Select.QuerySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
+				new NameValue<string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
 			прихіднийКасовийОрдер_Select.QuerySelect.Joins.Add(
 				new Join(Довідники.Контрагенти_Const.TABLE, Документи.ПрихіднийКасовийОрдер_Const.Контрагент, Документи.ПрихіднийКасовийОрдер_Const.TABLE));
 
 			//Каса
 			прихіднийКасовийОрдер_Select.QuerySelect.FieldAndAlias.Add(
-				new KeyValuePair<string, string>(Довідники.Каси_Const.TABLE + "." + Довідники.Каси_Const.Назва, "joinCasa"));
+				new NameValue<string>(Довідники.Каси_Const.TABLE + "." + Довідники.Каси_Const.Назва, "joinCasa"));
 			прихіднийКасовийОрдер_Select.QuerySelect.Joins.Add(
 				new Join(Довідники.Каси_Const.TABLE, Документи.ПрихіднийКасовийОрдер_Const.Каса, Документи.ПрихіднийКасовийОрдер_Const.TABLE));
 
