@@ -122,6 +122,12 @@
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.Designer.cs">
       <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_РозрахункиЗКонтрагентами.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_РозрахункиЗКонтрагентами.Designer.cs">
+      <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_РозрахункиЗКонтрагентами.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Каси.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -723,6 +729,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.resx">
       <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_РозрахункиЗКонтрагентами.resx">
+      <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_РозрахункиЗКонтрагентами.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Каси.resx">
       <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_Каси.cs</DependentUpon>
