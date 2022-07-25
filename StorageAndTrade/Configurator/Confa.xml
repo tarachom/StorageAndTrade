@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>25.07.2022 12:53:16</DateTimeSave>
+  <DateTimeSave>25.07.2022 16:10:01</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -7077,7 +7077,7 @@
         <Field>
           <Name>НомерДок</Name>
           <NameInTable>col_b1</NameInTable>
-          <Type>integer</Type>
+          <Type>string</Type>
           <Desc>НомерДок</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
@@ -7180,6 +7180,16 @@
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
+        <Field>
+          <Name>ГосподарськаОперація</Name>
+          <NameInTable>col_a6</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ГосподарськіОперації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -7188,6 +7198,14 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_c4</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_b8</NameInTable>
@@ -7226,14 +7244,6 @@
               <Name>Сума</Name>
               <NameInTable>col_c2</NameInTable>
               <Type>numeric</Type>
-              <Desc>
-              </Desc>
-              <IsIndex>0</IsIndex>
-            </Field>
-            <Field>
-              <Name>НомерРядка</Name>
-              <NameInTable>col_c4</NameInTable>
-              <Type>integer</Type>
               <Desc>
               </Desc>
               <IsIndex>0</IsIndex>

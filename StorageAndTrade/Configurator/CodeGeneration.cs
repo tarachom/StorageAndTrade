@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 25.07.2022 12:53:16
+ * Дата конфігурації: 25.07.2022 16:10:01
  *
  */
 
@@ -11562,17 +11562,18 @@ namespace StorageAndTrade_1_0.Документи
         public const string ФормаОплати = "col_a3";
         public const string Договір = "col_a4";
         public const string Коментар = "col_a1";
+        public const string ГосподарськаОперація = "col_a6";
     }
 	
     
     public class АктВиконанихРобіт_Objest : DocumentObject
     {
         public АктВиконанихРобіт_Objest() : base(Config.Kernel, "tab_a81", "АктВиконанихРобіт",
-             new string[] { "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_a5", "col_a2", "col_a3", "col_a4", "col_a1" }) 
+             new string[] { "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_a5", "col_a2", "col_a3", "col_a4", "col_a1", "col_a6" }) 
         {
             Назва = "";
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Валюта = new Довідники.Валюти_Pointer();
             ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
             Каса = new Довідники.Каси_Pointer();
@@ -11583,6 +11584,7 @@ namespace StorageAndTrade_1_0.Документи
             ФормаОплати = 0;
             Договір = new Довідники.ДоговориКонтрагентів_Pointer();
             Коментар = "";
+            ГосподарськаОперація = 0;
             
             //Табличні частини
             Послуги_TablePart = new АктВиконанихРобіт_Послуги_TablePart(this);
@@ -11595,7 +11597,7 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Назва = base.FieldValue["col_a8"].ToString();
                 ДатаДок = (base.FieldValue["col_a9"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_a9"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_b1"] != DBNull.Value) ? (int)base.FieldValue["col_b1"] : 0;
+                НомерДок = base.FieldValue["col_b1"].ToString();
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_b2"]);
                 ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(base.FieldValue["col_b3"]);
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_b4"]);
@@ -11606,6 +11608,7 @@ namespace StorageAndTrade_1_0.Документи
                 ФормаОплати = (base.FieldValue["col_a3"] != DBNull.Value) ? (Перелічення.ФормаОплати)base.FieldValue["col_a3"] : 0;
                 Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_a4"]);
                 Коментар = base.FieldValue["col_a1"].ToString();
+                ГосподарськаОперація = (base.FieldValue["col_a6"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_a6"] : 0;
                 
                 BaseClear();
                 return true;
@@ -11629,6 +11632,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_a3"] = (int)ФормаОплати;
             base.FieldValue["col_a4"] = Договір.UnigueID.UGuid;
             base.FieldValue["col_a1"] = Коментар;
+            base.FieldValue["col_a6"] = (int)ГосподарськаОперація;
             
             BaseSave();
 			
@@ -11661,6 +11665,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ФормаОплати = ФормаОплати;
 			copy.Договір = Договір;
 			copy.Коментар = Коментар;
+			copy.ГосподарськаОперація = ГосподарськаОперація;
 			
 			return copy;
         }
@@ -11679,7 +11684,7 @@ namespace StorageAndTrade_1_0.Документи
         
         public string Назва { get; set; }
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Валюти_Pointer Валюта { get; set; }
         public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
@@ -11690,6 +11695,7 @@ namespace StorageAndTrade_1_0.Документи
         public Перелічення.ФормаОплати ФормаОплати { get; set; }
         public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
         public string Коментар { get; set; }
+        public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
         
         //Табличні частини
         public АктВиконанихРобіт_Послуги_TablePart Послуги_TablePart { get; set; }
@@ -11753,7 +11759,7 @@ namespace StorageAndTrade_1_0.Документи
     public class АктВиконанихРобіт_Послуги_TablePart : DocumentTablePart
     {
         public АктВиконанихРобіт_Послуги_TablePart(АктВиконанихРобіт_Objest owner) : base(Config.Kernel, "tab_a82",
-             new string[] { "col_b8", "col_b9", "col_c1", "col_c3", "col_c2", "col_c4" }) 
+             new string[] { "col_c4", "col_b8", "col_b9", "col_c1", "col_c3", "col_c2" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -11761,12 +11767,12 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string НомерРядка = "col_c4";
         public const string Номенклатура = "col_b8";
         public const string ХарактеристикаНоменклатури = "col_b9";
         public const string Кількість = "col_c1";
         public const string Ціна = "col_c3";
         public const string Сума = "col_c2";
-        public const string НомерРядка = "col_c4";
 
         public АктВиконанихРобіт_Objest Owner { get; private set; }
         
@@ -11782,12 +11788,12 @@ namespace StorageAndTrade_1_0.Документи
                 Record record = new Record();
                 record.UID = (Guid)fieldValue["uid"];
                 
+                record.НомерРядка = (fieldValue["col_c4"] != DBNull.Value) ? (int)fieldValue["col_c4"] : 0;
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_b8"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_b9"]);
                 record.Кількість = (fieldValue["col_c1"] != DBNull.Value) ? (decimal)fieldValue["col_c1"] : 0;
                 record.Ціна = (fieldValue["col_c3"] != DBNull.Value) ? (decimal)fieldValue["col_c3"] : 0;
                 record.Сума = (fieldValue["col_c2"] != DBNull.Value) ? (decimal)fieldValue["col_c2"] : 0;
-                record.НомерРядка = (fieldValue["col_c4"] != DBNull.Value) ? (int)fieldValue["col_c4"] : 0;
                 
                 Records.Add(record);
             }
@@ -11806,12 +11812,12 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
+                fieldValue.Add("col_c4", record.НомерРядка);
                 fieldValue.Add("col_b8", record.Номенклатура.UnigueID.UGuid);
                 fieldValue.Add("col_b9", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                 fieldValue.Add("col_c1", record.Кількість);
                 fieldValue.Add("col_c3", record.Ціна);
                 fieldValue.Add("col_c2", record.Сума);
-                fieldValue.Add("col_c4", record.НомерРядка);
                 
                 base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
             }
@@ -11841,20 +11847,20 @@ namespace StorageAndTrade_1_0.Документи
         {
             public Record()
             {
+                НомерРядка = 0;
                 Номенклатура = new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                 Кількість = 0;
                 Ціна = 0;
                 Сума = 0;
-                НомерРядка = 0;
                 
             }
+            public int НомерРядка { get; set; }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public decimal Кількість { get; set; }
             public decimal Ціна { get; set; }
             public decimal Сума { get; set; }
-            public int НомерРядка { get; set; }
             
         }
     }

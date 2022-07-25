@@ -268,6 +268,13 @@ namespace StorageAndTrade
             form_ВведенняЗалишківЖурнал.Show();
         }
 
+        private void актВиконанихРобітToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_АктВиконанихРобітЖурнал form_АктВиконанихРобітЖурнал = new Form_АктВиконанихРобітЖурнал();
+            form_АктВиконанихРобітЖурнал.MdiParent = this;
+            form_АктВиконанихРобітЖурнал.Show();
+        }
+
         #endregion
 
         #region Звіти Меню
@@ -550,5 +557,7 @@ namespace StorageAndTrade
 
 
         #endregion
+
+        
     }
 }

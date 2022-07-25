@@ -152,6 +152,24 @@
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківЖурнал.designer.cs">
       <DependentUpon>Form_ВведенняЗалишківЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги.Designer.cs">
+      <DependentUpon>Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітДокумент.designer.cs">
+      <DependentUpon>Form_АктВиконанихРобітДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітЖурнал.designer.cs">
+      <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -744,6 +762,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківЖурнал.resx">
       <DependentUpon>Form_ВведенняЗалишківЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги.resx">
+      <DependentUpon>Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітДокумент.resx">
+      <DependentUpon>Form_АктВиконанихРобітДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітЖурнал.resx">
+      <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.resx">
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
