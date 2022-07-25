@@ -127,6 +127,24 @@ FROM
 UNION
 
 SELECT
+    'АктВиконанихРобіт',
+    Док_АктВиконанихРобіт.uid,
+    Док_АктВиконанихРобіт.spend,
+    Док_АктВиконанихРобіт.{АктВиконанихРобіт_Const.Назва} AS Назва,
+    Док_АктВиконанихРобіт.{АктВиконанихРобіт_Const.НомерДок} AS НомерДок,
+    Док_АктВиконанихРобіт.{АктВиконанихРобіт_Const.ДатаДок} AS ДатаДок,
+    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
+    Док_АктВиконанихРобіт.{АктВиконанихРобіт_Const.СумаДокументу} AS Сума,
+    Док_АктВиконанихРобіт.{АктВиконанихРобіт_Const.Коментар} AS Коментар
+FROM
+	{АктВиконанихРобіт_Const.TABLE} AS Док_АктВиконанихРобіт
+
+    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
+        Док_АктВиконанихРобіт.{АктВиконанихРобіт_Const.Контрагент}
+
+UNION
+
+SELECT
     'ПоверненняТоварівВідКлієнта',
     Док_ПоверненняТоварівВідКлієнта.uid,
     Док_ПоверненняТоварівВідКлієнта.spend,
@@ -468,6 +486,15 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			form_ВведенняЗалишківДокумент.Show();
 		}
 
+		private void актВиконанихРобітToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Form_АктВиконанихРобітДокумент form_АктВиконанихРобітДокумент = new Form_АктВиконанихРобітДокумент();
+			form_АктВиконанихРобітДокумент.MdiParent = this.MdiParent;
+			form_АктВиконанихРобітДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_АктВиконанихРобітДокумент.Show();
+		}
+
 		#endregion
 
 		#region Edit
@@ -504,6 +531,18 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							//form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
 							form_РеалізаціяТоварівТаПослугДокумент.Uid = uid;
 							form_РеалізаціяТоварівТаПослугДокумент.Show();
+
+							break;
+						}
+
+					case "АктВиконанихРобіт":
+						{
+							Form_АктВиконанихРобітДокумент form_АктВиконанихРобітДокумент = new Form_АктВиконанихРобітДокумент();
+							form_АктВиконанихРобітДокумент.MdiParent = this.MdiParent;
+							form_АктВиконанихРобітДокумент.IsNew = false;
+							//form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
+							form_АктВиконанихРобітДокумент.Uid = uid;
+							form_АктВиконанихРобітДокумент.Show();
 
 							break;
 						}
@@ -700,6 +739,27 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									реалізаціяТоварівТаПослуг_Objest_Новий.Товари_TablePart.Records = реалізаціяТоварівТаПослуг_Objest.Товари_TablePart.Copy();
 									реалізаціяТоварівТаПослуг_Objest_Новий.Товари_TablePart.Save(true);
 									реалізаціяТоварівТаПослуг_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "АктВиконанихРобіт":
+							{
+								АктВиконанихРобіт_Objest актВиконанихРобіт_Objest = new АктВиконанихРобіт_Objest();
+								if (актВиконанихРобіт_Objest.Read(new UnigueID(uid)))
+								{
+									АктВиконанихРобіт_Objest актВиконанихРобіт_Objest_Новий = актВиконанихРобіт_Objest.Copy();
+									актВиконанихРобіт_Objest_Новий.Назва += " *";
+									актВиконанихРобіт_Objest_Новий.ДатаДок = DateTime.Now;
+									актВиконанихРобіт_Objest_Новий.НомерДок = (++НумераціяДокументів.АктВиконанихРобіт_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Послуги
+									актВиконанихРобіт_Objest.Послуги_TablePart.Read();
+									актВиконанихРобіт_Objest_Новий.Послуги_TablePart.Records = актВиконанихРобіт_Objest.Послуги_TablePart.Copy();
+									актВиконанихРобіт_Objest_Новий.Послуги_TablePart.Save(true);
+									актВиконанихРобіт_Objest_Новий.Save();
 								}
 								else
 									MessageBox.Show("Error read");
@@ -914,6 +974,9 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									введенняЗалишків_Objest_Новий.Товари_TablePart.Records = введенняЗалишків_Objest.Товари_TablePart.Copy();
 									введенняЗалишків_Objest_Новий.Товари_TablePart.Save(true);
 									введенняЗалишків_Objest_Новий.Save();
+
+									//*** всі інші також треба копіювати
+									throw new Exception("Не всі таб частини скопійовані");
 								}
 								else
 									MessageBox.Show("Error read");
@@ -959,6 +1022,16 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new РеалізаціяТоварівТаПослуг_Objest();
 								if (реалізаціяТоварівТаПослуг_Objest.Read(new UnigueID(uid)))
 									реалізаціяТоварівТаПослуг_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+						case "АктВиконанихРобіт":
+							{
+								АктВиконанихРобіт_Objest актВиконанихРобіт_Objest = new АктВиконанихРобіт_Objest();
+								if (актВиконанихРобіт_Objest.Read(new UnigueID(uid)))
+									актВиконанихРобіт_Objest.Delete();
 								else
 									MessageBox.Show("Error read");
 
@@ -1116,6 +1189,11 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							РухДокументівПоРегістрах.PrintRecords(new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
 							break;
 						}
+					case "АктВиконанихРобіт":
+						{
+							РухДокументівПоРегістрах.PrintRecords(new АктВиконанихРобіт_Pointer(new UnigueID(uid)));
+							break;
+						}
 					case "ПоверненняТоварівВідКлієнта":
 						{
 							РухДокументівПоРегістрах.PrintRecords(new ПоверненняТоварівВідКлієнта_Pointer(new UnigueID(uid)));
@@ -1249,6 +1327,26 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									}
 								else
 									реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+								break;
+							}
+						case "АктВиконанихРобіт":
+							{
+								АктВиконанихРобіт_Pointer актВиконанихРобіт_Pointer = new АктВиконанихРобіт_Pointer(new UnigueID(uid));
+								АктВиконанихРобіт_Objest актВиконанихРобіт_Objest = актВиконанихРобіт_Pointer.GetDocumentObject(true);
+
+								if (spend)
+									try
+									{
+										актВиконанихРобіт_Objest.SpendTheDocument(актВиконанихРобіт_Objest.ДатаДок);
+									}
+									catch (Exception exp)
+									{
+										актВиконанихРобіт_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								else
+									актВиконанихРобіт_Objest.ClearSpendTheDocument();
 
 								break;
 							}
