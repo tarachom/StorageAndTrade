@@ -1,7 +1,7 @@
 ﻿
 namespace StorageAndTrade
 {
-    partial class Form_ВведенняЗалишків_ТабличнаЧастина_Каси
+    partial class Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки
     {
         /// <summary> 
         /// Required designer variable.
@@ -130,9 +130,9 @@ namespace StorageAndTrade
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Каси";
+            this.Name = "Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки";
             this.Size = new System.Drawing.Size(733, 248);
-            this.Load += new System.EventHandler(this.Form_ВведенняЗалишків_ТабличнаЧастина_Каси_Load);
+            this.Load += new System.EventHandler(this.Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
             this.panel1.ResumeLayout(false);
