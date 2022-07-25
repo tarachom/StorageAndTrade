@@ -116,6 +116,12 @@
     <Compile Include="NumericControl.designer.cs">
       <DependentUpon>NumericControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Каси.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Каси.Designer.cs">
+      <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_Каси.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -708,6 +714,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NumericControl.resx">
       <DependentUpon>NumericControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Каси.resx">
+      <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_Каси.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Товари.resx">
       <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_Товари.cs</DependentUpon>

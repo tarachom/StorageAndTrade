@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 25.07.2022 11:41:39
+ * Дата конфігурації: 25.07.2022 12:36:09
  *
  */
 
@@ -12186,7 +12186,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ВведенняЗалишків_Каси_TablePart : DocumentTablePart
     {
         public ВведенняЗалишків_Каси_TablePart(ВведенняЗалишків_Objest owner) : base(Config.Kernel, "tab_a85",
-             new string[] { "col_e5", "col_e6" }) 
+             new string[] { "col_a1", "col_e5", "col_e6" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -12194,6 +12194,7 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string НомерРядка = "col_a1";
         public const string Каса = "col_e5";
         public const string Сума = "col_e6";
 
@@ -12211,6 +12212,7 @@ namespace StorageAndTrade_1_0.Документи
                 Record record = new Record();
                 record.UID = (Guid)fieldValue["uid"];
                 
+                record.НомерРядка = (fieldValue["col_a1"] != DBNull.Value) ? (int)fieldValue["col_a1"] : 0;
                 record.Каса = new Довідники.Каси_Pointer(fieldValue["col_e5"]);
                 record.Сума = (fieldValue["col_e6"] != DBNull.Value) ? (decimal)fieldValue["col_e6"] : 0;
                 
@@ -12231,6 +12233,7 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
+                fieldValue.Add("col_a1", record.НомерРядка);
                 fieldValue.Add("col_e5", record.Каса.UnigueID.UGuid);
                 fieldValue.Add("col_e6", record.Сума);
                 
@@ -12262,10 +12265,12 @@ namespace StorageAndTrade_1_0.Документи
         {
             public Record()
             {
+                НомерРядка = 0;
                 Каса = new Довідники.Каси_Pointer();
                 Сума = 0;
                 
             }
+            public int НомерРядка { get; set; }
             public Довідники.Каси_Pointer Каса { get; set; }
             public decimal Сума { get; set; }
             
@@ -12275,7 +12280,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ВведенняЗалишків_БанківськіРахунки_TablePart : DocumentTablePart
     {
         public ВведенняЗалишків_БанківськіРахунки_TablePart(ВведенняЗалишків_Objest owner) : base(Config.Kernel, "tab_a86",
-             new string[] { "col_e7", "col_e8" }) 
+             new string[] { "col_a1", "col_e7", "col_e8" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -12283,6 +12288,7 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string НомерРядка = "col_a1";
         public const string БанківськийРахунок = "col_e7";
         public const string Сума = "col_e8";
 
@@ -12300,6 +12306,7 @@ namespace StorageAndTrade_1_0.Документи
                 Record record = new Record();
                 record.UID = (Guid)fieldValue["uid"];
                 
+                record.НомерРядка = (fieldValue["col_a1"] != DBNull.Value) ? (int)fieldValue["col_a1"] : 0;
                 record.БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer(fieldValue["col_e7"]);
                 record.Сума = (fieldValue["col_e8"] != DBNull.Value) ? (decimal)fieldValue["col_e8"] : 0;
                 
@@ -12320,6 +12327,7 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
+                fieldValue.Add("col_a1", record.НомерРядка);
                 fieldValue.Add("col_e7", record.БанківськийРахунок.UnigueID.UGuid);
                 fieldValue.Add("col_e8", record.Сума);
                 
@@ -12351,10 +12359,12 @@ namespace StorageAndTrade_1_0.Документи
         {
             public Record()
             {
+                НомерРядка = 0;
                 БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer();
                 Сума = 0;
                 
             }
+            public int НомерРядка { get; set; }
             public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунок { get; set; }
             public decimal Сума { get; set; }
             
@@ -12364,7 +12374,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ВведенняЗалишків_РозрахункиЗКонтрагентами_TablePart : DocumentTablePart
     {
         public ВведенняЗалишків_РозрахункиЗКонтрагентами_TablePart(ВведенняЗалишків_Objest owner) : base(Config.Kernel, "tab_a87",
-             new string[] { "col_e9", "col_f1", "col_f2" }) 
+             new string[] { "col_a1", "col_e9", "col_f1", "col_f2" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -12372,6 +12382,7 @@ namespace StorageAndTrade_1_0.Документи
             Records = new List<Record>();
         }
         
+        public const string НомерРядка = "col_a1";
         public const string Контрагент = "col_e9";
         public const string Валюта = "col_f1";
         public const string Сума = "col_f2";
@@ -12390,6 +12401,7 @@ namespace StorageAndTrade_1_0.Документи
                 Record record = new Record();
                 record.UID = (Guid)fieldValue["uid"];
                 
+                record.НомерРядка = (fieldValue["col_a1"] != DBNull.Value) ? (int)fieldValue["col_a1"] : 0;
                 record.Контрагент = new Довідники.Контрагенти_Pointer(fieldValue["col_e9"]);
                 record.Валюта = new Довідники.Валюти_Pointer(fieldValue["col_f1"]);
                 record.Сума = (fieldValue["col_f2"] != DBNull.Value) ? (decimal)fieldValue["col_f2"] : 0;
@@ -12411,6 +12423,7 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
 
+                fieldValue.Add("col_a1", record.НомерРядка);
                 fieldValue.Add("col_e9", record.Контрагент.UnigueID.UGuid);
                 fieldValue.Add("col_f1", record.Валюта.UnigueID.UGuid);
                 fieldValue.Add("col_f2", record.Сума);
@@ -12443,11 +12456,13 @@ namespace StorageAndTrade_1_0.Документи
         {
             public Record()
             {
+                НомерРядка = 0;
                 Контрагент = new Довідники.Контрагенти_Pointer();
                 Валюта = new Довідники.Валюти_Pointer();
                 Сума = 0;
                 
             }
+            public int НомерРядка { get; set; }
             public Довідники.Контрагенти_Pointer Контрагент { get; set; }
             public Довідники.Валюти_Pointer Валюта { get; set; }
             public decimal Сума { get; set; }

@@ -88,6 +88,7 @@ namespace StorageAndTrade
 				введенняЗалишків_Objest = new Документи.ВведенняЗалишків_Objest();
 
 				ВведенняЗалишків_ТабличнаЧастина_Товари.ДокументОбєкт = введенняЗалишків_Objest;
+				ВведенняЗалишків_ТабличнаЧастина_Каси.ДокументОбєкт = введенняЗалишків_Objest;
 
 				if (IsNew.Value)
 				{
@@ -118,6 +119,7 @@ namespace StorageAndTrade
 							}
 
 						ВведенняЗалишків_ТабличнаЧастина_Товари.LoadRecords();
+						ВведенняЗалишків_ТабличнаЧастина_Каси.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
@@ -148,6 +150,7 @@ namespace StorageAndTrade
 				{
 					введенняЗалишків_Objest.Save();
 					ВведенняЗалишків_ТабличнаЧастина_Товари.SaveRecords();
+					ВведенняЗалишків_ТабличнаЧастина_Каси.SaveRecords();
 
 					IsNew = false;
 				}

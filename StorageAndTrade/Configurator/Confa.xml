@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>25.07.2022 11:41:39</DateTimeSave>
+  <DateTimeSave>25.07.2022 12:36:09</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -7450,6 +7450,14 @@
           </Desc>
           <Fields>
             <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
               <Name>Каса</Name>
               <NameInTable>col_e5</NameInTable>
               <Type>pointer</Type>
@@ -7475,6 +7483,14 @@
           </Desc>
           <Fields>
             <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
               <Name>БанківськийРахунок</Name>
               <NameInTable>col_e7</NameInTable>
               <Type>pointer</Type>
@@ -7499,6 +7515,14 @@
           <Desc>
           </Desc>
           <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
             <Field>
               <Name>Контрагент</Name>
               <NameInTable>col_e9</NameInTable>

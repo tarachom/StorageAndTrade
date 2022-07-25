@@ -56,16 +56,18 @@ namespace StorageAndTrade
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.ВведенняЗалишків_ТабличнаЧастина_Товари = new StorageAndTrade.Form_ВведенняЗалишків_ТабличнаЧастина_Товари();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ВведенняЗалишків_ТабличнаЧастина_Каси = new StorageAndTrade.Form_ВведенняЗалишків_ТабличнаЧастина_Каси();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
@@ -324,6 +326,26 @@ namespace StorageAndTrade
             this.ВведенняЗалишків_ТабличнаЧастина_Товари.TabIndex = 0;
             this.ВведенняЗалишків_ТабличнаЧастина_Товари.ДокументОбєкт = null;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.ВведенняЗалишків_ТабличнаЧастина_Каси);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1023, 327);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Каси";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // ВведенняЗалишків_ТабличнаЧастина_Каси
+            // 
+            this.ВведенняЗалишків_ТабличнаЧастина_Каси.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ВведенняЗалишків_ТабличнаЧастина_Каси.Location = new System.Drawing.Point(3, 3);
+            this.ВведенняЗалишків_ТабличнаЧастина_Каси.Name = "ВведенняЗалишків_ТабличнаЧастина_Каси";
+            this.ВведенняЗалишків_ТабличнаЧастина_Каси.Size = new System.Drawing.Size(1017, 321);
+            this.ВведенняЗалишків_ТабличнаЧастина_Каси.TabIndex = 0;
+            this.ВведенняЗалишків_ТабличнаЧастина_Каси.ДокументОбєкт = null;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.label12);
@@ -379,16 +401,6 @@ namespace StorageAndTrade
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1023, 327);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Каси";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
             // Form_ВведенняЗалишківДокумент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -407,6 +419,7 @@ namespace StorageAndTrade
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -448,5 +461,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBox_Коментар;
         private System.Windows.Forms.TabPage tabPage3;
+        private Form_ВведенняЗалишків_ТабличнаЧастина_Каси ВведенняЗалишків_ТабличнаЧастина_Каси;
     }
 }

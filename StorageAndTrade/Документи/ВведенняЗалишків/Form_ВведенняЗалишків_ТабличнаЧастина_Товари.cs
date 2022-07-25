@@ -22,7 +22,10 @@ namespace StorageAndTrade
         public Form_ВведенняЗалишків_ТабличнаЧастина_Товари()
         {
             InitializeComponent();
-        }
+
+			RecordsBindingList = new BindingList<Записи>();
+			dataGridViewRecords.DataSource = RecordsBindingList;
+		}
 
 		/// <summary>
 		/// Власне документ якому належить таблична частина
@@ -31,9 +34,6 @@ namespace StorageAndTrade
 
         private void Form_ВведенняЗалишків_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
         {
-			RecordsBindingList = new BindingList<Записи>();
-			dataGridViewRecords.DataSource = RecordsBindingList;
-
 			dataGridViewRecords.Columns["ID"].Visible = false;
 
 			dataGridViewRecords.Columns["НомерРядка"].Width = 30;
@@ -123,16 +123,6 @@ namespace StorageAndTrade
 				dataGridViewRecords.Rows[selectRow].Selected = true;
 				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
 			}
-		}
-
-		public decimal ОбчислитиСумуДокументу()
-		{
-			decimal documentSuma = 0;
-
-			foreach (Записи запис in RecordsBindingList)
-				documentSuma += запис.Сума;
-
-			return Math.Round(documentSuma, 2);
 		}
 
 		public void SaveRecords()
