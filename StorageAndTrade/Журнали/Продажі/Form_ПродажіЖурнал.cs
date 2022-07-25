@@ -243,11 +243,20 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			form_ПоверненняТоварівВідКлієнтаДокумент.Show();
 		}
 
-        #endregion
+		private void актВиконанихРобітToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Form_АктВиконанихРобітДокумент form_АктВиконанихРобітДокумент = new Form_АктВиконанихРобітДокумент();
+			form_АктВиконанихРобітДокумент.MdiParent = this.MdiParent;
+			form_АктВиконанихРобітДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_АктВиконанихРобітДокумент.Show();
+		}
 
-        #region Edit
+		#endregion
 
-        private void toolStripButtonEdit_Click(object sender, EventArgs e)
+		#region Edit
+
+		private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
@@ -280,7 +289,17 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 							break;
 						}
+					case "АктВиконанихРобіт":
+						{
+							Form_АктВиконанихРобітДокумент form_АктВиконанихРобітДокумент = new Form_АктВиконанихРобітДокумент();
+							form_АктВиконанихРобітДокумент.MdiParent = this.MdiParent;
+							form_АктВиконанихРобітДокумент.IsNew = false;
+							//form_РеалізаціяТоварівТаПослугДокумент.OwnerForm = this;
+							form_АктВиконанихРобітДокумент.Uid = uid;
+							form_АктВиконанихРобітДокумент.Show();
 
+							break;
+						}
 					case "ПоверненняТоварівВідКлієнта":
 						{
 							Form_ПоверненняТоварівВідКлієнтаДокумент form_ПоверненняТоварівВідКлієнтаДокумент = new Form_ПоверненняТоварівВідКлієнтаДокумент();
@@ -362,6 +381,27 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 								break;
 							}
+						case "АктВиконанихРобіт":
+							{
+								АктВиконанихРобіт_Objest актВиконанихРобіт_Objest = new АктВиконанихРобіт_Objest();
+								if (актВиконанихРобіт_Objest.Read(new UnigueID(uid)))
+								{
+									АктВиконанихРобіт_Objest актВиконанихРобіт_Objest_Новий = актВиконанихРобіт_Objest.Copy();
+									актВиконанихРобіт_Objest_Новий.Назва += " *";
+									актВиконанихРобіт_Objest_Новий.ДатаДок = DateTime.Now;
+									актВиконанихРобіт_Objest_Новий.НомерДок = (++НумераціяДокументів.АктВиконанихРобіт_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Послуги
+									актВиконанихРобіт_Objest.Послуги_TablePart.Read();
+									актВиконанихРобіт_Objest_Новий.Послуги_TablePart.Records = актВиконанихРобіт_Objest.Послуги_TablePart.Copy();
+									актВиконанихРобіт_Objest_Новий.Послуги_TablePart.Save(true);
+									актВиконанихРобіт_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
 						case "ПоверненняТоварівВідКлієнта":
 							{
 								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new ПоверненняТоварівВідКлієнта_Objest();
@@ -423,6 +463,16 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 								break;
 							}
+						case "АктВиконанихРобіт":
+							{
+								АктВиконанихРобіт_Objest актВиконанихРобіт_Objest = new АктВиконанихРобіт_Objest();
+								if (актВиконанихРобіт_Objest.Read(new UnigueID(uid)))
+									актВиконанихРобіт_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
 						case "ПоверненняТоварівВідКлієнта":
 							{
 								ПоверненняТоварівВідКлієнта_Objest поверненняТоварівВідКлієнта_Objest = new ПоверненняТоварівВідКлієнта_Objest();
@@ -458,6 +508,11 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 					case "РеалізаціяТоварівТаПослуг":
 						{
 							РухДокументівПоРегістрах.PrintRecords(new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
+							break;
+						}
+					case "АктВиконанихРобіт":
+						{
+							РухДокументівПоРегістрах.PrintRecords(new АктВиконанихРобіт_Pointer(new UnigueID(uid)));
 							break;
 						}
 					case "ПоверненняТоварівВідКлієнта":
@@ -519,6 +574,26 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									}
 								else
 									реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
+
+								break;
+							}
+						case "АктВиконанихРобіт":
+							{
+								АктВиконанихРобіт_Pointer актВиконанихРобіт_Pointer = new АктВиконанихРобіт_Pointer(new UnigueID(uid));
+								АктВиконанихРобіт_Objest актВиконанихРобіт_Objest = актВиконанихРобіт_Pointer.GetDocumentObject(true);
+
+								if (spend)
+									try
+									{
+										актВиконанихРобіт_Objest.SpendTheDocument(актВиконанихРобіт_Objest.ДатаДок);
+									}
+									catch (Exception exp)
+									{
+										актВиконанихРобіт_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								else
+									актВиконанихРобіт_Objest.ClearSpendTheDocument();
 
 								break;
 							}

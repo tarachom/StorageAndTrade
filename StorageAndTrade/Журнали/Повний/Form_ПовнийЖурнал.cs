@@ -975,8 +975,23 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									введенняЗалишків_Objest_Новий.Товари_TablePart.Save(true);
 									введенняЗалишків_Objest_Новий.Save();
 
-									//*** всі інші також треба копіювати
-									throw new Exception("Не всі таб частини скопійовані");
+									//Зчитати та скопіювати табличну частину Каси
+									введенняЗалишків_Objest.Каси_TablePart.Read();
+									введенняЗалишків_Objest_Новий.Каси_TablePart.Records = введенняЗалишків_Objest.Каси_TablePart.Copy();
+									введенняЗалишків_Objest_Новий.Каси_TablePart.Save(true);
+									введенняЗалишків_Objest_Новий.Save();
+
+									//Зчитати та скопіювати табличну частину БанківськіРахунки
+									введенняЗалишків_Objest.БанківськіРахунки_TablePart.Read();
+									введенняЗалишків_Objest_Новий.БанківськіРахунки_TablePart.Records = введенняЗалишків_Objest.БанківськіРахунки_TablePart.Copy();
+									введенняЗалишків_Objest_Новий.БанківськіРахунки_TablePart.Save(true);
+									введенняЗалишків_Objest_Новий.Save();
+
+									//Зчитати та скопіювати табличну частину РозрахункиЗКонтрагентами
+									введенняЗалишків_Objest.РозрахункиЗКонтрагентами_TablePart.Read();
+									введенняЗалишків_Objest_Новий.РозрахункиЗКонтрагентами_TablePart.Records = введенняЗалишків_Objest.РозрахункиЗКонтрагентами_TablePart.Copy();
+									введенняЗалишків_Objest_Новий.РозрахункиЗКонтрагентами_TablePart.Save(true);
+									введенняЗалишків_Objest_Новий.Save();
 								}
 								else
 									MessageBox.Show("Error read");
