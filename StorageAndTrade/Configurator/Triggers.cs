@@ -381,4 +381,21 @@ namespace StorageAndTrade_1_0.Документи
 
 	}
 
+	class ВведенняЗалишків_Triggers
+	{
+		public static void BeforeRecording(ВведенняЗалишків_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(ВведенняЗалишків_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(ВведенняЗалишків_Objest ДокументОбєкт)
+		{
+			ДокументОбєкт.ClearSpendTheDocument();
+		}
+	}
 }

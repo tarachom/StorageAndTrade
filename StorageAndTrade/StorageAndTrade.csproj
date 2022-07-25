@@ -116,6 +116,24 @@
     <Compile Include="NumericControl.designer.cs">
       <DependentUpon>NumericControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківДокумент.designer.cs">
+      <DependentUpon>Form_ВведенняЗалишківДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківЖурнал.designer.cs">
+      <DependentUpon>Form_ВведенняЗалишківЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -690,6 +708,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NumericControl.resx">
       <DependentUpon>NumericControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ВведенняЗалишків_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківДокумент.resx">
+      <DependentUpon>Form_ВведенняЗалишківДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишківЖурнал.resx">
+      <DependentUpon>Form_ВведенняЗалишківЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.resx">
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>

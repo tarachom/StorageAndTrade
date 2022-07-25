@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>22.07.2022 16:23:15</DateTimeSave>
+  <DateTimeSave>25.07.2022 11:41:39</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -3673,7 +3673,7 @@
       <Name>ГосподарськіОперації</Name>
       <Desc>
       </Desc>
-      <SerialNumber>23</SerialNumber>
+      <SerialNumber>24</SerialNumber>
       <Fields>
         <Field>
           <Name>ЗамовленняВПостачальника</Name>
@@ -3789,6 +3789,11 @@
           <Name>ПоверненняТоварівПостачальнику</Name>
           <Value>23</Value>
           <Desc>Повернення товарів постачальнику</Desc>
+        </Field>
+        <Field>
+          <Name>ВведенняЗалишків</Name>
+          <Value>24</Value>
+          <Desc>Введення залишків</Desc>
         </Field>
       </Fields>
     </Enum>
@@ -7277,7 +7282,7 @@
         <Field>
           <Name>НомерДок</Name>
           <NameInTable>col_c7</NameInTable>
-          <Type>integer</Type>
+          <Type>string</Type>
           <Desc>НомерДок</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
@@ -7346,6 +7351,16 @@
           <Name>Коментар</Name>
           <NameInTable>col_d1</NameInTable>
           <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ГосподарськаОперація</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ГосподарськіОперації</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -7513,20 +7528,18 @@
           </Fields>
         </TablePart>
       </TabularParts>
-      <AllowRegisterAccumulation />
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <AfterSave>ВведенняЗалишків_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ВведенняЗалишків_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ВведенняЗалишків_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ВведенняЗалишків_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>

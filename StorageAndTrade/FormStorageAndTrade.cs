@@ -261,6 +261,13 @@ namespace StorageAndTrade
             form_ВстановленняЦінНоменклатуриЖурнал.Show();
         }
 
+        private void введенняЗалишківToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ВведенняЗалишківЖурнал form_ВведенняЗалишківЖурнал = new Form_ВведенняЗалишківЖурнал();
+            form_ВведенняЗалишківЖурнал.MdiParent = this;
+            form_ВведенняЗалишківЖурнал.Show();
+        }
+
         #endregion
 
         #region Звіти Меню
@@ -541,8 +548,7 @@ namespace StorageAndTrade
 
 
 
-        #endregion
 
-        
+        #endregion
     }
 }

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 22.07.2022 16:23:15
+ * Дата конфігурації: 25.07.2022 11:41:39
  *
  */
 
@@ -7651,7 +7651,8 @@ namespace StorageAndTrade_1_0.Перелічення
          ПлануванняПоЗамовленнямПостачальнику = 20,
          ПлануванняПоЗамовленнямКлієнта = 21,
          ПоверненняТоварівВідКлієнта = 22,
-         ПоверненняТоварівПостачальнику = 23
+         ПоверненняТоварівПостачальнику = 23,
+         ВведенняЗалишків = 24
     }
     #endregion
     
@@ -11877,17 +11878,18 @@ namespace StorageAndTrade_1_0.Документи
         public const string Контрагент = "col_d3";
         public const string Договір = "col_d4";
         public const string Коментар = "col_d1";
+        public const string ГосподарськаОперація = "col_a1";
     }
 	
     
     public class ВведенняЗалишків_Objest : DocumentObject
     {
         public ВведенняЗалишків_Objest() : base(Config.Kernel, "tab_a83", "ВведенняЗалишків",
-             new string[] { "col_c5", "col_c6", "col_c7", "col_c8", "col_d5", "col_c9", "col_d2", "col_d3", "col_d4", "col_d1" }) 
+             new string[] { "col_c5", "col_c6", "col_c7", "col_c8", "col_d5", "col_c9", "col_d2", "col_d3", "col_d4", "col_d1", "col_a1" }) 
         {
             Назва = "";
             ДатаДок = DateTime.MinValue;
-            НомерДок = 0;
+            НомерДок = "";
             Організація = new Довідники.Організації_Pointer();
             Підрозділ = new Довідники.СтруктураПідприємства_Pointer();
             Склад = new Довідники.Склади_Pointer();
@@ -11895,6 +11897,7 @@ namespace StorageAndTrade_1_0.Документи
             Контрагент = new Довідники.Контрагенти_Pointer();
             Договір = new Довідники.ДоговориКонтрагентів_Pointer();
             Коментар = "";
+            ГосподарськаОперація = 0;
             
             //Табличні частини
             Товари_TablePart = new ВведенняЗалишків_Товари_TablePart(this);
@@ -11910,7 +11913,7 @@ namespace StorageAndTrade_1_0.Документи
             {
                 Назва = base.FieldValue["col_c5"].ToString();
                 ДатаДок = (base.FieldValue["col_c6"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["col_c6"].ToString()) : DateTime.MinValue;
-                НомерДок = (base.FieldValue["col_c7"] != DBNull.Value) ? (int)base.FieldValue["col_c7"] : 0;
+                НомерДок = base.FieldValue["col_c7"].ToString();
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_c8"]);
                 Підрозділ = new Довідники.СтруктураПідприємства_Pointer(base.FieldValue["col_d5"]);
                 Склад = new Довідники.Склади_Pointer(base.FieldValue["col_c9"]);
@@ -11918,6 +11921,7 @@ namespace StorageAndTrade_1_0.Документи
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_d3"]);
                 Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_d4"]);
                 Коментар = base.FieldValue["col_d1"].ToString();
+                ГосподарськаОперація = (base.FieldValue["col_a1"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_a1"] : 0;
                 
                 BaseClear();
                 return true;
@@ -11938,19 +11942,21 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_d3"] = Контрагент.UnigueID.UGuid;
             base.FieldValue["col_d4"] = Договір.UnigueID.UGuid;
             base.FieldValue["col_d1"] = Коментар;
+            base.FieldValue["col_a1"] = (int)ГосподарськаОперація;
             
             BaseSave();
-			
+			ВведенняЗалишків_Triggers.AfterRecording(this);
 		}
 
 		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(false, DateTime.MinValue);
+            BaseSpend(ВведенняЗалишків_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false, DateTime.MinValue);
+            ВведенняЗалишків_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ВведенняЗалишків_Objest Copy()
@@ -11967,13 +11973,14 @@ namespace StorageAndTrade_1_0.Документи
 			copy.Контрагент = Контрагент;
 			copy.Договір = Договір;
 			copy.Коментар = Коментар;
+			copy.ГосподарськаОперація = ГосподарськаОперація;
 			
 			return copy;
         }
 
         public void Delete()
         {
-		    
+		    ВведенняЗалишків_Triggers.BeforeDelete(this);
             base.BaseDelete(new string[] { "tab_a84", "tab_a85", "tab_a86", "tab_a87" });
         }
         
@@ -11985,7 +11992,7 @@ namespace StorageAndTrade_1_0.Документи
         
         public string Назва { get; set; }
         public DateTime ДатаДок { get; set; }
-        public int НомерДок { get; set; }
+        public string НомерДок { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.СтруктураПідприємства_Pointer Підрозділ { get; set; }
         public Довідники.Склади_Pointer Склад { get; set; }
@@ -11993,6 +12000,7 @@ namespace StorageAndTrade_1_0.Документи
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
         public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
         public string Коментар { get; set; }
+        public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
         
         //Табличні частини
         public ВведенняЗалишків_Товари_TablePart Товари_TablePart { get; set; }
