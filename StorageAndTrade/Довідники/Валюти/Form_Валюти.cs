@@ -95,10 +95,10 @@ namespace StorageAndTrade
 
 			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
 			{
-				//dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
-				//dataGridViewRecords.Rows[selectRow].Selected = true;
-				//dataGridViewRecords.Rows[0].Selected = false;
-			}
+                dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+                dataGridViewRecords.Rows[selectRow].Selected = true;
+                dataGridViewRecords.Rows[0].Selected = false;
+            }
 		}
 
 		private class Записи
