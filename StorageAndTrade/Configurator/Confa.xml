@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>25.07.2022 16:10:01</DateTimeSave>
+  <DateTimeSave>25.07.2022 16:25:11</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -7172,19 +7172,19 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_a1</NameInTable>
-          <Type>string</Type>
+          <Name>ГосподарськаОперація</Name>
+          <NameInTable>col_a6</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ГосподарськіОперації</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>ГосподарськаОперація</Name>
-          <NameInTable>col_a6</NameInTable>
-          <Type>enum</Type>
-          <Pointer>Перелічення.ГосподарськіОперації</Pointer>
+          <Name>Коментар</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -7251,20 +7251,18 @@
           </Fields>
         </TablePart>
       </TabularParts>
-      <AllowRegisterAccumulation />
+      <AllowRegisterAccumulation>
+        <Name>РозрахункиЗКлієнтами</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <AfterSave>АктВиконанихРобіт_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>АктВиконанихРобіт_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>АктВиконанихРобіт_SpendTheDocument.Spend</Spend>
+        <ClearSpend>АктВиконанихРобіт_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>

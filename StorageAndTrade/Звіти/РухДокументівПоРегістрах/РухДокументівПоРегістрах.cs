@@ -254,6 +254,24 @@ namespace StorageAndTrade_1_0.Звіти
                         break;
                     }
 
+                case "АктВиконанихРобіт":
+                    {
+                        АктВиконанихРобіт_Objest актВиконанихРобіт_Objest = new АктВиконанихРобіт_Objest();
+                        актВиконанихРобіт_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                актВиконанихРобіт_Objest.Назва,
+                                актВиконанихРобіт_Objest.ДатаДок,
+                                актВиконанихРобіт_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
                 default:
                     {
                         object[] fieldValue = new object[] { ДокументВказівник.UnigueID.ToString(), "<Не оприділений тип документу>", "", "" };

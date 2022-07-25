@@ -265,6 +265,53 @@ namespace StorageAndTrade_1_0.Документи
 		}
 	}
 
+	class АктВиконанихРобіт_SpendTheDocument
+	{
+		public static bool Spend(АктВиконанихРобіт_Objest ДокументОбєкт)
+		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
+			#region Рух по регістрах
+
+			//
+			//РозрахункиЗКлієнтами
+			//
+
+			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+
+			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
+			розрахункиЗКлієнтами_RecordsSet.Records.Add(розрахункиЗКлієнтами_Record);
+
+			розрахункиЗКлієнтами_Record.Income = true;
+			розрахункиЗКлієнтами_Record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+			розрахункиЗКлієнтами_Record.Контрагент = ДокументОбєкт.Контрагент;
+			розрахункиЗКлієнтами_Record.Валюта = ДокументОбєкт.Валюта;
+			розрахункиЗКлієнтами_Record.Сума = ДокументОбєкт.СумаДокументу;
+
+			розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			#endregion
+
+			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+
+			return true;
+		}
+
+		public static void ClearSpend(АктВиконанихРобіт_Objest ДокументОбєкт)
+		{
+			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+		}
+	}
+
 	class ПоступленняТоварівТаПослуг_SpendTheDocument
 	{
 		public static bool Spend(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
@@ -1173,4 +1220,5 @@ namespace StorageAndTrade_1_0.Документи
 			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
+	
 }

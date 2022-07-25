@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 25.07.2022 16:10:01
+ * Дата конфігурації: 25.07.2022 16:25:11
  *
  */
 
@@ -11561,15 +11561,15 @@ namespace StorageAndTrade_1_0.Документи
         public const string СумаДокументу = "col_a2";
         public const string ФормаОплати = "col_a3";
         public const string Договір = "col_a4";
-        public const string Коментар = "col_a1";
         public const string ГосподарськаОперація = "col_a6";
+        public const string Коментар = "col_a1";
     }
 	
     
     public class АктВиконанихРобіт_Objest : DocumentObject
     {
         public АктВиконанихРобіт_Objest() : base(Config.Kernel, "tab_a81", "АктВиконанихРобіт",
-             new string[] { "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_a5", "col_a2", "col_a3", "col_a4", "col_a1", "col_a6" }) 
+             new string[] { "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_a5", "col_a2", "col_a3", "col_a4", "col_a6", "col_a1" }) 
         {
             Назва = "";
             ДатаДок = DateTime.MinValue;
@@ -11583,8 +11583,8 @@ namespace StorageAndTrade_1_0.Документи
             СумаДокументу = 0;
             ФормаОплати = 0;
             Договір = new Довідники.ДоговориКонтрагентів_Pointer();
-            Коментар = "";
             ГосподарськаОперація = 0;
+            Коментар = "";
             
             //Табличні частини
             Послуги_TablePart = new АктВиконанихРобіт_Послуги_TablePart(this);
@@ -11607,8 +11607,8 @@ namespace StorageAndTrade_1_0.Документи
                 СумаДокументу = (base.FieldValue["col_a2"] != DBNull.Value) ? (decimal)base.FieldValue["col_a2"] : 0;
                 ФормаОплати = (base.FieldValue["col_a3"] != DBNull.Value) ? (Перелічення.ФормаОплати)base.FieldValue["col_a3"] : 0;
                 Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_a4"]);
-                Коментар = base.FieldValue["col_a1"].ToString();
                 ГосподарськаОперація = (base.FieldValue["col_a6"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_a6"] : 0;
+                Коментар = base.FieldValue["col_a1"].ToString();
                 
                 BaseClear();
                 return true;
@@ -11631,21 +11631,22 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_a2"] = СумаДокументу;
             base.FieldValue["col_a3"] = (int)ФормаОплати;
             base.FieldValue["col_a4"] = Договір.UnigueID.UGuid;
-            base.FieldValue["col_a1"] = Коментар;
             base.FieldValue["col_a6"] = (int)ГосподарськаОперація;
+            base.FieldValue["col_a1"] = Коментар;
             
             BaseSave();
-			
+			АктВиконанихРобіт_Triggers.AfterRecording(this);
 		}
 
 		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(false, DateTime.MinValue);
+            BaseSpend(АктВиконанихРобіт_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false, DateTime.MinValue);
+            АктВиконанихРобіт_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public АктВиконанихРобіт_Objest Copy()
@@ -11664,15 +11665,15 @@ namespace StorageAndTrade_1_0.Документи
 			copy.СумаДокументу = СумаДокументу;
 			copy.ФормаОплати = ФормаОплати;
 			copy.Договір = Договір;
-			copy.Коментар = Коментар;
 			copy.ГосподарськаОперація = ГосподарськаОперація;
+			copy.Коментар = Коментар;
 			
 			return copy;
         }
 
         public void Delete()
         {
-		    
+		    АктВиконанихРобіт_Triggers.BeforeDelete(this);
             base.BaseDelete(new string[] { "tab_a82" });
         }
         
@@ -11694,8 +11695,8 @@ namespace StorageAndTrade_1_0.Документи
         public decimal СумаДокументу { get; set; }
         public Перелічення.ФормаОплати ФормаОплати { get; set; }
         public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
-        public string Коментар { get; set; }
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
+        public string Коментар { get; set; }
         
         //Табличні частини
         public АктВиконанихРобіт_Послуги_TablePart Послуги_TablePart { get; set; }

@@ -232,6 +232,24 @@ namespace StorageAndTrade_1_0.Документи
 		}
 	}
 
+	class АктВиконанихРобіт_Triggers
+	{
+		public static void BeforeRecording(АктВиконанихРобіт_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(АктВиконанихРобіт_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(АктВиконанихРобіт_Objest ДокументОбєкт)
+		{
+			ДокументОбєкт.ClearSpendTheDocument();
+		}
+	}
+
 	class ПоступленняТоварівТаПослуг_Triggers
 	{
 		public static void BeforeRecording(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
