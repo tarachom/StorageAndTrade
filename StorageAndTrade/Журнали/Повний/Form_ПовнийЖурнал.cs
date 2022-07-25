@@ -309,7 +309,7 @@ UNION
 UNION
 {query_ВведенняЗалишків}
 
-ORDER BY ДатаДок
+ORDER BY ДатаДок DESC
 LIMIT {loadRecordsLimit.Limit}
 OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
