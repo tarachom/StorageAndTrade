@@ -41,7 +41,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["НомерРядка"].HeaderText = "№";
 
 			dataGridViewRecords.Columns["Каса"].Visible = false;
-			dataGridViewRecords.Columns["КасаНазва"].Width = 200;
+			dataGridViewRecords.Columns["КасаНазва"].Width = 300;
 			dataGridViewRecords.Columns["КасаНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["КасаНазва"].HeaderText = "Каса";
 

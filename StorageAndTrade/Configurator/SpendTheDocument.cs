@@ -1130,6 +1130,31 @@ namespace StorageAndTrade_1_0.Документи
 
 			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
+			//
+			//РухКоштів
+			//
+
+			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+
+			foreach (ВведенняЗалишків_Каси_TablePart.Record Каси_Record in ДокументОбєкт.Каси_TablePart.Records)
+			{
+				РегістриНакопичення.РухКоштів_RecordsSet.Record record_Каса = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+				рухКоштів_RecordsSet.Records.Add(record_Каса);
+
+				Довідники.Валюти_Pointer валютаКаси =
+					(!Каси_Record.Каса.IsEmpty() ? Каси_Record.Каса.GetDirectoryObject().Валюта : ДокументОбєкт.Валюта);
+
+				record_Каса.Income = true;
+				record_Каса.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record_Каса.Організація = ДокументОбєкт.Організація;
+				record_Каса.Каса = Каси_Record.Каса;
+				record_Каса.Валюта = валютаКаси;
+				record_Каса.Сума = Каси_Record.Сума;
+			}
+
+			рухКоштів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
 			#endregion
 
 			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
@@ -1141,6 +1166,9 @@ namespace StorageAndTrade_1_0.Документи
 		{
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			Function.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
