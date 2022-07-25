@@ -32,6 +32,17 @@ namespace StorageAndTrade
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ПовнийЖурнал));
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ToolStripMenuItem_ЗамовленняКлієнта = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ЗамовленняПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПереміщенняТоварів = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
@@ -41,17 +52,11 @@ namespace StorageAndTrade
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
-            this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
-            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ЗамовленняКлієнта = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ЗамовленняПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ПереміщенняТоварів = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ПрихіднийКасовийОрдер = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_РозхіднийКасовийОрдер = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripMenuItem();
+            this.введенняЗалишківToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -83,6 +88,100 @@ namespace StorageAndTrade
             this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButtonAdd
+            // 
+            this.toolStripDropDownButtonAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_ЗамовленняКлієнта,
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг,
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта,
+            this.toolStripSeparator2,
+            this.ToolStripMenuItem_ЗамовленняПостачальнику,
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг,
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику,
+            this.toolStripSeparator3,
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер,
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер,
+            this.toolStripSeparator4,
+            this.ToolStripMenuItem_ПереміщенняТоварів,
+            this.ToolStripMenuItem_ВстановленняЦінНоменклатури,
+            this.toolStripSeparator1,
+            this.введенняЗалишківToolStripMenuItem});
+            this.toolStripDropDownButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.toolStripDropDownButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonAdd.Name = "toolStripDropDownButtonAdd";
+            this.toolStripDropDownButtonAdd.Size = new System.Drawing.Size(75, 22);
+            this.toolStripDropDownButtonAdd.Text = "Додати";
+            // 
+            // ToolStripMenuItem_ЗамовленняКлієнта
+            // 
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Name = "ToolStripMenuItem_ЗамовленняКлієнта";
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Text = "Замовлення клієнта";
+            this.ToolStripMenuItem_ЗамовленняКлієнта.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняКлієнта_Click);
+            // 
+            // ToolStripMenuItem_РеалізаціяТоварівТаПослуг
+            // 
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Name = "ToolStripMenuItem_РеалізаціяТоварівТаПослуг";
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Text = "Реалізація товарів та послуг";
+            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг_Click);
+            // 
+            // ToolStripMenuItem_ПоверненняТоварівВідКлієнта
+            // 
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Name = "ToolStripMenuItem_ПоверненняТоварівВідКлієнта";
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Text = "Повернення товарів від клієнта";
+            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Click += new System.EventHandler(this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта_Click);
+            // 
+            // ToolStripMenuItem_ЗамовленняПостачальнику
+            // 
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Name = "ToolStripMenuItem_ЗамовленняПостачальнику";
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Text = "Замовлення постачальнику";
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняПостачальнику_Click);
+            // 
+            // ToolStripMenuItem_ПоступленняТоварівТаПослуг
+            // 
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Name = "ToolStripMenuItem_ПоступленняТоварівТаПослуг";
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Text = "Поступлення товарів та послуг";
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_ПоступленняТоварівТаПослуг_Click);
+            // 
+            // ToolStripMenuItem_ПоверненняТоварівПостачальнику
+            // 
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Name = "ToolStripMenuItem_ПоверненняТоварівПостачальнику";
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Text = "Повернення товарів постачальнику";
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ПоверненняТоварівПостачальнику_Click);
+            // 
+            // ToolStripMenuItem_ПрихіднийКасовийОрдер
+            // 
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Name = "ToolStripMenuItem_ПрихіднийКасовийОрдер";
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Text = "Прихідний касовий ордер";
+            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Click += new System.EventHandler(this.ToolStripMenuItem_ПрихіднийКасовийОрдер_Click);
+            // 
+            // ToolStripMenuItem_РозхіднийКасовийОрдер
+            // 
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Name = "ToolStripMenuItem_РозхіднийКасовийОрдер";
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Text = "Розхідний касовий ордер";
+            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Click += new System.EventHandler(this.ToolStripMenuItem_РозхіднийКасовийОрдер_Click);
+            // 
+            // ToolStripMenuItem_ПереміщенняТоварів
+            // 
+            this.ToolStripMenuItem_ПереміщенняТоварів.Name = "ToolStripMenuItem_ПереміщенняТоварів";
+            this.ToolStripMenuItem_ПереміщенняТоварів.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ПереміщенняТоварів.Text = "Переміщення товарів";
+            this.ToolStripMenuItem_ПереміщенняТоварів.Click += new System.EventHandler(this.ToolStripMenuItem_ПереміщенняТоварів_Click);
+            // 
+            // ToolStripMenuItem_ВстановленняЦінНоменклатури
+            // 
+            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Name = "ToolStripMenuItem_ВстановленняЦінНоменклатури";
+            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Text = "Встановлення цін номенклатури";
+            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.ToolStripMenuItem_ВстановленняЦінНоменклатури_Click);
             // 
             // toolStripButtonEdit
             // 
@@ -173,94 +272,32 @@ namespace StorageAndTrade
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridViewRecords_Scroll);
             // 
-            // toolStripDropDownButtonAdd
+            // введенняЗалишківToolStripMenuItem
             // 
-            this.toolStripDropDownButtonAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_ЗамовленняКлієнта,
-            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг,
-            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта,
-            this.ToolStripMenuItem_ЗамовленняПостачальнику,
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг,
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику,
-            this.ToolStripMenuItem_ПрихіднийКасовийОрдер,
-            this.ToolStripMenuItem_РозхіднийКасовийОрдер,
-            this.ToolStripMenuItem_ПереміщенняТоварів,
-            this.ToolStripMenuItem_ВстановленняЦінНоменклатури});
-            this.toolStripDropDownButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.toolStripDropDownButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonAdd.Name = "toolStripDropDownButtonAdd";
-            this.toolStripDropDownButtonAdd.Size = new System.Drawing.Size(75, 22);
-            this.toolStripDropDownButtonAdd.Text = "Додати";
+            this.введенняЗалишківToolStripMenuItem.Name = "введенняЗалишківToolStripMenuItem";
+            this.введенняЗалишківToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.введенняЗалишківToolStripMenuItem.Text = "Введення залишків";
+            this.введенняЗалишківToolStripMenuItem.Click += new System.EventHandler(this.введенняЗалишківToolStripMenuItem_Click);
             // 
-            // ToolStripMenuItem_ПоверненняТоварівВідКлієнта
+            // toolStripSeparator1
             // 
-            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Name = "ToolStripMenuItem_ПоверненняТоварівВідКлієнта";
-            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Text = "Повернення товарів від клієнта";
-            this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта.Click += new System.EventHandler(this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(268, 6);
             // 
-            // ToolStripMenuItem_РеалізаціяТоварівТаПослуг
+            // toolStripSeparator2
             // 
-            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Name = "ToolStripMenuItem_РеалізаціяТоварівТаПослуг";
-            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Text = "Реалізація товарів та послуг";
-            this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(268, 6);
             // 
-            // ToolStripMenuItem_ЗамовленняКлієнта
+            // toolStripSeparator3
             // 
-            this.ToolStripMenuItem_ЗамовленняКлієнта.Name = "ToolStripMenuItem_ЗамовленняКлієнта";
-            this.ToolStripMenuItem_ЗамовленняКлієнта.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ЗамовленняКлієнта.Text = "Замовлення клієнта";
-            this.ToolStripMenuItem_ЗамовленняКлієнта.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняКлієнта_Click);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(268, 6);
             // 
-            // ToolStripMenuItem_ЗамовленняПостачальнику
+            // toolStripSeparator4
             // 
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Name = "ToolStripMenuItem_ЗамовленняПостачальнику";
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Text = "Замовлення постачальнику";
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняПостачальнику_Click);
-            // 
-            // ToolStripMenuItem_ПоступленняТоварівТаПослуг
-            // 
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Name = "ToolStripMenuItem_ПоступленняТоварівТаПослуг";
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Text = "Поступлення товарів та послуг";
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_ПоступленняТоварівТаПослуг_Click);
-            // 
-            // ToolStripMenuItem_ПоверненняТоварівПостачальнику
-            // 
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Name = "ToolStripMenuItem_ПоверненняТоварівПостачальнику";
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Text = "Повернення товарів постачальнику";
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ПоверненняТоварівПостачальнику_Click);
-            // 
-            // ToolStripMenuItem_ПереміщенняТоварів
-            // 
-            this.ToolStripMenuItem_ПереміщенняТоварів.Name = "ToolStripMenuItem_ПереміщенняТоварів";
-            this.ToolStripMenuItem_ПереміщенняТоварів.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ПереміщенняТоварів.Text = "Переміщення товарів";
-            this.ToolStripMenuItem_ПереміщенняТоварів.Click += new System.EventHandler(this.ToolStripMenuItem_ПереміщенняТоварів_Click);
-            // 
-            // ToolStripMenuItem_ПрихіднийКасовийОрдер
-            // 
-            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Name = "ToolStripMenuItem_ПрихіднийКасовийОрдер";
-            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Text = "Прихідний касовий ордер";
-            this.ToolStripMenuItem_ПрихіднийКасовийОрдер.Click += new System.EventHandler(this.ToolStripMenuItem_ПрихіднийКасовийОрдер_Click);
-            // 
-            // ToolStripMenuItem_РозхіднийКасовийОрдер
-            // 
-            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Name = "ToolStripMenuItem_РозхіднийКасовийОрдер";
-            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Text = "Розхідний касовий ордер";
-            this.ToolStripMenuItem_РозхіднийКасовийОрдер.Click += new System.EventHandler(this.ToolStripMenuItem_РозхіднийКасовийОрдер_Click);
-            // 
-            // ToolStripMenuItem_ВстановленняЦінНоменклатури
-            // 
-            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Name = "ToolStripMenuItem_ВстановленняЦінНоменклатури";
-            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Text = "Встановлення цін номенклатури";
-            this.ToolStripMenuItem_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.ToolStripMenuItem_ВстановленняЦінНоменклатури_Click);
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(268, 6);
             // 
             // Form_ПовнийЖурнал
             // 
@@ -308,5 +345,10 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ПрихіднийКасовийОрдер;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_РозхіднийКасовийОрдер;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ВстановленняЦінНоменклатури;
+        private System.Windows.Forms.ToolStripMenuItem введенняЗалишківToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

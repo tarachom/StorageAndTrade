@@ -236,6 +236,24 @@ namespace StorageAndTrade_1_0.Звіти
                         break;
                     }
 
+                case "ВведенняЗалишків":
+                    {
+                        ВведенняЗалишків_Objest введенняЗалишків_Objest = new ВведенняЗалишків_Objest();
+                        введенняЗалишків_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                введенняЗалишків_Objest.Назва,
+                                введенняЗалишків_Objest.ДатаДок,
+                                введенняЗалишків_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
                 default:
                     {
                         object[] fieldValue = new object[] { ДокументВказівник.UnigueID.ToString(), "<Не оприділений тип документу>", "", "" };

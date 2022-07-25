@@ -263,6 +263,21 @@ FROM
 	{ВстановленняЦінНоменклатури_Const.TABLE} AS Док_ВстановленняЦінНоменклатури
 ";
 
+			string query_ВведенняЗалишків = $@"
+SELECT
+    'ВведенняЗалишків',
+    Док_ВведенняЗалишків.uid,
+    Док_ВведенняЗалишків.spend,
+    Док_ВведенняЗалишків.{ВведенняЗалишків_Const.Назва} AS Назва,
+    Док_ВведенняЗалишків.{ВведенняЗалишків_Const.НомерДок} AS НомерДок,
+    Док_ВведенняЗалишків.{ВведенняЗалишків_Const.ДатаДок} AS ДатаДок,
+    '' AS КонтрагентНазва,
+    0 AS Сума,
+    Док_ВведенняЗалишків.{ВведенняЗалишків_Const.Коментар} AS Коментар
+FROM
+	{ВведенняЗалишків_Const.TABLE} AS Док_ВведенняЗалишків
+";
+
 			string query = $@"
 {query_Продажі}
 UNION
@@ -273,6 +288,8 @@ UNION
 {query_Склад}
 UNION
 {query_Ціноутворення}
+UNION
+{query_ВведенняЗалишків}
 
 ORDER BY ДатаДок
 LIMIT {loadRecordsLimit.Limit}
@@ -442,6 +459,15 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			form_ВстановленняЦінНоменклатуриДокумент.Show();
 		}
 
+		private void введенняЗалишківToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Form_ВведенняЗалишківДокумент form_ВведенняЗалишківДокумент = new Form_ВведенняЗалишківДокумент();
+			form_ВведенняЗалишківДокумент.MdiParent = this.MdiParent;
+			form_ВведенняЗалишківДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_ВведенняЗалишківДокумент.Show();
+		}
+
 		#endregion
 
 		#region Edit
@@ -592,6 +618,22 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 						}
 
 					#endregion
+
+					#region ВведенняЗалишків
+
+					case "ВведенняЗалишків":
+						{
+							Form_ВведенняЗалишківДокумент form_ВведенняЗалишківДокумент = new Form_ВведенняЗалишківДокумент();
+							form_ВведенняЗалишківДокумент.MdiParent = this.MdiParent;
+							form_ВведенняЗалишківДокумент.IsNew = false;
+							//form_ВведенняЗалишківДокумент.OwnerForm = this;
+							form_ВведенняЗалишківДокумент.Uid = uid;
+							form_ВведенняЗалишківДокумент.Show();
+
+							break;
+						}
+
+				   #endregion
 				}
             }
 		}
@@ -853,9 +895,35 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								break;
 							}
 
+						#endregion
+
+						#region ВведенняЗалишків
+
+						case "ВведенняЗалишків":
+							{
+								ВведенняЗалишків_Objest введенняЗалишків_Objest = new ВведенняЗалишків_Objest();
+								if (введенняЗалишків_Objest.Read(new UnigueID(uid)))
+								{
+									ВведенняЗалишків_Objest введенняЗалишків_Objest_Новий = введенняЗалишків_Objest.Copy();
+									введенняЗалишків_Objest_Новий.Назва += " *";
+									введенняЗалишків_Objest_Новий.ДатаДок = DateTime.Now;
+									введенняЗалишків_Objest_Новий.НомерДок = (++НумераціяДокументів.ВведенняЗалишків_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									введенняЗалишків_Objest.Товари_TablePart.Read();
+									введенняЗалишків_Objest_Новий.Товари_TablePart.Records = введенняЗалишків_Objest.Товари_TablePart.Copy();
+									введенняЗалишків_Objest_Новий.Товари_TablePart.Save(true);
+									введенняЗалишків_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
 							#endregion
 					}
-				}
+                }
 
 				LoadRecords();
 			}
@@ -1002,7 +1070,23 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								break;
 							}
 
-					    #endregion
+						#endregion
+
+						#region ВведенняЗалишків
+
+						case "ВведенняЗалишків":
+							{
+								ВведенняЗалишків_Objest введенняЗалишків_Objest = new ВведенняЗалишків_Objest();
+								if (введенняЗалишків_Objest.Read(new UnigueID(uid)))
+								{
+									введенняЗалишків_Objest.Delete();
+								}
+								else
+									MessageBox.Show("Error read");
+								break;
+							}
+
+						#endregion
 					}
                 }
 
@@ -1098,6 +1182,17 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 						}
 
 					#endregion
+
+					#region ВведенняЗалишків
+
+					case "ВведенняЗалишків":
+						{
+							РухДокументівПоРегістрах.PrintRecords(new ВведенняЗалишків_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+
+						#endregion
 				}
 			}
 		}
@@ -1340,6 +1435,31 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							}
 
 						#endregion
+
+						#region ВведенняЗалишків
+
+						case "ВведенняЗалишків":
+							{
+								ВведенняЗалишків_Pointer введенняЗалишків_Pointer = new ВведенняЗалишків_Pointer(new UnigueID(uid));
+								ВведенняЗалишків_Objest введенняЗалишків_Objest = введенняЗалишків_Pointer.GetDocumentObject(true);
+
+								if (spend)
+									try
+									{
+										введенняЗалишків_Objest.SpendTheDocument(введенняЗалишків_Objest.ДатаДок);
+									}
+									catch (Exception exp)
+									{
+										введенняЗалишків_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								else
+									введенняЗалишків_Objest.ClearSpendTheDocument();
+
+								break;
+							}
+
+							#endregion
 					}
 				}
 
