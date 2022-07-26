@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>25.07.2022 16:25:11</DateTimeSave>
+  <DateTimeSave>26.07.2022 14:52:17</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняПоЗамовчуванню</Name>
@@ -284,6 +284,30 @@
               </Fields>
             </TablePart>
           </TabularParts>
+        </Constant>
+        <Constant>
+          <Name>a</Name>
+          <NameInTable>col_g4</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>string[]</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>b</Name>
+          <NameInTable>col_g5</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer[]</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>c</Name>
+          <NameInTable>col_g6</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>numeric[]</Type>
+          <TabularParts />
         </Constant>
       </Constants>
     </ConstantsBlock>
