@@ -1189,9 +1189,8 @@ copy %25conf_folder_code%25\CodeGeneration.xslt                    %25st_folder%
 copy %25conf_folder_code%25\Comparison.xslt                          %25st_folder%25\Comparison.xslt
 copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\ComparisonAnalize.xslt
 
-
-
-copy $(ProjectDir)Configurator\Confa.xml      $(TargetDir)\Confa.xml
+copy %25conf_folder_code%25\UnloadingAndLoadingDataXML.xslt               %25st_folder%25\UnloadingAndLoadingDataXML.xslt
+copy %25conf_folder_code%25\UnloadingAndLoadingDataSQL.xslt                %25st_folder%25\UnloadingAndLoadingDataSQL.xslt
 
 
 mkdir $(TargetDir)Шаблони
