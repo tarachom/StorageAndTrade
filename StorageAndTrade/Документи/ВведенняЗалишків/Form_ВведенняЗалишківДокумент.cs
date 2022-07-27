@@ -96,6 +96,12 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = введенняЗалишків_Objest.НомерДок = (++Константи.НумераціяДокументів.ВведенняЗалишків_Const).ToString("D8");
+
+					directoryControl_Контрагент.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПостачальник_Const;
+					directoryControl_Організація.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
+					directoryControl_Валюта.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
+					directoryControl_Склад.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОснонийСклад_Const;
+					directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
 				}
 				else
 				{

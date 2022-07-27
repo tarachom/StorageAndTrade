@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 27.07.2022 18:08:36
+ * Дата конфігурації: 27.07.2022 18:46:32
  *
  */
 
@@ -64,7 +64,7 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7" }, fieldValue);
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_g4", "col_g5" }, fieldValue);
             
             if (IsSelect)
             {
@@ -75,6 +75,8 @@ namespace StorageAndTrade_1_0.Константи
                 m_ОсновнийПокупець_Const = new Довідники.Контрагенти_Pointer(fieldValue["col_a5"]);
                 m_ОсновнаКаса_Const = new Довідники.Каси_Pointer(fieldValue["col_a6"]);
                 m_ОсновнаОдиницяПакування_Const = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_a7"]);
+                m_ОсновнийПідрозділ_Const = new Довідники.СтруктураПідприємства_Pointer(fieldValue["col_g4"]);
+                m_ОсновнийБанківськийРахунок_Const = new Довідники.БанківськіРахункиОрганізацій_Pointer(fieldValue["col_g5"]);
                 
             }
 			
@@ -155,6 +157,28 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ОсновнаОдиницяПакування_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a7", m_ОсновнаОдиницяПакування_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.СтруктураПідприємства_Pointer m_ОсновнийПідрозділ_Const = new Довідники.СтруктураПідприємства_Pointer();
+        public static Довідники.СтруктураПідприємства_Pointer ОсновнийПідрозділ_Const
+        {
+            get { return m_ОсновнийПідрозділ_Const; }
+            set
+            {
+                m_ОсновнийПідрозділ_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g4", m_ОсновнийПідрозділ_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.БанківськіРахункиОрганізацій_Pointer m_ОсновнийБанківськийРахунок_Const = new Довідники.БанківськіРахункиОрганізацій_Pointer();
+        public static Довідники.БанківськіРахункиОрганізацій_Pointer ОсновнийБанківськийРахунок_Const
+        {
+            get { return m_ОсновнийБанківськийРахунок_Const; }
+            set
+            {
+                m_ОсновнийБанківськийРахунок_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g5", m_ОсновнийБанківськийРахунок_Const.UnigueID.UGuid);
             }
         }
              

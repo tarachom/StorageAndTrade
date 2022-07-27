@@ -64,7 +64,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Документи.ПоступленняТоварівТаПослуг_Objest поступленняТоварівТаПослуг_Objest { get; set; }
 
-        private void FormAddCash_Load(object sender, EventArgs e)
+        private void Form_ПоступленняТоварівТаПослугДокумент_Load(object sender, EventArgs e)
         {
 			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
 
@@ -98,6 +98,13 @@ namespace StorageAndTrade
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = поступленняТоварівТаПослуг_Objest.НомерДок = (++Константи.НумераціяДокументів.ПоступленняТоварівТаПослуг_Const).ToString("D8");
 					comboBox_ФормаОплати.SelectedIndex = 0;
+
+					directoryControl_Контрагент.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПостачальник_Const;
+					directoryControl_Організація.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
+					directoryControl_Валюта.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
+					directoryControl_Склад.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОснонийСклад_Const;
+					directoryControl_Каса.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const;
+					directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
 				}
 				else
 				{

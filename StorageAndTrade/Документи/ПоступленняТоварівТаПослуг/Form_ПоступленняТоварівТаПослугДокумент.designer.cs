@@ -433,7 +433,7 @@ namespace StorageAndTrade
             this.Name = "Form_ПоступленняТоварівТаПослугДокумент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Поступлення товарів та послуг";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ПоступленняТоварівТаПослугДокумент_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

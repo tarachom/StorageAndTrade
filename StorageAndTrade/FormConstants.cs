@@ -31,6 +31,8 @@ namespace StorageAndTrade
             directoryControl_Покупець.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
             directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
             directoryControl_ОдиницяПакування.Init(new Form_ПакуванняОдиниціВиміру(), new Довідники.ПакуванняОдиниціВиміру_Pointer());
+            directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
+            directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
 
             //
             //
@@ -43,6 +45,8 @@ namespace StorageAndTrade
             directoryControl_Покупець.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПокупець_Const;
             directoryControl_Каса.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const;
             directoryControl_ОдиницяПакування.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОдиницяПакування_Const;
+            directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
+            directoryControl_БанківськийРахунок.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийБанківськийРахунок_Const;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -54,6 +58,8 @@ namespace StorageAndTrade
             Константи.ЗначенняЗаЗамовчуванням.ОсновнийПокупець_Const = (Довідники.Контрагенти_Pointer)directoryControl_Покупець.DirectoryPointerItem;
             Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const = (Довідники.Каси_Pointer)directoryControl_Каса.DirectoryPointerItem;
             Константи.ЗначенняЗаЗамовчуванням.ОсновнаОдиницяПакування_Const = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяПакування.DirectoryPointerItem;
+            Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
+            Константи.ЗначенняЗаЗамовчуванням.ОсновнийБанківськийРахунок_Const = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
