@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>27.07.2022 19:33:52</DateTimeSave>
+  <DateTimeSave>27.07.2022 20:53:44</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -3670,20 +3670,17 @@
         <Field>
           <Name>НеУзгоджений</Name>
           <Value>1</Value>
-          <Desc>
-          </Desc>
+          <Desc>Не узгоджений</Desc>
         </Field>
         <Field>
           <Name>Діє</Name>
           <Value>2</Value>
-          <Desc>
-          </Desc>
+          <Desc>Діє</Desc>
         </Field>
         <Field>
           <Name>Закритий</Name>
           <Value>3</Value>
-          <Desc>
-          </Desc>
+          <Desc>Закритий</Desc>
         </Field>
       </Fields>
     </Enum>
@@ -3824,44 +3821,12 @@
         <Field>
           <Name>ЗПокупцями</Name>
           <Value>1</Value>
-          <Desc>
-          </Desc>
+          <Desc>З покупцями</Desc>
         </Field>
         <Field>
           <Name>ЗПостачальниками</Name>
           <Value>2</Value>
-          <Desc>
-          </Desc>
-        </Field>
-        <Field>
-          <Name>Імпорт</Name>
-          <Value>3</Value>
-          <Desc>
-          </Desc>
-        </Field>
-        <Field>
-          <Name>ЗПереробником</Name>
-          <Value>4</Value>
-          <Desc>
-          </Desc>
-        </Field>
-        <Field>
-          <Name>ЗДавальцем</Name>
-          <Value>5</Value>
-          <Desc>
-          </Desc>
-        </Field>
-        <Field>
-          <Name>ЗКомітентом</Name>
-          <Value>6</Value>
-          <Desc>
-          </Desc>
-        </Field>
-        <Field>
-          <Name>ЗКомісіонером</Name>
-          <Value>7</Value>
-          <Desc>
-          </Desc>
+          <Desc>З постачальниками</Desc>
         </Field>
       </Fields>
     </Enum>

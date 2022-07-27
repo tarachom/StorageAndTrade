@@ -86,6 +86,7 @@ namespace StorageAndTrade
 			directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer());
 			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
+			directoryControl_Договір.BeforeClickOpen = BeforeClickOpen_Договір;
 			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)
@@ -137,12 +138,28 @@ namespace StorageAndTrade
 						MessageBox.Show("Error read");
 				}
 			}
+		}
+
+        #region CallBack
+
+        void BeforeClickOpen_Договір()
+        {
+			if (directoryControl_Контрагент.DirectoryPointerItem.IsEmpty())
+			{
+				MessageBox.Show("Потрібно вибрати контрагента");
+				directoryControl_Договір.StopOpenSelectForm = true;
+				return;
+			}
+			else
+				directoryControl_Договір.StopOpenSelectForm = false;
 
 			((Form_ДоговориКонтрагентів)directoryControl_Договір.SelectForm).КонтрагентВласник = 
 				(Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
 		}
 
-		private void SaveDoc(bool spendDoc, bool closeForm)
+        #endregion
+
+        private void SaveDoc(bool spendDoc, bool closeForm)
 		{
 			if (IsNew.HasValue)
 			{

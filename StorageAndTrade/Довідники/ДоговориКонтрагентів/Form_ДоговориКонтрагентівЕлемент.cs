@@ -75,15 +75,18 @@ namespace StorageAndTrade
 
 			//Статус
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиДоговорівКонтрагентів"].Fields.Values)
-				comboBox_Статус.Items.Add((Перелічення.СтатусиДоговорівКонтрагентів)field.Value);
+				comboBox_Статус.Items.Add(
+					new NameValue<Перелічення.СтатусиДоговорівКонтрагентів>(field.Desc, (Перелічення.СтатусиДоговорівКонтрагентів)field.Value));
 
 			//ГосподарськіОперації
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"].Fields.Values)
-				comboBox_ГосподарськаОперація.Items.Add((Перелічення.ГосподарськіОперації)field.Value);
+				comboBox_ГосподарськаОперація.Items.Add(
+					new NameValue<Перелічення.ГосподарськіОперації>(field.Desc, (Перелічення.ГосподарськіОперації)field.Value));
 
 			//ТипДоговорів
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипДоговорів"].Fields.Values)
-				comboBox_ТипДоговору.Items.Add((Перелічення.ТипДоговорів)field.Value);
+				comboBox_ТипДоговору.Items.Add(
+					new NameValue<Перелічення.ТипДоговорів>(field.Desc, (Перелічення.ТипДоговорів)field.Value));
 
 			directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
 			directoryControl_БанківськийРахунокКонтрагента.Init(new Form_БанківськіРахункиКонтрагентів(), new Довідники.БанківськіРахункиКонтрагентів_Pointer());
@@ -98,7 +101,7 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_Код.Text = договориКонтрагентів_Objest.Код = (++Константи.НумераціяДовідників.ДоговориКонтрагентів_Const).ToString("D6");
-					comboBox_Статус.SelectedIndex = 0;
+					comboBox_Статус.SelectedIndex = 1;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 					comboBox_ТипДоговору.SelectedIndex = 0;
 
@@ -117,9 +120,27 @@ namespace StorageAndTrade
 						directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = new Довідники.БанківськіРахункиКонтрагентів_Pointer(договориКонтрагентів_Objest.БанківськийРахунокКонтрагента.UnigueID);
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(договориКонтрагентів_Objest.Підрозділ.UnigueID);
 						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(договориКонтрагентів_Objest.Контрагент.UnigueID);
-						comboBox_Статус.SelectedItem = договориКонтрагентів_Objest.Статус;
-						comboBox_ГосподарськаОперація.SelectedItem = договориКонтрагентів_Objest.ГосподарськаОперація;
-						comboBox_ТипДоговору.SelectedItem = договориКонтрагентів_Objest.ТипДоговору;
+
+						foreach (NameValue<Перелічення.СтатусиДоговорівКонтрагентів> статус in comboBox_Статус.Items)
+							if (статус.Value == договориКонтрагентів_Objest.Статус)
+							{
+								comboBox_Статус.SelectedItem = статус;
+								break;
+							}
+
+						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
+							if (операція.Value == договориКонтрагентів_Objest.ГосподарськаОперація)
+							{
+								comboBox_ГосподарськаОперація.SelectedItem = операція;
+								break;
+							}
+
+						foreach (NameValue<Перелічення.ТипДоговорів> типДоговору in comboBox_ТипДоговору.Items)
+							if (типДоговору.Value == договориКонтрагентів_Objest.ТипДоговору)
+							{
+								comboBox_ТипДоговору.SelectedItem = типДоговору;
+								break;
+							}
 					}
 					else
 						MessageBox.Show("Error read");
@@ -134,8 +155,7 @@ namespace StorageAndTrade
             {
 				MessageBox.Show("Потрібно вказати контрагента");
 				return;
-			}				
-				
+			}
 
 			if (IsNew.HasValue)
 			{
@@ -150,9 +170,9 @@ namespace StorageAndTrade
 					договориКонтрагентів_Objest.БанківськийРахунокКонтрагента = (Довідники.БанківськіРахункиКонтрагентів_Pointer)directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 					договориКонтрагентів_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-					договориКонтрагентів_Objest.Статус = comboBox_Статус.SelectedItem != null ? (Перелічення.СтатусиДоговорівКонтрагентів)comboBox_Статус.SelectedItem : 0;
-					договориКонтрагентів_Objest.ГосподарськаОперація = comboBox_ГосподарськаОперація.SelectedItem != null ? (Перелічення.ГосподарськіОперації)comboBox_ГосподарськаОперація.SelectedItem : 0;
-					договориКонтрагентів_Objest.ТипДоговору = comboBox_ТипДоговору.SelectedItem != null ? (Перелічення.ТипДоговорів)comboBox_ТипДоговору.SelectedItem : 0;
+					договориКонтрагентів_Objest.Статус = ((NameValue<Перелічення.СтатусиДоговорівКонтрагентів>)comboBox_Статус.SelectedItem).Value;
+					договориКонтрагентів_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
+					договориКонтрагентів_Objest.ТипДоговору = ((NameValue<Перелічення.ТипДоговорів>)comboBox_ТипДоговору.SelectedItem).Value;
 					договориКонтрагентів_Objest.Save();
 				}
 				catch (Exception exp)

@@ -37,6 +37,16 @@ namespace StorageAndTrade
 		}
 
 		/// <summary>
+		/// Функція яка викликається перед відкриттям форми вибору
+		/// </summary>
+		public Action BeforeClickOpen { get; set; }
+
+		/// <summary>
+		/// Не відкривати форму вибору
+		/// </summary>
+		public bool StopOpenSelectForm { get; set; }
+
+		/// <summary>
 		/// Ініціалізація параметрів
 		/// </summary>
 		/// <param name="selectForm">Форма</param>
@@ -93,6 +103,12 @@ namespace StorageAndTrade
 		{
 			if (SelectForm != null)
 			{
+				if (BeforeClickOpen != null)
+					BeforeClickOpen.Invoke();
+
+				if (StopOpenSelectForm)
+					return;
+
 				PropertyInfo propertyInfo = SelectForm.GetType().GetProperty("DirectoryPointerItem");
 				if (propertyInfo != null)
 				{

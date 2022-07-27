@@ -54,17 +54,20 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 			dataGridViewRecords.Columns["Код"].Width = 50;
 			dataGridViewRecords.Columns["Контрагент"].Width = 300;
+
+			dataGridViewRecords.Columns["ТипДоговору"].Width = 200;
+			dataGridViewRecords.Columns["ТипДоговору"].HeaderText = "Тип договору";
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+		/// <summary>
+		/// Контрагент власник договорів
+		/// </summary>
 		public Довідники.Контрагенти_Pointer КонтрагентВласник { get; set; }
 
 		private void Form_ДоговориКонтрагентів_Load(object sender, EventArgs e)
 		{
-			if (DirectoryPointerItem != null)
-				if (КонтрагентВласник == null || КонтрагентВласник.IsEmpty())
-					throw new Exception("Не заданий КонтрагентВласник");
-
 			LoadRecords();
 		}
 
@@ -98,10 +101,21 @@ namespace StorageAndTrade
 			//ORDER
 			договориКонтрагентів_Select.QuerySelect.Order.Add(Довідники.ДоговориКонтрагентів_Const.Назва, SelectOrder.ASC);
 
+			//З конфігурації
+			ConfigurationEnums переліченняТипДоговорівКонфа = Конфа.Config.Kernel.Conf.Enums["ТипДоговорів"];
+
 			договориКонтрагентів_Select.Select();
 			while (договориКонтрагентів_Select.MoveNext())
 			{
 				Довідники.ДоговориКонтрагентів_Pointer cur = договориКонтрагентів_Select.Current;
+
+				string ТипДоговоруОпис = "";
+
+				if ((int)(cur.Fields[Довідники.ДоговориКонтрагентів_Const.ТипДоговору]) != 0)
+				{
+					string ТипДоговору = ((Перелічення.ТипДоговорів)cur.Fields[Довідники.ДоговориКонтрагентів_Const.ТипДоговору]).ToString();
+					ТипДоговоруОпис = переліченняТипДоговорівКонфа.Fields[ТипДоговору].Desc;
+				}
 
 				RecordsBindingList.Add(new Записи
 				{
@@ -109,7 +123,8 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Довідники.ДоговориКонтрагентів_Const.Назва].ToString(),
 					Код = cur.Fields[Довідники.ДоговориКонтрагентів_Const.Код].ToString(),
 					Контрагент = cur.Fields["joinContragent"].ToString(),
-					ТипДоговору = ((Перелічення.ТипДоговорів)cur.Fields[Довідники.ДоговориКонтрагентів_Const.ТипДоговору]).ToString()
+					ТипДоговору = ТипДоговоруОпис
+
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
