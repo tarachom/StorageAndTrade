@@ -182,7 +182,7 @@ namespace StorageAndTrade
             this.Name = "Form_РозхіднийКасовийОрдерЖурнал";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Розхідний касовий ордер - Журнал";
-            this.Load += new System.EventHandler(this.FormCash_Load);
+            this.Load += new System.EventHandler(this.Form_РозхіднийКасовийОрдерЖурнал_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

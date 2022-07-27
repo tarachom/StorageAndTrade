@@ -411,7 +411,7 @@ namespace StorageAndTrade
             this.Name = "Form_ПоверненняТоварівПостачальникуДокумент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Повернення товарів постачальнику";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ПоверненняТоварівПостачальникуДокумент_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

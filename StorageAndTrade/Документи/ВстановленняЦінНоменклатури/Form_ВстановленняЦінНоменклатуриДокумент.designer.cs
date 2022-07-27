@@ -256,7 +256,7 @@ namespace StorageAndTrade
             this.Name = "Form_ВстановленняЦінНоменклатуриДокумент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Переміщення товарів";
-            this.Load += new System.EventHandler(this.FormAddCash_Load);
+            this.Load += new System.EventHandler(this.Form_ВстановленняЦінНоменклатуриДокумент_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

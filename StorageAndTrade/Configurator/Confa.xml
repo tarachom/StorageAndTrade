@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>27.07.2022 18:46:32</DateTimeSave>
+  <DateTimeSave>27.07.2022 19:33:52</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -3117,7 +3117,7 @@
     <Directory>
       <Name>ДоговориКонтрагентів</Name>
       <Table>tab_a28</Table>
-      <Desc>Договори контрагентів</Desc>
+      <Desc>Договори контрагентів. Договори підпорядковані контрагенту</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>

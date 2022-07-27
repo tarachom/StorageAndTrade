@@ -53,12 +53,18 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ID"].Visible = false;
 			dataGridViewRecords.Columns["Назва"].Width = 300;
 			dataGridViewRecords.Columns["Код"].Width = 50;
+			dataGridViewRecords.Columns["Контрагент"].Width = 300;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
+		public Довідники.Контрагенти_Pointer КонтрагентВласник { get; set; }
 
-        private void Form_ДоговориКонтрагентів_Load(object sender, EventArgs e)
-        {
+		private void Form_ДоговориКонтрагентів_Load(object sender, EventArgs e)
+		{
+			if (DirectoryPointerItem != null)
+				if (КонтрагентВласник == null || КонтрагентВласник.IsEmpty())
+					throw new Exception("Не заданий КонтрагентВласник");
+
 			LoadRecords();
 		}
 
@@ -72,8 +78,22 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.ДоговориКонтрагентів_Select договориКонтрагентів_Select = new Довідники.ДоговориКонтрагентів_Select();
-			договориКонтрагентів_Select.QuerySelect.Field.Add(Довідники.ДоговориКонтрагентів_Const.Назва);
-			договориКонтрагентів_Select.QuerySelect.Field.Add(Довідники.ДоговориКонтрагентів_Const.Код);
+			договориКонтрагентів_Select.QuerySelect.Field.AddRange(new string[] {
+				Довідники.ДоговориКонтрагентів_Const.Назва,
+				Довідники.ДоговориКонтрагентів_Const.Код,
+				Довідники.ДоговориКонтрагентів_Const.ТипДоговору
+			});
+
+			//Контрагент
+			договориКонтрагентів_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
+			договориКонтрагентів_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Контрагенти_Const.TABLE, Довідники.ДоговориКонтрагентів_Const.Контрагент, Довідники.ДоговориКонтрагентів_Const.TABLE));
+
+			//Відбір по контрагенту
+			if (КонтрагентВласник != null && !КонтрагентВласник.IsEmpty())
+				договориКонтрагентів_Select.QuerySelect.Where.Add(
+					new Where(Довідники.ДоговориКонтрагентів_Const.Контрагент, Comparison.EQ, КонтрагентВласник.UnigueID.UGuid));
 
 			//ORDER
 			договориКонтрагентів_Select.QuerySelect.Order.Add(Довідники.ДоговориКонтрагентів_Const.Назва, SelectOrder.ASC);
@@ -87,7 +107,9 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ДоговориКонтрагентів_Const.Назва].ToString(),
-					Код = cur.Fields[Довідники.ДоговориКонтрагентів_Const.Код].ToString()
+					Код = cur.Fields[Довідники.ДоговориКонтрагентів_Const.Код].ToString(),
+					Контрагент = cur.Fields["joinContragent"].ToString(),
+					ТипДоговору = ((Перелічення.ТипДоговорів)cur.Fields[Довідники.ДоговориКонтрагентів_Const.ТипДоговору]).ToString()
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
@@ -110,6 +132,8 @@ namespace StorageAndTrade
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Код { get; set; }
+			public string Контрагент { get; set; }
+			public string ТипДоговору { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -137,6 +161,7 @@ namespace StorageAndTrade
 			form_ДоговориКонтрагентівЕлемент.MdiParent = this.MdiParent;
 			form_ДоговориКонтрагентівЕлемент.IsNew = true;
 			form_ДоговориКонтрагентівЕлемент.OwnerForm = this;
+			form_ДоговориКонтрагентівЕлемент.КонтрагентВласник = КонтрагентВласник;
 			if (DirectoryPointerItem != null && this.MdiParent == null)
 				form_ДоговориКонтрагентівЕлемент.ShowDialog();
 			else

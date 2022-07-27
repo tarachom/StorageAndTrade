@@ -64,7 +64,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Документи.АктВиконанихРобіт_Objest актВиконанихРобіт_Objest { get; set; }
 
-        private void FormAddCash_Load(object sender, EventArgs e)
+        private void Form_АктВиконанихРобітДокумент_Load(object sender, EventArgs e)
         {
 			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
 

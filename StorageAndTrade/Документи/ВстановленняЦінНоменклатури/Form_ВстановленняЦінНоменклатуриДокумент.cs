@@ -64,7 +64,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Документи.ВстановленняЦінНоменклатури_Objest встановленняЦінНоменклатури_Objest { get; set; }
 
-        private void FormAddCash_Load(object sender, EventArgs e)
+        private void Form_ВстановленняЦінНоменклатуриДокумент_Load(object sender, EventArgs e)
         {
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
 

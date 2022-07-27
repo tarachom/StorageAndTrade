@@ -63,6 +63,11 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ДоговориКонтрагентів_Objest договориКонтрагентів_Objest { get; set; }
 
+		/// <summary>
+		/// Контрагент власник договору
+		/// </summary>
+		public Довідники.Контрагенти_Pointer КонтрагентВласник { get; set; }
+
 		private void Form_ДоговориКонтрагентівЕлемент_Load(object sender, EventArgs e)
         {
 			directoryControl_Номенклатура.SelectForm = new Form_Номенклатура();
@@ -96,6 +101,9 @@ namespace StorageAndTrade
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
 					comboBox_ТипДоговору.SelectedIndex = 0;
+
+					if (КонтрагентВласник != null)
+						directoryControl_Контрагент.DirectoryPointerItem = КонтрагентВласник;
 				}
 				else
 				{
@@ -121,6 +129,14 @@ namespace StorageAndTrade
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+			if (directoryControl_Контрагент.DirectoryPointerItem == null ||
+				((Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem).IsEmpty())
+            {
+				MessageBox.Show("Потрібно вказати контрагента");
+				return;
+			}				
+				
+
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)

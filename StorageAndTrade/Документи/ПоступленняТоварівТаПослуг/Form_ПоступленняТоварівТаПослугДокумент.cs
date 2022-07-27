@@ -137,6 +137,9 @@ namespace StorageAndTrade
 						MessageBox.Show("Error read");
 				}
 			}
+
+			((Form_ДоговориКонтрагентів)directoryControl_Договір.SelectForm).КонтрагентВласник = 
+				(Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
 		}
 
 		private void SaveDoc(bool spendDoc, bool closeForm)

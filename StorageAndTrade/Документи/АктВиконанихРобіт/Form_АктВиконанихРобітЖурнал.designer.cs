@@ -203,7 +203,7 @@ namespace StorageAndTrade
             this.Name = "Form_АктВиконанихРобітЖурнал";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Акт виконаних робіт - Журнал";
-            this.Load += new System.EventHandler(this.FormCash_Load);
+            this.Load += new System.EventHandler(this.Form_АктВиконанихРобітЖурнал_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

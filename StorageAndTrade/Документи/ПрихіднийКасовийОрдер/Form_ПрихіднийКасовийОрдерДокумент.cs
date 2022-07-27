@@ -64,7 +64,7 @@ namespace StorageAndTrade
 		/// </summary>
         private Документи.ПрихіднийКасовийОрдер_Objest прихіднийКасовийОрдер_Objest { get; set; }
 
-        private void Form_ЗамовленняКлієнтаДокумент_Load(object sender, EventArgs e)
+        private void Form_ПрихіднийКасовийОрдерДокумент_Load(object sender, EventArgs e)
         {
 			ConfigurationEnums ГосподарськіОперації = Конфа.Config.Kernel.Conf.Enums["ГосподарськіОперації"];
 

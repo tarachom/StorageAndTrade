@@ -78,7 +78,7 @@ namespace StorageAndTrade
 
 		public DocumentPointer DocumentPointerItem { get; set; }
 
-        private void FormCash_Load(object sender, EventArgs e)
+        private void Form_ПрихіднийКасовийОрдерЖурнал_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}

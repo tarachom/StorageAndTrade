@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 27.07.2022 18:46:32
+ * Дата конфігурації: 27.07.2022 19:33:52
  *
  */
 
@@ -6819,7 +6819,7 @@ namespace StorageAndTrade_1_0.Довідники
     
     #region DIRECTORY "ДоговориКонтрагентів"
     ///<summary>
-    ///Договори контрагентів.
+    ///Договори контрагентів. Договори підпорядковані контрагенту.
     ///</summary>
     public static class ДоговориКонтрагентів_Const
     {
@@ -6847,7 +6847,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
 	
     ///<summary>
-    ///Договори контрагентів.
+    ///Договори контрагентів. Договори підпорядковані контрагенту.
     ///</summary>
     public class ДоговориКонтрагентів_Objest : DirectoryObject
     {
@@ -7022,7 +7022,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     ///<summary>
-    ///Договори контрагентів.
+    ///Договори контрагентів. Договори підпорядковані контрагенту.
     ///</summary>
     public class ДоговориКонтрагентів_Pointer : DirectoryPointer
     {
@@ -7057,7 +7057,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     ///<summary>
-    ///Договори контрагентів.
+    ///Договори контрагентів. Договори підпорядковані контрагенту.
     ///</summary>
     public class ДоговориКонтрагентів_Select : DirectorySelect, IDisposable
     {
