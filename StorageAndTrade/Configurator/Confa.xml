@@ -5,10 +5,10 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>26.07.2022 18:49:59</DateTimeSave>
+  <DateTimeSave>27.07.2022 18:08:36</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
-      <Name>ЗначенняПоЗамовчуванню</Name>
+      <Name>ЗначенняЗаЗамовчуванням</Name>
       <Desc>
       </Desc>
       <Constants>

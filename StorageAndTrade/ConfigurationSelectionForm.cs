@@ -54,7 +54,6 @@ namespace StorageAndTrade
 			string assemblyLocation = Application.ExecutablePath;
 
 			PathToXML = Path.GetDirectoryName(assemblyLocation) + "\\ConfigurationParam.xml";
-			//PathToSQLXML = Path.GetDirectoryName(assemblyLocation) + "\\Sql.xml";
 
 			//Конфігурація знаходиться в тому самому каталозі що і програма
 			PathToConfXML = Path.GetDirectoryName(assemblyLocation) + "\\Confa.xml";
@@ -62,8 +61,6 @@ namespace StorageAndTrade
 			LoadConfigurationParamFromXML();
 
 			Fill_listBoxConfiguration();
-
-			//buttonOpenConf_Click(this, new EventArgs());
 		}
 
 		private void LoadConfigurationParamFromXML()
@@ -205,7 +202,6 @@ namespace StorageAndTrade
 				}
 			}
 
-			//LoadConfigurationParamFromXML();
 			Fill_listBoxConfiguration(itemConfigurationParam.ConfigurationKey);
 		}
 
@@ -262,8 +258,10 @@ namespace StorageAndTrade
 			if (listBoxConfiguration.SelectedItem != null)
 			{
 				ConfigurationParam itemConfigurationParam = (ConfigurationParam)listBoxConfiguration.SelectedItem;
+
 				foreach (ConfigurationParam ItemConfigurationParam in ListConfigurationParam)
 					ItemConfigurationParam.Select = ItemConfigurationParam.ConfigurationKey == itemConfigurationParam.ConfigurationKey;
+
 				SaveConfigurationParamFromXML();
 
 				Exception exception;
@@ -366,7 +364,7 @@ namespace StorageAndTrade
 				this.Hide();
 
 				FormStorageAndTrade formStorageAndTrade = new FormStorageAndTrade();
-				//formRecordFinance.OpenDataBaseName = " - " + itemConfigurationParam.ConfigurationName;
+				formStorageAndTrade.OpenConfigurationParam = itemConfigurationParam;
 				formStorageAndTrade.Show();
 			}
 		}

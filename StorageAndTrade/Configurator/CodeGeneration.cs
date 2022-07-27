@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 26.07.2022 18:49:59
+ * Дата конфігурації: 27.07.2022 18:08:36
  *
  */
 
@@ -43,7 +43,7 @@ namespace StorageAndTrade_1_0
 		
         public static void ReadAllConstants()
         {
-            Константи.ЗначенняПоЗамовчуванню.ReadAll();
+            Константи.ЗначенняЗаЗамовчуванням.ReadAll();
             Константи.Системні.ReadAll();
             Константи.ВіртуальніТаблиціРегістрів.ReadAll();
             Константи.НумераціяДокументів.ReadAll();
@@ -56,8 +56,8 @@ namespace StorageAndTrade_1_0
 namespace StorageAndTrade_1_0.Константи
 {
     
-	#region CONSTANTS BLOCK "ЗначенняПоЗамовчуванню"
-    public static class ЗначенняПоЗамовчуванню
+	#region CONSTANTS BLOCK "ЗначенняЗаЗамовчуванням"
+    public static class ЗначенняЗаЗамовчуванням
     {
         public static void ReadAll()
         {

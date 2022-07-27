@@ -28,17 +28,19 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
+        public ConfigurationParam OpenConfigurationParam { get; set; }
+
         private Thread ThreadBackgroundTask { get; set; }
 
         private void FormStorageAndTrade_Load(object sender, EventArgs e)
         {
             this.MdiChildActivate += FormStorageAndTrade_MdiChildActivate;
 
-           //
-           // Обробка фонових задач розрахунку віртуальних залишків
-           //
+            //
+            // Обробка фонових задач розрахунку віртуальних залишків
+            //
 
-           CalculationBalances.ПідключитиДодаток_UUID_OSSP();
+            CalculationBalances.ПідключитиДодаток_UUID_OSSP();
 
             ThreadBackgroundTask = new Thread(new ThreadStart(CalculationVirtualBalances));
             ThreadBackgroundTask.Start();
@@ -334,22 +336,16 @@ namespace StorageAndTrade
 
         private void константиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormConstants formConstants = new FormConstants();
+            formConstants.MdiParent = this;
+            formConstants.Show();
         }
 
         private void проПрограмуToolStripMenuItem_Click(object sender, EventArgs e)
         {
-//            string query = $@"
-//SELECT pg_try_advisory_lock(id) FROM test WHERE id = '1';
-//Update test Set name= 'test 4' Where id = 1;
-//SELECT pg_advisory_unlock(id) FROM test WHERE id = '1';
-//";
-
-//            string[] cols;
-//            List<object[]> rows;
-
-//            Конфа.Config.Kernel.DataBase.SelectRequest(query, null, out cols, out rows);
-
+            FormAbout formAbout = new FormAbout();
+            formAbout.OpenConfigurationParam = OpenConfigurationParam;
+            formAbout.ShowDialog();
         }
 
         #endregion
