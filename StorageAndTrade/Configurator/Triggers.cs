@@ -34,6 +34,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using AccountingSoftware;
+using Конфа = StorageAndTrade_1_0;
 
 namespace StorageAndTrade_1_0.Константи
 {
@@ -132,6 +133,26 @@ namespace StorageAndTrade_1_0.Довідники
 
 			}
 		}
+	}
+
+	class ДоговориКонтрагентів_Triggers
+    {
+		public static void BeforeRecording(ДоговориКонтрагентів_Objest ДовідникОбєкт)
+		{
+			string НазваПереліченняЗКонфігурації = 
+				Конфа.Config.Kernel.Conf.Enums["ТипДоговорів"].Fields[ДовідникОбєкт.ТипДоговору.ToString()].Desc;
+
+			ДовідникОбєкт.ТипДоговоруПредставлення = НазваПереліченняЗКонфігурації;
+		}
+		public static void AfterRecording(ДоговориКонтрагентів_Objest ДовідникОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(ДоговориКонтрагентів_Objest ДовідникОбєкт)
+        {
+
+        }
 	}
 
 	class Склади_Папки_Triggers

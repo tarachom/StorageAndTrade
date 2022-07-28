@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 </Desc>
-  <DateTimeSave>27.07.2022 20:53:44</DateTimeSave>
+  <DateTimeSave>28.07.2022 15:21:35</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -3271,6 +3271,14 @@
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
+          <Name>ТипДоговоруПредставлення</Name>
+          <NameInTable>col_b8</NameInTable>
+          <Type>string</Type>
+          <Desc>Тип договору стрічкою для представлення у формах</Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
           <Name>ДопустимаСумаЗаборгованості</Name>
           <NameInTable>col_b6</NameInTable>
           <Type>numeric</Type>
@@ -3300,12 +3308,9 @@
       </Fields>
       <TabularParts />
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <BeforeSave>ДоговориКонтрагентів_Triggers.BeforeRecording</BeforeSave>
+        <AfterSave>ДоговориКонтрагентів_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ДоговориКонтрагентів_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Directory>
     <Directory>
@@ -4393,8 +4398,7 @@
         <Name>ТовариДоПоступлення</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>ЗамовленняПостачальнику_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ЗамовленняПостачальнику_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ЗамовленняПостачальнику_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -4822,8 +4826,7 @@
         <Name>РозрахункиЗПостачальниками</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>ПоступленняТоварівТаПослуг_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ПоступленняТоварівТаПослуг_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПоступленняТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -5212,8 +5215,7 @@
         <Name>ВільніЗалишки</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>ЗамовленняКлієнта_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ЗамовленняКлієнта_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ЗамовленняКлієнта_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -5631,8 +5633,7 @@
         <Name>ВільніЗалишки</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>РеалізаціяТоварівТаПослуг_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>РеалізаціяТоварівТаПослуг_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>РеалізаціяТоварівТаПослуг_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -5981,8 +5982,7 @@
         <Name>РухКоштів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>ПрихіднийКасовийОрдер_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ПрихіднийКасовийОрдер_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПрихіднийКасовийОрдер_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -6216,8 +6216,7 @@
         <Name>РухКоштів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>РозхіднийКасовийОрдер_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>РозхіднийКасовийОрдер_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>РозхіднийКасовийОрдер_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -6756,8 +6755,7 @@
         <Name>РозрахункиЗПостачальниками</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>ПоверненняТоварівПостачальнику_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ПоверненняТоварівПостачальнику_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПоверненняТоварівПостачальнику_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -7025,8 +7023,7 @@
         <Name>ВільніЗалишки</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>ПоверненняТоварівВідКлієнта_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ПоверненняТоварівВідКлієнта_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ПоверненняТоварівВідКлієнта_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -7238,8 +7235,7 @@
         <Name>РозрахункиЗКлієнтами</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>АктВиконанихРобіт_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>АктВиконанихРобіт_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>АктВиконанихРобіт_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
@@ -7548,8 +7544,7 @@
         <Name>РухКоштів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
+        <BeforeSave>ВведенняЗалишків_Triggers.BeforeRecording</BeforeSave>
         <AfterSave>ВведенняЗалишків_Triggers.AfterRecording</AfterSave>
         <BeforeDelete>ВведенняЗалишків_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>

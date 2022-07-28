@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 27.07.2022 20:53:44
+ * Дата конфігурації: 28.07.2022 15:21:35
  *
  */
 
@@ -2736,7 +2736,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_a1"] = Назва;
+		    base.FieldValue["col_a1"] = Назва;
             base.FieldValue["col_a2"] = Код;
             base.FieldValue["col_a3"] = НазваПовна;
             base.FieldValue["col_a4"] = НазваСкорочена;
@@ -3038,7 +3038,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_b1"] = Назва;
+		    base.FieldValue["col_b1"] = Назва;
             base.FieldValue["col_b2"] = Код;
             base.FieldValue["col_b4"] = НазваПовна;
             base.FieldValue["col_a1"] = Опис;
@@ -3225,7 +3225,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_b6"] = Назва;
+		    base.FieldValue["col_b6"] = Назва;
             base.FieldValue["col_b7"] = Код;
             
             BaseSave();
@@ -3389,7 +3389,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_b8"] = Назва;
+		    base.FieldValue["col_b8"] = Назва;
             base.FieldValue["col_b9"] = Код;
             base.FieldValue["col_a2"] = Опис;
             base.FieldValue["col_a1"] = (int)ТипНоменклатури;
@@ -3562,7 +3562,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_c1"] = Назва;
+		    base.FieldValue["col_c1"] = Назва;
             base.FieldValue["col_c2"] = Код;
             base.FieldValue["col_c3"] = НазваПовна;
             base.FieldValue["col_c4"] = КількістьУпаковок;
@@ -3725,7 +3725,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_c5"] = Назва;
+		    base.FieldValue["col_c5"] = Назва;
             base.FieldValue["col_c6"] = Код;
             
             BaseSave();
@@ -3892,7 +3892,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_c7"] = Назва;
+		    base.FieldValue["col_c7"] = Назва;
             base.FieldValue["col_c8"] = Код;
             base.FieldValue["col_c9"] = НазваПовна;
             base.FieldValue["col_d1"] = РеєстраційнийНомер;
@@ -4176,7 +4176,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_d9"] = Назва;
+		    base.FieldValue["col_d9"] = Назва;
             base.FieldValue["col_e1"] = Код;
             base.FieldValue["col_a1"] = (int)ТипСкладу;
             base.FieldValue["col_a2"] = Відповідальний.UnigueID.UGuid;
@@ -4453,7 +4453,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_e9"] = Назва;
+		    base.FieldValue["col_e9"] = Назва;
             base.FieldValue["col_f1"] = Код;
             base.FieldValue["col_f2"] = Валюта.UnigueID.UGuid;
             
@@ -4615,7 +4615,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_f3"] = Назва;
+		    base.FieldValue["col_f3"] = Назва;
             base.FieldValue["col_f4"] = Код;
             base.FieldValue["col_f5"] = Валюта.UnigueID.UGuid;
             
@@ -4783,7 +4783,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_f6"] = Назва;
+		    base.FieldValue["col_f6"] = Назва;
             base.FieldValue["col_f7"] = Код;
             base.FieldValue["col_a1"] = ФізичнаОсоба.UnigueID.UGuid;
             base.FieldValue["col_g6"] = Коментар;
@@ -5057,7 +5057,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_g7"] = Назва;
+		    base.FieldValue["col_g7"] = Назва;
             base.FieldValue["col_g8"] = Код;
             base.FieldValue["col_g9"] = ДатаНародження;
             base.FieldValue["col_a1"] = (int)Стать;
@@ -5326,7 +5326,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_h8"] = Назва;
+		    base.FieldValue["col_h8"] = Назва;
             base.FieldValue["col_h9"] = Код;
             base.FieldValue["col_i1"] = Керівник.UnigueID.UGuid;
             
@@ -5488,7 +5488,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_i2"] = Назва;
+		    base.FieldValue["col_i2"] = Назва;
             base.FieldValue["col_i3"] = Код;
             base.FieldValue["col_i4"] = НазваПовна;
             
@@ -5647,7 +5647,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_i5"] = Назва;
+		    base.FieldValue["col_i5"] = Назва;
             base.FieldValue["col_i6"] = Код;
             
             BaseSave();
@@ -5808,7 +5808,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_i7"] = Назва;
+		    base.FieldValue["col_i7"] = Назва;
             base.FieldValue["col_i8"] = Код;
             base.FieldValue["col_i9"] = НазваПовна;
             base.FieldValue["col_a1"] = Номенклатура.UnigueID.UGuid;
@@ -5974,7 +5974,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_j1"] = Назва;
+		    base.FieldValue["col_j1"] = Назва;
             base.FieldValue["col_j2"] = Код;
             base.FieldValue["col_j3"] = Родич.UnigueID.UGuid;
             
@@ -6136,7 +6136,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_j4"] = Назва;
+		    base.FieldValue["col_j4"] = Назва;
             base.FieldValue["col_j5"] = Код;
             base.FieldValue["col_j6"] = Родич.UnigueID.UGuid;
             
@@ -6298,7 +6298,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_j7"] = Назва;
+		    base.FieldValue["col_j7"] = Назва;
             base.FieldValue["col_j8"] = Код;
             base.FieldValue["col_a1"] = Родич.UnigueID.UGuid;
             
@@ -6463,7 +6463,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_k8"] = Назва;
+		    base.FieldValue["col_k8"] = Назва;
             base.FieldValue["col_k9"] = Код;
             base.FieldValue["col_a2"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_a1"] = Підрозділ.UnigueID.UGuid;
@@ -6659,7 +6659,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_l1"] = Назва;
+		    base.FieldValue["col_l1"] = Назва;
             base.FieldValue["col_l2"] = Код;
             base.FieldValue["col_l3"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_l4"] = Банк;
@@ -6841,6 +6841,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Статус = "col_b3";
         public const string ГосподарськаОперація = "col_b4";
         public const string ТипДоговору = "col_b5";
+        public const string ТипДоговоруПредставлення = "col_b8";
         public const string ДопустимаСумаЗаборгованості = "col_b6";
         public const string Сума = "col_b7";
         public const string Коментар = "col_a3";
@@ -6852,7 +6853,7 @@ namespace StorageAndTrade_1_0.Довідники
     public class ДоговориКонтрагентів_Objest : DirectoryObject
     {
         public ДоговориКонтрагентів_Objest() : base(Config.Kernel, "tab_a28",
-             new string[] { "col_n4", "col_n5", "col_n6", "col_a1", "col_a2", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_a3" }) 
+             new string[] { "col_n4", "col_n5", "col_n6", "col_a1", "col_a2", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_b5", "col_b8", "col_b6", "col_b7", "col_a3" }) 
         {
             Назва = "";
             Код = "";
@@ -6870,6 +6871,7 @@ namespace StorageAndTrade_1_0.Довідники
             Статус = 0;
             ГосподарськаОперація = 0;
             ТипДоговору = 0;
+            ТипДоговоруПредставлення = "";
             ДопустимаСумаЗаборгованості = 0;
             Сума = 0;
             Коментар = "";
@@ -6896,6 +6898,7 @@ namespace StorageAndTrade_1_0.Довідники
                 Статус = (base.FieldValue["col_b3"] != DBNull.Value) ? (Перелічення.СтатусиДоговорівКонтрагентів)base.FieldValue["col_b3"] : 0;
                 ГосподарськаОперація = (base.FieldValue["col_b4"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_b4"] : 0;
                 ТипДоговору = (base.FieldValue["col_b5"] != DBNull.Value) ? (Перелічення.ТипДоговорів)base.FieldValue["col_b5"] : 0;
+                ТипДоговоруПредставлення = base.FieldValue["col_b8"].ToString();
                 ДопустимаСумаЗаборгованості = (base.FieldValue["col_b6"] != DBNull.Value) ? (decimal)base.FieldValue["col_b6"] : 0;
                 Сума = (base.FieldValue["col_b7"] != DBNull.Value) ? (decimal)base.FieldValue["col_b7"] : 0;
                 Коментар = base.FieldValue["col_a3"].ToString();
@@ -6909,7 +6912,8 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_n4"] = Назва;
+		    ДоговориКонтрагентів_Triggers.BeforeRecording(this);
+			base.FieldValue["col_n4"] = Назва;
             base.FieldValue["col_n5"] = Код;
             base.FieldValue["col_n6"] = БанківськийРахунок.UnigueID.UGuid;
             base.FieldValue["col_a1"] = БанківськийРахунокКонтрагента.UnigueID.UGuid;
@@ -6925,12 +6929,13 @@ namespace StorageAndTrade_1_0.Довідники
             base.FieldValue["col_b3"] = (int)Статус;
             base.FieldValue["col_b4"] = (int)ГосподарськаОперація;
             base.FieldValue["col_b5"] = (int)ТипДоговору;
+            base.FieldValue["col_b8"] = ТипДоговоруПредставлення;
             base.FieldValue["col_b6"] = ДопустимаСумаЗаборгованості;
             base.FieldValue["col_b7"] = Сума;
             base.FieldValue["col_a3"] = Коментар;
             
             BaseSave();
-			
+			ДоговориКонтрагентів_Triggers.AfterRecording(this);
         }
 
         public string Serialize(string root = "ДоговориКонтрагентів")
@@ -6954,6 +6959,7 @@ namespace StorageAndTrade_1_0.Довідники
                "<Статус>" + ((int)Статус).ToString() + "</Статус>"  +
                "<ГосподарськаОперація>" + ((int)ГосподарськаОперація).ToString() + "</ГосподарськаОперація>"  +
                "<ТипДоговору>" + ((int)ТипДоговору).ToString() + "</ТипДоговору>"  +
+               "<ТипДоговоруПредставлення>" + "<![CDATA[" + ТипДоговоруПредставлення + "]]>" + "</ТипДоговоруПредставлення>"  +
                "<ДопустимаСумаЗаборгованості>" + ДопустимаСумаЗаборгованості.ToString() + "</ДопустимаСумаЗаборгованості>"  +
                "<Сума>" + Сума.ToString() + "</Сума>"  +
                "<Коментар>" + "<![CDATA[" + Коментар + "]]>" + "</Коментар>"  +
@@ -6980,6 +6986,7 @@ namespace StorageAndTrade_1_0.Довідники
 			copy.Статус = Статус;
 			copy.ГосподарськаОперація = ГосподарськаОперація;
 			copy.ТипДоговору = ТипДоговору;
+			copy.ТипДоговоруПредставлення = ТипДоговоруПредставлення;
 			copy.ДопустимаСумаЗаборгованості = ДопустимаСумаЗаборгованості;
 			copy.Сума = Сума;
 			copy.Коментар = Коментар;
@@ -6989,7 +6996,7 @@ namespace StorageAndTrade_1_0.Довідники
 
         public void Delete()
         {
-            
+            ДоговориКонтрагентів_Triggers.BeforeDelete(this);
 			base.BaseDelete(new string[] {  });
         }
         
@@ -7015,6 +7022,7 @@ namespace StorageAndTrade_1_0.Довідники
         public Перелічення.СтатусиДоговорівКонтрагентів Статус { get; set; }
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
         public Перелічення.ТипДоговорів ТипДоговору { get; set; }
+        public string ТипДоговоруПредставлення { get; set; }
         public decimal ДопустимаСумаЗаборгованості { get; set; }
         public decimal Сума { get; set; }
         public string Коментар { get; set; }
@@ -7046,7 +7054,7 @@ namespace StorageAndTrade_1_0.Довідники
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
-			    new string[] { "col_n4" }
+			    new string[] { "col_n4", "col_b8" }
 			);
         }
 		
@@ -7171,7 +7179,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_n7"] = Назва;
+		    base.FieldValue["col_n7"] = Назва;
             base.FieldValue["col_n8"] = Код;
             base.FieldValue["col_n9"] = НомерРахунку;
             base.FieldValue["col_m1"] = Банк;
@@ -7390,7 +7398,7 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-            base.FieldValue["col_i7"] = Назва;
+		    base.FieldValue["col_i7"] = Назва;
             base.FieldValue["col_i8"] = Код;
             base.FieldValue["col_i9"] = КореспондуючийРахунок;
             base.FieldValue["col_j2"] = (int)ВидРухуКоштів;
@@ -7876,7 +7884,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_b8"] = Назва;
+            ЗамовленняПостачальнику_Triggers.BeforeRecording(this);
+			base.FieldValue["col_b8"] = Назва;
             base.FieldValue["col_j9"] = ДатаДок;
             base.FieldValue["col_k1"] = НомерДок;
             base.FieldValue["col_k2"] = Контрагент.UnigueID.UGuid;
@@ -8316,7 +8325,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_d4"] = Назва;
+            ПоступленняТоварівТаПослуг_Triggers.BeforeRecording(this);
+			base.FieldValue["col_d4"] = Назва;
             base.FieldValue["col_a1"] = ДатаДок;
             base.FieldValue["col_a2"] = НомерДок;
             base.FieldValue["col_a3"] = Валюта.UnigueID.UGuid;
@@ -8765,7 +8775,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_d1"] = Назва;
+            ЗамовленняКлієнта_Triggers.BeforeRecording(this);
+			base.FieldValue["col_d1"] = Назва;
             base.FieldValue["col_b2"] = ДатаДок;
             base.FieldValue["col_b3"] = НомерДок;
             base.FieldValue["col_b4"] = Контрагент.UnigueID.UGuid;
@@ -9206,7 +9217,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_d3"] = Назва;
+            РеалізаціяТоварівТаПослуг_Triggers.BeforeRecording(this);
+			base.FieldValue["col_d3"] = Назва;
             base.FieldValue["col_c9"] = ДатаДок;
             base.FieldValue["col_d1"] = НомерДок;
             base.FieldValue["col_a1"] = Організація.UnigueID.UGuid;
@@ -9583,12 +9595,13 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_a1"] = Назва;
+            ВстановленняЦінНоменклатури_Triggers.BeforeRecording(this);
+			base.FieldValue["col_a1"] = Назва;
             base.FieldValue["col_g7"] = ДатаДок;
             base.FieldValue["col_g8"] = НомерДок;
             base.FieldValue["col_g9"] = Коментар;
             base.FieldValue["col_a2"] = Організація.UnigueID.UGuid;
-            ВстановленняЦінНоменклатури_Triggers.BeforeRecording(this);
+            
             BaseSave();
 			ВстановленняЦінНоменклатури_Triggers.AfterRecording(this);
 		}
@@ -9885,7 +9898,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_a4"] = Назва;
+            ПрихіднийКасовийОрдер_Triggers.BeforeRecording(this);
+			base.FieldValue["col_a4"] = Назва;
             base.FieldValue["col_h6"] = ДатаДок;
             base.FieldValue["col_h7"] = НомерДок;
             base.FieldValue["col_h8"] = Організація.UnigueID.UGuid;
@@ -10217,7 +10231,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_a1"] = Назва;
+            РозхіднийКасовийОрдер_Triggers.BeforeRecording(this);
+			base.FieldValue["col_a1"] = Назва;
             base.FieldValue["col_j9"] = ДатаДок;
             base.FieldValue["col_k1"] = НомерДок;
             base.FieldValue["col_k2"] = Організація.UnigueID.UGuid;
@@ -10567,7 +10582,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_b9"] = Назва;
+            ПереміщенняТоварів_Triggers.BeforeRecording(this);
+			base.FieldValue["col_b9"] = Назва;
             base.FieldValue["col_a1"] = ДатаДок;
             base.FieldValue["col_a2"] = НомерДок;
             base.FieldValue["col_a3"] = Організація.UnigueID.UGuid;
@@ -10585,7 +10601,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_b7"] = ЧасДоставкиЗ;
             base.FieldValue["col_b8"] = ЧасДоставкиДо;
             base.FieldValue["col_a6"] = Коментар;
-            ПереміщенняТоварів_Triggers.BeforeRecording(this);
+            
             BaseSave();
 			ПереміщенняТоварів_Triggers.AfterRecording(this);
 		}
@@ -10924,7 +10940,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_a2"] = Назва;
+            ПоверненняТоварівПостачальнику_Triggers.BeforeRecording(this);
+			base.FieldValue["col_a2"] = Назва;
             base.FieldValue["col_b9"] = ДатаДок;
             base.FieldValue["col_c1"] = НомерДок;
             base.FieldValue["col_c2"] = Організація.UnigueID.UGuid;
@@ -11286,7 +11303,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_a2"] = Назва;
+            ПоверненняТоварівВідКлієнта_Triggers.BeforeRecording(this);
+			base.FieldValue["col_a2"] = Назва;
             base.FieldValue["col_e6"] = ДатаДок;
             base.FieldValue["col_e7"] = НомерДок;
             base.FieldValue["col_e8"] = Організація.UnigueID.UGuid;
@@ -11638,7 +11656,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_a8"] = Назва;
+            АктВиконанихРобіт_Triggers.BeforeRecording(this);
+			base.FieldValue["col_a8"] = Назва;
             base.FieldValue["col_a9"] = ДатаДок;
             base.FieldValue["col_b1"] = НомерДок;
             base.FieldValue["col_b2"] = Валюта.UnigueID.UGuid;
@@ -11958,7 +11977,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["col_c5"] = Назва;
+            ВведенняЗалишків_Triggers.BeforeRecording(this);
+			base.FieldValue["col_c5"] = Назва;
             base.FieldValue["col_c6"] = ДатаДок;
             base.FieldValue["col_c7"] = НомерДок;
             base.FieldValue["col_c8"] = Організація.UnigueID.UGuid;

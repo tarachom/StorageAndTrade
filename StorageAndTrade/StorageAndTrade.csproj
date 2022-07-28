@@ -128,6 +128,7 @@
     <Compile Include="NumericControl.designer.cs">
       <DependentUpon>NumericControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ФункціїДляДокументів.cs" />
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.cs">
       <SubType>UserControl</SubType>
     </Compile>
