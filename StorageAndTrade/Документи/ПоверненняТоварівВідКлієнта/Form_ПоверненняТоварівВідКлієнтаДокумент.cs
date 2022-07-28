@@ -77,6 +77,21 @@ namespace StorageAndTrade
 			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
 			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
+			directoryControl_Контрагент.AfterSelectFunc = () =>
+			{
+				if (directoryControl_Договір.DirectoryPointerItem.IsEmpty())
+				{
+					Довідники.ДоговориКонтрагентів_Pointer договірКонтрагента =
+						ФункціїДляДокументів.ОсновнийДоговірДляКонтрагента(
+							(Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem,
+							Перелічення.ТипДоговорів.ЗПокупцями);
+
+					if (договірКонтрагента != null)
+						directoryControl_Договір.DirectoryPointerItem = договірКонтрагента;
+				}
+
+				return true;
+			};
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
 			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 			directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer());

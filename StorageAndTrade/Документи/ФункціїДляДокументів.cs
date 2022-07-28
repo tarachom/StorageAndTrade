@@ -20,7 +20,7 @@ namespace StorageAndTrade
         /// <param name="Контрагент"></param>
         /// <returns></returns>
         public static Довідники.ДоговориКонтрагентів_Pointer ОсновнийДоговірДляКонтрагента(
-            Довідники.Контрагенти_Pointer Контрагент, Перелічення.ТипДоговорів ТипДоговору)
+            Довідники.Контрагенти_Pointer Контрагент, Перелічення.ТипДоговорів ТипДоговору = 0)
         {
             if (Контрагент == null || Контрагент.IsEmpty())
                 return null;
@@ -31,9 +31,12 @@ namespace StorageAndTrade
             договориКонтрагентів.QuerySelect.Where.Add(
                 new Where(Довідники.ДоговориКонтрагентів_Const.Контрагент, Comparison.EQ, Контрагент.UnigueID.UGuid));
 
-            //Відбір по типу договору
-            договориКонтрагентів.QuerySelect.Where.Add(
-                new Where(Comparison.AND, Довідники.ДоговориКонтрагентів_Const.ТипДоговору, Comparison.EQ, (int)ТипДоговору));
+            if (ТипДоговору != 0)
+            {
+                //Відбір по типу договору
+                договориКонтрагентів.QuerySelect.Where.Add(
+                    new Where(Comparison.AND, Довідники.ДоговориКонтрагентів_Const.ТипДоговору, Comparison.EQ, (int)ТипДоговору));
+            }
 
             if (договориКонтрагентів.SelectSingle())
                 return договориКонтрагентів.Current;
