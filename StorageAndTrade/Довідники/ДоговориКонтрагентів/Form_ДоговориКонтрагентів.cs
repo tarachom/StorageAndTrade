@@ -68,6 +68,19 @@ namespace StorageAndTrade
 
 		private void Form_ДоговориКонтрагентів_Load(object sender, EventArgs e)
 		{
+			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
+			
+			if (КонтрагентВласник != null)
+				directoryControl_Контрагент.DirectoryPointerItem = КонтрагентВласник;
+
+			directoryControl_Контрагент.AfterSelectFunc = () =>
+			{
+				КонтрагентВласник = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+				LoadRecords();
+
+				return true;
+			};
+
 			LoadRecords();
 		}
 

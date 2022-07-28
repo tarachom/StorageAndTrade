@@ -39,10 +39,16 @@ namespace StorageAndTrade
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
+            this.directoryControl_Контрагент = new StorageAndTrade.DirectoryControl();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -115,7 +121,8 @@ namespace StorageAndTrade
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.dataGridViewRecords);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 29);
             this.panel2.Name = "panel2";
@@ -134,9 +141,51 @@ namespace StorageAndTrade
             this.dataGridViewRecords.Name = "dataGridViewRecords";
             this.dataGridViewRecords.ReadOnly = true;
             this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(921, 378);
+            this.dataGridViewRecords.Size = new System.Drawing.Size(915, 336);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(68, 13);
+            this.label5.TabIndex = 46;
+            this.label5.Text = "Контрагент:";
+            // 
+            // directoryControl_Контрагент
+            // 
+            this.directoryControl_Контрагент.BeforeClickOpenFunc = null;
+            this.directoryControl_Контрагент.DirectoryPointerItem = null;
+            this.directoryControl_Контрагент.Location = new System.Drawing.Point(77, 3);
+            this.directoryControl_Контрагент.Name = "directoryControl_Контрагент";
+            this.directoryControl_Контрагент.SelectForm = null;
+            this.directoryControl_Контрагент.Size = new System.Drawing.Size(375, 27);
+            this.directoryControl_Контрагент.TabIndex = 45;
+            // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Controls.Add(this.directoryControl_Контрагент);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(915, 32);
+            this.panel3.TabIndex = 47;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.Controls.Add(this.dataGridViewRecords);
+            this.panel4.Location = new System.Drawing.Point(3, 39);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(915, 336);
+            this.panel4.TabIndex = 47;
             // 
             // Form_ДоговориКонтрагентів
             // 
@@ -156,6 +205,9 @@ namespace StorageAndTrade
             this.toolStrip1.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).EndInit();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -171,5 +223,9 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonRefresh;
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
+        private DirectoryControl directoryControl_Контрагент;
+        private System.Windows.Forms.Label label5;
     }
 }

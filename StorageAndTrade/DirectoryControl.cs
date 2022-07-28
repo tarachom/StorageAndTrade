@@ -43,6 +43,11 @@ namespace StorageAndTrade
 		public Func<bool> BeforeClickOpenFunc { get; set; }
 
 		/// <summary>
+		/// Функція яка викликається після вибору
+		/// </summary>
+		public Func<bool> AfterSelectFunc { get; set; }
+
+		/// <summary>
 		/// Ініціалізація параметрів
 		/// </summary>
 		/// <param name="selectForm">Форма</param>
@@ -109,6 +114,9 @@ namespace StorageAndTrade
 					propertyInfo.SetValue(SelectForm, DirectoryPointerItem);
 					SelectForm.ShowDialog();
 					DirectoryPointerItem = (DirectoryPointer)propertyInfo.GetValue(SelectForm);
+
+					if (AfterSelectFunc != null)
+						AfterSelectFunc.Invoke();
 				}
 			}
 		}
@@ -122,6 +130,9 @@ namespace StorageAndTrade
 		{
 			DirectoryPointerItem.Init(new UnigueID(Guid.Empty));
 			ReadPresentation();
+
+			if (AfterSelectFunc != null)
+				AfterSelectFunc.Invoke();
 		}
 	}
 }

@@ -88,12 +88,6 @@ namespace StorageAndTrade
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
 			directoryControl_Договір.BeforeClickOpenFunc = () => 
 			{
-				if (directoryControl_Контрагент.DirectoryPointerItem.IsEmpty())
-				{
-					MessageBox.Show("Потрібно спочатку вибрати контрагента");
-					return false;
-				}
-
 				((Form_ДоговориКонтрагентів)directoryControl_Договір.SelectForm).КонтрагентВласник =
 					(Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
 
@@ -152,25 +146,6 @@ namespace StorageAndTrade
 				}
 			}
 		}
-
-        #region CallBack
-
-        void BeforeClickOpen_Договір()
-        {
-			if (directoryControl_Контрагент.DirectoryPointerItem.IsEmpty())
-			{
-				MessageBox.Show("Потрібно вибрати контрагента");
-				directoryControl_Договір.StopOpenSelectForm = true;
-				return;
-			}
-			else
-				directoryControl_Договір.StopOpenSelectForm = false;
-
-			((Form_ДоговориКонтрагентів)directoryControl_Договір.SelectForm).КонтрагентВласник = 
-				(Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
-		}
-
-        #endregion
 
         private void SaveDoc(bool spendDoc, bool closeForm)
 		{

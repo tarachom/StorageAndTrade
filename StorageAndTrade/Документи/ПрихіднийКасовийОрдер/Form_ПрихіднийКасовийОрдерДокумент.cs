@@ -104,6 +104,13 @@ namespace StorageAndTrade
 			directoryControl_КасаВідправник.Init(new Form_Каси(), new Довідники.Каси_Pointer());
 			directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
+			directoryControl_Договір.BeforeClickOpenFunc = () =>
+			{
+				((Form_ДоговориКонтрагентів)directoryControl_Договір.SelectForm).КонтрагентВласник =
+					(Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+
+				return true;
+			};
 
 			if (IsNew.HasValue)
 			{

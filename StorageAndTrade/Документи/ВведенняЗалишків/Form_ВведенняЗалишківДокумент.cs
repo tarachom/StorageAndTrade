@@ -81,6 +81,13 @@ namespace StorageAndTrade
 			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 			directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer());
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
+			directoryControl_Договір.BeforeClickOpenFunc = () =>
+			{
+				((Form_ДоговориКонтрагентів)directoryControl_Договір.SelectForm).КонтрагентВласник =
+					(Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
+
+				return true;
+			};
 			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)
