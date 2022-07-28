@@ -100,6 +100,7 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий";
+					textBoxName.Text = "Основний договір";
 					textBox_Код.Text = договориКонтрагентів_Objest.Код = (++Константи.НумераціяДовідників.ДоговориКонтрагентів_Const).ToString("D6");
 					comboBox_Статус.SelectedIndex = 1;
 					comboBox_ГосподарськаОперація.SelectedIndex = 0;
@@ -192,5 +193,20 @@ namespace StorageAndTrade
 		{
 			this.Close();
 		}
-	}
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void directoryControl_БанківськийРахунокКонтрагента_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
