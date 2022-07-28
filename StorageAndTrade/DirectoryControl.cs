@@ -43,7 +43,8 @@ namespace StorageAndTrade
 		public Func<bool> BeforeClickOpenFunc { get; set; }
 
 		/// <summary>
-		/// Функція яка викликається після вибору
+		/// Функція яка викликається після вибору.
+		/// Також вона викликається після очистки (buttonClear_Click)
 		/// </summary>
 		public Func<bool> AfterSelectFunc { get; set; }
 
