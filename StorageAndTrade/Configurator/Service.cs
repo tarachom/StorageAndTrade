@@ -87,6 +87,9 @@ namespace StorageAndTrade.Service
         /// </summary>
         public static void ОбчисленняВіртуальнихЗалишківПоДнях()
         {
+            if (Системні.ВвімкнутиФоновіЗадачі_Const == false)
+                return;
+
             string querySelectTask = $@"
 SELECT
     Задачі.uid,

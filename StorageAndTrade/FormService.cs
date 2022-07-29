@@ -36,7 +36,7 @@ using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Документи = StorageAndTrade_1_0.Документи;
-using Journal = StorageAndTrade_1_0.Journal;
+using Journal = StorageAndTrade_1_0.Журнали;
 using System.Reflection;
 
 namespace StorageAndTrade
@@ -85,6 +85,8 @@ namespace StorageAndTrade
 
 		void SpendAllDocument()
 		{
+			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = false;
+
 			Journal.Journal_Select journalSelect = new Journal.Journal_Select();
 			journalSelect.Select();
 
@@ -107,6 +109,8 @@ namespace StorageAndTrade
 			}
 
 			ApendLine("Готово!");
+
+			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = true;
 
 			buttonSpendAll.Invoke(new Action(() => buttonSpendAll.Enabled = true));
 			buttonCancel.Invoke(new Action(() => buttonCancel.Enabled = false));

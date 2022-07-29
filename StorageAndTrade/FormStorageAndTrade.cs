@@ -40,6 +40,8 @@ namespace StorageAndTrade
             // Обробка фонових задач розрахунку віртуальних залишків
             //
 
+            Константи.Системні.ВвімкнутиФоновіЗадачі_Const = true;
+
             CalculationBalances.ПідключитиДодаток_UUID_OSSP();
 
             ThreadBackgroundTask = new Thread(new ThreadStart(CalculationVirtualBalances));
