@@ -37,6 +37,7 @@ using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Документи = StorageAndTrade_1_0.Документи;
 using Journal = StorageAndTrade_1_0.Journal ;
+using System.Reflection;
 
 namespace StorageAndTrade
 {
@@ -104,10 +105,28 @@ namespace StorageAndTrade
 
             while (journalSelect.MoveNext())
             {
-				//Journal.Journal_Document journal_Document = journalSelect.GetJournalDocument();
-				ApendLine(journalSelect.Current.UnigueID.ToString());
-				//journal_Document.SpendTheDocument
+				ApendLine(journalSelect.Current.UnigueID.ToString() + " " + journalSelect.Current.TypeDocument);
 
+				//DocumentObject doc = journalSelect.GetDocumentObject();
+				
+				ApendLine(journalSelect.Current.Spend + "; " + journalSelect.Current.SpendDate);
+
+				//if (doc.GetType().GetMember("GetPresentation").Length == 1)
+				//	ApendLine(doc.GetType().InvokeMember(
+				//		"GetPresentation", BindingFlags.InvokeMethod, null, doc, new object[] { }).ToString());
+
+				//switch (journalSelect.Current.TypeDocument)
+    //            {
+				//	case "ПоступленняТоварівТаПослуг":
+    //                    {
+				//			Документи.ПоступленняТоварівТаПослуг_Objest documen = 
+				//				(Документи.ПоступленняТоварівТаПослуг_Objest)journalSelect.GetDocumentObject();
+
+				//			ApendLine(documen.Назва);
+
+				//			break;
+				//		}
+    //            }
 			}
 
 		}
