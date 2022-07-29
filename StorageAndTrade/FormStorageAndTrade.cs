@@ -552,8 +552,14 @@ namespace StorageAndTrade
 
 
 
+
         #endregion
 
-        
+        private void перепроведенняДокументівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormService formService = new FormService();
+            formService.MdiParent = this;
+            formService.Show();
+        }
     }
 }

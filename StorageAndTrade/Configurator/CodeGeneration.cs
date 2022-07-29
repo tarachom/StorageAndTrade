@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 29.07.2022 14:11:24
+ * Дата конфігурації: 29.07.2022 17:38:46
  *
  */
 
@@ -13666,6 +13666,281 @@ namespace StorageAndTrade_1_0.Документи
     
     #endregion
     
+}
+
+namespace StorageAndTrade_1_0.Journal
+{
+    public class Journal_Select: JournalSelect
+    {
+        public Journal_Select() : base(Config.Kernel,
+             new string[] { "tab_a25", "tab_a32", "tab_a34", "tab_a36", "tab_a42", "tab_a44", "tab_a48", "tab_a31", "tab_a51", "tab_a53", "tab_a81", "tab_a83", "tab_a88", "tab_a90", "tab_a92", "tab_a94"},
+			 new string[] { "ЗамовленняПостачальнику", "ПоступленняТоварівТаПослуг", "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ВстановленняЦінНоменклатури", "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ПереміщенняТоварів", "ПоверненняТоварівПостачальнику", "ПоверненняТоварівВідКлієнта", "АктВиконанихРобіт", "ВведенняЗалишків", "НадлишкиТоварів", "ПересортицяТоварів", "ПерерахунокТоварів", "ПсуванняТоварів"}) { }
+
+        public Journal_Document GetJournalDocument()
+        {
+            return new Journal_Document(Current.TypeDocument, Current.UnigueID);
+        }
+    }
+
+    public class Journal_Document : JournalObject
+    {
+        public Journal_Document(string documentType, UnigueID uid) : base(Config.Kernel)
+        {
+            switch (documentType)
+            {
+			    
+                case "ЗамовленняПостачальнику":
+                    {
+                        base.Table = "tab_a25";
+                        base.TypeDocument = "ЗамовленняПостачальнику";
+
+                        break;
+                    }
+				
+                case "ПоступленняТоварівТаПослуг":
+                    {
+                        base.Table = "tab_a32";
+                        base.TypeDocument = "ПоступленняТоварівТаПослуг";
+
+                        break;
+                    }
+				
+                case "ЗамовленняКлієнта":
+                    {
+                        base.Table = "tab_a34";
+                        base.TypeDocument = "ЗамовленняКлієнта";
+
+                        break;
+                    }
+				
+                case "РеалізаціяТоварівТаПослуг":
+                    {
+                        base.Table = "tab_a36";
+                        base.TypeDocument = "РеалізаціяТоварівТаПослуг";
+
+                        break;
+                    }
+				
+                case "ВстановленняЦінНоменклатури":
+                    {
+                        base.Table = "tab_a42";
+                        base.TypeDocument = "ВстановленняЦінНоменклатури";
+
+                        break;
+                    }
+				
+                case "ПрихіднийКасовийОрдер":
+                    {
+                        base.Table = "tab_a44";
+                        base.TypeDocument = "ПрихіднийКасовийОрдер";
+
+                        break;
+                    }
+				
+                case "РозхіднийКасовийОрдер":
+                    {
+                        base.Table = "tab_a48";
+                        base.TypeDocument = "РозхіднийКасовийОрдер";
+
+                        break;
+                    }
+				
+                case "ПереміщенняТоварів":
+                    {
+                        base.Table = "tab_a31";
+                        base.TypeDocument = "ПереміщенняТоварів";
+
+                        break;
+                    }
+				
+                case "ПоверненняТоварівПостачальнику":
+                    {
+                        base.Table = "tab_a51";
+                        base.TypeDocument = "ПоверненняТоварівПостачальнику";
+
+                        break;
+                    }
+				
+                case "ПоверненняТоварівВідКлієнта":
+                    {
+                        base.Table = "tab_a53";
+                        base.TypeDocument = "ПоверненняТоварівВідКлієнта";
+
+                        break;
+                    }
+				
+                case "АктВиконанихРобіт":
+                    {
+                        base.Table = "tab_a81";
+                        base.TypeDocument = "АктВиконанихРобіт";
+
+                        break;
+                    }
+				
+                case "ВведенняЗалишків":
+                    {
+                        base.Table = "tab_a83";
+                        base.TypeDocument = "ВведенняЗалишків";
+
+                        break;
+                    }
+				
+                case "НадлишкиТоварів":
+                    {
+                        base.Table = "tab_a88";
+                        base.TypeDocument = "НадлишкиТоварів";
+
+                        break;
+                    }
+				
+                case "ПересортицяТоварів":
+                    {
+                        base.Table = "tab_a90";
+                        base.TypeDocument = "ПересортицяТоварів";
+
+                        break;
+                    }
+				
+                case "ПерерахунокТоварів":
+                    {
+                        base.Table = "tab_a92";
+                        base.TypeDocument = "ПерерахунокТоварів";
+
+                        break;
+                    }
+				
+                case "ПсуванняТоварів":
+                    {
+                        base.Table = "tab_a94";
+                        base.TypeDocument = "ПсуванняТоварів";
+
+                        break;
+                    }
+				
+            }
+            base.BaseRead(uid);
+        }
+
+        public void SpendTheDocument()
+        {
+            switch (base.TypeDocument)
+            {
+			    
+                case "ЗамовленняПостачальнику":
+                    {
+                        Документи.ЗамовленняПостачальнику_Objest doc = new Документи.ЗамовленняПостачальнику_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПоступленняТоварівТаПослуг":
+                    {
+                        Документи.ПоступленняТоварівТаПослуг_Objest doc = new Документи.ПоступленняТоварівТаПослуг_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ЗамовленняКлієнта":
+                    {
+                        Документи.ЗамовленняКлієнта_Objest doc = new Документи.ЗамовленняКлієнта_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "РеалізаціяТоварівТаПослуг":
+                    {
+                        Документи.РеалізаціяТоварівТаПослуг_Objest doc = new Документи.РеалізаціяТоварівТаПослуг_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ВстановленняЦінНоменклатури":
+                    {
+                        Документи.ВстановленняЦінНоменклатури_Objest doc = new Документи.ВстановленняЦінНоменклатури_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПрихіднийКасовийОрдер":
+                    {
+                        Документи.ПрихіднийКасовийОрдер_Objest doc = new Документи.ПрихіднийКасовийОрдер_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "РозхіднийКасовийОрдер":
+                    {
+                        Документи.РозхіднийКасовийОрдер_Objest doc = new Документи.РозхіднийКасовийОрдер_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПереміщенняТоварів":
+                    {
+                        Документи.ПереміщенняТоварів_Objest doc = new Документи.ПереміщенняТоварів_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПоверненняТоварівПостачальнику":
+                    {
+                        Документи.ПоверненняТоварівПостачальнику_Objest doc = new Документи.ПоверненняТоварівПостачальнику_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПоверненняТоварівВідКлієнта":
+                    {
+                        Документи.ПоверненняТоварівВідКлієнта_Objest doc = new Документи.ПоверненняТоварівВідКлієнта_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "АктВиконанихРобіт":
+                    {
+                        Документи.АктВиконанихРобіт_Objest doc = new Документи.АктВиконанихРобіт_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ВведенняЗалишків":
+                    {
+                        Документи.ВведенняЗалишків_Objest doc = new Документи.ВведенняЗалишків_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "НадлишкиТоварів":
+                    {
+                        Документи.НадлишкиТоварів_Objest doc = new Документи.НадлишкиТоварів_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПересортицяТоварів":
+                    {
+                        Документи.ПересортицяТоварів_Objest doc = new Документи.ПересортицяТоварів_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПерерахунокТоварів":
+                    {
+                        Документи.ПерерахунокТоварів_Objest doc = new Документи.ПерерахунокТоварів_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+                case "ПсуванняТоварів":
+                    {
+                        Документи.ПсуванняТоварів_Objest doc = new Документи.ПсуванняТоварів_Objest();
+                        doc.SpendTheDocument(base.SpendDate);
+                        break;
+                    }
+				
+            }
+        }
+    }
 }
 
 namespace StorageAndTrade_1_0.РегістриВідомостей

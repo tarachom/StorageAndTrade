@@ -35,6 +35,8 @@ using System.Windows.Forms;
 using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
+using Документи = StorageAndTrade_1_0.Документи;
+using Journal = StorageAndTrade_1_0.Journal ;
 
 namespace StorageAndTrade
 {
@@ -82,10 +84,31 @@ namespace StorageAndTrade
 
 		void SpendAllDocument()
 		{
-			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = false;
+			//Константи.Системні.ВвімкнутиФоновіЗадачі_Const = false;
 
-			Dictionary<string, ConfigurationDocuments> Документи = Конфа.Config.Kernel.Conf.Documents;
+			//foreach (ConfigurationDocuments документи in Конфа.Config.Kernel.Conf.Documents.Values)
+			//{
+			//	//Якщо документ робить рухи по регістрах накопичення
+			//	if(документи.AllowRegisterAccumulation.Count > 0)
+   //             {
+			//		//Journal.Journal_Document journal_Document = new Journal.Journal_Document(документи.Name);
+			//		//Документи.ПсуванняТоварів_Objest а = (Документи.ПсуванняТоварів_Objest)journal_Document.GetDocumentObject();
+			//		//а.Save();
 
+			//		//DocumentObject documentObject = 
+			//	}
+			//}
+
+			Journal.Journal_Select journalSelect = new Journal.Journal_Select();
+			journalSelect.Select();
+
+            while (journalSelect.MoveNext())
+            {
+				//Journal.Journal_Document journal_Document = journalSelect.GetJournalDocument();
+				ApendLine(journalSelect.Current.UnigueID.ToString());
+				//journal_Document.SpendTheDocument
+
+			}
 
 		}
 	}
