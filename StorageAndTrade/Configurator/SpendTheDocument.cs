@@ -30,7 +30,7 @@ limitations under the License.
 using System;
 using System.Collections.Generic;
 using AccountingSoftware;
-using StorageAndTrade_1_0.Service;
+using StorageAndTrade.Service;
 
 namespace StorageAndTrade_1_0.Документи
 {
@@ -42,7 +42,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -115,7 +115,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -131,7 +131,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -143,7 +143,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -243,7 +243,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -262,7 +262,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -274,7 +274,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -299,7 +299,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -309,7 +309,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -321,7 +321,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -464,7 +464,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -486,7 +486,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
 			розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -498,7 +498,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -568,7 +568,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -584,7 +584,7 @@ namespace StorageAndTrade_1_0.Документи
 			//РегістриНакопичення.ТовариДоПоступлення_RecordsSet товариДоПоступлення_RecordsSet = new РегістриНакопичення.ТовариДоПоступлення_RecordsSet();
 			//товариДоПоступлення_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -596,7 +596,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -672,7 +672,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -688,7 +688,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -700,7 +700,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -773,7 +773,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -789,7 +789,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
 			розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -801,7 +801,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -891,7 +891,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -907,7 +907,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
 			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -919,7 +919,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -1009,7 +1009,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -1025,7 +1025,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
 			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -1037,7 +1037,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -1091,7 +1091,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -1101,7 +1101,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 
@@ -1151,7 +1151,7 @@ namespace StorageAndTrade_1_0.Документи
 			{
 				//Якщо дата проведення відрізняється від дати документу
 				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
 			#region Рух по регістрах
@@ -1205,7 +1205,7 @@ namespace StorageAndTrade_1_0.Документи
 
 			#endregion
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
@@ -1218,7 +1218,7 @@ namespace StorageAndTrade_1_0.Документи
 			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
 			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			CalculationBalances.AddBackgroundTask_CalculationVirtualBalances(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
 	

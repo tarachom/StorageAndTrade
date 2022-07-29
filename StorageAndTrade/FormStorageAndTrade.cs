@@ -17,7 +17,7 @@ using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 using РегістриНакопичення = StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Service;
+using StorageAndTrade.Service;
 
 namespace StorageAndTrade
 {

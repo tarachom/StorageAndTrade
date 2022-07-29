@@ -35,10 +35,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 using AccountingSoftware;
+using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 
-namespace StorageAndTrade_1_0.Service
+namespace StorageAndTrade.Service
 {
     class CalculationBalances
     {
@@ -50,7 +51,7 @@ namespace StorageAndTrade_1_0.Service
         /// <param name="typeMovement">Тип руху по регістру (добавлення, видалення)</param>
         /// <param name="periodCalculation">Період розрахунку</param>
         /// <param name="userName">Користувач</param>
-        public static void AddBackgroundTask_CalculationVirtualBalances(string documentUid, string documentType, string typeMovement, DateTime periodCalculation, string userName)
+        public static void AddTask(string documentUid, string documentType, string typeMovement, DateTime periodCalculation, string userName)
         {
             Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart обчисленняВіртуальнихЗалишків_TablePart =
                 new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart();

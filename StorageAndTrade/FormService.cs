@@ -36,7 +36,7 @@ using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Документи = StorageAndTrade_1_0.Документи;
-using Journal = StorageAndTrade_1_0.Journal ;
+using Journal = StorageAndTrade_1_0.Journal;
 using System.Reflection;
 
 namespace StorageAndTrade
@@ -85,50 +85,31 @@ namespace StorageAndTrade
 
 		void SpendAllDocument()
 		{
-			//Константи.Системні.ВвімкнутиФоновіЗадачі_Const = false;
-
-			//foreach (ConfigurationDocuments документи in Конфа.Config.Kernel.Conf.Documents.Values)
-			//{
-			//	//Якщо документ робить рухи по регістрах накопичення
-			//	if(документи.AllowRegisterAccumulation.Count > 0)
-   //             {
-			//		//Journal.Journal_Document journal_Document = new Journal.Journal_Document(документи.Name);
-			//		//Документи.ПсуванняТоварів_Objest а = (Документи.ПсуванняТоварів_Objest)journal_Document.GetDocumentObject();
-			//		//а.Save();
-
-			//		//DocumentObject documentObject = 
-			//	}
-			//}
-
 			Journal.Journal_Select journalSelect = new Journal.Journal_Select();
 			journalSelect.Select();
 
             while (journalSelect.MoveNext())
             {
-				ApendLine(journalSelect.Current.UnigueID.ToString() + " " + journalSelect.Current.TypeDocument);
+				if (Cancel)
+					return;
 
-				//DocumentObject doc = journalSelect.GetDocumentObject();
-				
-				ApendLine(journalSelect.Current.Spend + "; " + journalSelect.Current.SpendDate);
+				if (journalSelect.Current.Spend)
+				{
+					ApendLine(journalSelect.Current.TypeDocument + " " + journalSelect.Current.SpendDate);
 
-				//if (doc.GetType().GetMember("GetPresentation").Length == 1)
-				//	ApendLine(doc.GetType().InvokeMember(
-				//		"GetPresentation", BindingFlags.InvokeMethod, null, doc, new object[] { }).ToString());
+					DocumentObject doc = journalSelect.GetDocumentObject(true);
 
-				//switch (journalSelect.Current.TypeDocument)
-    //            {
-				//	case "ПоступленняТоварівТаПослуг":
-    //                    {
-				//			Документи.ПоступленняТоварівТаПослуг_Objest documen = 
-				//				(Документи.ПоступленняТоварівТаПослуг_Objest)journalSelect.GetDocumentObject();
-
-				//			ApendLine(documen.Назва);
-
-				//			break;
-				//		}
-    //            }
+					if (doc.GetType().GetMember("SpendTheDocument").Length == 1)
+						doc.GetType().InvokeMember(
+							"SpendTheDocument", BindingFlags.InvokeMethod, null, doc,
+							new object[] { journalSelect.Current.SpendDate });
+				}
 			}
 
+			ApendLine("Готово!");
+
+			buttonSpendAll.Invoke(new Action(() => buttonSpendAll.Enabled = true));
+			buttonCancel.Invoke(new Action(() => buttonCancel.Enabled = false));
 		}
 	}
 }
