@@ -102,8 +102,7 @@ namespace StorageAndTrade
 					DocumentObject doc = journalSelect.GetDocumentObject(true);
 
 					if (doc.GetType().GetMember("SpendTheDocument").Length == 1)
-						doc.GetType().InvokeMember(
-							"SpendTheDocument", BindingFlags.InvokeMethod, null, doc,
+						doc.GetType().InvokeMember("SpendTheDocument", BindingFlags.InvokeMethod, null, doc, 
 							new object[] { journalSelect.Current.SpendDate });
 				}
 			}
@@ -115,7 +114,44 @@ namespace StorageAndTrade
 			buttonSpendAll.Invoke(new Action(() => buttonSpendAll.Enabled = true));
 			buttonCancel.Invoke(new Action(() => buttonCancel.Enabled = false));
 		}
-	}
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			//Journal.Journal_Select journalSelect = new Journal.Journal_Select();
+			//journalSelect.Select();
+
+			//while (journalSelect.MoveNext())
+			//{
+			//	if (Cancel)
+			//		return;
+
+			//		ApendLine(journalSelect.Current.TypeDocument + " " + journalSelect.Current.SpendDate);
+
+			//		DocumentObject doc = journalSelect.GetDocumentObject(true);
+
+			//		PropertyInfo property_Назва = doc.GetType().GetProperty("Назва");
+			//		PropertyInfo property_ДатаДок = doc.GetType().GetProperty("ДатаДок");
+			//		PropertyInfo property_НомерДок = doc.GetType().GetProperty("НомерДок");
+
+			//		PropertyInfo property_Назва2 = doc.GetType().GetProperty("Назва2");
+			//		PropertyInfo property_ДатаДок2 = doc.GetType().GetProperty("ДатаДок2");
+			//		PropertyInfo property_НомерДок2 = doc.GetType().GetProperty("НомерДок2");
+
+			//		property_Назва2.SetValue(doc, property_Назва.GetValue(doc));
+			//		property_ДатаДок2.SetValue(doc, property_ДатаДок.GetValue(doc));
+			//		property_НомерДок2.SetValue(doc, property_НомерДок.GetValue(doc));
+
+			//		if (doc.GetType().GetMember("Save").Length == 1)
+			//			doc.GetType().InvokeMember(
+			//				"Save", BindingFlags.InvokeMethod, null, doc, new object[] { });
+			//}
+
+			//ApendLine("Готово!");
+
+			//buttonSpendAll.Invoke(new Action(() => buttonSpendAll.Enabled = true));
+			//buttonCancel.Invoke(new Action(() => buttonCancel.Enabled = false));
+		}
+    }
 }
 
 //private void CalculateBalance_ЗамовленняКлієнтів()
