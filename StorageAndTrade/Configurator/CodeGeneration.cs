@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 28.07.2022 15:21:35
+ * Дата конфігурації: 29.07.2022 14:11:24
  *
  */
 
@@ -193,12 +193,13 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_a8", "col_a9" }, fieldValue);
+                 new string[] { "col_a8", "col_a9", "col_g6" }, fieldValue);
             
             if (IsSelect)
             {
                 m_ЖурналРеєстрації_Const = fieldValue["col_a8"].ToString();
                 m_ФоновіЗадачі_Const = fieldValue["col_a9"].ToString();
+                m_ВвімкнутиФоновіЗадачі_Const = (fieldValue["col_g6"] != DBNull.Value) ? bool.Parse(fieldValue["col_g6"].ToString()) : false;
                 
             }
 			
@@ -224,6 +225,17 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ФоновіЗадачі_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_a9", m_ФоновіЗадачі_Const);
+            }
+        }
+        
+        static bool m_ВвімкнутиФоновіЗадачі_Const = false;
+        public static bool ВвімкнутиФоновіЗадачі_Const
+        {
+            get { return m_ВвімкнутиФоновіЗадачі_Const; }
+            set
+            {
+                m_ВвімкнутиФоновіЗадачі_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g6", m_ВвімкнутиФоновіЗадачі_Const);
             }
         }
         

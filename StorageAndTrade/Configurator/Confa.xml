@@ -4,8 +4,8 @@
   <NameSpace>StorageAndTrade_1_0</NameSpace>
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
-</Desc>
-  <DateTimeSave>28.07.2022 15:21:35</DateTimeSave>
+https://accounting.org.ua/storage_and_trade.html</Desc>
+  <DateTimeSave>29.07.2022 14:11:24</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -156,8 +156,7 @@
             <TablePart>
               <Name>Задачі</Name>
               <Table>tab_a67</Table>
-              <Desc>
-              </Desc>
+              <Desc>Ще не використовується</Desc>
               <Fields>
                 <Field>
                   <Name>Назва</Name>
@@ -302,6 +301,14 @@
               </Fields>
             </TablePart>
           </TabularParts>
+        </Constant>
+        <Constant>
+          <Name>ВвімкнутиФоновіЗадачі</Name>
+          <NameInTable>col_g6</NameInTable>
+          <Desc>Ввімкнути роботу фонових задач.
+Використовується для зупинки чи запуску фонових задач.</Desc>
+          <Type>boolean</Type>
+          <TabularParts />
         </Constant>
       </Constants>
     </ConstantsBlock>

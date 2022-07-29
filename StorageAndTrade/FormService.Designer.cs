@@ -30,7 +30,7 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormService));
-            this.buttonCalculate = new System.Windows.Forms.Button();
+            this.buttonSpendAll = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,22 +39,22 @@ namespace StorageAndTrade
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonCalculate
+            // buttonSpendAll
             // 
-            this.buttonCalculate.Location = new System.Drawing.Point(3, 3);
-            this.buttonCalculate.Name = "buttonCalculate";
-            this.buttonCalculate.Size = new System.Drawing.Size(186, 27);
-            this.buttonCalculate.TabIndex = 0;
-            this.buttonCalculate.Text = "Обчислити залишки по регістрах";
-            this.buttonCalculate.UseVisualStyleBackColor = true;
-            this.buttonCalculate.Click += new System.EventHandler(this.buttonCalculate_Click);
+            this.buttonSpendAll.Location = new System.Drawing.Point(3, 3);
+            this.buttonSpendAll.Name = "buttonSpendAll";
+            this.buttonSpendAll.Size = new System.Drawing.Size(186, 27);
+            this.buttonSpendAll.TabIndex = 0;
+            this.buttonSpendAll.Text = "Перепровести всі документи";
+            this.buttonSpendAll.UseVisualStyleBackColor = true;
+            this.buttonSpendAll.Click += new System.EventHandler(this.buttonSpendAll_Click);
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.buttonCancel);
-            this.panel1.Controls.Add(this.buttonCalculate);
+            this.panel1.Controls.Add(this.buttonSpendAll);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(931, 33);
@@ -112,7 +112,7 @@ namespace StorageAndTrade
 
         #endregion
 
-        private System.Windows.Forms.Button buttonCalculate;
+        private System.Windows.Forms.Button buttonSpendAll;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RichTextBox richTextBoxInfo;

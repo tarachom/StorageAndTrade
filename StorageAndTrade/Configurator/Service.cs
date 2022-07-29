@@ -42,6 +42,33 @@ namespace StorageAndTrade_1_0.Service
 {
     class CalculationBalances
     {
+        /// <summary>
+        /// Функція добавляє в таблицю фонових задач нову задачу для обчислення залишків по регістрах
+        /// </summary>
+        /// <param name="documentUid">UID Документу</param>
+        /// <param name="documentType">Тип документу</param>
+        /// <param name="typeMovement">Тип руху по регістру (добавлення, видалення)</param>
+        /// <param name="periodCalculation">Період розрахунку</param>
+        /// <param name="userName">Користувач</param>
+        public static void AddBackgroundTask_CalculationVirtualBalances(string documentUid, string documentType, string typeMovement, DateTime periodCalculation, string userName)
+        {
+            Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart обчисленняВіртуальнихЗалишків_TablePart =
+                new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart();
+
+            Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record record =
+                new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.Record();
+
+            record.Дата = DateTime.Now;
+            record.Документ = documentUid;
+            record.ТипДокументу = documentType;
+            record.ПеріодОбчислення = periodCalculation;
+            record.ТипРухуПоРегістру = typeMovement;
+            record.Користувач = userName;
+
+            обчисленняВіртуальнихЗалишків_TablePart.Records.Add(record);
+            обчисленняВіртуальнихЗалишків_TablePart.Save(false);
+        }
+
         public static void ПідключитиДодаток_UUID_OSSP()
         {
             string query = "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"";
@@ -825,7 +852,6 @@ WHERE uid = '{uid}'
                 Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryUpdate);
             }
         }
-
     }
 }
 

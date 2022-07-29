@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AccountingSoftware;
 using Довідники = StorageAndTrade_1_0.Довідники;
+using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
@@ -15,7 +16,7 @@ namespace StorageAndTrade
     class ФункціїДляДокументів
     {
         /// <summary>
-        /// Функція повертає перший із списку договорів договір контрагента
+        /// Функція повертає перший із списку договорів - договір контрагента
         /// </summary>
         /// <param name="Контрагент">Контрагент</param>
         /// <param name="ТипДоговору">Тип договору</param>
@@ -44,5 +45,6 @@ namespace StorageAndTrade
             else
                 return null;
         }
+
     }
 }

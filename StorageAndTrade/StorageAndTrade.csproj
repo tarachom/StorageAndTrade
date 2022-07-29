@@ -226,6 +226,7 @@
     <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітЖурнал.designer.cs">
       <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Журнали\ФункціїДляЖурналів.cs" />
     <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,10 +239,10 @@
     <Compile Include="СпільніФорми\Form_Report.Designer.cs">
       <DependentUpon>Form_Report.cs</DependentUpon>
     </Compile>
-    <Compile Include="Trash\FormService.cs">
+    <Compile Include="FormService.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Trash\FormService.Designer.cs">
+    <Compile Include="FormService.Designer.cs">
       <DependentUpon>FormService.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -840,7 +841,7 @@
     <EmbeddedResource Include="СпільніФорми\Form_Report.resx">
       <DependentUpon>Form_Report.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Trash\FormService.resx">
+    <EmbeddedResource Include="FormService.resx">
       <DependentUpon>FormService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trash\Form1.resx">
