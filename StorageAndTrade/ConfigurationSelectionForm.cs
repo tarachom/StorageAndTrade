@@ -399,6 +399,18 @@ namespace StorageAndTrade
 				buttonOpenConf_Click(this, new EventArgs());
 			}
         }
+
+        private void button_OpenConfigurator_Click(object sender, EventArgs e)
+        {
+			if (listBoxConfiguration.SelectedItem != null)
+			{
+				ConfigurationParam itemConfigurationParam = (ConfigurationParam)listBoxConfiguration.SelectedItem;
+
+				System.Diagnostics.Process.Start("Configurator.exe", itemConfigurationParam.ConfigurationKey).WaitForExit(1000);
+
+				Application.Exit();
+			}
+		}
     }
 
     /// <summary>

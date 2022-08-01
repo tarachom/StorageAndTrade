@@ -34,6 +34,7 @@
             this.buttonOpenConf = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonCopy = new System.Windows.Forms.Button();
+            this.button_OpenConfigurator = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxConfiguration
@@ -50,7 +51,7 @@
             // 
             // buttonAddConf
             // 
-            this.buttonAddConf.Location = new System.Drawing.Point(520, 135);
+            this.buttonAddConf.Location = new System.Drawing.Point(520, 180);
             this.buttonAddConf.Name = "buttonAddConf";
             this.buttonAddConf.Size = new System.Drawing.Size(97, 30);
             this.buttonAddConf.TabIndex = 1;
@@ -80,7 +81,7 @@
             // 
             // buttonCopy
             // 
-            this.buttonCopy.Location = new System.Drawing.Point(520, 171);
+            this.buttonCopy.Location = new System.Drawing.Point(520, 216);
             this.buttonCopy.Name = "buttonCopy";
             this.buttonCopy.Size = new System.Drawing.Size(97, 30);
             this.buttonCopy.TabIndex = 5;
@@ -88,11 +89,22 @@
             this.buttonCopy.UseVisualStyleBackColor = true;
             this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
+            // button_OpenConfigurator
+            // 
+            this.button_OpenConfigurator.Location = new System.Drawing.Point(520, 144);
+            this.button_OpenConfigurator.Name = "button_OpenConfigurator";
+            this.button_OpenConfigurator.Size = new System.Drawing.Size(97, 30);
+            this.button_OpenConfigurator.TabIndex = 6;
+            this.button_OpenConfigurator.Text = "Конфігуратор";
+            this.button_OpenConfigurator.UseVisualStyleBackColor = true;
+            this.button_OpenConfigurator.Click += new System.EventHandler(this.button_OpenConfigurator_Click);
+            // 
             // ConfigurationSelectionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 292);
+            this.Controls.Add(this.button_OpenConfigurator);
             this.Controls.Add(this.buttonCopy);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonOpenConf);
@@ -117,5 +129,6 @@
 		private System.Windows.Forms.Button buttonOpenConf;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.Button buttonCopy;
+        private System.Windows.Forms.Button button_OpenConfigurator;
     }
 }
