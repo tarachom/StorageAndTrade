@@ -23,7 +23,7 @@
 				<div class="container">
 
 					<br/>
-					<h2>Залишки коштів</h2>
+					<h2>Документи</h2>
 					<br/>
 
 					<table class="table table-sm">
@@ -39,9 +39,9 @@
 					<table class="table table-bordered table-sm">
 						<tr class="table-success">
 							<th>Документ</th>
-							<th>Income</th>
+							<th></th>
 							<th style="text-align:center">Сума</th>
-							<th style="text-align:center">Залишок</th>
+							<th style="text-align:center">Оборот</th>
 						</tr>
 
 						<xsl:for-each select="Документи/row">
@@ -49,8 +49,11 @@
 								<td>
 									<xsl:value-of select="docname"/>
 								</td>
-								<td>
-									<xsl:value-of select="income"/>
+								<td style="text-align:center;width:30;">
+									<xsl:choose>
+										<xsl:when test="income='True'">+</xsl:when>
+										<xsl:otherwise>-</xsl:otherwise>
+									</xsl:choose>
 								</td>
 								<td align="right">
 									<xsl:value-of select="Сума"/>

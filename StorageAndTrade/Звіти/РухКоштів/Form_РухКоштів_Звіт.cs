@@ -280,6 +280,7 @@ SELECT
     SUM(ПочатковийЗалишок) AS ПочатковийЗалишок,
     SUM(Прихід) AS Прихід,
     SUM(Розхід) AS Розхід,
+    SUM(Прихід) - SUM(Розхід) AS Оборот,
     SUM(КінцевийЗалишок) AS КінцевийЗалишок
 FROM 
 (
@@ -436,7 +437,6 @@ WITH documents AS
 doc AS
 (";
             Journal_Select journal_Select = new Journal_Select();
-
             int counter = 0;
 
             foreach(string table in journal_Select.Tables)
@@ -461,7 +461,7 @@ SELECT
 FROM doc
 ORDER BY period ASC
 ";
-            Console.WriteLine(query);
+            //Console.WriteLine(query);
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));

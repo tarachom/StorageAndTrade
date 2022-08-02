@@ -42,6 +42,7 @@
 							<th style="text-align:center">На початок</th>
 							<th style="text-align:center">Прихід</th>
 							<th style="text-align:center">Розхід</th>
+							<th style="text-align:center">Оборот</th>
 							<th style="text-align:center">На кінець</th>
 						</tr>
 
@@ -64,6 +65,9 @@
 								</td>
 								<td align="right">
 									<xsl:value-of select="Розхід"/>
+								</td>
+								<td align="right">
+									<xsl:value-of select="Оборот"/>
 								</td>
 								<td align="right">
 									<xsl:value-of select="КінцевийЗалишок"/>
