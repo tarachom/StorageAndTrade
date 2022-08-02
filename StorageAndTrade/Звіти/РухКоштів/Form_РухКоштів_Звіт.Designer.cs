@@ -82,16 +82,16 @@ namespace StorageAndTrade
             // 
             this.buttonCreate.Location = new System.Drawing.Point(114, 159);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(134, 27);
+            this.buttonCreate.Size = new System.Drawing.Size(103, 27);
             this.buttonCreate.TabIndex = 4;
-            this.buttonCreate.Text = "Залишки по касах";
+            this.buttonCreate.Text = "Залишки коштів";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 133);
+            this.label5.Location = new System.Drawing.Point(25, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 62;
@@ -99,7 +99,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(581, 159);
+            this.buttonClose.Location = new System.Drawing.Point(427, 159);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(90, 27);
             this.buttonClose.TabIndex = 70;
@@ -121,7 +121,7 @@ namespace StorageAndTrade
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 67);
+            this.label4.Location = new System.Drawing.Point(25, 62);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 13);
             this.label4.TabIndex = 73;
@@ -130,7 +130,7 @@ namespace StorageAndTrade
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(25, 100);
+            this.label6.Location = new System.Drawing.Point(25, 95);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(35, 13);
             this.label6.TabIndex = 75;
@@ -138,9 +138,9 @@ namespace StorageAndTrade
             // 
             // button_Report
             // 
-            this.button_Report.Location = new System.Drawing.Point(312, 159);
+            this.button_Report.Location = new System.Drawing.Point(223, 159);
             this.button_Report.Name = "button_Report";
-            this.button_Report.Size = new System.Drawing.Size(133, 27);
+            this.button_Report.Size = new System.Drawing.Size(122, 27);
             this.button_Report.TabIndex = 76;
             this.button_Report.Text = "Залишки та обороти";
             this.button_Report.UseVisualStyleBackColor = true;
@@ -151,7 +151,7 @@ namespace StorageAndTrade
             this.directoryControl_Каса.AfterSelectFunc = null;
             this.directoryControl_Каса.BeforeClickOpenFunc = null;
             this.directoryControl_Каса.DirectoryPointerItem = null;
-            this.directoryControl_Каса.Location = new System.Drawing.Point(115, 93);
+            this.directoryControl_Каса.Location = new System.Drawing.Point(115, 88);
             this.directoryControl_Каса.Name = "directoryControl_Каса";
             this.directoryControl_Каса.SelectForm = null;
             this.directoryControl_Каса.Size = new System.Drawing.Size(402, 27);
@@ -162,7 +162,7 @@ namespace StorageAndTrade
             this.directoryControl_Організація.AfterSelectFunc = null;
             this.directoryControl_Організація.BeforeClickOpenFunc = null;
             this.directoryControl_Організація.DirectoryPointerItem = null;
-            this.directoryControl_Організація.Location = new System.Drawing.Point(115, 60);
+            this.directoryControl_Організація.Location = new System.Drawing.Point(115, 55);
             this.directoryControl_Організація.Name = "directoryControl_Організація";
             this.directoryControl_Організація.SelectForm = null;
             this.directoryControl_Організація.Size = new System.Drawing.Size(402, 27);
@@ -173,7 +173,7 @@ namespace StorageAndTrade
             this.directoryControl_Валюти.AfterSelectFunc = null;
             this.directoryControl_Валюти.BeforeClickOpenFunc = null;
             this.directoryControl_Валюти.DirectoryPointerItem = null;
-            this.directoryControl_Валюти.Location = new System.Drawing.Point(115, 126);
+            this.directoryControl_Валюти.Location = new System.Drawing.Point(115, 121);
             this.directoryControl_Валюти.Name = "directoryControl_Валюти";
             this.directoryControl_Валюти.SelectForm = null;
             this.directoryControl_Валюти.Size = new System.Drawing.Size(402, 27);

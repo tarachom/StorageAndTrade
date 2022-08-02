@@ -23,7 +23,7 @@
 				<div class="container">
 
 					<br/>
-					<h2>Рух коштів</h2>
+					<h2>Залишки коштів</h2>
 					<br/>
 
 					<table class="table table-bordered table-sm">

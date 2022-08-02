@@ -23,7 +23,7 @@
 				<div class="container">
 
 					<br/>
-					<h2>Рух коштів</h2>
+					<h2>Залишки та обороти</h2>
 					<br/>
 
 					<table class="table table-bordered table-sm">
@@ -31,10 +31,10 @@
 							<th>Організація</th>
 							<th>Каса</th>
 							<th>Валюта</th>
-							<th style="text-align:center">Поток</th>
+							<th style="text-align:center">На початок</th>
 							<th style="text-align:center">Прихід</th>
 							<th style="text-align:center">Розхід</th>
-							<th style="text-align:center">Кінець</th>
+							<th style="text-align:center">На кінець</th>
 						</tr>
 
 						<xsl:for-each select="ЗалишкиТаОбороти/row">

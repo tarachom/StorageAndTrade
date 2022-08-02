@@ -57,7 +57,7 @@ namespace StorageAndTrade
             directoryControl_Каса.Init(new Form_Каси(), new Каси_Pointer());
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
 
-            geckoWebBrowser.LoadHtml("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><p>Звіт не сформований</p>");
+            //geckoWebBrowser.LoadHtml("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><p>Звіт не сформований</p>");
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -139,6 +139,8 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("period_start", DateTime.Parse($"01.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_end", DateTime.Parse($"01.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 00:00:00"));
 
             string[] columnsName;
             List<object[]> listRow;
@@ -166,7 +168,7 @@ WITH ostatok_month AS
 (
     SELECT
         'month' AS block,
-        РухКоштів_Місяць.{ ВіртуальніТаблиціРегістрів.РухКоштів_Місяць_TablePart.Організація} AS Організація,
+        РухКоштів_Місяць.{ВіртуальніТаблиціРегістрів.РухКоштів_Місяць_TablePart.Організація} AS Організація,
         РухКоштів_Місяць.{ВіртуальніТаблиціРегістрів.РухКоштів_Місяць_TablePart.Каса} AS Каса,
         РухКоштів_Місяць.{ВіртуальніТаблиціРегістрів.РухКоштів_Місяць_TablePart.Валюта} AS Валюта,
         SUM(РухКоштів_Місяць.{ВіртуальніТаблиціРегістрів.РухКоштів_Місяць_TablePart.Сума}) AS Залишок
@@ -204,8 +206,8 @@ ostatok_period AS
     FROM 
         {ВіртуальніТаблиціРегістрів.РухКоштів_День_TablePart.TABLE} AS РухКоштів_День
     WHERE
-        РухКоштів_День.{ВіртуальніТаблиціРегістрів.РухКоштів_День_TablePart.Період} >= @period_ostatok2_start AND
-        РухКоштів_День.{ ВіртуальніТаблиціРегістрів.РухКоштів_День_TablePart.Період } <= @period_ostatok2_end
+        РухКоштів_День.{ВіртуальніТаблиціРегістрів.РухКоштів_День_TablePart.Період} >= @period_ostatok_start AND
+        РухКоштів_День.{ ВіртуальніТаблиціРегістрів.РухКоштів_День_TablePart.Період } <= @period_ostatok_end
 
     GROUP BY Організація, Каса, Валюта
 ),
@@ -361,14 +363,11 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
             paramQuery.Add("period_day_start", DateTime.Parse($"01.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
             paramQuery.Add("period_day_end", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
 
+            paramQuery.Add("period_ostatok_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_ostatok_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 00:00:00"));
+
             paramQuery.Add("period_oborot_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
             paramQuery.Add("period_oborot_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 23:59:59"));
-
-            paramQuery.Add("period_ostatok2_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
-            paramQuery.Add("period_ostatok2_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 00:00:00"));
-
-            foreach (KeyValuePair<string, object> p in paramQuery)
-                Console.WriteLine($"{p.Key} = {p.Value}");
 
             string[] columnsName;
             List<object[]> listRow;
@@ -387,6 +386,11 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
+
+        }
+
+        private void button_CreateEndPeriod_Click(object sender, EventArgs e)
+        {
 
         }
     }
