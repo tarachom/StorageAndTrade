@@ -428,7 +428,10 @@ WITH documents AS
         РухКоштів.period AS period,
         РухКоштів.owner AS owner,
         РухКоштів.income AS income,
-        РухКоштів.{РухКоштів_Const.Сума} AS Сума
+        РухКоштів.{РухКоштів_Const.Сума} AS Сума,
+        РухКоштів.{РухКоштів_Const.Організація} AS Організація,
+        РухКоштів.{РухКоштів_Const.Каса} AS Каса,
+        РухКоштів.{РухКоштів_Const.Валюта} AS Валюта
     FROM
         {РухКоштів_Const.TABLE} AS РухКоштів
     WHERE
@@ -436,16 +439,65 @@ WITH documents AS
 ),
 doc AS
 (";
-            Journal_Select journal_Select = new Journal_Select();
             int counter = 0;
-
-            foreach(string table in journal_Select.Tables)
+            foreach(string table in new Journal_Select().Tables)
             {
+                bool isExistParent = false;
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
 {union}
-SELECT {table}.uid, {table}.docname, documents.period, documents.income, documents.Сума
-FROM documents INNER JOIN {table} ON {table}.uid = documents.owner";
+SELECT 
+    {table}.uid, 
+    {table}.docname, 
+    documents.period, 
+    documents.income, 
+    documents.Сума,
+    Довідник_Організації.{Організації_Const.Назва} AS Організація_Назва,
+    Довідник_Каси.{Каси_Const.Назва} AS Каса_Назва,
+    Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва
+FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
+    LEFT JOIN {Організації_Const.TABLE} AS Довідник_Організації ON Довідник_Організації.uid = documents.Організація
+    LEFT JOIN {Каси_Const.TABLE} AS Довідник_Каси ON Довідник_Каси.uid = documents.Каса
+    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = documents.Валюта
+";
+
+                #region WHERE
+
+                //Відбір по вибраному елементу Організації
+                if (!directoryControl_Організація.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Організації.uid = '{directoryControl_Організація.DirectoryPointerItem.UnigueID}'
+";
+                }
+
+                //Відбір по вибраному елементу Валюти
+                if (!directoryControl_Каса.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Каси.uid = '{directoryControl_Каса.DirectoryPointerItem.UnigueID}'
+";
+                }
+
+                //Відбір по вибраному елементу Валюти
+                if (!directoryControl_Валюти.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Валюти.uid = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
+";
+                }
+
+                #endregion
+
                 counter++;
             }
 
@@ -457,6 +509,9 @@ SELECT
     docname, 
     income, 
     Сума, 
+    Організація_Назва,
+    Каса_Назва,
+    Валюта_Назва,
     SUM(CASE WHEN income = true THEN Сума ELSE -Сума END) OVER (order by period) AS СумаПідсумок
 FROM doc
 ORDER BY period ASC

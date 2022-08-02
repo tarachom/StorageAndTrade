@@ -39,6 +39,9 @@
 					<table class="table table-bordered table-sm">
 						<tr class="table-success">
 							<th>Документ</th>
+							<th>Організація</th>
+							<th>Каса</th>
+							<th>Валюта</th>
 							<th></th>
 							<th style="text-align:center">Сума</th>
 							<th style="text-align:center">Оборот</th>
@@ -48,6 +51,15 @@
 							<tr>
 								<td>
 									<xsl:value-of select="docname"/>
+								</td>
+								<td>
+									<xsl:value-of select="Організація_Назва"/>
+								</td>
+								<td>
+									<xsl:value-of select="Каса_Назва"/>
+								</td>
+								<td>
+									<xsl:value-of select="Валюта_Назва"/>
 								</td>
 								<td style="text-align:center;width:30;">
 									<xsl:choose>
