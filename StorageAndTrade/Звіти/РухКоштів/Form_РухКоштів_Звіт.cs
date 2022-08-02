@@ -432,8 +432,9 @@ WITH documents AS
         {РухКоштів_Const.TABLE} AS РухКоштів
     WHERE
         РухКоштів.period >= @period_start AND РухКоштів.period <= @period_end
-)
-";
+),
+doc AS
+(";
             Journal_Select journal_Select = new Journal_Select();
 
             int counter = 0;
@@ -443,10 +444,24 @@ WITH documents AS
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
 {union}
-SELECT {table}.uid, {table}.docname, documents.income, documents.Сума
+SELECT {table}.uid, {table}.docname, documents.period, documents.income, documents.Сума
 FROM documents INNER JOIN {table} ON {table}.uid = documents.owner";
                 counter++;
             }
+
+            query += $@"
+)
+SELECT 
+    uid,
+    period,
+    docname, 
+    income, 
+    Сума, 
+    SUM(CASE WHEN income = true THEN Сума ELSE -Сума END) OVER (order by period) AS СумаПідсумок
+FROM doc
+ORDER BY period ASC
+";
+            Console.WriteLine(query);
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
@@ -458,7 +473,7 @@ FROM documents INNER JOIN {table} ON {table}.uid = documents.owner";
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_ЗалишкиТаОбороти.xslt", false, "Рух коштів");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_Документи.xslt", false, "Рух коштів");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
