@@ -23,8 +23,18 @@
 				<div class="container">
 
 					<br/>
-					<h2>Товари на складах</h2>
+					<h2>Залишки товарів на складах</h2>
 					<br/>
+
+					<table class="table table-sm">
+						<tr>
+							<tr class="table-light">
+								<td>
+									На дату <xsl:value-of select="head/row/КінецьПеріоду"/>
+								</td>
+							</tr>
+						</tr>
+					</table>
 					
 					<table class="table table-bordered table-sm">
 						<tr class="table-success">
