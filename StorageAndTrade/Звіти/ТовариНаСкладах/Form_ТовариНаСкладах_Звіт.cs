@@ -589,7 +589,64 @@ SELECT
 FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
     LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = documents.Номенклатура
     LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = documents.ХарактеристикаНоменклатури
-    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = documents.Склад";
+    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = documents.Склад
+";
+
+                #region WHERE
+
+                isExistParent = false;
+
+                //Відбір по всіх вкладених папках вибраної папки Номенклатури
+                if (!directoryControl_НоменклатураПапка.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Номенклатура.{Номенклатура_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+            WHERE {Номенклатура_Папки_Const.TABLE}.uid = '{directoryControl_НоменклатураПапка.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Номенклатура_Папки_Const.TABLE}.uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+                JOIN r ON {Номенклатура_Папки_Const.TABLE}.{Номенклатура_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+                }
+
+                //Відбір по всіх вкладених папках вибраної папки Склади
+                if (!directoryControl_СкладиПапки.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Склади.{Склади_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Склади_Папки_Const.TABLE}
+            WHERE {Склади_Папки_Const.TABLE}.uid = '{directoryControl_СкладиПапки.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Склади_Папки_Const.TABLE}.uid
+            FROM {Склади_Папки_Const.TABLE}
+                JOIN r ON {Склади_Папки_Const.TABLE}.{Склади_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+                }
+
+                #endregion
 
                 counter++;
             }
