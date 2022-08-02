@@ -50,6 +50,7 @@ namespace StorageAndTrade
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonOstatokAndOborot = new System.Windows.Forms.Button();
+            this.button_Documents = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -133,7 +134,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(463, 194);
+            this.buttonClose.Location = new System.Drawing.Point(893, 194);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(90, 27);
             this.buttonClose.TabIndex = 72;
@@ -255,11 +256,22 @@ namespace StorageAndTrade
             this.buttonOstatokAndOborot.UseVisualStyleBackColor = true;
             this.buttonOstatokAndOborot.Click += new System.EventHandler(this.buttonOstatokAndOborot_Click);
             // 
+            // button_Documents
+            // 
+            this.button_Documents.Location = new System.Drawing.Point(275, 194);
+            this.button_Documents.Name = "button_Documents";
+            this.button_Documents.Size = new System.Drawing.Size(96, 27);
+            this.button_Documents.TabIndex = 78;
+            this.button_Documents.Text = "По документах";
+            this.button_Documents.UseVisualStyleBackColor = true;
+            this.button_Documents.Click += new System.EventHandler(this.button_Documents_Click);
+            // 
             // Form_ТовариНаСкладах_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(997, 657);
+            this.Controls.Add(this.button_Documents);
             this.Controls.Add(this.buttonOstatokAndOborot);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -305,5 +317,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonOstatokAndOborot;
+        private System.Windows.Forms.Button button_Documents;
     }
 }

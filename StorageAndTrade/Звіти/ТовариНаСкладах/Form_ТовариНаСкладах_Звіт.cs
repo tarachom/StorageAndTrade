@@ -40,6 +40,7 @@ using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 using StorageAndTrade_1_0.Звіти;
+using StorageAndTrade_1_0.Журнали;
 
 namespace StorageAndTrade
 {
@@ -367,7 +368,92 @@ LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS 
 LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = ЗалишкиТаОбороти.Склад
 ";
 
-            
+            #region WHERE
+
+            //Відбір по всіх вкладених папках вибраної папки Номенклатури
+            if (!directoryControl_НоменклатураПапка.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Номенклатура.{Номенклатура_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+            WHERE {Номенклатура_Папки_Const.TABLE}.uid = '{directoryControl_НоменклатураПапка.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Номенклатура_Папки_Const.TABLE}.uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+                JOIN r ON {Номенклатура_Папки_Const.TABLE}.{Номенклатура_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+            }
+
+            //Відбір по вибраному елементу Номенклатура
+            if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Номенклатура.uid = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Характеристики Номенклатури
+            if (!directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_ХарактеристикиНоменклатури.uid = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по всіх вкладених папках вибраної папки Склади
+            if (!directoryControl_СкладиПапки.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Склади.{Склади_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Склади_Папки_Const.TABLE}
+            WHERE {Склади_Папки_Const.TABLE}.uid = '{directoryControl_СкладиПапки.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Склади_Папки_Const.TABLE}.uid
+            FROM {Склади_Папки_Const.TABLE}
+                JOIN r ON {Склади_Папки_Const.TABLE}.{Склади_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+            }
+
+            //Відбір по вибраному елементу Склади
+            if (!directoryControl_Склади.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Склади.uid = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
 
             query += @"
 GROUP BY Номенклатура, Номенклатура_Назва, ХарактеристикаНоменклатури, ХарактеристикаНоменклатури_Назва, Склад, Склад_Назва
@@ -413,12 +499,137 @@ ORDER BY Номенклатура_Назва, ХарактеристикаНом
             geckoWebBrowser.Navigate(pathToHtmlFile);
         }
 
+        private void button_Documents_Click(object sender, EventArgs e)
+        {
+            bool isExistParent = false;
+
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
+                    new NameValue<string>("КінецьПеріоду", dateTimeStop.Value.ToString("dd.MM.yyyy"))
+                }
+            );
+
+            string query = $@"
+WITH documents AS
+(
+     SELECT 
+        ТовариНаСкладах.period AS period,
+        ТовариНаСкладах.owner AS owner,
+        ТовариНаСкладах.income AS income,
+        ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} AS Номенклатура,
+        ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+        ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} AS Склад,
+        ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} AS ВНаявності
+    FROM
+        {ТовариНаСкладах_Const.TABLE} AS ТовариНаСкладах
+    WHERE
+        (ТовариНаСкладах.period >= @period_start AND ТовариНаСкладах.period <= @period_end)
+";
+
+            #region WHERE
+
+            isExistParent = true;
+
+            //Відбір по вибраному елементу Номенклатура
+            if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                query += $@"
+ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Характеристики Номенклатури
+            if (!directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Склади
+            if (!directoryControl_Склади.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
+
+            query += $@"
+),
+doc AS
+(";
+            int counter = 0;
+            foreach (string table in new Journal_Select().Tables)
+            {
+                string union = (counter > 0 ? "UNION" : "");
+                query += $@"
+{union}
+SELECT 
+    {table}.uid, 
+    {table}.docname, 
+    documents.period, 
+    documents.income, 
+    documents.ВНаявності,
+    Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва,
+    Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
+    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва
+FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
+    LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = documents.Номенклатура
+    LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = documents.ХарактеристикаНоменклатури
+    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = documents.Склад";
+
+                counter++;
+            }
+
+            query += $@"
+)
+SELECT 
+    uid,
+    period,
+    docname, 
+    income, 
+    ВНаявності, 
+    Номенклатура_Назва,
+    ХарактеристикаНоменклатури_Назва,
+    Склад_Назва
+FROM doc
+ORDER BY period ASC
+";
+            //Console.WriteLine(query);
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 23:59:59"));
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ТовариНаСкладах_Документи.xslt", false, "Товари на складах");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
+        }
+
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-       
     }
 }
 
