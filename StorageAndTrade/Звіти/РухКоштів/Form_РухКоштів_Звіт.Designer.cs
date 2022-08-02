@@ -44,13 +44,14 @@ namespace StorageAndTrade
             this.directoryControl_Каса = new StorageAndTrade.DirectoryControl();
             this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
             this.directoryControl_Валюти = new StorageAndTrade.DirectoryControl();
+            this.button_Documents = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dateTimeStart
             // 
             this.dateTimeStart.Location = new System.Drawing.Point(115, 24);
             this.dateTimeStart.Name = "dateTimeStart";
-            this.dateTimeStart.Size = new System.Drawing.Size(147, 20);
+            this.dateTimeStart.Size = new System.Drawing.Size(185, 20);
             this.dateTimeStart.TabIndex = 0;
             // 
             // label1
@@ -65,7 +66,7 @@ namespace StorageAndTrade
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(268, 30);
+            this.label2.Location = new System.Drawing.Point(306, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(19, 13);
             this.label2.TabIndex = 2;
@@ -73,9 +74,9 @@ namespace StorageAndTrade
             // 
             // dateTimeStop
             // 
-            this.dateTimeStop.Location = new System.Drawing.Point(294, 24);
+            this.dateTimeStop.Location = new System.Drawing.Point(331, 24);
             this.dateTimeStop.Name = "dateTimeStop";
-            this.dateTimeStop.Size = new System.Drawing.Size(151, 20);
+            this.dateTimeStop.Size = new System.Drawing.Size(186, 20);
             this.dateTimeStop.TabIndex = 3;
             // 
             // buttonCreate
@@ -99,7 +100,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(427, 159);
+            this.buttonClose.Location = new System.Drawing.Point(537, 159);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(90, 27);
             this.buttonClose.TabIndex = 70;
@@ -112,9 +113,9 @@ namespace StorageAndTrade
             this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser.Location = new System.Drawing.Point(11, 203);
+            this.geckoWebBrowser.Location = new System.Drawing.Point(1, 203);
             this.geckoWebBrowser.Name = "geckoWebBrowser";
-            this.geckoWebBrowser.Size = new System.Drawing.Size(949, 542);
+            this.geckoWebBrowser.Size = new System.Drawing.Size(797, 371);
             this.geckoWebBrowser.TabIndex = 71;
             this.geckoWebBrowser.UseHttpActivityObserver = false;
             // 
@@ -179,11 +180,22 @@ namespace StorageAndTrade
             this.directoryControl_Валюти.Size = new System.Drawing.Size(402, 27);
             this.directoryControl_Валюти.TabIndex = 61;
             // 
+            // button_Documents
+            // 
+            this.button_Documents.Location = new System.Drawing.Point(351, 159);
+            this.button_Documents.Name = "button_Documents";
+            this.button_Documents.Size = new System.Drawing.Size(96, 27);
+            this.button_Documents.TabIndex = 77;
+            this.button_Documents.Text = "По документах";
+            this.button_Documents.UseVisualStyleBackColor = true;
+            this.button_Documents.Click += new System.EventHandler(this.button_Documents_Click);
+            // 
             // Form_РухКоштів_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(973, 757);
+            this.ClientSize = new System.Drawing.Size(799, 575);
+            this.Controls.Add(this.button_Documents);
             this.Controls.Add(this.button_Report);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.directoryControl_Каса);
@@ -223,5 +235,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label6;
         private DirectoryControl directoryControl_Каса;
         private System.Windows.Forms.Button button_Report;
+        private System.Windows.Forms.Button button_Documents;
     }
 }

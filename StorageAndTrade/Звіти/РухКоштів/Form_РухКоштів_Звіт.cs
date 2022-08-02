@@ -20,6 +20,7 @@ limitations under the License.
 Адреса:   Україна, м. Львів
 Сайт:     accounting.org.ua
 */
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -403,6 +404,11 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
+
+        }
+
+        private void button_Documents_Click(object sender, EventArgs e)
+        {
 
         }
     }
