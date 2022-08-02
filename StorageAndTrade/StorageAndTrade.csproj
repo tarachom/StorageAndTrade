@@ -1233,6 +1233,7 @@
     <Content Include="Шаблони\РухКоштів_Залишки.xslt">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Шаблони\РозрахункиЗПостачальниками_ЗалишкиТаОбороти.xslt" />
     <Content Include="Шаблони\ТовариНаСкладах_ЗалишкиТаОбороти.xslt" />
     <Content Include="Шаблони\ТовариНаСкладах_Залишки.xslt" />
     <Content Include="Шаблони\РозрахункиЗПостачальниками_Залишки.xslt">

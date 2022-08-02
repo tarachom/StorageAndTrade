@@ -45,6 +45,7 @@ namespace StorageAndTrade
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
             this.button_Documents = new System.Windows.Forms.Button();
+            this.buttonOstatokAndOborot = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -186,7 +187,7 @@ namespace StorageAndTrade
             // 
             // button_Documents
             // 
-            this.button_Documents.Location = new System.Drawing.Point(108, 166);
+            this.button_Documents.Location = new System.Drawing.Point(275, 166);
             this.button_Documents.Name = "button_Documents";
             this.button_Documents.Size = new System.Drawing.Size(96, 27);
             this.button_Documents.TabIndex = 79;
@@ -194,11 +195,22 @@ namespace StorageAndTrade
             this.button_Documents.UseVisualStyleBackColor = true;
             this.button_Documents.Click += new System.EventHandler(this.button_Documents_Click);
             // 
+            // buttonOstatokAndOborot
+            // 
+            this.buttonOstatokAndOborot.Location = new System.Drawing.Point(108, 166);
+            this.buttonOstatokAndOborot.Name = "buttonOstatokAndOborot";
+            this.buttonOstatokAndOborot.Size = new System.Drawing.Size(161, 27);
+            this.buttonOstatokAndOborot.TabIndex = 80;
+            this.buttonOstatokAndOborot.Text = "Залишки та обороти";
+            this.buttonOstatokAndOborot.UseVisualStyleBackColor = true;
+            this.buttonOstatokAndOborot.Click += new System.EventHandler(this.buttonOstatokAndOborot_Click);
+            // 
             // Form_РозрахункиЗПостачальниками_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 579);
+            this.Controls.Add(this.buttonOstatokAndOborot);
             this.Controls.Add(this.button_Documents);
             this.Controls.Add(this.geckoWebBrowser);
             this.Controls.Add(this.groupBox1);
@@ -238,5 +250,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.GroupBox groupBox1;
         private Gecko.GeckoWebBrowser geckoWebBrowser;
         private System.Windows.Forms.Button button_Documents;
+        private System.Windows.Forms.Button buttonOstatokAndOborot;
     }
 }
