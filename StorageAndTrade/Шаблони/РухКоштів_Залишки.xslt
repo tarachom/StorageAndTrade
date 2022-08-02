@@ -26,6 +26,16 @@
 					<h2>Залишки коштів</h2>
 					<br/>
 
+					<table class="table table-sm">
+						<tr>
+							<tr class="table-light">
+								<td>
+									На дату <xsl:value-of select="head/row/КінецьПеріоду"/>
+								</td>
+							</tr>
+						</tr>
+					</table>
+					
 					<table class="table table-bordered table-sm">
 						<tr class="table-success">
 							<th>Організація</th>

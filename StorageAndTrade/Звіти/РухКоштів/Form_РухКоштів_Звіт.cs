@@ -57,6 +57,8 @@ namespace StorageAndTrade
             directoryControl_Каса.Init(new Form_Каси(), new Каси_Pointer());
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
 
+            dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
+
             //geckoWebBrowser.LoadHtml("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><p>Звіт не сформований</p>");
         }
 
@@ -137,6 +139,13 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
             //Console.WriteLine(queryDoc);
 
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy"))
+                }
+            );
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("period_start", DateTime.Parse($"01.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
@@ -380,17 +389,20 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
         {
             XmlDocument xmlDoc = Функції.CreateXmlDocument();
 
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
+                    new NameValue<string>("КінецьПеріоду", dateTimeStop.Value.ToString("dd.MM.yyyy"))
+                }
+            );
+
             ЗалишкиТаОбороти(xmlDoc);
 
             Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_ЗалишкиТаОбороти.xslt", false, "Рух коштів");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
-
-        }
-
-        private void button_CreateEndPeriod_Click(object sender, EventArgs e)
-        {
 
         }
     }

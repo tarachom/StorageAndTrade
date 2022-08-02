@@ -67,7 +67,7 @@ namespace StorageAndTrade_1_0.Звіти
         /// <param name="listRow">Список рядків</param>
         public static void DataToXML(XmlDocument xmlDoc, string blockName, string[] columnsName, List<object[]> listRow)
         {
-            XmlNode root= xmlDoc.SelectSingleNode("/root");
+            XmlNode root = xmlDoc.SelectSingleNode("/root");
 
             XmlElement rootItemNode = xmlDoc.CreateElement(blockName);
             root.AppendChild(rootItemNode);
@@ -87,6 +87,24 @@ namespace StorageAndTrade_1_0.Звіти
 
                     counter++;
                 }
+            }
+        }
+
+        public static void DataHeadToXML(XmlDocument xmlDoc, string blockName, List<NameValue<string>> listRow)
+        {
+            XmlNode root = xmlDoc.SelectSingleNode("/root");
+
+            XmlElement rootItemNode = xmlDoc.CreateElement(blockName);
+            root.AppendChild(rootItemNode);
+
+            XmlElement nodeRow = xmlDoc.CreateElement("row");
+            rootItemNode.AppendChild(nodeRow);
+
+            foreach (NameValue<string> row in listRow)
+            {
+                XmlElement node = xmlDoc.CreateElement(row.Name);
+                node.InnerText = row.Value;
+                nodeRow.AppendChild(node);
             }
         }
 
