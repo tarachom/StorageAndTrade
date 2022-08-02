@@ -22,19 +22,10 @@
 
 				<div class="container-fluid">
 
-					<br/>
-					<h2>Залишки та обороти товарів</h2>
-					<br/>
-
-					<table class="table table-sm">
-						<tr>
-							<tr class="table-light">
-								<td>
-									Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
-								</td>
-							</tr>
-						</tr>
-					</table>
+					<h4>Залишки та обороти товарів</h4>
+					<p>
+						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
+					</p>
 
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
@@ -44,7 +35,6 @@
 							<th style="text-align:center">На початок</th>
 							<th style="text-align:center">Прихід</th>
 							<th style="text-align:center">Розхід</th>
-							<th style="text-align:center">Оборот</th>
 							<th style="text-align:center">На кінець</th>
 						</tr>
 
@@ -67,9 +57,6 @@
 								</td>
 								<td align="right">
 									<xsl:value-of select="Розхід"/>
-								</td>
-								<td align="right">
-									<xsl:value-of select="Оборот"/>
 								</td>
 								<td align="right">
 									<xsl:value-of select="КінцевийЗалишок"/>

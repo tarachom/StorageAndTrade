@@ -22,11 +22,8 @@
 			<body>
 
 				<div class="container">
-					
-					<br/>
-					<h2>Рух документу по регістрах</h2>
-					<br/>
-					
+
+					<h4>Рух документу по регістрах</h4>
 					<xsl:apply-templates select="Заголовок" />
 					
 					<!--  -->

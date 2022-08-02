@@ -22,17 +22,10 @@
 
 				<div class="container-fluid">
 
-					<br/>
-					<h2>Залишки та обороти коштів</h2>
-					<br/>
-
-					<table class="table table-sm">
-						<tr>
-							<tr class="table-light">
-								<td>Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/></td>
-							</tr>
-						</tr>
-					</table>
+					<h4>Залишки та обороти коштів</h4>
+					<p>
+						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
+					</p>
 					
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">

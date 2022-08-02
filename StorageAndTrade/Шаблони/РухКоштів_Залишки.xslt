@@ -22,19 +22,10 @@
 
 				<div class="container-fluid">
 
-					<br/>
-					<h2>Залишки коштів</h2>
-					<br/>
-
-					<table class="table table-sm">
-						<tr>
-							<tr class="table-light">
-								<td>
-									На дату <xsl:value-of select="head/row/КінецьПеріоду"/>
-								</td>
-							</tr>
-						</tr>
-					</table>
+					<h4>Залишки коштів</h4>
+					<p>
+						На дату <xsl:value-of select="head/row/КінецьПеріоду"/>
+					</p>
 					
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">

@@ -39,6 +39,7 @@ namespace StorageAndTrade
             this.textBoxControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxControl.BackColor = System.Drawing.Color.White;
             this.textBoxControl.Location = new System.Drawing.Point(0, 2);
             this.textBoxControl.Multiline = true;
             this.textBoxControl.Name = "textBoxControl";

@@ -20,26 +20,38 @@
 			</head>
 			<body>
 
-				<div class="container">
+				<div class="container-fluid">
 
-					<br/>
-					<h2>Розрахунки з постачальниками</h2>
-					<br/>
+					<h4>Документи</h4>
+					<p>
+						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
+					</p>
 
-					<table class="table table-bordered table-sm">
+					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Контрагент</th>
+							<th>Документ</th>
+							<th>Контрагенти</th>
 							<th>Валюта</th>
+							<th></th>
 							<th style="text-align:center">Сума</th>
 						</tr>
 
-						<xsl:for-each select="РозрахункиЗПостачальниками/row">
+						<xsl:for-each select="Документи/row">
 							<tr>
+								<td>
+									<xsl:value-of select="docname"/>
+								</td>
 								<td>
 									<xsl:value-of select="Контрагент_Назва"/>
 								</td>
 								<td>
 									<xsl:value-of select="Валюта_Назва"/>
+								</td>
+								<td style="text-align:center;width:30;">
+									<xsl:choose>
+										<xsl:when test="income='True'">+</xsl:when>
+										<xsl:otherwise>-</xsl:otherwise>
+									</xsl:choose>
 								</td>
 								<td align="right">
 									<xsl:value-of select="Сума"/>
@@ -52,8 +64,8 @@
 					<br/>
 					<br/>
 					<br/>
-				    <br/>
-				
+					<br/>
+
 				</div>
 
 			</body>

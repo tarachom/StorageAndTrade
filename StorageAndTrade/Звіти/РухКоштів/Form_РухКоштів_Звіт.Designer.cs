@@ -100,7 +100,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(537, 159);
+            this.buttonClose.Location = new System.Drawing.Point(697, 159);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(90, 27);
             this.buttonClose.TabIndex = 70;

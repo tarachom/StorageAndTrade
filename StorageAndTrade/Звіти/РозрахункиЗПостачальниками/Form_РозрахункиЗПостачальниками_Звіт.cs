@@ -31,6 +31,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
+using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 
@@ -39,6 +40,8 @@ using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 using StorageAndTrade_1_0.Звіти;
+using StorageAndTrade_1_0.Константи;
+using StorageAndTrade_1_0.Журнали;
 
 namespace StorageAndTrade
 {
@@ -62,22 +65,19 @@ namespace StorageAndTrade
 
             string query = $@"
 SELECT 
-    Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Контрагент} AS Контрагент,
+    РозрахункиЗПостачальниками_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_Місяць_TablePart.Контрагент} AS Контрагент,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS Контрагент_Назва,
-    Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта} AS Валюта, 
+    РозрахункиЗПостачальниками_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_Місяць_TablePart.Валюта} AS Валюта, 
     Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва,
-
-    SUM(CASE WHEN Рег_РозрахункиЗПостачальниками.income = true THEN 
-        Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} ELSE 
-        -Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} END) AS Сума
+    SUM(РозрахункиЗПостачальниками_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_Місяць_TablePart.Сума}) AS Сума
 FROM 
-    {РозрахункиЗПостачальниками_Const.TABLE} AS Рег_РозрахункиЗПостачальниками
+    {ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_Місяць_TablePart.TABLE} AS РозрахункиЗПостачальниками_Місяць
 
     LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = 
-        Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта}
+        РозрахункиЗПостачальниками_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_Місяць_TablePart.Валюта}
 
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Контрагент}
+        РозрахункиЗПостачальниками_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_Місяць_TablePart.Контрагент}
 ";
             #region WHERE
 
@@ -135,16 +135,19 @@ GROUP BY Контрагент, Контрагент_Назва,
          Валюта, Валюта_Назва
 
 HAVING
-     SUM(CASE WHEN Рег_РозрахункиЗПостачальниками.income = true THEN 
-        Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} ELSE 
-        -Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} END) != 0
+     SUM(РозрахункиЗПостачальниками_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗПостачальниками_Місяць_TablePart.Сума}) != 0
 
 ORDER BY Контрагент_Назва
 ";
-
-            //Console.WriteLine(query);
             
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy"))
+                }
+            );
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 
@@ -155,7 +158,153 @@ ORDER BY Контрагент_Назва
 
             Функції.DataToXML(xmlDoc, "РозрахункиЗПостачальниками", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками.xslt", true, "Розрахунки з постачальниками");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_Залишки.xslt", false, "Розрахунки з постачальниками");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
+        }
+
+        private void button_Documents_Click(object sender, EventArgs e)
+        {
+            bool isExistParent = false;
+
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
+                    new NameValue<string>("КінецьПеріоду", dateTimeStop.Value.ToString("dd.MM.yyyy"))
+                }
+            );
+
+            string query = $@"
+WITH documents AS
+(
+     SELECT 
+        РозрахункиЗПостачальниками.period AS period,
+        РозрахункиЗПостачальниками.owner AS owner,
+        РозрахункиЗПостачальниками.income AS income,
+        РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Контрагент} AS Контрагент,
+        РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта} AS Валюта,
+        РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} AS Сума
+    FROM
+        {РозрахункиЗПостачальниками_Const.TABLE} AS РозрахункиЗПостачальниками
+    WHERE
+        (РозрахункиЗПостачальниками.period >= @period_start AND РозрахункиЗПостачальниками.period <= @period_end)
+";
+
+            #region WHERE
+
+            isExistParent = true;
+
+            //Відбір по вибраному елементу Контрагенти
+            if (!directoryControl_Контрагенти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                query += $@"
+РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Контрагент} = '{directoryControl_Контрагенти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Валюти
+            if (!directoryControl_Валюти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта} = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
+
+            query += $@"
+),
+doc AS
+(";
+            int counter = 0;
+            foreach (string table in new Journal_Select().Tables)
+            {
+                string union = (counter > 0 ? "UNION" : "");
+                query += $@"
+{union}
+SELECT 
+    {table}.uid, 
+    {table}.docname, 
+    documents.period, 
+    documents.income, 
+    documents.Сума,
+    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS Контрагент_Назва,
+    Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва
+FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
+    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = documents.Контрагент
+    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = documents.Валюта
+";
+
+                #region WHERE
+
+                isExistParent = false;
+
+                //Відбір по всіх вкладених папках вибраної папки Контрагенти
+                if (!directoryControl_КонтрагентиПапка.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Контрагенти.{Контрагенти_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Контрагенти_Папки_Const.TABLE}
+            WHERE {Контрагенти_Папки_Const.TABLE}.uid = '{directoryControl_КонтрагентиПапка.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Контрагенти_Папки_Const.TABLE}.uid
+            FROM {Контрагенти_Папки_Const.TABLE}
+                JOIN r ON {Контрагенти_Папки_Const.TABLE}.{Контрагенти_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+                }
+
+                #endregion
+
+                counter++;
+            }
+
+            query += $@"
+)
+SELECT 
+    uid,
+    period,
+    docname, 
+    income, 
+    Сума, 
+    Контрагент_Назва,
+    Валюта_Назва
+FROM doc
+ORDER BY period ASC
+";
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 23:59:59"));
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_Документи.xslt", false, "Розрахунки з постачальниками");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
