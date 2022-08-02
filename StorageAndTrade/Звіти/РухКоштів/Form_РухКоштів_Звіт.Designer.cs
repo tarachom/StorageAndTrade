@@ -40,6 +40,7 @@ namespace StorageAndTrade
             this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.button_Report = new System.Windows.Forms.Button();
             this.directoryControl_Каса = new StorageAndTrade.DirectoryControl();
             this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
             this.directoryControl_Валюти = new StorageAndTrade.DirectoryControl();
@@ -81,9 +82,9 @@ namespace StorageAndTrade
             // 
             this.buttonCreate.Location = new System.Drawing.Point(114, 159);
             this.buttonCreate.Name = "buttonCreate";
-            this.buttonCreate.Size = new System.Drawing.Size(90, 27);
+            this.buttonCreate.Size = new System.Drawing.Size(134, 27);
             this.buttonCreate.TabIndex = 4;
-            this.buttonCreate.Text = "Сформувати";
+            this.buttonCreate.Text = "Залишки по касах";
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
             // 
@@ -98,7 +99,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(355, 159);
+            this.buttonClose.Location = new System.Drawing.Point(581, 159);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(90, 27);
             this.buttonClose.TabIndex = 70;
@@ -135,8 +136,20 @@ namespace StorageAndTrade
             this.label6.TabIndex = 75;
             this.label6.Text = "Каса:";
             // 
+            // button_Report
+            // 
+            this.button_Report.Location = new System.Drawing.Point(312, 159);
+            this.button_Report.Name = "button_Report";
+            this.button_Report.Size = new System.Drawing.Size(133, 27);
+            this.button_Report.TabIndex = 76;
+            this.button_Report.Text = "Залишки та обороти";
+            this.button_Report.UseVisualStyleBackColor = true;
+            this.button_Report.Click += new System.EventHandler(this.button_Report_Click);
+            // 
             // directoryControl_Каса
             // 
+            this.directoryControl_Каса.AfterSelectFunc = null;
+            this.directoryControl_Каса.BeforeClickOpenFunc = null;
             this.directoryControl_Каса.DirectoryPointerItem = null;
             this.directoryControl_Каса.Location = new System.Drawing.Point(115, 93);
             this.directoryControl_Каса.Name = "directoryControl_Каса";
@@ -146,6 +159,8 @@ namespace StorageAndTrade
             // 
             // directoryControl_Організація
             // 
+            this.directoryControl_Організація.AfterSelectFunc = null;
+            this.directoryControl_Організація.BeforeClickOpenFunc = null;
             this.directoryControl_Організація.DirectoryPointerItem = null;
             this.directoryControl_Організація.Location = new System.Drawing.Point(115, 60);
             this.directoryControl_Організація.Name = "directoryControl_Організація";
@@ -155,6 +170,8 @@ namespace StorageAndTrade
             // 
             // directoryControl_Валюти
             // 
+            this.directoryControl_Валюти.AfterSelectFunc = null;
+            this.directoryControl_Валюти.BeforeClickOpenFunc = null;
             this.directoryControl_Валюти.DirectoryPointerItem = null;
             this.directoryControl_Валюти.Location = new System.Drawing.Point(115, 126);
             this.directoryControl_Валюти.Name = "directoryControl_Валюти";
@@ -167,6 +184,7 @@ namespace StorageAndTrade
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(973, 757);
+            this.Controls.Add(this.button_Report);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.directoryControl_Каса);
             this.Controls.Add(this.label4);
@@ -204,5 +222,6 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Організація;
         private System.Windows.Forms.Label label6;
         private DirectoryControl directoryControl_Каса;
+        private System.Windows.Forms.Button button_Report;
     }
 }

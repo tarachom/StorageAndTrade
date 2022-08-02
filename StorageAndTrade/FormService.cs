@@ -88,8 +88,7 @@ namespace StorageAndTrade
 			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = false;
 
 			Journal.Journal_Select journalSelect = new Journal.Journal_Select();
-			journalSelect.Select(DateTime.Parse("01.01.2021 00:00:00"), DateTime.Parse("31.12.2021 23:59:59"),
-				new string[] { "ПоступленняТоварівТаПослуг" });
+			journalSelect.Select(DateTime.Parse("01.01.2021 00:00:00"), DateTime.Now);
 
 			while (journalSelect.MoveNext())
             {

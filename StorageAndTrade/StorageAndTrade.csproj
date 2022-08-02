@@ -165,6 +165,12 @@
     <Compile Include="FormConstants.Designer.cs">
       <DependentUpon>FormConstants.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormService.Designer.cs">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </Compile>
     <Compile Include="NumericControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -238,12 +244,6 @@
     </Compile>
     <Compile Include="СпільніФорми\Form_Report.Designer.cs">
       <DependentUpon>Form_Report.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FormService.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormService.Designer.cs">
-      <DependentUpon>FormService.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -805,6 +805,9 @@
     <EmbeddedResource Include="FormConstants.resx">
       <DependentUpon>FormConstants.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormService.resx">
+      <DependentUpon>FormService.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NumericControl.resx">
       <DependentUpon>NumericControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -840,9 +843,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="СпільніФорми\Form_Report.resx">
       <DependentUpon>Form_Report.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormService.resx">
-      <DependentUpon>FormService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trash\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -1218,7 +1218,10 @@
     <Content Include="Trash\Service.txt" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ЗамовленняПостачальникам.xslt" />
-    <Content Include="Шаблони\РухКоштів.xslt">
+    <Content Include="Шаблони\РухКоштів_ЗалишкиТаОбороти.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Шаблони\РухКоштів_Залишки.xslt">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Шаблони\ТовариНаСкладах.xslt" />
