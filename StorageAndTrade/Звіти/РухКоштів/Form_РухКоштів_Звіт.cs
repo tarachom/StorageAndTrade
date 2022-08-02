@@ -42,6 +42,7 @@ using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 using StorageAndTrade_1_0.Звіти;
+using StorageAndTrade_1_0.Журнали;
 
 namespace StorageAndTrade
 {
@@ -409,7 +410,58 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
 
         private void button_Documents_Click(object sender, EventArgs e)
         {
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
 
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
+                    new NameValue<string>("КінецьПеріоду", dateTimeStop.Value.ToString("dd.MM.yyyy"))
+                }
+            );
+
+            string query = $@"
+WITH documents AS
+(
+     SELECT 
+        РухКоштів.period AS period,
+        РухКоштів.owner AS owner,
+        РухКоштів.income AS income,
+        РухКоштів.{РухКоштів_Const.Сума} AS Сума
+    FROM
+        {РухКоштів_Const.TABLE} AS РухКоштів
+    WHERE
+        РухКоштів.period >= @period_start AND РухКоштів.period <= @period_end
+)
+";
+            Journal_Select journal_Select = new Journal_Select();
+
+            int counter = 0;
+
+            foreach(string table in journal_Select.Tables)
+            {
+                string union = (counter > 0 ? "UNION" : "");
+                query += $@"
+{union}
+SELECT {table}.uid, {table}.docname, documents.income, documents.Сума
+FROM documents INNER JOIN {table} ON {table}.uid = documents.owner";
+                counter++;
+            }
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 23:59:59"));
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_ЗалишкиТаОбороти.xslt", false, "Рух коштів");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
         }
     }
 }
