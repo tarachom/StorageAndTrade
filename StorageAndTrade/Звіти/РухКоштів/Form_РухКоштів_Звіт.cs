@@ -411,6 +411,8 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
 
         private void button_Documents_Click(object sender, EventArgs e)
         {
+            bool isExistParent = false;
+
             XmlDocument xmlDoc = Функції.CreateXmlDocument();
 
             Функції.DataHeadToXML(xmlDoc, "head",
@@ -435,14 +437,53 @@ WITH documents AS
     FROM
         {РухКоштів_Const.TABLE} AS РухКоштів
     WHERE
-        РухКоштів.period >= @period_start AND РухКоштів.period <= @period_end
+        (РухКоштів.period >= @period_start AND РухКоштів.period <= @period_end)
+";
+
+            #region WHERE
+
+            isExistParent = true;
+
+            //Відбір по вибраному елементу Організації
+            if (!directoryControl_Організація.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                query += $@"
+РухКоштів.{РухКоштів_Const.Організація} = '{directoryControl_Організація.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Валюти
+            if (!directoryControl_Каса.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+РухКоштів.{РухКоштів_Const.Каса} = '{directoryControl_Каса.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Валюти
+            if (!directoryControl_Валюти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+РухКоштів.{РухКоштів_Const.Валюта} = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
+
+            query += $@"
 ),
 doc AS
 (";
             int counter = 0;
             foreach(string table in new Journal_Select().Tables)
             {
-                bool isExistParent = false;
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
 {union}
@@ -458,45 +499,7 @@ SELECT
 FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
     LEFT JOIN {Організації_Const.TABLE} AS Довідник_Організації ON Довідник_Організації.uid = documents.Організація
     LEFT JOIN {Каси_Const.TABLE} AS Довідник_Каси ON Довідник_Каси.uid = documents.Каса
-    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = documents.Валюта
-";
-
-                #region WHERE
-
-                //Відбір по вибраному елементу Організації
-                if (!directoryControl_Організація.DirectoryPointerItem.IsEmpty())
-                {
-                    query += isExistParent ? "AND" : "WHERE";
-                    isExistParent = true;
-
-                    query += $@"
-Довідник_Організації.uid = '{directoryControl_Організація.DirectoryPointerItem.UnigueID}'
-";
-                }
-
-                //Відбір по вибраному елементу Валюти
-                if (!directoryControl_Каса.DirectoryPointerItem.IsEmpty())
-                {
-                    query += isExistParent ? "AND" : "WHERE";
-                    isExistParent = true;
-
-                    query += $@"
-Довідник_Каси.uid = '{directoryControl_Каса.DirectoryPointerItem.UnigueID}'
-";
-                }
-
-                //Відбір по вибраному елементу Валюти
-                if (!directoryControl_Валюти.DirectoryPointerItem.IsEmpty())
-                {
-                    query += isExistParent ? "AND" : "WHERE";
-                    isExistParent = true;
-
-                    query += $@"
-Довідник_Валюти.uid = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
-";
-                }
-
-                #endregion
+    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = documents.Валюта";
 
                 counter++;
             }
@@ -511,8 +514,7 @@ SELECT
     Сума, 
     Організація_Назва,
     Каса_Назва,
-    Валюта_Назва,
-    SUM(CASE WHEN income = true THEN Сума ELSE -Сума END) OVER (order by period) AS СумаПідсумок
+    Валюта_Назва
 FROM doc
 ORDER BY period ASC
 ";
@@ -535,6 +537,12 @@ ORDER BY period ASC
         }
     }
 }
+
+
+
+//SUM(CASE WHEN income = true THEN Сума ELSE -Сума END) OVER (order by period) AS СумаПідсумок
+
+
 
 //Console.WriteLine(query);
 

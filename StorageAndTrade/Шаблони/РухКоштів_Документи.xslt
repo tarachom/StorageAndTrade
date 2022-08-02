@@ -44,7 +44,6 @@
 							<th>Валюта</th>
 							<th></th>
 							<th style="text-align:center">Сума</th>
-							<th style="text-align:center">Оборот</th>
 						</tr>
 
 						<xsl:for-each select="Документи/row">
@@ -69,9 +68,6 @@
 								</td>
 								<td align="right">
 									<xsl:value-of select="Сума"/>
-								</td>
-								<td align="right">
-									<xsl:value-of select="СумаПідсумок"/>
 								</td>
 							</tr>
 						</xsl:for-each>
