@@ -20,7 +20,7 @@
 			</head>
 			<body>
 
-				<div class="container">
+				<div class="container-fluid">
 
 					<br/>
 					<h2>Документи</h2>
@@ -35,8 +35,8 @@
 							</tr>
 						</tr>
 					</table>
-					
-					<table class="table table-bordered table-sm">
+
+					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
 							<th>Документ</th>
 							<th>Номенклатура</th>
@@ -71,14 +71,14 @@
 								</td>
 							</tr>
 						</xsl:for-each>
-						
+
 					</table>
 
 					<br/>
 					<br/>
 					<br/>
-				    <br/>
-				
+					<br/>
+
 				</div>
 
 			</body>

@@ -20,7 +20,7 @@
 			</head>
 			<body>
 
-				<div class="container">
+				<div class="container-fluid">
 
 					<br/>
 					<h2>Документи</h2>
@@ -36,7 +36,7 @@
 						</tr>
 					</table>
 					
-					<table class="table table-bordered table-sm">
+					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
 							<th>Документ</th>
 							<th>Організація</th>

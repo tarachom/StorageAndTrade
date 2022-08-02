@@ -20,7 +20,7 @@
 			</head>
 			<body>
 
-				<div class="container">
+				<div class="container-fluid">
 
 					<br/>
 					<h2>Залишки та обороти коштів</h2>
@@ -34,7 +34,7 @@
 						</tr>
 					</table>
 					
-					<table class="table table-bordered table-sm">
+					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
 							<th>Організація</th>
 							<th>Каса</th>
