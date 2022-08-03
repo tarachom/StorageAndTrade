@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 03.08.2022 15:41:37
+ * Дата конфігурації: 03.08.2022 16:15:32
  *
  */
 
@@ -7627,18 +7627,18 @@ namespace StorageAndTrade_1_0.Довідники
     {
         public const string TABLE = "tab_b02";
         
-        public const string Назва = "col_a1";
         public const string Номер = "col_a3";
+        public const string Коментар = "col_a1";
     }
 	
     
     public class СеріїНоменклатури_Objest : DirectoryObject
     {
         public СеріїНоменклатури_Objest() : base(Config.Kernel, "tab_b02",
-             new string[] { "col_a1", "col_a3" }) 
+             new string[] { "col_a3", "col_a1" }) 
         {
-            Назва = "";
             Номер = "";
+            Коментар = "";
             
         }
         
@@ -7646,8 +7646,8 @@ namespace StorageAndTrade_1_0.Довідники
         {
             if (BaseRead(uid))
             {
-                Назва = base.FieldValue["col_a1"].ToString();
                 Номер = base.FieldValue["col_a3"].ToString();
+                Коментар = base.FieldValue["col_a1"].ToString();
                 
                 BaseClear();
                 return true;
@@ -7658,8 +7658,8 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-		    base.FieldValue["col_a1"] = Назва;
-            base.FieldValue["col_a3"] = Номер;
+		    base.FieldValue["col_a3"] = Номер;
+            base.FieldValue["col_a1"] = Коментар;
             
             BaseSave();
 			
@@ -7670,8 +7670,8 @@ namespace StorageAndTrade_1_0.Довідники
             return 
             "<" + root + ">" +
                "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
                "<Номер>" + "<![CDATA[" + Номер + "]]>" + "</Номер>"  +
+               "<Коментар>" + "<![CDATA[" + Коментар + "]]>" + "</Коментар>"  +
                "</" + root + ">";
         }
 
@@ -7679,8 +7679,8 @@ namespace StorageAndTrade_1_0.Довідники
         {
             СеріїНоменклатури_Objest copy = new СеріїНоменклатури_Objest();
 			copy.New();
-            copy.Назва = Назва;
-			copy.Номер = Номер;
+            copy.Номер = Номер;
+			copy.Коментар = Коментар;
 			
 			return copy;
         }
@@ -7697,8 +7697,8 @@ namespace StorageAndTrade_1_0.Довідники
             return directoryPointer;
         }
         
-        public string Назва { get; set; }
         public string Номер { get; set; }
+        public string Коментар { get; set; }
         
     }
     

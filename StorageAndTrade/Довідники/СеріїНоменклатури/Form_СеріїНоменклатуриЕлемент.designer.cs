@@ -32,7 +32,7 @@ namespace StorageAndTrade
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_СеріїНоменклатуриЕлемент));
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBox_Коментар = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_Номер = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -50,7 +50,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(60, 77);
+            this.buttonSave.Location = new System.Drawing.Point(78, 77);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
@@ -58,33 +58,33 @@ namespace StorageAndTrade
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBoxName
+            // textBox_Коментар
             // 
-            this.textBoxName.Location = new System.Drawing.Point(60, 12);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(489, 20);
-            this.textBoxName.TabIndex = 20;
+            this.textBox_Коментар.Location = new System.Drawing.Point(78, 38);
+            this.textBox_Коментар.Name = "textBox_Коментар";
+            this.textBox_Коментар.Size = new System.Drawing.Size(471, 20);
+            this.textBox_Коментар.TabIndex = 20;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 15);
+            this.label2.Location = new System.Drawing.Point(12, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(60, 13);
             this.label2.TabIndex = 19;
-            this.label2.Text = "Назва:";
+            this.label2.Text = "Коментар:";
             // 
             // textBox_Номер
             // 
-            this.textBox_Номер.Location = new System.Drawing.Point(60, 38);
+            this.textBox_Номер.Location = new System.Drawing.Point(78, 12);
             this.textBox_Номер.Name = "textBox_Номер";
-            this.textBox_Номер.Size = new System.Drawing.Size(489, 20);
+            this.textBox_Номер.Size = new System.Drawing.Size(471, 20);
             this.textBox_Номер.TabIndex = 22;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 41);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 21;
@@ -97,7 +97,7 @@ namespace StorageAndTrade
             this.ClientSize = new System.Drawing.Size(571, 123);
             this.Controls.Add(this.textBox_Номер);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxName);
+            this.Controls.Add(this.textBox_Коментар);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonSave);
@@ -115,7 +115,7 @@ namespace StorageAndTrade
 
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBox_Коментар;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_Номер;
         private System.Windows.Forms.Label label1;

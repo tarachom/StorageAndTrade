@@ -79,8 +79,8 @@ namespace StorageAndTrade
 					{
 						this.Text += " - Редагування";
 
-						textBoxName.Text = серіїНоменклатури_Objest.Назва;
 						textBox_Номер.Text = серіїНоменклатури_Objest.Номер;
+						textBox_Коментар.Text = серіїНоменклатури_Objest.Коментар;
 					}
 					else
 						MessageBox.Show("Error read");
@@ -97,8 +97,8 @@ namespace StorageAndTrade
 
 				try
 				{
-					серіїНоменклатури_Objest.Назва = textBoxName.Text;
 					серіїНоменклатури_Objest.Номер = textBox_Номер.Text;
+					серіїНоменклатури_Objest.Коментар = textBox_Коментар.Text;
 					серіїНоменклатури_Objest.Save();
 				}
 				catch (Exception exp)

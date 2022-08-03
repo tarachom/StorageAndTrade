@@ -51,8 +51,8 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
-			dataGridViewRecords.Columns["Назва"].Width = 300;
 			dataGridViewRecords.Columns["Номер"].Width = 300;
+			dataGridViewRecords.Columns["Коментар"].Width = 300;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -71,11 +71,11 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Довідники.СеріїНоменклатури_Select серіїНоменклатури_Select = new Довідники.СеріїНоменклатури_Select();
-			серіїНоменклатури_Select.QuerySelect.Field.Add(Довідники.СеріїНоменклатури_Const.Назва);
 			серіїНоменклатури_Select.QuerySelect.Field.Add(Довідники.СеріїНоменклатури_Const.Номер);
+			серіїНоменклатури_Select.QuerySelect.Field.Add(Довідники.СеріїНоменклатури_Const.Коментар);
 
 			//ORDER
-			серіїНоменклатури_Select.QuerySelect.Order.Add(Довідники.СеріїНоменклатури_Const.Назва, SelectOrder.ASC);
+			серіїНоменклатури_Select.QuerySelect.Order.Add(Довідники.СеріїНоменклатури_Const.Номер, SelectOrder.ASC);
 
 			серіїНоменклатури_Select.Select();
 			while (серіїНоменклатури_Select.MoveNext())
@@ -85,8 +85,8 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.СеріїНоменклатури_Const.Назва].ToString(),
-					Номер = cur.Fields[Довідники.СеріїНоменклатури_Const.Номер].ToString()
+					Номер = cur.Fields[Довідники.СеріїНоменклатури_Const.Номер].ToString(),
+					Коментар = cur.Fields[Довідники.СеріїНоменклатури_Const.Коментар].ToString(),
 				});
 
 				if (DirectoryPointerItem != null)
@@ -107,8 +107,8 @@ namespace StorageAndTrade
 			public Записи() { Image = Properties.Resources.doc_text_image; }
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
-			public string Назва { get; set; }
 			public string Номер { get; set; }
+			public string Коментар { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -180,7 +180,7 @@ namespace StorageAndTrade
                     {
 						Довідники.СеріїНоменклатури_Objest серіїНоменклатури_Objest_Новий = серіїНоменклатури_Objest.Copy();
 						серіїНоменклатури_Objest_Новий.Номер = Guid.NewGuid().ToString();
-						серіїНоменклатури_Objest_Новий.Назва = серіїНоменклатури_Objest_Новий.Номер;
+						серіїНоменклатури_Objest_Новий.Коментар = "Копія - " + серіїНоменклатури_Objest.Номер;
 						серіїНоменклатури_Objest_Новий.Save();
 					}
                     else

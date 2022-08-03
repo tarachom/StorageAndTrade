@@ -110,7 +110,7 @@ namespace StorageAndTrade
 
 			//JOIN 4
 			querySelect.FieldAndAlias.Add(
-				new NameValue<string>(Довідники.СеріїНоменклатури_Const.TABLE + "." + Довідники.СеріїНоменклатури_Const.Назва, "seria_name"));
+				new NameValue<string>(Довідники.СеріїНоменклатури_Const.TABLE + "." + Довідники.СеріїНоменклатури_Const.Номер, "seria_number"));
 			querySelect.Joins.Add(
 				new Join(Довідники.СеріїНоменклатури_Const.TABLE, Документи.ПоступленняТоварівТаПослуг_Товари_TablePart.Серія, querySelect.Table));
 
@@ -144,7 +144,7 @@ namespace StorageAndTrade
 					Характеристика = record.ХарактеристикаНоменклатури,
 					ХарактеристикаНазва = JoinValue[record.UID.ToString()]["xar_name"],
 					Серія = record.Серія,
-					СеріяНазва = JoinValue[record.UID.ToString()]["seria_name"],
+					СеріяНазва = JoinValue[record.UID.ToString()]["seria_number"],
 					КількістьУпаковок = record.КількістьУпаковок,
 					Пакування = record.Пакування,
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
