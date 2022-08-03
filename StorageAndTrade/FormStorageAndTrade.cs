@@ -194,6 +194,13 @@ namespace StorageAndTrade
             form_ХарактеристикиНоменклатури.Show();
         }
 
+        private void серіїНоменклатуриToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_СеріїНоменклатури form_СеріїНоменклатури = new Form_СеріїНоменклатури();
+            form_СеріїНоменклатури.MdiParent = this;
+            form_СеріїНоменклатури.Show();
+        }
+
         #endregion
 
         #region Документи Меню
@@ -566,5 +573,7 @@ namespace StorageAndTrade
             formService.MdiParent = this;
             formService.Show();
         }
+
+        
     }
 }
