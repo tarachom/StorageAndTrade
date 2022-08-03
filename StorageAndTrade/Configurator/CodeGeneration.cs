@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 30.07.2022 00:42:36
+ * Дата конфігурації: 03.08.2022 14:53:32
  *
  */
 
@@ -7611,6 +7611,153 @@ namespace StorageAndTrade_1_0.Довідники
    
     #endregion
     
+    #region DIRECTORY "СеріїНоменклатури"
+    
+    public static class СеріїНоменклатури_Const
+    {
+        public const string TABLE = "tab_b02";
+        
+        public const string Назва = "col_a1";
+        public const string Номер = "col_a3";
+    }
+	
+    
+    public class СеріїНоменклатури_Objest : DirectoryObject
+    {
+        public СеріїНоменклатури_Objest() : base(Config.Kernel, "tab_b02",
+             new string[] { "col_a1", "col_a3" }) 
+        {
+            Назва = "";
+            Номер = "";
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                Назва = base.FieldValue["col_a1"].ToString();
+                Номер = base.FieldValue["col_a3"].ToString();
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+		    base.FieldValue["col_a1"] = Назва;
+            base.FieldValue["col_a3"] = Номер;
+            
+            BaseSave();
+			
+        }
+
+        public string Serialize(string root = "СеріїНоменклатури")
+        {
+            return 
+            "<" + root + ">" +
+               "<uid>" + base.UnigueID.ToString() + "</uid>" +
+               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
+               "<Номер>" + "<![CDATA[" + Номер + "]]>" + "</Номер>"  +
+               "</" + root + ">";
+        }
+
+        public СеріїНоменклатури_Objest Copy()
+        {
+            СеріїНоменклатури_Objest copy = new СеріїНоменклатури_Objest();
+			copy.New();
+            copy.Назва = Назва;
+			copy.Номер = Номер;
+			
+			return copy;
+        }
+
+        public void Delete()
+        {
+            
+			base.BaseDelete(new string[] {  });
+        }
+        
+        public СеріїНоменклатури_Pointer GetDirectoryPointer()
+        {
+            СеріїНоменклатури_Pointer directoryPointer = new СеріїНоменклатури_Pointer(UnigueID.UGuid);
+            return directoryPointer;
+        }
+        
+        public string Назва { get; set; }
+        public string Номер { get; set; }
+        
+    }
+    
+    
+    public class СеріїНоменклатури_Pointer : DirectoryPointer
+    {
+        public СеріїНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_b02")
+        {
+            base.Init(new UnigueID(uid), null);
+        }
+        
+        public СеріїНоменклатури_Pointer(UnigueID uid, Dictionary<string, object> fields = null) : base(Config.Kernel, "tab_b02")
+        {
+            base.Init(uid, fields);
+        }
+        
+        public СеріїНоменклатури_Objest GetDirectoryObject()
+        {
+            if (this.IsEmpty()) return null;
+            СеріїНоменклатури_Objest СеріїНоменклатуриObjestItem = new СеріїНоменклатури_Objest();
+            return СеріїНоменклатуриObjestItem.Read(base.UnigueID) ? СеріїНоменклатуриObjestItem : null;
+        }
+		
+		public string GetPresentation()
+        {
+		    return base.BasePresentation(
+			    new string[] { "col_a3" }
+			);
+        }
+		
+        public СеріїНоменклатури_Pointer GetEmptyPointer()
+        {
+            return new СеріїНоменклатури_Pointer();
+        }
+    }
+    
+    
+    public class СеріїНоменклатури_Select : DirectorySelect, IDisposable
+    {
+        public СеріїНоменклатури_Select() : base(Config.Kernel, "tab_b02") { }        
+        public bool Select() { return base.BaseSelect(); }
+        
+        public bool SelectSingle() { if (base.BaseSelectSingle()) { MoveNext(); return true; } else { Current = null; return false; } }
+        
+        public bool MoveNext() { if (MoveToPosition()) { Current = new СеріїНоменклатури_Pointer(base.DirectoryPointerPosition.UnigueID, base.DirectoryPointerPosition.Fields); return true; } else { Current = null; return false; } }
+
+        public СеріїНоменклатури_Pointer Current { get; private set; }
+        
+        public СеріїНоменклатури_Pointer FindByField(string name, object value)
+        {
+            СеріїНоменклатури_Pointer itemPointer = new СеріїНоменклатури_Pointer();
+            DirectoryPointer directoryPointer = base.BaseFindByField(name, value);
+            if (!directoryPointer.IsEmpty()) itemPointer.Init(directoryPointer.UnigueID);
+            return itemPointer;
+        }
+        
+        public List<СеріїНоменклатури_Pointer> FindListByField(string name, object value, int limit = 0, int offset = 0)
+        {
+            List<СеріїНоменклатури_Pointer> directoryPointerList = new List<СеріїНоменклатури_Pointer>();
+            foreach (DirectoryPointer directoryPointer in base.BaseFindListByField(name, value, limit, offset)) 
+                directoryPointerList.Add(new СеріїНоменклатури_Pointer(directoryPointer.UnigueID));
+            return directoryPointerList;
+        }
+    }
+    
+      
+   
+    #endregion
+    
 }
 
 namespace StorageAndTrade_1_0.Перелічення
@@ -13910,10 +14057,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ТовариНаСкладах_Const
     {
         public const string TABLE = "tab_a38";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a36", "tab_a31", "tab_a51", "tab_a53", "tab_a83" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "РеалізаціяТоварівТаПослуг", "ПереміщенняТоварів", "ПоверненняТоварівПостачальнику", "ПоверненняТоварівВідКлієнта", "ВведенняЗалишків" };
         
         public const string Номенклатура = "col_e4";
         public const string ХарактеристикаНоменклатури = "col_e5";
         public const string Склад = "col_e6";
+        public const string Серія = "col_a1";
         public const string ВНаявності = "col_e7";
         public const string ДоВідвантаження = "col_e8";
     }
@@ -13922,7 +14072,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public class ТовариНаСкладах_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ТовариНаСкладах_RecordsSet() : base(Config.Kernel, "tab_a38",
-             new string[] { "col_e4", "col_e5", "col_e6", "col_e7", "col_e8" }) 
+             new string[] { "col_e4", "col_e5", "col_e6", "col_a1", "col_e7", "col_e8" }) 
         {
             Records = new List<Record>();
         }
@@ -13945,6 +14095,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_e4"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_e5"]);
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_e6"]);
+                record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a1"]);
                 record.ВНаявності = (fieldValue["col_e7"] != DBNull.Value) ? (decimal)fieldValue["col_e7"] : 0;
                 record.ДоВідвантаження = (fieldValue["col_e8"] != DBNull.Value) ? (decimal)fieldValue["col_e8"] : 0;
                 
@@ -13966,6 +14117,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 fieldValue.Add("col_e4", record.Номенклатура.UnigueID.UGuid);
                 fieldValue.Add("col_e5", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                 fieldValue.Add("col_e6", record.Склад.UnigueID.UGuid);
+                fieldValue.Add("col_a1", record.Серія.UnigueID.UGuid);
                 fieldValue.Add("col_e7", record.ВНаявності);
                 fieldValue.Add("col_e8", record.ДоВідвантаження);
                 
@@ -13989,6 +14141,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 Номенклатура = new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                 Склад = new Довідники.Склади_Pointer();
+                Серія = new Довідники.СеріїНоменклатури_Pointer();
                 ВНаявності = 0;
                 ДоВідвантаження = 0;
                 
@@ -13996,6 +14149,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
+            public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
             public decimal ВНаявності { get; set; }
             public decimal ДоВідвантаження { get; set; }
             
@@ -14009,6 +14163,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ТовариОрганізацій_Const
     {
         public const string TABLE = "tab_a39";
+		public static readonly string[] AllowDocumentSpendTable = new string[] {  };
+		public static readonly string[] AllowDocumentSpendType = new string[] {  };
         
         public const string Організація = "col_e9";
         public const string Номенклатура = "col_f2";
@@ -14103,6 +14259,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class РухТоварів_Const
     {
         public const string TABLE = "tab_a41";
+		public static readonly string[] AllowDocumentSpendTable = new string[] {  };
+		public static readonly string[] AllowDocumentSpendType = new string[] {  };
         
         public const string Номенклатура = "col_g3";
         public const string ХарактеристикаНоменклатури = "col_g4";
@@ -14199,6 +14357,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ЗамовленняКлієнтів_Const
     {
         public const string TABLE = "tab_a55";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a34", "tab_a36" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг" };
         
         public const string ЗамовленняКлієнта = "col_a1";
         public const string Номенклатура = "col_a2";
@@ -14307,6 +14467,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class РозрахункиЗКлієнтами_Const
     {
         public const string TABLE = "tab_a56";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a34", "tab_a36", "tab_a44", "tab_a48", "tab_a53", "tab_a81" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ПоверненняТоварівВідКлієнта", "АктВиконанихРобіт" };
         
         public const string Валюта = "col_a2";
         public const string Контрагент = "col_a5";
@@ -14396,6 +14558,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class Закупівлі_Const
     {
         public const string TABLE = "tab_a57";
+		public static readonly string[] AllowDocumentSpendTable = new string[] {  };
+		public static readonly string[] AllowDocumentSpendType = new string[] {  };
         
         public const string Організація = "col_a5";
         public const string Склад = "col_a6";
@@ -14505,6 +14669,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ВільніЗалишки_Const
     {
         public const string TABLE = "tab_a58";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a34", "tab_a36", "tab_a51", "tab_a53" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ПоверненняТоварівПостачальнику", "ПоверненняТоварівВідКлієнта" };
         
         public const string Номенклатура = "col_a5";
         public const string ХарактеристикаНоменклатури = "col_a6";
@@ -14609,6 +14775,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ЗамовленняПостачальникам_Const
     {
         public const string TABLE = "tab_a60";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a25", "tab_a32" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняПостачальнику", "ПоступленняТоварівТаПослуг" };
         
         public const string ЗамовленняПостачальнику = "col_a1";
         public const string Номенклатура = "col_a2";
@@ -14708,6 +14876,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class РозрахункиЗПостачальниками_Const
     {
         public const string TABLE = "tab_a61";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a25", "tab_a32", "tab_a44", "tab_a48", "tab_a51" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняПостачальнику", "ПоступленняТоварівТаПослуг", "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ПоверненняТоварівПостачальнику" };
         
         public const string Контрагент = "col_a6";
         public const string Валюта = "col_a7";
@@ -14797,6 +14967,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ТовариДоПоступлення_Const
     {
         public const string TABLE = "tab_a62";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a25" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняПостачальнику" };
         
         public const string Номенклатура = "col_b2";
         public const string ХарактеристикаНоменклатури = "col_b3";
@@ -14891,6 +15063,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class РухКоштів_Const
     {
         public const string TABLE = "tab_a78";
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a44", "tab_a48", "tab_a83" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ВведенняЗалишків" };
         
         public const string Організація = "col_a1";
         public const string Каса = "col_a2";
@@ -14985,6 +15159,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ПартіїТоварів_Const
     {
         public const string TABLE = "tab_a79";
+		public static readonly string[] AllowDocumentSpendTable = new string[] {  };
+		public static readonly string[] AllowDocumentSpendType = new string[] {  };
         
         public const string Організація = "col_a1";
         public const string ДокументПоступлення = "col_a2";
@@ -15089,6 +15265,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ТовариДоВідвантаження_Const
     {
         public const string TABLE = "tab_a80";
+		public static readonly string[] AllowDocumentSpendTable = new string[] {  };
+		public static readonly string[] AllowDocumentSpendType = new string[] {  };
         
         public const string Номенклатура = "col_b2";
         public const string ХарактеристикаНоменклатури = "col_b3";

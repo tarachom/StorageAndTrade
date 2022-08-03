@@ -135,10 +135,11 @@ ORDER BY Дата ASC
                 else
                     documentProcessedList.Add(Період, new List<string>() { ТипДокументу });
 
-                //Список регістрів доступних для документу
-                List<string> allowRegisterAccumulation = Config.Kernel.Conf.Documents[ТипДокументу].AllowRegisterAccumulation;
-
                 if (!documentProcessed)
+                {
+                    //Список регістрів доступних для документу
+                    List<string> allowRegisterAccumulation = Config.Kernel.Conf.Documents[ТипДокументу].AllowRegisterAccumulation;
+
                     foreach (string registerAccumulation in allowRegisterAccumulation)
                     {
                         switch (registerAccumulation)
@@ -460,6 +461,7 @@ HAVING
                                 }
                         }
                     }
+                }
 
                 string queryUpdate = $@"
 UPDATE {Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart.TABLE}

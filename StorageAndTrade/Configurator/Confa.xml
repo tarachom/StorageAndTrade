@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>30.07.2022 00:42:36</DateTimeSave>
+  <DateTimeSave>03.08.2022 14:53:32</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -3540,6 +3540,40 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           </Fields>
         </TablePart>
       </TabularParts>
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+    </Directory>
+    <Directory>
+      <Name>СеріїНоменклатури</Name>
+      <Table>tab_b02</Table>
+      <Desc>
+      </Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>Назва</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Номер</Name>
+          <NameInTable>col_a3</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -8339,6 +8373,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             </Desc>
             <IsIndex>0</IsIndex>
           </Field>
+          <Field>
+            <Name>Серія</Name>
+            <NameInTable>col_a1</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.СеріїНоменклатури</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
         </Fields>
       </DimensionFields>
       <ResourcesFields>
@@ -8364,6 +8407,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ПоступленняТоварівТаПослуг</Name>
+        <Name>РеалізаціяТоварівТаПослуг</Name>
+        <Name>ПереміщенняТоварів</Name>
+        <Name>ПоверненняТоварівПостачальнику</Name>
+        <Name>ПоверненняТоварівВідКлієнта</Name>
+        <Name>ВведенняЗалишків</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ТовариОрганізацій</Name>
@@ -8417,6 +8468,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend />
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>РухТоварів</Name>
@@ -8470,6 +8522,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend />
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ЗамовленняКлієнтів</Name>
@@ -8539,6 +8592,10 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ЗамовленняКлієнта</Name>
+        <Name>РеалізаціяТоварівТаПослуг</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>РозрахункиЗКлієнтами</Name>
@@ -8583,6 +8640,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ЗамовленняКлієнта</Name>
+        <Name>РеалізаціяТоварівТаПослуг</Name>
+        <Name>ПрихіднийКасовийОрдер</Name>
+        <Name>РозхіднийКасовийОрдер</Name>
+        <Name>ПоверненняТоварівВідКлієнта</Name>
+        <Name>АктВиконанихРобіт</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>Закупівлі</Name>
@@ -8661,6 +8726,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend />
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ВільніЗалишки</Name>
@@ -8730,6 +8796,13 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ПоступленняТоварівТаПослуг</Name>
+        <Name>ЗамовленняКлієнта</Name>
+        <Name>РеалізаціяТоварівТаПослуг</Name>
+        <Name>ПоверненняТоварівПостачальнику</Name>
+        <Name>ПоверненняТоварівВідКлієнта</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ЗамовленняПостачальникам</Name>
@@ -8792,6 +8865,10 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ЗамовленняПостачальнику</Name>
+        <Name>ПоступленняТоварівТаПослуг</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>РозрахункиЗПостачальниками</Name>
@@ -8836,6 +8913,13 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ЗамовленняПостачальнику</Name>
+        <Name>ПоступленняТоварівТаПослуг</Name>
+        <Name>ПрихіднийКасовийОрдер</Name>
+        <Name>РозхіднийКасовийОрдер</Name>
+        <Name>ПоверненняТоварівПостачальнику</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ТовариДоПоступлення</Name>
@@ -8889,6 +8973,9 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ЗамовленняПостачальнику</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>РухКоштів</Name>
@@ -8942,6 +9029,11 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend>
+        <Name>ПрихіднийКасовийОрдер</Name>
+        <Name>РозхіднийКасовийОрдер</Name>
+        <Name>ВведенняЗалишків</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ПартіїТоварів</Name>
@@ -9013,6 +9105,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           </Field>
         </Fields>
       </PropertyFields>
+      <AllowDocumentSpend />
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ТовариДоВідвантаження</Name>
@@ -9074,6 +9167,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields />
       </PropertyFields>
+      <AllowDocumentSpend />
     </RegisterAccumulation>
   </RegistersAccumulation>
 </Configuration>

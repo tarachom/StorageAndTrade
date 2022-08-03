@@ -81,7 +81,7 @@ namespace StorageAndTrade
             // 
             // buttonCreate
             // 
-            this.buttonCreate.Location = new System.Drawing.Point(114, 159);
+            this.buttonCreate.Location = new System.Drawing.Point(27, 170);
             this.buttonCreate.Name = "buttonCreate";
             this.buttonCreate.Size = new System.Drawing.Size(103, 27);
             this.buttonCreate.TabIndex = 4;
@@ -100,7 +100,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(697, 159);
+            this.buttonClose.Location = new System.Drawing.Point(697, 170);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(90, 27);
             this.buttonClose.TabIndex = 70;
@@ -113,9 +113,9 @@ namespace StorageAndTrade
             this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser.Location = new System.Drawing.Point(1, 203);
+            this.geckoWebBrowser.Location = new System.Drawing.Point(1, 217);
             this.geckoWebBrowser.Name = "geckoWebBrowser";
-            this.geckoWebBrowser.Size = new System.Drawing.Size(797, 371);
+            this.geckoWebBrowser.Size = new System.Drawing.Size(797, 357);
             this.geckoWebBrowser.TabIndex = 71;
             this.geckoWebBrowser.UseHttpActivityObserver = false;
             // 
@@ -139,7 +139,7 @@ namespace StorageAndTrade
             // 
             // button_Report
             // 
-            this.button_Report.Location = new System.Drawing.Point(223, 159);
+            this.button_Report.Location = new System.Drawing.Point(136, 170);
             this.button_Report.Name = "button_Report";
             this.button_Report.Size = new System.Drawing.Size(122, 27);
             this.button_Report.TabIndex = 76;
@@ -182,7 +182,7 @@ namespace StorageAndTrade
             // 
             // button_Documents
             // 
-            this.button_Documents.Location = new System.Drawing.Point(351, 159);
+            this.button_Documents.Location = new System.Drawing.Point(264, 170);
             this.button_Documents.Name = "button_Documents";
             this.button_Documents.Size = new System.Drawing.Size(96, 27);
             this.button_Documents.TabIndex = 77;

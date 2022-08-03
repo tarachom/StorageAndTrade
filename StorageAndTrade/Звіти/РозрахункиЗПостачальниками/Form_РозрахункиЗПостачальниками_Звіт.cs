@@ -225,7 +225,7 @@ WITH documents AS
 doc AS
 (";
             int counter = 0;
-            foreach (string table in new Journal_Select().Tables)
+            foreach (string table in РозрахункиЗПостачальниками_Const.AllowDocumentSpendTable)
             {
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
