@@ -59,6 +59,8 @@ namespace StorageAndTrade
             directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
             directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
             directoryControl_Серія.Init(new Form_СеріїНоменклатури(), new СеріїНоменклатури_Pointer());
+
+            dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
         }
 
         private void buttonbuttonOstatok_Click(object sender, EventArgs e)

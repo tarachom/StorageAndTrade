@@ -34,6 +34,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using StorageAndTrade.Service;
 
 namespace StorageAndTrade
 {
@@ -241,6 +242,42 @@ namespace StorageAndTrade
 			this.Close();
 		}
 
-        
+		Timer a { get; set; }
+
+		private void buttonBlocked_Click(object sender, EventArgs e)
+		{
+			if (IsNew.HasValue)
+			{
+				if (!IsNew.Value)
+				{
+					BlockedConfigurationObject.AddBlockedDocument(поступленняТоварівТаПослуг_Objest.UnigueID.UGuid, "");
+
+					if (a != null)
+						a.Dispose();
+
+					a = new Timer();
+					a.Interval = 5000;
+                    a.Tick += A_Tick;
+                    a.Disposed += A_Disposed;
+					a.Start();
+				}
+			}
+		}
+
+        private void A_Disposed(object sender, EventArgs e)
+        {
+			Console.WriteLine("Disposed");
+		}
+
+        private void A_Tick(object sender, EventArgs e)
+        {
+			Console.WriteLine("Tick");
+			labelBlockedInfo.Text = DateTime.Now.ToString();
+		}
+
+        private void Form_ПоступленняТоварівТаПослугДокумент_FormClosing(object sender, FormClosingEventArgs e)
+        {
+			a.Dispose();
+        }
     }
 }

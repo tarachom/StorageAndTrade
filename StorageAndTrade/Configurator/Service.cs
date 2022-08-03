@@ -74,6 +74,14 @@ namespace StorageAndTrade.Service
         {
             string query = "CREATE EXTENSION IF NOT EXISTS \"uuid-ossp\"";
             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+
+            /*
+            --CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+            --SELECT uuid_generate_v4();
+
+            --CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+            --SELECT gen_random_uuid(), uuid_generate_v4(); 
+            */
         }
 
         /// <summary>
@@ -856,12 +864,33 @@ WHERE uid = '{uid}'
             }
         }
     }
+
+    class BlockedConfigurationObject
+    {
+
+        public static void AddBlockedDocument(Guid documentUid, string userName)
+        {
+            Системні.ЗаблокованіОбєкти_Документи_TablePart заблокованіОбєкти_Документи_TablePart =
+                new Системні.ЗаблокованіОбєкти_Документи_TablePart();
+
+            Системні.ЗаблокованіОбєкти_Документи_TablePart.Record record =
+                new Системні.ЗаблокованіОбєкти_Документи_TablePart.Record();
+
+            record.Обєкт = documentUid;
+            record.Користувач = userName;
+            record.ДатаБлокування = DateTime.Now;
+
+            заблокованіОбєкти_Документи_TablePart.Records.Add(record);
+            заблокованіОбєкти_Документи_TablePart.Save(false);
+        }
+
+        public static void UpadateBlockedDocument(Guid documentUid, string userName)
+        {
+            Системні.ЗаблокованіОбєкти_Документи_TablePart заблокованіОбєкти_Документи_TablePart =
+                new Системні.ЗаблокованіОбєкти_Документи_TablePart();
+
+            
+        }
+    }
 }
 
-/*
---CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
---SELECT uuid_generate_v4();
-
---CREATE EXTENSION IF NOT EXISTS "pgcrypto";
---SELECT gen_random_uuid(), uuid_generate_v4(); 
-*/

@@ -63,7 +63,10 @@ namespace StorageAndTrade
             while (true)
             {
                 if (Константи.Системні.ВвімкнутиФоновіЗадачі_Const == false)
-                    return;
+                {
+                    Thread.Sleep(5000);
+                    continue;
+                }
 
                 CalculationBalances.ОбчисленняВіртуальнихЗалишківПоДнях();
                 CalculationBalances.ОбчисленняВіртуальнихЗалишківПоМісяцях();

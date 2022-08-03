@@ -151,6 +151,11 @@ namespace StorageAndTrade
 			//buttonSpendAll.Invoke(new Action(() => buttonSpendAll.Enabled = true));
 			//buttonCancel.Invoke(new Action(() => buttonCancel.Enabled = false));
 		}
+
+        private void FormService_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

@@ -57,6 +57,8 @@ namespace StorageAndTrade
             directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer());
             directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer());
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
+
+            dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)

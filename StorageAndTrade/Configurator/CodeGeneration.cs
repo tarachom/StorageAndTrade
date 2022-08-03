@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 03.08.2022 17:04:54
+ * Дата конфігурації: 03.08.2022 18:25:19
  *
  */
 
@@ -193,13 +193,14 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_a8", "col_a9", "col_g6" }, fieldValue);
+                 new string[] { "col_a8", "col_a9", "col_g6", "col_g7" }, fieldValue);
             
             if (IsSelect)
             {
                 m_ЖурналРеєстрації_Const = fieldValue["col_a8"].ToString();
                 m_ФоновіЗадачі_Const = fieldValue["col_a9"].ToString();
                 m_ВвімкнутиФоновіЗадачі_Const = (fieldValue["col_g6"] != DBNull.Value) ? bool.Parse(fieldValue["col_g6"].ToString()) : false;
+                m_ЗаблокованіОбєкти_Const = fieldValue["col_g7"].ToString();
                 
             }
 			
@@ -236,6 +237,17 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ВвімкнутиФоновіЗадачі_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g6", m_ВвімкнутиФоновіЗадачі_Const);
+            }
+        }
+        
+        static string m_ЗаблокованіОбєкти_Const = "";
+        public static string ЗаблокованіОбєкти_Const
+        {
+            get { return m_ЗаблокованіОбєкти_Const; }
+            set
+            {
+                m_ЗаблокованіОбєкти_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g7", m_ЗаблокованіОбєкти_Const);
             }
         }
         
@@ -588,6 +600,88 @@ namespace StorageAndTrade_1_0.Константи
                 public string Регістр { get; set; }
                 public DateTime Місяць { get; set; }
                 public bool Актуально { get; set; }
+                
+            }            
+        }
+          
+        public class ЗаблокованіОбєкти_Документи_TablePart : ConstantsTablePart
+        {
+            public ЗаблокованіОбєкти_Документи_TablePart() : base(Config.Kernel, "tab_b03",
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4" }) 
+            {
+                Records = new List<Record>();
+            }
+            
+            public const string TABLE = "tab_b03";
+            
+            public const string Обєкт = "col_a1";
+            public const string Користувач = "col_a2";
+            public const string ДатаБлокування = "col_a3";
+            public const string ДатаПідтвердженняБлокування = "col_a4";
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.Обєкт = (fieldValue["col_a1"] != DBNull.Value) ? Guid.Parse(fieldValue["col_a1"].ToString()) : Guid.Empty;
+                    record.Користувач = fieldValue["col_a2"].ToString();
+                    record.ДатаБлокування = (fieldValue["col_a3"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a3"].ToString()) : DateTime.MinValue;
+                    record.ДатаПідтвердженняБлокування = (fieldValue["col_a4"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a4"].ToString()) : DateTime.MinValue;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.Обєкт);
+                    fieldValue.Add("col_a2", record.Користувач);
+                    fieldValue.Add("col_a3", record.ДатаБлокування);
+                    fieldValue.Add("col_a4", record.ДатаПідтвердженняБлокування);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    Обєкт = new Guid();
+                    Користувач = "";
+                    ДатаБлокування = DateTime.MinValue;
+                    ДатаПідтвердженняБлокування = DateTime.MinValue;
+                    
+                }
+                public Guid Обєкт { get; set; }
+                public string Користувач { get; set; }
+                public DateTime ДатаБлокування { get; set; }
+                public DateTime ДатаПідтвердженняБлокування { get; set; }
                 
             }            
         }
@@ -11281,7 +11375,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоверненняТоварівПостачальнику_Товари_TablePart : DocumentTablePart
     {
         public ПоверненняТоварівПостачальнику_Товари_TablePart(ПоверненняТоварівПостачальнику_Objest owner) : base(Config.Kernel, "tab_a52",
-             new string[] { "col_a1", "col_d8", "col_d9", "col_e1", "col_e2", "col_e3", "col_e4", "col_e5", "col_a2" }) 
+             new string[] { "col_a1", "col_d8", "col_d9", "col_a3", "col_e1", "col_e2", "col_e3", "col_e4", "col_e5", "col_a2" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -11292,6 +11386,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string НомерРядка = "col_a1";
         public const string Номенклатура = "col_d8";
         public const string ХарактеристикаНоменклатури = "col_d9";
+        public const string Серія = "col_a3";
         public const string Пакування = "col_e1";
         public const string КількістьУпаковок = "col_e2";
         public const string Кількість = "col_e3";
@@ -11316,6 +11411,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.НомерРядка = (fieldValue["col_a1"] != DBNull.Value) ? (int)fieldValue["col_a1"] : 0;
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_d8"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_d9"]);
+                record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a3"]);
                 record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_e1"]);
                 record.КількістьУпаковок = (fieldValue["col_e2"] != DBNull.Value) ? (int)fieldValue["col_e2"] : 0;
                 record.Кількість = (fieldValue["col_e3"] != DBNull.Value) ? (decimal)fieldValue["col_e3"] : 0;
@@ -11343,6 +11439,7 @@ namespace StorageAndTrade_1_0.Документи
                 fieldValue.Add("col_a1", record.НомерРядка);
                 fieldValue.Add("col_d8", record.Номенклатура.UnigueID.UGuid);
                 fieldValue.Add("col_d9", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_a3", record.Серія.UnigueID.UGuid);
                 fieldValue.Add("col_e1", record.Пакування.UnigueID.UGuid);
                 fieldValue.Add("col_e2", record.КількістьУпаковок);
                 fieldValue.Add("col_e3", record.Кількість);
@@ -11381,6 +11478,7 @@ namespace StorageAndTrade_1_0.Документи
                 НомерРядка = 0;
                 Номенклатура = new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Серія = new Довідники.СеріїНоменклатури_Pointer();
                 Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
                 КількістьУпаковок = 0;
                 Кількість = 0;
@@ -11392,6 +11490,7 @@ namespace StorageAndTrade_1_0.Документи
             public int НомерРядка { get; set; }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
             public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public int КількістьУпаковок { get; set; }
             public decimal Кількість { get; set; }
@@ -11635,7 +11734,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоверненняТоварівВідКлієнта_Товари_TablePart : DocumentTablePart
     {
         public ПоверненняТоварівВідКлієнта_Товари_TablePart(ПоверненняТоварівВідКлієнта_Objest owner) : base(Config.Kernel, "tab_a54",
-             new string[] { "col_h2", "col_g3", "col_g4", "col_g5", "col_g6", "col_g7", "col_g8", "col_g9", "col_h1", "col_a2" }) 
+             new string[] { "col_h2", "col_g3", "col_g4", "col_a1", "col_g5", "col_g6", "col_g7", "col_g8", "col_g9", "col_h1", "col_a2" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -11646,6 +11745,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string НомерРядка = "col_h2";
         public const string Номенклатура = "col_g3";
         public const string ХарактеристикаНоменклатури = "col_g4";
+        public const string Серія = "col_a1";
         public const string Пакування = "col_g5";
         public const string КількістьУпаковок = "col_g6";
         public const string Кількість = "col_g7";
@@ -11671,6 +11771,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.НомерРядка = (fieldValue["col_h2"] != DBNull.Value) ? (int)fieldValue["col_h2"] : 0;
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_g3"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_g4"]);
+                record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a1"]);
                 record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_g5"]);
                 record.КількістьУпаковок = (fieldValue["col_g6"] != DBNull.Value) ? (int)fieldValue["col_g6"] : 0;
                 record.Кількість = (fieldValue["col_g7"] != DBNull.Value) ? (decimal)fieldValue["col_g7"] : 0;
@@ -11699,6 +11800,7 @@ namespace StorageAndTrade_1_0.Документи
                 fieldValue.Add("col_h2", record.НомерРядка);
                 fieldValue.Add("col_g3", record.Номенклатура.UnigueID.UGuid);
                 fieldValue.Add("col_g4", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_a1", record.Серія.UnigueID.UGuid);
                 fieldValue.Add("col_g5", record.Пакування.UnigueID.UGuid);
                 fieldValue.Add("col_g6", record.КількістьУпаковок);
                 fieldValue.Add("col_g7", record.Кількість);
@@ -11738,6 +11840,7 @@ namespace StorageAndTrade_1_0.Документи
                 НомерРядка = 0;
                 Номенклатура = new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Серія = new Довідники.СеріїНоменклатури_Pointer();
                 Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
                 КількістьУпаковок = 0;
                 Кількість = 0;
@@ -11750,6 +11853,7 @@ namespace StorageAndTrade_1_0.Документи
             public int НомерРядка { get; set; }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
             public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public int КількістьУпаковок { get; set; }
             public decimal Кількість { get; set; }

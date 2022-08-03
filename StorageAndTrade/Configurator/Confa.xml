@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>03.08.2022 17:04:54</DateTimeSave>
+  <DateTimeSave>03.08.2022 18:25:19</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -309,6 +309,54 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
 Використовується для зупинки чи запуску фонових задач.</Desc>
           <Type>boolean</Type>
           <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ЗаблокованіОбєкти</Name>
+          <NameInTable>col_g7</NameInTable>
+          <Desc>Об'єкти конфігурації які заблоковані для редагування</Desc>
+          <Type>string</Type>
+          <TabularParts>
+            <TablePart>
+              <Name>Документи</Name>
+              <Table>tab_b03</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Обєкт</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>any_pointer</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Користувач</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>string</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ДатаБлокування</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>datetime</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ДатаПідтвердженняБлокування</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>datetime</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+          </TabularParts>
         </Constant>
       </Constants>
     </ConstantsBlock>
@@ -6801,6 +6849,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
+              <Name>Серія</Name>
+              <NameInTable>col_a3</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.СеріїНоменклатури</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
               <Name>Пакування</Name>
               <NameInTable>col_e1</NameInTable>
               <Type>pointer</Type>
@@ -7058,6 +7115,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
               <NameInTable>col_g4</NameInTable>
               <Type>pointer</Type>
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Серія</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.СеріїНоменклатури</Pointer>
               <Desc>
               </Desc>
               <IsIndex>0</IsIndex>
