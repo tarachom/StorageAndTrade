@@ -32,6 +32,7 @@
 							<th>Номенклатура</th>
 							<th>Характеристика</th>
 							<th>Склад</th>
+							<th>Серія</th>
 							<th style="text-align:center">На початок</th>
 							<th style="text-align:center">Прихід</th>
 							<th style="text-align:center">Розхід</th>
@@ -48,6 +49,9 @@
 								</td>
 								<td>
 									<xsl:value-of select="Склад_Назва"/>
+								</td>
+								<td>
+									<xsl:value-of select="Серія_Номер"/>
 								</td>
 								<td align="right">
 									<xsl:value-of select="ПочатковийЗалишок"/>

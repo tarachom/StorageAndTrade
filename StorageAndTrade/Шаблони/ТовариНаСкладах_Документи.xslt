@@ -33,6 +33,7 @@
 							<th>Номенклатура</th>
 							<th>Характеристика</th>
 							<th>Склад</th>
+							<th>Серія</th>
 							<th></th>
 							<th style="text-align:center">В наявності</th>
 						</tr>
@@ -50,6 +51,9 @@
 								</td>
 								<td>
 									<xsl:value-of select="Склад_Назва"/>
+								</td>
+								<td>
+									<xsl:value-of select="Серія_Номер"/>
 								</td>
 								<td style="text-align:center;width:30;">
 									<xsl:choose>
