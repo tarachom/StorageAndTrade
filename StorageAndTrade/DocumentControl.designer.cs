@@ -39,6 +39,7 @@ namespace StorageAndTrade
             this.textBoxControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxControl.BackColor = System.Drawing.Color.White;
             this.textBoxControl.Location = new System.Drawing.Point(0, 2);
             this.textBoxControl.Multiline = true;
             this.textBoxControl.Name = "textBoxControl";
@@ -68,14 +69,14 @@ namespace StorageAndTrade
             this.buttonClear.UseVisualStyleBackColor = true;
             this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
-            // DirectoryControl
+            // DocumentControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.buttonClear);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.textBoxControl);
-            this.Name = "DirectoryControl";
+            this.Name = "DocumentControl";
             this.Size = new System.Drawing.Size(341, 27);
             this.ResumeLayout(false);
             this.PerformLayout();

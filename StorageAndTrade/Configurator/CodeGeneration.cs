@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 03.08.2022 14:53:32
+ * Дата конфігурації: 03.08.2022 15:32:23
  *
  */
 
@@ -896,7 +896,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ТовариНаСкладах_День_TablePart : ConstantsTablePart
         {
             public ТовариНаСкладах_День_TablePart() : base(Config.Kernel, "tab_a74",
-                 new string[] { "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3" }) 
+                 new string[] { "col_a7", "col_a8", "col_a9", "col_b1", "col_a1", "col_b2", "col_b3" }) 
             {
                 Records = new List<Record>();
             }
@@ -907,6 +907,7 @@ namespace StorageAndTrade_1_0.Константи
             public const string Номенклатура = "col_a8";
             public const string ХарактеристикаНоменклатури = "col_a9";
             public const string Склад = "col_b1";
+            public const string Серія = "col_a1";
             public const string ВНаявності = "col_b2";
             public const string ДоВідвантаження = "col_b3";
             public List<Record> Records { get; set; }
@@ -925,6 +926,7 @@ namespace StorageAndTrade_1_0.Константи
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a8"]);
                     record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a9"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_b1"]);
+                    record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a1"]);
                     record.ВНаявності = (fieldValue["col_b2"] != DBNull.Value) ? (decimal)fieldValue["col_b2"] : 0;
                     record.ДоВідвантаження = (fieldValue["col_b3"] != DBNull.Value) ? (decimal)fieldValue["col_b3"] : 0;
                     
@@ -949,6 +951,7 @@ namespace StorageAndTrade_1_0.Константи
                     fieldValue.Add("col_a8", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_a9", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_b1", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a1", record.Серія.UnigueID.UGuid);
                     fieldValue.Add("col_b2", record.ВНаявності);
                     fieldValue.Add("col_b3", record.ДоВідвантаження);
                     
@@ -971,6 +974,7 @@ namespace StorageAndTrade_1_0.Константи
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
+                    Серія = new Довідники.СеріїНоменклатури_Pointer();
                     ВНаявності = 0;
                     ДоВідвантаження = 0;
                     
@@ -979,6 +983,7 @@ namespace StorageAndTrade_1_0.Константи
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
+                public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
                 public decimal ВНаявності { get; set; }
                 public decimal ДоВідвантаження { get; set; }
                 
@@ -988,7 +993,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ТовариНаСкладах_Місяць_TablePart : ConstantsTablePart
         {
             public ТовариНаСкладах_Місяць_TablePart() : base(Config.Kernel, "tab_a73",
-                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a7", "col_a5", "col_a6" }) 
             {
                 Records = new List<Record>();
             }
@@ -999,6 +1004,7 @@ namespace StorageAndTrade_1_0.Константи
             public const string Номенклатура = "col_a2";
             public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
+            public const string Серія = "col_a7";
             public const string ВНаявності = "col_a5";
             public const string ДоВідвантаження = "col_a6";
             public List<Record> Records { get; set; }
@@ -1017,6 +1023,7 @@ namespace StorageAndTrade_1_0.Константи
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a2"]);
                     record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
+                    record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a7"]);
                     record.ВНаявності = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                     record.ДоВідвантаження = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
                     
@@ -1041,6 +1048,7 @@ namespace StorageAndTrade_1_0.Константи
                     fieldValue.Add("col_a2", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a7", record.Серія.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.ВНаявності);
                     fieldValue.Add("col_a6", record.ДоВідвантаження);
                     
@@ -1063,6 +1071,7 @@ namespace StorageAndTrade_1_0.Константи
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
+                    Серія = new Довідники.СеріїНоменклатури_Pointer();
                     ВНаявності = 0;
                     ДоВідвантаження = 0;
                     
@@ -1071,6 +1080,7 @@ namespace StorageAndTrade_1_0.Константи
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
+                public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
                 public decimal ВНаявності { get; set; }
                 public decimal ДоВідвантаження { get; set; }
                 
