@@ -277,7 +277,8 @@ namespace StorageAndTrade
 
         private void Form_ПоступленняТоварівТаПослугДокумент_FormClosing(object sender, FormClosingEventArgs e)
         {
-			a.Dispose();
+			if (a != null)
+				a.Dispose();
         }
     }
 }

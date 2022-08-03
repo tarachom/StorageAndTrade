@@ -38,7 +38,9 @@
 						<xsl:for-each select="ЗамовленняКлієнтів/row">
 							<tr>
 								<td>
-									<xsl:value-of select="Номенклатура_Назва"/>
+									<a id="{Номенклатура}" name="Довідник.Номенклатура" href="#">
+										<xsl:value-of select="Номенклатура_Назва"/>
+									</a>
 								</td>
 								<td>
 									<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
