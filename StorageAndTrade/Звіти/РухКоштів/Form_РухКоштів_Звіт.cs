@@ -424,7 +424,7 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
             );
 
             string query = $@"
-WITH documents AS
+WITH register AS
 (
      SELECT 
         РухКоштів.period AS period,
@@ -479,7 +479,7 @@ WITH documents AS
 
             query += $@"
 ),
-doc AS
+documents AS
 (";
             int counter = 0; 
             foreach (string table in РухКоштів_Const.AllowDocumentSpendTable)
@@ -490,16 +490,16 @@ doc AS
 SELECT 
     {table}.uid, 
     {table}.docname, 
-    documents.period, 
-    documents.income, 
-    documents.Сума,
+    register.period, 
+    register.income, 
+    register.Сума,
     Довідник_Організації.{Організації_Const.Назва} AS Організація_Назва,
     Довідник_Каси.{Каси_Const.Назва} AS Каса_Назва,
     Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва
-FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
-    LEFT JOIN {Організації_Const.TABLE} AS Довідник_Організації ON Довідник_Організації.uid = documents.Організація
-    LEFT JOIN {Каси_Const.TABLE} AS Довідник_Каси ON Довідник_Каси.uid = documents.Каса
-    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = documents.Валюта";
+FROM register INNER JOIN {table} ON {table}.uid = register.owner
+    LEFT JOIN {Організації_Const.TABLE} AS Довідник_Організації ON Довідник_Організації.uid = register.Організація
+    LEFT JOIN {Каси_Const.TABLE} AS Довідник_Каси ON Довідник_Каси.uid = register.Каса
+    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = register.Валюта";
 
                 counter++;
             }
@@ -515,7 +515,7 @@ SELECT
     Організація_Назва,
     Каса_Назва,
     Валюта_Назва
-FROM doc
+FROM documents
 ORDER BY period ASC
 ";
             //Console.WriteLine(query);

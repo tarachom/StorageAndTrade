@@ -179,7 +179,7 @@ ORDER BY Контрагент_Назва
             );
 
             string query = $@"
-WITH documents AS
+WITH register AS
 (
      SELECT 
         РозрахункиЗПостачальниками.period AS period,
@@ -222,7 +222,7 @@ WITH documents AS
 
             query += $@"
 ),
-doc AS
+documents AS
 (";
             int counter = 0;
             foreach (string table in РозрахункиЗПостачальниками_Const.AllowDocumentSpendTable)
@@ -233,14 +233,14 @@ doc AS
 SELECT 
     {table}.uid, 
     {table}.docname, 
-    documents.period, 
-    documents.income, 
-    documents.Сума,
+    register.period, 
+    register.income, 
+    register.Сума,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS Контрагент_Назва,
     Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва
-FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
-    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = documents.Контрагент
-    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = documents.Валюта
+FROM register INNER JOIN {table} ON {table}.uid = register.owner
+    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = register.Контрагент
+    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = register.Валюта
 ";
 
                 #region WHERE
@@ -287,7 +287,7 @@ SELECT
     Сума, 
     Контрагент_Назва,
     Валюта_Назва
-FROM doc
+FROM documents
 ORDER BY period ASC
 ";
 

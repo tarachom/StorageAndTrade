@@ -58,6 +58,7 @@ namespace StorageAndTrade
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer());
             directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
             directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
+            directoryControl_Серія.Init(new Form_СеріїНоменклатури(), new СеріїНоменклатури_Pointer());
         }
 
         private void buttonbuttonOstatok_Click(object sender, EventArgs e)
@@ -71,7 +72,9 @@ SELECT
     ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
     ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Склад} AS Склад,
-    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва, 
+    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва,
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Серія} AS Серія,
+    Довідник_СеріїНоменклатури.{СеріїНоменклатури_Const.Номер} AS Серія_Номер,
     SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ВНаявності}) AS ВНаявності,
     SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ДоВідвантаження}) AS ДоВідвантаження
 FROM 
@@ -85,6 +88,9 @@ FROM
 
     LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
         ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Склад}
+
+    LEFT JOIN {СеріїНоменклатури_Const.TABLE} AS Довідник_СеріїНоменклатури ON Довідник_СеріїНоменклатури.uid = 
+        ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Серія}
 ";
             #region WHERE
 
@@ -171,12 +177,24 @@ FROM
 ";
             }
 
+            //Відбір по вибраному елементу Серії Номенклатури
+            if (!directoryControl_Серія.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_СеріїНоменклатури.uid = '{directoryControl_Серія.DirectoryPointerItem.UnigueID}'
+";
+            }
+
             #endregion
 
             query += $@"
 GROUP BY Номенклатура, Номенклатура_Назва, 
          ХарактеристикаНоменклатури, ХарактеристикаНоменклатури_Назва,
-         Склад, Склад_Назва
+         Склад, Склад_Назва,
+         Серія, Серія_Номер
 
 HAVING
     SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ВНаявності}) != 0 OR
@@ -513,7 +531,7 @@ ORDER BY Номенклатура_Назва, ХарактеристикаНом
             );
 
             string query = $@"
-WITH documents AS
+WITH register AS
 (
      SELECT 
         ТовариНаСкладах.period AS period,
@@ -522,6 +540,7 @@ WITH documents AS
         ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} AS Номенклатура,
         ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
         ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} AS Склад,
+        ТовариНаСкладах.{ТовариНаСкладах_Const.Серія} AS Серія,
         ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} AS ВНаявності
     FROM
         {ТовариНаСкладах_Const.TABLE} AS ТовариНаСкладах
@@ -564,11 +583,22 @@ WITH documents AS
 ";
             }
 
+            //Відбір по вибраному елементу Серія
+            if (!directoryControl_Серія.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+ТовариНаСкладах.{ТовариНаСкладах_Const.Серія} = '{directoryControl_Серія.DirectoryPointerItem.UnigueID}'
+";
+            }
+
             #endregion
 
             query += $@"
 ),
-doc AS
+documents AS
 (";
             int counter = 0;
             foreach (string table in ТовариНаСкладах_Const.AllowDocumentSpendTable)
@@ -579,16 +609,18 @@ doc AS
 SELECT 
     {table}.uid, 
     {table}.docname, 
-    documents.period, 
-    documents.income, 
-    documents.ВНаявності,
+    register.period, 
+    register.income, 
+    register.ВНаявності,
     Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва,
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
-    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва
-FROM documents INNER JOIN {table} ON {table}.uid = documents.owner
-    LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = documents.Номенклатура
-    LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = documents.ХарактеристикаНоменклатури
-    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = documents.Склад
+    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва,
+    Довідник_СеріїНоменклатури.{СеріїНоменклатури_Const.Номер} AS Серія_Номер
+FROM register INNER JOIN {table} ON {table}.uid = register.owner
+    LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = register.Номенклатура
+    LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = register.ХарактеристикаНоменклатури
+    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = register.Склад
+    LEFT JOIN {СеріїНоменклатури_Const.TABLE} AS Довідник_СеріїНоменклатури ON Довідник_СеріїНоменклатури.uid = register.Серія
 ";
 
                 #region WHERE
@@ -660,11 +692,11 @@ SELECT
     ВНаявності, 
     Номенклатура_Назва,
     ХарактеристикаНоменклатури_Назва,
-    Склад_Назва
-FROM doc
+    Склад_Назва,
+    Серія_Номер
+FROM documents
 ORDER BY period ASC
 ";
-            //Console.WriteLine(query);
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
