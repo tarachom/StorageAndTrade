@@ -231,6 +231,17 @@ WITH register AS
 
             isExistParent = true;
 
+            //Відбір по вибраному елементу Організація
+            if (!directoryControl_Організація.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{directoryControl_Організація.DirectoryPointerItem.UnigueID}'
+";
+            }
+
             //Відбір по вибраному елементу Номенклатура
             if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
             {
@@ -316,7 +327,6 @@ FROM register INNER JOIN {table} ON {table}.uid = register.owner
     )
 ";
                 }
-
 
                 #endregion
 

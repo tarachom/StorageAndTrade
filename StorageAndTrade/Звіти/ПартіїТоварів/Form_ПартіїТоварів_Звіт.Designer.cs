@@ -40,15 +40,15 @@ namespace StorageAndTrade
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonOstatok = new System.Windows.Forms.Button();
             this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
-            this.directoryControl_ХарактеристикаНоменклатури = new StorageAndTrade.DirectoryControl();
-            this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
-            this.directoryControl_НоменклатураПапка = new StorageAndTrade.DirectoryControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button_Documents = new System.Windows.Forms.Button();
-            this.directoryControl_Серія = new StorageAndTrade.DirectoryControl();
             this.label7 = new System.Windows.Forms.Label();
-            this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
             this.label4 = new System.Windows.Forms.Label();
+            this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Серія = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_НоменклатураПапка = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_ХарактеристикаНоменклатури = new StorageAndTrade.DirectoryControl();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,39 +142,6 @@ namespace StorageAndTrade
             this.geckoWebBrowser.TabIndex = 74;
             this.geckoWebBrowser.UseHttpActivityObserver = false;
             // 
-            // directoryControl_ХарактеристикаНоменклатури
-            // 
-            this.directoryControl_ХарактеристикаНоменклатури.AfterSelectFunc = null;
-            this.directoryControl_ХарактеристикаНоменклатури.BeforeClickOpenFunc = null;
-            this.directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem = null;
-            this.directoryControl_ХарактеристикаНоменклатури.Location = new System.Drawing.Point(113, 85);
-            this.directoryControl_ХарактеристикаНоменклатури.Name = "directoryControl_ХарактеристикаНоменклатури";
-            this.directoryControl_ХарактеристикаНоменклатури.SelectForm = null;
-            this.directoryControl_ХарактеристикаНоменклатури.Size = new System.Drawing.Size(357, 27);
-            this.directoryControl_ХарактеристикаНоменклатури.TabIndex = 63;
-            // 
-            // directoryControl_Номенклатура
-            // 
-            this.directoryControl_Номенклатура.AfterSelectFunc = null;
-            this.directoryControl_Номенклатура.BeforeClickOpenFunc = null;
-            this.directoryControl_Номенклатура.DirectoryPointerItem = null;
-            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(113, 52);
-            this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
-            this.directoryControl_Номенклатура.SelectForm = null;
-            this.directoryControl_Номенклатура.Size = new System.Drawing.Size(357, 27);
-            this.directoryControl_Номенклатура.TabIndex = 57;
-            // 
-            // directoryControl_НоменклатураПапка
-            // 
-            this.directoryControl_НоменклатураПапка.AfterSelectFunc = null;
-            this.directoryControl_НоменклатураПапка.BeforeClickOpenFunc = null;
-            this.directoryControl_НоменклатураПапка.DirectoryPointerItem = null;
-            this.directoryControl_НоменклатураПапка.Location = new System.Drawing.Point(113, 19);
-            this.directoryControl_НоменклатураПапка.Name = "directoryControl_НоменклатураПапка";
-            this.directoryControl_НоменклатураПапка.SelectForm = null;
-            this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(357, 27);
-            this.directoryControl_НоменклатураПапка.TabIndex = 55;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.directoryControl_НоменклатураПапка);
@@ -192,24 +159,13 @@ namespace StorageAndTrade
             // 
             // button_Documents
             // 
-            this.button_Documents.Location = new System.Drawing.Point(275, 200);
+            this.button_Documents.Location = new System.Drawing.Point(108, 200);
             this.button_Documents.Name = "button_Documents";
             this.button_Documents.Size = new System.Drawing.Size(96, 27);
             this.button_Documents.TabIndex = 78;
             this.button_Documents.Text = "По документах";
             this.button_Documents.UseVisualStyleBackColor = true;
             this.button_Documents.Click += new System.EventHandler(this.button_Documents_Click);
-            // 
-            // directoryControl_Серія
-            // 
-            this.directoryControl_Серія.AfterSelectFunc = null;
-            this.directoryControl_Серія.BeforeClickOpenFunc = null;
-            this.directoryControl_Серія.DirectoryPointerItem = null;
-            this.directoryControl_Серія.Location = new System.Drawing.Point(567, 80);
-            this.directoryControl_Серія.Name = "directoryControl_Серія";
-            this.directoryControl_Серія.SelectForm = null;
-            this.directoryControl_Серія.Size = new System.Drawing.Size(330, 27);
-            this.directoryControl_Серія.TabIndex = 63;
             // 
             // label7
             // 
@@ -219,6 +175,15 @@ namespace StorageAndTrade
             this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 64;
             this.label7.Text = "Серія:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(512, 120);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Організація:";
             // 
             // directoryControl_Організація
             // 
@@ -231,14 +196,49 @@ namespace StorageAndTrade
             this.directoryControl_Організація.Size = new System.Drawing.Size(286, 27);
             this.directoryControl_Організація.TabIndex = 65;
             // 
-            // label4
+            // directoryControl_Серія
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(512, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 66;
-            this.label4.Text = "Організація:";
+            this.directoryControl_Серія.AfterSelectFunc = null;
+            this.directoryControl_Серія.BeforeClickOpenFunc = null;
+            this.directoryControl_Серія.DirectoryPointerItem = null;
+            this.directoryControl_Серія.Location = new System.Drawing.Point(567, 80);
+            this.directoryControl_Серія.Name = "directoryControl_Серія";
+            this.directoryControl_Серія.SelectForm = null;
+            this.directoryControl_Серія.Size = new System.Drawing.Size(330, 27);
+            this.directoryControl_Серія.TabIndex = 63;
+            // 
+            // directoryControl_НоменклатураПапка
+            // 
+            this.directoryControl_НоменклатураПапка.AfterSelectFunc = null;
+            this.directoryControl_НоменклатураПапка.BeforeClickOpenFunc = null;
+            this.directoryControl_НоменклатураПапка.DirectoryPointerItem = null;
+            this.directoryControl_НоменклатураПапка.Location = new System.Drawing.Point(113, 19);
+            this.directoryControl_НоменклатураПапка.Name = "directoryControl_НоменклатураПапка";
+            this.directoryControl_НоменклатураПапка.SelectForm = null;
+            this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(357, 27);
+            this.directoryControl_НоменклатураПапка.TabIndex = 55;
+            // 
+            // directoryControl_Номенклатура
+            // 
+            this.directoryControl_Номенклатура.AfterSelectFunc = null;
+            this.directoryControl_Номенклатура.BeforeClickOpenFunc = null;
+            this.directoryControl_Номенклатура.DirectoryPointerItem = null;
+            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(113, 52);
+            this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
+            this.directoryControl_Номенклатура.SelectForm = null;
+            this.directoryControl_Номенклатура.Size = new System.Drawing.Size(357, 27);
+            this.directoryControl_Номенклатура.TabIndex = 57;
+            // 
+            // directoryControl_ХарактеристикаНоменклатури
+            // 
+            this.directoryControl_ХарактеристикаНоменклатури.AfterSelectFunc = null;
+            this.directoryControl_ХарактеристикаНоменклатури.BeforeClickOpenFunc = null;
+            this.directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem = null;
+            this.directoryControl_ХарактеристикаНоменклатури.Location = new System.Drawing.Point(113, 85);
+            this.directoryControl_ХарактеристикаНоменклатури.Name = "directoryControl_ХарактеристикаНоменклатури";
+            this.directoryControl_ХарактеристикаНоменклатури.SelectForm = null;
+            this.directoryControl_ХарактеристикаНоменклатури.Size = new System.Drawing.Size(357, 27);
+            this.directoryControl_ХарактеристикаНоменклатури.TabIndex = 63;
             // 
             // Form_ПартіїТоварів_Звіт
             // 

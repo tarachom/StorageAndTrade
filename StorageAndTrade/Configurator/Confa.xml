@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>04.08.2022 17:38:06</DateTimeSave>
+  <DateTimeSave>04.08.2022 18:40:00</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1413,6 +1413,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
+                <Field>
+                  <Name>Серія</Name>
+                  <NameInTable>col_a8</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.СеріїНоменклатури</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
               </Fields>
             </TablePart>
             <TablePart>
@@ -1477,6 +1486,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <NameInTable>col_b5</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Серія</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.СеріїНоменклатури</Pointer>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
@@ -9365,6 +9383,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <NameInTable>col_a7</NameInTable>
             <Type>pointer</Type>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>Серія</Name>
+            <NameInTable>col_a8</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.СеріїНоменклатури</Pointer>
             <Desc>
             </Desc>
             <IsIndex>0</IsIndex>
