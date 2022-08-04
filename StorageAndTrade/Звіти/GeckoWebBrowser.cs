@@ -79,6 +79,13 @@ namespace StorageAndTrade
 
                             break;
                         }
+                    case "Номенклатура":
+                        {
+                            Form_НоменклатураЕлемент form = new Form_НоменклатураЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     case "Каси":
                         {
                             Form_КасиЕлемент form = new Form_КасиЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
@@ -89,13 +96,6 @@ namespace StorageAndTrade
                     case "Валюти":
                         {
                             Form_ВалютиЕлемент form = new Form_ВалютиЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
-                            form.Show();
-
-                            break;
-                        }
-                    case "Номенклатура":                        
-                        {
-                            Form_НоменклатураЕлемент form = new Form_НоменклатураЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;
