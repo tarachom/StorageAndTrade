@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 03.08.2022 18:25:19
+ * Дата конфігурації: 04.08.2022 16:33:59
  *
  */
 
@@ -12401,7 +12401,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ВведенняЗалишків_Товари_TablePart : DocumentTablePart
     {
         public ВведенняЗалишків_Товари_TablePart(ВведенняЗалишків_Objest owner) : base(Config.Kernel, "tab_a84",
-             new string[] { "col_e4", "col_d6", "col_d7", "col_d8", "col_d9", "col_e1", "col_e2", "col_e3" }) 
+             new string[] { "col_e4", "col_d6", "col_d7", "col_a1", "col_d8", "col_d9", "col_e1", "col_e2", "col_e3" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -12412,6 +12412,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string НомерРядка = "col_e4";
         public const string Номенклатура = "col_d6";
         public const string ХарактеристикаНоменклатури = "col_d7";
+        public const string Серія = "col_a1";
         public const string Пакування = "col_d8";
         public const string КількістьУпаковок = "col_d9";
         public const string Кількість = "col_e1";
@@ -12435,6 +12436,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.НомерРядка = (fieldValue["col_e4"] != DBNull.Value) ? (int)fieldValue["col_e4"] : 0;
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_d6"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_d7"]);
+                record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a1"]);
                 record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_d8"]);
                 record.КількістьУпаковок = (fieldValue["col_d9"] != DBNull.Value) ? (int)fieldValue["col_d9"] : 0;
                 record.Кількість = (fieldValue["col_e1"] != DBNull.Value) ? (decimal)fieldValue["col_e1"] : 0;
@@ -12461,6 +12463,7 @@ namespace StorageAndTrade_1_0.Документи
                 fieldValue.Add("col_e4", record.НомерРядка);
                 fieldValue.Add("col_d6", record.Номенклатура.UnigueID.UGuid);
                 fieldValue.Add("col_d7", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_a1", record.Серія.UnigueID.UGuid);
                 fieldValue.Add("col_d8", record.Пакування.UnigueID.UGuid);
                 fieldValue.Add("col_d9", record.КількістьУпаковок);
                 fieldValue.Add("col_e1", record.Кількість);
@@ -12498,6 +12501,7 @@ namespace StorageAndTrade_1_0.Документи
                 НомерРядка = 0;
                 Номенклатура = new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Серія = new Довідники.СеріїНоменклатури_Pointer();
                 Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
                 КількістьУпаковок = 0;
                 Кількість = 0;
@@ -12508,6 +12512,7 @@ namespace StorageAndTrade_1_0.Документи
             public int НомерРядка { get; set; }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
             public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public int КількістьУпаковок { get; set; }
             public decimal Кількість { get; set; }
