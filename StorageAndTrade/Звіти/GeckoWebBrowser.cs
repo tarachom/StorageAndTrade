@@ -128,6 +128,20 @@ namespace StorageAndTrade
 
                             break;
                         }
+                    case "ВидиЦін":
+                        {
+                            Form_ВидиЦінЕлемент form = new Form_ВидиЦінЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "ПакуванняОдиниціВиміру":
+                        {
+                            Form_ПакуванняОдиниціВиміруЕлемент form = new Form_ПакуванняОдиниціВиміруЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     default:
                         break;
                 }

@@ -105,16 +105,24 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="Номенклатура_Назва"/>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Склад_Назва"/>
+						<a id="{Склад}" name="Довідник.Склад" href="/">
+							<xsl:value-of select="Склад_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Серія_Номер"/>
+						<a id="{Серія}" name="Довідник.СеріїНоменклатури" href="/">
+							<xsl:value-of select="Серія_Номер"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="ВНаявності"/>
@@ -153,13 +161,19 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="Номенклатура_Назва"/>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Склад_Назва"/>
+						<a id="{Склад}" name="Довідник.Склад" href="/">
+							<xsl:value-of select="Склад_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Кількість"/>
@@ -198,16 +212,24 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="ЗамовленняКлієнта_Назва"/>
+						<a id="{ЗамовленняКлієнта}" name="Документ.ЗамовленняКлієнта" href="/">
+							<xsl:value-of select="ЗамовленняКлієнта_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Номенклатура_Назва"/>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Склад_Назва"/>
+						<a id="{Склад}" name="Довідник.Склад" href="/">
+							<xsl:value-of select="Склад_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Замовлено"/>
@@ -246,10 +268,14 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="Контрагент_Назва"/>
+						<a id="{Контрагент}" name="Довідник.Контрагенти" href="/">
+							<xsl:value-of select="Контрагент_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Валюта_Назва"/>
+						<a id="{Валюта}" name="Довідник.Валюти" href="/">
+							<xsl:value-of select="Валюта_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Сума"/>
@@ -288,13 +314,19 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="Номенклатура_Назва"/>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Склад_Назва"/>
+						<a id="{Склад}" name="Довідник.Склад" href="/">
+							<xsl:value-of select="Склад_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="ВНаявності"/>
@@ -338,16 +370,24 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="ЗамовленняПостачальнику_Назва"/>
+						<a id="{ЗамовленняПостачальнику}" name="Документ.ЗамовленняПостачальнику" href="/">
+							<xsl:value-of select="ЗамовленняПостачальнику_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Номенклатура_Назва"/>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Склад_Назва"/>
+						<a id="{Склад}" name="Довідник.Склад" href="/">
+							<xsl:value-of select="Склад_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Замовлено"/>
@@ -383,10 +423,14 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="Контрагент_Назва"/>
+						<a id="{Контрагент}" name="Довідник.Контрагенти" href="/">
+							<xsl:value-of select="Контрагент_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Валюта_Назва"/>
+						<a id="{Валюта}" name="Довідник.Валюти" href="/">
+							<xsl:value-of select="Валюта_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Сума"/>
@@ -423,13 +467,19 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="Номенклатура_Назва"/>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Склад_Назва"/>
+						<a id="{Склад}" name="Довідник.Склад" href="/">
+							<xsl:value-of select="Склад_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="ДоПоступлення"/>
@@ -466,13 +516,19 @@
 						</xsl:choose>
 					</td>
 					<td>
-						<xsl:value-of select="Організація_Назва"/>
+						<a id="{Організація}" name="Довідник.Організації" href="/">
+							<xsl:value-of select="Організація_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Каса_Назва"/>
+						<a id="{Каса}" name="Довідник.Каси" href="/">
+							<xsl:value-of select="Каса_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Валюта_Назва"/>
+						<a id="{Валюта}" name="Довідник.Валюти" href="/">
+							<xsl:value-of select="Валюта_Назва"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Сума"/>
@@ -502,22 +558,32 @@
 			<xsl:for-each select="row">
 				<tr>
 					<td>
-						<xsl:value-of select="Номенклатура_Назва"/>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="ВидЦіни_Назва"/>
+						<a id="{ВидЦіни}" name="Довідник.ВидиЦін" href="/">
+							<xsl:value-of select="ВидЦіни_Назва"/>
+						</a>
 					</td>
 					<td>
 						<xsl:value-of select="Ціна"/>
 					</td>
 					<td>
-						<xsl:value-of select="Пакування_Назва"/>
+						<a id="{Пакування}" name="Довідник.ПакуванняОдиниціВиміру" href="/">
+							<xsl:value-of select="Пакування_Назва"/>
+						</a>
 					</td>
 					<td>
-						<xsl:value-of select="Валюта_Назва"/>
+						<a id="{Валюта}" name="Довідник.Валюти" href="/">
+							<xsl:value-of select="Валюта_Назва"/>
+						</a>
 					</td>
 				</tr>
 			</xsl:for-each>
