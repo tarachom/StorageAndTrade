@@ -222,6 +222,37 @@ namespace StorageAndTrade_1_0.Документи
 
 			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
+			//
+			//Партії товарів
+			//
+
+			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+
+			foreach (РеалізаціяТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
+
+				//Товар
+				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					РегістриНакопичення.ПартіїТоварів_RecordsSet.Record record = new РегістриНакопичення.ПартіїТоварів_RecordsSet.Record();
+					партіїТоварів_RecordsSet.Records.Add(record);
+
+					record.Income = false; 
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.Організація = ДокументОбєкт.Організація;
+					record.ДокументПоступлення = new ПоступленняТоварівТаПослуг_Pointer(new UnigueID("713b2b49-0cf6-4ffc-969a-751cc18244bd"));
+					record.Кількість = Товари_Record.Кількість;
+					record.Собівартість = Товари_Record.Ціна;
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Серія = Товари_Record.Серія;
+				}
+			}
+
+			партіїТоварів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
 			//??? Договір
 
 			//
@@ -259,6 +290,9 @@ namespace StorageAndTrade_1_0.Документи
 
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
@@ -408,6 +442,7 @@ namespace StorageAndTrade_1_0.Документи
 					record.Собівартість = Товари_Record.Ціна;
 					record.Номенклатура = Товари_Record.Номенклатура;
 					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Серія = Товари_Record.Серія;
 				}
 			}
 

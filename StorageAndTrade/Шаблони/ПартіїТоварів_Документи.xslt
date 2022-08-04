@@ -34,6 +34,7 @@
 							<th>Документ поступлення</th>
 							<th>Номенклатура</th>
 							<th>Характеристика</th>
+							<th>Серія</th>
 							<th></th>
 							<th style="text-align:center">Кількість</th>
 							<th style="text-align:center">Собівартість</th>
@@ -64,6 +65,11 @@
 								<td>
 									<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
 										<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+									</a>
+								</td>
+								<td>
+									<a id="{Серія}" name="Довідник.СеріїНоменклатури" href="/">
+										<xsl:value-of select="Серія_Номер"/>
 									</a>
 								</td>
 								<td style="text-align:center;width:30;">

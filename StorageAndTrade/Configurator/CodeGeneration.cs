@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 04.08.2022 18:40:00
+ * Дата конфігурації: 04.08.2022 19:00:27
  *
  */
 
@@ -15509,8 +15509,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ПартіїТоварів_Const
     {
         public const string TABLE = "tab_a79";
-		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32" };
-		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг" };
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a36" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "РеалізаціяТоварівТаПослуг" };
         
         public const string Організація = "col_a1";
         public const string ДокументПоступлення = "col_a2";
