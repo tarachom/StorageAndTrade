@@ -65,7 +65,7 @@ namespace StorageAndTrade
             geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
-        private void buttonbuttonOstatok_Click(object sender, EventArgs e)
+        private void buttonOstatok_Click(object sender, EventArgs e)
         {
             bool isExistParent = false;
 
@@ -206,8 +206,6 @@ HAVING
 
 ORDER BY Номенклатура_Назва
 ";
-
-            //Console.WriteLine(query);
 
             XmlDocument xmlDoc = Функції.CreateXmlDocument();
 

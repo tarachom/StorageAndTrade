@@ -1256,6 +1256,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Шаблони\РозрахункиЗКлієнтами_ЗалишкиТаОбороти.xslt" />
+    <Content Include="Шаблони\ЗамовленняКлієнта_Документи.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Шаблони\ТовариНаСкладах_Документи.xslt">
       <SubType>Designer</SubType>
     </Content>
@@ -1278,7 +1281,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Шаблони\РухДокументівПоРегістрах.xslt" />
-    <Content Include="Шаблони\ЗамовленняКлієнта.xslt" />
+    <Content Include="Шаблони\ЗамовленняКлієнта_Залишки.xslt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

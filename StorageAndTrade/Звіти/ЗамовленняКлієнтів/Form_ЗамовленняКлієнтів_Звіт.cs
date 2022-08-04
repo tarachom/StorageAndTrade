@@ -31,6 +31,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
+using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 
@@ -56,11 +57,14 @@ namespace StorageAndTrade
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer());
             directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
             directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
-
             documentControl_ЗамовленняКлієнта.Init(new Form_ЗамовленняКлієнтаЖурнал(), new ЗамовленняКлієнта_Pointer());
+
+            dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
+
+            geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonOstatok_Click(object sender, EventArgs e)
         {
             bool isExistParent = false;
 
@@ -206,10 +210,15 @@ OR
 
 ORDER BY Номенклатура_Назва
 ";
-
-            //Console.WriteLine(query);
             
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy"))
+                }
+            );
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 
@@ -220,12 +229,228 @@ ORDER BY Номенклатура_Назва
 
             Функції.DataToXML(xmlDoc, "ЗамовленняКлієнтів", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта.xslt", true, "Замовлення клієнта");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта_Залишки.xslt", false, "Замовлення клієнта");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonDocuments_Click(object sender, EventArgs e)
+        {
+            bool isExistParent = false;
+
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
+                    new NameValue<string>("КінецьПеріоду", dateTimeStop.Value.ToString("dd.MM.yyyy"))
+                }
+            );
+
+            string query = $@"
+WITH register AS
+(
+     SELECT 
+        ЗамовленняКлієнтів.period AS period,
+        ЗамовленняКлієнтів.owner AS owner,
+        ЗамовленняКлієнтів.income AS income,
+        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} AS ЗамовленняКлієнта,
+        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} AS Номенклатура,
+        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад} AS Склад,
+        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} AS Замовлено,
+        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} AS Сума
+    FROM
+        {ЗамовленняКлієнтів_Const.TABLE} AS ЗамовленняКлієнтів
+    WHERE
+        (ЗамовленняКлієнтів.period >= @period_start AND ЗамовленняКлієнтів.period <= @period_end)
+";
+
+            #region WHERE
+
+            isExistParent = true;
+
+            //Відбір по вибраному Документу
+            if (!documentControl_ЗамовленняКлієнта.DocumentPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Номенклатура
+            if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                query += $@"
+ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Характеристики Номенклатури
+            if (!directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Склади
+            if (!directoryControl_Склади.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад} = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
+
+            query += $@"
+),
+documents AS
+(";
+            int counter = 0;
+            foreach (string table in ЗамовленняКлієнтів_Const.AllowDocumentSpendTable)
+            {
+                string docType = ЗамовленняКлієнтів_Const.AllowDocumentSpendType[counter];
+
+                string union = (counter > 0 ? "UNION" : "");
+                query += $@"
+{union}
+SELECT 
+    '{docType}' AS doctype,
+    {table}.uid, 
+    {table}.docname, 
+    register.period, 
+    register.income, 
+    register.Замовлено,
+    register.Сума,
+    register.ЗамовленняКлієнта,
+    Документ_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.Назва} AS ЗамовленняКлієнта_Назва,
+    register.Номенклатура,
+    Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва,
+    register.ХарактеристикаНоменклатури,
+    Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
+    register.Склад,
+    Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва
+FROM register INNER JOIN {table} ON {table}.uid = register.owner
+    LEFT JOIN {ЗамовленняКлієнта_Const.TABLE} AS Документ_ЗамовленняКлієнта ON Документ_ЗамовленняКлієнта.uid = register.ЗамовленняКлієнта
+    LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = register.Номенклатура
+    LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = register.ХарактеристикаНоменклатури
+    LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = register.Склад
+";
+
+                #region WHERE
+
+                isExistParent = false;
+
+                //Відбір по всіх вкладених папках вибраної папки Номенклатури
+                if (!directoryControl_НоменклатураПапка.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Номенклатура.{Номенклатура_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+            WHERE {Номенклатура_Папки_Const.TABLE}.uid = '{directoryControl_НоменклатураПапка.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Номенклатура_Папки_Const.TABLE}.uid
+            FROM {Номенклатура_Папки_Const.TABLE}
+                JOIN r ON {Номенклатура_Папки_Const.TABLE}.{Номенклатура_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+                }
+
+                //Відбір по всіх вкладених папках вибраної папки Склади
+                if (!directoryControl_СкладиПапки.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Склади.{Склади_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Склади_Папки_Const.TABLE}
+            WHERE {Склади_Папки_Const.TABLE}.uid = '{directoryControl_СкладиПапки.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Склади_Папки_Const.TABLE}.uid
+            FROM {Склади_Папки_Const.TABLE}
+                JOIN r ON {Склади_Папки_Const.TABLE}.{Склади_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+                }
+
+                #endregion
+
+                counter++;
+            }
+
+            query += $@"
+)
+SELECT 
+    doctype,
+    uid,
+    period,
+    docname, 
+    income, 
+    Замовлено, 
+    Сума, 
+    ЗамовленняКлієнта, 
+    ЗамовленняКлієнта_Назва,
+    Номенклатура,
+    Номенклатура_Назва,
+    ХарактеристикаНоменклатури,
+    ХарактеристикаНоменклатури_Назва,
+    Склад,
+    Склад_Назва
+FROM documents
+ORDER BY period ASC
+";
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 23:59:59"));
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта_Документи.xslt", false, "Замовлення клієнта");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
         }
     }
 }

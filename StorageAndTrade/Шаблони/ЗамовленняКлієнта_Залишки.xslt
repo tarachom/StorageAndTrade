@@ -20,13 +20,14 @@
 			</head>
 			<body>
 
-				<div class="container">
+				<div class="container-fluid">
 
-					<br/>
-					<h2>Замовлення клієнтів</h2>
-					<br/>
+					<h4>Замовлення клієнтів</h4>
+					<p>
+						На дату <xsl:value-of select="head/row/КінецьПеріоду"/>
+					</p>
 
-					<table class="table table-bordered table-sm">
+					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
 							<th>Номенклатура</th>
 							<th>Характеристика</th>
@@ -43,10 +44,14 @@
 									</a>
 								</td>
 								<td>
-									<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+									<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+										<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+									</a>
 								</td>
 								<td>
-									<xsl:value-of select="Склад_Назва"/>
+									<a id="{Склад}" name="Довідник.Склад" href="/">
+										<xsl:value-of select="Склад_Назва"/>
+									</a>
 								</td>
 								<td align="right">
 									<xsl:value-of select="Замовлено"/>
