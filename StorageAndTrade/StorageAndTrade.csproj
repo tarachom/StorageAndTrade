@@ -251,6 +251,7 @@
     <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.Designer.cs">
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
     </Compile>
+    <Compile Include="Звіти\GeckoWebBrowser.cs" />
     <Compile Include="СпільніФорми\Form_Report.cs">
       <SubType>Form</SubType>
     </Compile>

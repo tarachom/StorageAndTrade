@@ -61,6 +61,8 @@ namespace StorageAndTrade
             directoryControl_Серія.Init(new Form_СеріїНоменклатури(), new СеріїНоменклатури_Pointer());
 
             dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
+
+            geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
         private void buttonbuttonOstatok_Click(object sender, EventArgs e)
