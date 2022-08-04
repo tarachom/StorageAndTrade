@@ -630,18 +630,25 @@ documents AS
             int counter = 0;
             foreach (string table in ТовариНаСкладах_Const.AllowDocumentSpendTable)
             {
+                string docType = ТовариНаСкладах_Const.AllowDocumentSpendType[counter];
+
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
 {union}
 SELECT 
+    '{docType}' AS doctype,
     {table}.uid, 
     {table}.docname, 
     register.period, 
     register.income, 
     register.ВНаявності,
+    register.Номенклатура,
     Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва,
+    register.ХарактеристикаНоменклатури,
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
+    register.Склад,
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва,
+    register.Серія,
     Довідник_СеріїНоменклатури.{СеріїНоменклатури_Const.Номер} AS Серія_Номер
 FROM register INNER JOIN {table} ON {table}.uid = register.owner
     LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = register.Номенклатура
@@ -712,14 +719,19 @@ FROM register INNER JOIN {table} ON {table}.uid = register.owner
             query += $@"
 )
 SELECT 
+    doctype,
     uid,
     period,
     docname, 
     income, 
     ВНаявності, 
+    Номенклатура,
     Номенклатура_Назва,
+    ХарактеристикаНоменклатури,
     ХарактеристикаНоменклатури_Назва,
+    Склад,
     Склад_Назва,
+    Серія,
     Серія_Номер
 FROM documents
 ORDER BY period ASC

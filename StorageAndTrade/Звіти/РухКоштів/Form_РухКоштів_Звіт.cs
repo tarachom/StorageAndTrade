@@ -493,8 +493,11 @@ SELECT
     register.period, 
     register.income, 
     register.Сума,
+    register.Організація,
     Довідник_Організації.{Організації_Const.Назва} AS Організація_Назва,
+    register.Каса,
     Довідник_Каси.{Каси_Const.Назва} AS Каса_Назва,
+    register.Валюта,
     Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва
 FROM register INNER JOIN {table} ON {table}.uid = register.owner
     LEFT JOIN {Організації_Const.TABLE} AS Довідник_Організації ON Довідник_Організації.uid = register.Організація
@@ -512,8 +515,11 @@ SELECT
     docname, 
     income, 
     Сума, 
+    Організація,
     Організація_Назва,
+    Каса,
     Каса_Назва,
+    Валюта,
     Валюта_Назва
 FROM documents
 ORDER BY period ASC

@@ -72,11 +72,41 @@ namespace StorageAndTrade
                 {
                     case "Номенклатура":
                         {
-                            Form_НоменклатураЕлемент form_НоменклатураЕлемент = new Form_НоменклатураЕлемент();
-                            form_НоменклатураЕлемент.MdiParent = MdiParent;
-                            form_НоменклатураЕлемент.IsNew = false;
-                            form_НоменклатураЕлемент.Uid = uid;
-                            form_НоменклатураЕлемент.Show();
+                            Form_НоменклатураЕлемент form = new Form_НоменклатураЕлемент();
+                            form.MdiParent = MdiParent;
+                            form.IsNew = false;
+                            form.Uid = uid;
+                            form.Show();
+
+                            break;
+                        }
+                    case "Склад":
+                        {
+                            Form_СкладиЕлемент form = new Form_СкладиЕлемент();
+                            form.MdiParent = MdiParent;
+                            form.IsNew = false;
+                            form.Uid = uid;
+                            form.Show();
+
+                            break;
+                        }
+                    case "Характеристика":
+                        {
+                            Form_ХарактеристикиНоменклатуриЕлемент form = new Form_ХарактеристикиНоменклатуриЕлемент();
+                            form.MdiParent = MdiParent;
+                            form.IsNew = false;
+                            form.Uid = uid;
+                            form.Show();
+
+                            break;
+                        }
+                    case "СеріїНоменклатури":
+                        {
+                            Form_СеріїНоменклатуриЕлемент form = new Form_СеріїНоменклатуриЕлемент();
+                            form.MdiParent = MdiParent;
+                            form.IsNew = false;
+                            form.Uid = uid;
+                            form.Show();
 
                             break;
                         }
@@ -86,7 +116,21 @@ namespace StorageAndTrade
             }
             else if (group == "Документ")
             {
+                switch (name)
+                {
+                    case "ПоступленняТоварівТаПослуг":
+                        {
+                            Form_ПоступленняТоварівТаПослугДокумент form = new Form_ПоступленняТоварівТаПослугДокумент();
+                            form.MdiParent = MdiParent;
+                            form.IsNew = false;
+                            form.Uid = uid;
+                            form.Show();
 
+                            break;
+                        }
+                    default:
+                        break;
+                }
             } 
         }
     }
