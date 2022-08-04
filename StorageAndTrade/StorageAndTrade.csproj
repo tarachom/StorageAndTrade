@@ -264,6 +264,12 @@
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
     </Compile>
     <Compile Include="Звіти\GeckoWebBrowser.cs" />
+    <Compile Include="Звіти\ПартіїТоварів\Form_ПартіїТоварів_Звіт.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\ПартіїТоварів\Form_ПартіїТоварів_Звіт.Designer.cs">
+      <DependentUpon>Form_ПартіїТоварів_Звіт.cs</DependentUpon>
+    </Compile>
     <Compile Include="СпільніФорми\Form_Report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -878,6 +884,9 @@
     <EmbeddedResource Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.resx">
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\ПартіїТоварів\Form_ПартіїТоварів_Звіт.resx">
+      <DependentUpon>Form_ПартіїТоварів_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="СпільніФорми\Form_Report.resx">
       <DependentUpon>Form_Report.cs</DependentUpon>
     </EmbeddedResource>
@@ -1284,6 +1293,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Шаблони\РозрахункиЗПостачальниками_ЗалишкиТаОбороти.xslt" />
+    <Content Include="Шаблони\ПартіїТоварів_Залишки.xslt" />
     <Content Include="Шаблони\ТовариНаСкладах_ЗалишкиТаОбороти.xslt" />
     <Content Include="Шаблони\ТовариНаСкладах_Залишки.xslt" />
     <Content Include="Шаблони\РозрахункиЗПостачальниками_Залишки.xslt">

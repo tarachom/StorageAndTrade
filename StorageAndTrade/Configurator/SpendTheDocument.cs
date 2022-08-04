@@ -384,6 +384,36 @@ namespace StorageAndTrade_1_0.Документи
 			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
 			//
+			//Партії товарів
+			//
+
+			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+
+			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
+
+				//Товар
+				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					РегістриНакопичення.ПартіїТоварів_RecordsSet.Record record = new РегістриНакопичення.ПартіїТоварів_RecordsSet.Record();
+					партіїТоварів_RecordsSet.Records.Add(record);
+
+					record.Income = true; // + 
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.Організація = ДокументОбєкт.Організація;
+					record.ДокументПоступлення = ДокументОбєкт.GetDocumentPointer();
+					record.Кількість = Товари_Record.Кількість;
+					record.Собівартість = Товари_Record.Ціна;
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				}
+			}
+
+			партіїТоварів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			//
 			//ВільніЗалишки
 			//
 
@@ -478,6 +508,9 @@ namespace StorageAndTrade_1_0.Документи
 
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);

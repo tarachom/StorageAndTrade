@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>04.08.2022 16:33:59</DateTimeSave>
+  <DateTimeSave>04.08.2022 17:38:06</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1332,6 +1332,151 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Name>Вартість</Name>
                   <NameInTable>col_a8</NameInTable>
                   <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+          </TabularParts>
+        </Constant>
+        <Constant>
+          <Name>ПартіїТоварів</Name>
+          <NameInTable>col_g8</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>string</Type>
+          <TabularParts>
+            <TablePart>
+              <Name>День</Name>
+              <Table>tab_b04</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Період</Name>
+                  <NameInTable>col_a7</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>1</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Організація</Name>
+                  <NameInTable>col_a1</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Організації</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ДокументПоступлення</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Кількість</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Собівартість</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Номенклатура</Name>
+                  <NameInTable>col_a5</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Номенклатура</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ХарактеристикаНоменклатури</Name>
+                  <NameInTable>col_a6</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+              </Fields>
+            </TablePart>
+            <TablePart>
+              <Name>Місяць</Name>
+              <Table>tab_b05</Table>
+              <Desc>
+              </Desc>
+              <Fields>
+                <Field>
+                  <Name>Період</Name>
+                  <NameInTable>col_a8</NameInTable>
+                  <Type>date</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>1</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Організація</Name>
+                  <NameInTable>col_a9</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Організації</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ДокументПоступлення</Name>
+                  <NameInTable>col_b1</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Кількість</Name>
+                  <NameInTable>col_b2</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Собівартість</Name>
+                  <NameInTable>col_b3</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Номенклатура</Name>
+                  <NameInTable>col_b4</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Номенклатура</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ХарактеристикаНоменклатури</Name>
+                  <NameInTable>col_b5</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
@@ -4944,6 +5089,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Name>ВільніЗалишки</Name>
         <Name>ЗамовленняПостачальникам</Name>
         <Name>РозрахункиЗПостачальниками</Name>
+        <Name>ПартіїТоварів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>ПоступленняТоварівТаПослуг_Triggers.BeforeRecording</BeforeSave>
@@ -9194,7 +9340,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <IsIndex>0</IsIndex>
           </Field>
           <Field>
-            <Name>Вартість</Name>
+            <Name>Собівартість</Name>
             <NameInTable>col_a4</NameInTable>
             <Type>numeric</Type>
             <Desc>
@@ -9225,7 +9371,9 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           </Field>
         </Fields>
       </PropertyFields>
-      <AllowDocumentSpend />
+      <AllowDocumentSpend>
+        <Name>ПоступленняТоварівТаПослуг</Name>
+      </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
       <Name>ТовариДоВідвантаження</Name>

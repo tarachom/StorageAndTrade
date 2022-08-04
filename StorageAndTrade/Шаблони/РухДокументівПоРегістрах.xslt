@@ -30,6 +30,8 @@
 					<!--  -->
 					<xsl:apply-templates select="ТовариНаСкладах" />
 
+					<xsl:apply-templates select="ПартіїТоварів" />
+					
 					<xsl:apply-templates select="РухТоварів" />
 
 					<xsl:apply-templates select="ЗамовленняКлієнтів" />
@@ -137,6 +139,62 @@
 
 	</xsl:template>
 
+	<xsl:template match="ПартіїТоварів">
+		<br/>
+		<h5>Партії товарів</h5>
+
+		<table class="table table-bordered table-sm">
+			<tr class="table-success">
+				<th></th>
+				<th>Організація</th>
+				<th>Документ поступлення</th>
+				<th>Номенклатура</th>
+				<th>Характеристика</th>
+				<th style="text-align:center">Кількість</th>
+				<th style="text-align:center">Собівартість</th>
+			</tr>
+
+			<xsl:for-each select="row">
+				<tr>
+					<td style="text-align:center;width:30;">
+						<xsl:choose>
+							<xsl:when test="income='True'">+</xsl:when>
+							<xsl:otherwise>-</xsl:otherwise>
+						</xsl:choose>
+					</td>
+					<td>
+						<a id="{Організація}" name="Довідник.Організації" href="/">
+							<xsl:value-of select="Організація_Назва"/>
+						</a>
+					</td>
+					<td>
+						<a id="{ДокументПоступлення}" name="Документ.ПоступленняТоварівТаПослуг" href="/">
+							<xsl:value-of select="ДокументПоступлення_Назва"/>
+						</a>
+					</td>
+					<td>
+						<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+							<xsl:value-of select="Номенклатура_Назва"/>
+						</a>
+					</td>
+					<td>
+						<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+							<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+						</a>
+					</td>
+					<td style="text-align:center">
+						<xsl:value-of select="Кількість"/>
+					</td>
+					<td style="text-align:center">
+						<xsl:value-of select="Собівартість"/>
+					</td>
+				</tr>
+			</xsl:for-each>
+
+		</table>
+
+	</xsl:template>
+	
 	<xsl:template match="РухТоварів">
 		<br/>
 		<h5>Рух товарів</h5>

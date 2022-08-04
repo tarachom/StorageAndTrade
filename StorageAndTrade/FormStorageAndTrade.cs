@@ -345,6 +345,13 @@ namespace StorageAndTrade
             form_РухКоштів_Звіт.Show();
         }
 
+        private void партіїТоварівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПартіїТоварів_Звіт form_ПартіїТоварів_Звіт = new Form_ПартіїТоварів_Звіт();
+            form_ПартіїТоварів_Звіт.MdiParent = this;
+            form_ПартіїТоварів_Звіт.Show();
+        }
+
         #endregion
 
         #region Сервіс Меню
