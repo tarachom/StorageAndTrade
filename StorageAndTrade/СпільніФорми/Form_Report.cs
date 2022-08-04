@@ -34,23 +34,7 @@ namespace StorageAndTrade
         private void Form_Report_Load(object sender, EventArgs e)
         {
             geckoWebBrowser.Navigate(HtmlDocumentPath);
-            geckoWebBrowser.DomClick += GeckoWebBrowser_DomClick;
-        }
-
-        private void GeckoWebBrowser_DomClick(object sender, Gecko.DomMouseEventArgs e)
-        {
-            Gecko.GeckoElement geckoElement = e.Target.CastToGeckoElement();
-            if (geckoElement.TagName == "A")
-            {
-                if (geckoElement.GetAttribute("name") == "Довідник.Номенклатура")
-                {
-                    Form_НоменклатураЕлемент form_НоменклатураЕлемент = new Form_НоменклатураЕлемент();
-                    form_НоменклатураЕлемент.MdiParent = this.MdiParent;
-                    form_НоменклатураЕлемент.IsNew = false;
-                    form_НоменклатураЕлемент.Uid = geckoElement.GetAttribute("id");
-                    form_НоменклатураЕлемент.Show();
-                }
-            }
+            geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
     }
