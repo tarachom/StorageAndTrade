@@ -93,9 +93,16 @@ namespace StorageAndTrade
 
                             break;
                         }
-                    case "Номенклатура":
+                    case "Номенклатура":                        
                         {
                             Form_НоменклатураЕлемент form = new Form_НоменклатураЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "Контрагенти":
+                        {
+                            Form_КонтрагентиЕлемент form = new Form_КонтрагентиЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;

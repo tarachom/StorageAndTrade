@@ -40,10 +40,14 @@
 						<xsl:for-each select="ЗалишкиТаОбороти/row">
 							<tr>
 								<td>
-									<xsl:value-of select="Контрагент_Назва"/>
+									<a id="{Контрагент}" name="Довідник.Контрагенти" href="/">
+										<xsl:value-of select="Контрагент_Назва"/>
+									</a>
 								</td>
 								<td>
-									<xsl:value-of select="Валюта_Назва"/>
+									<a id="{Валюта}" name="Довідник.Валюти" href="/">
+										<xsl:value-of select="Валюта_Назва"/>
+									</a>
 								</td>
 								<td align="right">
 									<xsl:value-of select="ПочатковийЗалишок"/>
