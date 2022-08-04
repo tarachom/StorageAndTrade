@@ -64,48 +64,59 @@ namespace StorageAndTrade
             string group = groupAndNameSplit[0];
             string name = groupAndNameSplit[1];
 
+            Console.WriteLine($"{group} {name}");
+
             Form MdiParent = Application.OpenForms["FormStorageAndTrade"];
 
             if (group == "Довідник")
             {
                 switch (name)
                 {
+                    case "Організації":
+                        {
+                            Form_ОрганізаціїЕлемент form = new Form_ОрганізаціїЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "Каси":
+                        {
+                            Form_КасиЕлемент form = new Form_КасиЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "Валюти":
+                        {
+                            Form_ВалютиЕлемент form = new Form_ВалютиЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     case "Номенклатура":
                         {
-                            Form_НоменклатураЕлемент form = new Form_НоменклатураЕлемент();
-                            form.MdiParent = MdiParent;
-                            form.IsNew = false;
-                            form.Uid = uid;
+                            Form_НоменклатураЕлемент form = new Form_НоменклатураЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;
                         }
                     case "Склад":
                         {
-                            Form_СкладиЕлемент form = new Form_СкладиЕлемент();
-                            form.MdiParent = MdiParent;
-                            form.IsNew = false;
-                            form.Uid = uid;
+                            Form_СкладиЕлемент form = new Form_СкладиЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;
                         }
                     case "Характеристика":
                         {
-                            Form_ХарактеристикиНоменклатуриЕлемент form = new Form_ХарактеристикиНоменклатуриЕлемент();
-                            form.MdiParent = MdiParent;
-                            form.IsNew = false;
-                            form.Uid = uid;
+                            Form_ХарактеристикиНоменклатуриЕлемент form = new Form_ХарактеристикиНоменклатуриЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;
                         }
                     case "СеріїНоменклатури":
                         {
-                            Form_СеріїНоменклатуриЕлемент form = new Form_СеріїНоменклатуриЕлемент();
-                            form.MdiParent = MdiParent;
-                            form.IsNew = false;
-                            form.Uid = uid;
+                            Form_СеріїНоменклатуриЕлемент form = new Form_СеріїНоменклатуриЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;
@@ -120,10 +131,28 @@ namespace StorageAndTrade
                 {
                     case "ПоступленняТоварівТаПослуг":
                         {
-                            Form_ПоступленняТоварівТаПослугДокумент form = new Form_ПоступленняТоварівТаПослугДокумент();
-                            form.MdiParent = MdiParent;
-                            form.IsNew = false;
-                            form.Uid = uid;
+                            Form_ПоступленняТоварівТаПослугДокумент form = new Form_ПоступленняТоварівТаПослугДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "ПрихіднийКасовийОрдер":
+                        {
+                            Form_ПрихіднийКасовийОрдерДокумент form = new Form_ПрихіднийКасовийОрдерДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "РозхіднийКасовийОрдер":
+                        {
+                            Form_РозхіднийКасовийОрдерДокумент form = new Form_РозхіднийКасовийОрдерДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "ВведенняЗалишків":
+                        {
+                            Form_ВведенняЗалишківДокумент form = new Form_ВведенняЗалишківДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;

@@ -42,16 +42,24 @@
 						<xsl:for-each select="ЗалишкиТаОбороти/row">
 							<tr>
 								<td>
-									<xsl:value-of select="Номенклатура_Назва"/>
+									<a id="{Номенклатура}" name="Довідник.Номенклатура" href="/">
+										<xsl:value-of select="Номенклатура_Назва"/>
+									</a>
 								</td>
 								<td>
-									<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+									<a id="{ХарактеристикаНоменклатури}" name="Довідник.Характеристика" href="/">
+										<xsl:value-of select="ХарактеристикаНоменклатури_Назва"/>
+									</a>
 								</td>
 								<td>
-									<xsl:value-of select="Склад_Назва"/>
+									<a id="{Склад}" name="Довідник.Склад" href="/">
+										<xsl:value-of select="Склад_Назва"/>
+									</a>
 								</td>
 								<td>
-									<xsl:value-of select="Серія_Номер"/>
+									<a id="{Серія}" name="Довідник.СеріїНоменклатури" href="/">
+										<xsl:value-of select="Серія_Номер"/>
+									</a>
 								</td>
 								<td align="right">
 									<xsl:value-of select="ПочатковийЗалишок"/>

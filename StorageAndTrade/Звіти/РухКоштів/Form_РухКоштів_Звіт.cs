@@ -61,7 +61,7 @@ namespace StorageAndTrade
 
             dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
 
-            //geckoWebBrowser.LoadHtml("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"><p>Звіт не сформований</p>");
+            geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -366,6 +366,7 @@ LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Дов�
 
             query += @"
 GROUP BY Організація, Організація_Назва, Каса, Каса_Назва, Валюта, Валюта_Назва
+HAVING SUM(Прихід) != 0 OR SUM(Розхід) != 0
 ORDER BY Організація_Назва, Каса_Назва, Валюта_Назва
 ";
 
@@ -484,10 +485,13 @@ documents AS
             int counter = 0; 
             foreach (string table in РухКоштів_Const.AllowDocumentSpendTable)
             {
+                string docType = РухКоштів_Const.AllowDocumentSpendType[counter];
+
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
 {union}
 SELECT 
+    '{docType}' AS doctype,
     {table}.uid, 
     {table}.docname, 
     register.period, 
@@ -510,6 +514,7 @@ FROM register INNER JOIN {table} ON {table}.uid = register.owner
             query += $@"
 )
 SELECT 
+    doctype,
     uid,
     period,
     docname, 

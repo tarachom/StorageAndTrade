@@ -38,13 +38,19 @@
 						<xsl:for-each select="РухКоштів/row">
 							<tr>
 								<td>
-									<xsl:value-of select="Організація_Назва"/>
+									<a id="{Організація}" name="Довідник.Організації" href="/">
+										<xsl:value-of select="Організація_Назва"/>
+									</a>
 								</td>
 								<td>
-									<xsl:value-of select="Каса_Назва"/>
+									<a id="{Каса}" name="Довідник.Каси" href="/">
+										<xsl:value-of select="Каса_Назва"/>
+									</a>
 								</td>
 								<td>
-									<xsl:value-of select="Валюта_Назва"/>
+									<a id="{Валюта}" name="Довідник.Валюти" href="/">
+										<xsl:value-of select="Валюта_Назва"/>
+									</a>
 								</td>
 								<td align="right">
 									<xsl:value-of select="Сума"/>
