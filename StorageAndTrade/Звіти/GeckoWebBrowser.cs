@@ -136,6 +136,13 @@ namespace StorageAndTrade
             {
                 switch (name)
                 {
+                    case "АктВиконанихРобіт":
+                        {
+                            Form_АктВиконанихРобітДокумент form = new Form_АктВиконанихРобітДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     case "ПоступленняТоварівТаПослуг":
                         {
                             Form_ПоступленняТоварівТаПослугДокумент form = new Form_ПоступленняТоварівТаПослугДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };

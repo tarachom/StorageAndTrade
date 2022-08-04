@@ -20,6 +20,7 @@ limitations under the License.
 Адреса:   Україна, м. Львів
 Сайт:     accounting.org.ua
 */
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
+using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 
@@ -39,6 +41,8 @@ using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 using StorageAndTrade_1_0.Звіти;
+using StorageAndTrade_1_0.Константи;
+using StorageAndTrade_1_0.Журнали;
 
 namespace StorageAndTrade
 {
@@ -54,6 +58,10 @@ namespace StorageAndTrade
             directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer());
             directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer());
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
+
+            dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
+
+            geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)
@@ -62,22 +70,19 @@ namespace StorageAndTrade
 
             string query = $@"
 SELECT 
-    Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} AS Контрагент,
+    РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Контрагент} AS Контрагент,
     Довідник_Контрагенти.{Контрагенти_Const.Назва} AS Контрагент_Назва,
-    Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} AS Валюта, 
+    РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Валюта} AS Валюта, 
     Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва,
-
-    SUM(CASE WHEN Рег_РозрахункиЗКлієнтами.income = true THEN 
-        Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} ELSE 
-        -Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) AS Сума
+    SUM(РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Сума}) AS Сума
 FROM 
-    {РозрахункиЗКлієнтами_Const.TABLE} AS Рег_РозрахункиЗКлієнтами
+    {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE} AS РозрахункиЗКлієнтами_Місяць
 
     LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = 
-        Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта}
+        РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Валюта}
 
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент}
+        РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Контрагент}
 ";
             #region WHERE
 
@@ -135,16 +140,19 @@ GROUP BY Контрагент, Контрагент_Назва,
          Валюта, Валюта_Назва
 
 HAVING
-     SUM(CASE WHEN Рег_РозрахункиЗКлієнтами.income = true THEN 
-        Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} ELSE 
-        -Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) != 0
+     SUM(РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Сума}) != 0
 
 ORDER BY Контрагент_Назва
 ";
-
-            //Console.WriteLine(query);
             
             XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy"))
+                }
+            );
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 
@@ -155,7 +163,401 @@ ORDER BY Контрагент_Назва
 
             Функції.DataToXML(xmlDoc, "РозрахункиЗКлієнтами", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами.xslt", true, "Розрахунки з клієнтами");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Залишки.xslt", false, "Розрахунки з постачальниками");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
+        }
+
+        private void button_Documents_Click(object sender, EventArgs e)
+        {
+            bool isExistParent = false;
+
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
+                    new NameValue<string>("КінецьПеріоду", dateTimeStop.Value.ToString("dd.MM.yyyy"))
+                }
+            );
+
+            string query = $@"
+WITH register AS
+(
+     SELECT 
+        РозрахункиЗКлієнтами.period AS period,
+        РозрахункиЗКлієнтами.owner AS owner,
+        РозрахункиЗКлієнтами.income AS income,
+        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} AS Контрагент,
+        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} AS Валюта,
+        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} AS Сума
+    FROM
+        {РозрахункиЗКлієнтами_Const.TABLE} AS РозрахункиЗКлієнтами
+    WHERE
+        (РозрахункиЗКлієнтами.period >= @period_start AND РозрахункиЗКлієнтами.period <= @period_end)
+";
+
+            #region WHERE
+
+            isExistParent = true;
+
+            //Відбір по вибраному елементу Контрагенти
+            if (!directoryControl_Контрагенти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                query += $@"
+РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} = '{directoryControl_Контрагенти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Валюти
+            if (!directoryControl_Валюти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
+
+            query += $@"
+),
+documents AS
+(";
+            int counter = 0;
+            foreach (string table in РозрахункиЗКлієнтами_Const.AllowDocumentSpendTable)
+            {
+                string docType = РозрахункиЗКлієнтами_Const.AllowDocumentSpendType[counter];
+
+                string union = (counter > 0 ? "UNION" : "");
+                query += $@"
+{union}
+SELECT 
+    '{docType}' AS doctype,
+    {table}.uid, 
+    {table}.docname, 
+    register.period, 
+    register.income, 
+    register.Сума,
+    register.Контрагент,
+    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS Контрагент_Назва,
+    register.Валюта,
+    Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва
+FROM register INNER JOIN {table} ON {table}.uid = register.owner
+    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = register.Контрагент
+    LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = register.Валюта
+";
+
+                #region WHERE
+
+                isExistParent = false;
+
+                //Відбір по всіх вкладених папках вибраної папки Контрагенти
+                if (!directoryControl_КонтрагентиПапка.DirectoryPointerItem.IsEmpty())
+                {
+                    query += isExistParent ? "AND" : "WHERE";
+                    isExistParent = true;
+
+                    query += $@"
+Довідник_Контрагенти.{Контрагенти_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Контрагенти_Папки_Const.TABLE}
+            WHERE {Контрагенти_Папки_Const.TABLE}.uid = '{directoryControl_КонтрагентиПапка.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Контрагенти_Папки_Const.TABLE}.uid
+            FROM {Контрагенти_Папки_Const.TABLE}
+                JOIN r ON {Контрагенти_Папки_Const.TABLE}.{Контрагенти_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+                }
+
+                #endregion
+
+                counter++;
+            }
+
+            query += $@"
+)
+SELECT 
+    doctype,
+    uid,
+    period,
+    docname, 
+    income, 
+    Сума, 
+    Контрагент,
+    Контрагент_Назва,
+    Валюта,
+    Валюта_Назва
+FROM documents
+ORDER BY period ASC
+";
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("period_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 23:59:59"));
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Документи.xslt", false, "Розрахунки з постачальниками");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
+        }
+
+        void ЗалишкиТаОбороти(XmlDocument xmlDoc)
+        {
+            bool isExistParent = false;
+
+            string query = $@"
+WITH ostatok_month AS
+(
+    SELECT
+        'month' AS block,
+        РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Контрагент} AS Контрагент,
+        РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Валюта} AS Валюта,
+        SUM(РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Сума}) AS Сума
+    FROM 
+        {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.TABLE} AS РозрахункиЗКлієнтами_Місяць
+    WHERE
+        РозрахункиЗКлієнтами_Місяць.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_Місяць_TablePart.Період} < @period_month_end
+
+    GROUP BY Контрагент, Валюта
+), 
+ostatok_day AS
+(
+    SELECT
+        'day' AS block,
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Контрагент} AS Контрагент,
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Валюта} AS Валюта,
+        SUM(РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Сума}) AS Сума
+    FROM 
+        {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.TABLE} AS РозрахункиЗКлієнтами_День
+    WHERE
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Період} >= @period_day_start AND
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Період } < @period_day_end
+
+    GROUP BY Контрагент, Валюта
+), 
+ostatok_period AS
+(   
+    SELECT
+        'period' AS block,
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Контрагент} AS Контрагент,
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Валюта} AS Валюта,
+        SUM(РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Сума}) AS Сума
+    FROM 
+        {ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.TABLE} AS РозрахункиЗКлієнтами_День
+    WHERE
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Період} >= @period_ostatok_start AND
+        РозрахункиЗКлієнтами_День.{ВіртуальніТаблиціРегістрів.РозрахункиЗКлієнтами_День_TablePart.Період } <= @period_ostatok_end
+
+    GROUP BY Контрагент, Валюта
+),
+ostatok_na_potshatok_periodu AS
+(
+    SELECT
+       Контрагент,
+       Валюта,
+       SUM(Сума) AS Сума
+    FROM 
+    (
+        SELECT * FROM ostatok_month
+        UNION
+        SELECT * FROM ostatok_day
+    ) AS ostatok
+    GROUP BY Контрагент, Валюта
+),
+ostatok_na_kinec_periodu AS
+(
+    SELECT
+       Контрагент,
+       Валюта,
+       SUM(Сума) AS Сума
+    FROM 
+    (
+        SELECT * FROM ostatok_month
+        UNION
+        SELECT * FROM ostatok_day
+        UNION
+        SELECT * FROM ostatok_period
+    ) AS ostatok
+    GROUP BY Контрагент, Валюта
+),
+oborot AS
+(
+    SELECT 
+        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} AS Контрагент,
+        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} AS Валюта,
+        SUM(CASE WHEN РозрахункиЗКлієнтами.income = true THEN РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) AS Прихід,
+        SUM(CASE WHEN РозрахункиЗКлієнтами.income = false THEN РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} END) AS Розхід
+    FROM
+        {РозрахункиЗКлієнтами_Const.TABLE} AS РозрахункиЗКлієнтами
+    WHERE
+        РозрахункиЗКлієнтами.period >= @period_oborot_start AND
+        РозрахункиЗКлієнтами.period <= @period_oborot_end
+    GROUP BY Контрагент, Валюта
+)
+
+SELECT 
+    Контрагент,
+    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS Контрагент_Назва,
+    Валюта,
+    Довідник_Валюти.{Валюти_Const.Назва} AS Валюта_Назва,
+    SUM(ПочатковийЗалишок) AS ПочатковийЗалишок,
+    SUM(Прихід) AS Прихід,
+    SUM(Розхід) AS Розхід,
+    SUM(КінцевийЗалишок) AS КінцевийЗалишок
+FROM 
+(
+    SELECT 
+        'A',
+        Контрагент,
+        Валюта,
+        Сума AS ПочатковийЗалишок,
+        0 AS Прихід,
+        0 AS Розхід,
+        0 AS КінцевийЗалишок
+    FROM ostatok_na_potshatok_periodu
+
+    UNION
+
+    SELECT
+        'B',
+        Контрагент,
+        Валюта,
+        0 AS ПочатковийЗалишок,
+        0 AS Прихід,
+        0 AS Розхід,
+        Сума AS КінцевийЗалишок
+    FROM ostatok_na_kinec_periodu
+
+    UNION
+
+    SELECT
+        'C',
+        Контрагент,
+        Валюта,
+        0 AS ПочатковийЗалишок,
+        Прихід AS Прихід,
+        Розхід AS Розхід,
+        0 AS КінцевийЗалишок
+    FROM oborot
+) AS ЗалишкиТаОбороти
+
+LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = ЗалишкиТаОбороти.Контрагент
+LEFT JOIN {Валюти_Const.TABLE} AS Довідник_Валюти ON Довідник_Валюти.uid = ЗалишкиТаОбороти.Валюта
+";
+
+            #region WHERE
+
+            //Відбір по всіх вкладених папках вибраної папки Контрагенти
+            if (!directoryControl_КонтрагентиПапка.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Контрагенти.{Контрагенти_Const.Папка} IN 
+    (
+        WITH RECURSIVE r AS 
+        (
+            SELECT uid
+            FROM {Контрагенти_Папки_Const.TABLE}
+            WHERE {Контрагенти_Папки_Const.TABLE}.uid = '{directoryControl_КонтрагентиПапка.DirectoryPointerItem.UnigueID}' 
+
+            UNION ALL
+
+            SELECT {Контрагенти_Папки_Const.TABLE}.uid
+            FROM {Контрагенти_Папки_Const.TABLE}
+                JOIN r ON {Контрагенти_Папки_Const.TABLE}.{Контрагенти_Папки_Const.Родич} = r.uid
+        ) SELECT uid FROM r
+    )
+";
+            }
+
+            //Відбір по вибраному елементу Контрагенти
+            if (!directoryControl_Контрагенти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Контрагенти.uid = '{directoryControl_Контрагенти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            //Відбір по вибраному елементу Склади
+            if (!directoryControl_Валюти.DirectoryPointerItem.IsEmpty())
+            {
+                query += isExistParent ? "AND" : "WHERE";
+                isExistParent = true;
+
+                query += $@"
+Довідник_Валюти.uid = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
+";
+            }
+
+            #endregion
+
+            query += @"
+GROUP BY Контрагент, Контрагент_Назва, Валюта, Валюта_Назва
+HAVING SUM(Прихід) != 0 OR SUM(Розхід) != 0
+ORDER BY Контрагент_Назва, Валюта_Назва
+";
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("period_month_end", DateTime.Parse($"01.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+
+            paramQuery.Add("period_day_start", DateTime.Parse($"01.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_day_end", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+
+            paramQuery.Add("period_ostatok_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_ostatok_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 00:00:00"));
+
+            paramQuery.Add("period_oborot_start", DateTime.Parse($"{dateTimeStart.Value.Day}.{dateTimeStart.Value.Month}.{dateTimeStart.Value.Year} 00:00:00"));
+            paramQuery.Add("period_oborot_end", DateTime.Parse($"{dateTimeStop.Value.Day}.{dateTimeStop.Value.Month}.{dateTimeStop.Value.Year} 23:59:59"));
+
+            string[] columnsName;
+            List<object[]> listRow;
+
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Функції.DataToXML(xmlDoc, "ЗалишкиТаОбороти", columnsName, listRow);
+        }
+
+        private void buttonOstatokAndOborot_Click(object sender, EventArgs e)
+        {
+            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+
+            Функції.DataHeadToXML(xmlDoc, "head",
+                new List<NameValue<string>>()
+                {
+                    new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
+                    new NameValue<string>("КінецьПеріоду", dateTimeStop.Value.ToString("dd.MM.yyyy"))
+                }
+            );
+
+            ЗалишкиТаОбороти(xmlDoc);
+
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_ЗалишкиТаОбороти.xslt", false, "Розрахунки з клієнтами");
+
+            string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
+            geckoWebBrowser.Navigate(pathToHtmlFile);
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

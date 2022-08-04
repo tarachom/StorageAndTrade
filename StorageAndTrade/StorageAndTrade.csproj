@@ -245,6 +245,12 @@
       <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
     </Compile>
     <Compile Include="Журнали\ФункціїДляЖурналів.cs" />
+    <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.Designer.cs">
+      <DependentUpon>Form_РозрахункиЗКлієнтами_Звіт.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -395,10 +401,10 @@
     <Compile Include="Звіти\РозрахункиЗПостачальниками\Form_РозрахункиЗПостачальниками_Звіт.Designer.cs">
       <DependentUpon>Form_РозрахункиЗПостачальниками_Звіт.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.cs">
+    <Compile Include="Звіти\old\Form_РозрахункиЗКлієнтами_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.Designer.cs">
+    <Compile Include="Звіти\old\Form_РозрахункиЗКлієнтами_Звіт.Designer.cs">
       <DependentUpon>Form_РозрахункиЗКлієнтами_Звіт.cs</DependentUpon>
     </Compile>
     <Compile Include="Звіти\РухДокументівПоРегістрах\РухДокументівПоРегістрах.cs" />
@@ -857,6 +863,9 @@
     <EmbeddedResource Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітЖурнал.resx">
       <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.resx">
+      <DependentUpon>Form_РозрахункиЗКлієнтами_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.resx">
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
     </EmbeddedResource>
@@ -1126,7 +1135,7 @@
     <EmbeddedResource Include="Звіти\РозрахункиЗПостачальниками\Form_РозрахункиЗПостачальниками_Звіт.resx">
       <DependentUpon>Form_РозрахункиЗПостачальниками_Звіт.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.resx">
+    <EmbeddedResource Include="Звіти\old\Form_РозрахункиЗКлієнтами_Звіт.resx">
       <DependentUpon>Form_РозрахункиЗКлієнтами_Звіт.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.resx">
@@ -1237,9 +1246,16 @@
     <Content Include="Trash\Service.txt" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ЗамовленняПостачальникам.xslt" />
+    <Content Include="Шаблони\РозрахункиЗКлієнтами_Документи.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Шаблони\РозрахункиЗПостачальниками_Документи.xslt">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Шаблони\РозрахункиЗКлієнтами_Залишки.xslt">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Шаблони\РозрахункиЗКлієнтами_ЗалишкиТаОбороти.xslt" />
     <Content Include="Шаблони\ТовариНаСкладах_Документи.xslt">
       <SubType>Designer</SubType>
     </Content>
@@ -1258,7 +1274,7 @@
     <Content Include="Шаблони\РозрахункиЗПостачальниками_Залишки.xslt">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Шаблони\РозрахункиЗКлієнтами.xslt">
+    <Content Include="Шаблони\delete_РозрахункиЗКлієнтами.xslt">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Шаблони\РухДокументівПоРегістрах.xslt" />
