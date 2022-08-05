@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>04.08.2022 19:00:27</DateTimeSave>
+  <DateTimeSave>05.08.2022 21:10:48</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -9335,7 +9335,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Організації</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ДокументПоступлення</Name>
@@ -9344,7 +9344,34 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
+          </Field>
+          <Field>
+            <Name>Номенклатура</Name>
+            <NameInTable>col_a5</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Номенклатура</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>1</IsIndex>
+          </Field>
+          <Field>
+            <Name>ХарактеристикаНоменклатури</Name>
+            <NameInTable>col_a7</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>1</IsIndex>
+          </Field>
+          <Field>
+            <Name>Серія</Name>
+            <NameInTable>col_a8</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.СеріїНоменклатури</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -9371,28 +9398,9 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <PropertyFields>
         <Fields>
           <Field>
-            <Name>Номенклатура</Name>
-            <NameInTable>col_a5</NameInTable>
-            <Type>pointer</Type>
-            <Pointer>Довідники.Номенклатура</Pointer>
-            <Desc>
-            </Desc>
-            <IsIndex>0</IsIndex>
-          </Field>
-          <Field>
-            <Name>ХарактеристикаНоменклатури</Name>
-            <NameInTable>col_a7</NameInTable>
-            <Type>pointer</Type>
-            <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
-            <Desc>
-            </Desc>
-            <IsIndex>0</IsIndex>
-          </Field>
-          <Field>
-            <Name>Серія</Name>
-            <NameInTable>col_a8</NameInTable>
-            <Type>pointer</Type>
-            <Pointer>Довідники.СеріїНоменклатури</Pointer>
+            <Name>СписанаСобівартість</Name>
+            <NameInTable>col_b5</NameInTable>
+            <Type>numeric</Type>
             <Desc>
             </Desc>
             <IsIndex>0</IsIndex>

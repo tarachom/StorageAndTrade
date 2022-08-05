@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using AccountingSoftware;
 using StorageAndTrade.Service;
+using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade_1_0.Документи
 {
@@ -137,6 +138,64 @@ namespace StorageAndTrade_1_0.Документи
 
 	class РеалізаціяТоварівТаПослуг_SpendTheDocument
 	{
+		private static List<Dictionary<string, object>> ОтриматиСписокПартій(
+			РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт, 
+			РеалізаціяТоварівТаПослуг_Товари_TablePart.Record ТовариРядок)
+        {
+			string query = $@"
+WITH register AS
+(
+	SELECT 
+		ПартіїТоварів.{ПартіїТоварів_Const.ДокументПоступлення} AS ДокументПоступлення,
+		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) AS Кількість,
+		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+			ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} ELSE 
+			-ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} END) AS Собівартість
+	FROM
+		{ПартіїТоварів_Const.TABLE} AS ПартіїТоварів
+	WHERE
+		ПартіїТоварів.period <= @period_end
+		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{ДокументОбєкт.Організація.UnigueID}'
+		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
+		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
+		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
+        AND ПартіїТоварів.owner != '{ДокументОбєкт.UnigueID}'
+
+	GROUP BY ДокументПоступлення
+
+	HAVING
+		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) > 0
+)
+SELECT
+   Документ_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.ДатаДок} AS ДатаПоступлення,
+   ДокументПоступлення,
+   Кількість,
+   Собівартість
+FROM
+   register
+      LEFT JOIN {ПоступленняТоварівТаПослуг_Const.TABLE} AS Документ_ПоступленняТоварівТаПослуг ON 
+         Документ_ПоступленняТоварівТаПослуг.uid = register.ДокументПоступлення
+ORDER BY ДатаПоступлення
+";
+
+			//Console.WriteLine(query);
+
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			Console.WriteLine(ДокументОбєкт.ДатаДок);
+			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
+
+			string[] columnsName;
+			List<Dictionary<string, object>> listNameRow;
+
+			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
+
+			return listNameRow;
+		}
+
 		public static bool Spend(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
 		{
 			if (ДокументОбєкт.Spend)
@@ -235,19 +294,74 @@ namespace StorageAndTrade_1_0.Документи
 				//Товар
 				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					РегістриНакопичення.ПартіїТоварів_RecordsSet.Record record = new РегістриНакопичення.ПартіїТоварів_RecordsSet.Record();
-					партіїТоварів_RecordsSet.Records.Add(record);
+					List<Dictionary<string, object>> listNameRow = ОтриматиСписокПартій(ДокументОбєкт, Товари_Record);
 
-					record.Income = false; 
-					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+                    if (listNameRow.Count == 0)
+                    {
+						Console.WriteLine($"Немає доступних партій для товару {номенклатура_Objest.Назва}");
+					}
 
-					record.Організація = ДокументОбєкт.Організація;
-					record.ДокументПоступлення = new ПоступленняТоварівТаПослуг_Pointer(new UnigueID("713b2b49-0cf6-4ffc-969a-751cc18244bd"));
-					record.Кількість = Товари_Record.Кількість;
-					record.Собівартість = Товари_Record.Ціна;
-					record.Номенклатура = Товари_Record.Номенклатура;
-					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-					record.Серія = Товари_Record.Серія;
+					decimal КількістьЯкуПотрібноСписати = Товари_Record.Кількість; 
+
+					foreach (Dictionary<string, object> nameRow in listNameRow)
+                    {
+						decimal КількістьВПартії = (decimal)nameRow["Кількість"];
+						decimal СобівартістьПартії = (decimal)nameRow["Собівартість"];
+
+						decimal КількістьЩоСписується = 0;
+						bool ЗакритиПартію = !(КількістьВПартії > КількістьЯкуПотрібноСписати);
+
+						if (КількістьВПартії >= КількістьЯкуПотрібноСписати)
+						{
+							КількістьЩоСписується = КількістьЯкуПотрібноСписати;
+							КількістьЯкуПотрібноСписати = 0;
+						}
+						else
+                        {
+							КількістьЩоСписується = КількістьВПартії;
+							КількістьЯкуПотрібноСписати -= КількістьВПартії;
+						}
+
+						ПартіїТоварів_RecordsSet.Record record = new ПартіїТоварів_RecordsSet.Record();
+						партіїТоварів_RecordsSet.Records.Add(record);
+
+						record.Income = false;
+						record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+						record.Організація = ДокументОбєкт.Організація;
+						record.ДокументПоступлення = new ПоступленняТоварівТаПослуг_Pointer(nameRow["ДокументПоступлення"]);
+						record.Кількість = КількістьЩоСписується;
+						record.Собівартість = (ЗакритиПартію ? СобівартістьПартії : 0);
+						record.СписанаСобівартість = СобівартістьПартії;
+						record.Номенклатура = Товари_Record.Номенклатура;
+						record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+						record.Серія = Товари_Record.Серія;
+
+                        //if (!ЗакритиПартію)
+                        //{
+                        //    ПартіїТоварів_RecordsSet.Record record2 = new ПартіїТоварів_RecordsSet.Record();
+                        //    партіїТоварів_RecordsSet.Records.Add(record2);
+
+                        //    record2.Income = false;
+                        //    record2.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+                        //    record2.Організація = ДокументОбєкт.Організація;
+                        //    record2.ДокументПоступлення = new ПоступленняТоварівТаПослуг_Pointer(nameRow["ДокументПоступлення"]);
+                        //    record2.Кількість = 0;
+                        //    record2.Собівартість = -СобівартістьПартії;
+                        //    record2.Номенклатура = Товари_Record.Номенклатура;
+                        //    record2.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+                        //    record2.Серія = Товари_Record.Серія;
+                        //}
+
+                        if (КількістьЯкуПотрібноСписати == 0)
+							break;
+					}
+
+					if (КількістьЯкуПотрібноСписати > 0)
+                    {
+						Console.WriteLine($"Невистачило списати {КількістьЯкуПотрібноСписати} товарів");
+                    }
 				}
 			}
 

@@ -153,6 +153,7 @@
 				<th>Серія</th>
 				<th style="text-align:center">Кількість</th>
 				<th style="text-align:center">Собівартість</th>
+				<th style="text-align:center">Списана</th>
 			</tr>
 
 			<xsl:for-each select="row">
@@ -193,6 +194,9 @@
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Собівартість"/>
+					</td>
+				    <td style="text-align:center">
+						<xsl:value-of select="СписанаСобівартість"/>
 					</td>
 				</tr>
 			</xsl:for-each>
