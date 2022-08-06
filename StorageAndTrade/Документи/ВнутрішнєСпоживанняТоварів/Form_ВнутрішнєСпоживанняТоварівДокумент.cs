@@ -91,8 +91,6 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_НомерДок.Text = внутрішнєСпоживанняТоварів_Objest.НомерДок = (++Константи.НумераціяДокументів.ВнутрішнєСпоживанняТоварів_Const).ToString("D8");
-					comboBox_Статус.SelectedIndex = 0;
-					comboBox_ФормаОплати.SelectedIndex = 0;
 
 					directoryControl_Організація.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
 					directoryControl_Валюта.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
@@ -160,7 +158,8 @@ namespace StorageAndTrade
 					return;
 				}
 
-				ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.LoadRecords();
+				if (!closeForm)
+					ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.LoadRecords();
 
 				if (spendDoc)
 					try
@@ -178,7 +177,7 @@ namespace StorageAndTrade
 					внутрішнєСпоживанняТоварів_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
-					//OwnerForm.LoadRecords();
+					OwnerForm.LoadRecords();
 
 				if (closeForm)
 					this.Close();

@@ -90,33 +90,33 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
-			Документи.РеалізаціяТоварівТаПослуг_Select реалізаціяТоварівТаПослуг_Select = new Документи.РеалізаціяТоварівТаПослуг_Select();
-			реалізаціяТоварівТаПослуг_Select.QuerySelect.Field.AddRange(new string[] {
+			Документи.ВнутрішнєСпоживанняТоварів_Select внутрішнєСпоживанняТоварів_Select = new Документи.ВнутрішнєСпоживанняТоварів_Select();
+			внутрішнєСпоживанняТоварів_Select.QuerySelect.Field.AddRange(new string[] {
 				"spend",
-				Документи.РеалізаціяТоварівТаПослуг_Const.Назва,
-				Документи.РеалізаціяТоварівТаПослуг_Const.НомерДок,
-				Документи.РеалізаціяТоварівТаПослуг_Const.ДатаДок,
-				Документи.РеалізаціяТоварівТаПослуг_Const.СумаДокументу,
-				Документи.РеалізаціяТоварівТаПослуг_Const.Коментар
+				Документи.ВнутрішнєСпоживанняТоварів_Const.Назва,
+				Документи.ВнутрішнєСпоживанняТоварів_Const.НомерДок,
+				Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок,
+				Документи.ВнутрішнєСпоживанняТоварів_Const.СумаДокументу,
+				Документи.ВнутрішнєСпоживанняТоварів_Const.Коментар
 			});
 
 			//ORDER
-			реалізаціяТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.РеалізаціяТоварівТаПослуг_Const.ДатаДок, SelectOrder.ASC);
-			реалізаціяТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.РеалізаціяТоварівТаПослуг_Const.НомерДок, SelectOrder.ASC);
+			внутрішнєСпоживанняТоварів_Select.QuerySelect.Order.Add(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, SelectOrder.ASC);
+			внутрішнєСпоживанняТоварів_Select.QuerySelect.Order.Add(Документи.ВнутрішнєСпоживанняТоварів_Const.НомерДок, SelectOrder.ASC);
 
-			реалізаціяТоварівТаПослуг_Select.Select();
-			while (реалізаціяТоварівТаПослуг_Select.MoveNext())
+			внутрішнєСпоживанняТоварів_Select.Select();
+			while (внутрішнєСпоживанняТоварів_Select.MoveNext())
 			{
-				Документи.РеалізаціяТоварівТаПослуг_Pointer cur = реалізаціяТоварівТаПослуг_Select.Current;
+				Документи.ВнутрішнєСпоживанняТоварів_Pointer cur = внутрішнєСпоживанняТоварів_Select.Current;
 
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.Назва].ToString(),
-					НомерДок = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.НомерДок].ToString(),
-					ДатаДок = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.ДатаДок].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.СумаДокументу], 2),
-					Коментар = cur.Fields[Документи.РеалізаціяТоварівТаПослуг_Const.Коментар].ToString(),
+					Назва = cur.Fields[Документи.ВнутрішнєСпоживанняТоварів_Const.Назва].ToString(),
+					НомерДок = cur.Fields[Документи.ВнутрішнєСпоживанняТоварів_Const.НомерДок].ToString(),
+					ДатаДок = cur.Fields[Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок].ToString(),
+					Сума = Math.Round((decimal)cur.Fields[Документи.ВнутрішнєСпоживанняТоварів_Const.СумаДокументу], 2),
+					Коментар = cur.Fields[Документи.ВнутрішнєСпоживанняТоварів_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
 
@@ -154,7 +154,7 @@ namespace StorageAndTrade
 
                 if (DocumentPointerItem != null)
                 {
-					DocumentPointerItem = new Документи.РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(Uid));
+					DocumentPointerItem = new Документи.ВнутрішнєСпоживанняТоварів_Pointer(new UnigueID(Uid));
                     this.Close();
                 }
                 else
@@ -261,7 +261,7 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 
-				Звіти.РухДокументівПоРегістрах.PrintRecords(new Документи.РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
+				Звіти.РухДокументівПоРегістрах.PrintRecords(new Документи.ВнутрішнєСпоживанняТоварів_Pointer(new UnigueID(uid)));
 			}
 		}
 

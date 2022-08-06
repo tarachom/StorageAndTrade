@@ -187,7 +187,7 @@ namespace StorageAndTrade
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_ВнутрішнєСпоживанняТоварівЖурнал";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Реалізація товарів та послуг - Журнал";
+            this.Text = "Внутрішнє споживання товарів- Журнал";
             this.Load += new System.EventHandler(this.Form_Form_ВнутрішнєСпоживанняТоварівЖурнал_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

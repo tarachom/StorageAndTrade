@@ -1566,11 +1566,11 @@ FROM
 			//Товари на складах
 			//
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 
 			foreach (ВнутрішнєСпоживанняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+				ТовариНаСкладах_RecordsSet.Record record = new ТовариНаСкладах_RecordsSet.Record();
 				товариНаСкладах_RecordsSet.Records.Add(record);
 
 				record.Income = false; //
@@ -1594,7 +1594,7 @@ FROM
 
 		public static void ClearSpend(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");

@@ -272,6 +272,24 @@ namespace StorageAndTrade_1_0.Звіти
                         break;
                     }
 
+                case "ВнутрішнєСпоживанняТоварів":
+                    {
+                        ВнутрішнєСпоживанняТоварів_Objest внутрішнєСпоживанняТоварів_Objest = new ВнутрішнєСпоживанняТоварів_Objest();
+                        внутрішнєСпоживанняТоварів_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                внутрішнєСпоживанняТоварів_Objest.Назва,
+                                внутрішнєСпоживанняТоварів_Objest.ДатаДок,
+                                внутрішнєСпоживанняТоварів_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
                 default:
                     {
                         object[] fieldValue = new object[] { ДокументВказівник.UnigueID.ToString(), "<Не оприділений тип документу>", "", "" };

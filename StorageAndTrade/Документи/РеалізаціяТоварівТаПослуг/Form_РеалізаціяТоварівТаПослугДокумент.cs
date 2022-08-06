@@ -205,7 +205,8 @@ namespace StorageAndTrade
 					return;
 				}
 
-				РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
+				if (!closeForm)
+					РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
 
 				if (spendDoc)
 					try
