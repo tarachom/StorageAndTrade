@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>06.08.2022 16:38:02</DateTimeSave>
+  <DateTimeSave>06.08.2022 20:41:45</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1633,6 +1633,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Constant>
           <Name>ПорчаТоварів</Name>
           <NameInTable>col_g2</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+        <Constant>
+          <Name>ВнутрішнєСпоживанняТоварів</Name>
+          <NameInTable>col_h1</NameInTable>
           <Desc>
           </Desc>
           <Type>integer</Type>
@@ -4323,18 +4331,18 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>1</IsIndex>
         </Field>
         <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -4686,6 +4694,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </Desc>
       <Fields>
         <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
           <Name>Валюта</Name>
           <NameInTable>col_a3</NameInTable>
           <Type>pointer</Type>
@@ -4953,33 +4988,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -5125,6 +5133,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>Контрагент</Name>
           <NameInTable>col_b4</NameInTable>
@@ -5364,33 +5399,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -5516,6 +5524,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>Організація</Name>
           <NameInTable>col_a1</NameInTable>
@@ -5774,33 +5809,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -5947,22 +5955,12 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </Desc>
       <Fields>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_g9</NameInTable>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>Організація</Name>
-          <NameInTable>col_a2</NameInTable>
-          <Type>pointer</Type>
-          <Pointer>Довідники.Організації</Pointer>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
+          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
@@ -5984,12 +5982,22 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>1</IsIndex>
         </Field>
         <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_g9</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>1</IsPresentation>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Організація</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Організації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -6072,6 +6080,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>Організація</Name>
           <NameInTable>col_h8</NameInTable>
@@ -6189,33 +6224,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -6299,6 +6307,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>Організація</Name>
           <NameInTable>col_k2</NameInTable>
@@ -6417,33 +6452,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -6534,6 +6542,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Table>tab_a31</Table>
       <Desc>Переміщення товарів між складами</Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>Організація</Name>
           <NameInTable>col_a3</NameInTable>
@@ -6680,33 +6715,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -6797,6 +6805,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>Організація</Name>
           <NameInTable>col_c2</NameInTable>
@@ -6952,33 +6987,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -7096,6 +7104,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Desc>
       </Desc>
       <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
         <Field>
           <Name>Організація</Name>
           <NameInTable>col_e8</NameInTable>
@@ -7221,33 +7256,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -7376,6 +7384,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </Desc>
       <Fields>
         <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
           <Name>Валюта</Name>
           <NameInTable>col_b2</NameInTable>
           <Type>pointer</Type>
@@ -7483,33 +7518,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -7591,6 +7599,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </Desc>
       <Fields>
         <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
           <Name>Організація</Name>
           <NameInTable>col_c8</NameInTable>
           <Type>pointer</Type>
@@ -7651,15 +7686,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_d1</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
           <Name>ГосподарськаОперація</Name>
           <NameInTable>col_a1</NameInTable>
           <Type>enum</Type>
@@ -7670,30 +7696,12 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_d1</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -8063,6 +8071,33 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </Desc>
       <Fields>
         <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
           <Name>Організація</Name>
           <NameInTable>col_h2</NameInTable>
           <Type>pointer</Type>
@@ -8109,33 +8144,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
-        </Field>
-        <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -8214,13 +8222,31 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </Desc>
       <Fields>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_i5</NameInTable>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>1</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>Склад</Name>
@@ -8243,30 +8269,12 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_i5</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -8362,23 +8370,31 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </Desc>
       <Fields>
         <Field>
-          <Name>Склад</Name>
-          <NameInTable>col_a4</NameInTable>
-          <Type>pointer</Type>
-          <Pointer>Довідники.Склади</Pointer>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>0</IsPresentation>
+          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>Коментар</Name>
-          <NameInTable>col_a5</NameInTable>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>Організація</Name>
@@ -8401,7 +8417,17 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>ПричинаПорчіТовару</Name>
+          <Name>Склад</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Склади</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Причина</Name>
           <NameInTable>col_a8</NameInTable>
           <Type>string</Type>
           <Desc>
@@ -8420,30 +8446,12 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
-          <Name>НомерДок</Name>
-          <NameInTable>docnomer</NameInTable>
+          <Name>Коментар</Name>
+          <NameInTable>col_a5</NameInTable>
           <Type>string</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>ДатаДок</Name>
-          <NameInTable>docdate</NameInTable>
-          <Type>datetime</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>0</IsPresentation>
-          <IsIndex>1</IsIndex>
-        </Field>
-        <Field>
-          <Name>Назва</Name>
-          <NameInTable>docname</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
-          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
       </Fields>
@@ -8492,6 +8500,241 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         </TablePart>
       </TabularParts>
       <AllowRegisterAccumulation />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+      <SpendFunctions>
+        <Spend>
+        </Spend>
+        <ClearSpend>
+        </ClearSpend>
+      </SpendFunctions>
+    </Document>
+    <Document>
+      <Name>ВнутрішнєСпоживанняТоварів</Name>
+      <Table>tab_b07</Table>
+      <Desc>
+      </Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>docname</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>НомерДок</Name>
+          <NameInTable>docnomer</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДатаДок</Name>
+          <NameInTable>docdate</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Організація</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Організації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Склад</Name>
+          <NameInTable>col_b1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Склади</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Валюта</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Валюти</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Підрозділ</Name>
+          <NameInTable>col_a9</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.СтруктураПідприємства</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>СумаДокументу</Name>
+          <NameInTable>col_a8</NameInTable>
+          <Type>numeric</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Основа</Name>
+          <NameInTable>col_b7</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Автор</Name>
+          <NameInTable>col_b9</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Користувачі</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ГосподарськаОперація</Name>
+          <NameInTable>col_b4</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ГосподарськіОперації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Коментар</Name>
+          <NameInTable>col_b2</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts>
+        <TablePart>
+          <Name>Товари</Name>
+          <Table>tab_b08</Table>
+          <Desc>
+          </Desc>
+          <Fields>
+            <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Номенклатура</Name>
+              <NameInTable>col_d2</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.Номенклатура</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>ХарактеристикаНоменклатури</Name>
+              <NameInTable>col_d3</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Серія</Name>
+              <NameInTable>col_a2</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.СеріїНоменклатури</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Пакування</Name>
+              <NameInTable>col_d4</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>КількістьУпаковок</Name>
+              <NameInTable>col_d5</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Кількість</Name>
+              <NameInTable>col_d6</NameInTable>
+              <Type>numeric</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>ВидЦіни</Name>
+              <NameInTable>col_d7</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.ВидиЦін</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Ціна</Name>
+              <NameInTable>col_d8</NameInTable>
+              <Type>numeric</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Сума</Name>
+              <NameInTable>col_d9</NameInTable>
+              <Type>numeric</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+          </Fields>
+        </TablePart>
+      </TabularParts>
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+        <Name>ПартіїТоварів</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>
         </BeforeSave>
@@ -8759,6 +9002,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Name>ПоверненняТоварівПостачальнику</Name>
         <Name>ПоверненняТоварівВідКлієнта</Name>
         <Name>ВведенняЗалишків</Name>
+        <Name>ВнутрішнєСпоживанняТоварів</Name>
       </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>
@@ -9469,6 +9713,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <AllowDocumentSpend>
         <Name>ПоступленняТоварівТаПослуг</Name>
         <Name>РеалізаціяТоварівТаПослуг</Name>
+        <Name>ВнутрішнєСпоживанняТоварів</Name>
       </AllowDocumentSpend>
     </RegisterAccumulation>
     <RegisterAccumulation>

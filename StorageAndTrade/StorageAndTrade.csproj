@@ -189,6 +189,24 @@
     <Compile Include="Довідники\СеріїНоменклатури\Form_СеріїНоменклатуриЕлемент.designer.cs">
       <DependentUpon>Form_СеріїНоменклатуриЕлемент.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівДокумент.designer.cs">
+      <DependentUpon>Form_ВнутрішнєСпоживанняТоварівДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівЖурнал.designer.cs">
+      <DependentUpon>Form_ВнутрішнєСпоживанняТоварівЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ФункціїДляДокументів.cs" />
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.cs">
       <SubType>UserControl</SubType>
@@ -874,6 +892,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітЖурнал.resx">
       <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівДокумент.resx">
+      <DependentUpon>Form_ВнутрішнєСпоживанняТоварівДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівЖурнал.resx">
+      <DependentUpon>Form_ВнутрішнєСпоживанняТоварівЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.resx">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>
