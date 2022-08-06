@@ -718,6 +718,9 @@ HAVING
                             //Console.WriteLine(query);
                             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
+                            //Додаткове обчислення підсумкових залишків
+                            ОбчисленняПідсумковихЗалишківТоварівНаСкладах();
+
                             break;
                         }
                     case "ПартіїТоварів":
@@ -962,6 +965,7 @@ WHERE uid = '{uid}'
             }
         }
 
+
         public static void ОбчисленняПідсумковихЗалишківТоварівНаСкладах()
         {
             string query = $@"
@@ -995,9 +999,7 @@ HAVING
    SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ВНаявності}) != 0
 ";
 
-            //Console.WriteLine(query);
             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
-
         }
     }
 
