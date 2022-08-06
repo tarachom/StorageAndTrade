@@ -33,6 +33,7 @@ using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using РегістриВідомостей = StorageAndTrade_1_0.РегістриВідомостей;
 
 namespace StorageAndTrade
 {
@@ -117,6 +118,21 @@ namespace StorageAndTrade
 			номенклатура_Select.QuerySelect.Joins.Add(
 				new Join(Довідники.ПакуванняОдиниціВиміру_Const.TABLE, Довідники.Номенклатура_Const.ОдиницяВиміру, Довідники.Номенклатура_Const.TABLE));
 
+			//Залишки товарів
+			номенклатура_Select.QuerySelect.FieldAndAlias.Add(new NameValue<string>($@"
+(CASE WHEN {Довідники.Номенклатура_Const.TABLE}.{Довідники.Номенклатура_Const.ТипНоменклатури} = {(int)Перелічення.ТипиНоменклатури.Товар} THEN
+	(WITH Залишки AS (
+		SELECT
+			ЗалишкиТоварів.{РегістриВідомостей.ЗалишкиТоварівНаСкладах_Const.Номенклатура} AS Номенклатура,
+			SUM(ЗалишкиТоварів.{РегістриВідомостей.ЗалишкиТоварівНаСкладах_Const.ВНаявності}) AS ВНаявності
+		FROM
+			{РегістриВідомостей.ЗалишкиТоварівНаСкладах_Const.TABLE} AS ЗалишкиТоварів
+		WHERE
+			ЗалишкиТоварів.{РегістриВідомостей.ЗалишкиТоварівНаСкладах_Const.Номенклатура} = {Довідники.Номенклатура_Const.TABLE}.uid
+		Group By Номенклатура
+	) SELECT ВНаявності FROM Залишки)
+ELSE 0 END)", "ostatok"));
+
 			//WHERE
 			if (Номенклатура_Папки_Дерево.Parent_Pointer != null)
 				номенклатура_Select.QuerySelect.Where.Add(new Where(Довідники.Номенклатура_Const.Папка, Comparison.EQ, Номенклатура_Папки_Дерево.Parent_Pointer.UnigueID.UGuid));
@@ -137,7 +153,8 @@ namespace StorageAndTrade
 					Виробник = cur.Fields["join1"].ToString(),
 					ВидНоменклатури = cur.Fields["join2"].ToString(),
 					ОдиницяВиміру = cur.Fields["join3"].ToString(),
-					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.Номенклатура_Const.ТипНоменклатури]).ToString()
+					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.Номенклатура_Const.ТипНоменклатури]).ToString(),
+					Залишок = (cur.Fields["ostatok"] != DBNull.Value ? (decimal)cur.Fields["ostatok"] : 0)
 				});
 
 				if (DirectoryPointerItem != null && selectRow == 0)
@@ -158,12 +175,13 @@ namespace StorageAndTrade
 			public Записи() { Image = Properties.Resources.doc_text_image; }
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
-			public string Назва { get; set; }
 			public string Код { get; set; }
-			public string Виробник { get; set; }
-			public string ВидНоменклатури { get; set; }
+			public string Назва { get; set; }
+			public decimal Залишок { get; set; }
 			public string ОдиницяВиміру { get; set; }
 			public string ТипНоменклатури { get; set; }
+			public string Виробник { get; set; }
+			public string ВидНоменклатури { get; set; }
 		}
 
 		public void TreeFolderAfterSelect()
