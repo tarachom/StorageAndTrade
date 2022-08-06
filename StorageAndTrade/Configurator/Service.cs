@@ -37,6 +37,7 @@ using System.Threading.Tasks;
 using AccountingSoftware;
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Константи;
+using StorageAndTrade_1_0.РегістриВідомостей;
 using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade.Service
@@ -959,6 +960,44 @@ WHERE uid = '{uid}'
 ";
                 Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryUpdate);
             }
+        }
+
+        public static void ОбчисленняПідсумковихЗалишківТоварівНаСкладах()
+        {
+            string query = $@"
+DELETE FROM {ЗалишкиТоварівНаСкладах_Const.TABLE};
+
+INSERT INTO {ЗалишкиТоварівНаСкладах_Const.TABLE}
+(
+    uid,
+    period,
+    owner,
+    {ЗалишкиТоварівНаСкладах_Const.Номенклатура},
+    {ЗалишкиТоварівНаСкладах_Const.ХарактеристикаНоменклатури},
+    {ЗалишкиТоварівНаСкладах_Const.Склад},
+    {ЗалишкиТоварівНаСкладах_Const.Серія},
+    {ЗалишкиТоварівНаСкладах_Const.ВНаявності}
+)
+SELECT 
+    uuid_generate_v4(),
+    CURRENT_DATE,
+    '{Guid.Empty}',
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Номенклатура} AS Номенклатура, 
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Склад} AS Склад,
+    ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.Серія} AS Серія,
+    SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ВНаявності}) AS ВНаявності
+FROM 
+    {ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.TABLE} AS ТовариНаСкладах_Місяць
+GROUP BY 
+    Номенклатура, ХарактеристикаНоменклатури, Склад, Серія
+HAVING 
+   SUM(ТовариНаСкладах_Місяць.{ВіртуальніТаблиціРегістрів.ТовариНаСкладах_Місяць_TablePart.ВНаявності}) != 0
+";
+
+            //Console.WriteLine(query);
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+
         }
     }
 

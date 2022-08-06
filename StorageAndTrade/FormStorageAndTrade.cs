@@ -70,6 +70,7 @@ namespace StorageAndTrade
 
                 CalculationBalances.ОбчисленняВіртуальнихЗалишківПоДнях();
                 CalculationBalances.ОбчисленняВіртуальнихЗалишківПоМісяцях();
+                CalculationBalances.ОбчисленняПідсумковихЗалишківТоварівНаСкладах(); //Тимчасово
                 Thread.Sleep(5000);
             }
         }

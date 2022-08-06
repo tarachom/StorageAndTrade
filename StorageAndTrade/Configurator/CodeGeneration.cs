@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 05.08.2022 21:10:48
+ * Дата конфігурації: 06.08.2022 14:16:09
  *
  */
 
@@ -14391,6 +14391,109 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             public Довідники.Валюти_Pointer Валюта { get; set; }
             public decimal Курс { get; set; }
             public int Кратність { get; set; }
+            
+        }
+    }
+    
+    #endregion
+  
+    #region REGISTER "ЗалишкиТоварівНаСкладах"
+    ///<summary>
+    ///Розраховані підсумкові залишки товарів.
+    ///</summary>
+    public static class ЗалишкиТоварівНаСкладах_Const
+    {
+        public const string TABLE = "tab_b06";
+        
+        public const string Номенклатура = "col_a1";
+        public const string ХарактеристикаНоменклатури = "col_a3";
+        public const string Серія = "col_a4";
+        public const string Склад = "col_a5";
+        public const string ВНаявності = "col_a6";
+    }
+	
+    ///<summary>
+    ///Розраховані підсумкові залишки товарів.
+    ///</summary>
+    public class ЗалишкиТоварівНаСкладах_RecordsSet : RegisterInformationRecordsSet
+    {
+        public ЗалишкиТоварівНаСкладах_RecordsSet() : base(Config.Kernel, "tab_b06",
+             new string[] { "col_a1", "col_a3", "col_a4", "col_a5", "col_a6" }) 
+        {
+            Records = new List<Record>();
+        }
+		
+        public List<Record> Records { get; set; }
+        
+        public void Read()
+        {
+            Records.Clear();
+            base.BaseRead();
+            foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+            {
+                Record record = new Record();
+                
+                record.UID = (Guid)fieldValue["uid"];
+				record.Period = DateTime.Parse(fieldValue["period"].ToString());
+                record.Owner = (Guid)fieldValue["owner"];
+                record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a1"]);
+                record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
+                record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a4"]);
+                record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a5"]);
+                record.ВНаявності = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
+                
+                Records.Add(record);
+            }
+            base.BaseClear();
+        }
+        
+        public void Save(DateTime period, Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            foreach (Record record in Records)
+            {
+                record.Period = period;
+                record.Owner = owner;
+                Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+                fieldValue.Add("col_a1", record.Номенклатура.UnigueID.UGuid);
+                fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                fieldValue.Add("col_a4", record.Серія.UnigueID.UGuid);
+                fieldValue.Add("col_a5", record.Склад.UnigueID.UGuid);
+                fieldValue.Add("col_a6", record.ВНаявності);
+                
+                base.BaseSave(record.UID, period, owner, fieldValue);
+            }
+            base.BaseCommitTransaction();
+        }
+        
+        public void Delete(Guid owner)
+        {
+            base.BaseBeginTransaction();
+            base.BaseDelete(owner);
+            base.BaseCommitTransaction();
+        }
+
+        ///<summary>
+    ///Розраховані підсумкові залишки товарів.
+    ///</summary>
+        public class Record : RegisterInformationRecord
+        {
+            public Record()
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer();
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                Серія = new Довідники.СеріїНоменклатури_Pointer();
+                Склад = new Довідники.Склади_Pointer();
+                ВНаявності = 0;
+                
+            }
+        
+            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+            public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
+            public Довідники.Склади_Pointer Склад { get; set; }
+            public decimal ВНаявності { get; set; }
             
         }
     }
