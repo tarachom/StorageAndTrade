@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>06.08.2022 20:41:45</DateTimeSave>
+  <DateTimeSave>06.08.2022 20:59:56</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -8736,18 +8736,13 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Name>ПартіїТоварів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <BeforeSave>ВнутрішнєСпоживанняТоварів_Triggers.BeforeRecording</BeforeSave>
+        <AfterSave>ВнутрішнєСпоживанняТоварів_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ВнутрішнєСпоживанняТоварів_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ВнутрішнєСпоживанняТоварів_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ВнутрішнєСпоживанняТоварів_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
   </Documents>

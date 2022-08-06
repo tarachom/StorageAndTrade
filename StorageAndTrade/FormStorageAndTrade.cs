@@ -292,6 +292,13 @@ namespace StorageAndTrade
             form_АктВиконанихРобітЖурнал.Show();
         }
 
+        private void внутрішнєCпоживанняТоварівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ВнутрішнєСпоживанняТоварівЖурнал form_ВнутрішнєСпоживанняТоварівЖурнал = new Form_ВнутрішнєСпоживанняТоварівЖурнал();
+            form_ВнутрішнєСпоживанняТоварівЖурнал.MdiParent = this;
+            form_ВнутрішнєСпоживанняТоварівЖурнал.Show();
+        }
+
         #endregion
 
         #region Звіти Меню

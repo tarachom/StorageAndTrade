@@ -437,4 +437,22 @@ namespace StorageAndTrade_1_0.Документи
 			ДокументОбєкт.ClearSpendTheDocument();
 		}
 	}
+
+	class ВнутрішнєСпоживанняТоварів_Triggers
+	{
+		public static void BeforeRecording(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт)
+		{
+			ДокументОбєкт.ClearSpendTheDocument();
+		}
+	}
 }

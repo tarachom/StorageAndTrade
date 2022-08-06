@@ -80,12 +80,12 @@ namespace StorageAndTrade
             this.замовленняПостачальникамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.товариНаСкладахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.партіїТоварівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.розрахункиЗКлієнтамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.розрахункиЗПостачальникамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.відомістьПоТоварахНаСкладахToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.рухКоштівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.партіїТоварівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.сервісToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.константиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.перепроведенняДокументівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,6 +113,7 @@ namespace StorageAndTrade
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_ПереміщенняТоварівМіжСкладами = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripButton();
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_ГоловнеМеню.SuspendLayout();
             this.toolStrip_Довідники.SuspendLayout();
             this.toolStrip_Документи.SuspendLayout();
@@ -378,7 +379,8 @@ namespace StorageAndTrade
             this.переміщенняТоварівМіжСкладамиToolStripMenuItem,
             this.встановленняЦінНоменклатуриToolStripMenuItem,
             this.toolStripSeparator12,
-            this.введенняЗалишківToolStripMenuItem});
+            this.введенняЗалишківToolStripMenuItem,
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem});
             this.документиToolStripMenuItem.Name = "документиToolStripMenuItem";
             this.документиToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
             this.документиToolStripMenuItem.Text = "Документи";
@@ -494,7 +496,7 @@ namespace StorageAndTrade
             // 
             this.введенняЗалишківToolStripMenuItem.Name = "введенняЗалишківToolStripMenuItem";
             this.введенняЗалишківToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
-            this.введенняЗалишківToolStripMenuItem.Text = "Введення Залишків";
+            this.введенняЗалишківToolStripMenuItem.Text = "Введення залишків";
             this.введенняЗалишківToolStripMenuItem.Click += new System.EventHandler(this.введенняЗалишківToolStripMenuItem_Click);
             // 
             // звітиToolStripMenuItem
@@ -543,6 +545,13 @@ namespace StorageAndTrade
             this.товариНаСкладахToolStripMenuItem.Text = "Товари на складах";
             this.товариНаСкладахToolStripMenuItem.Click += new System.EventHandler(this.товариНаСкладахToolStripMenuItem_Click);
             // 
+            // партіїТоварівToolStripMenuItem
+            // 
+            this.партіїТоварівToolStripMenuItem.Name = "партіїТоварівToolStripMenuItem";
+            this.партіїТоварівToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
+            this.партіїТоварівToolStripMenuItem.Text = "Партії товарів";
+            this.партіїТоварівToolStripMenuItem.Click += new System.EventHandler(this.партіїТоварівToolStripMenuItem_Click);
+            // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
@@ -577,13 +586,6 @@ namespace StorageAndTrade
             this.рухКоштівToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
             this.рухКоштівToolStripMenuItem.Text = "Рух коштів";
             this.рухКоштівToolStripMenuItem.Click += new System.EventHandler(this.рухКоштівToolStripMenuItem_Click);
-            // 
-            // партіїТоварівToolStripMenuItem
-            // 
-            this.партіїТоварівToolStripMenuItem.Name = "партіїТоварівToolStripMenuItem";
-            this.партіїТоварівToolStripMenuItem.Size = new System.Drawing.Size(249, 22);
-            this.партіїТоварівToolStripMenuItem.Text = "Партії товарів";
-            this.партіїТоварівToolStripMenuItem.Click += new System.EventHandler(this.партіїТоварівToolStripMenuItem_Click);
             // 
             // сервісToolStripMenuItem
             // 
@@ -843,6 +845,13 @@ namespace StorageAndTrade
             this.toolStripButton_ВстановленняЦінНоменклатури.Text = "Документ \"Встановлення цін номенклатури\"";
             this.toolStripButton_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.toolStripButton_ВстановленняЦінНоменклатури_Click);
             // 
+            // внутрішнєCпоживанняТоварівToolStripMenuItem
+            // 
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Name = "внутрішнєCпоживанняТоварівToolStripMenuItem";
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Text = "Внутрішнє cпоживання товарів";
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Click += new System.EventHandler(this.внутрішнєCпоживанняТоварівToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -959,6 +968,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem перепроведенняДокументівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem серіїНоменклатуриToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem партіїТоварівToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem внутрішнєCпоживанняТоварівToolStripMenuItem;
     }
 }
 

@@ -1548,5 +1548,56 @@ FROM
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
-	
+
+	class ВнутрішнєСпоживанняТоварів_SpendTheDocument
+	{
+		public static bool Spend(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт)
+		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
+			#region Рух по регістрах
+
+			//
+			//Товари на складах
+			//
+
+			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+
+			foreach (ВнутрішнєСпоживанняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+				товариНаСкладах_RecordsSet.Records.Add(record);
+
+				record.Income = false; //
+				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.Серія = Товари_Record.Серія;
+				record.Склад = ДокументОбєкт.Склад;
+				record.ВНаявності = Товари_Record.Кількість;
+			}
+
+			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			#endregion
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+
+			return true;
+		}
+
+		public static void ClearSpend(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт)
+		{
+			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+		}
+	}
 }

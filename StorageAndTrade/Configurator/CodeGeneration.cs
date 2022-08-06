@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 06.08.2022 20:41:45
+ * Дата конфігурації: 06.08.2022 20:59:56
  *
  */
 
@@ -14245,7 +14245,8 @@ namespace StorageAndTrade_1_0.Документи
         
         public void Save()
         {
-            base.FieldValue["docname"] = Назва;
+            ВнутрішнєСпоживанняТоварів_Triggers.BeforeRecording(this);
+			base.FieldValue["docname"] = Назва;
             base.FieldValue["docnomer"] = НомерДок;
             base.FieldValue["docdate"] = ДатаДок;
             base.FieldValue["col_a1"] = Організація.UnigueID.UGuid;
@@ -14259,17 +14260,18 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_b2"] = Коментар;
             
             BaseSave();
-			
+			ВнутрішнєСпоживанняТоварів_Triggers.AfterRecording(this);
 		}
 
 		public void SpendTheDocument(DateTime spendDate)
 		{
-            BaseSpend(false, DateTime.MinValue);
+            BaseSpend(ВнутрішнєСпоживанняТоварів_SpendTheDocument.Spend(this), spendDate);
 		}
 
 		public void ClearSpendTheDocument()
 		{
-            BaseSpend(false, DateTime.MinValue);
+            ВнутрішнєСпоживанняТоварів_SpendTheDocument.ClearSpend(this);
+			BaseSpend(false, DateTime.MinValue);
 		}
 
 		public ВнутрішнєСпоживанняТоварів_Objest Copy()
@@ -14294,7 +14296,7 @@ namespace StorageAndTrade_1_0.Документи
 
         public void Delete()
         {
-		    
+		    ВнутрішнєСпоживанняТоварів_Triggers.BeforeDelete(this);
             base.BaseDelete(new string[] { "tab_b08" });
         }
         
