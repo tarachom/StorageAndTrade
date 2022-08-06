@@ -292,8 +292,6 @@ FROM
     register
 ";
 
-			Console.WriteLine(query);
-
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 			Console.WriteLine(ДокументОбєкт.ДатаДок);
 			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
