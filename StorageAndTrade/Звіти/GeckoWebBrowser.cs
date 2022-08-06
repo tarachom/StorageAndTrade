@@ -206,6 +206,13 @@ namespace StorageAndTrade
 
                             break;
                         }
+                    case "ВнутрішнєСпоживанняТоварів":
+                        {
+                            Form_ВнутрішнєСпоживанняТоварівДокумент form = new Form_ВнутрішнєСпоживанняТоварівДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     default:
                         break;
                 }
