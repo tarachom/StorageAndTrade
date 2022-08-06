@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>06.08.2022 14:16:09</DateTimeSave>
+  <DateTimeSave>06.08.2022 16:38:02</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1380,22 +1380,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>Кількість</Name>
-                  <NameInTable>col_a3</NameInTable>
-                  <Type>numeric</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>Собівартість</Name>
-                  <NameInTable>col_a4</NameInTable>
-                  <Type>numeric</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
                   <Name>Номенклатура</Name>
                   <NameInTable>col_a5</NameInTable>
                   <Type>pointer</Type>
@@ -1418,6 +1402,22 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <NameInTable>col_a8</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.СеріїНоменклатури</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Кількість</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Собівартість</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>numeric</Type>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
@@ -1457,22 +1457,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>Кількість</Name>
-                  <NameInTable>col_b2</NameInTable>
-                  <Type>numeric</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>Собівартість</Name>
-                  <NameInTable>col_b3</NameInTable>
-                  <Type>numeric</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
                   <Name>Номенклатура</Name>
                   <NameInTable>col_b4</NameInTable>
                   <Type>pointer</Type>
@@ -1495,6 +1479,22 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <NameInTable>col_a1</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.СеріїНоменклатури</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Кількість</Name>
+                  <NameInTable>col_b2</NameInTable>
+                  <Type>numeric</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Собівартість</Name>
+                  <NameInTable>col_b3</NameInTable>
+                  <Type>numeric</Type>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
@@ -8624,7 +8624,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
     <RegisterInformation>
       <Name>ЗалишкиТоварівНаСкладах</Name>
       <Table>tab_b06</Table>
-      <Desc>Розраховані підсумкові залишки товарів</Desc>
+      <Desc>Розраховані підсумкові залишки товарів. Використовується для довідника Номенклатура</Desc>
       <DimensionFields>
         <Fields>
           <Field>
