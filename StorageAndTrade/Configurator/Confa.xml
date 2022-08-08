@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>08.08.2022 11:07:54</DateTimeSave>
+  <DateTimeSave>08.08.2022 11:17:28</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -8900,66 +8900,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Name>Кратність</Name>
             <NameInTable>col_a3</NameInTable>
             <Type>integer</Type>
-            <Desc>
-            </Desc>
-            <IsIndex>0</IsIndex>
-          </Field>
-        </Fields>
-      </ResourcesFields>
-      <PropertyFields>
-        <Fields />
-      </PropertyFields>
-    </RegisterInformation>
-    <RegisterInformation>
-      <Name>ЗалишкиТоварівНаСкладах</Name>
-      <Table>tab_b06</Table>
-      <Desc>Розраховані підсумкові залишки товарів. Використовується для довідника Номенклатура</Desc>
-      <DimensionFields>
-        <Fields>
-          <Field>
-            <Name>Номенклатура</Name>
-            <NameInTable>col_a1</NameInTable>
-            <Type>pointer</Type>
-            <Pointer>Довідники.Номенклатура</Pointer>
-            <Desc>
-            </Desc>
-            <IsIndex>1</IsIndex>
-          </Field>
-          <Field>
-            <Name>ХарактеристикаНоменклатури</Name>
-            <NameInTable>col_a3</NameInTable>
-            <Type>pointer</Type>
-            <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
-            <Desc>
-            </Desc>
-            <IsIndex>1</IsIndex>
-          </Field>
-          <Field>
-            <Name>Серія</Name>
-            <NameInTable>col_a4</NameInTable>
-            <Type>pointer</Type>
-            <Pointer>Довідники.СеріїНоменклатури</Pointer>
-            <Desc>
-            </Desc>
-            <IsIndex>1</IsIndex>
-          </Field>
-          <Field>
-            <Name>Склад</Name>
-            <NameInTable>col_a5</NameInTable>
-            <Type>pointer</Type>
-            <Pointer>Довідники.Склади</Pointer>
-            <Desc>
-            </Desc>
-            <IsIndex>1</IsIndex>
-          </Field>
-        </Fields>
-      </DimensionFields>
-      <ResourcesFields>
-        <Fields>
-          <Field>
-            <Name>ВНаявності</Name>
-            <NameInTable>col_a6</NameInTable>
-            <Type>numeric</Type>
             <Desc>
             </Desc>
             <IsIndex>0</IsIndex>
