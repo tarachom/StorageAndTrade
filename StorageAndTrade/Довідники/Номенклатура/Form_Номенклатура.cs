@@ -299,5 +299,25 @@ ELSE 0 END)", "ostatok"));
 				LoadRecords();
 			}
 		}
+
+        private void товариНаСкладахToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+
+				Form_ТовариНаСкладахПоНоменклатурі form_ТовариНаСкладахПоНоменклатурі = new Form_ТовариНаСкладахПоНоменклатурі();
+				form_ТовариНаСкладахПоНоменклатурі.MdiParent = this.MdiParent;
+				form_ТовариНаСкладахПоНоменклатурі.Номенклатура = new Довідники.Номенклатура_Pointer(
+					new UnigueID(dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString()));
+
+				form_ТовариНаСкладахПоНоменклатурі.CreateReport();
+
+				if (DirectoryPointerItem != null && this.MdiParent == null)
+					form_ТовариНаСкладахПоНоменклатурі.ShowDialog();
+				else
+					form_ТовариНаСкладахПоНоменклатурі.Show();
+			}
+		}
     }
 }
