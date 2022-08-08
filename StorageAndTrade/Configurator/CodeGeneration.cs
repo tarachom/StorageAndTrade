@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 06.08.2022 20:59:56
+ * Дата конфігурації: 08.08.2022 11:07:54
  *
  */
 
@@ -1189,6 +1189,93 @@ namespace StorageAndTrade_1_0.Константи
                 public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
                 public decimal ВНаявності { get; set; }
                 public decimal ДоВідвантаження { get; set; }
+                
+            }            
+        }
+          
+        public class ТовариНаСкладах_Підсумок_TablePart : ConstantsTablePart
+        {
+            public ТовариНаСкладах_Підсумок_TablePart() : base(Config.Kernel, "tab_b09",
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5" }) 
+            {
+                Records = new List<Record>();
+            }
+            
+            public const string TABLE = "tab_b09";
+            
+            public const string Номенклатура = "col_a1";
+            public const string ХарактеристикаНоменклатури = "col_a2";
+            public const string Серія = "col_a3";
+            public const string Склад = "col_a4";
+            public const string ВНаявності = "col_a5";
+            public List<Record> Records { get; set; }
+        
+            public void Read()
+            {
+                Records.Clear();
+                base.BaseRead();
+
+                foreach (Dictionary<string, object> fieldValue in base.FieldValueList) 
+                {
+                    Record record = new Record();
+                    record.UID = (Guid)fieldValue["uid"];
+                    
+                    record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a1"]);
+                    record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a2"]);
+                    record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a3"]);
+                    record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
+                    record.ВНаявності = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
+                    
+                    Records.Add(record);
+                }
+            
+                base.BaseClear();
+            }
+        
+            public void Save(bool clear_all_before_save /*= true*/) 
+            {
+                base.BaseBeginTransaction();
+                
+                if (clear_all_before_save)
+                    base.BaseDelete();
+
+                foreach (Record record in Records)
+                {
+                    Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+
+                    fieldValue.Add("col_a1", record.Номенклатура.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
+                    fieldValue.Add("col_a3", record.Серія.UnigueID.UGuid);
+                    fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
+                    fieldValue.Add("col_a5", record.ВНаявності);
+                    
+                    base.BaseSave(record.UID, fieldValue);
+                }
+                
+                base.BaseCommitTransaction();
+            }
+        
+            public void Delete()
+            {
+                base.BaseDelete();
+            }
+            
+            public class Record : ConstantsTablePartRecord
+            {
+                public Record()
+                {
+                    Номенклатура = new Довідники.Номенклатура_Pointer();
+                    ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+                    Серія = new Довідники.СеріїНоменклатури_Pointer();
+                    Склад = new Довідники.Склади_Pointer();
+                    ВНаявності = 0;
+                    
+                }
+                public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+                public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+                public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
+                public Довідники.Склади_Pointer Склад { get; set; }
+                public decimal ВНаявності { get; set; }
                 
             }            
         }
@@ -2506,7 +2593,7 @@ namespace StorageAndTrade_1_0.Константи
                 m_НадлишкиТоварів_Const = (fieldValue["col_f8"] != DBNull.Value) ? (int)fieldValue["col_f8"] : 0;
                 m_ПересортицяТоварів_Const = (fieldValue["col_f9"] != DBNull.Value) ? (int)fieldValue["col_f9"] : 0;
                 m_ПерерахунокТоварів_Const = (fieldValue["col_g1"] != DBNull.Value) ? (int)fieldValue["col_g1"] : 0;
-                m_ПорчаТоварів_Const = (fieldValue["col_g2"] != DBNull.Value) ? (int)fieldValue["col_g2"] : 0;
+                m_ПсуванняТоварів_Const = (fieldValue["col_g2"] != DBNull.Value) ? (int)fieldValue["col_g2"] : 0;
                 m_ВнутрішнєСпоживанняТоварів_Const = (fieldValue["col_h1"] != DBNull.Value) ? (int)fieldValue["col_h1"] : 0;
                 
             }
@@ -2679,14 +2766,14 @@ namespace StorageAndTrade_1_0.Константи
             }
         }
         
-        static int m_ПорчаТоварів_Const = 0;
-        public static int ПорчаТоварів_Const
+        static int m_ПсуванняТоварів_Const = 0;
+        public static int ПсуванняТоварів_Const
         {
-            get { return m_ПорчаТоварів_Const; }
+            get { return m_ПсуванняТоварів_Const; }
             set
             {
-                m_ПорчаТоварів_Const = value;
-                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g2", m_ПорчаТоварів_Const);
+                m_ПсуванняТоварів_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g2", m_ПсуванняТоварів_Const);
             }
         }
         
