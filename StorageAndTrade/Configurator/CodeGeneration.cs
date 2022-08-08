@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 08.08.2022 19:46:20
+ * Дата конфігурації: 08.08.2022 19:54:08
  *
  */
 
@@ -15960,6 +15960,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
 		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "РеалізаціяТоварівТаПослуг", "ВведенняЗалишків", "ВнутрішнєСпоживанняТоварів" };
         
         public const string Організація = "col_a1";
+        public const string Документ = "col_a6";
         public const string ДокументПоступлення2 = "col_a2";
         public const string Номенклатура = "col_a5";
         public const string ХарактеристикаНоменклатури = "col_a7";
@@ -15967,14 +15968,13 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string Кількість = "col_a3";
         public const string Собівартість = "col_a4";
         public const string СписанаСобівартість = "col_b5";
-        public const string Документ = "col_a6";
     }
 	
     
     public class ПартіїТоварів_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ПартіїТоварів_RecordsSet() : base(Config.Kernel, "tab_a79",
-             new string[] { "col_a1", "col_a2", "col_a5", "col_a7", "col_a8", "col_a3", "col_a4", "col_b5", "col_a6" }) 
+             new string[] { "col_a1", "col_a6", "col_a2", "col_a5", "col_a7", "col_a8", "col_a3", "col_a4", "col_b5" }) 
         {
             Records = new List<Record>();
         }
@@ -15995,6 +15995,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Income = (bool)fieldValue["income"];
                 record.Owner = (Guid)fieldValue["owner"];
                 record.Організація = new Довідники.Організації_Pointer(fieldValue["col_a1"]);
+                record.Документ = (fieldValue["col_a6"] != DBNull.Value) ? (UuidAndText)fieldValue["col_a6"] : new UuidAndText();
                 record.ДокументПоступлення2 = new Документи.ПоступленняТоварівТаПослуг_Pointer(fieldValue["col_a2"]);
                 record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a5"]);
                 record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a7"]);
@@ -16002,7 +16003,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Кількість = (fieldValue["col_a3"] != DBNull.Value) ? (decimal)fieldValue["col_a3"] : 0;
                 record.Собівартість = (fieldValue["col_a4"] != DBNull.Value) ? (decimal)fieldValue["col_a4"] : 0;
                 record.СписанаСобівартість = (fieldValue["col_b5"] != DBNull.Value) ? (decimal)fieldValue["col_b5"] : 0;
-                record.Документ = (fieldValue["col_a6"] != DBNull.Value) ? (UuidAndText)fieldValue["col_a6"] : new UuidAndText();
                 
                 Records.Add(record);
             }
@@ -16020,6 +16020,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Owner = owner;
                 Dictionary<string, object> fieldValue = new Dictionary<string, object>();
                 fieldValue.Add("col_a1", record.Організація.UnigueID.UGuid);
+                fieldValue.Add("col_a6", record.Документ);
                 fieldValue.Add("col_a2", record.ДокументПоступлення2.UnigueID.UGuid);
                 fieldValue.Add("col_a5", record.Номенклатура.UnigueID.UGuid);
                 fieldValue.Add("col_a7", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
@@ -16027,7 +16028,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 fieldValue.Add("col_a3", record.Кількість);
                 fieldValue.Add("col_a4", record.Собівартість);
                 fieldValue.Add("col_b5", record.СписанаСобівартість);
-                fieldValue.Add("col_a6", record.Документ);
                 
                 base.BaseSave(record.UID, period, record.Income, owner, fieldValue);
             }
@@ -16047,6 +16047,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Record()
             {
                 Організація = new Довідники.Організації_Pointer();
+                Документ = new UuidAndText();
                 ДокументПоступлення2 = new Документи.ПоступленняТоварівТаПослуг_Pointer();
                 Номенклатура = new Довідники.Номенклатура_Pointer();
                 ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
@@ -16054,10 +16055,10 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 Кількість = 0;
                 Собівартість = 0;
                 СписанаСобівартість = 0;
-                Документ = new UuidAndText();
                 
             }
             public Довідники.Організації_Pointer Організація { get; set; }
+            public UuidAndText Документ { get; set; }
             public Документи.ПоступленняТоварівТаПослуг_Pointer ДокументПоступлення2 { get; set; }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
             public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
@@ -16065,7 +16066,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal Кількість { get; set; }
             public decimal Собівартість { get; set; }
             public decimal СписанаСобівартість { get; set; }
-            public UuidAndText Документ { get; set; }
             
         }
     }
