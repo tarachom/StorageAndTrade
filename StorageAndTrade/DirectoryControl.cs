@@ -96,6 +96,11 @@ namespace StorageAndTrade
 					"GetPresentation", BindingFlags.InvokeMethod, null, mDirectoryPointerItem, new object[] { }).ToString();
 		}
 
+		public string GetPresentation()
+        {
+			return textBoxControl.Text;
+		}
+
 		/// <summary>
 		/// Кнопка відкриття форми вибору елементу довідника із списку
 		/// </summary>

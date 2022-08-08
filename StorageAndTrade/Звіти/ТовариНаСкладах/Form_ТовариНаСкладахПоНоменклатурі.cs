@@ -50,6 +50,7 @@ namespace StorageAndTrade
         {
             InitializeComponent();
 
+            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer());
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer());
             directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
             directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
@@ -58,7 +59,17 @@ namespace StorageAndTrade
             geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
-        public Номенклатура_Pointer Номенклатура { get; set; }
+        public Номенклатура_Pointer Номенклатура 
+        {
+            get
+            {
+                return (Номенклатура_Pointer)directoryControl_Номенклатура.DirectoryPointerItem;
+            }
+            set
+            {
+                directoryControl_Номенклатура.DirectoryPointerItem = value;
+            }
+        }
 
         private void Form_ТовариНаСкладахПоНоменклатурі_Load(object sender, EventArgs e)
         {
@@ -186,7 +197,7 @@ HAVING
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy")),
-                    new NameValue<string>("Номенклатура", Номенклатура.GetPresentation())
+                    new NameValue<string>("Номенклатура", directoryControl_Номенклатура.GetPresentation())
                 }
             );
 
@@ -199,7 +210,10 @@ HAVING
 
             Функції.DataToXML(xmlDoc, "ТовариНаСкладах", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ТовариНаСкладах_ЗалишкиПоНоменклатурі.xslt", false, "Товари на складах");
+            if (!Номенклатура.IsEmpty())
+                Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ТовариНаСкладах_ЗалишкиПоНоменклатурі.xslt", false, "Товари на складах");
+            else
+                Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ТовариНаСкладах_Залишки.xslt", false, "Товари на складах");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
