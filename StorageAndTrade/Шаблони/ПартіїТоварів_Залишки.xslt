@@ -30,8 +30,7 @@
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
 							<th>Організація</th>
-							<th>Документ поступлення</th>
-							<th>Документ</th>
+							<th>Партія</th>
 							<th>Номенклатура</th>
 							<th>Характеристика</th>
 							<th>Серія</th>
@@ -44,11 +43,6 @@
 								<td>
 									<a id="{Організація}" name="Довідник.Організації" href="/">
 										<xsl:value-of select="Організація_Назва"/>
-									</a>
-								</td>
-								<td>
-									<a id="{ДокументПоступлення}" name="Документ.ПоступленняТоварівТаПослуг" href="/">
-										<xsl:value-of select="ДокументПоступлення_Назва"/>
 									</a>
 								</td>
 								<td>

@@ -147,11 +147,10 @@
 			<tr class="table-success">
 				<th></th>
 				<th>Організація</th>
-				<th>Документ поступлення</th>
+				<th>Документ</th>
 				<th>Номенклатура</th>
 				<th>Характеристика</th>
 				<th>Серія</th>
-				<th>info</th>
 				<th style="text-align:center">Кількість</th>
 				<th style="text-align:center">Собівартість</th>
 				<th style="text-align:center">Списана</th>
@@ -171,8 +170,8 @@
 						</a>
 					</td>
 					<td>
-						<a id="{ДокументПоступлення}" name="Документ.ПоступленняТоварівТаПослуг" href="/">
-							<xsl:value-of select="ДокументПоступлення_Назва"/>
+						<a id="{Документ/uuid}" name="{Документ/type}" href="/">
+							<xsl:value-of select="Документ/text"/>
 						</a>
 					</td>
 					<td>
@@ -188,11 +187,6 @@
 					<td>
 						<a id="{Серія}" name="Довідник.СеріїНоменклатури" href="/">
 							<xsl:value-of select="Серія_Номер"/>
-						</a>
-					</td>
-					<td>
-						<a id="{Документ/uuid}" name="{Документ/type}" href="/">
-							<xsl:value-of select="Документ/text"/>
 						</a>
 					</td>
 					<td style="text-align:center">

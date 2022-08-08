@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>08.08.2022 18:21:26</DateTimeSave>
+  <DateTimeSave>08.08.2022 19:46:20</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1422,7 +1422,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ДокументПоступлення</Name>
+                  <Name>ДокументПоступлення2</Name>
                   <NameInTable>col_a2</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
@@ -1507,7 +1507,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ДокументПоступлення</Name>
+                  <Name>ДокументПоступлення2</Name>
                   <NameInTable>col_b1</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
@@ -9645,7 +9645,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <IsIndex>1</IsIndex>
           </Field>
           <Field>
-            <Name>ДокументПоступлення</Name>
+            <Name>ДокументПоступлення2</Name>
             <NameInTable>col_a2</NameInTable>
             <Type>pointer</Type>
             <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
