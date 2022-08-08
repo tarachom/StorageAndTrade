@@ -1526,6 +1526,8 @@ FROM
 				record.Номенклатура = Товари_Record.Номенклатура;
 				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
 				record.Серія = Товари_Record.Серія;
+				record.Документ = new UuidAndText(ДокументОбєкт.UnigueID.UGuid, ДокументОбєкт.Table);
+				
 			}
 
 			партіїТоварів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);

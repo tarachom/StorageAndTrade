@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>08.08.2022 13:40:25</DateTimeSave>
+  <DateTimeSave>08.08.2022 17:00:50</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -9693,6 +9693,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <NameInTable>col_b5</NameInTable>
             <Type>numeric</Type>
             <Desc>Дане поле використовується тільки для фіксації ціни собівартості при списанні партії</Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>Документ</Name>
+            <NameInTable>col_a6</NameInTable>
+            <Type>composite_pointer</Type>
+            <Desc>
+            </Desc>
             <IsIndex>0</IsIndex>
           </Field>
         </Fields>

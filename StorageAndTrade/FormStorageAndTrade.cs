@@ -591,6 +591,32 @@ namespace StorageAndTrade
             formService.Show();
         }
 
-        
+        private void testToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Console.WriteLine(Константи.Системні.test_Const);
+
+            //Константи.Системні.test_Const = new UuidAndText(Guid.Empty, "Table1");
+
+            //Console.WriteLine(Константи.Системні.test_Const);
+
+            //string query2 = "Insert Into test Values(@guid, @value)";
+            //Dictionary<string, object> paramQuery2 = new Dictionary<string, object>();
+            //paramQuery2.Add("guid", Guid.NewGuid());
+            //paramQuery2.Add("value",new UuidAndText(Guid.NewGuid(), "Table"));
+
+            //Конфа.Config.Kernel.DataBase.ExecuteSQL(query2, paramQuery2);
+
+            //string query = "SELECT * FROM test";
+
+            //Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+
+            //string[] columnsName;
+            //List<object[]> listRow;
+
+            //Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+            //Console.WriteLine((UuidAndText)listRow[0][1]);
+
+        }
     }
 }

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 08.08.2022 13:40:25
+ * Дата конфігурації: 08.08.2022 17:00:50
  *
  */
 
@@ -3276,7 +3276,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Юридичні особи та підприємці нашої організації.
     ///</summary>
-    public class Організації_Select : DirectorySelect, IDisposable
+    public class Організації_Select : DirectorySelect
     {
         public Організації_Select() : base(Config.Kernel, "tab_a01") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -3583,7 +3583,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Товари та послуги.
     ///</summary>
-    public class Номенклатура_Select : DirectorySelect, IDisposable
+    public class Номенклатура_Select : DirectorySelect
     {
         public Номенклатура_Select() : base(Config.Kernel, "tab_a03") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -3738,7 +3738,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Виробники.
     ///</summary>
-    public class Виробники_Select : DirectorySelect, IDisposable
+    public class Виробники_Select : DirectorySelect
     {
         public Виробники_Select() : base(Config.Kernel, "tab_a04") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -3914,7 +3914,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Види номенклатури.
     ///</summary>
-    public class ВидиНоменклатури_Select : DirectorySelect, IDisposable
+    public class ВидиНоменклатури_Select : DirectorySelect
     {
         public ВидиНоменклатури_Select() : base(Config.Kernel, "tab_a05") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -4083,7 +4083,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Одиниці виміру.
     ///</summary>
-    public class ПакуванняОдиниціВиміру_Select : DirectorySelect, IDisposable
+    public class ПакуванняОдиниціВиміру_Select : DirectorySelect
     {
         public ПакуванняОдиниціВиміру_Select() : base(Config.Kernel, "tab_a06") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -4238,7 +4238,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Валюти.
     ///</summary>
-    public class Валюти_Select : DirectorySelect, IDisposable
+    public class Валюти_Select : DirectorySelect
     {
         public Валюти_Select() : base(Config.Kernel, "tab_a07") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -4420,7 +4420,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Контрагенти.
     ///</summary>
-    public class Контрагенти_Select : DirectorySelect, IDisposable
+    public class Контрагенти_Select : DirectorySelect
     {
         public Контрагенти_Select() : base(Config.Kernel, "tab_a08") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -4712,7 +4712,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Склади.
     ///</summary>
-    public class Склади_Select : DirectorySelect, IDisposable
+    public class Склади_Select : DirectorySelect
     {
         public Склади_Select() : base(Config.Kernel, "tab_a10") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -4970,7 +4970,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Види цін.
     ///</summary>
-    public class ВидиЦін_Select : DirectorySelect, IDisposable
+    public class ВидиЦін_Select : DirectorySelect
     {
         public ВидиЦін_Select() : base(Config.Kernel, "tab_a12") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -5132,7 +5132,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Види цін постачальників.
     ///</summary>
-    public class ВидиЦінПостачальників_Select : DirectorySelect, IDisposable
+    public class ВидиЦінПостачальників_Select : DirectorySelect
     {
         public ВидиЦінПостачальників_Select() : base(Config.Kernel, "tab_a13") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -5307,7 +5307,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Користувачі.
     ///</summary>
-    public class Користувачі_Select : DirectorySelect, IDisposable
+    public class Користувачі_Select : DirectorySelect
     {
         public Користувачі_Select() : base(Config.Kernel, "tab_a14") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -5585,7 +5585,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Фізичні особи.
     ///</summary>
-    public class ФізичніОсоби_Select : DirectorySelect, IDisposable
+    public class ФізичніОсоби_Select : DirectorySelect
     {
         public ФізичніОсоби_Select() : base(Config.Kernel, "tab_a16") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -5843,7 +5843,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Структура підприємства.
     ///</summary>
-    public class СтруктураПідприємства_Select : DirectorySelect, IDisposable
+    public class СтруктураПідприємства_Select : DirectorySelect
     {
         public СтруктураПідприємства_Select() : base(Config.Kernel, "tab_a18") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -6005,7 +6005,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Країни світу.
     ///</summary>
-    public class КраїниСвіту_Select : DirectorySelect, IDisposable
+    public class КраїниСвіту_Select : DirectorySelect
     {
         public КраїниСвіту_Select() : base(Config.Kernel, "tab_a19") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -6160,7 +6160,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Файли.
     ///</summary>
-    public class Файли_Select : DirectorySelect, IDisposable
+    public class Файли_Select : DirectorySelect
     {
         public Файли_Select() : base(Config.Kernel, "tab_a20") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -6329,7 +6329,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Характеристики номенклатури.
     ///</summary>
-    public class ХарактеристикиНоменклатури_Select : DirectorySelect, IDisposable
+    public class ХарактеристикиНоменклатури_Select : DirectorySelect
     {
         public ХарактеристикиНоменклатури_Select() : base(Config.Kernel, "tab_a21") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -6491,7 +6491,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Номенклатура папки.
     ///</summary>
-    public class Номенклатура_Папки_Select : DirectorySelect, IDisposable
+    public class Номенклатура_Папки_Select : DirectorySelect
     {
         public Номенклатура_Папки_Select() : base(Config.Kernel, "tab_a22") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -6653,7 +6653,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Контрагенти папки.
     ///</summary>
-    public class Контрагенти_Папки_Select : DirectorySelect, IDisposable
+    public class Контрагенти_Папки_Select : DirectorySelect
     {
         public Контрагенти_Папки_Select() : base(Config.Kernel, "tab_a23") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -6815,7 +6815,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Склади папки.
     ///</summary>
-    public class Склади_Папки_Select : DirectorySelect, IDisposable
+    public class Склади_Папки_Select : DirectorySelect
     {
         public Склади_Папки_Select() : base(Config.Kernel, "tab_a24") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -6984,7 +6984,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Каси.
     ///</summary>
-    public class Каси_Select : DirectorySelect, IDisposable
+    public class Каси_Select : DirectorySelect
     {
         public Каси_Select() : base(Config.Kernel, "tab_a26") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -7216,7 +7216,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Банківські рахунки організацій.
     ///</summary>
-    public class БанківськіРахункиОрганізацій_Select : DirectorySelect, IDisposable
+    public class БанківськіРахункиОрганізацій_Select : DirectorySelect
     {
         public БанківськіРахункиОрганізацій_Select() : base(Config.Kernel, "tab_a27") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -7498,7 +7498,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Договори контрагентів. Договори підпорядковані контрагенту.
     ///</summary>
-    public class ДоговориКонтрагентів_Select : DirectorySelect, IDisposable
+    public class ДоговориКонтрагентів_Select : DirectorySelect
     {
         public ДоговориКонтрагентів_Select() : base(Config.Kernel, "tab_a28") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -7744,7 +7744,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Банківські рахунки контрагентів.
     ///</summary>
-    public class БанківськіРахункиКонтрагентів_Select : DirectorySelect, IDisposable
+    public class БанківськіРахункиКонтрагентів_Select : DirectorySelect
     {
         public БанківськіРахункиКонтрагентів_Select() : base(Config.Kernel, "tab_a29") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -7926,7 +7926,7 @@ namespace StorageAndTrade_1_0.Довідники
     ///<summary>
     ///Стаття руху коштів.
     ///</summary>
-    public class СтаттяРухуКоштів_Select : DirectorySelect, IDisposable
+    public class СтаттяРухуКоштів_Select : DirectorySelect
     {
         public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -8145,7 +8145,7 @@ namespace StorageAndTrade_1_0.Довідники
     }
     
     
-    public class СеріїНоменклатури_Select : DirectorySelect, IDisposable
+    public class СеріїНоменклатури_Select : DirectorySelect
     {
         public СеріїНоменклатури_Select() : base(Config.Kernel, "tab_b02") { }        
         public bool Select() { return base.BaseSelect(); }
@@ -8620,7 +8620,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ЗамовленняПостачальнику_Select : DocumentSelect, IDisposable
+    public class ЗамовленняПостачальнику_Select : DocumentSelect
     {		
         public ЗамовленняПостачальнику_Select() : base(Config.Kernel, "tab_a25") { }
         
@@ -9079,7 +9079,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ПоступленняТоварівТаПослуг_Select : DocumentSelect, IDisposable
+    public class ПоступленняТоварівТаПослуг_Select : DocumentSelect
     {		
         public ПоступленняТоварівТаПослуг_Select() : base(Config.Kernel, "tab_a32") { }
         
@@ -9525,7 +9525,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ЗамовленняКлієнта_Select : DocumentSelect, IDisposable
+    public class ЗамовленняКлієнта_Select : DocumentSelect
     {		
         public ЗамовленняКлієнта_Select() : base(Config.Kernel, "tab_a34") { }
         
@@ -9973,7 +9973,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class РеалізаціяТоварівТаПослуг_Select : DocumentSelect, IDisposable
+    public class РеалізаціяТоварівТаПослуг_Select : DocumentSelect
     {		
         public РеалізаціяТоварівТаПослуг_Select() : base(Config.Kernel, "tab_a36") { }
         
@@ -10281,7 +10281,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ВстановленняЦінНоменклатури_Select : DocumentSelect, IDisposable
+    public class ВстановленняЦінНоменклатури_Select : DocumentSelect
     {		
         public ВстановленняЦінНоменклатури_Select() : base(Config.Kernel, "tab_a42") { }
         
@@ -10614,7 +10614,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ПрихіднийКасовийОрдер_Select : DocumentSelect, IDisposable
+    public class ПрихіднийКасовийОрдер_Select : DocumentSelect
     {		
         public ПрихіднийКасовийОрдер_Select() : base(Config.Kernel, "tab_a44") { }
         
@@ -10947,7 +10947,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class РозхіднийКасовийОрдер_Select : DocumentSelect, IDisposable
+    public class РозхіднийКасовийОрдер_Select : DocumentSelect
     {		
         public РозхіднийКасовийОрдер_Select() : base(Config.Kernel, "tab_a48") { }
         
@@ -11311,7 +11311,7 @@ namespace StorageAndTrade_1_0.Документи
     ///<summary>
     ///Переміщення товарів між складами.
     ///</summary>
-    public class ПереміщенняТоварів_Select : DocumentSelect, IDisposable
+    public class ПереміщенняТоварів_Select : DocumentSelect
     {		
         public ПереміщенняТоварів_Select() : base(Config.Kernel, "tab_a31") { }
         
@@ -11673,7 +11673,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ПоверненняТоварівПостачальнику_Select : DocumentSelect, IDisposable
+    public class ПоверненняТоварівПостачальнику_Select : DocumentSelect
     {		
         public ПоверненняТоварівПостачальнику_Select() : base(Config.Kernel, "tab_a51") { }
         
@@ -12032,7 +12032,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ПоверненняТоварівВідКлієнта_Select : DocumentSelect, IDisposable
+    public class ПоверненняТоварівВідКлієнта_Select : DocumentSelect
     {		
         public ПоверненняТоварівВідКлієнта_Select() : base(Config.Kernel, "tab_a53") { }
         
@@ -12384,7 +12384,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class АктВиконанихРобіт_Select : DocumentSelect, IDisposable
+    public class АктВиконанихРобіт_Select : DocumentSelect
     {		
         public АктВиконанихРобіт_Select() : base(Config.Kernel, "tab_a81") { }
         
@@ -12699,7 +12699,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ВведенняЗалишків_Select : DocumentSelect, IDisposable
+    public class ВведенняЗалишків_Select : DocumentSelect
     {		
         public ВведенняЗалишків_Select() : base(Config.Kernel, "tab_a83") { }
         
@@ -13290,7 +13290,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class НадлишкиТоварів_Select : DocumentSelect, IDisposable
+    public class НадлишкиТоварів_Select : DocumentSelect
     {		
         public НадлишкиТоварів_Select() : base(Config.Kernel, "tab_a88") { }
         
@@ -13574,7 +13574,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ПересортицяТоварів_Select : DocumentSelect, IDisposable
+    public class ПересортицяТоварів_Select : DocumentSelect
     {		
         public ПересортицяТоварів_Select() : base(Config.Kernel, "tab_a90") { }
         
@@ -13846,7 +13846,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ПерерахунокТоварів_Select : DocumentSelect, IDisposable
+    public class ПерерахунокТоварів_Select : DocumentSelect
     {		
         public ПерерахунокТоварів_Select() : base(Config.Kernel, "tab_a92") { }
         
@@ -14146,7 +14146,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ПсуванняТоварів_Select : DocumentSelect, IDisposable
+    public class ПсуванняТоварів_Select : DocumentSelect
     {		
         public ПсуванняТоварів_Select() : base(Config.Kernel, "tab_a94") { }
         
@@ -14451,7 +14451,7 @@ namespace StorageAndTrade_1_0.Документи
     }
     
     
-    public class ВнутрішнєСпоживанняТоварів_Select : DocumentSelect, IDisposable
+    public class ВнутрішнєСпоживанняТоварів_Select : DocumentSelect
     {		
         public ВнутрішнєСпоживанняТоварів_Select() : base(Config.Kernel, "tab_b07") { }
         
@@ -14601,6 +14601,7 @@ namespace StorageAndTrade_1_0.Документи
 
 namespace StorageAndTrade_1_0.Журнали
 {
+    #region Journal
     public class Journal_Select: JournalSelect
     {
         public Journal_Select() : base(Config.Kernel,
@@ -14637,6 +14638,7 @@ namespace StorageAndTrade_1_0.Журнали
 			return null;
         }
     }
+    #endregion
 
 }
 
@@ -15955,13 +15957,14 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string Кількість = "col_a3";
         public const string Собівартість = "col_a4";
         public const string СписанаСобівартість = "col_b5";
+        public const string Документ = "col_a6";
     }
 	
     
     public class ПартіїТоварів_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ПартіїТоварів_RecordsSet() : base(Config.Kernel, "tab_a79",
-             new string[] { "col_a1", "col_a2", "col_a5", "col_a7", "col_a8", "col_a3", "col_a4", "col_b5" }) 
+             new string[] { "col_a1", "col_a2", "col_a5", "col_a7", "col_a8", "col_a3", "col_a4", "col_b5", "col_a6" }) 
         {
             Records = new List<Record>();
         }
@@ -15989,6 +15992,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Кількість = (fieldValue["col_a3"] != DBNull.Value) ? (decimal)fieldValue["col_a3"] : 0;
                 record.Собівартість = (fieldValue["col_a4"] != DBNull.Value) ? (decimal)fieldValue["col_a4"] : 0;
                 record.СписанаСобівартість = (fieldValue["col_b5"] != DBNull.Value) ? (decimal)fieldValue["col_b5"] : 0;
+                record.Документ = (fieldValue["col_a6"] != DBNull.Value) ? (UuidAndText)fieldValue["col_a6"] : new UuidAndText();
                 
                 Records.Add(record);
             }
@@ -16013,6 +16017,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 fieldValue.Add("col_a3", record.Кількість);
                 fieldValue.Add("col_a4", record.Собівартість);
                 fieldValue.Add("col_b5", record.СписанаСобівартість);
+                fieldValue.Add("col_a6", record.Документ);
                 
                 base.BaseSave(record.UID, period, record.Income, owner, fieldValue);
             }
@@ -16039,6 +16044,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 Кількість = 0;
                 Собівартість = 0;
                 СписанаСобівартість = 0;
+                Документ = new UuidAndText();
                 
             }
             public Довідники.Організації_Pointer Організація { get; set; }
@@ -16049,6 +16055,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal Кількість { get; set; }
             public decimal Собівартість { get; set; }
             public decimal СписанаСобівартість { get; set; }
+            public UuidAndText Документ { get; set; }
             
         }
     }

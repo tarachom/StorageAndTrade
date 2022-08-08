@@ -75,6 +75,7 @@ namespace StorageAndTrade
             this.встановленняЦінНоменклатуриToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.введенняЗалишківToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.замовленняКлієнтівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.замовленняПостачальникамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -113,7 +114,7 @@ namespace StorageAndTrade
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_ПереміщенняТоварівМіжСкладами = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripButton();
-            this.внутрішнєCпоживанняТоварівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_ГоловнеМеню.SuspendLayout();
             this.toolStrip_Довідники.SuspendLayout();
             this.toolStrip_Документи.SuspendLayout();
@@ -499,6 +500,13 @@ namespace StorageAndTrade
             this.введенняЗалишківToolStripMenuItem.Text = "Введення залишків";
             this.введенняЗалишківToolStripMenuItem.Click += new System.EventHandler(this.введенняЗалишківToolStripMenuItem_Click);
             // 
+            // внутрішнєCпоживанняТоварівToolStripMenuItem
+            // 
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Name = "внутрішнєCпоживанняТоварівToolStripMenuItem";
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Text = "Внутрішнє cпоживання товарів";
+            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Click += new System.EventHandler(this.внутрішнєCпоживанняТоварівToolStripMenuItem_Click);
+            // 
             // звітиToolStripMenuItem
             // 
             this.звітиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -591,7 +599,8 @@ namespace StorageAndTrade
             // 
             this.сервісToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.константиToolStripMenuItem,
-            this.перепроведенняДокументівToolStripMenuItem});
+            this.перепроведенняДокументівToolStripMenuItem,
+            this.testToolStripMenuItem});
             this.сервісToolStripMenuItem.Name = "сервісToolStripMenuItem";
             this.сервісToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.сервісToolStripMenuItem.Text = "Сервіс";
@@ -845,12 +854,12 @@ namespace StorageAndTrade
             this.toolStripButton_ВстановленняЦінНоменклатури.Text = "Документ \"Встановлення цін номенклатури\"";
             this.toolStripButton_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.toolStripButton_ВстановленняЦінНоменклатури_Click);
             // 
-            // внутрішнєCпоживанняТоварівToolStripMenuItem
+            // testToolStripMenuItem
             // 
-            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Name = "внутрішнєCпоживанняТоварівToolStripMenuItem";
-            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
-            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Text = "Внутрішнє cпоживання товарів";
-            this.внутрішнєCпоживанняТоварівToolStripMenuItem.Click += new System.EventHandler(this.внутрішнєCпоживанняТоварівToolStripMenuItem_Click);
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -969,6 +978,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem серіїНоменклатуриToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem партіїТоварівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem внутрішнєCпоживанняТоварівToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
     }
 }
 
