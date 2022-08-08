@@ -319,5 +319,25 @@ ELSE 0 END)", "ostatok"));
 					form_ТовариНаСкладахПоНоменклатурі.Show();
 			}
 		}
+
+        private void партіїToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+
+				Form_ПартіїТоварівПоНоменклатурі form_ПартіїТоварівПоНоменклатурі = new Form_ПартіїТоварівПоНоменклатурі();
+				form_ПартіїТоварівПоНоменклатурі.MdiParent = this.MdiParent;
+				form_ПартіїТоварівПоНоменклатурі.Номенклатура = new Довідники.Номенклатура_Pointer(
+					new UnigueID(dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString()));
+
+				form_ПартіїТоварівПоНоменклатурі.CreateReport();
+
+				if (DirectoryPointerItem != null && this.MdiParent == null)
+					form_ПартіїТоварівПоНоменклатурі.ShowDialog();
+				else
+					form_ПартіїТоварівПоНоменклатурі.Show();
+			}
+		}
     }
 }

@@ -269,6 +269,12 @@
     <Compile Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.Designer.cs">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>
     </Compile>
+    <Compile Include="Звіти\ПартіїТоварів\Form_ПартіїТоварівПоНоменклатурі.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\ПартіїТоварів\Form_ПартіїТоварівПоНоменклатурі.Designer.cs">
+      <DependentUpon>Form_ПартіїТоварівПоНоменклатурі.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -911,6 +917,9 @@
     <EmbeddedResource Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.resx">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\ПартіїТоварів\Form_ПартіїТоварівПоНоменклатурі.resx">
+      <DependentUpon>Form_ПартіїТоварівПоНоменклатурі.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Звіти\РозрахункиЗКлієнтами\Form_РозрахункиЗКлієнтами_Звіт.resx">
       <DependentUpon>Form_РозрахункиЗКлієнтами_Звіт.cs</DependentUpon>
     </EmbeddedResource>
@@ -1303,6 +1312,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Шаблони\ЗамовленняПостачальникам_Залишки.xslt" />
+    <Content Include="Шаблони\ПартіїТоварів_ЗалишкиПоНоменклатурі.xslt" />
     <Content Include="Шаблони\РозрахункиЗКлієнтами_Документи.xslt">
       <SubType>Designer</SubType>
     </Content>
