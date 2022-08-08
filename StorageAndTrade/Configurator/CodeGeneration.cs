@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 08.08.2022 17:00:50
+ * Дата конфігурації: 08.08.2022 18:21:26
  *
  */
 
@@ -2362,7 +2362,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ПартіїТоварів_День_TablePart : ConstantsTablePart
         {
             public ПартіїТоварів_День_TablePart() : base(Config.Kernel, "tab_b04",
-                 new string[] { "col_a7", "col_a1", "col_a2", "col_a5", "col_a6", "col_a8", "col_a3", "col_a4" }) 
+                 new string[] { "col_a7", "col_a1", "col_a2", "col_a9", "col_a5", "col_a6", "col_a8", "col_a3", "col_a4" }) 
             {
                 Records = new List<Record>();
             }
@@ -2372,6 +2372,7 @@ namespace StorageAndTrade_1_0.Константи
             public const string Період = "col_a7";
             public const string Організація = "col_a1";
             public const string ДокументПоступлення = "col_a2";
+            public const string Документ = "col_a9";
             public const string Номенклатура = "col_a5";
             public const string ХарактеристикаНоменклатури = "col_a6";
             public const string Серія = "col_a8";
@@ -2392,6 +2393,7 @@ namespace StorageAndTrade_1_0.Константи
                     record.Період = (fieldValue["col_a7"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a7"].ToString()) : DateTime.MinValue;
                     record.Організація = new Довідники.Організації_Pointer(fieldValue["col_a1"]);
                     record.ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer(fieldValue["col_a2"]);
+                    record.Документ = (fieldValue["col_a9"] != DBNull.Value) ? (UuidAndText)fieldValue["col_a9"] : new UuidAndText();
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_a5"]);
                     record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a6"]);
                     record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a8"]);
@@ -2418,6 +2420,7 @@ namespace StorageAndTrade_1_0.Константи
                     fieldValue.Add("col_a7", record.Період);
                     fieldValue.Add("col_a1", record.Організація.UnigueID.UGuid);
                     fieldValue.Add("col_a2", record.ДокументПоступлення.UnigueID.UGuid);
+                    fieldValue.Add("col_a9", record.Документ);
                     fieldValue.Add("col_a5", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_a6", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a8", record.Серія.UnigueID.UGuid);
@@ -2442,6 +2445,7 @@ namespace StorageAndTrade_1_0.Константи
                     Період = DateTime.MinValue;
                     Організація = new Довідники.Організації_Pointer();
                     ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer();
+                    Документ = new UuidAndText();
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Серія = new Довідники.СеріїНоменклатури_Pointer();
@@ -2452,6 +2456,7 @@ namespace StorageAndTrade_1_0.Константи
                 public DateTime Період { get; set; }
                 public Довідники.Організації_Pointer Організація { get; set; }
                 public Документи.ПоступленняТоварівТаПослуг_Pointer ДокументПоступлення { get; set; }
+                public UuidAndText Документ { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }
@@ -2464,7 +2469,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ПартіїТоварів_Місяць_TablePart : ConstantsTablePart
         {
             public ПартіїТоварів_Місяць_TablePart() : base(Config.Kernel, "tab_b05",
-                 new string[] { "col_a8", "col_a9", "col_b1", "col_b4", "col_b5", "col_a1", "col_b2", "col_b3" }) 
+                 new string[] { "col_a8", "col_a9", "col_b1", "col_a2", "col_b4", "col_b5", "col_a1", "col_b2", "col_b3" }) 
             {
                 Records = new List<Record>();
             }
@@ -2474,6 +2479,7 @@ namespace StorageAndTrade_1_0.Константи
             public const string Період = "col_a8";
             public const string Організація = "col_a9";
             public const string ДокументПоступлення = "col_b1";
+            public const string Документ = "col_a2";
             public const string Номенклатура = "col_b4";
             public const string ХарактеристикаНоменклатури = "col_b5";
             public const string Серія = "col_a1";
@@ -2494,6 +2500,7 @@ namespace StorageAndTrade_1_0.Константи
                     record.Період = (fieldValue["col_a8"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a8"].ToString()) : DateTime.MinValue;
                     record.Організація = new Довідники.Організації_Pointer(fieldValue["col_a9"]);
                     record.ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer(fieldValue["col_b1"]);
+                    record.Документ = (fieldValue["col_a2"] != DBNull.Value) ? (UuidAndText)fieldValue["col_a2"] : new UuidAndText();
                     record.Номенклатура = new Довідники.Номенклатура_Pointer(fieldValue["col_b4"]);
                     record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_b5"]);
                     record.Серія = new Довідники.СеріїНоменклатури_Pointer(fieldValue["col_a1"]);
@@ -2520,6 +2527,7 @@ namespace StorageAndTrade_1_0.Константи
                     fieldValue.Add("col_a8", record.Період);
                     fieldValue.Add("col_a9", record.Організація.UnigueID.UGuid);
                     fieldValue.Add("col_b1", record.ДокументПоступлення.UnigueID.UGuid);
+                    fieldValue.Add("col_a2", record.Документ);
                     fieldValue.Add("col_b4", record.Номенклатура.UnigueID.UGuid);
                     fieldValue.Add("col_b5", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a1", record.Серія.UnigueID.UGuid);
@@ -2544,6 +2552,7 @@ namespace StorageAndTrade_1_0.Константи
                     Період = DateTime.MinValue;
                     Організація = new Довідники.Організації_Pointer();
                     ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer();
+                    Документ = new UuidAndText();
                     Номенклатура = new Довідники.Номенклатура_Pointer();
                     ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Серія = new Довідники.СеріїНоменклатури_Pointer();
@@ -2554,6 +2563,7 @@ namespace StorageAndTrade_1_0.Константи
                 public DateTime Період { get; set; }
                 public Довідники.Організації_Pointer Організація { get; set; }
                 public Документи.ПоступленняТоварівТаПослуг_Pointer ДокументПоступлення { get; set; }
+                public UuidAndText Документ { get; set; }
                 public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.СеріїНоменклатури_Pointer Серія { get; set; }

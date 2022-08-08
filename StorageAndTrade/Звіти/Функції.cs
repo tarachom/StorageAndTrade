@@ -82,7 +82,10 @@ namespace StorageAndTrade_1_0.Звіти
                 foreach (string col in columnsName)
                 {
                     XmlElement node = xmlDoc.CreateElement(col);
-                    node.InnerText = row[counter].ToString();
+                    if (row[counter].GetType().Name == "UuidAndText")
+                        node.InnerXml = ((UuidAndText)row[counter]).ToXml();
+                    else
+                        node.InnerText = row[counter].ToString();
                     nodeRow.AppendChild(node);
 
                     counter++;

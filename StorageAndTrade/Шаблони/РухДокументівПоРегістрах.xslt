@@ -190,8 +190,10 @@
 							<xsl:value-of select="Серія_Номер"/>
 						</a>
 					</td>
-					<td style="text-align:center">
-						<xsl:value-of select="Документ"/> в <xsl:value-of select="Документ_Таблиця"/> 
+					<td>
+						<a id="{Документ/uuid}" name="{Документ/type}" href="/">
+							<xsl:value-of select="Документ/text"/>
+						</a>
 					</td>
 					<td style="text-align:center">
 						<xsl:value-of select="Кількість"/>
