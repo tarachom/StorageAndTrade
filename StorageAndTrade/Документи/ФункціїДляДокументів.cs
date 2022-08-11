@@ -64,6 +64,8 @@ namespace StorageAndTrade
             ToolStripTextBox findTextBox = new ToolStripTextBox();
             findTextBox.ToolTipText = "Пошук";
             findTextBox.Size = new Size(rectangle.Width, 0);
+            findTextBox.Name = columnName;
+            findTextBox.Tag = tag;
             contextMenu.Items.Add(findTextBox);
 
             ToolStripMenuItem select = new ToolStripMenuItem("Вибрати");

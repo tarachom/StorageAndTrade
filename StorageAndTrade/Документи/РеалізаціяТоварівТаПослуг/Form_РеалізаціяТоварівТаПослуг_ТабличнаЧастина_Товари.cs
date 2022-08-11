@@ -291,26 +291,62 @@ namespace StorageAndTrade
 					"НоменклатураНазва", "ХарактеристикаНазва", 
 					"СеріяНазва", "ПакуванняНазва", 
 					"ЗамовленняКлієнтаНазва", "СкладНазва" 
-				}, SelectClick, null);
+				}, SelectClick, FindTextChanged);
 		}
 
 		private void FindTextChanged(object sender, EventArgs e)
 		{
-			ToolStripTextBox findMenuItem = (ToolStripTextBox)sender;
-			//Console.WriteLine(findMenuItem.Text);
+			ToolStripTextBox findMenu = (ToolStripTextBox)sender;
+			Записи запис = (Записи)findMenu.Tag;
 
-			foreach (ToolStripItem toolStripItem in contextMenuStrip1.Items.Find("find", false))
-				contextMenuStrip1.Items.Remove(toolStripItem);
+			ToolStrip parent = findMenu.GetCurrentParent();
 
-			ToolStripItem[] mas = new ToolStripItem[10];
+			foreach (ToolStripItem oldItem in parent.Items.Find("find", false))
+				parent.Items.Remove(oldItem);
 
-			for (int i = 0; i < 10; i++)
-			{
-				mas[i] = new ToolStripMenuItem("Варіанти: " + findMenuItem.Text, Properties.Resources.page_white_text, CopyMenuItem_ClickFind, "find");
+			ToolStripMenuItem findSelect = new ToolStripMenuItem("Вибрати 2");
+			findSelect.Name = "find";
+			findSelect.Text = "Dfhsfny we wer wqe";
+			parent.Items.Add(findSelect);
+
+			switch (findMenu.Name)
+            {
+				case "НоменклатураНазва":
+					{
+						
+						break;
+					}
+				case "ХарактеристикаНазва":
+					{
+						
+						break;
+					}
+				case "СеріяНазва":
+					{
+
+						break;
+					}
+				case "ПакуванняНазва":
+					{
+
+						break;
+					}
+				case "ЗамовленняКлієнтаНазва":
+					{
+						
+
+						break;
+					}
+				case "СкладНазва":
+					{
+						
+
+						break;
+					}
+				default:
+					break;
 			}
-
-			contextMenuStrip1.Items.AddRange(mas);
-		}
+        }
 
 		private void SelectClick(object sender, EventArgs e)
 		{
@@ -415,27 +451,29 @@ namespace StorageAndTrade
 			}
 		}
 
-        #endregion
+		#endregion
 
-        private void dataGridViewRecords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-			
-		}
-
-        private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
+		private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+		{
 			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
 
 			Записи запис = RecordsBindingList[e.RowIndex];
 
 			if (columnName == "Кількість" || columnName == "Ціна")
-            {
+			{
 				запис.Сума = запис.Кількість * запис.Ціна;
 				dataGridViewRecords.Refresh();
 			}
 
+
+		}
+
+		private void dataGridViewRecords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
 			
 		}
+
+        
 
         private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
         {
