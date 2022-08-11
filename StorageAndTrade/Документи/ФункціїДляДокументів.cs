@@ -35,6 +35,7 @@ using System.Windows.Forms;
 using System.Drawing;
 
 using AccountingSoftware;
+using Конфа = StorageAndTrade_1_0;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
@@ -46,7 +47,6 @@ namespace StorageAndTrade
     /// </summary>
     class ФункціїДляДокументів
     {
-
         public static void ВідкритиМенюВибору(DataGridView gridView, int columnIndex, int rowIndex, object tag, string[] allowColumn, 
             EventHandler selectClick, EventHandler findTextChanged)
         {
@@ -82,6 +82,40 @@ namespace StorageAndTrade
 
             contextMenu.Show(point);
             findTextBox.Focus();
+        }
+
+        public static void ОчиститиМенюПошуку(ToolStrip parentMenu)
+        {
+            for (int counterMenu = parentMenu.Items.Count - 1; counterMenu > 1; counterMenu--)
+                parentMenu.Items.RemoveAt(counterMenu);
+        }
+
+        public static void ЗаповнитиМенюПошуку(ToolStrip parentMenu, string queryFind, string findText, string name, object tag,
+            EventHandler findClick)
+        {
+            Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+            paramQuery.Add("like_param", "%" + findText.ToLower() + "%");
+
+            string[] columnsName;
+            List<Dictionary<string, object>> listRow;
+
+            Конфа.Config.Kernel.DataBase.SelectRequest(queryFind, paramQuery, out columnsName, out listRow);
+
+            if (listRow.Count > 0)
+            {
+                ToolStripItem[] mas = new ToolStripItem[listRow.Count];
+
+                int counter = 0;
+
+                foreach (Dictionary<string, object> row in listRow)
+                {
+                    mas[counter] = new ToolStripMenuItem(DateTime.Now.ToString() + " " + row["Назва"].ToString(), Properties.Resources.page_white_text, findClick, name);
+                    mas[counter].Tag = new NameValue<object>(row["uid"].ToString(), tag);
+                    counter++;
+                }
+
+                parentMenu.Items.AddRange(mas);
+            }
         }
 
         /// <summary>

@@ -183,12 +183,11 @@ namespace StorageAndTrade
 
 			foreach (Записи запис in RecordsBindingList)
             {
-				sequenceNumber++;
-
-				Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Record record = new Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Record();
+				Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Record record = new 
+					Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Record();
 
 				record.UID = Guid.Parse(запис.ID);
-				record.НомерРядка = sequenceNumber;
+				record.НомерРядка = sequenceNumber++;
 				record.Номенклатура = запис.Номенклатура;
 				record.ХарактеристикаНоменклатури = запис.Характеристика;
 				record.Серія = запис.Серія;
@@ -260,7 +259,9 @@ namespace StorageAndTrade
 					Ціна = запис.Ціна,
 					Сума = запис.Сума,
 					ЗамовленняКлієнта = запис.ЗамовленняКлієнта,
-					Склад = запис.Склад
+					ЗамовленняКлієнтаНазва = запис.ЗамовленняКлієнтаНазва,
+					Склад = запис.Склад,
+					СкладНазва = запис.СкладНазва
 				};
             }
 
@@ -360,6 +361,86 @@ namespace StorageAndTrade
 					}, SelectClick, FindTextChanged);
 		}
 
+		private void SelectClick(object sender, EventArgs e)
+		{
+			ToolStripMenuItem selectMenu = (ToolStripMenuItem)sender;
+			Записи запис = (Записи)selectMenu.Tag;
+
+			switch (selectMenu.Name)
+			{
+				case "НоменклатураНазва":
+					{
+						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
+						form_Номенклатура.DirectoryPointerItem = запис.Номенклатура;
+						form_Номенклатура.ShowDialog();
+
+						запис.Номенклатура = (Довідники.Номенклатура_Pointer)form_Номенклатура.DirectoryPointerItem;
+						запис.ПісляЗміни_Номенклатура();
+
+						break;
+					}
+				case "ХарактеристикаНазва":
+					{
+						Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
+						form_ХарактеристикиНоменклатури.DirectoryPointerItem = запис.Характеристика;
+						form_ХарактеристикиНоменклатури.ShowDialog();
+
+						запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)form_ХарактеристикиНоменклатури.DirectoryPointerItem;
+						запис.ПісляЗміни_Характеристика();
+
+						break;
+					}
+				case "СеріяНазва":
+					{
+						Form_СеріїНоменклатури form_СеріїНоменклатури = new Form_СеріїНоменклатури();
+						form_СеріїНоменклатури.DirectoryPointerItem = запис.Серія;
+						form_СеріїНоменклатури.ShowDialog();
+
+						запис.Серія = (Довідники.СеріїНоменклатури_Pointer)form_СеріїНоменклатури.DirectoryPointerItem;
+						запис.ПісляЗміни_Серія();
+
+						break;
+					}
+				case "ПакуванняНазва":
+					{
+						Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
+						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = запис.Пакування;
+						form_ПакуванняОдиниціВиміру.ShowDialog();
+
+						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
+						запис.ПісляЗміни_Пакування();
+
+						break;
+					}
+				case "ЗамовленняКлієнтаНазва":
+					{
+						Form_ЗамовленняКлієнтаЖурнал form_ЗамовленняКлієнтаЖурнал = new Form_ЗамовленняКлієнтаЖурнал();
+						form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem = запис.ЗамовленняКлієнта;
+						form_ЗамовленняКлієнтаЖурнал.ShowDialog();
+
+						запис.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem;
+						запис.ПісляЗміни_ЗамовленняКлієнта();
+
+						break;
+					}
+				case "СкладНазва":
+					{
+						Form_Склади form_Склади = new Form_Склади();
+						form_Склади.DirectoryPointerItem = запис.Склад;
+						form_Склади.ShowDialog();
+
+						запис.Склад = (Довідники.Склади_Pointer)form_Склади.DirectoryPointerItem;
+						запис.ПісляЗміни_Склад();
+
+						break;
+					}
+				default:
+					break;
+			}
+
+			dataGridViewRecords.Refresh();
+		}
+
 		private void FindTextChanged(object sender, EventArgs e)
 		{
 			ToolStripTextBox findMenu = (ToolStripTextBox)sender;
@@ -367,8 +448,7 @@ namespace StorageAndTrade
 
 			ToolStrip parent = findMenu.GetCurrentParent();
 
-			for (int counterMenu = parent.Items.Count - 1; counterMenu > 1; counterMenu--)
-				parent.Items.RemoveAt(counterMenu);
+			ФункціїДляДокументів.ОчиститиМенюПошуку(parent);
 
 			if (String.IsNullOrWhiteSpace(findMenu.Text))
 				return;
@@ -376,7 +456,7 @@ namespace StorageAndTrade
 			string query = "";
 
 			switch (findMenu.Name)
-            {
+			{
 				case "НоменклатураНазва":
 					{
 						query = $@"
@@ -468,41 +548,19 @@ LIMIT 10
 						break;
 					}
 				default:
-					break;
+					return;
 			}
 
-			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-			paramQuery.Add("like_param", "%" + findMenu.Text.ToLower() + "%");
-
-			string[] columnsName;
-			List<Dictionary<string, object>> listRow;
-
-			Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-
-			if (listRow.Count > 0)
-			{
-				ToolStripItem[] mas = new ToolStripItem[listRow.Count];
-
-				int counter = 0;
-
-				foreach (Dictionary<string, object> row in listRow)
-				{
-					mas[counter] = new ToolStripMenuItem(DateTime.Now.ToString() + " " + row["Назва"].ToString(), Properties.Resources.page_white_text, FindClick, findMenu.Name);
-					mas[counter].Tag = new NameValue<Записи>(row["uid"].ToString(), запис);
-					counter++;
-				}
-
-				parent.Items.AddRange(mas);
-			}
+			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findMenu.Text, findMenu.Name, запис, FindClick);
 		}
 
 		private void FindClick(object sender, EventArgs e)
 		{
 			ToolStripMenuItem selectMenu = (ToolStripMenuItem)sender;
-			NameValue<Записи> nameValue = (NameValue<Записи>)selectMenu.Tag;
+			NameValue<object> nameValue = (NameValue<object>)selectMenu.Tag;
 
 			string uid = nameValue.Name;
-			Записи запис = nameValue.Value;
+			Записи запис = (Записи)nameValue.Value;
 
 			switch (selectMenu.Name)
 			{
@@ -549,86 +607,6 @@ LIMIT 10
 			dataGridViewRecords.Refresh();
 		}
 
-		private void SelectClick(object sender, EventArgs e)
-		{
-			ToolStripMenuItem selectMenu = (ToolStripMenuItem)sender;
-			Записи запис = (Записи)selectMenu.Tag;
-
-			switch (selectMenu.Name)
-			{
-				case "НоменклатураНазва":
-					{
-						Form_Номенклатура form_Номенклатура = new Form_Номенклатура();
-						form_Номенклатура.DirectoryPointerItem = запис.Номенклатура;
-						form_Номенклатура.ShowDialog();
-
-						запис.Номенклатура = (Довідники.Номенклатура_Pointer)form_Номенклатура.DirectoryPointerItem;
-						запис.ПісляЗміни_Номенклатура();
-
-						break;
-					}
-				case "ХарактеристикаНазва":
-					{
-						Form_ХарактеристикиНоменклатури form_ХарактеристикиНоменклатури = new Form_ХарактеристикиНоменклатури();
-						form_ХарактеристикиНоменклатури.DirectoryPointerItem = запис.Характеристика;
-						form_ХарактеристикиНоменклатури.ShowDialog();
-
-						запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)form_ХарактеристикиНоменклатури.DirectoryPointerItem;
-						запис.ПісляЗміни_Характеристика();
-
-						break;
-					}
-				case "СеріяНазва":
-					{
-						Form_СеріїНоменклатури form_СеріїНоменклатури = new Form_СеріїНоменклатури();
-						form_СеріїНоменклатури.DirectoryPointerItem = запис.Серія;
-						form_СеріїНоменклатури.ShowDialog();
-
-						запис.Серія = (Довідники.СеріїНоменклатури_Pointer)form_СеріїНоменклатури.DirectoryPointerItem;
-						запис.ПісляЗміни_Серія();
-
-						break;
-					}
-				case "ПакуванняНазва":
-					{
-						Form_ПакуванняОдиниціВиміру form_ПакуванняОдиниціВиміру = new Form_ПакуванняОдиниціВиміру();
-						form_ПакуванняОдиниціВиміру.DirectoryPointerItem = запис.Пакування;
-						form_ПакуванняОдиниціВиміру.ShowDialog();
-
-						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
-						запис.ПісляЗміни_Пакування();
-
-						break;
-					}
-				case "ЗамовленняКлієнтаНазва":
-					{
-						Form_ЗамовленняКлієнтаЖурнал form_ЗамовленняКлієнтаЖурнал = new Form_ЗамовленняКлієнтаЖурнал();
-						form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem = запис.ЗамовленняКлієнта;
-						form_ЗамовленняКлієнтаЖурнал.ShowDialog();
-
-						запис.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem;
-						запис.ПісляЗміни_ЗамовленняКлієнта();
-
-						break;
-					}
-				case "СкладНазва":
-					{
-						Form_Склади form_Склади = new Form_Склади();
-						form_Склади.DirectoryPointerItem = запис.Склад;
-						form_Склади.ShowDialog();
-
-						запис.Склад = (Довідники.Склади_Pointer)form_Склади.DirectoryPointerItem;
-						запис.ПісляЗміни_Склад();
-
-						break;
-					}
-				default:
-					break;
-			}
-
-			dataGridViewRecords.Refresh();
-		}
-
 		#endregion
 
 		#region Меню таб.частини
@@ -636,6 +614,8 @@ LIMIT 10
 		private void toolStripButtonAdd_Click(object sender, EventArgs e)
 		{
 			RecordsBindingList.Add(Записи.New());
+
+			dataGridViewRecords.Focus();
 
 			dataGridViewRecords.ClearSelection();
 			dataGridViewRecords.CurrentCell = dataGridViewRecords.Rows[dataGridViewRecords.Rows.Count - 1].Cells["НоменклатураНазва"];
@@ -667,14 +647,12 @@ LIMIT 10
 				List<int> rowIndexList = new List<int>();
 
 				for (int i = 0; i < dataGridViewRecords.SelectedCells.Count; i++)
-					if (!rowIndexList.Contains(dataGridViewRecords.SelectedCells[i].RowIndex) &&
-						!dataGridViewRecords.Rows[dataGridViewRecords.SelectedCells[i].RowIndex].IsNewRow)
-						rowIndexList.Add(dataGridViewRecords.SelectedCells[i].RowIndex);
-
-				rowIndexList.Sort();
-
-				foreach (int rowIndex in rowIndexList)
-					RecordsBindingList.Add(Записи.Clone(RecordsBindingList[rowIndex]));
+					if (!rowIndexList.Contains(dataGridViewRecords.SelectedCells[i].RowIndex))
+					{
+						int rowIndex = dataGridViewRecords.SelectedCells[i].RowIndex;
+						rowIndexList.Add(rowIndex);
+						RecordsBindingList.Add(Записи.Clone(RecordsBindingList[rowIndex]));
+					}					
 			}
 		}
 
