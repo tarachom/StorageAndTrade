@@ -31,6 +31,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Drawing;
+
 using AccountingSoftware;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
@@ -43,6 +46,42 @@ namespace StorageAndTrade
     /// </summary>
     class ФункціїДляДокументів
     {
+
+        public static void ВідкритиМенюВибору(DataGridView gridView, int columnIndex, int rowIndex, object tag, string[] allowColumn, 
+            EventHandler selectClick, EventHandler findTextChanged)
+        {
+            string columnName = gridView.Columns[columnIndex].Name;
+
+            if (!allowColumn.Contains(columnName))
+                return;
+
+            Rectangle rectangle = gridView.GetCellDisplayRectangle(columnIndex, rowIndex, true);
+            rectangle.Offset(0, 0);
+            Point point = gridView.PointToScreen(rectangle.Location);
+
+            ContextMenuStrip contextMenu = new ContextMenuStrip();
+
+            ToolStripTextBox findTextBox = new ToolStripTextBox();
+            findTextBox.ToolTipText = "Пошук";
+            findTextBox.Size = new Size(rectangle.Width, 0);
+            contextMenu.Items.Add(findTextBox);
+
+            ToolStripMenuItem select = new ToolStripMenuItem("Вибрати");
+            select.Image = Properties.Resources.data;
+            select.Name = columnName;
+            select.Tag = tag;
+            contextMenu.Items.Add(select);
+
+            if (findTextChanged != null)
+                findTextBox.TextChanged += findTextChanged;
+
+            if (selectClick != null)
+                select.Click += selectClick;
+
+            contextMenu.Show(point);
+            findTextBox.Focus();
+        }
+
         /// <summary>
         /// Функція повертає перший із списку договорів - договір контрагента
         /// </summary>

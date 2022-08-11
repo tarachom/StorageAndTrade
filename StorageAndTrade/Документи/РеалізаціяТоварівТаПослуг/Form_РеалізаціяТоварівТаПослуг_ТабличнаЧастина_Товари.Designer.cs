@@ -70,6 +70,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellClick);
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellEndEdit);
+            this.dataGridViewRecords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewRecords_KeyDown);
             // 
             // panel1
             // 

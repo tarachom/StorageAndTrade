@@ -289,47 +289,33 @@ namespace StorageAndTrade
 			contextMenuStrip1.Items.AddRange(mas);
 		}
 
-        #region Контекстне меню вибору із списку
+        #region Меню пошуку та вибору
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
-
-			string[] allowColumn = new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "СеріяНазва", "ПакуванняНазва", "ЗамовленняКлієнтаНазва", "СкладНазва" };
-
-			contextMenuStrip1.Items.Clear();
-
-			if (allowColumn.Contains(columnName))
-            {
-				ToolStripMenuItem selectMenuItem = new ToolStripMenuItem("Вибрати із списку");
-				selectMenuItem.Image = Properties.Resources.data;
-				selectMenuItem.Name = columnName;
-				selectMenuItem.Tag = RecordsBindingList[e.RowIndex];
-				selectMenuItem.Click += SelectMenuItem_Click;
-				contextMenuStrip1.Items.Add(selectMenuItem);
-
-				ToolStripTextBox findToolStripTextBox = new ToolStripTextBox();
-				findToolStripTextBox.ToolTipText = "Пошук";
-				findToolStripTextBox.Size = new Size(300, 0);
-				findToolStripTextBox.TextChanged += ToolStripTextBox_TextChanged;
-				contextMenuStrip1.Items.Add(findToolStripTextBox);
-
-				Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
-				rectangle.Offset(0, dataGridViewRecords.Rows[e.RowIndex].Height);
-				Point point = dataGridViewRecords.PointToScreen(rectangle.Location);
-
-				contextMenuStrip1.Show(point);
-			}
+			ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
+				new string[] {
+					"НоменклатураНазва", "ХарактеристикаНазва", 
+					"СеріяНазва", "ПакуванняНазва", 
+					"ЗамовленняКлієнтаНазва", "СкладНазва" 
+				}, SelectClick, null);
 		}
 
-		private void SelectMenuItem_Click(object sender, EventArgs e)
+		private void dataGridViewRecords_KeyDown(object sender, KeyEventArgs e)
 		{
-			ToolStripMenuItem copyMenuItem = (ToolStripMenuItem)sender;
-			Записи запис = (Записи)copyMenuItem.Tag;
+			if (e.KeyCode == Keys.Enter)
+					dataGridViewRecords_CellDoubleClick(sender,
+						new DataGridViewCellEventArgs(
+							dataGridViewRecords.CurrentCell.ColumnIndex, 
+							dataGridViewRecords.CurrentCell.RowIndex));
+		}
 
-			//Console.WriteLine(copyMenuItem.Name);
+		private void SelectClick(object sender, EventArgs e)
+		{
+			ToolStripMenuItem selectMenu = (ToolStripMenuItem)sender;
+			Записи запис = (Записи)selectMenu.Tag;
 
-			switch (copyMenuItem.Name)
+			switch (selectMenu.Name)
 			{
 				case "НоменклатураНазва":
 					{
@@ -494,5 +480,7 @@ namespace StorageAndTrade
 					RecordsBindingList.Add(Записи.Clone(RecordsBindingList[rowIndex]));
 			}
 		}
+
+        
     }
 }
