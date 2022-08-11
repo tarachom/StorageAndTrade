@@ -14,6 +14,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using РегістриВідомостей = StorageAndTrade_1_0.РегістриВідомостей;
 
 namespace StorageAndTrade
 {
@@ -62,6 +63,11 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 100;
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
+
+			dataGridViewRecords.Columns["ВидЦіни"].Visible = false;
+			dataGridViewRecords.Columns["ВидЦіниНазва"].Width = 100;
+			dataGridViewRecords.Columns["ВидЦіниНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["ВидЦіниНазва"].HeaderText = "Вид ціни";
 
 			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -115,11 +121,17 @@ namespace StorageAndTrade
 
 			//JOIN 5
 			querySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.ВидиЦін_Const.TABLE + "." + Довідники.ВидиЦін_Const.Назва, "vidy_cen"));
+			querySelect.Joins.Add(
+				new Join(Довідники.ВидиЦін_Const.TABLE, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.ВидЦіни, querySelect.Table));
+
+			//JOIN 6
+			querySelect.FieldAndAlias.Add(
 				new NameValue<string>(Документи.ЗамовленняКлієнта_Const.TABLE + "." + Документи.ЗамовленняКлієнта_Const.Назва, "doc_name"));
 			querySelect.Joins.Add(
 				new Join(Документи.ЗамовленняКлієнта_Const.TABLE, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.ЗамовленняКлієнта, querySelect.Table));
 
-			//JOIN 6
+			//JOIN 7
 			querySelect.FieldAndAlias.Add(
 				new NameValue<string>(Довідники.Склади_Const.TABLE + "." + Довідники.Склади_Const.Назва, "sklad_name"));
 			querySelect.Joins.Add(
@@ -148,6 +160,8 @@ namespace StorageAndTrade
 					Пакування = record.Пакування,
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
 					Кількість = record.Кількість,
+					ВидЦіни = record.ВидЦіни,
+					ВидЦіниНазва = JoinValue[record.UID.ToString()]["vidy_cen"],
 					Ціна = Math.Round(record.Ціна, 2),
 					Сума = Math.Round(record.Сума, 2),
 					ЗамовленняКлієнта = record.ЗамовленняКлієнта,
@@ -194,6 +208,7 @@ namespace StorageAndTrade
 				record.КількістьУпаковок = запис.КількістьУпаковок;
 				record.Пакування = запис.Пакування;
 				record.Кількість = запис.Кількість;
+				record.ВидЦіни = запис.ВидЦіни;
 				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
 				record.ЗамовленняКлієнта = запис.ЗамовленняКлієнта;
@@ -219,6 +234,8 @@ namespace StorageAndTrade
 			public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
 			public string ПакуванняНазва { get; set; }
 			public decimal Кількість { get; set; }
+			public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
+			public string ВидЦіниНазва { get; set; }
 			public decimal Ціна { get; set; }
 			public decimal Сума { get; set; }
 			public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
@@ -237,6 +254,7 @@ namespace StorageAndTrade
 					КількістьУпаковок = 1,
 					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(),
 					Кількість = 1,
+					ВидЦіни = new Довідники.ВидиЦін_Pointer(),
 					ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(),
 					Склад = new Довідники.Склади_Pointer()
 				};
@@ -256,6 +274,8 @@ namespace StorageAndTrade
 					Пакування = запис.Пакування,
 					ПакуванняНазва = запис.ПакуванняНазва,
 					Кількість = запис.Кількість,
+					ВидЦіни = запис.ВидЦіни,
+					ВидЦіниНазва = запис.ВидЦіниНазва,
 					Ціна = запис.Ціна,
 					Сума = запис.Сума,
 					ЗамовленняКлієнта = запис.ЗамовленняКлієнта,
@@ -314,6 +334,11 @@ namespace StorageAndTrade
 			{
 				this.ПакуванняНазва = this.Пакування.GetPresentation();
 			}
+			public void ПісляЗміни_ВидЦіни()
+			{
+				this.ВидЦіниНазва = this.ВидЦіни.GetPresentation();
+				this.ОтриматиЦіну();
+			}
 			public void ПісляЗміни_ЗамовленняКлієнта()
 			{
 				this.ЗамовленняКлієнтаНазва = this.ЗамовленняКлієнта.GetPresentation();
@@ -321,6 +346,38 @@ namespace StorageAndTrade
 			public void ПісляЗміни_Склад()
 			{
 				this.СкладНазва = this.Склад.GetPresentation();
+			}
+			public void ОтриматиЦіну()
+            {
+				if (this.Номенклатура.IsEmpty() || this.ВидЦіни.IsEmpty())
+					return;
+
+				if (this.Ціна == 0)
+				{
+					string query = $@"
+SELECT
+    ЦіниНоменклатури.period,
+    ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.Ціна} AS Ціна
+FROM 
+    {РегістриВідомостей.ЦіниНоменклатури_Const.TABLE} AS ЦіниНоменклатури
+WHERE
+    ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.ВидЦіни} = '{this.ВидЦіни.UnigueID}' AND
+    ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.Номенклатура} = '{this.Номенклатура.UnigueID}'
+ORDER BY 
+    ЦіниНоменклатури.period DESC 
+LIMIT 1
+";
+					Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+
+					string[] columnsName;
+					List<Dictionary<string, object>> listRow;
+
+					Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+					if (listRow.Count > 0)
+						foreach (Dictionary<string, object> row in listRow)
+							this.Ціна = (decimal)row["Ціна"];
+				}
 			}
 		}
 
@@ -345,7 +402,58 @@ namespace StorageAndTrade
 				dataGridViewRecords_CellDoubleClick(sender,
 					new DataGridViewCellEventArgs(dataGridViewRecords.CurrentCell.ColumnIndex, dataGridViewRecords.CurrentCell.RowIndex));
 			else if (e.KeyCode == Keys.Delete)
-				toolStripButtonDelete_Click(sender, new EventArgs());
+            {
+				string columnName = dataGridViewRecords.Columns[dataGridViewRecords.CurrentCell.ColumnIndex].Name;
+				Записи запис = RecordsBindingList[dataGridViewRecords.CurrentCell.RowIndex];
+
+				switch (columnName)
+				{
+					case "НоменклатураНазва":
+						{
+							запис.Номенклатура = new Довідники.Номенклатура_Pointer();
+							запис.ПісляЗміни_Номенклатура();
+							break;
+						}
+					case "ХарактеристикаНазва":
+						{
+							запис.Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer();
+							запис.ПісляЗміни_Характеристика();
+							break;
+						}
+					case "СеріяНазва":
+						{
+							запис.Серія = new Довідники.СеріїНоменклатури_Pointer();
+							запис.ПісляЗміни_Серія();
+							break;
+						}
+					case "ПакуванняНазва":
+						{
+							запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+							запис.ПісляЗміни_Пакування();
+							break;
+						}
+					case "ВидЦіниНазва":
+						{
+							запис.ВидЦіни = new Довідники.ВидиЦін_Pointer();
+							запис.ПісляЗміни_ВидЦіни();
+							break;
+						}
+					case "ЗамовленняКлієнтаНазва":
+						{
+							запис.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
+							запис.ПісляЗміни_ЗамовленняКлієнта();
+							break;
+						}
+					case "СкладНазва":
+						{
+							запис.Склад = new Довідники.Склади_Pointer();
+							запис.ПісляЗміни_Склад();
+							break;
+						}
+					default:
+						break;
+				}
+			}
 			else if (e.KeyCode == Keys.Insert)
 				toolStripButtonAdd_Click(sender, new EventArgs());
 		}
@@ -356,7 +464,7 @@ namespace StorageAndTrade
 				ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
 					new string[] {
 					"НоменклатураНазва", "ХарактеристикаНазва",
-					"СеріяНазва", "ПакуванняНазва",
+					"СеріяНазва", "ПакуванняНазва", "ВидЦіниНазва",
 					"ЗамовленняКлієнтаНазва", "СкладНазва"
 					}, SelectClick, FindTextChanged);
 		}
@@ -409,6 +517,17 @@ namespace StorageAndTrade
 
 						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
 						запис.ПісляЗміни_Пакування();
+
+						break;
+					}
+				case "ВидЦіниНазва":
+					{
+						Form_ВидиЦін form_ВидиЦін = new Form_ВидиЦін();
+						form_ВидиЦін.DirectoryPointerItem = запис.ВидЦіни;
+						form_ВидиЦін.ShowDialog();
+
+						запис.ВидЦіни = (Довідники.ВидиЦін_Pointer)form_ВидиЦін.DirectoryPointerItem;
+						запис.ПісляЗміни_ВидЦіни();
 
 						break;
 					}
@@ -517,6 +636,21 @@ LIMIT 10
 ";
 						break;
 					}
+				case "ВидЦіниНазва":
+					{
+						query = $@"
+SELECT 
+    ВидиЦін.uid,
+    ВидиЦін.{Довідники.ВидиЦін_Const.Назва} AS Назва
+FROM
+    {Довідники.ВидиЦін_Const.TABLE} AS ВидиЦін
+WHERE
+    LOWER(ВидиЦін.{Довідники.ВидиЦін_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+						break;
+					}
 				case "ЗамовленняКлієнтаНазва":
 					{
 						query = $@"
@@ -588,6 +722,12 @@ LIMIT 10
 						запис.ПісляЗміни_Пакування();
 						break;
 					}
+				case "ВидЦіниНазва":
+                    {
+						запис.ВидЦіни = new Довідники.ВидиЦін_Pointer(new UnigueID(uid));
+						запис.ПісляЗміни_ВидЦіни();
+						break;
+					}					
 				case "ЗамовленняКлієнтаНазва":
 					{
 						запис.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
