@@ -47,6 +47,16 @@ namespace StorageAndTrade
     /// </summary>
     class ФункціїДляДокументів
     {
+        /// <summary>
+        /// Функція відкриває контекстне меню вибору в табличній частині документу
+        /// </summary>
+        /// <param name="gridView">DataGridView</param>
+        /// <param name="columnIndex">Індекс стовця</param>
+        /// <param name="rowIndex">Індекс рядка</param>
+        /// <param name="tag">Прикріплений обєкт для меню</param>
+        /// <param name="allowColumn">Стовці для яких доступне меню</param>
+        /// <param name="selectClick">Функція вибору</param>
+        /// <param name="findTextChanged">Функція пошуку</param>
         public static void ВідкритиМенюВибору(DataGridView gridView, int columnIndex, int rowIndex, object tag, string[] allowColumn, 
             EventHandler selectClick, EventHandler findTextChanged)
         {
@@ -84,12 +94,25 @@ namespace StorageAndTrade
             findTextBox.Focus();
         }
 
+        /// <summary>
+        /// Функція очищає контекстне меню від результатів пошуку
+        /// </summary>
+        /// <param name="parentMenu">Контекстне меню</param>
         public static void ОчиститиМенюПошуку(ToolStrip parentMenu)
         {
             for (int counterMenu = parentMenu.Items.Count - 1; counterMenu > 1; counterMenu--)
                 parentMenu.Items.RemoveAt(counterMenu);
         }
 
+        /// <summary>
+        /// Функція заповнює контекстне меню результатами пошуку
+        /// </summary>
+        /// <param name="parentMenu">Контекстне меню</param>
+        /// <param name="queryFind">Запит</param>
+        /// <param name="findText">Текст для пошуку</param>
+        /// <param name="name">Назва меню (стовпця)</param>
+        /// <param name="tag">Прикріплений обєкт</param>
+        /// <param name="findClick">Функція вибору результату пошуку</param>
         public static void ЗаповнитиМенюПошуку(ToolStrip parentMenu, string queryFind, string findText, string name, object tag,
             EventHandler findClick)
         {
@@ -109,7 +132,7 @@ namespace StorageAndTrade
 
                 foreach (Dictionary<string, object> row in listRow)
                 {
-                    mas[counter] = new ToolStripMenuItem(DateTime.Now.ToString() + " " + row["Назва"].ToString(), Properties.Resources.page_white_text, findClick, name);
+                    mas[counter] = new ToolStripMenuItem(row["Назва"].ToString(), Properties.Resources.page_white_text, findClick, name);
                     mas[counter].Tag = new NameValue<object>(row["uid"].ToString(), tag);
                     counter++;
                 }
