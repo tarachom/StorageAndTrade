@@ -301,7 +301,7 @@ OR
        -Рег_ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} END) != 0
 ";
 
-                                    Console.WriteLine(query);
+                                    //Console.WriteLine(query);
                                     Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
                                     break;
