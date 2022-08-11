@@ -127,12 +127,12 @@ namespace StorageAndTrade
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ФормаОплати.SelectedIndex = 0;
 
-					directoryControl_Контрагент.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПостачальник_Const;
-					directoryControl_Організація.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
-					directoryControl_Валюта.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
-					directoryControl_Склад.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОснонийСклад_Const;
-					directoryControl_Каса.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const;
-					directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
+					directoryControl_Контрагент.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Контрагент = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПостачальник_Const;
+					directoryControl_Організація.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Організація = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
+					directoryControl_Валюта.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Валюта = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
+					directoryControl_Склад.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Склад = Константи.ЗначенняЗаЗамовчуванням.ОснонийСклад_Const;
+					directoryControl_Каса.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Каса = Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const;
+					directoryControl_Підрозділ.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Підрозділ = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
 				}
 				else
 				{
