@@ -372,7 +372,6 @@ namespace StorageAndTrade
 				{
 					string query = $@"
 SELECT
-    ЦіниНоменклатури.period,
     ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.Ціна} AS Ціна
 FROM 
     {РегістриВідомостей.ЦіниНоменклатури_Const.TABLE} AS ЦіниНоменклатури
@@ -392,7 +391,10 @@ LIMIT 1
 
 					if (listRow.Count > 0)
 						foreach (Dictionary<string, object> row in listRow)
+						{
 							запис.Ціна = (decimal)row["Ціна"];
+							запис.Сума = запис.Кількість * запис.Ціна;
+						}
 				}
 			}
 		}
