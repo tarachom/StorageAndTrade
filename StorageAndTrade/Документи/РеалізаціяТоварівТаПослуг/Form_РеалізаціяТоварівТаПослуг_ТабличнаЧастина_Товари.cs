@@ -323,14 +323,20 @@ namespace StorageAndTrade
 			}
 		}
 
-		private void CopyMenuItem_ClickFind(object sender, EventArgs e)
+		#region Вибір, Пошук, Зміна
+
+		private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
 		{
-			//Console.WriteLine("Find menu");
+			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
+
+			Записи запис = RecordsBindingList[e.RowIndex];
+
+			if (columnName == "Кількість" || columnName == "Ціна")
+			{
+				запис.Сума = запис.Кількість * запис.Ціна;
+				dataGridViewRecords.Refresh();
+			}
 		}
-
-		
-
-		#region Меню пошуку та вибору
 
 		private void dataGridViewRecords_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -339,6 +345,8 @@ namespace StorageAndTrade
 					new DataGridViewCellEventArgs(dataGridViewRecords.CurrentCell.ColumnIndex, dataGridViewRecords.CurrentCell.RowIndex));
 			else if (e.KeyCode == Keys.Delete)
 				toolStripButtonDelete_Click(sender, new EventArgs());
+			else if (e.KeyCode == Keys.Insert)
+				toolStripButtonAdd_Click(sender, new EventArgs());
 		}
 
 		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -386,29 +394,77 @@ LIMIT 10
 					}
 				case "ХарактеристикаНазва":
 					{
-						
+						query = $@"
+SELECT 
+    ХарактеристикиНоменклатури.uid,
+    ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва} AS Назва
+FROM
+    {Довідники.ХарактеристикиНоменклатури_Const.TABLE} AS ХарактеристикиНоменклатури
+WHERE
+    LOWER(ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
 						break;
 					}
 				case "СеріяНазва":
 					{
-
+						query = $@"
+SELECT 
+    СеріїНоменклатури.uid,
+    СеріїНоменклатури.{Довідники.СеріїНоменклатури_Const.Номер} AS Назва
+FROM
+    {Довідники.СеріїНоменклатури_Const.TABLE} AS СеріїНоменклатури
+WHERE
+    LOWER(СеріїНоменклатури.{Довідники.СеріїНоменклатури_Const.Номер}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
 						break;
 					}
 				case "ПакуванняНазва":
 					{
-
+						query = $@"
+SELECT 
+    ПакуванняОдиниціВиміру.uid,
+    ПакуванняОдиниціВиміру.{Довідники.ПакуванняОдиниціВиміру_Const.Назва} AS Назва
+FROM
+    {Довідники.ПакуванняОдиниціВиміру_Const.TABLE} AS ПакуванняОдиниціВиміру
+WHERE
+    LOWER(ПакуванняОдиниціВиміру.{Довідники.ПакуванняОдиниціВиміру_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
 						break;
 					}
 				case "ЗамовленняКлієнтаНазва":
 					{
-						
-
+						query = $@"
+SELECT 
+    ЗамовленняКлієнта.uid,
+    ЗамовленняКлієнта.{Документи.ЗамовленняКлієнта_Const.Назва} AS Назва
+FROM
+    {Документи.ЗамовленняКлієнта_Const.TABLE} AS ЗамовленняКлієнта
+WHERE
+    LOWER(ЗамовленняКлієнта.{Документи.ЗамовленняКлієнта_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
 						break;
 					}
 				case "СкладНазва":
 					{
-						
-
+						query = $@"
+SELECT 
+    Склади.uid,
+    Склади.{Довідники.Склади_Const.Назва} AS Назва
+FROM
+    {Довідники.Склади_Const.TABLE} AS Склади
+WHERE
+    LOWER(Склади.{Довідники.Склади_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
 						break;
 					}
 				default:
@@ -458,29 +514,32 @@ LIMIT 10
 					}
 				case "ХарактеристикаНазва":
 					{
-
+						запис.Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(new UnigueID(uid));
+						запис.ПісляЗміни_Характеристика();
 						break;
 					}
 				case "СеріяНазва":
 					{
-
+						запис.Серія = new Довідники.СеріїНоменклатури_Pointer(new UnigueID(uid));
+						запис.ПісляЗміни_Серія();
 						break;
 					}
 				case "ПакуванняНазва":
 					{
-
+						запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(uid));
+						запис.ПісляЗміни_Пакування();
 						break;
 					}
 				case "ЗамовленняКлієнтаНазва":
 					{
-
-
+						запис.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
+						запис.ПісляЗміни_ЗамовленняКлієнта();
 						break;
 					}
 				case "СкладНазва":
 					{
-
-
+						запис.Склад = new Довідники.Склади_Pointer(new UnigueID(uid));
+						запис.ПісляЗміни_Склад();
 						break;
 					}
 				default:
@@ -572,36 +631,15 @@ LIMIT 10
 
 		#endregion
 
-		private void dataGridViewRecords_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-		{
-			string columnName = dataGridViewRecords.Columns[e.ColumnIndex].Name;
-
-			Записи запис = RecordsBindingList[e.RowIndex];
-
-			if (columnName == "Кількість" || columnName == "Ціна")
-			{
-				запис.Сума = запис.Кількість * запис.Ціна;
-				dataGridViewRecords.Refresh();
-			}
-
-
-		}
-
-		private void dataGridViewRecords_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
-        {
-			
-		}
-
-        
-
-        private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-			
-		}
+		#region Меню таб.частини
 
 		private void toolStripButtonAdd_Click(object sender, EventArgs e)
 		{
 			RecordsBindingList.Add(Записи.New());
+
+			dataGridViewRecords.ClearSelection();
+			dataGridViewRecords.CurrentCell = dataGridViewRecords.Rows[dataGridViewRecords.Rows.Count - 1].Cells["НоменклатураНазва"];
+			dataGridViewRecords.CurrentCell.Selected = true;
 		}
 
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
@@ -640,6 +678,7 @@ LIMIT 10
 			}
 		}
 
-        
-    }
+		#endregion
+
+	}
 }

@@ -61,18 +61,18 @@ namespace StorageAndTrade
 
             ContextMenuStrip contextMenu = new ContextMenuStrip();
 
+            ToolStripMenuItem select = new ToolStripMenuItem("Відкрити список");
+            select.Image = Properties.Resources.data;
+            select.Name = columnName;
+            select.Tag = tag;
+            contextMenu.Items.Add(select);
+
             ToolStripTextBox findTextBox = new ToolStripTextBox();
             findTextBox.ToolTipText = "Пошук";
             findTextBox.Size = new Size(rectangle.Width, 0);
             findTextBox.Name = columnName;
             findTextBox.Tag = tag;
             contextMenu.Items.Add(findTextBox);
-
-            ToolStripMenuItem select = new ToolStripMenuItem("Вибрати");
-            select.Image = Properties.Resources.data;
-            select.Name = columnName;
-            select.Tag = tag;
-            contextMenu.Items.Add(select);
 
             if (findTextChanged != null)
                 findTextBox.TextChanged += findTextChanged;
