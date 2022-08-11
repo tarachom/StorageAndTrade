@@ -271,12 +271,35 @@ namespace StorageAndTrade
 			//Console.WriteLine("Find menu");
 		}
 
-		private void ToolStripTextBox_TextChanged(object sender, EventArgs e)
+		
+
+		#region Меню пошуку та вибору
+
+		private void dataGridViewRecords_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+				dataGridViewRecords_CellDoubleClick(sender,
+					new DataGridViewCellEventArgs(dataGridViewRecords.CurrentCell.ColumnIndex, dataGridViewRecords.CurrentCell.RowIndex));
+			else if (e.KeyCode == Keys.Delete)
+				toolStripButtonDelete_Click(sender, new EventArgs());
+		}
+
+		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+			ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
+				new string[] {
+					"НоменклатураНазва", "ХарактеристикаНазва", 
+					"СеріяНазва", "ПакуванняНазва", 
+					"ЗамовленняКлієнтаНазва", "СкладНазва" 
+				}, SelectClick, null);
+		}
+
+		private void FindTextChanged(object sender, EventArgs e)
 		{
 			ToolStripTextBox findMenuItem = (ToolStripTextBox)sender;
 			//Console.WriteLine(findMenuItem.Text);
 
-			foreach(ToolStripItem toolStripItem in contextMenuStrip1.Items.Find("find", false))
+			foreach (ToolStripItem toolStripItem in contextMenuStrip1.Items.Find("find", false))
 				contextMenuStrip1.Items.Remove(toolStripItem);
 
 			ToolStripItem[] mas = new ToolStripItem[10];
@@ -287,27 +310,6 @@ namespace StorageAndTrade
 			}
 
 			contextMenuStrip1.Items.AddRange(mas);
-		}
-
-        #region Меню пошуку та вибору
-
-        private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-			ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
-				new string[] {
-					"НоменклатураНазва", "ХарактеристикаНазва", 
-					"СеріяНазва", "ПакуванняНазва", 
-					"ЗамовленняКлієнтаНазва", "СкладНазва" 
-				}, SelectClick, null);
-		}
-
-		private void dataGridViewRecords_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-					dataGridViewRecords_CellDoubleClick(sender,
-						new DataGridViewCellEventArgs(
-							dataGridViewRecords.CurrentCell.ColumnIndex, 
-							dataGridViewRecords.CurrentCell.RowIndex));
 		}
 
 		private void SelectClick(object sender, EventArgs e)
