@@ -112,6 +112,7 @@ namespace StorageAndTrade
 
 				return true;
 			};
+
 			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)
@@ -119,6 +120,10 @@ namespace StorageAndTrade
 				реалізаціяТоварівТаПослуг_Objest = new Документи.РеалізаціяТоварівТаПослуг_Objest();
 
 				РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ДокументОбєкт = реалізаціяТоварівТаПослуг_Objest;
+				РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ОбновитиЗначенняЗФормиДокумента = () =>
+				{
+					реалізаціяТоварівТаПослуг_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
+				};
 
 				if (IsNew.Value)
 				{
@@ -127,12 +132,12 @@ namespace StorageAndTrade
 					comboBox_Статус.SelectedIndex = 0;
 					comboBox_ФормаОплати.SelectedIndex = 0;
 
-					directoryControl_Контрагент.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Контрагент = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПостачальник_Const;
-					directoryControl_Організація.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Організація = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
-					directoryControl_Валюта.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Валюта = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
-					directoryControl_Склад.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Склад = Константи.ЗначенняЗаЗамовчуванням.ОснонийСклад_Const;
-					directoryControl_Каса.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Каса = Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const;
-					directoryControl_Підрозділ.DirectoryPointerItem = реалізаціяТоварівТаПослуг_Objest.Підрозділ = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
+					directoryControl_Контрагент.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПостачальник_Const;
+					directoryControl_Організація.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
+					directoryControl_Валюта.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
+					directoryControl_Склад.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОснонийСклад_Const;
+					directoryControl_Каса.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const;
+					directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
 				}
 				else
 				{
@@ -188,9 +193,9 @@ namespace StorageAndTrade
 				реалізаціяТоварівТаПослуг_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				реалізаціяТоварівТаПослуг_Objest.Назва = $"Реалізація товарів та послуг №{реалізаціяТоварівТаПослуг_Objest.НомерДок} від {реалізаціяТоварівТаПослуг_Objest.ДатаДок.ToShortDateString()}";
 				реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація = ((NameValue<Перелічення.ГосподарськіОперації>)comboBox_ГосподарськаОперація.SelectedItem).Value;
+				реалізаціяТоварівТаПослуг_Objest.Коментар = textBox_Коментар.Text;
 
 				реалізаціяТоварівТаПослуг_Objest.СумаДокументу = РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу();
-				реалізаціяТоварівТаПослуг_Objest.Коментар = textBox_Коментар.Text;
 
 				try
 				{
@@ -250,5 +255,10 @@ namespace StorageAndTrade
 		{
 			SaveDoc(true, true);
 		}
-	}
+
+        private void buttonCalculationSumaDoc_Click(object sender, EventArgs e)
+        {
+			labelCalculationSumaDoc.Text = РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу().ToString();
+		}
+    }
 }

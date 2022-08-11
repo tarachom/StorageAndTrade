@@ -49,14 +49,20 @@ namespace StorageAndTrade
 		public Func<bool> AfterSelectFunc { get; set; }
 
 		/// <summary>
+		/// Процедура яка викликається при встановленні значення DirectoryPointerItem
+		/// </summary>
+		public Action<DirectoryPointer> Bind { get; set; }
+
+		/// <summary>
 		/// Ініціалізація параметрів
 		/// </summary>
 		/// <param name="selectForm">Форма</param>
 		/// <param name="directoryPointerItem">Вказівник</param>
-		public void Init(Form selectForm, DirectoryPointer directoryPointerItem)
+		public void Init(Form selectForm, DirectoryPointer directoryPointerItem, Action<DirectoryPointer> bind = null)
         {
 			SelectForm = selectForm;
 			DirectoryPointerItem = directoryPointerItem;
+			Bind = bind;
 		}
 
 		/// <summary>
@@ -81,6 +87,9 @@ namespace StorageAndTrade
 					ReadPresentation();
 				else
 					textBoxControl.Text = "";
+
+				if (Bind != null)
+					Bind.Invoke(mDirectoryPointerItem);
 			}
 		}
 
