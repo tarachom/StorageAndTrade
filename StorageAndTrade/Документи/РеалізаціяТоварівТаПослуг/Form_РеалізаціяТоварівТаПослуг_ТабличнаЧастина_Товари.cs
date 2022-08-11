@@ -242,7 +242,6 @@ namespace StorageAndTrade
 					Склад = new Довідники.Склади_Pointer()
 				};
 			}
-
 			public static Записи Clone(Записи запис)
             {
 				return new Записи
@@ -264,7 +263,65 @@ namespace StorageAndTrade
 					Склад = запис.Склад
 				};
             }
-        }
+
+			public void ПісляЗміни_Номенклатура()
+            {
+				if (this.Номенклатура.IsEmpty())
+                {
+					this.НоменклатураНазва = "";
+					return;
+				}					
+
+				Довідники.Номенклатура_Objest номенклатура_Objest = this.Номенклатура.GetDirectoryObject();
+				if (номенклатура_Objest != null)
+				{
+					this.НоменклатураНазва = номенклатура_Objest.Назва;
+
+					if (!номенклатура_Objest.ОдиницяВиміру.IsEmpty())
+						this.Пакування = номенклатура_Objest.ОдиницяВиміру;
+				}
+				else
+				{
+					this.НоменклатураНазва = "";
+					this.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+				}
+
+				if (!this.Пакування.IsEmpty())
+				{
+					Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = this.Пакування.GetDirectoryObject();
+					if (пакуванняОдиниціВиміру_Objest != null)
+					{
+						this.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
+						this.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
+					}
+					else
+					{
+						this.ПакуванняНазва = "";
+						this.КількістьУпаковок = 1;
+					}
+				}
+			}
+			public void ПісляЗміни_Характеристика()
+            {
+				this.ХарактеристикаНазва = this.Характеристика.GetPresentation();
+			}
+			public void ПісляЗміни_Серія()
+			{
+				this.СеріяНазва = this.Серія.GetPresentation();
+			}
+			public void ПісляЗміни_Пакування()
+			{
+				this.ПакуванняНазва = this.Пакування.GetPresentation();
+			}
+			public void ПісляЗміни_ЗамовленняКлієнта()
+			{
+				this.ЗамовленняКлієнтаНазва = this.ЗамовленняКлієнта.GetPresentation();
+			}
+			public void ПісляЗміни_Склад()
+			{
+				this.СкладНазва = this.Склад.GetPresentation();
+			}
+		}
 
 		private void CopyMenuItem_ClickFind(object sender, EventArgs e)
 		{
@@ -285,13 +342,14 @@ namespace StorageAndTrade
 		}
 
 		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-			ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
-				new string[] {
-					"НоменклатураНазва", "ХарактеристикаНазва", 
-					"СеріяНазва", "ПакуванняНазва", 
-					"ЗамовленняКлієнтаНазва", "СкладНазва" 
-				}, SelectClick, FindTextChanged);
+		{
+			if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
+				ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
+					new string[] {
+					"НоменклатураНазва", "ХарактеристикаНазва",
+					"СеріяНазва", "ПакуванняНазва",
+					"ЗамовленняКлієнтаНазва", "СкладНазва"
+					}, SelectClick, FindTextChanged);
 		}
 
 		private void FindTextChanged(object sender, EventArgs e)
@@ -301,19 +359,29 @@ namespace StorageAndTrade
 
 			ToolStrip parent = findMenu.GetCurrentParent();
 
-			foreach (ToolStripItem oldItem in parent.Items.Find("find", false))
-				parent.Items.Remove(oldItem);
+			for (int counterMenu = parent.Items.Count - 1; counterMenu > 1; counterMenu--)
+				parent.Items.RemoveAt(counterMenu);
 
-			ToolStripMenuItem findSelect = new ToolStripMenuItem("Вибрати 2");
-			findSelect.Name = "find";
-			findSelect.Text = "Dfhsfny we wer wqe";
-			parent.Items.Add(findSelect);
+			if (String.IsNullOrWhiteSpace(findMenu.Text))
+				return;
+
+			string query = "";
 
 			switch (findMenu.Name)
             {
 				case "НоменклатураНазва":
 					{
-						
+						query = $@"
+SELECT 
+    Номенклатура.uid,
+    Номенклатура.{Довідники.Номенклатура_Const.Назва} AS Назва
+FROM
+    {Довідники.Номенклатура_Const.TABLE} AS Номенклатура
+WHERE
+    LOWER(Номенклатура.{Довідники.Номенклатура_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
 						break;
 					}
 				case "ХарактеристикаНазва":
@@ -346,7 +414,81 @@ namespace StorageAndTrade
 				default:
 					break;
 			}
-        }
+
+			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("like_param", "%" + findMenu.Text.ToLower() + "%");
+
+			string[] columnsName;
+			List<Dictionary<string, object>> listRow;
+
+			Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+			if (listRow.Count > 0)
+			{
+				ToolStripItem[] mas = new ToolStripItem[listRow.Count];
+
+				int counter = 0;
+
+				foreach (Dictionary<string, object> row in listRow)
+				{
+					mas[counter] = new ToolStripMenuItem(DateTime.Now.ToString() + " " + row["Назва"].ToString(), Properties.Resources.page_white_text, FindClick, findMenu.Name);
+					mas[counter].Tag = new NameValue<Записи>(row["uid"].ToString(), запис);
+					counter++;
+				}
+
+				parent.Items.AddRange(mas);
+			}
+		}
+
+		private void FindClick(object sender, EventArgs e)
+		{
+			ToolStripMenuItem selectMenu = (ToolStripMenuItem)sender;
+			NameValue<Записи> nameValue = (NameValue<Записи>)selectMenu.Tag;
+
+			string uid = nameValue.Name;
+			Записи запис = nameValue.Value;
+
+			switch (selectMenu.Name)
+			{
+				case "НоменклатураНазва":
+					{
+						запис.Номенклатура = new Довідники.Номенклатура_Pointer(new UnigueID(uid));
+						запис.ПісляЗміни_Номенклатура();
+						break;
+					}
+				case "ХарактеристикаНазва":
+					{
+
+						break;
+					}
+				case "СеріяНазва":
+					{
+
+						break;
+					}
+				case "ПакуванняНазва":
+					{
+
+						break;
+					}
+				case "ЗамовленняКлієнтаНазва":
+					{
+
+
+						break;
+					}
+				case "СкладНазва":
+					{
+
+
+						break;
+					}
+				default:
+					break;
+			}
+
+			dataGridViewRecords.Refresh();
+		}
 
 		private void SelectClick(object sender, EventArgs e)
 		{
@@ -362,32 +504,7 @@ namespace StorageAndTrade
 						form_Номенклатура.ShowDialog();
 
 						запис.Номенклатура = (Довідники.Номенклатура_Pointer)form_Номенклатура.DirectoryPointerItem;
-
-						Довідники.Номенклатура_Objest номенклатура_Objest = запис.Номенклатура.GetDirectoryObject();
-						if (номенклатура_Objest != null)
-						{
-							запис.НоменклатураНазва = номенклатура_Objest.Назва;
-							запис.Пакування = номенклатура_Objest.ОдиницяВиміру;
-						}
-						else
-                        {
-							запис.НоменклатураНазва = "";
-							запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
-						}
-
-						Довідники.ПакуванняОдиниціВиміру_Objest пакуванняОдиниціВиміру_Objest = запис.Пакування.GetDirectoryObject();
-						if (пакуванняОдиниціВиміру_Objest != null)
-						{
-							запис.ПакуванняНазва = пакуванняОдиниціВиміру_Objest.Назва;
-							запис.КількістьУпаковок = пакуванняОдиниціВиміру_Objest.КількістьУпаковок;
-						}
-                        else
-                        {
-							запис.ПакуванняНазва = "";
-							запис.КількістьУпаковок = 1;
-						}
-
-						dataGridViewRecords.Refresh();
+						запис.ПісляЗміни_Номенклатура();
 
 						break;
 					}
@@ -398,7 +515,7 @@ namespace StorageAndTrade
 						form_ХарактеристикиНоменклатури.ShowDialog();
 
 						запис.Характеристика = (Довідники.ХарактеристикиНоменклатури_Pointer)form_ХарактеристикиНоменклатури.DirectoryPointerItem;
-						запис.ХарактеристикаНазва = запис.Характеристика.GetPresentation();
+						запис.ПісляЗміни_Характеристика();
 
 						break;
 					}
@@ -409,7 +526,7 @@ namespace StorageAndTrade
 						form_СеріїНоменклатури.ShowDialog();
 
 						запис.Серія = (Довідники.СеріїНоменклатури_Pointer)form_СеріїНоменклатури.DirectoryPointerItem;
-						запис.СеріяНазва = запис.Серія.GetPresentation();
+						запис.ПісляЗміни_Серія();
 
 						break;
 					}
@@ -420,7 +537,7 @@ namespace StorageAndTrade
 						form_ПакуванняОдиниціВиміру.ShowDialog();
 
 						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
-						запис.ПакуванняНазва = запис.Пакування.GetPresentation();
+						запис.ПісляЗміни_Пакування();
 
 						break;
 					}
@@ -431,7 +548,7 @@ namespace StorageAndTrade
 						form_ЗамовленняКлієнтаЖурнал.ShowDialog();
 
 						запис.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem;
-						запис.ЗамовленняКлієнтаНазва = запис.ЗамовленняКлієнта.GetPresentation();
+						запис.ПісляЗміни_ЗамовленняКлієнта();
 
 						break;
 					}
@@ -442,13 +559,15 @@ namespace StorageAndTrade
 						form_Склади.ShowDialog();
 
 						запис.Склад = (Довідники.Склади_Pointer)form_Склади.DirectoryPointerItem;
-						запис.СкладНазва = запис.Склад.GetPresentation();
+						запис.ПісляЗміни_Склад();
 
 						break;
 					}
 				default:
 					break;
 			}
+
+			dataGridViewRecords.Refresh();
 		}
 
 		#endregion
