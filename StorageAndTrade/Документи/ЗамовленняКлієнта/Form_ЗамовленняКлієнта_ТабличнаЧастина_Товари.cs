@@ -52,6 +52,11 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
 
+			dataGridViewRecords.Columns["ВидЦіни"].Visible = false;
+			dataGridViewRecords.Columns["ВидЦіниНазва"].Width = 100;
+			dataGridViewRecords.Columns["ВидЦіниНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["ВидЦіниНазва"].HeaderText = "Вид ціни";
+
 			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 		}
@@ -205,7 +210,8 @@ namespace StorageAndTrade
 					Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(),
 					КількістьУпаковок = 1,
 					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(),
-					Кількість = 1
+					Кількість = 1,
+					ВидЦіни = new Довідники.ВидиЦін_Pointer()
 				};
 			}
 			public static Записи Clone(Записи запис)
@@ -221,6 +227,8 @@ namespace StorageAndTrade
 					Пакування = запис.Пакування,
 					ПакуванняНазва = запис.ПакуванняНазва,
 					Кількість = запис.Кількість,
+					ВидЦіни = запис.ВидЦіни,
+					ВидЦіниНазва = запис.ВидЦіниНазва,
 					Ціна = запис.Ціна,
 					Сума = запис.Сума
 				};
@@ -402,7 +410,7 @@ LIMIT 1
 		{
 			if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
 				ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
-					new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва" }, SelectClick, FindTextChanged);
+					new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва", "ВидЦіниНазва" }, SelectClick, FindTextChanged);
 		}
 
 		private void SelectClick(object sender, EventArgs e)
