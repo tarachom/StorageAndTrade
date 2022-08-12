@@ -37,6 +37,8 @@ namespace StorageAndTrade
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker_ДатаДок = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.directoryControl_Валюта = new StorageAndTrade.DirectoryControl();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_Коментар = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -49,8 +51,8 @@ namespace StorageAndTrade
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.directoryControl_Валюта = new StorageAndTrade.DirectoryControl();
+            this.label5 = new System.Windows.Forms.Label();
+            this.directoryControl_ВидЦіни = new StorageAndTrade.DirectoryControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -114,6 +116,8 @@ namespace StorageAndTrade
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.directoryControl_ВидЦіни);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.directoryControl_Валюта);
             this.panel1.Controls.Add(this.label7);
@@ -129,6 +133,27 @@ namespace StorageAndTrade
             this.panel1.Size = new System.Drawing.Size(1031, 123);
             this.panel1.TabIndex = 23;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(387, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 66;
+            this.label4.Text = "Валюта:";
+            // 
+            // directoryControl_Валюта
+            // 
+            this.directoryControl_Валюта.AfterSelectFunc = null;
+            this.directoryControl_Валюта.BeforeClickOpenFunc = null;
+            this.directoryControl_Валюта.Bind = null;
+            this.directoryControl_Валюта.DirectoryPointerItem = null;
+            this.directoryControl_Валюта.Location = new System.Drawing.Point(441, 52);
+            this.directoryControl_Валюта.Name = "directoryControl_Валюта";
+            this.directoryControl_Валюта.SelectForm = null;
+            this.directoryControl_Валюта.Size = new System.Drawing.Size(283, 27);
+            this.directoryControl_Валюта.TabIndex = 65;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -142,7 +167,7 @@ namespace StorageAndTrade
             // 
             this.textBox_Коментар.Location = new System.Drawing.Point(108, 85);
             this.textBox_Коментар.Name = "textBox_Коментар";
-            this.textBox_Коментар.Size = new System.Drawing.Size(916, 20);
+            this.textBox_Коментар.Size = new System.Drawing.Size(375, 20);
             this.textBox_Коментар.TabIndex = 64;
             // 
             // label3
@@ -163,7 +188,7 @@ namespace StorageAndTrade
             this.directoryControl_Організація.Location = new System.Drawing.Point(108, 52);
             this.directoryControl_Організація.Name = "directoryControl_Організація";
             this.directoryControl_Організація.SelectForm = null;
-            this.directoryControl_Організація.Size = new System.Drawing.Size(375, 27);
+            this.directoryControl_Організація.Size = new System.Drawing.Size(273, 27);
             this.directoryControl_Організація.TabIndex = 45;
             // 
             // panel2
@@ -207,6 +232,7 @@ namespace StorageAndTrade
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 422);
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.TabIndex = 0;
             this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ДокументОбєкт = null;
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ОбновитиЗначенняЗФормиДокумента = null;
             // 
             // tabPage2
             // 
@@ -251,26 +277,26 @@ namespace StorageAndTrade
             this.buttonSpend.UseVisualStyleBackColor = true;
             this.buttonSpend.Click += new System.EventHandler(this.buttonSpend_Click);
             // 
-            // label4
+            // label5
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(496, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
-            this.label4.TabIndex = 66;
-            this.label4.Text = "Валюта:";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(509, 92);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.TabIndex = 68;
+            this.label5.Text = "Вид ціни:";
             // 
-            // directoryControl_Валюта
+            // directoryControl_ВидЦіни
             // 
-            this.directoryControl_Валюта.AfterSelectFunc = null;
-            this.directoryControl_Валюта.BeforeClickOpenFunc = null;
-            this.directoryControl_Валюта.Bind = null;
-            this.directoryControl_Валюта.DirectoryPointerItem = null;
-            this.directoryControl_Валюта.Location = new System.Drawing.Point(550, 52);
-            this.directoryControl_Валюта.Name = "directoryControl_Валюта";
-            this.directoryControl_Валюта.SelectForm = null;
-            this.directoryControl_Валюта.Size = new System.Drawing.Size(306, 27);
-            this.directoryControl_Валюта.TabIndex = 65;
+            this.directoryControl_ВидЦіни.AfterSelectFunc = null;
+            this.directoryControl_ВидЦіни.BeforeClickOpenFunc = null;
+            this.directoryControl_ВидЦіни.Bind = null;
+            this.directoryControl_ВидЦіни.DirectoryPointerItem = null;
+            this.directoryControl_ВидЦіни.Location = new System.Drawing.Point(568, 85);
+            this.directoryControl_ВидЦіни.Name = "directoryControl_ВидЦіни";
+            this.directoryControl_ВидЦіни.SelectForm = null;
+            this.directoryControl_ВидЦіни.Size = new System.Drawing.Size(283, 27);
+            this.directoryControl_ВидЦіни.TabIndex = 67;
             // 
             // Form_ВстановленняЦінНоменклатуриДокумент
             // 
@@ -318,5 +344,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.TextBox textBox_Коментар;
         private System.Windows.Forms.Label label4;
         private DirectoryControl directoryControl_Валюта;
+        private System.Windows.Forms.Label label5;
+        private DirectoryControl directoryControl_ВидЦіни;
     }
 }

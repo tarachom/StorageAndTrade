@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 12.08.2022 10:27:09
+ * Дата конфігурації: 12.08.2022 11:11:25
  *
  */
 
@@ -64,7 +64,7 @@ namespace StorageAndTrade_1_0.Константи
             
             Dictionary<string, object> fieldValue = new Dictionary<string, object>();
             bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
-                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_g4", "col_g5" }, fieldValue);
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_g4", "col_g5", "col_g9" }, fieldValue);
             
             if (IsSelect)
             {
@@ -77,6 +77,7 @@ namespace StorageAndTrade_1_0.Константи
                 m_ОсновнаОдиницяПакування_Const = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_a7"]);
                 m_ОсновнийПідрозділ_Const = new Довідники.СтруктураПідприємства_Pointer(fieldValue["col_g4"]);
                 m_ОсновнийБанківськийРахунок_Const = new Довідники.БанківськіРахункиОрганізацій_Pointer(fieldValue["col_g5"]);
+                m_ОсновнийВидЦіни_Const = new Довідники.ВидиЦін_Pointer(fieldValue["col_g9"]);
                 
             }
 			
@@ -179,6 +180,17 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ОсновнийБанківськийРахунок_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g5", m_ОсновнийБанківськийРахунок_Const.UnigueID.UGuid);
+            }
+        }
+        
+        static Довідники.ВидиЦін_Pointer m_ОсновнийВидЦіни_Const = new Довідники.ВидиЦін_Pointer();
+        public static Довідники.ВидиЦін_Pointer ОсновнийВидЦіни_Const
+        {
+            get { return m_ОсновнийВидЦіни_Const; }
+            set
+            {
+                m_ОсновнийВидЦіни_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_g9", m_ОсновнийВидЦіни_Const.UnigueID.UGuid);
             }
         }
              
@@ -10155,6 +10167,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string ДатаДок = "docdate";
         public const string Організація = "col_a2";
         public const string Валюта = "col_a1";
+        public const string ВидЦіни = "col_a3";
         public const string Коментар = "col_g9";
     }
 	
@@ -10162,13 +10175,14 @@ namespace StorageAndTrade_1_0.Документи
     public class ВстановленняЦінНоменклатури_Objest : DocumentObject
     {
         public ВстановленняЦінНоменклатури_Objest() : base(Config.Kernel, "tab_a42", "ВстановленняЦінНоменклатури",
-             new string[] { "docname", "docnomer", "docdate", "col_a2", "col_a1", "col_g9" }) 
+             new string[] { "docname", "docnomer", "docdate", "col_a2", "col_a1", "col_a3", "col_g9" }) 
         {
             Назва = "";
             НомерДок = "";
             ДатаДок = DateTime.MinValue;
             Організація = new Довідники.Організації_Pointer();
             Валюта = new Довідники.Валюти_Pointer();
+            ВидЦіни = new Довідники.ВидиЦін_Pointer();
             Коментар = "";
             
             //Табличні частини
@@ -10185,6 +10199,7 @@ namespace StorageAndTrade_1_0.Документи
                 ДатаДок = (base.FieldValue["docdate"] != DBNull.Value) ? DateTime.Parse(base.FieldValue["docdate"].ToString()) : DateTime.MinValue;
                 Організація = new Довідники.Організації_Pointer(base.FieldValue["col_a2"]);
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_a1"]);
+                ВидЦіни = new Довідники.ВидиЦін_Pointer(base.FieldValue["col_a3"]);
                 Коментар = base.FieldValue["col_g9"].ToString();
                 
                 BaseClear();
@@ -10202,6 +10217,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["docdate"] = ДатаДок;
             base.FieldValue["col_a2"] = Організація.UnigueID.UGuid;
             base.FieldValue["col_a1"] = Валюта.UnigueID.UGuid;
+            base.FieldValue["col_a3"] = ВидЦіни.UnigueID.UGuid;
             base.FieldValue["col_g9"] = Коментар;
             
             BaseSave();
@@ -10228,6 +10244,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ДатаДок = ДатаДок;
 			copy.Організація = Організація;
 			copy.Валюта = Валюта;
+			copy.ВидЦіни = ВидЦіни;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -10250,6 +10267,7 @@ namespace StorageAndTrade_1_0.Документи
         public DateTime ДатаДок { get; set; }
         public Довідники.Організації_Pointer Організація { get; set; }
         public Довідники.Валюти_Pointer Валюта { get; set; }
+        public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини

@@ -401,6 +401,9 @@ namespace StorageAndTrade
 
         private void toolStripButtonFillRegister_Click(object sender, EventArgs e)
         {
+			if (ОбновитиЗначенняЗФормиДокумента != null)
+				ОбновитиЗначенняЗФормиДокумента.Invoke();
+
 			string query = $@"
 WITH register AS
 (
@@ -411,9 +414,21 @@ WITH register AS
     FROM
         {РегістриВідомостей.ЦіниНоменклатури_Const.TABLE}
     WHERE
-        {РегістриВідомостей.ЦіниНоменклатури_Const.Валюта} = @valuta
-)
+        {РегістриВідомостей.ЦіниНоменклатури_Const.Валюта} = @valuta";
 
+            #region WHERE
+
+            if (!ДокументОбєкт.ВидЦіни.IsEmpty())
+            {
+				query += $@"
+AND {РегістриВідомостей.ЦіниНоменклатури_Const.ВидЦіни} = @vid_cen
+";
+            }
+
+            #endregion
+
+            query += $@"
+)
 SELECT
     register.Номенклатура,
     Довідник_Номенклатура.{Довідники.Номенклатура_Const.Назва} AS Номенклатура_Назва,
@@ -451,15 +466,15 @@ FROM
 
     LEFT JOIN {Довідники.ВидиЦін_Const.TABLE} AS Довідник_ВидиЦін ON 
         Довідник_ВидиЦін.uid = register.ВидЦіни
+ORDER BY
+    Номенклатура_Назва, ХарактеристикаНоменклатури_Назва, Пакування_Назва, ВидЦіни_Назва
 ";
 
 			RecordsBindingList.Clear();
 
-			if (ОбновитиЗначенняЗФормиДокумента != null)
-				ОбновитиЗначенняЗФормиДокумента.Invoke();
-
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 			paramQuery.Add("valuta", ДокументОбєкт.Валюта.UnigueID.UGuid);
+			paramQuery.Add("vid_cen", ДокументОбєкт.ВидЦіни.UnigueID.UGuid);
 
 			string[] columnsName;
 			List<Dictionary<string,object>> listRow;
@@ -487,6 +502,9 @@ FROM
 
         private void toolStripButtonFillDirectory_Click(object sender, EventArgs e)
         {
+			if (ОбновитиЗначенняЗФормиДокумента != null)
+				ОбновитиЗначенняЗФормиДокумента.Invoke();
+
 			string query = $@"
 SELECT
     Номенклатура.uid AS Номенклатура,
@@ -501,13 +519,10 @@ FROM
 WHERE
     Номенклатура.{Довідники.Номенклатура_Const.ТипНоменклатури} = {(int)Перелічення.ТипиНоменклатури.Товар} OR
     Номенклатура.{Довідники.Номенклатура_Const.ТипНоменклатури} = {(int)Перелічення.ТипиНоменклатури.Послуга}
-ORDER BY Номенклатура_Назва
+ORDER BY Номенклатура_Назва, Пакування_Назва
 ";
 
 			RecordsBindingList.Clear();
-
-			if (ОбновитиЗначенняЗФормиДокумента != null)
-				ОбновитиЗначенняЗФормиДокумента.Invoke();
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 
@@ -515,6 +530,8 @@ ORDER BY Номенклатура_Назва
 			List<Dictionary<string, object>> listRow;
 
 			Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+			string ВидиЦінНазва = ДокументОбєкт.ВидЦіни.GetPresentation();
 
 			foreach (Dictionary<string, object> row in listRow)
 			{
@@ -527,12 +544,11 @@ ORDER BY Номенклатура_Назва
 					ХарактеристикаНазва = "",
 					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(row["Пакування"]),
 					ПакуванняНазва = row["Пакування_Назва"].ToString(),
-					ВидиЦін = new Довідники.ВидиЦін_Pointer(),
-					ВидиЦінНазва = "",
+					ВидиЦін = ДокументОбєкт.ВидЦіни,
+					ВидиЦінНазва = ВидиЦінНазва,
 					Ціна = 0
 				});
 			}
-
 		}
 
         private void видалитиТовариЗЦіноюНульToolStripMenuItem_Click(object sender, EventArgs e)
@@ -548,5 +564,21 @@ ORDER BY Номенклатура_Назва
             foreach (Записи запис in removeList)
 				RecordsBindingList.Remove(запис);
         }
+
+        private void встановитиВидЦіниToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			if (ОбновитиЗначенняЗФормиДокумента != null)
+				ОбновитиЗначенняЗФормиДокумента.Invoke();
+
+			string ВидиЦінНазва = ДокументОбєкт.ВидЦіни.GetPresentation();
+
+			foreach (Записи запис in RecordsBindingList)
+			{
+				запис.ВидиЦін = ДокументОбєкт.ВидЦіни;
+				запис.ВидиЦінНазва = ВидиЦінНазва;
+			}
+
+			dataGridViewRecords.Refresh();
+		}
     }
 }

@@ -43,6 +43,7 @@ namespace StorageAndTrade
             this.toolStripButtonFillRegister = new System.Windows.Forms.ToolStripButton();
             this.toolStripDropDownButtonOperation = new System.Windows.Forms.ToolStripDropDownButton();
             this.видалитиТовариЗЦіноюНульToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.встановитиВидЦіниToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
@@ -155,7 +156,8 @@ namespace StorageAndTrade
             // toolStripDropDownButtonOperation
             // 
             this.toolStripDropDownButtonOperation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.видалитиТовариЗЦіноюНульToolStripMenuItem});
+            this.видалитиТовариЗЦіноюНульToolStripMenuItem,
+            this.встановитиВидЦіниToolStripMenuItem});
             this.toolStripDropDownButtonOperation.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonOperation.Image")));
             this.toolStripDropDownButtonOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonOperation.Name = "toolStripDropDownButtonOperation";
@@ -168,6 +170,13 @@ namespace StorageAndTrade
             this.видалитиТовариЗЦіноюНульToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.видалитиТовариЗЦіноюНульToolStripMenuItem.Text = "Видалити товари з ціною 0";
             this.видалитиТовариЗЦіноюНульToolStripMenuItem.Click += new System.EventHandler(this.видалитиТовариЗЦіноюНульToolStripMenuItem_Click);
+            // 
+            // встановитиВидЦіниToolStripMenuItem
+            // 
+            this.встановитиВидЦіниToolStripMenuItem.Name = "встановитиВидЦіниToolStripMenuItem";
+            this.встановитиВидЦіниToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.встановитиВидЦіниToolStripMenuItem.Text = "Встановити вид ціни";
+            this.встановитиВидЦіниToolStripMenuItem.Click += new System.EventHandler(this.встановитиВидЦіниToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -208,5 +217,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonFillDirectory;
         private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonOperation;
         private System.Windows.Forms.ToolStripMenuItem видалитиТовариЗЦіноюНульToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem встановитиВидЦіниToolStripMenuItem;
     }
 }
