@@ -345,7 +345,7 @@ namespace StorageAndTrade
 		{
 			if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
 				ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
-					new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "ПакуванняНазва" }, SelectClick, FindTextChanged);
+					new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "СеріяНазва", "ПакуванняНазва" }, SelectClick, FindTextChanged);
 		}
 
 		private void SelectClick(object sender, EventArgs e)
