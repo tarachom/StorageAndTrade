@@ -175,7 +175,7 @@ namespace StorageAndTrade
 			public string ВидиЦінНазва { get; set; }
 			public decimal Ціна { get; set; }
 
-			public static Записи New()
+			public static Записи New(Документи.ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
             {
 				return new Записи
 				{
@@ -183,7 +183,8 @@ namespace StorageAndTrade
 					Номенклатура = new Довідники.Номенклатура_Pointer(),
 					Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(),
 					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(),
-					ВидиЦін = new Довідники.ВидиЦін_Pointer(),
+					ВидиЦін = ДокументОбєкт.ВидЦіни,
+					ВидиЦінНазва = (!ДокументОбєкт.ВидЦіни.IsEmpty() ? ДокументОбєкт.ВидЦіни.GetPresentation(): ""),
 					Ціна = 0
 				};
 			}
@@ -360,7 +361,10 @@ namespace StorageAndTrade
 
 		private void toolStripButtonAdd_Click(object sender, EventArgs e)
 		{
-			RecordsBindingList.Add(Записи.New());
+			if (ОбновитиЗначенняЗФормиДокумента != null)
+				ОбновитиЗначенняЗФормиДокумента.Invoke();
+
+			RecordsBindingList.Add(Записи.New(ДокументОбєкт));
 		}
 
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
