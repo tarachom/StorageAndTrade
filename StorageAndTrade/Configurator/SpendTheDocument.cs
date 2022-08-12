@@ -1442,18 +1442,19 @@ FROM
 
             foreach (ВстановленняЦінНоменклатури_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
             {
-				Довідники.ВидиЦін_Objest видиЦін_Objest = Товари_Record.ВидЦіни.GetDirectoryObject();
+				if (Товари_Record.Ціна > 0)
+				{
+					РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record record = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record();
+					ціниНоменклатури_RecordsSet.Records.Add(record);
 
-				РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record record = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record();
-                ціниНоменклатури_RecordsSet.Records.Add(record);
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.ВидЦіни = Товари_Record.ВидЦіни;
 
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.ВидЦіни = Товари_Record.ВидЦіни;
-
-				record.Ціна = Товари_Record.Ціна;
-				record.Пакування = Товари_Record.Пакування;
-				record.Валюта = ДокументОбєкт.Валюта;
+					record.Ціна = Товари_Record.Ціна;
+					record.Пакування = Товари_Record.Пакування;
+					record.Валюта = ДокументОбєкт.Валюта;
+				}
 			}
 
 			ціниНоменклатури_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);

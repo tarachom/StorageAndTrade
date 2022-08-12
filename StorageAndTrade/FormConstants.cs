@@ -33,6 +33,7 @@ namespace StorageAndTrade
             directoryControl_ОдиницяПакування.Init(new Form_ПакуванняОдиниціВиміру(), new Довідники.ПакуванняОдиниціВиміру_Pointer());
             directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
             directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
+            directoryControl_ВидЦіни.Init(new Form_ВидиЦін(), new Довідники.ВидиЦін_Pointer());
 
             //
             //
@@ -47,6 +48,7 @@ namespace StorageAndTrade
             directoryControl_ОдиницяПакування.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОдиницяПакування_Const;
             directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
             directoryControl_БанківськийРахунок.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийБанківськийРахунок_Const;
+            directoryControl_ВидЦіни.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийВидЦіни_Const;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -60,6 +62,7 @@ namespace StorageAndTrade
             Константи.ЗначенняЗаЗамовчуванням.ОсновнаОдиницяПакування_Const = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_ОдиницяПакування.DirectoryPointerItem;
             Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
             Константи.ЗначенняЗаЗамовчуванням.ОсновнийБанківськийРахунок_Const = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
+            Константи.ЗначенняЗаЗамовчуванням.ОсновнийВидЦіни_Const = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦіни.DirectoryPointerItem;
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
