@@ -35,7 +35,6 @@ namespace StorageAndTrade
 		/// </summary>
 		public Action ОбновитиЗначенняЗФормиДокумента { get; set; }
 
-
 		private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
         {
 			RecordsBindingList = new BindingList<Записи>();
@@ -843,6 +842,5 @@ LIMIT 10
 		}
 
 		#endregion
-
 	}
 }
