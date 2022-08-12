@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 12.08.2022 15:30:15
+ * Дата конфігурації: 12.08.2022 17:58:58
  *
  */
 
@@ -8089,11 +8089,12 @@ namespace StorageAndTrade_1_0.Довідники
         
         public void Save()
         {
-		    base.FieldValue["col_a3"] = Номер;
+		    СеріїНоменклатури_Triggers.BeforeRecording(this);
+			base.FieldValue["col_a3"] = Номер;
             base.FieldValue["col_a1"] = Коментар;
             
             BaseSave();
-			
+			СеріїНоменклатури_Triggers.AfterRecording(this);
         }
 
         public string Serialize(string root = "СеріїНоменклатури")
@@ -8118,7 +8119,7 @@ namespace StorageAndTrade_1_0.Довідники
 
         public void Delete()
         {
-            
+            СеріїНоменклатури_Triggers.BeforeDelete(this);
 			base.BaseDelete(new string[] {  });
         }
         

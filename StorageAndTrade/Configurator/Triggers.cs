@@ -33,6 +33,8 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+
 using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 
@@ -198,6 +200,34 @@ namespace StorageAndTrade_1_0.Довідники
 					cклади_Папки_Objest.Delete();
 
 			}
+		}
+	}
+
+	class СеріїНоменклатури_Triggers
+	{
+		public static void BeforeRecording(СеріїНоменклатури_Objest ДовідникОбєкт)
+		{
+			СеріїНоменклатури_Select серіїНоменклатури_Select = new СеріїНоменклатури_Select();
+			серіїНоменклатури_Select.QuerySelect.Where.Add(new Where(СеріїНоменклатури_Const.Номер, Comparison.EQ, ДовідникОбєкт.Номер));
+			серіїНоменклатури_Select.QuerySelect.Where.Add(new Where(Comparison.AND, "uid", Comparison.NOT, ДовідникОбєкт.UnigueID.UGuid));
+
+			if (серіїНоменклатури_Select.SelectSingle())
+            {
+				MessageBox.Show($"Помилка: Серійний номер [ {ДовідникОбєкт.Номер} ] вже існує в базі даних.");
+
+				ДовідникОбєкт.Коментар = $"Помилка: Серійний номер [ {ДовідникОбєкт.Номер} ] вже існує в базі даних. " + ДовідникОбєкт.Коментар;
+				ДовідникОбєкт.Номер = Guid.NewGuid().ToString();
+			}
+		}
+
+		public static void AfterRecording(СеріїНоменклатури_Objest ДовідникОбєкт)
+		{
+
+		}
+
+		public static void BeforeDelete(СеріїНоменклатури_Objest ДовідникОбєкт)
+		{
+
 		}
 	}
 
