@@ -30,7 +30,12 @@ namespace StorageAndTrade
 		/// </summary>
 		public Документи.ВстановленняЦінНоменклатури_Objest ДокументОбєкт { get; set; }
 
-        private void ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари(object sender, EventArgs e)
+		/// <summary>
+		/// Процедура яка обновлює значення ДокументОбєкт значеннями з форми
+		/// </summary>
+		public Action ОбновитиЗначенняЗФормиДокумента { get; set; }
+
+		private void ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари(object sender, EventArgs e)
         {
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
@@ -394,22 +399,8 @@ namespace StorageAndTrade
 			}
 		}
 
-        private void toolStripButtonFill_Click(object sender, EventArgs e)
+        private void toolStripButtonFillRegister_Click(object sender, EventArgs e)
         {
-			/*, 
-register AS
-(
-	SELECT DISTINCT
-        ON (register_all.Номенклатура) Номенклатура,
-        register_all.ХарактеристикаНоменклатури,
-        register_all.Пакування,
-        register_all.ВидЦіни,
-        register_all.Ціна
-    FROM
-        register_all
-    ORDER BY Номенклатура, ХарактеристикаНоменклатури, Пакування, ВидЦіни, Ціна
-)*/
-
 			string query = $@"
 WITH register AS
 (
@@ -419,6 +410,8 @@ WITH register AS
         {РегістриВідомостей.ЦіниНоменклатури_Const.ВидЦіни} AS ВидЦіни
     FROM
         {РегістриВідомостей.ЦіниНоменклатури_Const.TABLE}
+    WHERE
+        {РегістриВідомостей.ЦіниНоменклатури_Const.Валюта} = @valuta
 )
 
 SELECT
@@ -439,7 +432,8 @@ SELECT
             ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.Номенклатура} = register.Номенклатура AND
             ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.ХарактеристикаНоменклатури} = register.ХарактеристикаНоменклатури AND
             ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.Пакування} = register.Пакування AND
-            ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.ВидЦіни} = register.ВидЦіни
+            ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.ВидЦіни} = register.ВидЦіни AND
+            ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.Валюта} = @valuta
         ORDER BY ЦіниНоменклатури.period DESC
         LIMIT 1
     ) AS Ціна
@@ -457,31 +451,15 @@ FROM
 
     LEFT JOIN {Довідники.ВидиЦін_Const.TABLE} AS Довідник_ВидиЦін ON 
         Довідник_ВидиЦін.uid = register.ВидЦіни
-    
-    LEFT JOIN {РегістриВідомостей.ЦіниНоменклатури_Const.TABLE} AS ЦіниНоменклатури ON 
-        ЦіниНоменклатури.uid = register.ВидЦіни
 ";
 
-			/*
-			SELECT
-				Номенклатура.uid,
-				Номенклатура.{Довідники.Номенклатура_Const.Назва} AS Назва,
-
-			FROM
-				{Довідники.Номенклатура_Const.TABLE} AS Номенклатура
-
-				LEFT JOIN {РегістриВідомостей.ЦіниНоменклатури_Const.TABLE} AS ЦіниНоменклатури ON 
-					ЦіниНоменклатури.{РегістриВідомостей.ЦіниНоменклатури_Const.Номенклатура} = register.Організація
-
-			WHERE
-				Номенклатура.{Довідники.Номенклатура_Const.ВидНоменклатури} = {Перелічення.ТипиНоменклатури.Товар} AND
-				Номенклатура.{Довідники.Номенклатура_Const.ВидНоменклатури} = {Перелічення.ТипиНоменклатури.Послуга} 
-			*/
-
 			RecordsBindingList.Clear();
-			dataGridViewRecords.Refresh();
+
+			if (ОбновитиЗначенняЗФормиДокумента != null)
+				ОбновитиЗначенняЗФормиДокумента.Invoke();
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("valuta", ДокументОбєкт.Валюта.UnigueID.UGuid);
 
 			string[] columnsName;
 			List<Dictionary<string,object>> listRow;
@@ -506,5 +484,69 @@ FROM
 			}
 
 		}
-	}
+
+        private void toolStripButtonFillDirectory_Click(object sender, EventArgs e)
+        {
+			string query = $@"
+SELECT
+    Номенклатура.uid AS Номенклатура,
+    Номенклатура.{Довідники.Номенклатура_Const.Назва} AS Номенклатура_Назва,
+    Номенклатура.{Довідники.Номенклатура_Const.ОдиницяВиміру} AS Пакування,
+    Довідник_ПакуванняОдиниціВиміру.{Довідники.ПакуванняОдиниціВиміру_Const.Назва} AS Пакування_Назва
+FROM
+    {Довідники.Номенклатура_Const.TABLE} AS Номенклатура
+
+    LEFT JOIN {Довідники.ПакуванняОдиниціВиміру_Const.TABLE} AS Довідник_ПакуванняОдиниціВиміру ON 
+        Довідник_ПакуванняОдиниціВиміру.uid = Номенклатура.{Довідники.Номенклатура_Const.ОдиницяВиміру}
+WHERE
+    Номенклатура.{Довідники.Номенклатура_Const.ТипНоменклатури} = {(int)Перелічення.ТипиНоменклатури.Товар} OR
+    Номенклатура.{Довідники.Номенклатура_Const.ТипНоменклатури} = {(int)Перелічення.ТипиНоменклатури.Послуга}
+ORDER BY Номенклатура_Назва
+";
+
+			RecordsBindingList.Clear();
+
+			if (ОбновитиЗначенняЗФормиДокумента != null)
+				ОбновитиЗначенняЗФормиДокумента.Invoke();
+
+			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+
+			string[] columnsName;
+			List<Dictionary<string, object>> listRow;
+
+			Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+
+			foreach (Dictionary<string, object> row in listRow)
+			{
+				RecordsBindingList.Add(new Записи
+				{
+					ID = Guid.Empty.ToString(),
+					Номенклатура = new Довідники.Номенклатура_Pointer(row["Номенклатура"]),
+					НоменклатураНазва = row["Номенклатура_Назва"].ToString(),
+					Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(),
+					ХарактеристикаНазва = "",
+					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(row["Пакування"]),
+					ПакуванняНазва = row["Пакування_Назва"].ToString(),
+					ВидиЦін = new Довідники.ВидиЦін_Pointer(),
+					ВидиЦінНазва = "",
+					Ціна = 0
+				});
+			}
+
+		}
+
+        private void видалитиТовариЗЦіноюНульToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+			List<Записи> removeList = new List<Записи>();
+
+            foreach (Записи запис in RecordsBindingList)
+            {
+				if (запис.Ціна == 0)
+					removeList.Add(запис);
+            }
+
+            foreach (Записи запис in removeList)
+				RecordsBindingList.Remove(запис);
+        }
+    }
 }

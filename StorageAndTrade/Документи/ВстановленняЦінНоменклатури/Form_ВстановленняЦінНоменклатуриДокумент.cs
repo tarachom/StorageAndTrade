@@ -67,11 +67,16 @@ namespace StorageAndTrade
         private void Form_ВстановленняЦінНоменклатуриДокумент_Load(object sender, EventArgs e)
         {
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
 
 			if (IsNew.HasValue)
 			{
 				встановленняЦінНоменклатури_Objest = new Документи.ВстановленняЦінНоменклатури_Objest();
 				ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ДокументОбєкт = встановленняЦінНоменклатури_Objest;
+				ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ОбновитиЗначенняЗФормиДокумента = () =>
+				{
+					встановленняЦінНоменклатури_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
+				};
 
 				if (IsNew.Value)
 				{
@@ -79,6 +84,7 @@ namespace StorageAndTrade
 					textBox_НомерДок.Text = встановленняЦінНоменклатури_Objest.НомерДок = (++Константи.НумераціяДокументів.ВстановленняЦінНоменклатури_Const).ToString("D8");
 
 					directoryControl_Організація.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаОрганізація_Const;
+					directoryControl_Валюта.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаВалюта_Const;
 				}
 				else
 				{
@@ -89,6 +95,7 @@ namespace StorageAndTrade
 						textBox_НомерДок.Text = встановленняЦінНоменклатури_Objest.НомерДок;
 						dateTimePicker_ДатаДок.Value = встановленняЦінНоменклатури_Objest.ДатаДок;
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(встановленняЦінНоменклатури_Objest.Організація.UnigueID);
+						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(встановленняЦінНоменклатури_Objest.Валюта.UnigueID);
 						textBox_Коментар.Text = встановленняЦінНоменклатури_Objest.Коментар;
 
 						ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.LoadRecords();
@@ -109,6 +116,7 @@ namespace StorageAndTrade
 				встановленняЦінНоменклатури_Objest.НомерДок = textBox_НомерДок.Text;
 				встановленняЦінНоменклатури_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
 				встановленняЦінНоменклатури_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
+				встановленняЦінНоменклатури_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 				встановленняЦінНоменклатури_Objest.Назва = $"Встановлення цін номенклатури №{встановленняЦінНоменклатури_Objest.НомерДок} від {встановленняЦінНоменклатури_Objest.ДатаДок.ToShortDateString()}";
 				встановленняЦінНоменклатури_Objest.Коментар = textBox_Коментар.Text;
 

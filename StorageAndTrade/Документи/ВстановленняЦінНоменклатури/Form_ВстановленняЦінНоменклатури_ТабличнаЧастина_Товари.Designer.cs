@@ -38,9 +38,12 @@ namespace StorageAndTrade
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonFill = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFillDirectory = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonFillRegister = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButtonOperation = new System.Windows.Forms.ToolStripDropDownButton();
+            this.видалитиТовариЗЦіноюНульToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
             this.panel1.SuspendLayout();
@@ -90,7 +93,9 @@ namespace StorageAndTrade
             this.toolStripButtonCopy,
             this.toolStripButtonDelete,
             this.toolStripSeparator1,
-            this.toolStripButtonFill});
+            this.toolStripButtonFillDirectory,
+            this.toolStripButtonFillRegister,
+            this.toolStripDropDownButtonOperation});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(733, 25);
@@ -124,24 +129,50 @@ namespace StorageAndTrade
             this.toolStripButtonDelete.Text = "Видалити";
             this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButtonFill
+            // toolStripButtonFillDirectory
             // 
-            this.toolStripButtonFill.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFill.Image")));
-            this.toolStripButtonFill.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonFill.Name = "toolStripButtonFill";
-            this.toolStripButtonFill.Size = new System.Drawing.Size(86, 22);
-            this.toolStripButtonFill.Text = "Заповнити";
-            this.toolStripButtonFill.Click += new System.EventHandler(this.toolStripButtonFill_Click);
+            this.toolStripButtonFillDirectory.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFillDirectory.Image")));
+            this.toolStripButtonFillDirectory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFillDirectory.Name = "toolStripButtonFillDirectory";
+            this.toolStripButtonFillDirectory.Size = new System.Drawing.Size(142, 22);
+            this.toolStripButtonFillDirectory.Text = "Заповнити товарами";
+            this.toolStripButtonFillDirectory.Click += new System.EventHandler(this.toolStripButtonFillDirectory_Click);
+            // 
+            // toolStripButtonFillRegister
+            // 
+            this.toolStripButtonFillRegister.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFillRegister.Image")));
+            this.toolStripButtonFillRegister.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFillRegister.Name = "toolStripButtonFillRegister";
+            this.toolStripButtonFillRegister.Size = new System.Drawing.Size(193, 22);
+            this.toolStripButtonFillRegister.Text = "Заповнити існуючими цінами";
+            this.toolStripButtonFillRegister.Click += new System.EventHandler(this.toolStripButtonFillRegister_Click);
+            // 
+            // toolStripDropDownButtonOperation
+            // 
+            this.toolStripDropDownButtonOperation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.видалитиТовариЗЦіноюНульToolStripMenuItem});
+            this.toolStripDropDownButtonOperation.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonOperation.Image")));
+            this.toolStripDropDownButtonOperation.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonOperation.Name = "toolStripDropDownButtonOperation";
+            this.toolStripDropDownButtonOperation.Size = new System.Drawing.Size(84, 22);
+            this.toolStripDropDownButtonOperation.Text = "Операції";
+            // 
+            // видалитиТовариЗЦіноюНульToolStripMenuItem
+            // 
+            this.видалитиТовариЗЦіноюНульToolStripMenuItem.Name = "видалитиТовариЗЦіноюНульToolStripMenuItem";
+            this.видалитиТовариЗЦіноюНульToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.видалитиТовариЗЦіноюНульToolStripMenuItem.Text = "Видалити товари з ціною 0";
+            this.видалитиТовариЗЦіноюНульToolStripMenuItem.Click += new System.EventHandler(this.видалитиТовариЗЦіноюНульToolStripMenuItem_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари
             // 
@@ -173,6 +204,9 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton toolStripButtonFill;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFillRegister;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFillDirectory;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripDropDownButtonOperation;
+        private System.Windows.Forms.ToolStripMenuItem видалитиТовариЗЦіноюНульToolStripMenuItem;
     }
 }

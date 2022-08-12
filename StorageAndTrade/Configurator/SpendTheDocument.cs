@@ -1453,7 +1453,7 @@ FROM
 
 				record.Ціна = Товари_Record.Ціна;
 				record.Пакування = Товари_Record.Пакування;
-				record.Валюта = (видиЦін_Objest != null ? видиЦін_Objest.Валюта : new Довідники.Валюти_Pointer());
+				record.Валюта = ДокументОбєкт.Валюта;
 			}
 
 			ціниНоменклатури_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
