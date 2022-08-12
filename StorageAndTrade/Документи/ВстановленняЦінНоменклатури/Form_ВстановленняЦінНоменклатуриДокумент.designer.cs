@@ -38,21 +38,21 @@ namespace StorageAndTrade
             this.dateTimePicker_ДатаДок = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
-            this.directoryControl_Валюта = new StorageAndTrade.DirectoryControl();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_Коментар = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари = new StorageAndTrade.Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари = new StorageAndTrade.Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари();
             this.directoryControl_ВидЦіни = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Валюта = new StorageAndTrade.DirectoryControl();
+            this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -142,18 +142,6 @@ namespace StorageAndTrade
             this.label4.TabIndex = 66;
             this.label4.Text = "Валюта:";
             // 
-            // directoryControl_Валюта
-            // 
-            this.directoryControl_Валюта.AfterSelectFunc = null;
-            this.directoryControl_Валюта.BeforeClickOpenFunc = null;
-            this.directoryControl_Валюта.Bind = null;
-            this.directoryControl_Валюта.DirectoryPointerItem = null;
-            this.directoryControl_Валюта.Location = new System.Drawing.Point(441, 52);
-            this.directoryControl_Валюта.Name = "directoryControl_Валюта";
-            this.directoryControl_Валюта.SelectForm = null;
-            this.directoryControl_Валюта.Size = new System.Drawing.Size(283, 27);
-            this.directoryControl_Валюта.TabIndex = 65;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -178,18 +166,6 @@ namespace StorageAndTrade
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 46;
             this.label3.Text = "Організація:";
-            // 
-            // directoryControl_Організація
-            // 
-            this.directoryControl_Організація.AfterSelectFunc = null;
-            this.directoryControl_Організація.BeforeClickOpenFunc = null;
-            this.directoryControl_Організація.Bind = null;
-            this.directoryControl_Організація.DirectoryPointerItem = null;
-            this.directoryControl_Організація.Location = new System.Drawing.Point(108, 52);
-            this.directoryControl_Організація.Name = "directoryControl_Організація";
-            this.directoryControl_Організація.SelectForm = null;
-            this.directoryControl_Організація.Size = new System.Drawing.Size(273, 27);
-            this.directoryControl_Організація.TabIndex = 45;
             // 
             // panel2
             // 
@@ -223,16 +199,6 @@ namespace StorageAndTrade
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Товари";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари
-            // 
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Name = "ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари";
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 422);
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.TabIndex = 0;
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ДокументОбєкт = null;
-            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ОбновитиЗначенняЗФормиДокумента = null;
             // 
             // tabPage2
             // 
@@ -286,6 +252,16 @@ namespace StorageAndTrade
             this.label5.TabIndex = 68;
             this.label5.Text = "Вид ціни:";
             // 
+            // ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари
+            // 
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Location = new System.Drawing.Point(3, 3);
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Name = "ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари";
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.Size = new System.Drawing.Size(1017, 422);
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.TabIndex = 0;
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ДокументОбєкт = null;
+            this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.ОбновитиЗначенняЗФормиДокумента = null;
+            // 
             // directoryControl_ВидЦіни
             // 
             this.directoryControl_ВидЦіни.AfterSelectFunc = null;
@@ -298,6 +274,30 @@ namespace StorageAndTrade
             this.directoryControl_ВидЦіни.Size = new System.Drawing.Size(283, 27);
             this.directoryControl_ВидЦіни.TabIndex = 67;
             // 
+            // directoryControl_Валюта
+            // 
+            this.directoryControl_Валюта.AfterSelectFunc = null;
+            this.directoryControl_Валюта.BeforeClickOpenFunc = null;
+            this.directoryControl_Валюта.Bind = null;
+            this.directoryControl_Валюта.DirectoryPointerItem = null;
+            this.directoryControl_Валюта.Location = new System.Drawing.Point(441, 52);
+            this.directoryControl_Валюта.Name = "directoryControl_Валюта";
+            this.directoryControl_Валюта.SelectForm = null;
+            this.directoryControl_Валюта.Size = new System.Drawing.Size(283, 27);
+            this.directoryControl_Валюта.TabIndex = 65;
+            // 
+            // directoryControl_Організація
+            // 
+            this.directoryControl_Організація.AfterSelectFunc = null;
+            this.directoryControl_Організація.BeforeClickOpenFunc = null;
+            this.directoryControl_Організація.Bind = null;
+            this.directoryControl_Організація.DirectoryPointerItem = null;
+            this.directoryControl_Організація.Location = new System.Drawing.Point(108, 52);
+            this.directoryControl_Організація.Name = "directoryControl_Організація";
+            this.directoryControl_Організація.SelectForm = null;
+            this.directoryControl_Організація.Size = new System.Drawing.Size(273, 27);
+            this.directoryControl_Організація.TabIndex = 45;
+            // 
             // Form_ВстановленняЦінНоменклатуриДокумент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -309,7 +309,7 @@ namespace StorageAndTrade
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_ВстановленняЦінНоменклатуриДокумент";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Переміщення товарів";
+            this.Text = "Встановлення цін номенклатури";
             this.Load += new System.EventHandler(this.Form_ВстановленняЦінНоменклатуриДокумент_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
