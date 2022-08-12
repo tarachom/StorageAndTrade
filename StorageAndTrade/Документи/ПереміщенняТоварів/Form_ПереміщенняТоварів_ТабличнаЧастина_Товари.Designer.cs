@@ -66,10 +66,9 @@ namespace StorageAndTrade
             this.dataGridViewRecords.RowHeadersVisible = false;
             this.dataGridViewRecords.Size = new System.Drawing.Size(733, 219);
             this.dataGridViewRecords.TabIndex = 0;
-            this.dataGridViewRecords.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewRecords_CellBeginEdit);
-            this.dataGridViewRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellClick);
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellEndEdit);
+            this.dataGridViewRecords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewRecords_KeyDown);
             // 
             // panel1
             // 
@@ -124,13 +123,13 @@ namespace StorageAndTrade
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари
+            // Form_ПереміщенняТоварів_ТабличнаЧастина_Товари
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари";
+            this.Name = "Form_ПереміщенняТоварів_ТабличнаЧастина_Товари";
             this.Size = new System.Drawing.Size(733, 248);
             this.Load += new System.EventHandler(this.Переміщення_ТабличнаЧастина_Товари_Load);
             this.panel2.ResumeLayout(false);
