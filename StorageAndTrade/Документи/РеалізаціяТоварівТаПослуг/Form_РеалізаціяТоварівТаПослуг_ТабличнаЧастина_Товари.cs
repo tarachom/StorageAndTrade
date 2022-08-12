@@ -426,6 +426,9 @@ LIMIT 1
 					new DataGridViewCellEventArgs(dataGridViewRecords.CurrentCell.ColumnIndex, dataGridViewRecords.CurrentCell.RowIndex));
 			else if (e.KeyCode == Keys.Delete)
             {
+				if (dataGridViewRecords.CurrentCell == null)
+					return;
+
 				string columnName = dataGridViewRecords.Columns[dataGridViewRecords.CurrentCell.ColumnIndex].Name;
 				Записи запис = RecordsBindingList[dataGridViewRecords.CurrentCell.RowIndex];
 

@@ -14,6 +14,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using РегістриВідомостей = StorageAndTrade_1_0.РегістриВідомостей;
 
 namespace StorageAndTrade
 {
@@ -355,6 +356,9 @@ LIMIT 1
 					new DataGridViewCellEventArgs(dataGridViewRecords.CurrentCell.ColumnIndex, dataGridViewRecords.CurrentCell.RowIndex));
 			else if (e.KeyCode == Keys.Delete)
 			{
+				if (dataGridViewRecords.CurrentCell == null)
+					return;
+
 				string columnName = dataGridViewRecords.Columns[dataGridViewRecords.CurrentCell.ColumnIndex].Name;
 				Записи запис = RecordsBindingList[dataGridViewRecords.CurrentCell.RowIndex];
 
