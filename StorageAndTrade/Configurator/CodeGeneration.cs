@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 12.08.2022 11:11:25
+ * Дата конфігурації: 12.08.2022 15:30:15
  *
  */
 
@@ -14502,7 +14502,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ВнутрішнєСпоживанняТоварів_Товари_TablePart : DocumentTablePart
     {
         public ВнутрішнєСпоживанняТоварів_Товари_TablePart(ВнутрішнєСпоживанняТоварів_Objest owner) : base(Config.Kernel, "tab_b08",
-             new string[] { "col_a1", "col_d2", "col_d3", "col_a2", "col_d4", "col_d5", "col_d6", "col_d7", "col_d8", "col_d9" }) 
+             new string[] { "col_a1", "col_d2", "col_d3", "col_a2", "col_d4", "col_d5", "col_d6", "col_d8", "col_d9" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -14517,7 +14517,6 @@ namespace StorageAndTrade_1_0.Документи
         public const string Пакування = "col_d4";
         public const string КількістьУпаковок = "col_d5";
         public const string Кількість = "col_d6";
-        public const string ВидЦіни = "col_d7";
         public const string Ціна = "col_d8";
         public const string Сума = "col_d9";
 
@@ -14542,7 +14541,6 @@ namespace StorageAndTrade_1_0.Документи
                 record.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(fieldValue["col_d4"]);
                 record.КількістьУпаковок = (fieldValue["col_d5"] != DBNull.Value) ? (int)fieldValue["col_d5"] : 0;
                 record.Кількість = (fieldValue["col_d6"] != DBNull.Value) ? (decimal)fieldValue["col_d6"] : 0;
-                record.ВидЦіни = new Довідники.ВидиЦін_Pointer(fieldValue["col_d7"]);
                 record.Ціна = (fieldValue["col_d8"] != DBNull.Value) ? (decimal)fieldValue["col_d8"] : 0;
                 record.Сума = (fieldValue["col_d9"] != DBNull.Value) ? (decimal)fieldValue["col_d9"] : 0;
                 
@@ -14570,7 +14568,6 @@ namespace StorageAndTrade_1_0.Документи
                 fieldValue.Add("col_d4", record.Пакування.UnigueID.UGuid);
                 fieldValue.Add("col_d5", record.КількістьУпаковок);
                 fieldValue.Add("col_d6", record.Кількість);
-                fieldValue.Add("col_d7", record.ВидЦіни.UnigueID.UGuid);
                 fieldValue.Add("col_d8", record.Ціна);
                 fieldValue.Add("col_d9", record.Сума);
                 
@@ -14609,7 +14606,6 @@ namespace StorageAndTrade_1_0.Документи
                 Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
                 КількістьУпаковок = 0;
                 Кількість = 0;
-                ВидЦіни = new Довідники.ВидиЦін_Pointer();
                 Ціна = 0;
                 Сума = 0;
                 
@@ -14621,7 +14617,6 @@ namespace StorageAndTrade_1_0.Документи
             public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public int КількістьУпаковок { get; set; }
             public decimal Кількість { get; set; }
-            public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
             public decimal Ціна { get; set; }
             public decimal Сума { get; set; }
             

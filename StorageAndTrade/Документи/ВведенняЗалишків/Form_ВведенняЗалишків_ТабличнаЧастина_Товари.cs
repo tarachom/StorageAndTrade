@@ -525,6 +525,12 @@ LIMIT 10
 		private void toolStripButtonAdd_Click(object sender, EventArgs e)
 		{
 			RecordsBindingList.Add(Записи.New());
+
+			dataGridViewRecords.Focus();
+
+			dataGridViewRecords.ClearSelection();
+			dataGridViewRecords.CurrentCell = dataGridViewRecords.Rows[dataGridViewRecords.Rows.Count - 1].Cells["НоменклатураНазва"];
+			dataGridViewRecords.CurrentCell.Selected = true;
 		}
 
         private void toolStripButtonDelete_Click(object sender, EventArgs e)
