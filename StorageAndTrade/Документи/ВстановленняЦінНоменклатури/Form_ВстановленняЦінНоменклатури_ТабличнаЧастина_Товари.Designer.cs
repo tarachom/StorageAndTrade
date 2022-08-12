@@ -30,6 +30,7 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари));
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -38,6 +39,8 @@ namespace StorageAndTrade
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonFill = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
             this.panel1.SuspendLayout();
@@ -85,7 +88,9 @@ namespace StorageAndTrade
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonAdd,
             this.toolStripButtonCopy,
-            this.toolStripButtonDelete});
+            this.toolStripButtonDelete,
+            this.toolStripSeparator1,
+            this.toolStripButtonFill});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(733, 25);
@@ -124,13 +129,27 @@ namespace StorageAndTrade
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonFill
+            // 
+            this.toolStripButtonFill.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonFill.Image")));
+            this.toolStripButtonFill.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonFill.Name = "toolStripButtonFill";
+            this.toolStripButtonFill.Size = new System.Drawing.Size(86, 22);
+            this.toolStripButtonFill.Text = "Заповнити";
+            this.toolStripButtonFill.Click += new System.EventHandler(this.toolStripButtonFill_Click);
+            // 
+            // Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "Form_ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари";
+            this.Name = "Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари";
             this.Size = new System.Drawing.Size(733, 248);
             this.Load += new System.EventHandler(this.ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари);
             this.panel2.ResumeLayout(false);
@@ -153,5 +172,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonCopy;
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonFill;
     }
 }
