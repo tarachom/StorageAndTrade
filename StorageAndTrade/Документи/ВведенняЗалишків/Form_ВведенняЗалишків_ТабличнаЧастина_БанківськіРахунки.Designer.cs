@@ -66,10 +66,9 @@ namespace StorageAndTrade
             this.dataGridViewRecords.RowHeadersVisible = false;
             this.dataGridViewRecords.Size = new System.Drawing.Size(733, 219);
             this.dataGridViewRecords.TabIndex = 0;
-            this.dataGridViewRecords.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridViewRecords_CellBeginEdit);
-            this.dataGridViewRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellClick);
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellEndEdit);
+            this.dataGridViewRecords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewRecords_KeyDown);
             // 
             // panel1
             // 
@@ -124,7 +123,7 @@ namespace StorageAndTrade
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари
+            // Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
