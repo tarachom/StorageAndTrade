@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>13.08.2022 13:05:13</DateTimeSave>
+  <DateTimeSave>13.08.2022 14:45:43</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -7535,6 +7535,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Name>ТовариНаСкладах</Name>
         <Name>РозрахункиЗКлієнтами</Name>
         <Name>ВільніЗалишки</Name>
+        <Name>ПартіїТоварів</Name>
       </AllowRegisterAccumulation>
       <TriggerFunctions>
         <BeforeSave>ПоверненняТоварівВідКлієнта_Triggers.BeforeRecording</BeforeSave>
@@ -9818,6 +9819,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <AllowDocumentSpend>
         <Name>ПоступленняТоварівТаПослуг</Name>
         <Name>РеалізаціяТоварівТаПослуг</Name>
+        <Name>ПоверненняТоварівВідКлієнта</Name>
         <Name>ВведенняЗалишків</Name>
         <Name>ВнутрішнєСпоживанняТоварів</Name>
       </AllowDocumentSpend>
