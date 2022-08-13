@@ -32,6 +32,7 @@ using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
+using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
@@ -69,11 +70,17 @@ namespace StorageAndTrade
 			{
 				партіяТоварівКомпозит_Objest = new Довідники.ПартіяТоварівКомпозит_Objest();
 
+				documentControl_ПоступленняТоварів.Init(new Form_ПоступленняТоварівТаПослугЖурнал(), new Документи.ПоступленняТоварівТаПослуг_Pointer());
+				documentControl_ВведенняЗалишків.Init(new Form_ВведенняЗалишківЖурнал(), new Документи.ВведенняЗалишків_Pointer());
+
 				if (!IsNew.Value)
 				{
 					if (партіяТоварівКомпозит_Objest.Read(new UnigueID(Uid)))
 					{
 						textBoxName.Text = партіяТоварівКомпозит_Objest.Назва;
+						dateTimePicker_Дата.Value = партіяТоварівКомпозит_Objest.Дата;
+						documentControl_ПоступленняТоварів.DocumentPointerItem = партіяТоварівКомпозит_Objest.ПоступленняТоварівТаПослуг;
+						documentControl_ВведенняЗалишків.DocumentPointerItem = партіяТоварівКомпозит_Objest.ВведенняЗалишків;
 					}
 					else
 						MessageBox.Show("Error read");

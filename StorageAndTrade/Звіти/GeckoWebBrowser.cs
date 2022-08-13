@@ -144,8 +144,8 @@ namespace StorageAndTrade
                         }
                     case "ПартіяТоварівКомпозит":
                         {
-                            //Form_ПакуванняОдиниціВиміруЕлемент form = new Form_ПакуванняОдиниціВиміруЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
-                            //form.Show();
+                            Form_ПартіяТоварівКомпозитЕлемент form = new Form_ПартіяТоварівКомпозитЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
 
                             break;
                         }

@@ -33,11 +33,17 @@ namespace StorageAndTrade
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePicker_Дата = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.documentControl_ВведенняЗалишків = new StorageAndTrade.DocumentControl();
+            this.documentControl_ПоступленняТоварів = new StorageAndTrade.DocumentControl();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(60, 186);
+            this.buttonClose.Location = new System.Drawing.Point(201, 152);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
@@ -47,9 +53,9 @@ namespace StorageAndTrade
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(60, 12);
+            this.textBoxName.Location = new System.Drawing.Point(201, 12);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(489, 20);
+            this.textBoxName.Size = new System.Drawing.Size(444, 20);
             this.textBoxName.TabIndex = 20;
             // 
             // label2
@@ -61,11 +67,69 @@ namespace StorageAndTrade
             this.label2.TabIndex = 19;
             this.label2.Text = "Назва:";
             // 
+            // dateTimePicker_Дата
+            // 
+            this.dateTimePicker_Дата.Location = new System.Drawing.Point(201, 41);
+            this.dateTimePicker_Дата.Name = "dateTimePicker_Дата";
+            this.dateTimePicker_Дата.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker_Дата.TabIndex = 21;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Дата:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(168, 13);
+            this.label6.TabIndex = 66;
+            this.label6.Text = "Документ поступлення товарів:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(161, 13);
+            this.label3.TabIndex = 68;
+            this.label3.Text = "Документ введення залишків:";
+            // 
+            // documentControl_ВведенняЗалишків
+            // 
+            this.documentControl_ВведенняЗалишків.DocumentPointerItem = null;
+            this.documentControl_ВведенняЗалишків.Location = new System.Drawing.Point(201, 101);
+            this.documentControl_ВведенняЗалишків.Name = "documentControl_ВведенняЗалишків";
+            this.documentControl_ВведенняЗалишків.SelectForm = null;
+            this.documentControl_ВведенняЗалишків.Size = new System.Drawing.Size(444, 27);
+            this.documentControl_ВведенняЗалишків.TabIndex = 69;
+            // 
+            // documentControl_ПоступленняТоварів
+            // 
+            this.documentControl_ПоступленняТоварів.DocumentPointerItem = null;
+            this.documentControl_ПоступленняТоварів.Location = new System.Drawing.Point(201, 68);
+            this.documentControl_ПоступленняТоварів.Name = "documentControl_ПоступленняТоварів";
+            this.documentControl_ПоступленняТоварів.SelectForm = null;
+            this.documentControl_ПоступленняТоварів.Size = new System.Drawing.Size(444, 27);
+            this.documentControl_ПоступленняТоварів.TabIndex = 67;
+            // 
             // Form_ПартіяТоварівКомпозитЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 225);
+            this.ClientSize = new System.Drawing.Size(679, 193);
+            this.Controls.Add(this.documentControl_ВведенняЗалишків);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.documentControl_ПоступленняТоварів);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.dateTimePicker_Дата);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonClose);
@@ -84,5 +148,11 @@ namespace StorageAndTrade
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_Дата;
+        private System.Windows.Forms.Label label1;
+        private DocumentControl documentControl_ПоступленняТоварів;
+        private System.Windows.Forms.Label label6;
+        private DocumentControl documentControl_ВведенняЗалишків;
+        private System.Windows.Forms.Label label3;
     }
 }
