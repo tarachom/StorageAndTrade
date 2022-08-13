@@ -31,7 +31,7 @@ namespace StorageAndTrade
 		{
             this.textBoxControl = new System.Windows.Forms.TextBox();
             this.buttonOpen = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonFind = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxControl
@@ -44,36 +44,40 @@ namespace StorageAndTrade
             this.textBoxControl.Multiline = true;
             this.textBoxControl.Name = "textBoxControl";
             this.textBoxControl.ReadOnly = true;
-            this.textBoxControl.Size = new System.Drawing.Size(269, 22);
+            this.textBoxControl.Size = new System.Drawing.Size(287, 22);
             this.textBoxControl.TabIndex = 0;
+            this.textBoxControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxControl_KeyDown);
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonOpen.Location = new System.Drawing.Point(271, 2);
+            this.buttonOpen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOpen.Location = new System.Drawing.Point(290, 1);
             this.buttonOpen.Name = "buttonOpen";
-            this.buttonOpen.Size = new System.Drawing.Size(32, 23);
+            this.buttonOpen.Size = new System.Drawing.Size(24, 24);
             this.buttonOpen.TabIndex = 1;
-            this.buttonOpen.Text = "...";
+            this.buttonOpen.Text = "..";
             this.buttonOpen.UseVisualStyleBackColor = true;
             this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
             // 
-            // buttonClear
+            // buttonFind
             // 
-            this.buttonClear.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.buttonClear.Location = new System.Drawing.Point(309, 2);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(32, 23);
-            this.buttonClear.TabIndex = 2;
-            this.buttonClear.Text = "X";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            this.buttonFind.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonFind.Enabled = false;
+            this.buttonFind.Location = new System.Drawing.Point(316, 1);
+            this.buttonFind.Name = "buttonFind";
+            this.buttonFind.Size = new System.Drawing.Size(24, 24);
+            this.buttonFind.TabIndex = 3;
+            this.buttonFind.Text = "f";
+            this.buttonFind.UseVisualStyleBackColor = true;
+            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
             // 
             // DirectoryControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.buttonClear);
+            this.Controls.Add(this.buttonFind);
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.textBoxControl);
             this.Name = "DirectoryControl";
@@ -87,6 +91,6 @@ namespace StorageAndTrade
 
 		private System.Windows.Forms.TextBox textBoxControl;
 		private System.Windows.Forms.Button buttonOpen;
-        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonFind;
     }
 }

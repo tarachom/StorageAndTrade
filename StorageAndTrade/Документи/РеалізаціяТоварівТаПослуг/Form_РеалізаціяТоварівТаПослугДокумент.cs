@@ -100,10 +100,20 @@ namespace StorageAndTrade
 
 				return true;
 			};
+			directoryControl_Контрагент.QueryFind = ПошуковіЗапити.Контрагенти;
+
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
+			directoryControl_Організація.QueryFind = ПошуковіЗапити.Організації;
+
 			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
+			directoryControl_Валюта.QueryFind = ПошуковіЗапити.Валюти;
+
 			directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer());
+			directoryControl_Склад.QueryFind = ПошуковіЗапити.Склади;
+
 			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_Каса.QueryFind = ПошуковіЗапити.Каси;
+
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
 			directoryControl_Договір.BeforeClickOpenFunc = () =>
 			{

@@ -21,6 +21,10 @@ limitations under the License.
 using System;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Drawing;
+using System.Collections.Generic;
+
+using Конфа = StorageAndTrade_1_0;
 
 using AccountingSoftware;
 
@@ -59,10 +63,21 @@ namespace StorageAndTrade
 		/// <param name="selectForm">Форма</param>
 		/// <param name="directoryPointerItem">Вказівник</param>
 		public void Init(Form selectForm, DirectoryPointer directoryPointerItem, Action<DirectoryPointer> bind = null)
-        {
+		{
 			SelectForm = selectForm;
 			DirectoryPointerItem = directoryPointerItem;
 			Bind = bind;
+		}
+
+		private string mQueryFind;
+		public string QueryFind 
+		{
+			get { return mQueryFind; }
+            set
+            {
+				mQueryFind = value;
+				buttonFind.Enabled = true;
+			} 
 		}
 
 		/// <summary>
@@ -106,7 +121,7 @@ namespace StorageAndTrade
 		}
 
 		public string GetPresentation()
-        {
+		{
 			return textBoxControl.Text;
 		}
 
@@ -136,18 +151,89 @@ namespace StorageAndTrade
 			}
 		}
 
-		/// <summary>
-		/// Кнопка очищення
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void buttonClear_Click(object sender, EventArgs e)
+		private void buttonFind_Click(object sender, EventArgs e)
 		{
-			DirectoryPointerItem.Init(new UnigueID(Guid.Empty));
-			ReadPresentation();
+			if (String.IsNullOrEmpty(QueryFind))
+				return;
 
-			if (AfterSelectFunc != null)
-				AfterSelectFunc.Invoke();
+			Rectangle rectangle = buttonFind.DisplayRectangle;
+			rectangle.Offset(-(buttonFind.Parent.Width - buttonFind.Width - 1), buttonFind.Height);
+			Point point = buttonFind.PointToScreen(rectangle.Location);
+
+			ContextMenuStrip contextMenu = new ContextMenuStrip();
+
+			ToolStripTextBox findTextBox = new ToolStripTextBox();
+			findTextBox.ToolTipText = "Пошук";
+			findTextBox.Size = new Size(textBoxControl.Width, 0);
+			findTextBox.TextChanged += FindTextChanged;
+
+			contextMenu.Items.Add(findTextBox);
+			contextMenu.Show(point);
+
+			findTextBox.Focus();
+		}
+
+		private void FindTextChanged(object sender, EventArgs e)
+		{
+			ToolStripTextBox findMenu = (ToolStripTextBox)sender;
+
+			ToolStrip parent = findMenu.GetCurrentParent();
+
+			for (int counterMenu = parent.Items.Count - 1; counterMenu > 0; counterMenu--)
+				parent.Items.RemoveAt(counterMenu);
+
+			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("like_param", "%" + findMenu.Text.Trim().ToLower() + "%");
+
+			string[] columnsName;
+			List<Dictionary<string, object>> listRow;
+
+			Конфа.Config.Kernel.DataBase.SelectRequest(QueryFind, paramQuery, out columnsName, out listRow);
+
+			if (listRow.Count > 0)
+			{
+				ToolStripItem[] mas = new ToolStripItem[listRow.Count];
+
+				int counter = 0;
+
+				foreach (Dictionary<string, object> row in listRow)
+				{
+					mas[counter] = new ToolStripMenuItem(row["Назва"].ToString(), Properties.Resources.page_white_text, FindClick);
+					mas[counter].Tag = row["uid"].ToString();
+					counter++;
+				}
+
+				parent.Items.AddRange(mas);
+			}
+		}
+
+		private void FindClick(object sender, EventArgs e)
+		{
+			ToolStripMenuItem selectMenu = (ToolStripMenuItem)sender;
+			string uid = selectMenu.Tag.ToString();
+
+			DirectoryPointerItem.Init(new UnigueID(uid));
+			ReadPresentation();
+		}
+
+		private void textBoxControl_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Delete)
+			{
+				DirectoryPointerItem.Init(new UnigueID(Guid.Empty));
+				ReadPresentation();
+
+				if (AfterSelectFunc != null)
+					AfterSelectFunc.Invoke();
+			}
+			else if (e.KeyCode == Keys.Escape)
+            {
+				return;
+            }
+			else
+            {
+				buttonFind_Click(this, new EventArgs());
+			}
 		}
 	}
 }

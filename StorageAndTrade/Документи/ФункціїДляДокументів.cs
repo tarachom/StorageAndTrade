@@ -261,4 +261,115 @@ namespace StorageAndTrade
         }
 
     }
+
+    class ПошуковіЗапити
+    {
+        public static readonly string Контрагенти = $@"
+SELECT 
+    uid,
+    {Довідники.Контрагенти_Const.Назва} AS Назва
+FROM
+    {Довідники.Контрагенти_Const.TABLE}
+WHERE
+    LOWER({Довідники.Контрагенти_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Організації = $@"
+SELECT 
+    uid,
+    {Довідники.Організації_Const.Назва} AS Назва
+FROM
+    {Довідники.Організації_Const.TABLE}
+WHERE
+    LOWER({Довідники.Організації_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Валюти = $@"
+SELECT 
+    uid,
+    {Довідники.Валюти_Const.Назва} AS Назва
+FROM
+    {Довідники.Валюти_Const.TABLE}
+WHERE
+    LOWER({Довідники.Валюти_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Каси = $@"
+SELECT 
+    uid,
+    {Довідники.Каси_Const.Назва} AS Назва
+FROM
+    {Довідники.Каси_Const.TABLE}
+WHERE
+    LOWER({Довідники.Каси_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Номенклатура_Папки = $@"
+SELECT 
+    uid,
+    {Довідники.Номенклатура_Папки_Const.Назва} AS Назва
+FROM
+    {Довідники.Номенклатура_Папки_Const.TABLE}
+WHERE
+    LOWER({Довідники.Номенклатура_Папки_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Номенклатура = $@"
+SELECT 
+    uid,
+    {Довідники.Номенклатура_Const.Назва} AS Назва
+FROM
+    {Довідники.Номенклатура_Const.TABLE}
+WHERE
+    LOWER({Довідники.Номенклатура_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Склади_Папки = $@"
+SELECT 
+    uid,
+    {Довідники.Склади_Папки_Const.Назва} AS Назва
+FROM
+    {Довідники.Склади_Папки_Const.TABLE}
+WHERE
+    LOWER({Довідники.Склади_Папки_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Склади = $@"
+SELECT 
+    uid,
+    {Довідники.Склади_Const.Назва} AS Назва
+FROM
+    {Довідники.Склади_Const.TABLE}
+WHERE
+    LOWER({Довідники.Склади_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string СеріїНоменклатури = $@"
+SELECT 
+    uid,
+    {Довідники.СеріїНоменклатури_Const.Номер} AS Назва
+FROM
+    {Довідники.СеріїНоменклатури_Const.TABLE}
+WHERE
+    LOWER({Довідники.СеріїНоменклатури_Const.Номер}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+    }
 }
