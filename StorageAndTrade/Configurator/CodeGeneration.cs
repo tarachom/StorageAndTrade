@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 13.08.2022 11:48:23
+ * Дата конфігурації: 13.08.2022 13:05:13
  *
  */
 
@@ -9017,7 +9017,6 @@ namespace StorageAndTrade_1_0.Документи
         public const string Менеджер = "col_d1";
         public const string СтаттяРухуКоштів = "col_d2";
         public const string Каса = "col_d3";
-        public const string ПартіяТоварівКомпозит = "col_a1";
         public const string Коментар = "col_b1";
     }
 	
@@ -9025,7 +9024,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоступленняТоварівТаПослуг_Objest : DocumentObject
     {
         public ПоступленняТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a32", "ПоступленняТоварівТаПослуг",
-             new string[] { "docname", "docnomer", "docdate", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1", "col_d2", "col_d3", "col_a1", "col_b1" }) 
+             new string[] { "docname", "docnomer", "docdate", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1", "col_d2", "col_d3", "col_b1" }) 
         {
             Назва = "";
             НомерДок = "";
@@ -9057,7 +9056,6 @@ namespace StorageAndTrade_1_0.Документи
             Менеджер = new Довідники.Користувачі_Pointer();
             СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
             Каса = new Довідники.Каси_Pointer();
-            ПартіяТоварівКомпозит = new Довідники.ПартіяТоварівКомпозит_Pointer();
             Коментар = "";
             
             //Табличні частини
@@ -9099,7 +9097,6 @@ namespace StorageAndTrade_1_0.Документи
                 Менеджер = new Довідники.Користувачі_Pointer(base.FieldValue["col_d1"]);
                 СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_d2"]);
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_d3"]);
-                ПартіяТоварівКомпозит = new Довідники.ПартіяТоварівКомпозит_Pointer(base.FieldValue["col_a1"]);
                 Коментар = base.FieldValue["col_b1"].ToString();
                 
                 BaseClear();
@@ -9142,7 +9139,6 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_d1"] = Менеджер.UnigueID.UGuid;
             base.FieldValue["col_d2"] = СтаттяРухуКоштів.UnigueID.UGuid;
             base.FieldValue["col_d3"] = Каса.UnigueID.UGuid;
-            base.FieldValue["col_a1"] = ПартіяТоварівКомпозит.UnigueID.UGuid;
             base.FieldValue["col_b1"] = Коментар;
             
             BaseSave();
@@ -9194,7 +9190,6 @@ namespace StorageAndTrade_1_0.Документи
 			copy.Менеджер = Менеджер;
 			copy.СтаттяРухуКоштів = СтаттяРухуКоштів;
 			copy.Каса = Каса;
-			copy.ПартіяТоварівКомпозит = ПартіяТоварівКомпозит;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -9242,7 +9237,6 @@ namespace StorageAndTrade_1_0.Документи
         public Довідники.Користувачі_Pointer Менеджер { get; set; }
         public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
-        public Довідники.ПартіяТоварівКомпозит_Pointer ПартіяТоварівКомпозит { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини
