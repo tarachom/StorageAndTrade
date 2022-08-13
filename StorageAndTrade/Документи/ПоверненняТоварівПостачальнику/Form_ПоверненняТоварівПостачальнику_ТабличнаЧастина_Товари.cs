@@ -61,13 +61,11 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["НомерРядка"].HeaderText = "№";
 
 			dataGridViewRecords.Columns["Номенклатура"].Visible = false;
-			dataGridViewRecords.Columns["Характеристика"].Visible = false;
-			dataGridViewRecords.Columns["Пакування"].Visible = false;
-
 			dataGridViewRecords.Columns["НоменклатураНазва"].Width = 200;
 			dataGridViewRecords.Columns["НоменклатураНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["НоменклатураНазва"].HeaderText = "Номенклатура";
 
+			dataGridViewRecords.Columns["Характеристика"].Visible = false;
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].Width = 200;
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ХарактеристикаНазва"].HeaderText = "Характеристика";
@@ -80,13 +78,19 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["КількістьУпаковок"].Width = 50;
 			dataGridViewRecords.Columns["КількістьУпаковок"].HeaderText = "Кво.Упак.";
 
+			dataGridViewRecords.Columns["Пакування"].Visible = false;
 			dataGridViewRecords.Columns["ПакуванняНазва"].Width = 100;
 			dataGridViewRecords.Columns["ПакуванняНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
 
 			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
-		}
+
+			dataGridViewRecords.Columns["ДокументПоступлення"].Visible = false;
+			dataGridViewRecords.Columns["ДокументПоступленняНазва"].Width = 350;
+			dataGridViewRecords.Columns["ДокументПоступленняНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["ДокументПоступленняНазва"].HeaderText = "Документ поступлення";
+		}		
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
 
@@ -123,6 +127,12 @@ namespace StorageAndTrade
 			querySelect.Joins.Add(
 				new Join(Довідники.СеріїНоменклатури_Const.TABLE, Документи.ПоверненняТоварівПостачальнику_Товари_TablePart.Серія, querySelect.Table));
 
+			//JOIN 5
+			querySelect.FieldAndAlias.Add(
+				new NameValue<string>(Документи.ПоступленняТоварівТаПослуг_Const.TABLE + "." + Документи.ПоступленняТоварівТаПослуг_Const.Назва, "doc_postuplenia_name"));
+			querySelect.Joins.Add(
+				new Join(Документи.ПоступленняТоварівТаПослуг_Const.TABLE, Документи.ПоверненняТоварівПостачальнику_Товари_TablePart.ДокументПоступлення, querySelect.Table));
+
 			//ORDER
 			querySelect.Order.Add(Документи.ПоверненняТоварівПостачальнику_Товари_TablePart.НомерРядка, SelectOrder.ASC);
 
@@ -147,7 +157,9 @@ namespace StorageAndTrade
 					ПакуванняНазва = JoinValue[record.UID.ToString()]["pak_name"],
 					Кількість = record.Кількість,
 					Ціна = Math.Round(record.Ціна, 2),
-					Сума = Math.Round(record.Сума, 2)
+					Сума = Math.Round(record.Сума, 2),
+					ДокументПоступлення = record.ДокументПоступлення,
+					ДокументПоступленняНазва = JoinValue[record.UID.ToString()]["doc_postuplenia_name"]
 				});
 			}
 
@@ -189,6 +201,7 @@ namespace StorageAndTrade
 				record.Кількість = запис.Кількість;
 				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
+				record.ДокументПоступлення = запис.ДокументПоступлення;
 
 				ДокументОбєкт.Товари_TablePart.Records.Add(record);
 			}
@@ -212,6 +225,8 @@ namespace StorageAndTrade
 			public decimal Кількість { get; set; }
 			public decimal Ціна { get; set; }
 			public decimal Сума { get; set; }
+			public Документи.ПоступленняТоварівТаПослуг_Pointer ДокументПоступлення { get; set; }
+			public string ДокументПоступленняНазва { get; set; }
 
 			public static Записи New()
             {
@@ -223,7 +238,8 @@ namespace StorageAndTrade
 					Серія = new Довідники.СеріїНоменклатури_Pointer(),
 					КількістьУпаковок = 1,
 					Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(),
-					Кількість = 1
+					Кількість = 1,
+					ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer()
 				};
 			}
 			public static Записи Clone(Записи запис)
@@ -242,7 +258,9 @@ namespace StorageAndTrade
 					ПакуванняНазва = запис.ПакуванняНазва,
 					Кількість = запис.Кількість,
 					Ціна = запис.Ціна,
-					Сума = запис.Сума
+					Сума = запис.Сума,
+					ДокументПоступлення = запис.ДокументПоступлення,
+					ДокументПоступленняНазва = запис.ДокументПоступленняНазва
 				};
             }
 
@@ -294,6 +312,10 @@ namespace StorageAndTrade
 			public static void ПісляЗміни_Пакування(Записи запис)
 			{
 				запис.ПакуванняНазва = запис.Пакування.GetPresentation();
+			}
+			public static void ПісляЗміни_ДокументПоступлення(Записи запис)
+			{
+				запис.ДокументПоступленняНазва = запис.ДокументПоступлення.GetPresentation();
 			}
 		}
 
@@ -351,6 +373,12 @@ namespace StorageAndTrade
 							Записи.ПісляЗміни_Пакування(запис);
 							break;
 						}
+					case "ДокументПоступленняНазва":
+						{
+							запис.ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer();
+							Записи.ПісляЗміни_ДокументПоступлення(запис);
+							break;
+						}
 					default:
 						break;
 				}
@@ -365,7 +393,7 @@ namespace StorageAndTrade
 		{
 			if (e.ColumnIndex >= 0 && e.RowIndex >= 0)
 				ФункціїДляДокументів.ВідкритиМенюВибору(dataGridViewRecords, e.ColumnIndex, e.RowIndex, RecordsBindingList[e.RowIndex],
-					new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "СеріяНазва", "ПакуванняНазва" }, SelectClick, FindTextChanged);
+					new string[] { "НоменклатураНазва", "ХарактеристикаНазва", "СеріяНазва", "ПакуванняНазва", "ДокументПоступленняНазва" }, SelectClick, FindTextChanged);
 		}
 
 		private void SelectClick(object sender, EventArgs e)
@@ -416,6 +444,17 @@ namespace StorageAndTrade
 
 						запис.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)form_ПакуванняОдиниціВиміру.DirectoryPointerItem;
 						Записи.ПісляЗміни_Пакування(запис);
+
+						break;
+					}
+				case "ДокументПоступленняНазва":
+					{
+						Form_ПоступленняТоварівТаПослугЖурнал form_ПоступленняТоварівТаПослугЖурнал = new Form_ПоступленняТоварівТаПослугЖурнал();
+						form_ПоступленняТоварівТаПослугЖурнал.DocumentPointerItem = запис.ДокументПоступлення;
+						form_ПоступленняТоварівТаПослугЖурнал.ShowDialog();
+
+						запис.ДокументПоступлення = (Документи.ПоступленняТоварівТаПослуг_Pointer)form_ПоступленняТоварівТаПослугЖурнал.DocumentPointerItem;
+						Записи.ПісляЗміни_ДокументПоступлення(запис);
 
 						break;
 					}
@@ -502,6 +541,21 @@ LIMIT 10
 ";
 						break;
 					}
+				case "ДокументПоступленняНазва":
+					{
+						query = $@"
+SELECT 
+    ПоступленняТоварівТаПослуг.uid,
+    ПоступленняТоварівТаПослуг.{Документи.ПоступленняТоварівТаПослуг_Const.Назва} AS Назва
+FROM
+    {Документи.ПоступленняТоварівТаПослуг_Const.TABLE} AS ПоступленняТоварівТаПослуг
+WHERE
+    LOWER(ПоступленняТоварівТаПослуг.{Документи.ПоступленняТоварівТаПослуг_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+						break;
+					}
 				default:
 					return;
 			}
@@ -542,6 +596,12 @@ LIMIT 10
 					{
 						запис.Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(new UnigueID(uid));
 						Записи.ПісляЗміни_Пакування(запис);
+						break;
+					}
+				case "ДокументПоступленняНазва":
+					{
+						запис.ДокументПоступлення = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(uid));
+						Записи.ПісляЗміни_ДокументПоступлення(запис);
 						break;
 					}
 				default:

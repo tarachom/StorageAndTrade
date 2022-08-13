@@ -179,8 +179,11 @@ namespace StorageAndTrade
 			form_ПоступленняТоварівТаПослугДокумент.MdiParent = this.MdiParent;
 			form_ПоступленняТоварівТаПослугДокумент.IsNew = true;
 			form_ПоступленняТоварівТаПослугДокумент.OwnerForm = this;
-			form_ПоступленняТоварівТаПослугДокумент.Show();
-        }
+			if (DocumentPointerItem != null && this.MdiParent == null)
+				form_ПоступленняТоварівТаПослугДокумент.ShowDialog();
+			else
+				form_ПоступленняТоварівТаПослугДокумент.Show();
+		}
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
         {
@@ -193,7 +196,10 @@ namespace StorageAndTrade
 				form_ПоступленняТоварівТаПослугДокумент.IsNew = false;
 				form_ПоступленняТоварівТаПослугДокумент.OwnerForm = this;
 				form_ПоступленняТоварівТаПослугДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_ПоступленняТоварівТаПослугДокумент.Show();
+				if (DocumentPointerItem != null && this.MdiParent == null)
+					form_ПоступленняТоварівТаПослугДокумент.ShowDialog();
+				else
+					form_ПоступленняТоварівТаПослугДокумент.Show();
 			}			
 		}
 

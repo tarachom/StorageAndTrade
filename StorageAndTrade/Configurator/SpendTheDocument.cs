@@ -1127,6 +1127,46 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 	class ПоверненняТоварівПостачальнику_SpendTheDocument
 	{
+		private static List<Dictionary<string, object>> ОтриматиПартіїТоваруЗДокументуПоступлення(ПоверненняТоварівПостачальнику_Objest ДокументОбєкт,
+			ПоверненняТоварівПостачальнику_Товари_TablePart.Record ТовариРядок)
+		{
+			string query = $@"
+SELECT 
+    Рег_ПартіїТоварів.{ПартіїТоварів_Const.ПартіяТоварівКомпозит} AS ПартіяТоварівКомпозит,
+    Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата} AS ПартіяТоварівКомпозит_Дата,
+    Рег_ПартіїТоварів.{ПартіїТоварів_Const.Кількість} AS Кількість,
+    Рег_ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} AS Собівартість
+FROM 
+    {ПартіїТоварів_Const.TABLE} AS Рег_ПартіїТоварів
+        
+    LEFT JOIN {ПартіяТоварівКомпозит_Const.TABLE} AS Довідник_ПартіяТоварівКомпозит ON Довідник_ПартіяТоварівКомпозит.uid = 
+        Рег_ПартіїТоварів.{ПартіїТоварів_Const.ПартіяТоварівКомпозит}
+
+WHERE
+    Рег_ПартіїТоварів.Owner = @ДокументРеалізації AND
+    Рег_ПартіїТоварів.{ПартіїТоварів_Const.Організація} = @Організація AND
+    Рег_ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = @Товар AND
+    Рег_ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = @Характеристика AND
+    Рег_ПартіїТоварів.{ПартіїТоварів_Const.Серія} = @Серія
+
+ORDER BY ПартіяТоварівКомпозит_Дата ASC
+";
+
+			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("ДокументРеалізації", ТовариРядок.ДокументПоступлення.UnigueID.UGuid);
+			paramQuery.Add("Організація", ДокументОбєкт.Організація.UnigueID.UGuid);
+			paramQuery.Add("Товар", ТовариРядок.Номенклатура.UnigueID.UGuid);
+			paramQuery.Add("Характеристика", ТовариРядок.ХарактеристикаНоменклатури.UnigueID.UGuid);
+			paramQuery.Add("Серія", ТовариРядок.Серія.UnigueID.UGuid);
+
+			string[] columnsName;
+			List<Dictionary<string, object>> listNameRow;
+
+			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
+
+			return listNameRow;
+		}
+
 		public static bool Spend(ПоверненняТоварівПостачальнику_Objest ДокументОбєкт)
 		{
 			if (ДокументОбєкт.Spend)
@@ -1149,7 +1189,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
 				товариНаСкладах_RecordsSet.Records.Add(record);
 
-				record.Income = true; 
+				record.Income = false; 
 				record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record.Номенклатура = Товари_Record.Номенклатура;
@@ -1162,6 +1202,52 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			товариНаСкладах_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
 
 			//
+			//Партії товарів
+			//
+
+			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+
+			foreach (ПоверненняТоварівПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				decimal КількістьЯкуПотрібноПовернути = Товари_Record.Кількість;
+
+				List<Dictionary<string, object>> listNameRow = ОтриматиПартіїТоваруЗДокументуПоступлення(ДокументОбєкт, Товари_Record);
+
+				if (listNameRow.Count > 0)
+				{
+					Dictionary<string, object> nameRow = listNameRow[0];
+
+					decimal КількістьВПартії = (decimal)nameRow["Кількість"];
+					decimal СобівартістьПартії = (decimal)nameRow["Собівартість"];
+					ПартіяТоварівКомпозит_Pointer ПартіяТоварівКомпозит = new ПартіяТоварівКомпозит_Pointer(nameRow["ПартіяТоварівКомпозит"]);
+
+					if (КількістьЯкуПотрібноПовернути <= КількістьВПартії)
+					{
+						ПартіїТоварів_RecordsSet.Record record = new ПартіїТоварів_RecordsSet.Record();
+						партіїТоварів_RecordsSet.Records.Add(record);
+
+						record.Income = false;
+						record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+						record.Організація = ДокументОбєкт.Організація;
+						record.ПартіяТоварівКомпозит = ПартіяТоварівКомпозит;
+						record.Кількість = КількістьЯкуПотрібноПовернути;
+						record.Собівартість = (КількістьЯкуПотрібноПовернути == КількістьВПартії ? СобівартістьПартії : 0);
+						record.СписанаСобівартість = СобівартістьПартії;
+						record.Номенклатура = Товари_Record.Номенклатура;
+						record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+						record.Серія = Товари_Record.Серія;
+					}
+					else
+						Console.WriteLine($"Кількість в партії менша чим кількість яку повертають");
+				}
+				else
+					Console.WriteLine($"Незнайдені партії!");
+			}
+
+			партіїТоварів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			//
 			//ВільніЗалишки
 			//
 
@@ -1172,7 +1258,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
 				вільніЗалишки_RecordsSet.Records.Add(record);
 
-				record.Income = true;
+				record.Income = false;
 				record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
 				record.Номенклатура = Товари_Record.Номенклатура;
@@ -1190,15 +1276,13 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
 			foreach (ПоверненняТоварівПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				//Знайти замовлення посатчальнику в таб. Товари_Record.ДокументПоступлення
-
 				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record розрахункиЗПостачальниками_Record = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
 				розрахункиЗПостачальниками_RecordsSet.Records.Add(розрахункиЗПостачальниками_Record);
 
 				розрахункиЗПостачальниками_Record.Income = false;
 				розрахункиЗПостачальниками_Record.Owner = ДокументОбєкт.UnigueID.UGuid;
 
-				//розрахункиЗПостачальниками_Record.ЗамовленняПостачальнику = Товари_Record.ДокументПоступлення;
+				розрахункиЗПостачальниками_Record.Контрагент = ДокументОбєкт.Контрагент;
 				розрахункиЗПостачальниками_Record.Валюта = ДокументОбєкт.Валюта;
 				розрахункиЗПостачальниками_Record.Сума = ДокументОбєкт.СумаДокументу;
 			}
@@ -1216,6 +1300,9 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 		{
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
