@@ -56,5 +56,6 @@ namespace StorageAndTrade
         public int LastCountRow;
     }
 
+    
 }
 

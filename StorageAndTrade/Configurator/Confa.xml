@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>12.08.2022 17:58:58</DateTimeSave>
+  <DateTimeSave>13.08.2022 10:09:39</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1448,6 +1448,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
+                  <Name>ПартіяТоварівКомпозит</Name>
+                  <NameInTable>col_b1</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
                   <Name>Номенклатура</Name>
                   <NameInTable>col_a5</NameInTable>
                   <Type>pointer</Type>
@@ -1528,6 +1537,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Name>Документ</Name>
                   <NameInTable>col_a2</NameInTable>
                   <Type>composite_pointer</Type>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ПартіяТоварівКомпозит</Name>
+                  <NameInTable>col_a3</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
@@ -3893,6 +3911,70 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <BeforeDelete>СеріїНоменклатури_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
     </Directory>
+    <Directory>
+      <Name>ПартіяТоварівКомпозит</Name>
+      <Table>tab_b06</Table>
+      <Desc>Композитний тип для партії.</Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Дата</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>datetime</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ТипДокументу</Name>
+          <NameInTable>col_a3</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ТипДокументуПартіяТоварівКомпозит</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ПоступленняТоварівТаПослуг</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ВведенняЗалишків</Name>
+          <NameInTable>col_a5</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Документи.ВведенняЗалишків</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+    </Directory>
   </Directories>
   <Enums>
     <Enum>
@@ -4381,6 +4463,26 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Field>
           <Name>Закритий</Name>
           <Value>4</Value>
+          <Desc>
+          </Desc>
+        </Field>
+      </Fields>
+    </Enum>
+    <Enum>
+      <Name>ТипДокументуПартіяТоварівКомпозит</Name>
+      <Desc>
+      </Desc>
+      <SerialNumber>2</SerialNumber>
+      <Fields>
+        <Field>
+          <Name>ПоступленняТоварівТаПослуг</Name>
+          <Value>1</Value>
+          <Desc>
+          </Desc>
+        </Field>
+        <Field>
+          <Name>ВведенняЗалишків</Name>
+          <Value>2</Value>
           <Desc>
           </Desc>
         </Field>
@@ -5049,6 +5151,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Pointer>Довідники.Каси</Pointer>
           <Desc>
           </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ПартіяТоварівКомпозит</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
+          <Desc>ПартіяТоварівКомпозит це вказівник на композитний тип в який входить декілька документів</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
@@ -7797,6 +7908,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
+        <Field>
+          <Name>ПартіяТоварівКомпозит</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
+          <Desc>ПартіяТоварівКомпозит це вказівник на композитний тип в який входить декілька документів</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
       </Fields>
       <TabularParts>
         <TablePart>
@@ -9676,6 +9796,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Desc>
             </Desc>
             <IsIndex>1</IsIndex>
+          </Field>
+          <Field>
+            <Name>ПартіяТоварівКомпозит</Name>
+            <NameInTable>col_a9</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
           </Field>
           <Field>
             <Name>Номенклатура</Name>
