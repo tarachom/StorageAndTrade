@@ -31,7 +31,7 @@
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
 							<th>Організація</th>
-							<th>Документ</th>
+							<th>ПартіїТоварівКомпозит</th>
 							<th>Характеристика</th>
 							<th>Серія</th>
 							<th style="text-align:center">Кількість</th>
@@ -46,8 +46,8 @@
 									</a>
 								</td>
 								<td>
-									<a id="{Документ/uuid}" name="{Документ/type}" href="/">
-										<xsl:value-of select="Документ/text"/>
+									<a id="{ПартіяТоварівКомпозит}" name="Довідник.ПартіяТоварівКомпозит" href="/">
+										<xsl:value-of select="ПартіяТоварівКомпозит_Назва"/>
 									</a>
 								</td>
 								<td>

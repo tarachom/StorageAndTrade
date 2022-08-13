@@ -177,6 +177,18 @@
     <Compile Include="NumericControl.designer.cs">
       <DependentUpon>NumericControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\ПартіяТоварівКомпозит\Form_ПартіяТоварівКомпозит.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\ПартіяТоварівКомпозит\Form_ПартіяТоварівКомпозит.designer.cs">
+      <DependentUpon>Form_ПартіяТоварівКомпозит.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Довідники\ПартіяТоварівКомпозит\Form_ПартіяТоварівКомпозитЕлемент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Довідники\ПартіяТоварівКомпозит\Form_ПартіяТоварівКомпозитЕлемент.designer.cs">
+      <DependentUpon>Form_ПартіяТоварівКомпозитЕлемент.cs</DependentUpon>
+    </Compile>
     <Compile Include="Довідники\СеріїНоменклатури\Form_СеріїНоменклатури.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -871,6 +883,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NumericControl.resx">
       <DependentUpon>NumericControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\ПартіяТоварівКомпозит\Form_ПартіяТоварівКомпозит.resx">
+      <DependentUpon>Form_ПартіяТоварівКомпозит.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Довідники\ПартіяТоварівКомпозит\Form_ПартіяТоварівКомпозитЕлемент.resx">
+      <DependentUpon>Form_ПартіяТоварівКомпозитЕлемент.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Довідники\СеріїНоменклатури\Form_СеріїНоменклатури.resx">
       <DependentUpon>Form_СеріїНоменклатури.cs</DependentUpon>

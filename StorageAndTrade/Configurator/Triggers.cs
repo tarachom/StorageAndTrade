@@ -305,7 +305,7 @@ namespace StorageAndTrade_1_0.Документи
 	{
 		public static void BeforeRecording(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
 		{
-
+			
 		}
 
 		public static void AfterRecording(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)

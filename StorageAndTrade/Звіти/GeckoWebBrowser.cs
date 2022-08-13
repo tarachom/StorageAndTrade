@@ -142,6 +142,13 @@ namespace StorageAndTrade
 
                             break;
                         }
+                    case "ПартіяТоварівКомпозит":
+                        {
+                            //Form_ПакуванняОдиниціВиміруЕлемент form = new Form_ПакуванняОдиниціВиміруЕлемент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            //form.Show();
+
+                            break;
+                        }
                     default:
                         break;
                 }

@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>13.08.2022 10:09:39</DateTimeSave>
+  <DateTimeSave>13.08.2022 11:48:23</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1431,23 +1431,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
-                  <Name>ДокументПоступлення2</Name>
-                  <NameInTable>col_a2</NameInTable>
-                  <Type>pointer</Type>
-                  <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>Документ</Name>
-                  <NameInTable>col_a9</NameInTable>
-                  <Type>composite_pointer</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
                   <Name>ПартіяТоварівКомпозит</Name>
                   <NameInTable>col_b1</NameInTable>
                   <Type>pointer</Type>
@@ -1520,23 +1503,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <NameInTable>col_a9</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.Організації</Pointer>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>ДокументПоступлення2</Name>
-                  <NameInTable>col_b1</NameInTable>
-                  <Type>pointer</Type>
-                  <Pointer>Документи.ПоступленняТоварівТаПослуг</Pointer>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>Документ</Name>
-                  <NameInTable>col_a2</NameInTable>
-                  <Type>composite_pointer</Type>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
@@ -3941,6 +3907,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Pointer>Перелічення.ТипДокументуПартіяТоварівКомпозит</Pointer>
           <Desc>
           </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДокументКлюч</Name>
+          <NameInTable>col_a6</NameInTable>
+          <Type>any_pointer</Type>
+          <Desc>UID документу</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
@@ -9777,22 +9751,6 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <NameInTable>col_a1</NameInTable>
             <Type>pointer</Type>
             <Pointer>Довідники.Організації</Pointer>
-            <Desc>
-            </Desc>
-            <IsIndex>1</IsIndex>
-          </Field>
-          <Field>
-            <Name>Документ</Name>
-            <NameInTable>col_a6</NameInTable>
-            <Type>composite_pointer</Type>
-            <Desc>
-            </Desc>
-            <IsIndex>0</IsIndex>
-          </Field>
-          <Field>
-            <Name>ДокументПоступлення</Name>
-            <NameInTable>col_a2</NameInTable>
-            <Type>any_pointer</Type>
             <Desc>
             </Desc>
             <IsIndex>1</IsIndex>

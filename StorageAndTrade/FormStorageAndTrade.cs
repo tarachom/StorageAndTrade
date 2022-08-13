@@ -68,6 +68,8 @@ namespace StorageAndTrade
                     continue;
                 }
 
+                //Console.WriteLine("Обчислення");
+
                 CalculationBalances.ОбчисленняВіртуальнихЗалишківПоДнях();
                 CalculationBalances.ОбчисленняВіртуальнихЗалишківПоМісяцях();
                 Thread.Sleep(5000);
