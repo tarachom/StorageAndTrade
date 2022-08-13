@@ -206,6 +206,13 @@ namespace StorageAndTrade
             form_СеріїНоменклатури.Show();
         }
 
+        private void партіїТоварівКомпозитToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПартіяТоварівКомпозит form_ПартіяТоварівКомпозит = new Form_ПартіяТоварівКомпозит();
+            form_ПартіяТоварівКомпозит.MdiParent = this;
+            form_ПартіяТоварівКомпозит.Show();
+        }
+
         #endregion
 
         #region Документи Меню
@@ -620,5 +627,7 @@ namespace StorageAndTrade
             //Console.WriteLine((UuidAndText)listRow[0][1]);
 
         }
+
+        
     }
 }

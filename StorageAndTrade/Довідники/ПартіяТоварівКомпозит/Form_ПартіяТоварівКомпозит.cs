@@ -49,7 +49,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
-			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Назва"].Width = 400;
+			dataGridViewRecords.Columns["Дата"].Width = 100;
+			dataGridViewRecords.Columns["Тип"].Width = 200;
 		}
 
 		public DirectoryPointer DirectoryPointerItem { get; set; }
@@ -69,7 +71,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Rows.Clear();
 
 			Довідники.ПартіяТоварівКомпозит_Select ПартіяТоварівКомпозит_Select = new Довідники.ПартіяТоварівКомпозит_Select();
-			ПартіяТоварівКомпозит_Select.QuerySelect.Field.Add(Довідники.Валюти_Const.Назва);
+			ПартіяТоварівКомпозит_Select.QuerySelect.Field.Add(Довідники.ПартіяТоварівКомпозит_Const.Назва);
+			ПартіяТоварівКомпозит_Select.QuerySelect.Field.Add(Довідники.ПартіяТоварівКомпозит_Const.Дата);
+			ПартіяТоварівКомпозит_Select.QuerySelect.Field.Add(Довідники.ПартіяТоварівКомпозит_Const.ТипДокументу);
 
 			//ORDER
 			ПартіяТоварівКомпозит_Select.QuerySelect.Order.Add(Довідники.ПартіяТоварівКомпозит_Const.Дата, SelectOrder.ASC);
@@ -82,7 +86,9 @@ namespace StorageAndTrade
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Довідники.Валюти_Const.Назва].ToString()
+					Назва = cur.Fields[Довідники.ПартіяТоварівКомпозит_Const.Назва].ToString(),
+					Дата = (DateTime)cur.Fields[Довідники.ПартіяТоварівКомпозит_Const.Дата],
+					Тип = ((Перелічення.ТипДокументуПартіяТоварівКомпозит)cur.Fields[Довідники.ПартіяТоварівКомпозит_Const.ТипДокументу]).ToString()
 				});
 
 				if (DirectoryPointerItem != null)
@@ -104,6 +110,8 @@ namespace StorageAndTrade
 			public Bitmap Image { get; set; }
 			public string ID { get; set; }
 			public string Назва { get; set; }
+			public DateTime Дата { get; set; }
+			public string Тип { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

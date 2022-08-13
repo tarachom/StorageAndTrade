@@ -90,6 +90,7 @@ namespace StorageAndTrade
             this.сервісToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.константиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.перепроведенняДокументівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проПрограмуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip_ВідкритіФорми = new System.Windows.Forms.ToolStrip();
             this.toolStrip_Довідники = new System.Windows.Forms.ToolStrip();
@@ -114,7 +115,7 @@ namespace StorageAndTrade
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_ПереміщенняТоварівМіжСкладами = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripButton();
-            this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.партіїТоварівКомпозитToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_ГоловнеМеню.SuspendLayout();
             this.toolStrip_Довідники.SuspendLayout();
             this.toolStrip_Документи.SuspendLayout();
@@ -156,7 +157,8 @@ namespace StorageAndTrade
             this.договориКонтрагентівToolStripMenuItem,
             this.банківськіРахункиКонтрагентівToolStripMenuItem,
             this.характеристикиНоменклатуриToolStripMenuItem,
-            this.серіїНоменклатуриToolStripMenuItem});
+            this.серіїНоменклатуриToolStripMenuItem,
+            this.партіїТоварівКомпозитToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -620,6 +622,13 @@ namespace StorageAndTrade
             this.перепроведенняДокументівToolStripMenuItem.Text = "Перепроведення документів";
             this.перепроведенняДокументівToolStripMenuItem.Click += new System.EventHandler(this.перепроведенняДокументівToolStripMenuItem_Click);
             // 
+            // testToolStripMenuItem
+            // 
+            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.testToolStripMenuItem.Text = "Test";
+            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            // 
             // проПрограмуToolStripMenuItem
             // 
             this.проПрограмуToolStripMenuItem.Name = "проПрограмуToolStripMenuItem";
@@ -854,12 +863,12 @@ namespace StorageAndTrade
             this.toolStripButton_ВстановленняЦінНоменклатури.Text = "Документ \"Встановлення цін номенклатури\"";
             this.toolStripButton_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.toolStripButton_ВстановленняЦінНоменклатури_Click);
             // 
-            // testToolStripMenuItem
+            // партіїТоварівКомпозитToolStripMenuItem
             // 
-            this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.testToolStripMenuItem.Text = "Test";
-            this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
+            this.партіїТоварівКомпозитToolStripMenuItem.Name = "партіїТоварівКомпозитToolStripMenuItem";
+            this.партіїТоварівКомпозитToolStripMenuItem.Size = new System.Drawing.Size(250, 22);
+            this.партіїТоварівКомпозитToolStripMenuItem.Text = "Партії товарів композит";
+            this.партіїТоварівКомпозитToolStripMenuItem.Click += new System.EventHandler(this.партіїТоварівКомпозитToolStripMenuItem_Click);
             // 
             // FormStorageAndTrade
             // 
@@ -979,6 +988,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem партіїТоварівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem внутрішнєCпоживанняТоварівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem партіїТоварівКомпозитToolStripMenuItem;
     }
 }
 
