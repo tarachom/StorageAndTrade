@@ -98,5 +98,5 @@ namespace StorageAndTrade
 			DocumentPointerItem.Init(new UnigueID(Guid.Empty));
 			ReadPresentation();
 		}
-	}
+    }
 }
