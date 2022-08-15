@@ -369,6 +369,13 @@ namespace StorageAndTrade
             form_ПартіїТоварів_Звіт.Show();
         }
 
+        private void вільніЗалишкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ВільніЗалишки_Звіт form_ВільніЗалишки_Звіт = new Form_ВільніЗалишки_Звіт();
+            form_ВільніЗалишки_Звіт.MdiParent = this;
+            form_ВільніЗалишки_Звіт.Show();
+        }
+
         #endregion
 
         #region Сервіс Меню
@@ -631,6 +638,6 @@ namespace StorageAndTrade
 
         }
 
-        
+       
     }
 }

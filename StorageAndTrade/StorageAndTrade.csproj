@@ -293,6 +293,12 @@
       <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
     </Compile>
     <Compile Include="Журнали\ФункціїДляЖурналів.cs" />
+    <Compile Include="Звіти\ВільніЗалишки\Form_ВільніЗалишки_Звіт.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Звіти\ВільніЗалишки\Form_ВільніЗалишки_Звіт.Designer.cs">
+      <DependentUpon>Form_ВільніЗалишки_Звіт.cs</DependentUpon>
+    </Compile>
     <Compile Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -959,6 +965,9 @@
     <EmbeddedResource Include="Документи\РахунокФактура\Form_РахунокФактураЖурнал.resx">
       <DependentUpon>Form_РахунокФактураЖурнал.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Звіти\ВільніЗалишки\Form_ВільніЗалишки_Звіт.resx">
+      <DependentUpon>Form_ВільніЗалишки_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.resx">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>
     </EmbeddedResource>
@@ -1353,6 +1362,7 @@
     <Content Include="form.ico" />
     <Content Include="Trash\Service.txt" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
+    <Content Include="Шаблони\ВільніЗалишки_Залишки.xslt" />
     <Content Include="Шаблони\ЗамовленняПостачальникам_Документи.xslt">
       <SubType>Designer</SubType>
     </Content>
