@@ -286,6 +286,15 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			form_РахунокФактураДокумент.Show();
 		}
 
+		private void внутрішнєСпоживанняТоварівToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Form_ВнутрішнєСпоживанняТоварівДокумент form_ВнутрішнєСпоживанняТоварівДокумент = new Form_ВнутрішнєСпоживанняТоварівДокумент();
+			form_ВнутрішнєСпоживанняТоварівДокумент.MdiParent = this.MdiParent;
+			form_ВнутрішнєСпоживанняТоварівДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_ВнутрішнєСпоживанняТоварівДокумент.Show();
+		}
+
 		#endregion
 
 		#region Edit
@@ -300,9 +309,9 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 				switch (DocName)
 				{
-                    #region Продажі
+					#region Продажі
 
-                    case "ЗамовленняКлієнта":
+					case "ЗамовленняКлієнта":
 						{
 							Form_ЗамовленняКлієнтаДокумент form_ЗамовленняКлієнтаДокумент = new Form_ЗамовленняКлієнтаДокумент();
 							form_ЗамовленняКлієнтаДокумент.MdiParent = this.MdiParent;
@@ -475,7 +484,23 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							break;
 						}
 
-				   #endregion
+					#endregion
+
+					#region Внутрішні документи
+
+					case "ВнутрішнєСпоживанняТоварів":
+						{
+							Form_ВнутрішнєСпоживанняТоварівДокумент form_ВнутрішнєСпоживанняТоварівДокумент = new Form_ВнутрішнєСпоживанняТоварівДокумент();
+							form_ВнутрішнєСпоживанняТоварівДокумент.MdiParent = this.MdiParent;
+							form_ВнутрішнєСпоживанняТоварівДокумент.IsNew = false;
+							//form_ВведенняЗалишківДокумент.OwnerForm = this;
+							form_ВнутрішнєСпоживанняТоварівДокумент.Uid = uid;
+							form_ВнутрішнєСпоживанняТоварівДокумент.Show();
+
+							break;
+						}
+
+						#endregion
 				}
             }
 		}
@@ -823,9 +848,35 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 								break;
 							}
 
+						#endregion
+
+						#region Внутрішні документи
+
+						case "ВнутрішнєСпоживанняТоварів":
+							{
+								ВнутрішнєСпоживанняТоварів_Objest внутрішнєСпоживанняТоварів_Objest = new ВнутрішнєСпоживанняТоварів_Objest();
+								if (внутрішнєСпоживанняТоварів_Objest.Read(new UnigueID(uid)))
+								{
+									ВнутрішнєСпоживанняТоварів_Objest внутрішнєСпоживанняТоварів_Objest_Новий = внутрішнєСпоживанняТоварів_Objest.Copy();
+									внутрішнєСпоживанняТоварів_Objest_Новий.Назва += " *";
+									внутрішнєСпоживанняТоварів_Objest_Новий.ДатаДок = DateTime.Now;
+									внутрішнєСпоживанняТоварів_Objest_Новий.НомерДок = (++НумераціяДокументів.ВнутрішнєСпоживанняТоварів_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									внутрішнєСпоживанняТоварів_Objest.Товари_TablePart.Read();
+									внутрішнєСпоживанняТоварів_Objest_Новий.Товари_TablePart.Records = внутрішнєСпоживанняТоварів_Objest.Товари_TablePart.Copy();
+									внутрішнєСпоживанняТоварів_Objest_Новий.Товари_TablePart.Save(true);
+									внутрішнєСпоживанняТоварів_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
+
 							#endregion
 					}
-                }
+				}
 
 				LoadRecords();
 			}
@@ -1009,6 +1060,22 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							}
 
 						#endregion
+
+						#region Внутрішні документи
+
+						case "ВнутрішнєСпоживанняТоварів":
+							{
+								ВнутрішнєСпоживанняТоварів_Objest внутрішнєСпоживанняТоварів_Objest = new ВнутрішнєСпоживанняТоварів_Objest();
+								if (внутрішнєСпоживанняТоварів_Objest.Read(new UnigueID(uid)))
+								{
+									внутрішнєСпоживанняТоварів_Objest.Delete();
+								}
+								else
+									MessageBox.Show("Error read");
+								break;
+							}
+
+						#endregion
 					}
                 }
 
@@ -1124,7 +1191,19 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							break;
 						}
 
+					#endregion
+
+					#region Внутрішні документи
+
+					case "ВнутрішнєСпоживанняТоварів":
+						{
+							РухДокументівПоРегістрах.PrintRecords(new ВнутрішнєСпоживанняТоварів_Pointer(new UnigueID(uid)));
+
+							break;
+						}
+
 						#endregion
+
 				}
 			}
 		}
@@ -1427,6 +1506,31 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									}
 								else
 									введенняЗалишків_Objest.ClearSpendTheDocument();
+
+								break;
+							}
+
+						#endregion
+
+						#region Внутрішні документи
+
+						case "ВнутрішнєСпоживанняТоварів":
+							{
+								ВнутрішнєСпоживанняТоварів_Pointer внутрішнєСпоживанняТоварів_Pointer = new ВнутрішнєСпоживанняТоварів_Pointer(new UnigueID(uid));
+								ВнутрішнєСпоживанняТоварів_Objest внутрішнєСпоживанняТоварів_Objest = внутрішнєСпоживанняТоварів_Pointer.GetDocumentObject(true);
+
+								if (spend)
+									try
+									{
+										внутрішнєСпоживанняТоварів_Objest.SpendTheDocument(внутрішнєСпоживанняТоварів_Objest.ДатаДок);
+									}
+									catch (Exception exp)
+									{
+										внутрішнєСпоживанняТоварів_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								else
+									внутрішнєСпоживанняТоварів_Objest.ClearSpendTheDocument();
 
 								break;
 							}

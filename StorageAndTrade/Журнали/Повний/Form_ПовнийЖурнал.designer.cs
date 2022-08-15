@@ -59,6 +59,7 @@ namespace StorageAndTrade
             this.toolStripButtonClearSpend = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.рахунокФактураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.внутрішнєСпоживанняТоварівToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -136,7 +137,8 @@ namespace StorageAndTrade
             this.ToolStripMenuItem_ПереміщенняТоварів,
             this.ToolStripMenuItem_ВстановленняЦінНоменклатури,
             this.toolStripSeparator1,
-            this.введенняЗалишківToolStripMenuItem});
+            this.введенняЗалишківToolStripMenuItem,
+            this.внутрішнєСпоживанняТоварівToolStripMenuItem});
             this.toolStripDropDownButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
             this.toolStripDropDownButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonAdd.Name = "toolStripDropDownButtonAdd";
@@ -317,6 +319,13 @@ namespace StorageAndTrade
             this.рахунокФактураToolStripMenuItem.Text = "Рахунок фактура";
             this.рахунокФактураToolStripMenuItem.Click += new System.EventHandler(this.рахунокФактураToolStripMenuItem_Click);
             // 
+            // внутрішнєСпоживанняТоварівToolStripMenuItem
+            // 
+            this.внутрішнєСпоживанняТоварівToolStripMenuItem.Name = "внутрішнєСпоживанняТоварівToolStripMenuItem";
+            this.внутрішнєСпоживанняТоварівToolStripMenuItem.Size = new System.Drawing.Size(271, 22);
+            this.внутрішнєСпоживанняТоварівToolStripMenuItem.Text = "Внутрішнє споживання товарів";
+            this.внутрішнєСпоживанняТоварівToolStripMenuItem.Click += new System.EventHandler(this.внутрішнєСпоживанняТоварівToolStripMenuItem_Click);
+            // 
             // Form_ПовнийЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -370,5 +379,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem актВиконанихРобітToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рахунокФактураToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem внутрішнєСпоживанняТоварівToolStripMenuItem;
     }
 }
