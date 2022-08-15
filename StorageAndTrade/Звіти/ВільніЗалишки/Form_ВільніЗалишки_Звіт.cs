@@ -77,14 +77,8 @@ SELECT
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
     Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.Склад} AS Склад,
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва, 
-
-    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
-        Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу} ELSE 
-       -Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу} END) AS ВРезервіЗіСкладу,
-
-    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
-        Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення} ELSE 
-        -Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення} END) AS ВРезервіПідЗамовлення
+    SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу}) AS ВРезервіЗіСкладу,
+    SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення}) AS ВРезервіПідЗамовлення
 FROM 
     {ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.TABLE} AS Рег_ВільніЗалишки
 
@@ -201,13 +195,9 @@ GROUP BY Номенклатура, Номенклатура_Назва,
          Склад, Склад_Назва
 
 HAVING
-     SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
-        Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу} ELSE 
-       -Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу} END) != 0
+     SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу}) != 0
 OR
-     SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
-        Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення} ELSE 
-        -Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення} END) != 0   
+     SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення}) != 0   
 
 ORDER BY Номенклатура_Назва
 ";
@@ -259,19 +249,19 @@ ORDER BY Номенклатура_Назва
 WITH register AS
 (
      SELECT 
-        ЗамовленняКлієнтів.period AS period,
-        ЗамовленняКлієнтів.owner AS owner,
-        ЗамовленняКлієнтів.income AS income,
-        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} AS ЗамовленняКлієнта,
-        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} AS Номенклатура,
-        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
-        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад} AS Склад,
-        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Замовлено} AS Замовлено,
-        ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Сума} AS Сума
+        ВільніЗалишки.period AS period,
+        ВільніЗалишки.owner AS owner,
+        ВільніЗалишки.income AS income,
+        ВільніЗалишки.{ВільніЗалишки_Const.Номенклатура} AS Номенклатура,
+        ВільніЗалишки.{ВільніЗалишки_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
+        ВільніЗалишки.{ВільніЗалишки_Const.Склад} AS Склад,
+        ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} AS ВРезервіЗіСкладу,
+        ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} AS ВРезервіПідЗамовлення
     FROM
-        {ЗамовленняКлієнтів_Const.TABLE} AS ЗамовленняКлієнтів
+        {ВільніЗалишки_Const.TABLE} AS ВільніЗалишки
     WHERE
-        (ЗамовленняКлієнтів.period >= @period_start AND ЗамовленняКлієнтів.period <= @period_end)
+        (ВільніЗалишки.period >= @period_start AND ВільніЗалишки.period <= @period_end) AND
+        (ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} != 0 OR ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} != 0)
 ";
 
             #region WHERE
@@ -285,7 +275,7 @@ WITH register AS
                 isExistParent = true;
 
                 query += $@"
-ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
+ВільніЗалишки.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
 ";
             }
 
@@ -294,7 +284,7 @@ WITH register AS
             {
                 query += isExistParent ? "AND" : "WHERE";
                 query += $@"
-ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Номенклатура} = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+ВільніЗалишки.{ЗамовленняКлієнтів_Const.Номенклатура} = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -305,7 +295,7 @@ WITH register AS
                 isExistParent = true;
 
                 query += $@"
-ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
+ВільніЗалишки.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -316,7 +306,7 @@ WITH register AS
                 isExistParent = true;
 
                 query += $@"
-ЗамовленняКлієнтів.{ЗамовленняКлієнтів_Const.Склад} = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
+ВільніЗалишки.{ЗамовленняКлієнтів_Const.Склад} = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -327,9 +317,9 @@ WITH register AS
 documents AS
 (";
             int counter = 0;
-            foreach (string table in ЗамовленняКлієнтів_Const.AllowDocumentSpendTable)
+            foreach (string table in ВільніЗалишки_Const.AllowDocumentSpendTable)
             {
-                string docType = ЗамовленняКлієнтів_Const.AllowDocumentSpendType[counter];
+                string docType = ВільніЗалишки_Const.AllowDocumentSpendType[counter];
 
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
@@ -340,10 +330,8 @@ SELECT
     {table}.docname, 
     register.period, 
     register.income, 
-    register.Замовлено,
-    register.Сума,
-    register.ЗамовленняКлієнта,
-    Документ_ЗамовленняКлієнта.{ЗамовленняКлієнта_Const.Назва} AS ЗамовленняКлієнта_Назва,
+    register.ВРезервіЗіСкладу,
+    register.ВРезервіПідЗамовлення,
     register.Номенклатура,
     Довідник_Номенклатура.{Номенклатура_Const.Назва} AS Номенклатура_Назва,
     register.ХарактеристикаНоменклатури,
@@ -351,7 +339,6 @@ SELECT
     register.Склад,
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва
 FROM register INNER JOIN {table} ON {table}.uid = register.owner
-    LEFT JOIN {ЗамовленняКлієнта_Const.TABLE} AS Документ_ЗамовленняКлієнта ON Документ_ЗамовленняКлієнта.uid = register.ЗамовленняКлієнта
     LEFT JOIN {Номенклатура_Const.TABLE} AS Довідник_Номенклатура ON Довідник_Номенклатура.uid = register.Номенклатура
     LEFT JOIN {ХарактеристикиНоменклатури_Const.TABLE} AS Довідник_ХарактеристикиНоменклатури ON Довідник_ХарактеристикиНоменклатури.uid = register.ХарактеристикаНоменклатури
     LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = register.Склад
@@ -424,10 +411,8 @@ SELECT
     period,
     docname, 
     income, 
-    Замовлено, 
-    Сума, 
-    ЗамовленняКлієнта, 
-    ЗамовленняКлієнта_Назва,
+    ВРезервіЗіСкладу, 
+    ВРезервіПідЗамовлення, 
     Номенклатура,
     Номенклатура_Назва,
     ХарактеристикаНоменклатури,
@@ -448,7 +433,7 @@ ORDER BY period ASC
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта_Документи.xslt", false, "Замовлення клієнта");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВільніЗалишки_Документи.xslt", false, "Вільні залишки");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

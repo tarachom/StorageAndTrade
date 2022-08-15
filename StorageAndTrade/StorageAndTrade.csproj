@@ -1363,6 +1363,9 @@
     <Content Include="Trash\Service.txt" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ВільніЗалишки_Залишки.xslt" />
+    <Content Include="Шаблони\ВільніЗалишки_Документи.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Шаблони\ЗамовленняПостачальникам_Документи.xslt">
       <SubType>Designer</SubType>
     </Content>

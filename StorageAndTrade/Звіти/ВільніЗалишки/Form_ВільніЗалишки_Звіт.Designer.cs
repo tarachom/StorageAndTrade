@@ -277,7 +277,7 @@ namespace StorageAndTrade
             // 
             // buttonDocuments
             // 
-            this.buttonDocuments.Location = new System.Drawing.Point(185, 198);
+            this.buttonDocuments.Location = new System.Drawing.Point(132, 198);
             this.buttonDocuments.Name = "buttonDocuments";
             this.buttonDocuments.Size = new System.Drawing.Size(96, 27);
             this.buttonDocuments.TabIndex = 79;
