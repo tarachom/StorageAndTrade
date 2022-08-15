@@ -171,6 +171,13 @@ namespace StorageAndTrade
 
                             break;
                         }
+                    case "РахунокФактура":
+                        {
+                            Form_РахунокФактураДокумент form = new Form_РахунокФактураДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     case "РеалізаціяТоварівТаПослуг":
                         {
                             Form_РеалізаціяТоварівТаПослугДокумент form = new Form_РеалізаціяТоварівТаПослугДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
@@ -216,6 +223,20 @@ namespace StorageAndTrade
                     case "ВнутрішнєСпоживанняТоварів":
                         {
                             Form_ВнутрішнєСпоживанняТоварівДокумент form = new Form_ВнутрішнєСпоживанняТоварівДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "ПоверненняТоварівПостачальнику":
+                        {
+                            Form_ПоверненняТоварівПостачальникуДокумент form = new Form_ПоверненняТоварівПостачальникуДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
+                    case "ПоверненняТоварівВідКлієнта":
+                        {
+                            Form_ПоверненняТоварівВідКлієнтаДокумент form = new Form_ПоверненняТоварівВідКлієнтаДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
                             form.Show();
 
                             break;

@@ -264,8 +264,7 @@ WITH register AS
     FROM
         {ВільніЗалишки_Const.TABLE} AS ВільніЗалишки
     WHERE
-        (ВільніЗалишки.period >= @period_start AND ВільніЗалишки.period <= @period_end) 
-        --AND (ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} != 0 OR ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} != 0)
+        (ВільніЗалишки.period >= @period_start AND ВільніЗалишки.period <= @period_end)
 ";
 
             #region WHERE
