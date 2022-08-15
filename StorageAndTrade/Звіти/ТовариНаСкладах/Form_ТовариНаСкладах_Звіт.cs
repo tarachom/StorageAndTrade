@@ -363,7 +363,6 @@ SELECT
 FROM 
 (
     SELECT 
-        'A',
         Номенклатура,
         ХарактеристикаНоменклатури,
         Склад,
@@ -374,10 +373,9 @@ FROM
         0 AS КінцевийЗалишок
     FROM ostatok_na_potshatok_periodu
 
-    UNION
+    UNION ALL
 
     SELECT
-        'B',
         Номенклатура,
         ХарактеристикаНоменклатури,
         Склад,
@@ -388,10 +386,9 @@ FROM
         ВНаявності AS КінцевийЗалишок
     FROM ostatok_na_kinec_periodu
 
-    UNION
+    UNION ALL
 
     SELECT
-        'C',
         Номенклатура,
         ХарактеристикаНоменклатури,
         Склад,

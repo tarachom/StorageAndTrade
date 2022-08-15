@@ -163,7 +163,7 @@ ORDER BY Контрагент_Назва
 
             Функції.DataToXML(xmlDoc, "РозрахункиЗКлієнтами", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Залишки.xslt", false, "Розрахунки з постачальниками");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Залишки.xslt", false, "Розрахунки з клієнтами");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -426,7 +426,6 @@ SELECT
 FROM 
 (
     SELECT 
-        'A',
         Контрагент,
         Валюта,
         Сума AS ПочатковийЗалишок,
@@ -435,10 +434,9 @@ FROM
         0 AS КінцевийЗалишок
     FROM ostatok_na_potshatok_periodu
 
-    UNION
+    UNION ALL
 
     SELECT
-        'B',
         Контрагент,
         Валюта,
         0 AS ПочатковийЗалишок,
@@ -447,10 +445,9 @@ FROM
         Сума AS КінцевийЗалишок
     FROM ostatok_na_kinec_periodu
 
-    UNION
+    UNION ALL
 
     SELECT
-        'C',
         Контрагент,
         Валюта,
         0 AS ПочатковийЗалишок,

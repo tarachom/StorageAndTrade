@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 13.08.2022 15:52:15
+ * Дата конфігурації: 15.08.2022 12:58:28
  *
  */
 
@@ -15674,8 +15674,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ВільніЗалишки_Const
     {
         public const string TABLE = "tab_a58";
-		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a34", "tab_a36", "tab_a51", "tab_a53" };
-		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ПоверненняТоварівПостачальнику", "ПоверненняТоварівВідКлієнта" };
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a34", "tab_a36", "tab_a51", "tab_a53", "tab_b07" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ПоверненняТоварівПостачальнику", "ПоверненняТоварівВідКлієнта", "ВнутрішнєСпоживанняТоварів" };
         
         public const string Номенклатура = "col_a5";
         public const string ХарактеристикаНоменклатури = "col_a6";

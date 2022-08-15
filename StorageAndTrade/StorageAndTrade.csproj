@@ -431,10 +431,10 @@
     <Compile Include="Журнали\Продажі\Form_ПродажіЖурнал.designer.cs">
       <DependentUpon>Form_ПродажіЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.cs">
+    <Compile Include="Звіти\old\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Звіти\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.Designer.cs">
+    <Compile Include="Звіти\old\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.Designer.cs">
       <DependentUpon>Form_ВідомістьПоТоварахНаСкладах_Звіт.cs</DependentUpon>
     </Compile>
     <Compile Include="Звіти\old\Form_ЗамовленняПостачальникам_Звіт_del.cs">
@@ -1204,7 +1204,7 @@
     <EmbeddedResource Include="Журнали\Продажі\Form_ПродажіЖурнал.resx">
       <DependentUpon>Form_ПродажіЖурнал.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Звіти\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.resx">
+    <EmbeddedResource Include="Звіти\old\ВідомістьПоТоварахНаСкладах\Form_ВідомістьПоТоварахНаСкладах_Звіт.resx">
       <DependentUpon>Form_ВідомістьПоТоварахНаСкладах_Звіт.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\old\Form_ЗамовленняПостачальникам_Звіт_del.resx">

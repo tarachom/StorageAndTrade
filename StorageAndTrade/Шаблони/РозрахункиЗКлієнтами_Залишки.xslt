@@ -34,7 +34,7 @@
 							<th style="text-align:center">Сума</th>
 						</tr>
 
-						<xsl:for-each select="РозрахункиЗПостачальниками/row">
+						<xsl:for-each select="РозрахункиЗКлієнтами/row">
 							<tr>
 								<td>
 									<a id="{Контрагент}" name="Довідник.Контрагенти" href="/">

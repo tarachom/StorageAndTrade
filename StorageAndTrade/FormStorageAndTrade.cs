@@ -26,6 +26,7 @@ namespace StorageAndTrade
         public FormStorageAndTrade()
         {
             InitializeComponent();
+            
         }
 
         public ConfigurationParam OpenConfigurationParam { get; set; }
@@ -345,13 +346,6 @@ namespace StorageAndTrade
             Form_ЗамовленняПостачальникам_Звіт form_ЗамовленняПостачальникам_Звіт = new Form_ЗамовленняПостачальникам_Звіт();
             form_ЗамовленняПостачальникам_Звіт.MdiParent = this;
             form_ЗамовленняПостачальникам_Звіт.Show();
-        }
-
-        private void відомістьПоТоварахНаСкладахToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_ВідомістьПоТоварахНаСкладах_Звіт form_ВідомістьПоТоварахНаСкладах_Звіт = new Form_ВідомістьПоТоварахНаСкладах_Звіт();
-            form_ВідомістьПоТоварахНаСкладах_Звіт.MdiParent = this;
-            form_ВідомістьПоТоварахНаСкладах_Звіт.Show();
         }
 
         private void рухКоштівToolStripMenuItem_Click(object sender, EventArgs e)
