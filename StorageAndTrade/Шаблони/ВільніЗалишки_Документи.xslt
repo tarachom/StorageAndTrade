@@ -34,6 +34,7 @@
 							<th>Характеристика</th>
 							<th>Склад</th>
 							<th></th>
+							<th style="text-align:center">ВНаявності</th>
 							<th style="text-align:center">ВРезервіЗіСкладу</th>
 							<th style="text-align:center">ВРезервіПідЗамовлення</th>
 						</tr>
@@ -65,6 +66,9 @@
 										<xsl:when test="income='True'">+</xsl:when>
 										<xsl:otherwise>-</xsl:otherwise>
 									</xsl:choose>
+								</td>
+								<td align="right">
+									<xsl:value-of select="ВНаявності"/>
 								</td>
 								<td align="right">
 									<xsl:value-of select="ВРезервіЗіСкладу"/>

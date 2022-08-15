@@ -77,6 +77,7 @@ SELECT
     Довідник_ХарактеристикиНоменклатури.{ХарактеристикиНоменклатури_Const.Назва} AS ХарактеристикаНоменклатури_Назва,
     Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.Склад} AS Склад,
     Довідник_Склади.{Склади_Const.Назва} AS Склад_Назва, 
+    SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВНаявності}) AS ВНаявності,
     SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу}) AS ВРезервіЗіСкладу,
     SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення}) AS ВРезервіПідЗамовлення
 FROM 
@@ -195,6 +196,8 @@ GROUP BY Номенклатура, Номенклатура_Назва,
          Склад, Склад_Назва
 
 HAVING
+     SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВНаявності}) != 0
+OR
      SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіЗіСкладу}) != 0
 OR
      SUM(Рег_ВільніЗалишки.{ВіртуальніТаблиціРегістрів.ВільніЗалишки_Місяць_TablePart.ВРезервіПідЗамовлення}) != 0   
@@ -255,13 +258,14 @@ WITH register AS
         ВільніЗалишки.{ВільніЗалишки_Const.Номенклатура} AS Номенклатура,
         ВільніЗалишки.{ВільніЗалишки_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
         ВільніЗалишки.{ВільніЗалишки_Const.Склад} AS Склад,
+        ВільніЗалишки.{ВільніЗалишки_Const.ВНаявності} AS ВНаявності,
         ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} AS ВРезервіЗіСкладу,
         ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} AS ВРезервіПідЗамовлення
     FROM
         {ВільніЗалишки_Const.TABLE} AS ВільніЗалишки
     WHERE
-        (ВільніЗалишки.period >= @period_start AND ВільніЗалишки.period <= @period_end) AND
-        (ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} != 0 OR ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} != 0)
+        (ВільніЗалишки.period >= @period_start AND ВільніЗалишки.period <= @period_end) 
+        --AND (ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіЗіСкладу} != 0 OR ВільніЗалишки.{ВільніЗалишки_Const.ВРезервіПідЗамовлення} != 0)
 ";
 
             #region WHERE
@@ -269,22 +273,22 @@ WITH register AS
             isExistParent = true;
 
             //Відбір по вибраному Документу
-            if (!documentControl_ЗамовленняКлієнта.DocumentPointerItem.IsEmpty())
-            {
-                query += isExistParent ? "AND" : "WHERE";
-                isExistParent = true;
+//            if (!documentControl_ЗамовленняКлієнта.DocumentPointerItem.IsEmpty())
+//            {
+//                query += isExistParent ? "AND" : "WHERE";
+//                isExistParent = true;
 
-                query += $@"
-ВільніЗалишки.{ЗамовленняКлієнтів_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
-";
-            }
+//                query += $@"
+//ВільніЗалишки.{ВільніЗалишки_Const.ЗамовленняКлієнта} = '{documentControl_ЗамовленняКлієнта.DocumentPointerItem.UnigueID}'
+//";
+//            }
 
             //Відбір по вибраному елементу Номенклатура
             if (!directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
             {
                 query += isExistParent ? "AND" : "WHERE";
                 query += $@"
-ВільніЗалишки.{ЗамовленняКлієнтів_Const.Номенклатура} = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
+ВільніЗалишки.{ВільніЗалишки_Const.Номенклатура} = '{directoryControl_Номенклатура.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -295,7 +299,7 @@ WITH register AS
                 isExistParent = true;
 
                 query += $@"
-ВільніЗалишки.{ЗамовленняКлієнтів_Const.ХарактеристикаНоменклатури} = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
+ВільніЗалишки.{ВільніЗалишки_Const.ХарактеристикаНоменклатури} = '{directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -306,7 +310,7 @@ WITH register AS
                 isExistParent = true;
 
                 query += $@"
-ВільніЗалишки.{ЗамовленняКлієнтів_Const.Склад} = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
+ВільніЗалишки.{ВільніЗалишки_Const.Склад} = '{directoryControl_Склади.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -330,6 +334,7 @@ SELECT
     {table}.docname, 
     register.period, 
     register.income, 
+    register.ВНаявності,
     register.ВРезервіЗіСкладу,
     register.ВРезервіПідЗамовлення,
     register.Номенклатура,
@@ -411,6 +416,7 @@ SELECT
     period,
     docname, 
     income, 
+    ВНаявності,
     ВРезервіЗіСкладу, 
     ВРезервіПідЗамовлення, 
     Номенклатура,

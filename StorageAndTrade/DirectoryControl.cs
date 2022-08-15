@@ -76,7 +76,7 @@ namespace StorageAndTrade
             set
             {
 				mQueryFind = value;
-				buttonFind.Enabled = true;
+				buttonFind.Enabled = !String.IsNullOrEmpty(mQueryFind);
 			} 
 		}
 

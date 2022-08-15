@@ -32,6 +32,7 @@
 							<th>Номенклатура</th>
 							<th>Характеристика</th>
 							<th>Склад</th>
+							<th style="text-align:center">ВНаявності</th>
 							<th style="text-align:center">ВРезервіЗіСкладу</th>
 							<th style="text-align:center">ВРезервіПідЗамовлення</th>
 						</tr>
@@ -52,6 +53,9 @@
 									<a id="{Склад}" name="Довідник.Склад" href="/">
 										<xsl:value-of select="Склад_Назва"/>
 									</a>
+								</td>
+								<td align="right">
+									<xsl:value-of select="ВНаявності"/>
 								</td>
 								<td align="right">
 									<xsl:value-of select="ВРезервіЗіСкладу"/>

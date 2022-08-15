@@ -446,7 +446,14 @@ FROM
 				record.Номенклатура = Товари_Record.Номенклатура;
 				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
 				record.Склад = (!Товари_Record.Склад.IsEmpty() ? Товари_Record.Склад : ДокументОбєкт.Склад);
-				record.ВРезервіПідЗамовлення = Товари_Record.Кількість;
+				record.ВНаявності = Товари_Record.Кількість;
+
+				//record.ВРезервіЗіСкладу = Товари_Record.Кількість;
+
+				if (!Товари_Record.ЗамовленняКлієнта.IsEmpty())
+				{
+					record.ВРезервіПідЗамовлення = Товари_Record.Кількість;
+				}
 			}
 
 			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
@@ -1612,7 +1619,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
 			}
 
-			#region Рух по регістрах
+			#region Товари на складах
 
 			//
 			//Товари на складах
@@ -1665,7 +1672,58 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 			#endregion
 
-			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+			#region ВільніЗалишки
+
+			//
+			//ВільніЗалишки
+			//
+
+			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+
+			foreach (ПереміщенняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
+
+				//Товар
+				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					//
+					//СкладВідправник
+					//
+
+					РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record1 = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+					вільніЗалишки_RecordsSet.Records.Add(record1);
+
+					record1.Income = false;
+					record1.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record1.Номенклатура = Товари_Record.Номенклатура;
+					record1.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record1.Склад = ДокументОбєкт.СкладВідправник;
+					record1.ВНаявності = Товари_Record.Кількість;
+
+					//
+					//СкладОтримувач
+					//
+
+					РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record2 = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+					вільніЗалишки_RecordsSet.Records.Add(record2);
+
+					record2.Income = true;
+					record2.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record2.Номенклатура = Товари_Record.Номенклатура;
+					record2.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record2.Склад = ДокументОбєкт.СкладОтримувач;
+					record2.ВНаявності = Товари_Record.Кількість;
+				}
+			}
+
+			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+            #endregion
+
+            CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
 
 			return true;
 		}
