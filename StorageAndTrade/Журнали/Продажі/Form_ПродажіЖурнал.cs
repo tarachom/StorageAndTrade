@@ -109,6 +109,24 @@ FROM
 UNION
 
 SELECT
+    'РахунокФактура',
+    Док_РахунокФактура.uid,
+    Док_РахунокФактура.spend,
+    Док_РахунокФактура.{РахунокФактура_Const.Назва} AS Назва,
+    Док_РахунокФактура.{РахунокФактура_Const.НомерДок} AS НомерДок,
+    Док_РахунокФактура.{РахунокФактура_Const.ДатаДок} AS ДатаДок,
+    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
+    Док_РахунокФактура.{РахунокФактура_Const.СумаДокументу} AS Сума,
+    Док_РахунокФактура.{РахунокФактура_Const.Коментар} AS Коментар
+FROM
+	{РахунокФактура_Const.TABLE} AS Док_РахунокФактура
+
+    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
+        Док_РахунокФактура.{РахунокФактура_Const.Контрагент}
+
+UNION
+
+SELECT
     'РеалізаціяТоварівТаПослуг',
     Док_РеалізаціяТоварівТаПослуг.uid,
     Док_РеалізаціяТоварівТаПослуг.spend,
@@ -270,6 +288,15 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			form_АктВиконанихРобітДокумент.Show();
 		}
 
+		private void рахунокФактураToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			Form_РахунокФактураДокумент form_РахунокФактураДокумент = new Form_РахунокФактураДокумент();
+			form_РахунокФактураДокумент.MdiParent = this.MdiParent;
+			form_РахунокФактураДокумент.IsNew = true;
+			//form_ПереміщенняТоварівДокумент.OwnerForm = this;
+			form_РахунокФактураДокумент.Show();
+		}
+
 		#endregion
 
 		#region Edit
@@ -292,6 +319,18 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
 							form_ЗамовленняКлієнтаДокумент.Uid = uid;
 							form_ЗамовленняКлієнтаДокумент.Show();
+
+							break;
+						}
+
+					case "РахунокФактура":
+						{
+							Form_РахунокФактураДокумент form_РахунокФактураДокумент = new Form_РахунокФактураДокумент();
+							form_РахунокФактураДокумент.MdiParent = this.MdiParent;
+							form_РахунокФактураДокумент.IsNew = false;
+							//form_ЗамовленняКлієнтаДокумент.OwnerForm = this;
+							form_РахунокФактураДокумент.Uid = uid;
+							form_РахунокФактураДокумент.Show();
 
 							break;
 						}
@@ -377,6 +416,27 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
                                     MessageBox.Show("Error read");
         
                                 break;
+							}
+						case "РахунокФактура":
+							{
+								РахунокФактура_Objest рахунокФактура_Objest = new РахунокФактура_Objest();
+								if (рахунокФактура_Objest.Read(new UnigueID(uid)))
+								{
+									РахунокФактура_Objest рахунокФактура_Objest_Новий = рахунокФактура_Objest.Copy();
+									рахунокФактура_Objest_Новий.Назва += " *";
+									рахунокФактура_Objest_Новий.ДатаДок = DateTime.Now;
+									рахунокФактура_Objest_Новий.НомерДок = (++НумераціяДокументів.ЗамовленняКлієнта_Const).ToString("D8");
+
+									//Зчитати та скопіювати табличну частину Товари
+									рахунокФактура_Objest.Товари_TablePart.Read();
+									рахунокФактура_Objest_Новий.Товари_TablePart.Records = рахунокФактура_Objest.Товари_TablePart.Copy();
+									рахунокФактура_Objest_Новий.Товари_TablePart.Save(true);
+									рахунокФактура_Objest_Новий.Save();
+								}
+								else
+									MessageBox.Show("Error read");
+
+								break;
 							}
 						case "РеалізаціяТоварівТаПослуг":
 							{
@@ -471,6 +531,16 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
 								break;
 							}
+						case "РахунокФактура":
+							{
+								РахунокФактура_Objest РахунокФактура_Objest = new РахунокФактура_Objest();
+								if (РахунокФактура_Objest.Read(new UnigueID(uid)))
+									РахунокФактура_Objest.Delete();
+								else
+									MessageBox.Show("Error read");
+
+								break;
+							}
 						case "РеалізаціяТоварівТаПослуг":
 							{
 								РеалізаціяТоварівТаПослуг_Objest реалізаціяТоварівТаПослуг_Objest = new РеалізаціяТоварівТаПослуг_Objest();
@@ -523,6 +593,11 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 							РухДокументівПоРегістрах.PrintRecords(new ЗамовленняКлієнта_Pointer(new UnigueID(uid)));
 							break;
 						}
+					case "РахунокФактура":
+						{
+							РухДокументівПоРегістрах.PrintRecords(new РахунокФактура_Pointer(new UnigueID(uid)));
+							break;
+						}
 					case "РеалізаціяТоварівТаПослуг":
 						{
 							РухДокументівПоРегістрах.PrintRecords(new РеалізаціяТоварівТаПослуг_Pointer(new UnigueID(uid)));
@@ -572,6 +647,26 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 									}
 								else
 									замовленняКлієнта_Objest.ClearSpendTheDocument();
+
+								break;
+							}
+						case "РахунокФактура":
+							{
+								РахунокФактура_Pointer рахунокФактура_Pointer = new РахунокФактура_Pointer(new UnigueID(uid));
+								РахунокФактура_Objest рахунокФактура_Objest = рахунокФактура_Pointer.GetDocumentObject(true);
+
+								if (spend)
+									try
+									{
+										рахунокФактура_Objest.SpendTheDocument(рахунокФактура_Objest.ДатаДок);
+									}
+									catch (Exception exp)
+									{
+										рахунокФактура_Objest.ClearSpendTheDocument();
+										MessageBox.Show(exp.Message);
+									}
+								else
+									рахунокФактура_Objest.ClearSpendTheDocument();
 
 								break;
 							}

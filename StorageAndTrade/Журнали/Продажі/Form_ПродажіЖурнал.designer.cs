@@ -35,6 +35,7 @@ namespace StorageAndTrade
             this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolStripMenuItem_ЗамовленняКлієнта = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
+            this.актВиконанихРобітToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
@@ -45,7 +46,7 @@ namespace StorageAndTrade
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
-            this.актВиконанихРобітToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.рахунокФактураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -82,6 +83,7 @@ namespace StorageAndTrade
             // 
             this.toolStripDropDownButtonAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItem_ЗамовленняКлієнта,
+            this.рахунокФактураToolStripMenuItem,
             this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг,
             this.актВиконанихРобітToolStripMenuItem,
             this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта});
@@ -104,6 +106,13 @@ namespace StorageAndTrade
             this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Size = new System.Drawing.Size(246, 22);
             this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Text = "Реалізація товарів та послуг";
             this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг_Click);
+            // 
+            // актВиконанихРобітToolStripMenuItem
+            // 
+            this.актВиконанихРобітToolStripMenuItem.Name = "актВиконанихРобітToolStripMenuItem";
+            this.актВиконанихРобітToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.актВиконанихРобітToolStripMenuItem.Text = "Акт виконаних робіт";
+            this.актВиконанихРобітToolStripMenuItem.Click += new System.EventHandler(this.актВиконанихРобітToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_ПоверненняТоварівВідКлієнта
             // 
@@ -201,12 +210,12 @@ namespace StorageAndTrade
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridViewRecords_Scroll);
             // 
-            // актВиконанихРобітToolStripMenuItem
+            // рахунокФактураToolStripMenuItem
             // 
-            this.актВиконанихРобітToolStripMenuItem.Name = "актВиконанихРобітToolStripMenuItem";
-            this.актВиконанихРобітToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.актВиконанихРобітToolStripMenuItem.Text = "Акт виконаних робіт";
-            this.актВиконанихРобітToolStripMenuItem.Click += new System.EventHandler(this.актВиконанихРобітToolStripMenuItem_Click);
+            this.рахунокФактураToolStripMenuItem.Name = "рахунокФактураToolStripMenuItem";
+            this.рахунокФактураToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.рахунокФактураToolStripMenuItem.Text = "Рахунок фактура";
+            this.рахунокФактураToolStripMenuItem.Click += new System.EventHandler(this.рахунокФактураToolStripMenuItem_Click);
             // 
             // Form_ПродажіЖурнал
             // 
@@ -248,5 +257,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_РеалізаціяТоварівТаПослуг;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ПоверненняТоварівВідКлієнта;
         private System.Windows.Forms.ToolStripMenuItem актВиконанихРобітToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem рахунокФактураToolStripMenuItem;
     }
 }
