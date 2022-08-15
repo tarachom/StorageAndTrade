@@ -265,6 +265,36 @@ namespace StorageAndTrade_1_0.Документи
 		}
 	}
 
+	class РахунокФактура_Triggers
+	{
+		/// <summary>
+		/// Перед записом
+		/// </summary>
+		/// <param name="ДокументОбєкт"></param>
+		public static void BeforeRecording(РахунокФактура_Objest ДокументОбєкт)
+		{
+
+		}
+
+		/// <summary>
+		/// Після запису
+		/// </summary>
+		/// <param name="ДокументОбєкт"></param>
+		public static void AfterRecording(РахунокФактура_Objest ДокументОбєкт)
+		{
+
+		}
+
+		/// <summary>
+		/// Перед видаленням
+		/// </summary>
+		/// <param name="ДокументОбєкт"></param>
+		public static void BeforeDelete(РахунокФактура_Objest ДокументОбєкт)
+		{
+			ДокументОбєкт.ClearSpendTheDocument();
+		}
+	}
+
 	class РеалізаціяТоварівТаПослуг_Triggers
     {
 		public static void BeforeRecording(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)

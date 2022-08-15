@@ -137,6 +137,57 @@ namespace StorageAndTrade_1_0.Документи
 		}
 	}
 
+	class РахунокФактура_SpendTheDocument
+	{
+		public static bool Spend(РахунокФактура_Objest ДокументОбєкт)
+		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+			}
+
+			#region ВільніЗалишки
+
+			//
+			//ВільніЗалишки
+			//
+
+			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+
+			foreach (РахунокФактура_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+				вільніЗалишки_RecordsSet.Records.Add(record);
+
+				record.Income = true; // +    | Документ добавляє резерв
+				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.Склад = ДокументОбєкт.Склад;
+				record.ВРезервіПідЗамовлення = Товари_Record.Кількість;
+			}
+
+			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			#endregion
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+
+			return true;
+		}
+
+		public static void ClearSpend(РахунокФактура_Objest ДокументОбєкт)
+		{
+			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+		}
+	}
+
 	class РеалізаціяТоварівТаПослуг_SpendTheDocument
 	{
 		/// <summary>
@@ -2021,7 +2072,7 @@ FROM
 				record.Номенклатура = Товари_Record.Номенклатура;
 				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
 				record.Склад = ДокументОбєкт.Склад;
-				record.ВРезервіПідЗамовлення = Товари_Record.Кількість;
+				record.ВНаявності = Товари_Record.Кількість;
 			}
 
 			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);

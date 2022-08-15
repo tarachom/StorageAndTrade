@@ -219,6 +219,24 @@
     <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівЖурнал.designer.cs">
       <DependentUpon>Form_ВнутрішнєСпоживанняТоварівЖурнал.cs</DependentUpon>
     </Compile>
+    <Compile Include="Документи\РахунокФактура\Form_РахунокФактура_ТабличнаЧастина_Товари.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Документи\РахунокФактура\Form_РахунокФактура_ТабличнаЧастина_Товари.Designer.cs">
+      <DependentUpon>Form_РахунокФактура_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\РахунокФактура\Form_РахунокФактураДокумент.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\РахунокФактура\Form_РахунокФактураДокумент.designer.cs">
+      <DependentUpon>Form_РахунокФактураДокумент.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Документи\РахунокФактура\Form_РахунокФактураЖурнал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Документи\РахунокФактура\Form_РахунокФактураЖурнал.designer.cs">
+      <DependentUpon>Form_РахунокФактураЖурнал.cs</DependentUpon>
+    </Compile>
     <Compile Include="Документи\ФункціїДляДокументів.cs" />
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.cs">
       <SubType>UserControl</SubType>
@@ -931,6 +949,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварівЖурнал.resx">
       <DependentUpon>Form_ВнутрішнєСпоживанняТоварівЖурнал.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\РахунокФактура\Form_РахунокФактура_ТабличнаЧастина_Товари.resx">
+      <DependentUpon>Form_РахунокФактура_ТабличнаЧастина_Товари.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\РахунокФактура\Form_РахунокФактураДокумент.resx">
+      <DependentUpon>Form_РахунокФактураДокумент.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Документи\РахунокФактура\Form_РахунокФактураЖурнал.resx">
+      <DependentUpon>Form_РахунокФактураЖурнал.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняПостачальникам\Form_ЗамовленняПостачальникам_Звіт.resx">
       <DependentUpon>Form_ЗамовленняПостачальникам_Звіт.cs</DependentUpon>

@@ -309,6 +309,13 @@ namespace StorageAndTrade
             form_ВнутрішнєСпоживанняТоварівЖурнал.Show();
         }
 
+        private void рахунокФактураToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_РахунокФактураЖурнал form_РахунокФактураЖурнал = new Form_РахунокФактураЖурнал();
+            form_РахунокФактураЖурнал.MdiParent = this;
+            form_РахунокФактураЖурнал.Show();
+        }
+
         #endregion
 
         #region Звіти Меню
@@ -379,6 +386,14 @@ namespace StorageAndTrade
             formAbout.OpenConfigurationParam = OpenConfigurationParam;
             formAbout.ShowDialog();
         }
+
+        private void перепроведенняДокументівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormService formService = new FormService();
+            formService.MdiParent = this;
+            formService.Show();
+        }
+
 
         #endregion
 
@@ -587,13 +602,7 @@ namespace StorageAndTrade
 
         #endregion
 
-        private void перепроведенняДокументівToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormService formService = new FormService();
-            formService.MdiParent = this;
-            formService.Show();
-        }
-
+       
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //Console.WriteLine(Константи.Системні.test_Const);

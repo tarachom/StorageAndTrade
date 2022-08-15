@@ -290,6 +290,24 @@ namespace StorageAndTrade_1_0.Звіти
                         break;
                     }
 
+                case "РахунокФактура":
+                    {
+                        РахунокФактура_Objest рахунокФактура_Objest = new РахунокФактура_Objest();
+                        рахунокФактура_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                рахунокФактура_Objest.Назва,
+                                рахунокФактура_Objest.ДатаДок,
+                                рахунокФактура_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
                 default:
                     {
                         object[] fieldValue = new object[] { ДокументВказівник.UnigueID.ToString(), "<Не оприділений тип документу>", "", "" };

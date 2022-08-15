@@ -115,6 +115,7 @@ namespace StorageAndTrade
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_ПереміщенняТоварівМіжСкладами = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton_ВстановленняЦінНоменклатури = new System.Windows.Forms.ToolStripButton();
+            this.рахунокФактураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip_ГоловнеМеню.SuspendLayout();
             this.toolStrip_Довідники.SuspendLayout();
             this.toolStrip_Документи.SuspendLayout();
@@ -374,6 +375,7 @@ namespace StorageAndTrade
             // 
             this.документиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.замовленняКлієнтаToolStripMenuItem,
+            this.рахунокФактураToolStripMenuItem,
             this.реалізаціяТоварівТаПослугToolStripMenuItem,
             this.актВиконанихРобітToolStripMenuItem,
             this.поверненняТоварівКлієнтуToolStripMenuItem,
@@ -861,6 +863,13 @@ namespace StorageAndTrade
             this.toolStripButton_ВстановленняЦінНоменклатури.Text = "Документ \"Встановлення цін номенклатури\"";
             this.toolStripButton_ВстановленняЦінНоменклатури.Click += new System.EventHandler(this.toolStripButton_ВстановленняЦінНоменклатури_Click);
             // 
+            // рахунокФактураToolStripMenuItem
+            // 
+            this.рахунокФактураToolStripMenuItem.Name = "рахунокФактураToolStripMenuItem";
+            this.рахунокФактураToolStripMenuItem.Size = new System.Drawing.Size(274, 22);
+            this.рахунокФактураToolStripMenuItem.Text = "Рахунок фактура";
+            this.рахунокФактураToolStripMenuItem.Click += new System.EventHandler(this.рахунокФактураToolStripMenuItem_Click);
+            // 
             // FormStorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -979,6 +988,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem внутрішнєCпоживанняТоварівToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem партіїТоварівКомпозитToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem рахунокФактураToolStripMenuItem;
     }
 }
 
