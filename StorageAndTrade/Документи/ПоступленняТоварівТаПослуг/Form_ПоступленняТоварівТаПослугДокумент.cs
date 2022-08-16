@@ -249,22 +249,22 @@ namespace StorageAndTrade
 
 		private void buttonBlocked_Click(object sender, EventArgs e)
 		{
-			if (IsNew.HasValue)
-			{
-				if (!IsNew.Value)
-				{
-					BlockedConfigurationObject.AddBlockedDocument(поступленняТоварівТаПослуг_Objest.UnigueID.UGuid, "");
+			//if (IsNew.HasValue)
+			//{
+			//	if (!IsNew.Value)
+			//	{
+			//		BlockedConfigurationObject.AddBlockedDocument(поступленняТоварівТаПослуг_Objest.UnigueID.UGuid, "");
 
-					if (a != null)
-						a.Dispose();
+			//		if (a != null)
+			//			a.Dispose();
 
-					a = new Timer();
-					a.Interval = 5000;
-                    a.Tick += A_Tick;
-                    a.Disposed += A_Disposed;
-					a.Start();
-				}
-			}
+			//		a = new Timer();
+			//		a.Interval = 5000;
+   //                 a.Tick += A_Tick;
+   //                 a.Disposed += A_Disposed;
+			//		a.Start();
+			//	}
+			//}
 		}
 
         private void A_Disposed(object sender, EventArgs e)

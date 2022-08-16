@@ -376,6 +376,13 @@ namespace StorageAndTrade
             form_ВільніЗалишки_Звіт.Show();
         }
 
+        private void розрахункиЗКонтрагентамиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_РозрахункиЗКонтрагентами_Звіт form_РозрахункиЗКонтрагентами_Звіт = new Form_РозрахункиЗКонтрагентами_Звіт();
+            form_РозрахункиЗКонтрагентами_Звіт.MdiParent = this;
+            form_РозрахункиЗКонтрагентами_Звіт.Show();
+        }
+
         #endregion
 
         #region Сервіс Меню
@@ -637,6 +644,6 @@ namespace StorageAndTrade
 
         }
 
-       
+        
     }
 }
