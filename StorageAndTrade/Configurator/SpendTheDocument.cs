@@ -1733,6 +1733,9 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
+			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
 		}
 	}
