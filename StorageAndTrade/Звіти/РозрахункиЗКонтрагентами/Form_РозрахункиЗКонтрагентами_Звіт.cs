@@ -212,29 +212,51 @@ ORDER BY Контрагент_Назва
             string query = $@"
 WITH register AS
 (
-     SELECT 
-        РозрахункиЗКлієнтами.period AS period,
-        РозрахункиЗКлієнтами.owner AS owner,
-        РозрахункиЗКлієнтами.income AS income,
-        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} AS Контрагент,
-        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} AS Валюта,
-        РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} AS Сума
+    SELECT
+        period,
+        owner,
+        income,
+        Контрагент,
+        Валюта,
+        Сума
     FROM
-        {РозрахункиЗКлієнтами_Const.TABLE} AS РозрахункиЗКлієнтами
-    WHERE
-        (РозрахункиЗКлієнтами.period >= @period_start AND РозрахункиЗКлієнтами.period <= @period_end)
+    (
+        SELECT 
+            РозрахункиЗПостачальниками.period AS period,
+            РозрахункиЗПостачальниками.owner AS owner,
+            РозрахункиЗПостачальниками.income AS income,
+            РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Контрагент} AS Контрагент,
+            РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта} AS Валюта,
+            РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} AS Сума
+        FROM
+            {РозрахункиЗПостачальниками_Const.TABLE} AS РозрахункиЗПостачальниками
+        WHERE
+            (РозрахункиЗПостачальниками.period >= @period_start AND РозрахункиЗПостачальниками.period <= @period_end)
+    
+        UNION ALL
+    
+        SELECT 
+            РозрахункиЗКлієнтами.period AS period,
+            РозрахункиЗКлієнтами.owner AS owner,
+            РозрахункиЗКлієнтами.income AS income,
+            РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} AS Контрагент,
+            РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} AS Валюта,
+            РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} AS Сума
+        FROM
+            {РозрахункиЗКлієнтами_Const.TABLE} AS РозрахункиЗКлієнтами
+        WHERE
+            (РозрахункиЗКлієнтами.period >= @period_start AND РозрахункиЗКлієнтами.period <= @period_end)
+    ) AS КлієнтиТаПостачальники
 ";
 
             #region WHERE
-
-            isExistParent = true;
 
             //Відбір по вибраному елементу Контрагенти
             if (!directoryControl_Контрагенти.DirectoryPointerItem.IsEmpty())
             {
                 query += isExistParent ? "AND" : "WHERE";
                 query += $@"
-РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} = '{directoryControl_Контрагенти.DirectoryPointerItem.UnigueID}'
+КлієнтиТаПостачальники.Контрагент = '{directoryControl_Контрагенти.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -245,7 +267,7 @@ WITH register AS
                 isExistParent = true;
 
                 query += $@"
-РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
+КлієнтиТаПостачальники.Валюта = '{directoryControl_Валюти.DirectoryPointerItem.UnigueID}'
 ";
             }
 
@@ -256,10 +278,28 @@ WITH register AS
 documents AS
 (";
             int counter = 0;
-            foreach (string table in РозрахункиЗКлієнтами_Const.AllowDocumentSpendTable)
-            {
-                string docType = РозрахункиЗКлієнтами_Const.AllowDocumentSpendType[counter];
 
+            #region Обєднання масивів з унікальними значеннями
+
+            List<string> РозрахункиЗКонтрагентамиTable = new List<string>();
+            List<string> РозрахункиЗКонтрагентамиType = new List<string>();
+
+            РозрахункиЗКонтрагентамиTable.AddRange(РозрахункиЗКлієнтами_Const.AllowDocumentSpendTable);
+            РозрахункиЗКонтрагентамиType.AddRange(РозрахункиЗКлієнтами_Const.AllowDocumentSpendType);
+
+            foreach (string s in РозрахункиЗПостачальниками_Const.AllowDocumentSpendTable)
+                if (!РозрахункиЗКонтрагентамиTable.Contains(s))
+                    РозрахункиЗКонтрагентамиTable.Add(s);
+
+            foreach (string s in РозрахункиЗПостачальниками_Const.AllowDocumentSpendType)
+                if (!РозрахункиЗКонтрагентамиType.Contains(s))
+                    РозрахункиЗКонтрагентамиType.Add(s);
+
+            #endregion
+
+            foreach (string table in РозрахункиЗКонтрагентамиTable)
+            {
+                string docType = РозрахункиЗКонтрагентамиType[counter];
                 string union = (counter > 0 ? "UNION" : "");
                 query += $@"
 {union}
@@ -340,7 +380,7 @@ ORDER BY period ASC
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Документи.xslt", false, "Розрахунки з постачальниками");
+            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКонтрагентами_Документи.xslt", false, "Розрахунки з контрагентами");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

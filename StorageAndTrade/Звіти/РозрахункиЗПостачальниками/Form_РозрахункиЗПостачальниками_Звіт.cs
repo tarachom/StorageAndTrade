@@ -185,7 +185,7 @@ ORDER BY Контрагент_Назва
             string query = $@"
 WITH register AS
 (
-     SELECT 
+    SELECT 
         РозрахункиЗПостачальниками.period AS period,
         РозрахункиЗПостачальниками.owner AS owner,
         РозрахункиЗПостачальниками.income AS income,

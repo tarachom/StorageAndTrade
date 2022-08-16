@@ -1380,6 +1380,9 @@
     </Content>
     <Content Include="Шаблони\ЗамовленняПостачальникам_Залишки.xslt" />
     <Content Include="Шаблони\ПартіїТоварів_ЗалишкиПоНоменклатурі.xslt" />
+    <Content Include="Шаблони\РозрахункиЗКонтрагентами_Документи.xslt">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Шаблони\РозрахункиЗКлієнтами_Документи.xslt">
       <SubType>Designer</SubType>
     </Content>
