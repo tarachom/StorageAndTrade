@@ -53,22 +53,12 @@ namespace StorageAndTrade
 
         private void Form_ЗамовленняКлієнтів_Звіт_Load(object sender, EventArgs e)
         {
-            directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Номенклатура_Папки_Pointer());
-            directoryControl_НоменклатураПапка.QueryFind = ПошуковіЗапити.Номенклатура_Папки;
-
-            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer());
-            directoryControl_Номенклатура.QueryFind = ПошуковіЗапити.Номенклатура;
-
+            directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Номенклатура_Папки_Pointer(), ПошуковіЗапити.Номенклатура_Папки);
+            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer());
-
-            directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
-            directoryControl_СкладиПапки.QueryFind = ПошуковіЗапити.Склади_Папки;
-
-            directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
-            directoryControl_Склади.QueryFind = ПошуковіЗапити.Склади;
-
-            directoryControl_Серія.Init(new Form_СеріїНоменклатури(), new СеріїНоменклатури_Pointer());
-            directoryControl_Серія.QueryFind = ПошуковіЗапити.СеріїНоменклатури;
+            directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer(), ПошуковіЗапити.Склади_Папки);
+            directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer(), ПошуковіЗапити.Склади);
+            directoryControl_Серія.Init(new Form_СеріїНоменклатури(), new СеріїНоменклатури_Pointer(), ПошуковіЗапити.СеріїНоменклатури);
 
             dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
 

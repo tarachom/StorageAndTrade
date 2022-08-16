@@ -276,6 +276,18 @@ ORDER BY Назва
 LIMIT 10
 ";
 
+        public static readonly string Контрагенти_Папки = $@"
+SELECT 
+    uid,
+    {Довідники.Контрагенти_Папки_Const.Назва} AS Назва
+FROM
+    {Довідники.Контрагенти_Папки_Const.TABLE}
+WHERE
+    LOWER({Довідники.Контрагенти_Папки_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
         public static readonly string Організації = $@"
 SELECT 
     uid,

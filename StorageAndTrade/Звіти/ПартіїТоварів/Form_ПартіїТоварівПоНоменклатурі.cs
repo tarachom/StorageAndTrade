@@ -50,10 +50,10 @@ namespace StorageAndTrade
         {
             InitializeComponent();
 
-            directoryControl_Організація.Init(new Form_Організації(), new Організації_Pointer());
-            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer());
+            directoryControl_Організація.Init(new Form_Організації(), new Організації_Pointer(), ПошуковіЗапити.Організації);
+            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer());
-            directoryControl_Серія.Init(new Form_СеріїНоменклатури(), new СеріїНоменклатури_Pointer());
+            directoryControl_Серія.Init(new Form_СеріїНоменклатури(), new СеріїНоменклатури_Pointer(), ПошуковіЗапити.СеріїНоменклатури);
 
             geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
@@ -205,6 +205,11 @@ ORDER BY Організація_Назва, Номенклатура_Назва,
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Form_ПартіїТоварівПоНоменклатурі_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

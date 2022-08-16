@@ -53,11 +53,11 @@ namespace StorageAndTrade
 
         private void Form_ЗамовленняКлієнтів_Звіт_Load(object sender, EventArgs e)
         {
-            directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Номенклатура_Папки_Pointer());
-            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer());
+            directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Номенклатура_Папки_Pointer(), ПошуковіЗапити.Номенклатура_Папки);
+            directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer());
-            directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer());
-            directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer());
+            directoryControl_СкладиПапки.Init(new Form_СкладиПапкиВибір(), new Склади_Папки_Pointer(), ПошуковіЗапити.Склади_Папки);
+            directoryControl_Склади.Init(new Form_Склади(), new Склади_Pointer(), ПошуковіЗапити.Склади);
             documentControl_ЗамовленняКлієнта.Init(new Form_ЗамовленняКлієнтаЖурнал(), new ЗамовленняКлієнта_Pointer());
 
             dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");

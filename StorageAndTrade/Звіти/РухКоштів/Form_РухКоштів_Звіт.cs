@@ -55,9 +55,9 @@ namespace StorageAndTrade
 
         private void Form_РухКоштів_Звіт_Load(object sender, EventArgs e)
         {
-            directoryControl_Організація.Init(new Form_Організації(), new Організації_Pointer());
-            directoryControl_Каса.Init(new Form_Каси(), new Каси_Pointer());
-            directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
+            directoryControl_Організація.Init(new Form_Організації(), new Організації_Pointer(), ПошуковіЗапити.Організації);
+            directoryControl_Каса.Init(new Form_Каси(), new Каси_Pointer(), ПошуковіЗапити.Каси);
+            directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer(), ПошуковіЗапити.Валюти);
 
             dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
 

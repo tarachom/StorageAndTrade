@@ -54,9 +54,9 @@ namespace StorageAndTrade
 
         private void Form_РозрахункиЗПостачальниками_Звіт_Load(object sender, EventArgs e)
         {
-            directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer());
-            directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer());
-            directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer());
+            directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer(), ПошуковіЗапити.Контрагенти_Папки);
+            directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer(), ПошуковіЗапити.Контрагенти);
+            directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer(), ПошуковіЗапити.Валюти);
 
             dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
 
