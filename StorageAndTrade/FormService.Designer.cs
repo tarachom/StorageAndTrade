@@ -62,7 +62,7 @@ namespace StorageAndTrade
             // 
             // buttonCancel
             // 
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            //this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Enabled = false;
             this.buttonCancel.Location = new System.Drawing.Point(195, 3);
             this.buttonCancel.Name = "buttonCancel";

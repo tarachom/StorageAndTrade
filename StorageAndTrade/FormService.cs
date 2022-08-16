@@ -49,15 +49,18 @@ namespace StorageAndTrade
 		}
 
 		private object lockobject = new object();
-		private bool Cancel = false;
-		private bool CancelOk = false;
+		private bool CancelThread = false;
 		private Thread thread;
 
 		private void ApendLine(string head)
 		{
 			if (richTextBoxInfo.InvokeRequired)
 			{
-				richTextBoxInfo.Invoke(new Action<string>(ApendLine), head);
+				try
+				{
+					richTextBoxInfo.Invoke(new Action<string>(ApendLine), head);
+				}
+				catch { }
 			}
 			else
 			{
@@ -70,14 +73,12 @@ namespace StorageAndTrade
 			buttonSpendAll.Enabled = true;
 			buttonCancel.Enabled = false;
 
-			Cancel = true;
-			CancelOk = false;
+			CancelThread = true;
 		}
 
         private void buttonSpendAll_Click(object sender, EventArgs e)
         {
-			Cancel = false;
-			CancelOk = false;
+			CancelThread = false;
 
 			buttonSpendAll.Enabled = false;
 			buttonCancel.Enabled = true;
@@ -95,14 +96,17 @@ namespace StorageAndTrade
 
 			while (journalSelect.MoveNext())
             {
-				if (Cancel)
-					return;
+				if (CancelThread)
+					break;
 
 				if (journalSelect.Current.Spend)
 				{
 					ApendLine(journalSelect.Current.TypeDocument + " " + journalSelect.Current.SpendDate);
 
 					DocumentObject doc = journalSelect.GetDocumentObject(true);
+
+					if (CancelThread)
+						break;
 
 					if (doc.GetType().GetMember("SpendTheDocument").Length == 1)
 						doc.GetType().InvokeMember("SpendTheDocument", BindingFlags.InvokeMethod, null, doc, 
@@ -111,7 +115,6 @@ namespace StorageAndTrade
 			}
 
 			ApendLine("Готово!");
-			CancelOk = true;
 
 			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = true;
 
@@ -161,19 +164,16 @@ namespace StorageAndTrade
 
         }
 
-        private void FormService_FormClosing(object sender, FormClosingEventArgs e)
-        {
+		private void FormService_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (thread == null || thread.ThreadState == ThreadState.Stopped)
+				return;
+
 			buttonCancel_Click(this, new EventArgs());
 
-			for (int i = 0; i < 5; i++)
-			{
-				if (!CancelOk)
-				{
-					Thread.Sleep(1000);
-				}
-				else
-					break;
-			}
+			Thread.Sleep(3000);
+
+			thread.Abort();
 		}
     }
 }
