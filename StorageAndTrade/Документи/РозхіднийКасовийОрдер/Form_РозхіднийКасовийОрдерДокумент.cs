@@ -151,6 +151,7 @@ namespace StorageAndTrade
 					if (розхіднийКасовийОрдер_Objest.Read(new UnigueID(Uid)))
 					{
 						this.Text = розхіднийКасовийОрдер_Objest.Назва;
+						linkLabel_Основа.Text = розхіднийКасовийОрдер_Objest.Основа.ToString();
 
 						textBox_НомерДок.Text = розхіднийКасовийОрдер_Objest.НомерДок;
 						dateTimePicker_ДатаДок.Value = розхіднийКасовийОрдер_Objest.ДатаДок;
@@ -252,5 +253,10 @@ namespace StorageAndTrade
 		{
 			SaveDoc(true, true);
 		}
-	}
+
+        private void linkLabel_Основа_Click(object sender, EventArgs e)
+        {
+			
+        }
+    }
 }

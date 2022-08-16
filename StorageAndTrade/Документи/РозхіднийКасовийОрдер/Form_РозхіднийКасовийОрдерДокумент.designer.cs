@@ -36,6 +36,12 @@ namespace StorageAndTrade
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker_ДатаДок = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.directoryControl_БанківськийРахунок = new StorageAndTrade.DirectoryControl();
+            this.label6 = new System.Windows.Forms.Label();
+            this.directoryControl_КасаОтримувач = new StorageAndTrade.DirectoryControl();
+            this.comboBox_ГосподарськаОперація = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_Коментар = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -50,8 +56,6 @@ namespace StorageAndTrade
             this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
             this.label5 = new System.Windows.Forms.Label();
             this.directoryControl_Контрагент = new StorageAndTrade.DirectoryControl();
-            this.comboBox_ГосподарськаОперація = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -60,13 +64,12 @@ namespace StorageAndTrade
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.directoryControl_БанківськийРахунок = new StorageAndTrade.DirectoryControl();
-            this.label6 = new System.Windows.Forms.Label();
-            this.directoryControl_КасаОтримувач = new StorageAndTrade.DirectoryControl();
+            this.label12 = new System.Windows.Forms.Label();
+            this.linkLabel_Основа = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -145,6 +148,68 @@ namespace StorageAndTrade
             this.panel1.Size = new System.Drawing.Size(996, 226);
             this.panel1.TabIndex = 23;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(498, 117);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(116, 13);
+            this.label8.TabIndex = 76;
+            this.label8.Text = "Банківський рахунок:";
+            // 
+            // directoryControl_БанківськийРахунок
+            // 
+            this.directoryControl_БанківськийРахунок.AfterSelectFunc = null;
+            this.directoryControl_БанківськийРахунок.BeforeClickOpenFunc = null;
+            this.directoryControl_БанківськийРахунок.Bind = null;
+            this.directoryControl_БанківськийРахунок.DirectoryPointerItem = null;
+            this.directoryControl_БанківськийРахунок.Location = new System.Drawing.Point(620, 111);
+            this.directoryControl_БанківськийРахунок.Name = "directoryControl_БанківськийРахунок";
+            this.directoryControl_БанківськийРахунок.QueryFind = null;
+            this.directoryControl_БанківськийРахунок.SelectForm = null;
+            this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(358, 27);
+            this.directoryControl_БанківськийРахунок.TabIndex = 75;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(498, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.TabIndex = 74;
+            this.label6.Text = "Каса отримувач:";
+            // 
+            // directoryControl_КасаОтримувач
+            // 
+            this.directoryControl_КасаОтримувач.AfterSelectFunc = null;
+            this.directoryControl_КасаОтримувач.BeforeClickOpenFunc = null;
+            this.directoryControl_КасаОтримувач.Bind = null;
+            this.directoryControl_КасаОтримувач.DirectoryPointerItem = null;
+            this.directoryControl_КасаОтримувач.Location = new System.Drawing.Point(598, 78);
+            this.directoryControl_КасаОтримувач.Name = "directoryControl_КасаОтримувач";
+            this.directoryControl_КасаОтримувач.QueryFind = null;
+            this.directoryControl_КасаОтримувач.SelectForm = null;
+            this.directoryControl_КасаОтримувач.Size = new System.Drawing.Size(380, 27);
+            this.directoryControl_КасаОтримувач.TabIndex = 73;
+            // 
+            // comboBox_ГосподарськаОперація
+            // 
+            this.comboBox_ГосподарськаОперація.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ГосподарськаОперація.FormattingEnabled = true;
+            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(552, 19);
+            this.comboBox_ГосподарськаОперація.Name = "comboBox_ГосподарськаОперація";
+            this.comboBox_ГосподарськаОперація.Size = new System.Drawing.Size(426, 21);
+            this.comboBox_ГосподарськаОперація.TabIndex = 58;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(492, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 57;
+            this.label10.Text = "Операція:";
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -172,9 +237,13 @@ namespace StorageAndTrade
             // 
             // directoryControl_Договір
             // 
+            this.directoryControl_Договір.AfterSelectFunc = null;
+            this.directoryControl_Договір.BeforeClickOpenFunc = null;
+            this.directoryControl_Договір.Bind = null;
             this.directoryControl_Договір.DirectoryPointerItem = null;
             this.directoryControl_Договір.Location = new System.Drawing.Point(83, 111);
             this.directoryControl_Договір.Name = "directoryControl_Договір";
+            this.directoryControl_Договір.QueryFind = null;
             this.directoryControl_Договір.SelectForm = null;
             this.directoryControl_Договір.Size = new System.Drawing.Size(399, 27);
             this.directoryControl_Договір.TabIndex = 63;
@@ -206,9 +275,13 @@ namespace StorageAndTrade
             // 
             // directoryControl_Каса
             // 
+            this.directoryControl_Каса.AfterSelectFunc = null;
+            this.directoryControl_Каса.BeforeClickOpenFunc = null;
+            this.directoryControl_Каса.Bind = null;
             this.directoryControl_Каса.DirectoryPointerItem = null;
             this.directoryControl_Каса.Location = new System.Drawing.Point(552, 45);
             this.directoryControl_Каса.Name = "directoryControl_Каса";
+            this.directoryControl_Каса.QueryFind = null;
             this.directoryControl_Каса.SelectForm = null;
             this.directoryControl_Каса.Size = new System.Drawing.Size(426, 27);
             this.directoryControl_Каса.TabIndex = 55;
@@ -224,9 +297,13 @@ namespace StorageAndTrade
             // 
             // directoryControl_Валюта
             // 
+            this.directoryControl_Валюта.AfterSelectFunc = null;
+            this.directoryControl_Валюта.BeforeClickOpenFunc = null;
+            this.directoryControl_Валюта.Bind = null;
             this.directoryControl_Валюта.DirectoryPointerItem = null;
             this.directoryControl_Валюта.Location = new System.Drawing.Point(83, 144);
             this.directoryControl_Валюта.Name = "directoryControl_Валюта";
+            this.directoryControl_Валюта.QueryFind = null;
             this.directoryControl_Валюта.SelectForm = null;
             this.directoryControl_Валюта.Size = new System.Drawing.Size(399, 27);
             this.directoryControl_Валюта.TabIndex = 47;
@@ -242,9 +319,13 @@ namespace StorageAndTrade
             // 
             // directoryControl_Організація
             // 
+            this.directoryControl_Організація.AfterSelectFunc = null;
+            this.directoryControl_Організація.BeforeClickOpenFunc = null;
+            this.directoryControl_Організація.Bind = null;
             this.directoryControl_Організація.DirectoryPointerItem = null;
             this.directoryControl_Організація.Location = new System.Drawing.Point(83, 45);
             this.directoryControl_Організація.Name = "directoryControl_Організація";
+            this.directoryControl_Організація.QueryFind = null;
             this.directoryControl_Організація.SelectForm = null;
             this.directoryControl_Організація.Size = new System.Drawing.Size(399, 27);
             this.directoryControl_Організація.TabIndex = 45;
@@ -260,30 +341,16 @@ namespace StorageAndTrade
             // 
             // directoryControl_Контрагент
             // 
+            this.directoryControl_Контрагент.AfterSelectFunc = null;
+            this.directoryControl_Контрагент.BeforeClickOpenFunc = null;
+            this.directoryControl_Контрагент.Bind = null;
             this.directoryControl_Контрагент.DirectoryPointerItem = null;
             this.directoryControl_Контрагент.Location = new System.Drawing.Point(83, 78);
             this.directoryControl_Контрагент.Name = "directoryControl_Контрагент";
+            this.directoryControl_Контрагент.QueryFind = null;
             this.directoryControl_Контрагент.SelectForm = null;
             this.directoryControl_Контрагент.Size = new System.Drawing.Size(399, 27);
             this.directoryControl_Контрагент.TabIndex = 43;
-            // 
-            // comboBox_ГосподарськаОперація
-            // 
-            this.comboBox_ГосподарськаОперація.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ГосподарськаОперація.FormattingEnabled = true;
-            this.comboBox_ГосподарськаОперація.Location = new System.Drawing.Point(552, 19);
-            this.comboBox_ГосподарськаОперація.Name = "comboBox_ГосподарськаОперація";
-            this.comboBox_ГосподарськаОперація.Size = new System.Drawing.Size(426, 21);
-            this.comboBox_ГосподарськаОперація.TabIndex = 58;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(492, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 13);
-            this.label10.TabIndex = 57;
-            this.label10.Text = "Операція:";
             // 
             // panel2
             // 
@@ -319,6 +386,8 @@ namespace StorageAndTrade
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.linkLabel_Основа);
+            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -370,41 +439,25 @@ namespace StorageAndTrade
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // label8
+            // label12
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(498, 117);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(116, 13);
-            this.label8.TabIndex = 76;
-            this.label8.Text = "Банківський рахунок:";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(8, 8);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(59, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "На основі:";
             // 
-            // directoryControl_БанківськийРахунок
+            // linkLabel_Основа
             // 
-            this.directoryControl_БанківськийРахунок.DirectoryPointerItem = null;
-            this.directoryControl_БанківськийРахунок.Location = new System.Drawing.Point(620, 111);
-            this.directoryControl_БанківськийРахунок.Name = "directoryControl_БанківськийРахунок";
-            this.directoryControl_БанківськийРахунок.SelectForm = null;
-            this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(358, 27);
-            this.directoryControl_БанківськийРахунок.TabIndex = 75;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(498, 84);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 13);
-            this.label6.TabIndex = 74;
-            this.label6.Text = "Каса отримувач:";
-            // 
-            // directoryControl_КасаОтримувач
-            // 
-            this.directoryControl_КасаОтримувач.DirectoryPointerItem = null;
-            this.directoryControl_КасаОтримувач.Location = new System.Drawing.Point(598, 78);
-            this.directoryControl_КасаОтримувач.Name = "directoryControl_КасаОтримувач";
-            this.directoryControl_КасаОтримувач.SelectForm = null;
-            this.directoryControl_КасаОтримувач.Size = new System.Drawing.Size(380, 27);
-            this.directoryControl_КасаОтримувач.TabIndex = 73;
+            this.linkLabel_Основа.AutoSize = true;
+            this.linkLabel_Основа.Location = new System.Drawing.Point(73, 8);
+            this.linkLabel_Основа.Name = "linkLabel_Основа";
+            this.linkLabel_Основа.Size = new System.Drawing.Size(16, 13);
+            this.linkLabel_Основа.TabIndex = 1;
+            this.linkLabel_Основа.TabStop = true;
+            this.linkLabel_Основа.Text = "...";
+            this.linkLabel_Основа.Click += new System.EventHandler(this.linkLabel_Основа_Click);
             // 
             // Form_РозхіднийКасовийОрдерДокумент
             // 
@@ -423,6 +476,8 @@ namespace StorageAndTrade
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -464,5 +519,7 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_БанківськийРахунок;
         private System.Windows.Forms.Label label6;
         private DirectoryControl directoryControl_КасаОтримувач;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.LinkLabel linkLabel_Основа;
     }
 }
