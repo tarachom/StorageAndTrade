@@ -70,7 +70,7 @@ namespace StorageAndTrade
 
 		private void Form_СкладиПапкиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_СкладиПапка.SelectForm = new Form_СкладиПапкиВибір();
+			directoryControl_СкладиПапка.Init(new Form_СкладиПапкиВибір(), new Довідники.Склади_Папки_Pointer(), ПошуковіЗапити.Склади_Папки);
 
 			if (IsNew.HasValue)
 			{

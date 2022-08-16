@@ -74,9 +74,9 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиСкладів"].Fields.Values)
 				comboBox_ТипСкладу.Items.Add((Перелічення.ТипиСкладів)field.Value);
 
-			directoryControl_СкладиПапка.Init(new Form_СкладиПапкиВибір(), new Довідники.Склади_Папки_Pointer(new UnigueID(ParentUid)));
-			directoryControl_Відповідальний.Init(new Form_ФізичніОсоби(), new Довідники.ФізичніОсоби_Pointer());
-			directoryControl_ВидЦін.Init(new Form_ВидиЦін(), new Довідники.ВидиЦін_Pointer());
+			directoryControl_СкладиПапка.Init(new Form_СкладиПапкиВибір(), new Довідники.Склади_Папки_Pointer(new UnigueID(ParentUid)), ПошуковіЗапити.Склади_Папки);
+			directoryControl_Відповідальний.Init(new Form_ФізичніОсоби(), new Довідники.ФізичніОсоби_Pointer(), ПошуковіЗапити.ФізичніОсоби);
+			directoryControl_ВидЦін.Init(new Form_ВидиЦін(), new Довідники.ВидиЦін_Pointer(), ПошуковіЗапити.ВидиЦін);
 			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)

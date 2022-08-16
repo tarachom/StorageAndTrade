@@ -70,7 +70,7 @@ namespace StorageAndTrade
 
 		private void Form_КонтрагентиПапкиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_КонтрагентиПапка.SelectForm = new Form_КонтрагентиПапкиВибір();
+			directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Довідники.Контрагенти_Папки_Pointer(), ПошуковіЗапити.Контрагенти_Папки)
 
 			if (IsNew.HasValue)
 			{

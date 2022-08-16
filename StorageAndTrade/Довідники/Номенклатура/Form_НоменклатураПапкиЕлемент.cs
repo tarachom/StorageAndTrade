@@ -70,7 +70,7 @@ namespace StorageAndTrade
 
 		private void Form_НоменклатураПапкиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid)));
+			directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid)), ПошуковіЗапити.Номенклатура_Папки);
 
 			if (IsNew.HasValue)
 			{

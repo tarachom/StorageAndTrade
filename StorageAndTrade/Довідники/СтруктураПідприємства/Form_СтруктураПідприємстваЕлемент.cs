@@ -65,7 +65,7 @@ namespace StorageAndTrade
 
 		private void Form_СтруктураПідприємстваЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_Керівник.Init(new Form_СтруктураПідприємства(), new Довідники.ФізичніОсоби_Pointer());
+			directoryControl_Керівник.Init(new Form_СтруктураПідприємства(), new Довідники.ФізичніОсоби_Pointer(), ПошуковіЗапити.ФізичніОсоби);
 
 			if (IsNew.HasValue)
 			{

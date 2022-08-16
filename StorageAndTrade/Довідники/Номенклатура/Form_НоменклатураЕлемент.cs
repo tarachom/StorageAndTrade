@@ -75,10 +75,10 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ТипиНоменклатури"].Fields.Values)
 				comboBox_ТипНоменклатури.Items.Add((Перелічення.ТипиНоменклатури)field.Value);
 
-			directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid)));
-			directoryControl_Виробник.Init(new Form_Виробники(), new Довідники.Виробники_Pointer());
-			directoryControl_ВидНоменклатури.Init(new Form_ВидиНоменклатури(), new Довідники.ВидиНоменклатури_Pointer());
-			directoryControl_ОдиницяВиміру.Init(new Form_ПакуванняОдиниціВиміру(), new Довідники.ПакуванняОдиниціВиміру_Pointer());
+			directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Довідники.Номенклатура_Папки_Pointer(new UnigueID(ParentUid)), ПошуковіЗапити.Номенклатура_Папки);
+			directoryControl_Виробник.Init(new Form_Виробники(), new Довідники.Виробники_Pointer(), ПошуковіЗапити.Виробники);
+			directoryControl_ВидНоменклатури.Init(new Form_ВидиНоменклатури(), new Довідники.ВидиНоменклатури_Pointer(), ПошуковіЗапити.ВидиНоменклатури);
+			directoryControl_ОдиницяВиміру.Init(new Form_ПакуванняОдиниціВиміру(), new Довідники.ПакуванняОдиниціВиміру_Pointer(), ПошуковіЗапити.ПакуванняОдиниціВиміру);
 
 			if (IsNew.HasValue)
 			{

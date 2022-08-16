@@ -88,10 +88,10 @@ namespace StorageAndTrade
 				comboBox_ТипДоговору.Items.Add(
 					new NameValue<Перелічення.ТипДоговорів>(field.Desc, (Перелічення.ТипДоговорів)field.Value));
 
-			directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer());
+			directoryControl_БанківськийРахунок.Init(new Form_БанківськіРахункиОрганізацій(), new Довідники.БанківськіРахункиОрганізацій_Pointer(), ПошуковіЗапити.БанківськіРахункиОрганізацій);
 			directoryControl_БанківськийРахунокКонтрагента.Init(new Form_БанківськіРахункиКонтрагентів(), new Довідники.БанківськіРахункиКонтрагентів_Pointer());
 			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
-			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
+			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer(), ПошуковіЗапити.Контрагенти);
 
 			if (IsNew.HasValue)
 			{

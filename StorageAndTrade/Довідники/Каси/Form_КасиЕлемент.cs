@@ -65,7 +65,7 @@ namespace StorageAndTrade
 
 		private void Form_КасиЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer(), ПошуковіЗапити.Валюти);
 
 			if (IsNew.HasValue)
 			{

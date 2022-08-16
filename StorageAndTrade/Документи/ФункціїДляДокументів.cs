@@ -264,6 +264,42 @@ namespace StorageAndTrade
 
     class ПошуковіЗапити
     {
+        public static readonly string ФізичніОсоби = $@"
+SELECT 
+    uid,
+    {Довідники.ФізичніОсоби_Const.Назва} AS Назва
+FROM
+    {Довідники.ФізичніОсоби_Const.TABLE}
+WHERE
+    LOWER({Довідники.ФізичніОсоби_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string ВидиНоменклатури = $@"
+SELECT 
+    uid,
+    {Довідники.ВидиНоменклатури_Const.Назва} AS Назва
+FROM
+    {Довідники.ВидиНоменклатури_Const.TABLE}
+WHERE
+    LOWER({Довідники.ВидиНоменклатури_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string Виробники = $@"
+SELECT 
+    uid,
+    {Довідники.Виробники_Const.Назва} AS Назва
+FROM
+    {Довідники.Виробники_Const.TABLE}
+WHERE
+    LOWER({Довідники.Виробники_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
         public static readonly string Контрагенти = $@"
 SELECT 
     uid,
@@ -404,6 +440,18 @@ FROM
     {Довідники.ВидиЦін_Const.TABLE}
 WHERE
     LOWER({Довідники.ВидиЦін_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string ПакуванняОдиниціВиміру = $@"
+SELECT 
+    uid,
+    {Довідники.ПакуванняОдиниціВиміру_Const.Назва} AS Назва
+FROM
+    {Довідники.ПакуванняОдиниціВиміру_Const.TABLE}
+WHERE
+    LOWER({Довідники.ПакуванняОдиниціВиміру_Const.Назва}) LIKE @like_param
 ORDER BY Назва
 LIMIT 10
 ";
