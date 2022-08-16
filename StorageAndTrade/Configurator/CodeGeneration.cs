@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 15.08.2022 18:00:35
+ * Дата конфігурації: 16.08.2022 09:49:45
  *
  */
 
@@ -40,6 +40,7 @@ namespace StorageAndTrade_1_0
     {
         public static Kernel Kernel { get; set; }
         public static Kernel KernelBackgroundTask { get; set; }
+		public static Kernel KernelParalelWork { get; set; }
 		
         public static void ReadAllConstants()
         {

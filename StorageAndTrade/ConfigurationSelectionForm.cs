@@ -269,6 +269,7 @@ namespace StorageAndTrade
 
 				Конфа.Config.Kernel = new Kernel();
 				Конфа.Config.KernelBackgroundTask = new Kernel();
+				Конфа.Config.KernelParalelWork = new Kernel();
 
 				////Створення бази даних
 				//bool flagCreateDatabase = Конфа.Config.Kernel.CreateDatabaseIfNotExist(
@@ -301,6 +302,20 @@ namespace StorageAndTrade
 
 				//Підключення до бази даних для фонових завдань
 				bool flagOpenBackgroundTask = Конфа.Config.KernelBackgroundTask.OpenOnlyDataBase(
+						itemConfigurationParam.DataBaseServer,
+						itemConfigurationParam.DataBaseLogin,
+						itemConfigurationParam.DataBasePassword,
+						itemConfigurationParam.DataBasePort,
+						itemConfigurationParam.DataBaseBaseName, out exception);
+
+				if (exception != null)
+				{
+					MessageBox.Show(exception.Message);
+					return;
+				}
+
+				//Підключення до бази даних для паралельної роботи
+				bool flagOpenParalelWork = Конфа.Config.KernelParalelWork.OpenOnlyDataBase(
 						itemConfigurationParam.DataBaseServer,
 						itemConfigurationParam.DataBaseLogin,
 						itemConfigurationParam.DataBasePassword,

@@ -50,6 +50,7 @@ namespace StorageAndTrade
 
 		private object lockobject = new object();
 		private bool Cancel = false;
+		private bool CancelOk = false;
 		private Thread thread;
 
 		private void ApendLine(string head)
@@ -70,11 +71,13 @@ namespace StorageAndTrade
 			buttonCancel.Enabled = false;
 
 			Cancel = true;
+			CancelOk = false;
 		}
 
         private void buttonSpendAll_Click(object sender, EventArgs e)
         {
 			Cancel = false;
+			CancelOk = false;
 
 			buttonSpendAll.Enabled = false;
 			buttonCancel.Enabled = true;
@@ -108,6 +111,7 @@ namespace StorageAndTrade
 			}
 
 			ApendLine("Готово!");
+			CancelOk = true;
 
 			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = true;
 
@@ -156,6 +160,21 @@ namespace StorageAndTrade
         {
 
         }
+
+        private void FormService_FormClosing(object sender, FormClosingEventArgs e)
+        {
+			buttonCancel_Click(this, new EventArgs());
+
+			for (int i = 0; i < 5; i++)
+			{
+				if (!CancelOk)
+				{
+					Thread.Sleep(1000);
+				}
+				else
+					break;
+			}
+		}
     }
 }
 

@@ -203,7 +203,7 @@ ORDER BY Організація_Назва, ПартіяТоварівКомпо
             string[] columnsName;
             List<object[]> listRow;
 
-            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Config.KernelParalelWork.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
             Функції.DataToXML(xmlDoc, "ПартіїТоварів", columnsName, listRow);
 
@@ -402,7 +402,7 @@ ORDER BY period ASC, Організація_Назва,
             string[] columnsName;
             List<object[]> listRow;
 
-            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Config.KernelParalelWork.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
             Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Документи.xslt", false, "Партії товарів");
