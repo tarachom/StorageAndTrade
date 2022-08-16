@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 16.08.2022 09:49:45
+ * Дата конфігурації: 16.08.2022 21:01:05
  *
  */
 
@@ -8601,6 +8601,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Статус = "col_b5";
         public const string ФормаОплати = "col_b6";
         public const string Менеджер = "col_b7";
+        public const string Основа = "col_b8";
         public const string Коментар = "col_a2";
     }
 	
@@ -8608,7 +8609,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ЗамовленняПостачальнику_Objest : DocumentObject
     {
         public ЗамовленняПостачальнику_Objest() : base(Config.Kernel, "tab_a25", "ЗамовленняПостачальнику",
-             new string[] { "docname", "docnomer", "docdate", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_a1", "col_a3", "col_a4", "col_a5", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_a6", "col_b5", "col_b6", "col_b7", "col_a2" }) 
+             new string[] { "docname", "docnomer", "docdate", "col_k2", "col_k3", "col_k4", "col_k5", "col_k6", "col_k7", "col_a1", "col_a3", "col_a4", "col_a5", "col_a7", "col_a8", "col_a9", "col_b1", "col_b2", "col_b3", "col_b4", "col_a6", "col_b5", "col_b6", "col_b7", "col_b8", "col_a2" }) 
         {
             Назва = "";
             НомерДок = "";
@@ -8634,6 +8635,7 @@ namespace StorageAndTrade_1_0.Документи
             Статус = 0;
             ФормаОплати = 0;
             Менеджер = new Довідники.Користувачі_Pointer();
+            Основа = new UuidAndText();
             Коментар = "";
             
             //Табличні частини
@@ -8669,6 +8671,7 @@ namespace StorageAndTrade_1_0.Документи
                 Статус = (base.FieldValue["col_b5"] != DBNull.Value) ? (Перелічення.СтатусиЗамовленьПостачальникам)base.FieldValue["col_b5"] : 0;
                 ФормаОплати = (base.FieldValue["col_b6"] != DBNull.Value) ? (Перелічення.ФормаОплати)base.FieldValue["col_b6"] : 0;
                 Менеджер = new Довідники.Користувачі_Pointer(base.FieldValue["col_b7"]);
+                Основа = (base.FieldValue["col_b8"] != DBNull.Value) ? (UuidAndText)base.FieldValue["col_b8"] : new UuidAndText();
                 Коментар = base.FieldValue["col_a2"].ToString();
                 
                 BaseClear();
@@ -8705,6 +8708,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_b5"] = (int)Статус;
             base.FieldValue["col_b6"] = (int)ФормаОплати;
             base.FieldValue["col_b7"] = Менеджер.UnigueID.UGuid;
+            base.FieldValue["col_b8"] = Основа;
             base.FieldValue["col_a2"] = Коментар;
             
             BaseSave();
@@ -8750,6 +8754,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.Статус = Статус;
 			copy.ФормаОплати = ФормаОплати;
 			copy.Менеджер = Менеджер;
+			copy.Основа = Основа;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -8791,6 +8796,7 @@ namespace StorageAndTrade_1_0.Документи
         public Перелічення.СтатусиЗамовленьПостачальникам Статус { get; set; }
         public Перелічення.ФормаОплати ФормаОплати { get; set; }
         public Довідники.Користувачі_Pointer Менеджер { get; set; }
+        public UuidAndText Основа { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини
@@ -9030,6 +9036,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Менеджер = "col_d1";
         public const string СтаттяРухуКоштів = "col_d2";
         public const string Каса = "col_d3";
+        public const string Основа = "col_a1";
         public const string Коментар = "col_b1";
     }
 	
@@ -9037,7 +9044,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоступленняТоварівТаПослуг_Objest : DocumentObject
     {
         public ПоступленняТоварівТаПослуг_Objest() : base(Config.Kernel, "tab_a32", "ПоступленняТоварівТаПослуг",
-             new string[] { "docname", "docnomer", "docdate", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1", "col_d2", "col_d3", "col_b1" }) 
+             new string[] { "docname", "docnomer", "docdate", "col_a3", "col_a4", "col_a5", "col_a6", "col_a7", "col_a8", "col_a9", "col_b2", "col_b3", "col_b4", "col_b5", "col_b6", "col_b7", "col_b8", "col_b9", "col_c1", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c8", "col_c9", "col_d1", "col_d2", "col_d3", "col_a1", "col_b1" }) 
         {
             Назва = "";
             НомерДок = "";
@@ -9069,6 +9076,7 @@ namespace StorageAndTrade_1_0.Документи
             Менеджер = new Довідники.Користувачі_Pointer();
             СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
             Каса = new Довідники.Каси_Pointer();
+            Основа = new UuidAndText();
             Коментар = "";
             
             //Табличні частини
@@ -9110,6 +9118,7 @@ namespace StorageAndTrade_1_0.Документи
                 Менеджер = new Довідники.Користувачі_Pointer(base.FieldValue["col_d1"]);
                 СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_d2"]);
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_d3"]);
+                Основа = (base.FieldValue["col_a1"] != DBNull.Value) ? (UuidAndText)base.FieldValue["col_a1"] : new UuidAndText();
                 Коментар = base.FieldValue["col_b1"].ToString();
                 
                 BaseClear();
@@ -9152,6 +9161,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_d1"] = Менеджер.UnigueID.UGuid;
             base.FieldValue["col_d2"] = СтаттяРухуКоштів.UnigueID.UGuid;
             base.FieldValue["col_d3"] = Каса.UnigueID.UGuid;
+            base.FieldValue["col_a1"] = Основа;
             base.FieldValue["col_b1"] = Коментар;
             
             BaseSave();
@@ -9203,6 +9213,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.Менеджер = Менеджер;
 			copy.СтаттяРухуКоштів = СтаттяРухуКоштів;
 			copy.Каса = Каса;
+			copy.Основа = Основа;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -9250,6 +9261,7 @@ namespace StorageAndTrade_1_0.Документи
         public Довідники.Користувачі_Pointer Менеджер { get; set; }
         public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
+        public UuidAndText Основа { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини
@@ -9955,7 +9967,7 @@ namespace StorageAndTrade_1_0.Документи
             ГосподарськаОперація = 0;
             Каса = new Довідники.Каси_Pointer();
             Договір = new Довідники.ДоговориКонтрагентів_Pointer();
-            Основа = "";
+            Основа = new UuidAndText();
             Статус = 0;
             Автор = new Довідники.Користувачі_Pointer();
             СумаПередоплати = 0;
@@ -9995,7 +10007,7 @@ namespace StorageAndTrade_1_0.Документи
                 ГосподарськаОперація = (base.FieldValue["col_b4"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_b4"] : 0;
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_b5"]);
                 Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_b6"]);
-                Основа = base.FieldValue["col_b7"].ToString();
+                Основа = (base.FieldValue["col_b7"] != DBNull.Value) ? (UuidAndText)base.FieldValue["col_b7"] : new UuidAndText();
                 Статус = (base.FieldValue["col_b8"] != DBNull.Value) ? (Перелічення.СтатусиРеалізаціїТоварівТаПослуг)base.FieldValue["col_b8"] : 0;
                 Автор = new Довідники.Користувачі_Pointer(base.FieldValue["col_b9"]);
                 СумаПередоплати = (base.FieldValue["col_c1"] != DBNull.Value) ? (decimal)base.FieldValue["col_c1"] : 0;
@@ -10132,7 +10144,7 @@ namespace StorageAndTrade_1_0.Документи
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
         public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
-        public string Основа { get; set; }
+        public UuidAndText Основа { get; set; }
         public Перелічення.СтатусиРеалізаціїТоварівТаПослуг Статус { get; set; }
         public Довідники.Користувачі_Pointer Автор { get; set; }
         public decimal СумаПередоплати { get; set; }
@@ -10673,7 +10685,7 @@ namespace StorageAndTrade_1_0.Документи
             Каса = new Довідники.Каси_Pointer();
             СумаДокументу = 0;
             ГосподарськаОперація = 0;
-            Основа = "";
+            Основа = new UuidAndText();
             Контрагент = new Довідники.Контрагенти_Pointer();
             Договір = new Довідники.ДоговориКонтрагентів_Pointer();
             БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer();
@@ -10698,7 +10710,7 @@ namespace StorageAndTrade_1_0.Документи
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_h9"]);
                 СумаДокументу = (base.FieldValue["col_i1"] != DBNull.Value) ? (decimal)base.FieldValue["col_i1"] : 0;
                 ГосподарськаОперація = (base.FieldValue["col_i2"] != DBNull.Value) ? (Перелічення.ГосподарськіОперації)base.FieldValue["col_i2"] : 0;
-                Основа = base.FieldValue["col_i3"].ToString();
+                Основа = (base.FieldValue["col_i3"] != DBNull.Value) ? (UuidAndText)base.FieldValue["col_i3"] : new UuidAndText();
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_i4"]);
                 Договір = new Довідники.ДоговориКонтрагентів_Pointer(base.FieldValue["col_a6"]);
                 БанківськийРахунок = new Довідники.БанківськіРахункиОрганізацій_Pointer(base.FieldValue["col_i5"]);
@@ -10790,7 +10802,7 @@ namespace StorageAndTrade_1_0.Документи
         public Довідники.Каси_Pointer Каса { get; set; }
         public decimal СумаДокументу { get; set; }
         public Перелічення.ГосподарськіОперації ГосподарськаОперація { get; set; }
-        public string Основа { get; set; }
+        public UuidAndText Основа { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
         public Довідники.ДоговориКонтрагентів_Pointer Договір { get; set; }
         public Довідники.БанківськіРахункиОрганізацій_Pointer БанківськийРахунок { get; set; }
@@ -10990,6 +11002,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Валюта = "col_k9";
         public const string СтаттяРухуКоштів = "col_l2";
         public const string КасаОтримувач = "col_k6";
+        public const string Основа = "col_a1";
         public const string Коментар = "col_l1";
     }
 	
@@ -10997,7 +11010,7 @@ namespace StorageAndTrade_1_0.Документи
     public class РозхіднийКасовийОрдер_Objest : DocumentObject
     {
         public РозхіднийКасовийОрдер_Objest() : base(Config.Kernel, "tab_a48", "РозхіднийКасовийОрдер",
-             new string[] { "docname", "docnomer", "docdate", "col_k2", "col_k3", "col_a3", "col_k5", "col_k4", "col_k7", "col_a4", "col_k8", "col_k9", "col_l2", "col_k6", "col_l1" }) 
+             new string[] { "docname", "docnomer", "docdate", "col_k2", "col_k3", "col_a3", "col_k5", "col_k4", "col_k7", "col_a4", "col_k8", "col_k9", "col_l2", "col_k6", "col_a1", "col_l1" }) 
         {
             Назва = "";
             НомерДок = "";
@@ -11013,6 +11026,7 @@ namespace StorageAndTrade_1_0.Документи
             Валюта = new Довідники.Валюти_Pointer();
             СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer();
             КасаОтримувач = new Довідники.Каси_Pointer();
+            Основа = new UuidAndText();
             Коментар = "";
             
             //Табличні частини
@@ -11038,6 +11052,7 @@ namespace StorageAndTrade_1_0.Документи
                 Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_k9"]);
                 СтаттяРухуКоштів = new Довідники.СтаттяРухуКоштів_Pointer(base.FieldValue["col_l2"]);
                 КасаОтримувач = new Довідники.Каси_Pointer(base.FieldValue["col_k6"]);
+                Основа = (base.FieldValue["col_a1"] != DBNull.Value) ? (UuidAndText)base.FieldValue["col_a1"] : new UuidAndText();
                 Коментар = base.FieldValue["col_l1"].ToString();
                 
                 BaseClear();
@@ -11064,6 +11079,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_k9"] = Валюта.UnigueID.UGuid;
             base.FieldValue["col_l2"] = СтаттяРухуКоштів.UnigueID.UGuid;
             base.FieldValue["col_k6"] = КасаОтримувач.UnigueID.UGuid;
+            base.FieldValue["col_a1"] = Основа;
             base.FieldValue["col_l1"] = Коментар;
             
             BaseSave();
@@ -11099,6 +11115,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.Валюта = Валюта;
 			copy.СтаттяРухуКоштів = СтаттяРухуКоштів;
 			copy.КасаОтримувач = КасаОтримувач;
+			copy.Основа = Основа;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -11130,6 +11147,7 @@ namespace StorageAndTrade_1_0.Документи
         public Довідники.Валюти_Pointer Валюта { get; set; }
         public Довідники.СтаттяРухуКоштів_Pointer СтаттяРухуКоштів { get; set; }
         public Довідники.Каси_Pointer КасаОтримувач { get; set; }
+        public UuidAndText Основа { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини
@@ -11696,6 +11714,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string ЧасДоставкиЗ = "col_d6";
         public const string ЧасДоставкиДо = "col_d7";
         public const string Каса = "col_a1";
+        public const string Основа = "col_a2";
         public const string Коментар = "col_c8";
     }
 	
@@ -11703,7 +11722,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоверненняТоварівПостачальнику_Objest : DocumentObject
     {
         public ПоверненняТоварівПостачальнику_Objest() : base(Config.Kernel, "tab_a51", "ПоверненняТоварівПостачальнику",
-             new string[] { "docname", "docnomer", "docdate", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c9", "col_d1", "col_d2", "col_d3", "col_d4", "col_d5", "col_d6", "col_d7", "col_a1", "col_c8" }) 
+             new string[] { "docname", "docnomer", "docdate", "col_c2", "col_c3", "col_c4", "col_c5", "col_c6", "col_c7", "col_c9", "col_d1", "col_d2", "col_d3", "col_d4", "col_d5", "col_d6", "col_d7", "col_a1", "col_a2", "col_c8" }) 
         {
             Назва = "";
             НомерДок = "";
@@ -11723,6 +11742,7 @@ namespace StorageAndTrade_1_0.Документи
             ЧасДоставкиЗ = DateTime.MinValue.TimeOfDay;
             ЧасДоставкиДо = DateTime.MinValue.TimeOfDay;
             Каса = new Довідники.Каси_Pointer();
+            Основа = new UuidAndText();
             Коментар = "";
             
             //Табличні частини
@@ -11752,6 +11772,7 @@ namespace StorageAndTrade_1_0.Документи
                 ЧасДоставкиЗ = (base.FieldValue["col_d6"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_d6"].ToString()) : DateTime.MinValue.TimeOfDay;
                 ЧасДоставкиДо = (base.FieldValue["col_d7"] != DBNull.Value) ? TimeSpan.Parse(base.FieldValue["col_d7"].ToString()) : DateTime.MinValue.TimeOfDay;
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_a1"]);
+                Основа = (base.FieldValue["col_a2"] != DBNull.Value) ? (UuidAndText)base.FieldValue["col_a2"] : new UuidAndText();
                 Коментар = base.FieldValue["col_c8"].ToString();
                 
                 BaseClear();
@@ -11782,6 +11803,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_d6"] = ЧасДоставкиЗ;
             base.FieldValue["col_d7"] = ЧасДоставкиДо;
             base.FieldValue["col_a1"] = Каса.UnigueID.UGuid;
+            base.FieldValue["col_a2"] = Основа;
             base.FieldValue["col_c8"] = Коментар;
             
             BaseSave();
@@ -11821,6 +11843,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ЧасДоставкиЗ = ЧасДоставкиЗ;
 			copy.ЧасДоставкиДо = ЧасДоставкиДо;
 			copy.Каса = Каса;
+			copy.Основа = Основа;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -11856,6 +11879,7 @@ namespace StorageAndTrade_1_0.Документи
         public TimeSpan ЧасДоставкиЗ { get; set; }
         public TimeSpan ЧасДоставкиДо { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
+        public UuidAndText Основа { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини
@@ -12070,6 +12094,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string ПричинаПовернення = "col_g1";
         public const string Контрагент = "col_g2";
         public const string Каса = "col_a1";
+        public const string Основа = "col_a2";
         public const string Коментар = "col_f6";
     }
 	
@@ -12077,7 +12102,7 @@ namespace StorageAndTrade_1_0.Документи
     public class ПоверненняТоварівВідКлієнта_Objest : DocumentObject
     {
         public ПоверненняТоварівВідКлієнта_Objest() : base(Config.Kernel, "tab_a53", "ПоверненняТоварівВідКлієнта",
-             new string[] { "docname", "docnomer", "docdate", "col_e8", "col_e9", "col_f1", "col_f2", "col_f3", "col_f5", "col_f7", "col_f8", "col_f9", "col_g1", "col_g2", "col_a1", "col_f6" }) 
+             new string[] { "docname", "docnomer", "docdate", "col_e8", "col_e9", "col_f1", "col_f2", "col_f3", "col_f5", "col_f7", "col_f8", "col_f9", "col_g1", "col_g2", "col_a1", "col_a2", "col_f6" }) 
         {
             Назва = "";
             НомерДок = "";
@@ -12094,6 +12119,7 @@ namespace StorageAndTrade_1_0.Документи
             ПричинаПовернення = "";
             Контрагент = new Довідники.Контрагенти_Pointer();
             Каса = new Довідники.Каси_Pointer();
+            Основа = new UuidAndText();
             Коментар = "";
             
             //Табличні частини
@@ -12120,6 +12146,7 @@ namespace StorageAndTrade_1_0.Документи
                 ПричинаПовернення = base.FieldValue["col_g1"].ToString();
                 Контрагент = new Довідники.Контрагенти_Pointer(base.FieldValue["col_g2"]);
                 Каса = new Довідники.Каси_Pointer(base.FieldValue["col_a1"]);
+                Основа = (base.FieldValue["col_a2"] != DBNull.Value) ? (UuidAndText)base.FieldValue["col_a2"] : new UuidAndText();
                 Коментар = base.FieldValue["col_f6"].ToString();
                 
                 BaseClear();
@@ -12147,6 +12174,7 @@ namespace StorageAndTrade_1_0.Документи
             base.FieldValue["col_g1"] = ПричинаПовернення;
             base.FieldValue["col_g2"] = Контрагент.UnigueID.UGuid;
             base.FieldValue["col_a1"] = Каса.UnigueID.UGuid;
+            base.FieldValue["col_a2"] = Основа;
             base.FieldValue["col_f6"] = Коментар;
             
             BaseSave();
@@ -12183,6 +12211,7 @@ namespace StorageAndTrade_1_0.Документи
 			copy.ПричинаПовернення = ПричинаПовернення;
 			copy.Контрагент = Контрагент;
 			copy.Каса = Каса;
+			copy.Основа = Основа;
 			copy.Коментар = Коментар;
 			
 			return copy;
@@ -12215,6 +12244,7 @@ namespace StorageAndTrade_1_0.Документи
         public string ПричинаПовернення { get; set; }
         public Довідники.Контрагенти_Pointer Контрагент { get; set; }
         public Довідники.Каси_Pointer Каса { get; set; }
+        public UuidAndText Основа { get; set; }
         public string Коментар { get; set; }
         
         //Табличні частини

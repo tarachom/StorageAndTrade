@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>16.08.2022 09:49:45</DateTimeSave>
+  <DateTimeSave>16.08.2022 21:01:05</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -4709,6 +4709,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
+          <Name>Основа</Name>
+          <NameInTable>col_b8</NameInTable>
+          <Type>composite_pointer</Type>
+          <Desc>Документ основа</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
           <Name>Коментар</Name>
           <NameInTable>col_a2</NameInTable>
           <Type>string</Type>
@@ -5133,6 +5141,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Pointer>Довідники.Каси</Pointer>
           <Desc>
           </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Основа</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>composite_pointer</Type>
+          <Desc>Документ основа</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
@@ -5849,9 +5865,8 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Field>
           <Name>Основа</Name>
           <NameInTable>col_b7</NameInTable>
-          <Type>string</Type>
-          <Desc>
-          </Desc>
+          <Type>composite_pointer</Type>
+          <Desc>Документ основа</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
@@ -6326,7 +6341,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Field>
           <Name>Основа</Name>
           <NameInTable>col_i3</NameInTable>
-          <Type>string</Type>
+          <Type>composite_pointer</Type>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -6617,6 +6632,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Pointer>Довідники.Каси</Pointer>
           <Desc>
           </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Основа</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>composite_pointer</Type>
+          <Desc>Документ основа</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
@@ -7157,6 +7180,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
+          <Name>Основа</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>composite_pointer</Type>
+          <Desc>Документ основа</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
           <Name>Коментар</Name>
           <NameInTable>col_c8</NameInTable>
           <Type>string</Type>
@@ -7425,6 +7456,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Pointer>Довідники.Каси</Pointer>
           <Desc>
           </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Основа</Name>
+          <NameInTable>col_a2</NameInTable>
+          <Type>composite_pointer</Type>
+          <Desc>Документ основа</Desc>
           <IsPresentation>0</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
