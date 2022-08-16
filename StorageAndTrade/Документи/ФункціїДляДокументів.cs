@@ -312,6 +312,18 @@ ORDER BY Назва
 LIMIT 10
 ";
 
+        public static readonly string БанківськіРахункиОрганізацій = $@"
+SELECT 
+    uid,
+    {Довідники.БанківськіРахункиОрганізацій_Const.Назва} AS Назва
+FROM
+    {Довідники.БанківськіРахункиОрганізацій_Const.TABLE}
+WHERE
+    LOWER({Довідники.БанківськіРахункиОрганізацій_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
         public static readonly string Номенклатура_Папки = $@"
 SELECT 
     uid,
@@ -368,6 +380,18 @@ FROM
     {Довідники.СеріїНоменклатури_Const.TABLE}
 WHERE
     LOWER({Довідники.СеріїНоменклатури_Const.Номер}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+
+        public static readonly string ВидиЦін = $@"
+SELECT 
+    uid,
+    {Довідники.ВидиЦін_Const.Назва} AS Назва
+FROM
+    {Довідники.ВидиЦін_Const.TABLE}
+WHERE
+    LOWER({Довідники.ВидиЦін_Const.Назва}) LIKE @like_param
 ORDER BY Назва
 LIMIT 10
 ";

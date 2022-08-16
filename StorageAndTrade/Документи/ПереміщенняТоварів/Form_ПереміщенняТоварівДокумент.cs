@@ -76,9 +76,9 @@ namespace StorageAndTrade
 
 			comboBox_ГосподарськаОперація.SelectedIndex = 0;
 
-			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
-			directoryControl_СкладВідправник.Init(new Form_Склади(), new Довідники.Склади_Pointer());
-			directoryControl_СкладОтримувач.Init(new Form_Склади(), new Довідники.Склади_Pointer());
+			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer(), ПошуковіЗапити.Організації);
+			directoryControl_СкладВідправник.Init(new Form_Склади(), new Довідники.Склади_Pointer(), ПошуковіЗапити.Склади);
+			directoryControl_СкладОтримувач.Init(new Form_Склади(), new Довідники.Склади_Pointer(), ПошуковіЗапити.Склади);
 			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)

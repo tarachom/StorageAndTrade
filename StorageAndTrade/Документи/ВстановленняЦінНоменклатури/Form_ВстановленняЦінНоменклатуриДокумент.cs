@@ -66,9 +66,9 @@ namespace StorageAndTrade
 
         private void Form_ВстановленняЦінНоменклатуриДокумент_Load(object sender, EventArgs e)
         {
-			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
-			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
-			directoryControl_ВидЦіни.Init(new Form_ВидиЦін(), new Довідники.ВидиЦін_Pointer());
+			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer(), ПошуковіЗапити.Організації);
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer(), ПошуковіЗапити.Валюти);
+			directoryControl_ВидЦіни.Init(new Form_ВидиЦін(), new Довідники.ВидиЦін_Pointer(), ПошуковіЗапити.ВидиЦін);
 
 			if (IsNew.HasValue)
 			{

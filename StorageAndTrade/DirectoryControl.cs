@@ -62,14 +62,18 @@ namespace StorageAndTrade
 		/// </summary>
 		/// <param name="selectForm">Форма</param>
 		/// <param name="directoryPointerItem">Вказівник</param>
-		public void Init(Form selectForm, DirectoryPointer directoryPointerItem, Action<DirectoryPointer> bind = null)
+		public void Init(Form selectForm, DirectoryPointer directoryPointerItem, string queryFind = "")
 		{
 			SelectForm = selectForm;
 			DirectoryPointerItem = directoryPointerItem;
-			Bind = bind;
+			QueryFind = queryFind;
 		}
 
 		private string mQueryFind;
+
+		/// <summary>
+		/// Пошуковий запит
+		/// </summary>
 		public string QueryFind 
 		{
 			get { return mQueryFind; }

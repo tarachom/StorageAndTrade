@@ -81,7 +81,7 @@ namespace StorageAndTrade
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["ФормаОплати"].Fields.Values)
 				comboBox_ФормаОплати.Items.Add((Перелічення.ФормаОплати)field.Value);
 
-			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer());
+			directoryControl_Контрагент.Init(new Form_Контрагенти(), new Довідники.Контрагенти_Pointer(), ПошуковіЗапити.Контрагенти);
 			directoryControl_Контрагент.AfterSelectFunc = () =>
 			{
 				if (directoryControl_Договір.DirectoryPointerItem.IsEmpty())
@@ -97,10 +97,10 @@ namespace StorageAndTrade
 
 				return true;
 			};
-			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
-			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
-			directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer());
-			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer());
+			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer(), ПошуковіЗапити.Організації);
+			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer(), ПошуковіЗапити.Валюти);
+			directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer(), ПошуковіЗапити.Склади);
+			directoryControl_Каса.Init(new Form_Каси(), new Довідники.Каси_Pointer(), ПошуковіЗапити.Каси);
 			directoryControl_Договір.Init(new Form_ДоговориКонтрагентів(), new Довідники.ДоговориКонтрагентів_Pointer());
 			directoryControl_Договір.BeforeClickOpenFunc = () => 
 			{
@@ -109,7 +109,6 @@ namespace StorageAndTrade
 
 				return true;
 			};
-
 			directoryControl_Підрозділ.Init(new Form_СтруктураПідприємства(), new Довідники.СтруктураПідприємства_Pointer());
 
 			if (IsNew.HasValue)
@@ -129,6 +128,10 @@ namespace StorageAndTrade
 					directoryControl_Склад.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОснонийСклад_Const;
 					directoryControl_Каса.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнаКаса_Const;
 					directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
+
+					//Основний договір
+					if (directoryControl_Контрагент.AfterSelectFunc != null)
+						directoryControl_Контрагент.AfterSelectFunc.Invoke();
 				}
 				else
 				{
