@@ -62,9 +62,8 @@ namespace StorageAndTrade
             // 
             // buttonCancel
             // 
-            //this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.buttonCancel.Enabled = false;
-            this.buttonCancel.Location = new System.Drawing.Point(195, 3);
+            this.buttonCancel.Location = new System.Drawing.Point(313, 3);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(97, 27);
             this.buttonCancel.TabIndex = 1;
@@ -91,7 +90,6 @@ namespace StorageAndTrade
             this.richTextBoxInfo.Location = new System.Drawing.Point(0, 0);
             this.richTextBoxInfo.Name = "richTextBoxInfo";
             this.richTextBoxInfo.ReadOnly = true;
-            this.richTextBoxInfo.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
             this.richTextBoxInfo.Size = new System.Drawing.Size(928, 477);
             this.richTextBoxInfo.TabIndex = 1;
             this.richTextBoxInfo.Text = "";
