@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 17.08.2022 15:25:47
+ * Дата конфігурації: 17.08.2022 15:46:37
  *
  */
 
@@ -16784,8 +16784,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class РозрахункиЗКлієнтами_Const
     {
         public const string TABLE = "tab_a56";
-		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a34", "tab_a36", "tab_a44", "tab_a48", "tab_a53", "tab_a81" };
-		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ПоверненняТоварівВідКлієнта", "АктВиконанихРобіт" };
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a36", "tab_a44", "tab_a48", "tab_a53", "tab_a81" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "РеалізаціяТоварівТаПослуг", "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ПоверненняТоварівВідКлієнта", "АктВиконанихРобіт" };
         
         public const string Валюта = "col_a2";
         public const string Контрагент = "col_a5";
@@ -16986,8 +16986,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ВільніЗалишки_Const
     {
         public const string TABLE = "tab_a58";
-		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a34", "tab_a36", "tab_a31", "tab_a51", "tab_a53", "tab_b07", "tab_b10" };
-		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ПереміщенняТоварів", "ПоверненняТоварівПостачальнику", "ПоверненняТоварівВідКлієнта", "ВнутрішнєСпоживанняТоварів", "РахунокФактура" };
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a34", "tab_a36", "tab_a31", "tab_a51", "tab_a53", "tab_a83", "tab_b07", "tab_b10" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "ЗамовленняКлієнта", "РеалізаціяТоварівТаПослуг", "ПереміщенняТоварів", "ПоверненняТоварівПостачальнику", "ПоверненняТоварівВідКлієнта", "ВведенняЗалишків", "ВнутрішнєСпоживанняТоварів", "РахунокФактура" };
         
         public const string Номенклатура = "col_a5";
         public const string ХарактеристикаНоменклатури = "col_a6";
@@ -17193,8 +17193,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class РозрахункиЗПостачальниками_Const
     {
         public const string TABLE = "tab_a61";
-		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a25", "tab_a32", "tab_a44", "tab_a48", "tab_a51" };
-		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняПостачальнику", "ПоступленняТоварівТаПослуг", "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ПоверненняТоварівПостачальнику" };
+		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a32", "tab_a44", "tab_a48", "tab_a51" };
+		public static readonly string[] AllowDocumentSpendType = new string[] { "ПоступленняТоварівТаПослуг", "ПрихіднийКасовийОрдер", "РозхіднийКасовийОрдер", "ПоверненняТоварівПостачальнику" };
         
         public const string Контрагент = "col_a6";
         public const string Валюта = "col_a7";
@@ -17284,8 +17284,8 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public static class ТовариДоПоступлення_Const
     {
         public const string TABLE = "tab_a62";
-		public static readonly string[] AllowDocumentSpendTable = new string[] { "tab_a25" };
-		public static readonly string[] AllowDocumentSpendType = new string[] { "ЗамовленняПостачальнику" };
+		public static readonly string[] AllowDocumentSpendTable = new string[] {  };
+		public static readonly string[] AllowDocumentSpendType = new string[] {  };
         
         public const string Номенклатура = "col_b2";
         public const string ХарактеристикаНоменклатури = "col_b3";
