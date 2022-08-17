@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 17.08.2022 14:38:33
+ * Дата конфігурації: 17.08.2022 15:25:47
  *
  */
 
@@ -543,7 +543,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart : ConstantsTablePart
         {
             public ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart() : base(Config.Kernel, "tab_a96",
-                 new string[] { "col_a1", "col_a2", "col_a3" }) 
+                 new string[] { "col_a1", "col_a2", "col_a3", "col_a4" }) 
             {
                 Records = new List<Record>();
             }
@@ -553,6 +553,7 @@ namespace StorageAndTrade_1_0.Константи
             public const string Регістр = "col_a1";
             public const string Місяць = "col_a2";
             public const string Актуально = "col_a3";
+            public const string ДатаОстанньогоОбчислення = "col_a4";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -568,6 +569,7 @@ namespace StorageAndTrade_1_0.Константи
                     record.Регістр = fieldValue["col_a1"].ToString();
                     record.Місяць = (fieldValue["col_a2"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a2"].ToString()) : DateTime.MinValue;
                     record.Актуально = (fieldValue["col_a3"] != DBNull.Value) ? bool.Parse(fieldValue["col_a3"].ToString()) : false;
+                    record.ДатаОстанньогоОбчислення = (fieldValue["col_a4"] != DBNull.Value) ? DateTime.Parse(fieldValue["col_a4"].ToString()) : DateTime.MinValue;
                     
                     Records.Add(record);
                 }
@@ -589,6 +591,7 @@ namespace StorageAndTrade_1_0.Константи
                     fieldValue.Add("col_a1", record.Регістр);
                     fieldValue.Add("col_a2", record.Місяць);
                     fieldValue.Add("col_a3", record.Актуально);
+                    fieldValue.Add("col_a4", record.ДатаОстанньогоОбчислення);
                     
                     base.BaseSave(record.UID, fieldValue);
                 }
@@ -608,11 +611,13 @@ namespace StorageAndTrade_1_0.Константи
                     Регістр = "";
                     Місяць = DateTime.MinValue;
                     Актуально = false;
+                    ДатаОстанньогоОбчислення = DateTime.MinValue;
                     
                 }
                 public string Регістр { get; set; }
                 public DateTime Місяць { get; set; }
                 public bool Актуально { get; set; }
+                public DateTime ДатаОстанньогоОбчислення { get; set; }
                 
             }            
         }

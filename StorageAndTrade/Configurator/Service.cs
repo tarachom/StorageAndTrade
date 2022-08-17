@@ -1424,7 +1424,8 @@ HAVING
 
                 string queryUpdate = $@"
 UPDATE {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.TABLE}
-    SET {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Актуально} = true
+    SET {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Актуально} = true,
+        {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.ДатаОстанньогоОбчислення} = current_timestamp
 WHERE uid = '{uid}'
 ";
                 Config.KernelBackgroundTask.DataBase.ExecuteSQL(queryUpdate);

@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>17.08.2022 14:38:33</DateTimeSave>
+  <DateTimeSave>17.08.2022 15:25:47</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -305,6 +305,13 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <NameInTable>col_a3</NameInTable>
                   <Type>boolean</Type>
                   <Desc>Залишки обчислені та актуальні</Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>ДатаОстанньогоОбчислення</Name>
+                  <NameInTable>col_a4</NameInTable>
+                  <Type>datetime</Type>
+                  <Desc>Суто інформативне поле</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
               </Fields>
