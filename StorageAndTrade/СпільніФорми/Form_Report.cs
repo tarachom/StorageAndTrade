@@ -53,7 +53,46 @@ namespace StorageAndTrade
         {
             geckoWebBrowser.Navigate(HtmlDocumentPath);
             geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
+
+            geckoWebBrowser.Navigating += GeckoWebBrowser_Navigating;
+
+            geckoWebBrowser.Navigated += GeckoWebBrowser_Navigated;
+
+            geckoWebBrowser.ReadyStateChange += GeckoWebBrowser_ReadyStateChange;
+
+            geckoWebBrowser.RequestProgressChanged += GeckoWebBrowser_RequestProgressChanged;
+
+            geckoWebBrowser.DocumentCompleted += GeckoWebBrowser_DocumentCompleted;
         }
 
+        private void GeckoWebBrowser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
+        {
+            Console.WriteLine("DocumentCompleted " + e.IsTopLevel);
+            geckoWebBrowser.SaveDocument(@"E:\test.html");
+        }
+
+        private void GeckoWebBrowser_RequestProgressChanged(object sender, Gecko.GeckoRequestProgressEventArgs e)
+        {
+            Console.WriteLine(e.CurrentProgress); 
+        }
+
+        private void GeckoWebBrowser_ReadyStateChange(object sender, Gecko.DomEventArgs e)
+        {
+            
+        }
+
+        private void GeckoWebBrowser_Navigated(object sender, Gecko.GeckoNavigatedEventArgs e)
+        {
+            Console.WriteLine(1);
+            Console.WriteLine(e.Uri);
+            Console.WriteLine(e.Response.HttpResponseStatus);
+        }
+
+        private void GeckoWebBrowser_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
+        {
+            Console.WriteLine(2);
+            Console.WriteLine(e.Uri);
+            //geckoWebBrowser.SaveDocument(@"E:\test.html");
+        }
     }
 }

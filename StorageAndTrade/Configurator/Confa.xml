@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>16.08.2022 21:01:05</DateTimeSave>
+  <DateTimeSave>17.08.2022 09:18:50</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1467,6 +1467,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <IsIndex>0</IsIndex>
                 </Field>
                 <Field>
+                  <Name>Склад</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Склади</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
                   <Name>Кількість</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>numeric</Type>
@@ -1539,6 +1548,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <NameInTable>col_a1</NameInTable>
                   <Type>pointer</Type>
                   <Pointer>Довідники.СеріїНоменклатури</Pointer>
+                  <Desc>
+                  </Desc>
+                  <IsIndex>0</IsIndex>
+                </Field>
+                <Field>
+                  <Name>Склад</Name>
+                  <NameInTable>col_a2</NameInTable>
+                  <Type>pointer</Type>
+                  <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
                   <IsIndex>0</IsIndex>
@@ -3888,7 +3906,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
     <Directory>
       <Name>ПартіяТоварівКомпозит</Name>
       <Table>tab_b06</Table>
-      <Desc>Композитний тип для партії.</Desc>
+      <Desc>Композитний тип для регістру ПартіїТоварів</Desc>
       <Fields>
         <Field>
           <Name>Назва</Name>
@@ -3941,6 +3959,307 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <NameInTable>col_a5</NameInTable>
           <Type>pointer</Type>
           <Pointer>Документи.ВведенняЗалишків</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+    </Directory>
+    <Directory>
+      <Name>ВидиЗапасів</Name>
+      <Table>tab_b13</Table>
+      <Desc>
+      </Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a5</NameInTable>
+          <Type>string</Type>
+          <Desc>Назва</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Організація</Name>
+          <NameInTable>col_b3</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Організації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ТипЗапасів</Name>
+          <NameInTable>col_a7</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ТипЗапасів</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Валюта</Name>
+          <NameInTable>col_a9</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Валюти</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Контрагент</Name>
+          <NameInTable>col_b1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Контрагенти</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Договір</Name>
+          <NameInTable>col_b2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+    </Directory>
+    <Directory>
+      <Name>ПродажіДокументКомпозит</Name>
+      <Table>tab_b14</Table>
+      <Desc>Композитний тип для регістру ДоходиТаСобівартістьПродажів</Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_b4</NameInTable>
+          <Type>string</Type>
+          <Desc>Назва</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ТипДокументу</Name>
+          <NameInTable>col_b6</NameInTable>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ТипДокументуПродажіДокументКомпозит</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ДокументКлюч</Name>
+          <NameInTable>col_b7</NameInTable>
+          <Type>any_pointer</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ЗамовленняКлієнта</Name>
+          <NameInTable>col_b8</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Документи.ЗамовленняКлієнта</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>АктВиконанихРобіт</Name>
+          <NameInTable>col_b9</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Документи.АктВиконанихРобіт</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>РеалізаціяТоварівТаПослуг</Name>
+          <NameInTable>col_c1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Документи.РеалізаціяТоварівТаПослуг</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+    </Directory>
+    <Directory>
+      <Name>АналітикаНоменклатуриКомпозит</Name>
+      <Table>tab_b15</Table>
+      <Desc>Композитний тип для регістру ДоходиТаСобівартістьПродажів</Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>string</Type>
+          <Desc>Назва</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Номенклатура</Name>
+          <NameInTable>col_a4</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Номенклатура</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>ХарактеристикаНоменклатури</Name>
+          <NameInTable>col_a5</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Серія</Name>
+          <NameInTable>col_a6</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.СеріїНоменклатури</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Склад</Name>
+          <NameInTable>col_a7</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Склади</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+    </Directory>
+    <Directory>
+      <Name>АналітикаКонтрагентівКомпозит</Name>
+      <Table>tab_b16</Table>
+      <Desc>Композитний тип для регістру ДоходиТаСобівартістьПродажів</Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_a8</NameInTable>
+          <Type>string</Type>
+          <Desc>Назва</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Організація</Name>
+          <NameInTable>col_b3</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Організації</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Контрагент</Name>
+          <NameInTable>col_b1</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Контрагенти</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Договір</Name>
+          <NameInTable>col_b2</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+      </Fields>
+      <TabularParts />
+      <TriggerFunctions>
+        <BeforeSave>
+        </BeforeSave>
+        <AfterSave>
+        </AfterSave>
+        <BeforeDelete>
+        </BeforeDelete>
+      </TriggerFunctions>
+    </Directory>
+    <Directory>
+      <Name>АналітикаПартійКомпозит</Name>
+      <Table>tab_b18</Table>
+      <Desc>
+      </Desc>
+      <Fields>
+        <Field>
+          <Name>Назва</Name>
+          <NameInTable>col_b4</NameInTable>
+          <Type>string</Type>
+          <Desc>Назва</Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
+          <Name>Контрагент</Name>
+          <NameInTable>col_b6</NameInTable>
+          <Type>pointer</Type>
+          <Pointer>Довідники.Контрагенти</Pointer>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
@@ -4465,6 +4784,51 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Field>
           <Name>ВведенняЗалишків</Name>
           <Value>2</Value>
+          <Desc>
+          </Desc>
+        </Field>
+      </Fields>
+    </Enum>
+    <Enum>
+      <Name>ТипЗапасів</Name>
+      <Desc>
+      </Desc>
+      <SerialNumber>2</SerialNumber>
+      <Fields>
+        <Field>
+          <Name>Товар</Name>
+          <Value>1</Value>
+          <Desc>Товар</Desc>
+        </Field>
+        <Field>
+          <Name>Послуга</Name>
+          <Value>2</Value>
+          <Desc>
+          </Desc>
+        </Field>
+      </Fields>
+    </Enum>
+    <Enum>
+      <Name>ТипДокументуПродажіДокументКомпозит</Name>
+      <Desc>
+      </Desc>
+      <SerialNumber>7</SerialNumber>
+      <Fields>
+        <Field>
+          <Name>ЗамовленняКлієнта</Name>
+          <Value>5</Value>
+          <Desc>
+          </Desc>
+        </Field>
+        <Field>
+          <Name>АктВиконанихРобіт</Name>
+          <Value>6</Value>
+          <Desc>
+          </Desc>
+        </Field>
+        <Field>
+          <Name>РеалізаціяТоварівТаПослуг</Name>
+          <Value>7</Value>
           <Desc>
           </Desc>
         </Field>
@@ -9694,7 +10058,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
     <RegisterAccumulation>
       <Name>Закупівлі</Name>
       <Table>tab_a57</Table>
-      <Type>Turnover</Type>
+      <Type>Residues</Type>
       <Desc>
       </Desc>
       <DimensionFields>
@@ -10025,7 +10389,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
     <RegisterAccumulation>
       <Name>РухКоштів</Name>
       <Table>tab_a78</Table>
-      <Type>Turnover</Type>
+      <Type>Residues</Type>
       <Desc>
       </Desc>
       <DimensionFields>
@@ -10133,6 +10497,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             </Desc>
             <IsIndex>1</IsIndex>
           </Field>
+          <Field>
+            <Name>Склад</Name>
+            <NameInTable>col_a2</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Склади</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
         </Fields>
       </DimensionFields>
       <ResourcesFields>
@@ -10234,6 +10607,139 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       </ResourcesFields>
       <PropertyFields>
         <Fields />
+      </PropertyFields>
+      <AllowDocumentSpend />
+    </RegisterAccumulation>
+    <RegisterAccumulation>
+      <Name>ДоходиТаСобівартістьПродажів</Name>
+      <Table>tab_b12</Table>
+      <Type>Turnover</Type>
+      <Desc>Доходи та собівартість продажів</Desc>
+      <DimensionFields>
+        <Fields>
+          <Field>
+            <Name>ДокументКомпозит</Name>
+            <NameInTable>col_a1</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ПродажіДокументКомпозит</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>ТипЗапасів</Name>
+            <NameInTable>col_a2</NameInTable>
+            <Type>enum</Type>
+            <Pointer>Перелічення.ТипЗапасів</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>ВидЗапасів</Name>
+            <NameInTable>col_a4</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ВидиЗапасів</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>Склад</Name>
+            <NameInTable>col_a5</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Склади</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>Договір</Name>
+            <NameInTable>col_a6</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>ГосподарськаОперація</Name>
+            <NameInTable>col_a7</NameInTable>
+            <Type>enum</Type>
+            <Pointer>Перелічення.ГосподарськіОперації</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>АналітикаНоменклатуриКомпозит</Name>
+            <NameInTable>col_a9</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.АналітикаНоменклатуриКомпозит</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>АналітикаКонтрагентівКомпозит</Name>
+            <NameInTable>col_b4</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.АналітикаКонтрагентівКомпозит</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>Підрозділ</Name>
+            <NameInTable>col_b6</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.СтруктураПідприємства</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+        </Fields>
+      </DimensionFields>
+      <ResourcesFields>
+        <Fields>
+          <Field>
+            <Name>Кількість</Name>
+            <NameInTable>col_a8</NameInTable>
+            <Type>numeric</Type>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>СумаДоходу</Name>
+            <NameInTable>col_b2</NameInTable>
+            <Type>numeric</Type>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>Собівартість</Name>
+            <NameInTable>col_b3</NameInTable>
+            <Type>numeric</Type>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+        </Fields>
+      </ResourcesFields>
+      <PropertyFields>
+        <Fields>
+          <Field>
+            <Name>ВалютаДокументу</Name>
+            <NameInTable>col_b5</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Валюти</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+        </Fields>
       </PropertyFields>
       <AllowDocumentSpend />
     </RegisterAccumulation>
