@@ -401,12 +401,11 @@ namespace StorageAndTrade
             formAbout.ShowDialog();
         }
 
-        private void перепроведенняДокументівToolStripMenuItem_Click(object sender, EventArgs e)
+        private void сервіснаОбробкаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormService formService = new FormService();
             formService.ShowDialog();
         }
-
 
         #endregion
 

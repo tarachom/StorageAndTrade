@@ -38,6 +38,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Документи = StorageAndTrade_1_0.Документи;
 using Journal = StorageAndTrade_1_0.Журнали;
 using System.Reflection;
+using StorageAndTrade.Service;
 
 namespace StorageAndTrade
 {
@@ -82,9 +83,59 @@ namespace StorageAndTrade
 
 			buttonSpendAll.Enabled = false;
 			buttonCancel.Enabled = true;
+			button_CalculationBalancesAll.Enabled = false;
 
 			thread = new Thread(new ThreadStart(SpendAllDocument));
 			thread.Start();
+		}
+
+		private void button_CalculationBalancesAll_Click(object sender, EventArgs e)
+		{
+			CancelThread = false;
+
+			buttonSpendAll.Enabled = false;
+			buttonCancel.Enabled = true;
+			button_CalculationBalancesAll.Enabled = false;
+
+			thread = new Thread(new ThreadStart(CalculationBalancesAll));
+			thread.Start();
+		}
+
+		void CalculationBalancesAll()
+		{
+			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = false;
+
+			CalculationBalancesAll_Func();
+
+			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = true;
+
+			buttonSpendAll.Invoke(new Action(() => buttonSpendAll.Enabled = true));
+			buttonCancel.Invoke(new Action(() => buttonCancel.Enabled = false));
+			button_CalculationBalancesAll.Invoke(new Action(() => button_CalculationBalancesAll.Enabled = true));
+		}
+
+		void CalculationBalancesAll_Func()
+        {
+			ApendLine("\nПерерахунок залишків");
+
+			ApendLine("\nОбчислення залишків з групуванням по днях");
+			foreach (string registerAccumulation in CalculationBalances.СписокДоступнихВіртуальнихРегістрів)
+			{
+				ApendLine(" --> регістер: " + registerAccumulation);
+				CalculationBalances.ОбчисленняВіртуальнихЗалишківПоВсіхДнях(registerAccumulation);
+			}
+
+			ApendLine("\nОбновлення актуальності:");
+			foreach (string registerAccumulation in CalculationBalances.СписокДоступнихВіртуальнихРегістрів)
+			{
+				ApendLine(" --> регістер: " + registerAccumulation);
+				CalculationBalances.СкинутиЗначенняАктуальностіВіртуальнихЗалишківПоВсіхМісяцях(registerAccumulation);
+			}
+
+			ApendLine("\nОбчислення залишків з групуванням по місяцях");
+			CalculationBalances.ОбчисленняВіртуальнихЗалишківПоМісяцях();
+
+			ApendLine("\nГотово!");
 		}
 
 		void SpendAllDocument()
@@ -116,10 +167,13 @@ namespace StorageAndTrade
 
 			ApendLine("Готово!");
 
+			CalculationBalancesAll_Func();
+
 			Константи.Системні.ВвімкнутиФоновіЗадачі_Const = true;
 
 			buttonSpendAll.Invoke(new Action(() => buttonSpendAll.Enabled = true));
 			buttonCancel.Invoke(new Action(() => buttonCancel.Enabled = false));
+			button_CalculationBalancesAll.Invoke(new Action(() => button_CalculationBalancesAll.Enabled = true));
 		}
 
         private void button1_Click(object sender, EventArgs e)
@@ -175,6 +229,8 @@ namespace StorageAndTrade
 
 			thread.Abort();
 		}
+
+        
     }
 }
 

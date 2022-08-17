@@ -35,6 +35,7 @@ namespace StorageAndTrade
             this.buttonCancel = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.richTextBoxInfo = new System.Windows.Forms.RichTextBox();
+            this.button_CalculationBalancesAll = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@ namespace StorageAndTrade
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.button_CalculationBalancesAll);
             this.panel1.Controls.Add(this.buttonCancel);
             this.panel1.Controls.Add(this.buttonSpendAll);
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -63,7 +65,7 @@ namespace StorageAndTrade
             // buttonCancel
             // 
             this.buttonCancel.Enabled = false;
-            this.buttonCancel.Location = new System.Drawing.Point(313, 3);
+            this.buttonCancel.Location = new System.Drawing.Point(405, 3);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(97, 27);
             this.buttonCancel.TabIndex = 1;
@@ -94,6 +96,16 @@ namespace StorageAndTrade
             this.richTextBoxInfo.TabIndex = 1;
             this.richTextBoxInfo.Text = "";
             // 
+            // button_CalculationBalancesAll
+            // 
+            this.button_CalculationBalancesAll.Location = new System.Drawing.Point(195, 3);
+            this.button_CalculationBalancesAll.Name = "button_CalculationBalancesAll";
+            this.button_CalculationBalancesAll.Size = new System.Drawing.Size(186, 27);
+            this.button_CalculationBalancesAll.TabIndex = 2;
+            this.button_CalculationBalancesAll.Text = "Перерахувати залишки";
+            this.button_CalculationBalancesAll.UseVisualStyleBackColor = true;
+            this.button_CalculationBalancesAll.Click += new System.EventHandler(this.button_CalculationBalancesAll_Click);
+            // 
             // FormService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -119,5 +131,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.RichTextBox richTextBoxInfo;
         private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Button button_CalculationBalancesAll;
     }
 }

@@ -54,6 +54,9 @@ namespace StorageAndTrade.Service
         /// <param name="userName">Користувач</param>
         public static void AddTask(string documentUid, string documentType, string typeMovement, DateTime periodCalculation, string userName)
         {
+            if (Системні.ВвімкнутиФоновіЗадачі_Const == false)
+                return;
+
             Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart обчисленняВіртуальнихЗалишків_TablePart =
                 new Системні.ФоновіЗадачі_ОбчисленняВіртуальнихЗалишків_TablePart();
 
@@ -85,6 +88,27 @@ namespace StorageAndTrade.Service
             */
         }
 
+        /// <summary>
+        /// Список віртуальних регістрів для яких відбувається обчислення
+        /// </summary>
+        public static readonly string[] СписокДоступнихВіртуальнихРегістрів = new string[] 
+        {
+            "ЗамовленняКлієнтів",
+            "ТовариНаСкладах",
+            "ПартіїТоварів",
+            "РозрахункиЗКлієнтами",
+            "РозрахункиЗПостачальниками",
+            "ЗамовленняПостачальникам",
+            "ВільніЗалишки",
+            "РухКоштів",
+        };
+
+
+        /// <summary>
+        /// Функція обчислює залишки за весь період групуючи їх по днях
+        /// для кожного регістру окремо
+        /// </summary>
+        /// <param name="registerAccumulation">Регістер для якого розраховуються залишки по днях</param>
         public static void ОбчисленняВіртуальнихЗалишківПоВсіхДнях(string registerAccumulation)
         {
             switch (registerAccumulation)
@@ -440,29 +464,36 @@ HAVING
             }
         }
 
-        public static void ОбновитиЗначенняАктуальностіВіртуальнихЗалишківПоВсіхМісяцях(List<string> registerAccumulationList)
+        /// <summary>
+        /// Функція скидає актуальність залишків по місяцях та очищує відповідно залишки по місяцях. 
+        /// Список місців обчислюється із залишків по днях.
+        /// </summary>
+        /// <param name="registerAccumulation">Регістер</param>
+        public static void СкинутиЗначенняАктуальностіВіртуальнихЗалишківПоВсіхМісяцях(string registerAccumulation)
         {
             string query = $@"
-DELETE FROM {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.TABLE};
+DELETE FROM {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.TABLE}
+WHERE {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Регістр} = '{registerAccumulation}';
 ";
             Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
 
-            foreach (string registerAccumulation in registerAccumulationList)
-            {
-                query = $@"
+            query = $@"
 INSERT INTO {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.TABLE}
 (
     uid,
     {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Регістр},
     {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Місяць},
     {Системні.ФоновіЗадачі_АктуальністьВіртуальнихЗалишків_TablePart.Актуально}
-)
-WITH register AS
-(
-    SELECT DISTINCT 
-        date_trunc('month', {ВіртуальніТаблиціРегістрів.ЗамовленняКлієнтів_День_TablePart.Період}::timestamp) AS period_month
-    FROM 
-        {ВіртуальніТаблиціРегістрів.ЗамовленняКлієнтів_День_TablePart.TABLE}
+)";
+            //Таблична частина День з конфігурації
+            ConfigurationObjectTablePart tablePartDay = Config.Kernel.Conf.ConstantsBlock["ВіртуальніТаблиціРегістрів"].Constants[registerAccumulation].TabularParts["День"];
+
+            string tableDay = tablePartDay.Table;
+            string fieldDay = tablePartDay.Fields["Період"].NameInTable;
+
+            query += $@"
+WITH register AS (
+    SELECT DISTINCT date_trunc('month', {fieldDay}::timestamp) AS period_month FROM {tableDay}
 )
 SELECT
     uuid_generate_v4(),
@@ -472,10 +503,22 @@ SELECT
 FROM
     register
 ";
-                //Console.WriteLine(query);
-                Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
-            }
+            //Console.WriteLine(query);
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(query);
+
+            //Таблична частина Місяць з конфігурації
+            ConfigurationObjectTablePart tablePartMonth = Config.Kernel.Conf.ConstantsBlock["ВіртуальніТаблиціРегістрів"].Constants[registerAccumulation].TabularParts["Місяць"];
+
+            string tableMonth = tablePartMonth.Table;
+
+            //Запит очищення таблиць Місяць
+            string clearQueryMonth = $@"
+DELETE FROM {tableMonth};
+";
+            //Console.WriteLine(query);
+            Config.KernelBackgroundTask.DataBase.ExecuteSQL(clearQueryMonth);
         }
+
 
         /// <summary>
         /// Функція перевіряє список фонових задач для обчислення віртуальних залишків
@@ -716,7 +759,7 @@ INSERT INTO {ВіртуальніТаблиціРегістрів.Розраху
 )
 SELECT 
     uuid_generate_v4(),
-    date_trunc('day', Рег_РозрахункиЗКлієнтами.period::timestamp) as period_month,
+    date_trunc('day', Рег_РозрахункиЗКлієнтами.period::timestamp) as period_day,
     Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Валюта} AS Валюта, 
     Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Контрагент} AS Контрагент,
     SUM(CASE WHEN Рег_РозрахункиЗКлієнтами.income = true THEN 
@@ -727,7 +770,7 @@ FROM
 WHERE
     date_trunc('day', Рег_РозрахункиЗКлієнтами.period::timestamp) = '{Період}'
 GROUP BY 
-    period_month, Валюта, Контрагент
+    period_day, Валюта, Контрагент
 HAVING
    SUM(CASE WHEN Рег_РозрахункиЗКлієнтами.income = true THEN 
         Рег_РозрахункиЗКлієнтами.{РозрахункиЗКлієнтами_Const.Сума} ELSE 
@@ -755,7 +798,7 @@ INSERT INTO {ВіртуальніТаблиціРегістрів.Розраху
 )
 SELECT 
     uuid_generate_v4(),
-    date_trunc('day', Рег_РозрахункиЗПостачальниками.period::timestamp) as period_month,
+    date_trunc('day', Рег_РозрахункиЗПостачальниками.period::timestamp) as period_day,
     Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Валюта} AS Валюта, 
     Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Контрагент} AS Контрагент,
     SUM(CASE WHEN Рег_РозрахункиЗПостачальниками.income = true THEN 
@@ -766,7 +809,7 @@ FROM
 WHERE
     date_trunc('day', Рег_РозрахункиЗПостачальниками.period::timestamp) = '{Період}'
 GROUP BY 
-    period_month, Валюта, Контрагент
+    period_day, Валюта, Контрагент
 HAVING
    SUM(CASE WHEN Рег_РозрахункиЗПостачальниками.income = true THEN 
         Рег_РозрахункиЗПостачальниками.{РозрахункиЗПостачальниками_Const.Сума} ELSE 
@@ -795,7 +838,7 @@ INSERT INTO {ВіртуальніТаблиціРегістрів.Замовле
 )
 SELECT 
     uuid_generate_v4(),
-    date_trunc('day', Рег_ЗамовленняПостачальникам.period::timestamp) as period_month,
+    date_trunc('day', Рег_ЗамовленняПостачальникам.period::timestamp) as period_day,
     Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Номенклатура} AS Номенклатура, 
     Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
     Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Склад} AS Склад,
@@ -807,7 +850,7 @@ FROM
 WHERE
     date_trunc('day', Рег_ЗамовленняПостачальникам.period::timestamp) = '{Період}'
 GROUP BY 
-    period_month, Номенклатура, ХарактеристикаНоменклатури, Склад
+    period_day, Номенклатура, ХарактеристикаНоменклатури, Склад
 HAVING 
    SUM(CASE WHEN Рег_ЗамовленняПостачальникам.income = true THEN 
         Рег_ЗамовленняПостачальникам.{ЗамовленняПостачальникам_Const.Замовлено} ELSE 
@@ -838,7 +881,7 @@ INSERT INTO {ВіртуальніТаблиціРегістрів.ВільніЗ
 )
 SELECT 
     uuid_generate_v4(),
-    date_trunc('day', Рег_ВільніЗалишки.period::timestamp) as period_month,
+    date_trunc('day', Рег_ВільніЗалишки.period::timestamp) as period_day,
     Рег_ВільніЗалишки.{ВільніЗалишки_Const.Номенклатура} AS Номенклатура, 
     Рег_ВільніЗалишки.{ВільніЗалишки_Const.ХарактеристикаНоменклатури} AS ХарактеристикаНоменклатури,
     Рег_ВільніЗалишки.{ВільніЗалишки_Const.Склад} AS Склад,
@@ -856,7 +899,7 @@ FROM
 WHERE
     date_trunc('day', Рег_ВільніЗалишки.period::timestamp) = '{Період}'
 GROUP BY 
-    period_month, Номенклатура, ХарактеристикаНоменклатури, Склад
+    period_day, Номенклатура, ХарактеристикаНоменклатури, Склад
 HAVING 
    SUM(CASE WHEN Рег_ВільніЗалишки.income = true THEN 
         Рег_ВільніЗалишки.{ВільніЗалишки_Const.ВНаявності} ELSE 
@@ -893,7 +936,7 @@ INSERT INTO {ВіртуальніТаблиціРегістрів.РухКошт
 )
 SELECT 
     uuid_generate_v4(),
-    date_trunc('day', Рег_РухКоштів.period::timestamp) as period_month,
+    date_trunc('day', Рег_РухКоштів.period::timestamp) as period_day,
     Рег_РухКоштів.{РухКоштів_Const.Організація} AS Організація, 
     Рег_РухКоштів.{РухКоштів_Const.Каса} AS Каса,
     Рег_РухКоштів.{РухКоштів_Const.Валюта} AS Валюта,
@@ -905,7 +948,7 @@ FROM
 WHERE
     date_trunc('day', Рег_РухКоштів.period::timestamp) = '{Період}'
 GROUP BY 
-    period_month, Організація, Каса, Валюта
+    period_day, Організація, Каса, Валюта
 HAVING 
    SUM(CASE WHEN Рег_РухКоштів.income = true THEN 
         Рег_РухКоштів.{РухКоштів_Const.Сума} ELSE 
