@@ -35,6 +35,7 @@
 							<th>Номенклатура</th>
 							<th>Характеристика</th>
 							<th>Серія</th>
+							<th>Склад</th>
 							<th></th>
 							<th style="text-align:center">Кількість</th>
 							<th style="text-align:center">Собівартість</th>
@@ -70,6 +71,11 @@
 								<td>
 									<a id="{Серія}" name="Довідник.СеріїНоменклатури" href="/">
 										<xsl:value-of select="Серія_Номер"/>
+									</a>
+								</td>
+								<td>
+									<a id="{Склад}" name="Довідник.Склади" href="/">
+										<xsl:value-of select="Склад_Назва"/>
 									</a>
 								</td>
 								<td style="text-align:center;width:30;">
