@@ -251,5 +251,5 @@ namespace StorageAndTrade
 		{
 			SaveDoc(true, true);
 		}
-	}
+    }
 }

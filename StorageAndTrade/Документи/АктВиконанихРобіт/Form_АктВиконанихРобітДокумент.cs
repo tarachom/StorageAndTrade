@@ -240,5 +240,10 @@ namespace StorageAndTrade
 		{
 			SaveDoc(true, true);
 		}
-	}
+
+        private void directoryControl_Організація_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
