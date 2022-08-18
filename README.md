@@ -41,3 +41,6 @@
     Товари на складах
     Рух коштів
     Розрахунки з контрагентами
+
+
+<img src="https://accounting.org.ua/images/sandt_nomenclatura.jpg" />
