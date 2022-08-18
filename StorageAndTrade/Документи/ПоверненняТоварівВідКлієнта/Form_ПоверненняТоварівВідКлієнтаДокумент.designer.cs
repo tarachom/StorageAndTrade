@@ -101,7 +101,7 @@ namespace StorageAndTrade
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(273, 22);
+            this.label1.Location = new System.Drawing.Point(266, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 21;
@@ -109,7 +109,7 @@ namespace StorageAndTrade
             // 
             // dateTimePicker_ДатаДок
             // 
-            this.dateTimePicker_ДатаДок.Location = new System.Drawing.Point(315, 19);
+            this.dateTimePicker_ДатаДок.Location = new System.Drawing.Point(308, 19);
             this.dateTimePicker_ДатаДок.Name = "dateTimePicker_ДатаДок";
             this.dateTimePicker_ДатаДок.Size = new System.Drawing.Size(150, 20);
             this.dateTimePicker_ДатаДок.TabIndex = 22;
@@ -147,7 +147,7 @@ namespace StorageAndTrade
             // dateTimePicker_ЧасДок
             // 
             this.dateTimePicker_ЧасДок.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker_ЧасДок.Location = new System.Drawing.Point(471, 19);
+            this.dateTimePicker_ЧасДок.Location = new System.Drawing.Point(464, 19);
             this.dateTimePicker_ЧасДок.Name = "dateTimePicker_ЧасДок";
             this.dateTimePicker_ЧасДок.ShowUpDown = true;
             this.dateTimePicker_ЧасДок.Size = new System.Drawing.Size(76, 20);
