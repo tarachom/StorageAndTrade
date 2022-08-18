@@ -1,10 +1,10 @@
 # Зберігання та Торгівля
 
- <b>Облік фінансів, складу та торгівлі.</b>
+ <img src="https://accounting.org.ua/images/storage_and_trade.ico" /> <b>Облік фінансів, складу та торгівлі.</b>
  
-    Для роботи потрібна база даних PostgreSQL
-    Скачати програму      https://accounting.org.ua/storage_and_trade.html
-    База даних PostgreSQL https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+  Для роботи потрібна база даних PostgreSQL <br/>
+  Скачати програму      https://accounting.org.ua/storage_and_trade.html <br/>
+  База даних PostgreSQL https://www.enterprisedb.com/downloads/postgres-postgresql-downloads <br/>
 
  <b>Можливості:</b>
     
