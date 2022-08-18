@@ -9,6 +9,7 @@
 База даних PostgreSQL https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 
  Можливості
+
     Облік номенклатури по характеристиках
     Облік по серійних номерах
     Облік взаєморозрахунків з контрагентами по договорах
