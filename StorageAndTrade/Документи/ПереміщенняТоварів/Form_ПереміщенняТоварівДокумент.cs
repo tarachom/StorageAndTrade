@@ -102,7 +102,7 @@ namespace StorageAndTrade
 						this.Text = переміщенняТоварів_Objest.Назва;
 
 						textBox_НомерДок.Text = переміщенняТоварів_Objest.НомерДок;
-						dateTimePicker_ДатаДок.Value = переміщенняТоварів_Objest.ДатаДок;
+						dateTimePicker_ДатаДок.Value = dateTimePicker_ЧасДок.Value = переміщенняТоварів_Objest.ДатаДок;
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(переміщенняТоварів_Objest.Організація.UnigueID);
 						directoryControl_СкладВідправник.DirectoryPointerItem = new Довідники.Склади_Pointer(переміщенняТоварів_Objest.СкладВідправник.UnigueID);
 						directoryControl_СкладОтримувач.DirectoryPointerItem = new Довідники.Склади_Pointer(переміщенняТоварів_Objest.СкладОтримувач.UnigueID);
@@ -132,7 +132,7 @@ namespace StorageAndTrade
 					переміщенняТоварів_Objest.New();
 
 				переміщенняТоварів_Objest.НомерДок = textBox_НомерДок.Text;
-				переміщенняТоварів_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				переміщенняТоварів_Objest.ДатаДок = ФункціїДляДокументів.ОбєднатиДатуТаЧас(dateTimePicker_ДатаДок.Value, dateTimePicker_ЧасДок.Value);
 				переміщенняТоварів_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				переміщенняТоварів_Objest.СкладВідправник = (Довідники.Склади_Pointer)directoryControl_СкладВідправник.DirectoryPointerItem;
 				переміщенняТоварів_Objest.СкладОтримувач = (Довідники.Склади_Pointer)directoryControl_СкладОтримувач.DirectoryPointerItem;

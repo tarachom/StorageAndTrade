@@ -96,7 +96,7 @@ namespace StorageAndTrade
 						this.Text = встановленняЦінНоменклатури_Objest.Назва;
 
 						textBox_НомерДок.Text = встановленняЦінНоменклатури_Objest.НомерДок;
-						dateTimePicker_ДатаДок.Value = встановленняЦінНоменклатури_Objest.ДатаДок;
+						dateTimePicker_ДатаДок.Value = dateTimePicker_ЧасДок.Value = встановленняЦінНоменклатури_Objest.ДатаДок;
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(встановленняЦінНоменклатури_Objest.Організація.UnigueID);
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(встановленняЦінНоменклатури_Objest.Валюта.UnigueID);
 						directoryControl_ВидЦіни.DirectoryPointerItem = new Довідники.ВидиЦін_Pointer(встановленняЦінНоменклатури_Objest.ВидЦіни.UnigueID);
@@ -118,7 +118,7 @@ namespace StorageAndTrade
 					встановленняЦінНоменклатури_Objest.New();
 
 				встановленняЦінНоменклатури_Objest.НомерДок = textBox_НомерДок.Text;
-				встановленняЦінНоменклатури_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				встановленняЦінНоменклатури_Objest.ДатаДок = ФункціїДляДокументів.ОбєднатиДатуТаЧас(dateTimePicker_ДатаДок.Value, dateTimePicker_ЧасДок.Value);
 				встановленняЦінНоменклатури_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				встановленняЦінНоменклатури_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
 				встановленняЦінНоменклатури_Objest.ВидЦіни = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦіни.DirectoryPointerItem;

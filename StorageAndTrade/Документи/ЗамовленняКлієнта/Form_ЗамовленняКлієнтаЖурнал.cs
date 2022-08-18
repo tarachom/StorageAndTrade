@@ -470,5 +470,31 @@ namespace StorageAndTrade
         }
 
         #endregion
+
+        private void dataGridViewRecords_MouseClick(object sender, MouseEventArgs e)
+        {
+			//if (dataGridViewRecords.SelectedCells.Count > 0 && e.Button == MouseButtons.Right)
+			//{
+			//	DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+			//	string uid = row.Cells["ID"].Value.ToString();
+
+			//	//Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
+			//	//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
+
+			//	Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(dataGridViewRecords.CurrentCell.ColumnIndex, dataGridViewRecords.CurrentCell.RowIndex, true);
+			//	rectangle.Offset(0, 0);
+			//	Point point = dataGridViewRecords.PointToScreen(rectangle.Location);
+
+			//	ContextMenuStrip contextMenu = new ContextMenuStrip();
+
+			//	ToolStripMenuItem select = new ToolStripMenuItem("Відкрити список");
+			//	select.Image = Properties.Resources.data;
+			//	select.Name = "";
+			//	//select.Tag = tag;
+			//	contextMenu.Items.Add(select);
+
+			//	contextMenu.Show(point);
+			//}
+		}
     }
 }

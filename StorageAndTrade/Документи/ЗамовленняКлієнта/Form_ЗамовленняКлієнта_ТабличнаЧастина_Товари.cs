@@ -679,6 +679,6 @@ LIMIT 10
 			}
 		}
 
-		#endregion
-	}
+        #endregion
+    }
 }

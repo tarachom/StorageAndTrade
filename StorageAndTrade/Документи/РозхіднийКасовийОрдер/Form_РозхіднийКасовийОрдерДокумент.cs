@@ -154,7 +154,7 @@ namespace StorageAndTrade
 						linkLabel_Основа.Text = розхіднийКасовийОрдер_Objest.Основа.ToString();
 
 						textBox_НомерДок.Text = розхіднийКасовийОрдер_Objest.НомерДок;
-						dateTimePicker_ДатаДок.Value = розхіднийКасовийОрдер_Objest.ДатаДок;
+						dateTimePicker_ДатаДок.Value = dateTimePicker_ЧасДок.Value = розхіднийКасовийОрдер_Objest.ДатаДок;
 						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(розхіднийКасовийОрдер_Objest.Контрагент.UnigueID);
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(розхіднийКасовийОрдер_Objest.Організація.UnigueID);
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(розхіднийКасовийОрдер_Objest.Валюта.UnigueID);
@@ -186,7 +186,7 @@ namespace StorageAndTrade
 					розхіднийКасовийОрдер_Objest.New();
 
 				розхіднийКасовийОрдер_Objest.НомерДок = textBox_НомерДок.Text;
-				розхіднийКасовийОрдер_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				розхіднийКасовийОрдер_Objest.ДатаДок = ФункціїДляДокументів.ОбєднатиДатуТаЧас(dateTimePicker_ДатаДок.Value, dateTimePicker_ЧасДок.Value);
 				розхіднийКасовийОрдер_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
 				розхіднийКасовийОрдер_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				розхіднийКасовийОрдер_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;

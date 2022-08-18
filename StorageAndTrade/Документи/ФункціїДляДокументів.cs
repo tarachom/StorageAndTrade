@@ -47,6 +47,11 @@ namespace StorageAndTrade
     /// </summary>
     class ФункціїДляДокументів
     {
+        public static DateTime ОбєднатиДатуТаЧас(DateTime дата, DateTime час)
+        {
+            return new DateTime(дата.Year, дата.Month, дата.Day, час.Hour, час.Minute, час.Second);
+        }
+
         #region ПартіяТоварівКомпозит
 
         public static Довідники.ПартіяТоварівКомпозит_Pointer ОтриматиПартіюТоварівКомпозит(

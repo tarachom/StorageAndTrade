@@ -40,12 +40,12 @@ namespace StorageAndTrade
             this.toolStripButtonДрукПроводок = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClearSpend = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
+            this.toolStripDropDownButton_ВвестиНаОснові = new System.Windows.Forms.ToolStripDropDownButton();
+            this.реалізаціяТоварівТаПослугtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.замовленняПостачальникуtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поступленняТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
-            this.toolStripDropDownButton_ВвестиНаОснові = new System.Windows.Forms.ToolStripDropDownButton();
-            this.поступленняТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.замовленняПостачальникуtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.реалізаціяТоварівТаПослугtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -151,6 +151,42 @@ namespace StorageAndTrade
             this.toolStripButtonSpend.Text = "Провести";
             this.toolStripButtonSpend.Click += new System.EventHandler(this.toolStripButtonSpend_Click);
             // 
+            // toolStripDropDownButton_ВвестиНаОснові
+            // 
+            this.toolStripDropDownButton_ВвестиНаОснові.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.реалізаціяТоварівТаПослугtoolStripMenuItem,
+            this.замовленняПостачальникуtoolStripMenuItem,
+            this.поступленняТоварівТаПослугToolStripMenuItem});
+            this.toolStripDropDownButton_ВвестиНаОснові.Image = global::StorageAndTrade.Properties.Resources.down;
+            this.toolStripDropDownButton_ВвестиНаОснові.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton_ВвестиНаОснові.Name = "toolStripDropDownButton_ВвестиНаОснові";
+            this.toolStripDropDownButton_ВвестиНаОснові.Size = new System.Drawing.Size(128, 22);
+            this.toolStripDropDownButton_ВвестиНаОснові.Text = "Ввести на основі";
+            // 
+            // реалізаціяТоварівТаПослугtoolStripMenuItem
+            // 
+            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Name = "реалізаціяТоварівТаПослугtoolStripMenuItem";
+            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Text = "Реалізація товарів та послуг";
+            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Click += new System.EventHandler(this.реалізаціяТоварівТаПослугtoolStripMenuItem_Click);
+            // 
+            // замовленняПостачальникуtoolStripMenuItem
+            // 
+            this.замовленняПостачальникуtoolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.замовленняПостачальникуtoolStripMenuItem.Name = "замовленняПостачальникуtoolStripMenuItem";
+            this.замовленняПостачальникуtoolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.замовленняПостачальникуtoolStripMenuItem.Text = "Замовлення постачальнику";
+            this.замовленняПостачальникуtoolStripMenuItem.Click += new System.EventHandler(this.замовленняПостачальникуtoolStripMenuItem_Click);
+            // 
+            // поступленняТоварівТаПослугToolStripMenuItem
+            // 
+            this.поступленняТоварівТаПослугToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.поступленняТоварівТаПослугToolStripMenuItem.Name = "поступленняТоварівТаПослугToolStripMenuItem";
+            this.поступленняТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.поступленняТоварівТаПослугToolStripMenuItem.Text = "Поступлення товарів та послуг";
+            this.поступленняТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.поступленняТоварівТаПослугToolStripMenuItem_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridViewRecords);
@@ -175,42 +211,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.Size = new System.Drawing.Size(1084, 632);
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
-            // 
-            // toolStripDropDownButton_ВвестиНаОснові
-            // 
-            this.toolStripDropDownButton_ВвестиНаОснові.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.реалізаціяТоварівТаПослугtoolStripMenuItem,
-            this.замовленняПостачальникуtoolStripMenuItem,
-            this.поступленняТоварівТаПослугToolStripMenuItem});
-            this.toolStripDropDownButton_ВвестиНаОснові.Image = global::StorageAndTrade.Properties.Resources.down;
-            this.toolStripDropDownButton_ВвестиНаОснові.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton_ВвестиНаОснові.Name = "toolStripDropDownButton_ВвестиНаОснові";
-            this.toolStripDropDownButton_ВвестиНаОснові.Size = new System.Drawing.Size(128, 22);
-            this.toolStripDropDownButton_ВвестиНаОснові.Text = "Ввести на основі";
-            // 
-            // поступленняТоварівТаПослугToolStripMenuItem
-            // 
-            this.поступленняТоварівТаПослугToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.поступленняТоварівТаПослугToolStripMenuItem.Name = "поступленняТоварівТаПослугToolStripMenuItem";
-            this.поступленняТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.поступленняТоварівТаПослугToolStripMenuItem.Text = "Поступлення товарів та послуг";
-            this.поступленняТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.поступленняТоварівТаПослугToolStripMenuItem_Click);
-            // 
-            // замовленняПостачальникуtoolStripMenuItem
-            // 
-            this.замовленняПостачальникуtoolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.замовленняПостачальникуtoolStripMenuItem.Name = "замовленняПостачальникуtoolStripMenuItem";
-            this.замовленняПостачальникуtoolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.замовленняПостачальникуtoolStripMenuItem.Text = "Замовлення постачальнику";
-            this.замовленняПостачальникуtoolStripMenuItem.Click += new System.EventHandler(this.замовленняПостачальникуtoolStripMenuItem_Click);
-            // 
-            // реалізаціяТоварівТаПослугtoolStripMenuItem
-            // 
-            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Name = "реалізаціяТоварівТаПослугtoolStripMenuItem";
-            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Text = "Реалізація товарів та послуг";
-            this.реалізаціяТоварівТаПослугtoolStripMenuItem.Click += new System.EventHandler(this.реалізаціяТоварівТаПослугtoolStripMenuItem_Click);
+            this.dataGridViewRecords.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridViewRecords_MouseClick);
             // 
             // Form_ЗамовленняКлієнтаЖурнал
             // 

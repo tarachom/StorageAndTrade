@@ -149,7 +149,7 @@ namespace StorageAndTrade
 						this.Text = замовленняКлієнта_Objest.Назва;
 
 						textBox_НомерДок.Text = замовленняКлієнта_Objest.НомерДок;
-						dateTimePicker_ДатаДок.Value = замовленняКлієнта_Objest.ДатаДок;
+						dateTimePicker_ДатаДок.Value = dateTimePicker_ЧасДок.Value = замовленняКлієнта_Objest.ДатаДок;
 						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(замовленняКлієнта_Objest.Контрагент.UnigueID);
 						directoryControl_Організація.DirectoryPointerItem = new Довідники.Організації_Pointer(замовленняКлієнта_Objest.Організація.UnigueID);
 						directoryControl_Валюта.DirectoryPointerItem = new Довідники.Валюти_Pointer(замовленняКлієнта_Objest.Валюта.UnigueID);
@@ -184,7 +184,7 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.New();
 
 				замовленняКлієнта_Objest.НомерДок = textBox_НомерДок.Text;
-				замовленняКлієнта_Objest.ДатаДок = dateTimePicker_ДатаДок.Value;
+				замовленняКлієнта_Objest.ДатаДок = ФункціїДляДокументів.ОбєднатиДатуТаЧас(dateTimePicker_ДатаДок.Value, dateTimePicker_ЧасДок.Value);
 				замовленняКлієнта_Objest.Контрагент = (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem;
 				замовленняКлієнта_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				замовленняКлієнта_Objest.Валюта = (Довідники.Валюти_Pointer)directoryControl_Валюта.DirectoryPointerItem;
