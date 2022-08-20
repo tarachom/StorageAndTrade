@@ -7,9 +7,6 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="Style/bootstrap.min.css" />
-		<script src="Style/jquery.slim.min.js"></script>
-		<script src="Style/popper.min.js"></script>
-		<script src="Style/bootstrap.bundle.min.js"></script>
 	</xsl:template>
 
 	<xsl:template match="/root">

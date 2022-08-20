@@ -1369,10 +1369,7 @@
     <None Include="Resources\Document-checkbox.ico" />
     <None Include="Resources\Document-photo.ico" />
     <Content Include="form.ico" />
-    <Content Include="Style\bootstrap.bundle.min.js" />
     <Content Include="Style\bootstrap.min.css" />
-    <Content Include="Style\jquery.slim.min.js" />
-    <Content Include="Style\popper.min.js" />
     <Content Include="Trash\Service.txt" />
     <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ВільніЗалишки_Залишки.xslt" />
