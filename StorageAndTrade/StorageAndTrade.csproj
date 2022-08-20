@@ -1451,6 +1451,8 @@ copy %25conf_folder_code%25\ComparisonAnalize.xslt             %25st_folder%25\C
 copy %25conf_folder_code%25\UnloadingAndLoadingDataXML.xslt               %25st_folder%25\UnloadingAndLoadingDataXML.xslt
 copy %25conf_folder_code%25\UnloadingAndLoadingDataSQL.xslt                %25st_folder%25\UnloadingAndLoadingDataSQL.xslt
 
+mkdir $(TargetDir)Style
+copy  $(ProjectDir)Style\*.*  $(TargetDir)Style
 
 mkdir $(TargetDir)Шаблони
 copy  $(ProjectDir)Шаблони\*.*  $(TargetDir)Шаблони
