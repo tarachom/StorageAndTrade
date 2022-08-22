@@ -135,7 +135,10 @@ namespace StorageAndTrade
 				}
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = організації_Objest.GetDirectoryPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				this.Close();
 			}
