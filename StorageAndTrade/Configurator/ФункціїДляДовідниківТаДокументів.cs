@@ -29,6 +29,8 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+
 using AccountingSoftware;
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Константи;
@@ -56,6 +58,22 @@ namespace StorageAndTrade
         public int LastCountRow;
     }
 
-    
+    class ФункціїДляДовідниківТаДокументів
+    {
+        public static void ВиділитиЕлементСписку(DataGridView gridView, string columnName, string columnValue)
+        {
+            gridView.Rows[0].Selected = false;
+
+            foreach (DataGridViewRow row in gridView.Rows)
+            {
+                if (row.Cells[columnName].Value.ToString() == columnValue)
+                {
+                    row.Selected = true;
+                    gridView.FirstDisplayedScrollingRowIndex = row.Index;
+                    break;
+                }
+            }
+        }
+    }
 }
 

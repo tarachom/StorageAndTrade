@@ -218,7 +218,11 @@ namespace StorageAndTrade
 					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = поступленняТоварівТаПослуг_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
+
 
 				if (closeForm)
 					this.Close();

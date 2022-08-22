@@ -163,7 +163,7 @@ ELSE 0 END)", "ostatok"));
 				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
 
 				if (UidSelect != Guid.Empty.ToString())
-					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
+					ФункціїДляДовідниківТаДокументів.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 

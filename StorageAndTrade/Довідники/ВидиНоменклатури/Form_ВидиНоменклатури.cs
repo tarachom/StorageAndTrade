@@ -112,7 +112,7 @@ namespace StorageAndTrade
 				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
 
 				if (UidSelect != Guid.Empty.ToString())
-					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
+					ФункціїДляДовідниківТаДокументів.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
