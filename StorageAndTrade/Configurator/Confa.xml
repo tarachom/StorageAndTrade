@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>22.08.2022 09:53:35</DateTimeSave>
+  <DateTimeSave>22.08.2022 15:47:54</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1936,6 +1936,21 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <Type>integer</Type>
+          <TabularParts />
+        </Constant>
+      </Constants>
+    </ConstantsBlock>
+    <ConstantsBlock>
+      <Name>ЖурналиДокументів</Name>
+      <Desc>
+      </Desc>
+      <Constants>
+        <Constant>
+          <Name>ОсновнийТипПеріоду</Name>
+          <NameInTable>col_h3</NameInTable>
+          <Desc>Тип періоду журналів</Desc>
+          <Type>enum</Type>
+          <Pointer>Перелічення.ТипПеріодуДляЖурналівДокументів</Pointer>
           <TabularParts />
         </Constant>
       </Constants>
@@ -4847,6 +4862,29 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Value>7</Value>
           <Desc>
           </Desc>
+        </Field>
+      </Fields>
+    </Enum>
+    <Enum>
+      <Name>ТипПеріодуДляЖурналівДокументів</Name>
+      <Desc>
+      </Desc>
+      <SerialNumber>3</SerialNumber>
+      <Fields>
+        <Field>
+          <Name>ВесьПеріод</Name>
+          <Value>1</Value>
+          <Desc>Весь період</Desc>
+        </Field>
+        <Field>
+          <Name>ЗПочаткуРоку</Name>
+          <Value>2</Value>
+          <Desc>З початку року</Desc>
+        </Field>
+        <Field>
+          <Name>ЗПочаткуМісяця</Name>
+          <Value>3</Value>
+          <Desc>З початку місяця</Desc>
         </Field>
       </Fields>
     </Enum>

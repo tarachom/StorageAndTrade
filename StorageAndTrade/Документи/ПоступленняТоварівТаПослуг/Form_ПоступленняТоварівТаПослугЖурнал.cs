@@ -87,7 +87,19 @@ namespace StorageAndTrade
 
 		private void Form_ПоступленняТоварівТаПослугЖурнал_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Конфа.Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+			foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+			{
+				int index = сomboBox_ТипПеріоду.Items.Add(
+					new NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>(field.Desc, (Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value));
+
+				if ((Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value == Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+					сomboBox_ТипПеріоду.SelectedIndex = index;
+			}
+
+			if (сomboBox_ТипПеріоду.SelectedIndex == -1)
+				сomboBox_ТипПеріоду.SelectedIndex = 0;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -95,6 +107,9 @@ namespace StorageAndTrade
 		public void LoadRecords()
 		{
 			RecordsBindingList.Clear();
+
+			Перелічення.ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
 
 			Документи.ПоступленняТоварівТаПослуг_Select поступленняТоварівТаПослуг_Select = new Документи.ПоступленняТоварівТаПослуг_Select();
 			поступленняТоварівТаПослуг_Select.QuerySelect.Field.AddRange(new string[] {
@@ -115,6 +130,20 @@ namespace StorageAndTrade
 			//ORDER
 			поступленняТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, SelectOrder.ASC);
 			поступленняТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.ПоступленняТоварівТаПослуг_Const.НомерДок, SelectOrder.ASC);
+
+            switch (ПеріодЖурналу)
+            {
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
+                    {
+						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
+						break;
+                    }
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
+                    {
+						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						break;
+					}					
+            }			
 
 			поступленняТоварівТаПослуг_Select.Select();
 			while (поступленняТоварівТаПослуг_Select.MoveNext())
@@ -411,6 +440,13 @@ namespace StorageAndTrade
 
 				SelectPointerItem = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
 			}
+		}
+
+        private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			LoadRecords();
+
+			dataGridViewRecords.Focus();
 		}
     }
 }

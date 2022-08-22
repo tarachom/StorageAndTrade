@@ -32,6 +32,7 @@ using AccountingSoftware;
 using Конфа = StorageAndTrade_1_0;
 using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
+using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {
@@ -44,6 +45,16 @@ namespace StorageAndTrade
 
         private void FormConstants_Load(object sender, EventArgs e)
         {
+            ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Конфа.Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+            foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+                comboBox_ТипПеріодуДляЖурналівДокументів.Items.Add(
+                    new NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>(field.Desc, (Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value));
+
+            //
+            //
+            //
+
             directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer());
             directoryControl_Склад.Init(new Form_Склади(), new Довідники.Склади_Pointer());
             directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer());
@@ -69,6 +80,13 @@ namespace StorageAndTrade
             directoryControl_Підрозділ.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const;
             directoryControl_БанківськийРахунок.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийБанківськийРахунок_Const;
             directoryControl_ВидЦіни.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийВидЦіни_Const;
+
+            foreach (NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів> ТипПеріоду in comboBox_ТипПеріодуДляЖурналівДокументів.Items)
+                if (ТипПеріоду.Value == Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+                {
+                    comboBox_ТипПеріодуДляЖурналівДокументів.SelectedItem = ТипПеріоду;
+                    break;
+                }
         }
 
         void Save()
@@ -83,6 +101,9 @@ namespace StorageAndTrade
             Константи.ЗначенняЗаЗамовчуванням.ОсновнийПідрозділ_Const = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
             Константи.ЗначенняЗаЗамовчуванням.ОсновнийБанківськийРахунок_Const = (Довідники.БанківськіРахункиОрганізацій_Pointer)directoryControl_БанківськийРахунок.DirectoryPointerItem;
             Константи.ЗначенняЗаЗамовчуванням.ОсновнийВидЦіни_Const = (Довідники.ВидиЦін_Pointer)directoryControl_ВидЦіни.DirectoryPointerItem;
+
+            if (comboBox_ТипПеріодуДляЖурналівДокументів.SelectedIndex >= 0)
+                Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const = ((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)comboBox_ТипПеріодуДляЖурналівДокументів.SelectedItem).Value;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 22.08.2022 09:53:35
+ * Дата конфігурації: 22.08.2022 15:47:54
  *
  */
 
@@ -49,6 +49,7 @@ namespace StorageAndTrade_1_0
             Константи.ВіртуальніТаблиціРегістрів.ReadAll();
             Константи.НумераціяДокументів.ReadAll();
             Константи.НумераціяДовідників.ReadAll();
+            Константи.ЖурналиДокументів.ReadAll();
             
         }
     }
@@ -3134,6 +3135,39 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_СтаттяРухуКоштів_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_f5", m_СтаттяРухуКоштів_Const);
+            }
+        }
+             
+    }
+    #endregion
+    
+	#region CONSTANTS BLOCK "ЖурналиДокументів"
+    public static class ЖурналиДокументів
+    {
+        public static void ReadAll()
+        {
+            
+            Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+            bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
+                 new string[] { "col_h3" }, fieldValue);
+            
+            if (IsSelect)
+            {
+                m_ОсновнийТипПеріоду_Const = (fieldValue["col_h3"] != DBNull.Value) ? (Перелічення.ТипПеріодуДляЖурналівДокументів)fieldValue["col_h3"] : 0;
+                
+            }
+			
+        }
+        
+        
+        static Перелічення.ТипПеріодуДляЖурналівДокументів m_ОсновнийТипПеріоду_Const = 0;
+        public static Перелічення.ТипПеріодуДляЖурналівДокументів ОсновнийТипПеріоду_Const
+        {
+            get { return m_ОсновнийТипПеріоду_Const; }
+            set
+            {
+                m_ОсновнийТипПеріоду_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_h3", (int)m_ОсновнийТипПеріоду_Const);
             }
         }
              
@@ -9454,6 +9488,16 @@ namespace StorageAndTrade_1_0.Перелічення
          ЗамовленняКлієнта = 5,
          АктВиконанихРобіт = 6,
          РеалізаціяТоварівТаПослуг = 7
+    }
+    #endregion
+    
+    #region ENUM "ТипПеріодуДляЖурналівДокументів"
+    
+    public enum ТипПеріодуДляЖурналівДокументів
+    {
+         ВесьПеріод = 1,
+         ЗПочаткуРоку = 2,
+         ЗПочаткуМісяця = 3
     }
     #endregion
     
