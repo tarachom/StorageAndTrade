@@ -108,9 +108,6 @@ namespace StorageAndTrade
 		{
 			RecordsBindingList.Clear();
 
-			Перелічення.ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
-				((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
-
 			Документи.ПоступленняТоварівТаПослуг_Select поступленняТоварівТаПослуг_Select = new Документи.ПоступленняТоварівТаПослуг_Select();
 			поступленняТоварівТаПослуг_Select.QuerySelect.Field.AddRange(new string[] {
 			    "spend",
@@ -131,7 +128,10 @@ namespace StorageAndTrade
 			поступленняТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, SelectOrder.ASC);
 			поступленняТоварівТаПослуг_Select.QuerySelect.Order.Add(Документи.ПоступленняТоварівТаПослуг_Const.НомерДок, SelectOrder.ASC);
 
-            switch (ПеріодЖурналу)
+			Перелічення.ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
+
+			switch (ПеріодЖурналу)
             {
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
                     {
@@ -374,9 +374,10 @@ namespace StorageAndTrade
 
 		private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			LoadRecords();
-
+			SelectPointerItem = null;
 			dataGridViewRecords.Focus();
+
+			LoadRecords();
 		}
 
 		#region Ввести на основі

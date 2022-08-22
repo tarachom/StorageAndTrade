@@ -87,7 +87,19 @@ namespace StorageAndTrade
 
 		private void Form_АктВиконанихРобітЖурнал_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Конфа.Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+			foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+			{
+				int index = сomboBox_ТипПеріоду.Items.Add(
+					new NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>(field.Desc, (Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value));
+
+				if ((Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value == Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+					сomboBox_ТипПеріоду.SelectedIndex = index;
+			}
+
+			if (сomboBox_ТипПеріоду.SelectedIndex == -1)
+				сomboBox_ТипПеріоду.SelectedIndex = 0;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -115,6 +127,23 @@ namespace StorageAndTrade
 			//ORDER
 			актВиконанихРобіт_Select.QuerySelect.Order.Add(Документи.АктВиконанихРобіт_Const.ДатаДок, SelectOrder.ASC);
 			актВиконанихРобіт_Select.QuerySelect.Order.Add(Документи.АктВиконанихРобіт_Const.НомерДок, SelectOrder.ASC);
+
+			Перелічення.ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
+
+			switch (ПеріодЖурналу)
+			{
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
+					{
+						актВиконанихРобіт_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
+						break;
+					}
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
+					{
+						актВиконанихРобіт_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						break;
+					}
+			}
 
 			актВиконанихРобіт_Select.Select();
 			while (актВиконанихРобіт_Select.MoveNext())
@@ -324,6 +353,24 @@ namespace StorageAndTrade
 			SpendDocuments(false, "Відмінити проведення?");
 		}
 
+		private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+
+				SelectPointerItem = new Документи.АктВиконанихРобіт_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+			}
+		}
+
+		private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			SelectPointerItem = null;
+			dataGridViewRecords.Focus();
+
+			LoadRecords();
+		}
+
 		#region Ввести на основі
 
 		private void прихіднийКасовийОрдерToolStripMenuItem_Click(object sender, EventArgs e)
@@ -392,14 +439,6 @@ namespace StorageAndTrade
 
         #endregion
 
-        private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-			if (dataGridViewRecords.SelectedRows.Count > 0)
-			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
-
-				SelectPointerItem = new Документи.АктВиконанихРобіт_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
-			}
-		}
+        
     }
 }
