@@ -201,6 +201,7 @@
     <Compile Include="Довідники\СеріїНоменклатури\Form_СеріїНоменклатуриЕлемент.designer.cs">
       <DependentUpon>Form_СеріїНоменклатуриЕлемент.cs</DependentUpon>
     </Compile>
+    <Compile Include="Довідники\ФункціїДляДовідників.cs" />
     <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>

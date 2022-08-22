@@ -113,19 +113,7 @@ namespace StorageAndTrade
 				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
 
 				if (UidSelect != Guid.Empty.ToString())
-				{
-					dataGridViewRecords.Rows[0].Selected = false;
-
-					foreach (DataGridViewRow row in dataGridViewRecords.Rows)
-					{
-						if (row.Cells["ID"].Value.ToString() == UidSelect)
-						{
-							row.Selected = true;
-							dataGridViewRecords.FirstDisplayedScrollingRowIndex = row.Index;
-							break;
-						}
-					}
-				}
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -216,6 +204,8 @@ namespace StorageAndTrade
 						контрагенти_Objest_Новий.Назва = "Копія - " + контрагенти_Objest_Новий.Назва;
 						контрагенти_Objest_Новий.Код = (++Константи.НумераціяДовідників.Контрагенти_Const).ToString("D6");
 						контрагенти_Objest_Новий.Save();
+
+						SelectPointerItem = контрагенти_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

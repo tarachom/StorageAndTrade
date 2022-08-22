@@ -66,20 +66,23 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ТипНоменклатури"].HeaderText = "Тип";
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-		//test
-        private void Form_Номенклатура_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_Номенклатура_Load(object sender, EventArgs e)
         {
 			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
-            {
-				Довідники.Номенклатура_Pointer номенклатура_Pointer = new Довідники.Номенклатура_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
-				if (!номенклатура_Pointer.IsEmpty())
-				{
-					Довідники.Номенклатура_Objest номенклатура_Objest = номенклатура_Pointer.GetDirectoryObject();
-					if (номенклатура_Objest != null)
-						Номенклатура_Папки_Дерево.Parent_Pointer = номенклатура_Objest.Папка;
-				}
+			{
+				Довідники.Номенклатура_Objest номенклатура_Objest = new Довідники.Номенклатура_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid)).GetDirectoryObject();
+				if (номенклатура_Objest != null)
+					Номенклатура_Папки_Дерево.Parent_Pointer = номенклатура_Objest.Папка;
 			}
 
 			Номенклатура_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
@@ -90,9 +93,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.Номенклатура_Select номенклатура_Select = new Довідники.Номенклатура_Select();
@@ -156,17 +156,14 @@ ELSE 0 END)", "ostatok"));
 					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.Номенклатура_Const.ТипНоменклатури]).ToString(),
 					Залишок = (cur.Fields["ostatok"] != DBNull.Value ? (decimal)cur.Fields["ostatok"] : 0)
 				});
-
-				if (DirectoryPointerItem != null && selectRow == 0)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -262,6 +259,8 @@ ELSE 0 END)", "ostatok"));
 						номенклатура_Objest_Новий.Назва = "Копія - " + номенклатура_Objest_Новий.Назва;
 						номенклатура_Objest_Новий.Код = (++Константи.НумераціяДовідників.Номенклатура_Const).ToString("D6");
 						номенклатура_Objest_Новий.Save();
+
+						SelectPointerItem = номенклатура_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {
