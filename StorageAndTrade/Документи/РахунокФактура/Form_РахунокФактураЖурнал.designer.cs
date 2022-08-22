@@ -212,7 +212,7 @@ namespace StorageAndTrade
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_РахунокФактураЖурнал";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Замовлення клієнтів - Журнал";
+            this.Text = "Рахунок фактура - Журнал";
             this.Load += new System.EventHandler(this.Form_РахунокФактураЖурнал_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
