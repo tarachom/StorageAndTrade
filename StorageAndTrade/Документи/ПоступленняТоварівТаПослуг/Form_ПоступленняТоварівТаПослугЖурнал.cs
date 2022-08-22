@@ -133,17 +133,35 @@ namespace StorageAndTrade
 
 			switch (ПеріодЖурналу)
             {
+
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
+					{
+						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						break;
+					}
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.Квартал:
+					{
+						DateTime ДатаТриМісцяНазад = DateTime.Now.AddMonths(-3);
+						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
+						break;
+					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
                     {
 						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
 						break;
                     }
-				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
-                    {
-						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуТижня:
+					{
+						DateTime СімДнівНазад = DateTime.Now.AddDays(-7);
+						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
 						break;
 					}
-            }
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ПоточнийДень:
+					{
+						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+						break;
+					}
+			}
 
 			поступленняТоварівТаПослуг_Select.Select();
 			while (поступленняТоварівТаПослуг_Select.MoveNext())

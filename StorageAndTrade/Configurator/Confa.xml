@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>22.08.2022 15:47:54</DateTimeSave>
+  <DateTimeSave>22.08.2022 17:48:45</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -4458,7 +4458,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Name>ГосподарськіОперації</Name>
       <Desc>
       </Desc>
-      <SerialNumber>24</SerialNumber>
+      <SerialNumber>25</SerialNumber>
       <Fields>
         <Field>
           <Name>ЗамовленняВПостачальника</Name>
@@ -4579,6 +4579,11 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Name>ВведенняЗалишків</Name>
           <Value>24</Value>
           <Desc>Введення залишків</Desc>
+        </Field>
+        <Field>
+          <Name>ВнутрішнєСпоживанняТоварів</Name>
+          <Value>25</Value>
+          <Desc>Внутрішнє споживання товарів</Desc>
         </Field>
       </Fields>
     </Enum>
@@ -4869,7 +4874,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Name>ТипПеріодуДляЖурналівДокументів</Name>
       <Desc>
       </Desc>
-      <SerialNumber>3</SerialNumber>
+      <SerialNumber>6</SerialNumber>
       <Fields>
         <Field>
           <Name>ВесьПеріод</Name>
@@ -4882,9 +4887,24 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>З початку року</Desc>
         </Field>
         <Field>
+          <Name>Квартал</Name>
+          <Value>6</Value>
+          <Desc>Квартал</Desc>
+        </Field>
+        <Field>
           <Name>ЗПочаткуМісяця</Name>
           <Value>3</Value>
           <Desc>З початку місяця</Desc>
+        </Field>
+        <Field>
+          <Name>ЗПочаткуТижня</Name>
+          <Value>4</Value>
+          <Desc>З початку тижня</Desc>
+        </Field>
+        <Field>
+          <Name>ПоточнийДень</Name>
+          <Value>5</Value>
+          <Desc>Поточний день</Desc>
         </Field>
       </Fields>
     </Enum>

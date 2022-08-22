@@ -60,7 +60,7 @@ namespace StorageAndTrade
 
     class ФункціїДляДовідниківТаДокументів
     {
-        public static void ВиділитиЕлементСписку(DataGridView gridView, string columnName, string columnValue)
+        public static void ВиділитиЕлементСписку(DataGridView gridView, string columnName, string rowValue)
         {
             if (gridView.Rows.Count > 0)
             {
@@ -68,7 +68,7 @@ namespace StorageAndTrade
 
                 foreach (DataGridViewRow row in gridView.Rows)
                 {
-                    if (row.Cells[columnName].Value.ToString() == columnValue)
+                    if (row.Cells[columnName].Value.ToString() == rowValue)
                     {
                         row.Selected = true;
                         gridView.FirstDisplayedScrollingRowIndex = row.Index;

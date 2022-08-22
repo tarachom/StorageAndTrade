@@ -136,14 +136,32 @@ namespace StorageAndTrade
 
 			switch (ПеріодЖурналу)
 			{
+
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
+					{
+						переміщенняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						break;
+					}
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.Квартал:
+					{
+						DateTime ДатаТриМісцяНазад = DateTime.Now.AddMonths(-3);
+						переміщенняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
+						break;
+					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
 					{
 						переміщенняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
 						break;
 					}
-				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуТижня:
 					{
-						переміщенняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						DateTime СімДнівНазад = DateTime.Now.AddDays(-7);
+						переміщенняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
+						break;
+					}
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ПоточнийДень:
+					{
+						переміщенняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
 						break;
 					}
 			}

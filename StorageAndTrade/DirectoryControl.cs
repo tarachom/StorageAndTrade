@@ -218,6 +218,9 @@ namespace StorageAndTrade
 
 			DirectoryPointerItem.Init(new UnigueID(uid));
 			ReadPresentation();
+
+			if (AfterSelectFunc != null)
+				AfterSelectFunc.Invoke();
 		}
 
 		private void textBoxControl_KeyDown(object sender, KeyEventArgs e)
