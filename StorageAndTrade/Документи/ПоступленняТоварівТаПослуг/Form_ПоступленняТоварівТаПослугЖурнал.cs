@@ -94,7 +94,7 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			RecordsBindingList.Clear();
+			//RecordsBindingList.Clear();
 
 			Документи.ПоступленняТоварівТаПослуг_Select поступленняТоварівТаПослуг_Select = new Документи.ПоступленняТоварівТаПослуг_Select();
 			поступленняТоварівТаПослуг_Select.QuerySelect.Field.AddRange(new string[] {
@@ -398,5 +398,7 @@ namespace StorageAndTrade
 		}
 
         #endregion
+
+        
     }
 }
