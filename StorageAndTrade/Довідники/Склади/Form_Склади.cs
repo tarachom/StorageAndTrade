@@ -58,19 +58,23 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ТипСкладу"].HeaderText = "Тип";
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void Form_Склади_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_Склади_Load(object sender, EventArgs e)
         {
 			if (DirectoryPointerItem != null && !DirectoryPointerItem.IsEmpty())
 			{
-				Довідники.Склади_Pointer склади_Pointer = new Довідники.Склади_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid));
-				if (!склади_Pointer.IsEmpty())
-				{
-					Довідники.Склади_Objest склади_Objest = склади_Pointer.GetDirectoryObject();
-					if (склади_Objest != null)
-						Склади_Папки_Дерево.Parent_Pointer = склади_Objest.Папка;
-				}
+				Довідники.Склади_Objest склади_Objest = new Довідники.Склади_Pointer(new UnigueID(DirectoryPointerItem.UnigueID.UGuid)).GetDirectoryObject();
+				if (склади_Objest != null)
+					Склади_Папки_Дерево.Parent_Pointer = склади_Objest.Папка;
 			}
 
 			Склади_Папки_Дерево.CallBack_AfterSelect = TreeFolderAfterSelect;
@@ -81,9 +85,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.Склади_Select склади_Select = new Довідники.Склади_Select();
@@ -110,17 +111,14 @@ namespace StorageAndTrade
 					Код = cur.Fields[Довідники.Склади_Const.Код].ToString(),
 					ТипСкладу = ((Перелічення.ТипиСкладів)cur.Fields[Довідники.Склади_Const.ТипСкладу]).ToString()
 				});
-
-				if (DirectoryPointerItem != null && selectRow == 0)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -212,6 +210,8 @@ namespace StorageAndTrade
 						склади_Objest_Новий.Назва = "Копія - " + склади_Objest_Новий.Назва;
 						склади_Objest_Новий.Код = (++Константи.НумераціяДовідників.Склади_Const).ToString("D6");
 						склади_Objest_Новий.Save();
+
+						SelectPointerItem = склади_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

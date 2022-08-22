@@ -113,7 +113,10 @@ namespace StorageAndTrade
 				}
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = каси_Objest.GetDirectoryPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				this.Close();
 			}

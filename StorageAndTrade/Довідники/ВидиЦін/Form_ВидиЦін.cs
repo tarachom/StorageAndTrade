@@ -55,9 +55,17 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void Form_ВидиЦін_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_ВидиЦін_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -66,8 +74,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.ВидиЦін_Select видиЦін_Select = new Довідники.ВидиЦін_Select();
@@ -96,17 +102,14 @@ namespace StorageAndTrade
 					Код = cur.Fields[Довідники.ВидиЦін_Const.Код].ToString(),
 					Валюта = cur.Fields["field2"].ToString()
 				});
-
-				if (DirectoryPointerItem != null)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -191,6 +194,8 @@ namespace StorageAndTrade
 						ВидиЦін_Objest_Новий.Назва = "Копія - " + ВидиЦін_Objest_Новий.Назва;
 						ВидиЦін_Objest_Новий.Код = (++Константи.НумераціяДовідників.ВидиЦін_Const).ToString("D6");
 						ВидиЦін_Objest_Новий.Save();
+
+						SelectPointerItem = ВидиЦін_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

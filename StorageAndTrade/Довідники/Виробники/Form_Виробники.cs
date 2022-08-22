@@ -55,9 +55,17 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void Form_Виробники_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_Виробники_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -66,8 +74,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.Виробники_Select виробники_Select = new Довідники.Виробники_Select();
@@ -88,17 +94,14 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Довідники.Виробники_Const.Назва].ToString(),
 					Код = cur.Fields[Довідники.Виробники_Const.Код].ToString()
 				});
-
-				if (DirectoryPointerItem != null)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -182,6 +185,8 @@ namespace StorageAndTrade
 						виробники_Objest_Новий.Назва = "Копія - " + виробники_Objest_Новий.Назва;
 						виробники_Objest_Новий.Код = (++Константи.НумераціяДовідників.Виробники_Const).ToString("D6");
 						виробники_Objest_Новий.Save();
+
+						SelectPointerItem = виробники_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

@@ -55,9 +55,17 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void Form_Користувачі_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_Користувачі_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -66,9 +74,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.Користувачі_Select користувачі_Select = new Довідники.Користувачі_Select();
@@ -89,17 +94,14 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Довідники.Користувачі_Const.Назва].ToString(),
 					Код = cur.Fields[Довідники.Користувачі_Const.Код].ToString()
 				});
-
-				if (DirectoryPointerItem != null && selectRow == 0)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -183,6 +185,8 @@ namespace StorageAndTrade
 						користувачі_Objest_Новий.Назва = "Копія - " + користувачі_Objest_Новий.Назва;
 						користувачі_Objest_Новий.Код = (++Константи.НумераціяДовідників.Користувачі_Const).ToString("D6");
 						користувачі_Objest_Новий.Save();
+
+						SelectPointerItem = користувачі_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

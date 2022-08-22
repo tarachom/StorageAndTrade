@@ -119,7 +119,10 @@ namespace StorageAndTrade
 				}
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = банківськіРахункиОрганізацій_Objest.GetDirectoryPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				this.Close();
 			}

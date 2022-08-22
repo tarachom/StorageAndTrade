@@ -65,8 +65,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = 0;
-
 			RecordsBindingList.Clear();
 			dataGridViewRecords.Rows.Clear();
 
@@ -90,18 +88,7 @@ namespace StorageAndTrade
 					Дата = (DateTime)cur.Fields[Довідники.ПартіяТоварівКомпозит_Const.Дата],
 					Тип = ((Перелічення.ТипДокументуПартіяТоварівКомпозит)cur.Fields[Довідники.ПартіяТоварівКомпозит_Const.ТипДокументу]).ToString()
 				});
-
-				if (DirectoryPointerItem != null)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
-
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
-			{
-                dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
-                dataGridViewRecords.Rows[selectRow].Selected = true;
-                dataGridViewRecords.Rows[0].Selected = false;
-            }
 		}
 
 		private class Записи

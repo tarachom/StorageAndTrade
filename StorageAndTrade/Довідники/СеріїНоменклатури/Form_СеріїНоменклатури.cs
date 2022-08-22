@@ -55,9 +55,17 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Коментар"].Width = 300;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void Form_СеріїНоменклатури_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_СеріїНоменклатури_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -66,8 +74,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.СеріїНоменклатури_Select серіїНоменклатури_Select = new Довідники.СеріїНоменклатури_Select();
@@ -88,17 +94,14 @@ namespace StorageAndTrade
 					Номер = cur.Fields[Довідники.СеріїНоменклатури_Const.Номер].ToString(),
 					Коментар = cur.Fields[Довідники.СеріїНоменклатури_Const.Коментар].ToString(),
 				});
-
-				if (DirectoryPointerItem != null)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -182,6 +185,8 @@ namespace StorageAndTrade
 						серіїНоменклатури_Objest_Новий.Номер = Guid.NewGuid().ToString();
 						серіїНоменклатури_Objest_Новий.Коментар = "Копія - " + серіїНоменклатури_Objest.Номер;
 						серіїНоменклатури_Objest_Новий.Save();
+
+						SelectPointerItem = серіїНоменклатури_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

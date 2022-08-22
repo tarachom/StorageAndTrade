@@ -109,7 +109,10 @@ namespace StorageAndTrade
 				}
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = характеристикиНоменклатури_Objest.GetDirectoryPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				this.Close();
 			}

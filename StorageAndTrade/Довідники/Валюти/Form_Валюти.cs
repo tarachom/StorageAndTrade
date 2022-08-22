@@ -53,9 +53,17 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void Form_Валюти_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_Валюти_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -64,8 +72,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = 0;
-
 			RecordsBindingList.Clear();
 			dataGridViewRecords.Rows.Clear();
 
@@ -87,18 +93,15 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Довідники.Валюти_Const.Назва].ToString(),
 					Код = cur.Fields[Довідники.Валюти_Const.Код].ToString()
 				});
-
-				if (DirectoryPointerItem != null)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-                dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
-                dataGridViewRecords.Rows[selectRow].Selected = true;
-                dataGridViewRecords.Rows[0].Selected = false;
-            }
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
+			}
 		}
 
 		private class Записи
@@ -181,6 +184,8 @@ namespace StorageAndTrade
 						валюти_Objest_Новий.Назва = "Копія - " + валюти_Objest_Новий.Назва;
 						валюти_Objest_Новий.Код = (++Константи.НумераціяДовідників.Валюти_Const).ToString("D6");
 						валюти_Objest_Новий.Save();
+
+						SelectPointerItem = валюти_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

@@ -55,7 +55,15 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Код"].Width = 50;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
 
 		private void Form_БанківськіРахункиКонтрагентів_Load(object sender, EventArgs e)
         {
@@ -66,9 +74,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.БанківськіРахункиКонтрагентів_Select банківськіРахункиКонтрагентів_Select = new Довідники.БанківськіРахункиКонтрагентів_Select();
@@ -89,17 +94,14 @@ namespace StorageAndTrade
 					Назва = cur.Fields[Довідники.БанківськіРахункиКонтрагентів_Const.Назва].ToString(),
 					Код = cur.Fields[Довідники.БанківськіРахункиКонтрагентів_Const.Код].ToString()
 				});
-
-				if (DirectoryPointerItem != null && selectRow == 0)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -183,6 +185,8 @@ namespace StorageAndTrade
 						банківськіРахункиКонтрагентів_Objest_Новий.Назва = "Копія - " + банківськіРахункиКонтрагентів_Objest_Новий.Назва;
 						банківськіРахункиКонтрагентів_Objest_Новий.Код = (++Константи.НумераціяДовідників.БанківськіРахункиКонтрагентів_Const).ToString("D6");
 						банківськіРахункиКонтрагентів_Objest_Новий.Save();
+
+						SelectPointerItem = банківськіРахункиКонтрагентів_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

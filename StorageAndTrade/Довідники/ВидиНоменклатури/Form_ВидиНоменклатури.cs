@@ -57,7 +57,15 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ОдиницяВиміру"].HeaderText = "Од.";
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
 
 		private void Form_ВидиНоменклатури_Load(object sender, EventArgs e)
 		{
@@ -68,8 +76,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = 0; 
-
 			RecordsBindingList.Clear();
 
 			Довідники.ВидиНоменклатури_Select видиНоменклатури_Select = new Довідники.ВидиНоменклатури_Select();
@@ -99,18 +105,14 @@ namespace StorageAndTrade
 					ОдиницяВиміру = cur.Fields["join1"].ToString(),
 					ТипНоменклатури = ((Перелічення.ТипиНоменклатури)cur.Fields[Довідники.ВидиНоменклатури_Const.ТипНоменклатури]).ToString()
 				});
-
-				if (DirectoryPointerItem != null)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
-				dataGridViewRecords.Focus();
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -196,6 +198,8 @@ namespace StorageAndTrade
 						видиНоменклатури_Objest_Новий.Назва = "Копія - " + видиНоменклатури_Objest_Новий.Назва;
 						видиНоменклатури_Objest_Новий.Код = (++Константи.НумераціяДовідників.ВидиНоменклатури_Const).ToString("D6");
 						видиНоменклатури_Objest_Новий.Save();
+
+						SelectPointerItem = видиНоменклатури_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

@@ -59,7 +59,15 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ТипДоговору"].HeaderText = "Тип договору";
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
+
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
 
 		/// <summary>
 		/// Контрагент власник договорів
@@ -88,9 +96,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.ДоговориКонтрагентів_Select договориКонтрагентів_Select = new Довідники.ДоговориКонтрагентів_Select();
@@ -139,17 +144,14 @@ namespace StorageAndTrade
 					ТипДоговору = ТипДоговоруОпис
 
 				});
-
-				if (DirectoryPointerItem != null && selectRow == 0)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -236,6 +238,8 @@ namespace StorageAndTrade
 						договориКонтрагентів_Objest_Новий.Назва = "Копія - " + договориКонтрагентів_Objest_Новий.Назва;
 						договориКонтрагентів_Objest_Новий.Код = (++Константи.НумераціяДовідників.ДоговориКонтрагентів_Const).ToString("D6");
 						договориКонтрагентів_Objest_Новий.Save();
+
+						SelectPointerItem = договориКонтрагентів_Objest_Новий.GetDirectoryPointer();
 					}
                     else
                     {

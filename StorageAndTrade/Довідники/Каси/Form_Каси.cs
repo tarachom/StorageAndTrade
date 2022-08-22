@@ -43,9 +43,17 @@ namespace StorageAndTrade
             InitializeComponent();
         }
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DirectoryPointer DirectoryPointerItem { get; set; }
 
-        private void Form_Каси_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DirectoryPointer SelectPointerItem { get; set; }
+
+		private void Form_Каси_Load(object sender, EventArgs e)
         {
 			dataGridViewRecords.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
@@ -66,9 +74,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Довідники.Каси_Select каси_Select = new Довідники.Каси_Select();
@@ -97,17 +102,14 @@ namespace StorageAndTrade
 					Код = cur.Fields[Довідники.Каси_Const.Код].ToString(),
 					Валюта = cur.Fields["field2"].ToString()
 				});
-
-				if (DirectoryPointerItem != null && selectRow == 0)
-					if (cur.UnigueID.ToString() == DirectoryPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DirectoryPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DirectoryPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідників.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -192,6 +194,8 @@ namespace StorageAndTrade
 						каси_Новий_Objest.Назва = "Копія - " + каси_Новий_Objest.Назва;
 						каси_Новий_Objest.Код = (++Константи.НумераціяДовідників.Каси_Const).ToString("D6");
 						каси_Новий_Objest.Save();
+
+						SelectPointerItem = каси_Новий_Objest.GetDirectoryPointer();
 					}
                     else
                     {
