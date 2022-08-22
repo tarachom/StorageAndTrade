@@ -81,29 +81,49 @@ namespace StorageAndTrade
             TreeNode rootNode = treeViewFolders.Nodes.Add("root", "[ Контрагенти ]");
             rootNode.ImageIndex = 0;
 
-            string tab = Conf.Directories["Контрагенти_Папки"].Table;
-            string tabFieldName = Conf.Directories["Контрагенти_Папки"].Fields["Назва"].NameInTable;
-            string tabFieldParent = Conf.Directories["Контрагенти_Папки"].Fields["Родич"].NameInTable;
-
-            string whereQueryPart1 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $" AND uid != '{UidOpenFolder}'";
-            string whereQueryPart2 = String.IsNullOrEmpty(UidOpenFolder) ? "" : $"WHERE {tab}.uid != '{UidOpenFolder}'";
-
             string query = $@"
 WITH RECURSIVE r AS (
-    SELECT uid, {tabFieldName}, {tabFieldParent}, 1 AS level 
-    FROM {tab}
-    WHERE {tabFieldParent} = '{Guid.Empty}'
-    {whereQueryPart1}
+    SELECT 
+        uid, 
+        {Довідники.Контрагенти_Папки_Const.Назва}, 
+        {Довідники.Контрагенти_Папки_Const.Родич}, 
+        1 AS level 
+    FROM {Довідники.Контрагенти_Папки_Const.TABLE}
+    WHERE {Довідники.Контрагенти_Папки_Const.Родич} = '{Guid.Empty}'";
 
+            if (!String.IsNullOrEmpty(UidOpenFolder))
+            {
+                query += $@"
+AND uid != '{UidOpenFolder}'
+";
+            }
+
+            query += $@"
     UNION ALL
 
-    SELECT {tab}.uid, {tab}.{tabFieldName}, {tab}.{tabFieldParent}, r.level + 1 AS level
-    FROM {tab}
-        JOIN r ON {tab}.{tabFieldParent} = r.uid
-    {whereQueryPart2}
+    SELECT 
+        {Довідники.Контрагенти_Папки_Const.TABLE}.uid, 
+        {Довідники.Контрагенти_Папки_Const.TABLE}.{Довідники.Контрагенти_Папки_Const.Назва}, 
+        {Довідники.Контрагенти_Папки_Const.TABLE}.{Довідники.Контрагенти_Папки_Const.Родич}, 
+        r.level + 1 AS level
+    FROM {Довідники.Контрагенти_Папки_Const.TABLE}
+        JOIN r ON {Довідники.Контрагенти_Папки_Const.TABLE}.{Довідники.Контрагенти_Папки_Const.Родич} = r.uid";
+
+            if (!String.IsNullOrEmpty(UidOpenFolder))
+            {
+                query += $@"
+WHERE {Довідники.Контрагенти_Папки_Const.TABLE}.uid != '{UidOpenFolder}'
+";
+            }
+
+            query += $@"
 )
 
-SELECT uid, {tabFieldName}, {tabFieldParent}, level FROM r
+SELECT 
+    uid, 
+    {Довідники.Контрагенти_Папки_Const.Назва}, 
+    {Довідники.Контрагенти_Папки_Const.Родич}, 
+    level FROM r
 ORDER BY level ASC
             ";
 

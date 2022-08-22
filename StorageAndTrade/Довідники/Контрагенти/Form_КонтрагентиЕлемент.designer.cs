@@ -43,7 +43,7 @@ namespace StorageAndTrade
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(389, 495);
+            this.buttonClose.Location = new System.Drawing.Point(389, 350);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
@@ -53,7 +53,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(12, 495);
+            this.buttonSave.Location = new System.Drawing.Point(12, 350);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
@@ -88,9 +88,13 @@ namespace StorageAndTrade
             // 
             // directoryControl_КонтрагентПапка
             // 
+            this.directoryControl_КонтрагентПапка.AfterSelectFunc = null;
+            this.directoryControl_КонтрагентПапка.BeforeClickOpenFunc = null;
+            this.directoryControl_КонтрагентПапка.Bind = null;
             this.directoryControl_КонтрагентПапка.DirectoryPointerItem = null;
             this.directoryControl_КонтрагентПапка.Location = new System.Drawing.Point(60, 38);
             this.directoryControl_КонтрагентПапка.Name = "directoryControl_КонтрагентПапка";
+            this.directoryControl_КонтрагентПапка.QueryFind = null;
             this.directoryControl_КонтрагентПапка.SelectForm = null;
             this.directoryControl_КонтрагентПапка.Size = new System.Drawing.Size(493, 27);
             this.directoryControl_КонтрагентПапка.TabIndex = 55;
@@ -113,9 +117,9 @@ namespace StorageAndTrade
             // 
             // Контрагенти_ТабличнаЧастина_Контакти
             // 
-            this.Контрагенти_ТабличнаЧастина_Контакти.Location = new System.Drawing.Point(12, 226);
+            this.Контрагенти_ТабличнаЧастина_Контакти.Location = new System.Drawing.Point(12, 91);
             this.Контрагенти_ТабличнаЧастина_Контакти.Name = "Контрагенти_ТабличнаЧастина_Контакти";
-            this.Контрагенти_ТабличнаЧастина_Контакти.Size = new System.Drawing.Size(923, 253);
+            this.Контрагенти_ТабличнаЧастина_Контакти.Size = new System.Drawing.Size(923, 243);
             this.Контрагенти_ТабличнаЧастина_Контакти.TabIndex = 59;
             this.Контрагенти_ТабличнаЧастина_Контакти.ДовідникОбєкт = null;
             // 
@@ -123,7 +127,7 @@ namespace StorageAndTrade
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(947, 531);
+            this.ClientSize = new System.Drawing.Size(947, 387);
             this.Controls.Add(this.Контрагенти_ТабличнаЧастина_Контакти);
             this.Controls.Add(this.textBox_Код);
             this.Controls.Add(this.label1);

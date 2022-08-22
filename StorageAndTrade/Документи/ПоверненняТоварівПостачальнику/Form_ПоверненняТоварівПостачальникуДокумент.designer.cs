@@ -177,7 +177,6 @@ namespace StorageAndTrade
             this.label10.Size = new System.Drawing.Size(56, 13);
             this.label10.TabIndex = 57;
             this.label10.Text = "Операція:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -218,7 +217,6 @@ namespace StorageAndTrade
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 56;
             this.label9.Text = "Каса:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // directoryControl_Каса
             // 
@@ -379,7 +377,7 @@ namespace StorageAndTrade
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1027, 386);
+            this.tabPage2.Size = new System.Drawing.Size(914, 354);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Додаток";
             this.tabPage2.UseVisualStyleBackColor = true;

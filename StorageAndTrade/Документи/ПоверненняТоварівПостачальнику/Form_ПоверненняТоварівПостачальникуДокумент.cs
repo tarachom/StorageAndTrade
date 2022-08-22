@@ -237,15 +237,5 @@ namespace StorageAndTrade
 		{
 			SaveDoc(true, true);
 		}
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
