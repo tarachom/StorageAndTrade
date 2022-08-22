@@ -88,7 +88,19 @@ namespace StorageAndTrade
 
 		private void Form_ПрихіднийКасовийОрдерЖурнал_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Конфа.Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+			foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+			{
+				int index = сomboBox_ТипПеріоду.Items.Add(
+					new NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>(field.Desc, (Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value));
+
+				if ((Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value == Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+					сomboBox_ТипПеріоду.SelectedIndex = index;
+			}
+
+			if (сomboBox_ТипПеріоду.SelectedIndex == -1)
+				сomboBox_ТипПеріоду.SelectedIndex = 0;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -123,6 +135,23 @@ namespace StorageAndTrade
 			//ORDER
 			прихіднийКасовийОрдер_Select.QuerySelect.Order.Add(Документи.ПрихіднийКасовийОрдер_Const.ДатаДок, SelectOrder.ASC);
 			прихіднийКасовийОрдер_Select.QuerySelect.Order.Add(Документи.ПрихіднийКасовийОрдер_Const.НомерДок, SelectOrder.ASC);
+
+			Перелічення.ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
+
+			switch (ПеріодЖурналу)
+			{
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
+					{
+						прихіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
+						break;
+					}
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
+					{
+						прихіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						break;
+					}
+			}
 
 			прихіднийКасовийОрдер_Select.Select();
 			while (прихіднийКасовийОрдер_Select.MoveNext())
@@ -343,6 +372,14 @@ namespace StorageAndTrade
 
 				SelectPointerItem = new Документи.ПрихіднийКасовийОрдер_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
 			}
+		}
+
+        private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			SelectPointerItem = null;
+			dataGridViewRecords.Focus();
+
+			LoadRecords();
 		}
     }
 }

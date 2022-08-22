@@ -43,6 +43,8 @@ namespace StorageAndTrade
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.прихіднийКасовийОрдерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.сomboBox_ТипПеріоду = new System.Windows.Forms.ToolStripComboBox();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -68,7 +70,9 @@ namespace StorageAndTrade
             this.toolStripButtonDelete,
             this.toolStripButtonДрукПроводок,
             this.toolStripButtonClearSpend,
-            this.toolStripButtonSpend});
+            this.toolStripButtonSpend,
+            this.toolStripSeparator1,
+            this.сomboBox_ТипПеріоду});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
@@ -178,6 +182,18 @@ namespace StorageAndTrade
             this.прихіднийКасовийОрдерToolStripMenuItem.Name = "прихіднийКасовийОрдерToolStripMenuItem";
             this.прихіднийКасовийОрдерToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // сomboBox_ТипПеріоду
+            // 
+            this.сomboBox_ТипПеріоду.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.сomboBox_ТипПеріоду.Name = "сomboBox_ТипПеріоду";
+            this.сomboBox_ТипПеріоду.Size = new System.Drawing.Size(121, 25);
+            this.сomboBox_ТипПеріоду.SelectedIndexChanged += new System.EventHandler(this.сomboBox_ТипПеріоду_SelectedIndexChanged);
+            // 
             // Form_ВнутрішнєСпоживанняТоварівЖурнал
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,5 +231,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonClearSpend;
         private System.Windows.Forms.ToolStripButton toolStripButtonSpend;
         private System.Windows.Forms.ToolStripMenuItem прихіднийКасовийОрдерToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripComboBox сomboBox_ТипПеріоду;
     }
 }
