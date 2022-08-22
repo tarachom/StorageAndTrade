@@ -92,6 +92,8 @@ namespace StorageAndTrade
 						textBoxName.Text = контрагенти_Objest.Назва;
 						textBox_Код.Text = контрагенти_Objest.Код;
 						directoryControl_КонтрагентПапка.DirectoryPointerItem = new Довідники.Контрагенти_Папки_Pointer(контрагенти_Objest.Папка.UnigueID);
+						textBox_ПовнаНазва.Text = контрагенти_Objest.НазваПовна;
+						textBox_Опис.Text = контрагенти_Objest.Опис;
 
 						Контрагенти_ТабличнаЧастина_Контакти.LoadRecords();
 					}
@@ -101,8 +103,8 @@ namespace StorageAndTrade
 			}
 		}
 
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
+		private void buttonSave_Click(object sender, EventArgs e)
+		{
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
@@ -110,6 +112,8 @@ namespace StorageAndTrade
 
 				контрагенти_Objest.Назва = textBoxName.Text;
 				контрагенти_Objest.Папка = (Довідники.Контрагенти_Папки_Pointer)directoryControl_КонтрагентПапка.DirectoryPointerItem;
+				контрагенти_Objest.НазваПовна = textBox_ПовнаНазва.Text;
+				контрагенти_Objest.Опис = textBox_Опис.Text;
 
 				try
 				{
@@ -136,5 +140,6 @@ namespace StorageAndTrade
 		{
 			this.Close();
 		}
-	}
+
+    }
 }

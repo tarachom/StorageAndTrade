@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 17.08.2022 15:46:37
+ * Дата конфігурації: 22.08.2022 09:53:35
  *
  */
 
@@ -4323,6 +4323,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string НазваПовна = "col_c9";
         public const string РеєстраційнийНомер = "col_d1";
         public const string Папка = "col_a1";
+        public const string Опис = "col_a2";
     }
 	
     ///<summary>
@@ -4331,13 +4332,14 @@ namespace StorageAndTrade_1_0.Довідники
     public class Контрагенти_Objest : DirectoryObject
     {
         public Контрагенти_Objest() : base(Config.Kernel, "tab_a08",
-             new string[] { "col_c7", "col_c8", "col_c9", "col_d1", "col_a1" }) 
+             new string[] { "col_c7", "col_c8", "col_c9", "col_d1", "col_a1", "col_a2" }) 
         {
             Назва = "";
             Код = "";
             НазваПовна = "";
             РеєстраційнийНомер = "";
             Папка = new Довідники.Контрагенти_Папки_Pointer();
+            Опис = "";
             
             //Табличні частини
             Контакти_TablePart = new Контрагенти_Контакти_TablePart(this);
@@ -4353,6 +4355,7 @@ namespace StorageAndTrade_1_0.Довідники
                 НазваПовна = base.FieldValue["col_c9"].ToString();
                 РеєстраційнийНомер = base.FieldValue["col_d1"].ToString();
                 Папка = new Довідники.Контрагенти_Папки_Pointer(base.FieldValue["col_a1"]);
+                Опис = base.FieldValue["col_a2"].ToString();
                 
                 BaseClear();
                 return true;
@@ -4368,6 +4371,7 @@ namespace StorageAndTrade_1_0.Довідники
             base.FieldValue["col_c9"] = НазваПовна;
             base.FieldValue["col_d1"] = РеєстраційнийНомер;
             base.FieldValue["col_a1"] = Папка.UnigueID.UGuid;
+            base.FieldValue["col_a2"] = Опис;
             
             BaseSave();
 			
@@ -4383,6 +4387,7 @@ namespace StorageAndTrade_1_0.Довідники
                "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
                "<РеєстраційнийНомер>" + "<![CDATA[" + РеєстраційнийНомер + "]]>" + "</РеєстраційнийНомер>"  +
                "<Папка>" + Папка.ToString() + "</Папка>"  +
+               "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
                "</" + root + ">";
         }
 
@@ -4395,6 +4400,7 @@ namespace StorageAndTrade_1_0.Довідники
 			copy.НазваПовна = НазваПовна;
 			copy.РеєстраційнийНомер = РеєстраційнийНомер;
 			copy.Папка = Папка;
+			copy.Опис = Опис;
 			
 			return copy;
         }
@@ -4416,6 +4422,7 @@ namespace StorageAndTrade_1_0.Довідники
         public string НазваПовна { get; set; }
         public string РеєстраційнийНомер { get; set; }
         public Довідники.Контрагенти_Папки_Pointer Папка { get; set; }
+        public string Опис { get; set; }
         
         //Табличні частини
         public Контрагенти_Контакти_TablePart Контакти_TablePart { get; set; }
