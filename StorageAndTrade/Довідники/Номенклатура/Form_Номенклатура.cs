@@ -338,5 +338,15 @@ ELSE 0 END)", "ostatok"));
 					form_ПартіїТоварівПоНоменклатурі.Show();
 			}
 		}
+
+        private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+
+				SelectPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+			}
+		}
     }
 }

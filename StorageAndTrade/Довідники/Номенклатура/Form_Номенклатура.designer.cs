@@ -144,14 +144,14 @@ namespace StorageAndTrade
             // товариНаСкладахToolStripMenuItem
             // 
             this.товариНаСкладахToolStripMenuItem.Name = "товариНаСкладахToolStripMenuItem";
-            this.товариНаСкладахToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.товариНаСкладахToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.товариНаСкладахToolStripMenuItem.Text = "Залишки";
             this.товариНаСкладахToolStripMenuItem.Click += new System.EventHandler(this.товариНаСкладахToolStripMenuItem_Click);
             // 
             // партіїToolStripMenuItem
             // 
             this.партіїToolStripMenuItem.Name = "партіїToolStripMenuItem";
-            this.партіїToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.партіїToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.партіїToolStripMenuItem.Text = "Партії";
             this.партіїToolStripMenuItem.Click += new System.EventHandler(this.партіїToolStripMenuItem_Click);
             // 
@@ -195,6 +195,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.RowHeadersVisible = false;
             this.dataGridViewRecords.Size = new System.Drawing.Size(666, 649);
             this.dataGridViewRecords.TabIndex = 0;
+            this.dataGridViewRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellClick);
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
             // Номенклатура_Папки_Дерево

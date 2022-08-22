@@ -233,5 +233,15 @@ namespace StorageAndTrade
 				LoadRecords();
 			}
 		}
+
+        private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+
+				SelectPointerItem = new Довідники.ВидиЦін_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+			}
+		}
     }
 }
