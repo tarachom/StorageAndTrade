@@ -170,7 +170,10 @@ namespace StorageAndTrade
 					переміщенняТоварів_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = переміщенняТоварів_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();

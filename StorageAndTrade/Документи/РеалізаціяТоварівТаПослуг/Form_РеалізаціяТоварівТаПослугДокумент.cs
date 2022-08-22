@@ -232,7 +232,10 @@ namespace StorageAndTrade
 					реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = реалізаціяТоварівТаПослуг_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();

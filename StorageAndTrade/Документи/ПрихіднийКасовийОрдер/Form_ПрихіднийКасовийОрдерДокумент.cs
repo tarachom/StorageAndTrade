@@ -227,7 +227,10 @@ namespace StorageAndTrade
 					прихіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = прихіднийКасовийОрдер_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();

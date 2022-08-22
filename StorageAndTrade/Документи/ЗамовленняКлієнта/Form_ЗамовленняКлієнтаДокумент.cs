@@ -229,7 +229,10 @@ namespace StorageAndTrade
 					замовленняКлієнта_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = замовленняКлієнта_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();

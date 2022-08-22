@@ -76,9 +76,17 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Проведений"].Width = 80; 
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DocumentPointer DocumentPointerItem { get; set; }
 
-        private void Form_РозхіднийКасовийОрдерЖурнал_Load(object sender, EventArgs e)
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DocumentPointer SelectPointerItem { get; set; }
+
+		private void Form_РозхіднийКасовийОрдерЖурнал_Load(object sender, EventArgs e)
         {
 			LoadRecords();
 		}
@@ -87,9 +95,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Документи.РозхіднийКасовийОрдер_Select розхіднийКасовийОрдер_Select = new Документи.РозхіднийКасовийОрдер_Select();
@@ -136,17 +141,14 @@ namespace StorageAndTrade
 					Коментар = cur.Fields[Документи.РозхіднийКасовийОрдер_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
-
-				if (DocumentPointerItem != null && selectRow == 0) 
-					if (cur.UnigueID.ToString() == DocumentPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DocumentPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DocumentPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідниківТаДокументів.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -235,6 +237,8 @@ namespace StorageAndTrade
 						розхіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Records = розхіднийКасовийОрдер_Objest.РозшифруванняПлатежу_TablePart.Copy();
 						розхіднийКасовийОрдер_Objest_Новий.РозшифруванняПлатежу_TablePart.Save(true);
 						розхіднийКасовийОрдер_Objest_Новий.Save();
+
+						SelectPointerItem = розхіднийКасовийОрдер_Objest_Новий.GetDocumentPointer();
 					}
                     else
                     {

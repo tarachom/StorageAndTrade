@@ -154,7 +154,10 @@ namespace StorageAndTrade
 					встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = встановленняЦінНоменклатури_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();

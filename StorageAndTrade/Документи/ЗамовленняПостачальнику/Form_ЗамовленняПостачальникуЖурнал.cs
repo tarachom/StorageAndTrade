@@ -75,7 +75,15 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DocumentPointer DocumentPointerItem { get; set; }
+
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DocumentPointer SelectPointerItem { get; set; }
 
 		private void Form_ЗамовленняПостачальникуЖурнал_Load(object sender, EventArgs e)
         {
@@ -86,9 +94,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Документи.ЗамовленняПостачальнику_Select замовленняПостачальнику_Select = new Документи.ЗамовленняПостачальнику_Select();
@@ -127,17 +132,14 @@ namespace StorageAndTrade
 					Коментар = cur.Fields[Документи.ЗамовленняПостачальнику_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
-
-                if (DocumentPointerItem != null)
-                    if (cur.UnigueID.ToString() == DocumentPointerItem.UnigueID.ToString())
-                        selectRow = RecordsBindingList.Count - 1;
             }
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DocumentPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DocumentPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідниківТаДокументів.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -225,6 +227,8 @@ namespace StorageAndTrade
 						замовленняПостачальнику_Objest_Новий.Товари_TablePart.Records = замовленняПостачальнику_Objest.Товари_TablePart.Copy();
 						замовленняПостачальнику_Objest_Новий.Товари_TablePart.Save(true);
 						замовленняПостачальнику_Objest_Новий.Save();
+
+						SelectPointerItem = замовленняПостачальнику_Objest_Новий.GetDocumentPointer();
 					}
                     else
                     {

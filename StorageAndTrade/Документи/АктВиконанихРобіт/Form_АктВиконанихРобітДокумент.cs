@@ -214,7 +214,10 @@ namespace StorageAndTrade
 					актВиконанихРобіт_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = актВиконанихРобіт_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();

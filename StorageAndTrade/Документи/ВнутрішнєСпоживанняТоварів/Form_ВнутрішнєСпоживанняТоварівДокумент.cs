@@ -177,7 +177,10 @@ namespace StorageAndTrade
 					внутрішнєСпоживанняТоварів_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = внутрішнєСпоживанняТоварів_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();

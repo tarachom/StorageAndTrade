@@ -74,7 +74,15 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Проведений"].Width = 80;
 		}
 
+		/// <summary>
+		/// Вказівник для вибору
+		/// </summary>
 		public DocumentPointer DocumentPointerItem { get; set; }
+
+		/// <summary>
+		/// Вказівник для виділення в списку
+		/// </summary>
+		public DocumentPointer SelectPointerItem { get; set; }
 
 		private void Form_Form_ВнутрішнєСпоживанняТоварівЖурнал_Load(object sender, EventArgs e)
         {
@@ -85,9 +93,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
 			RecordsBindingList.Clear();
 
 			Документи.ВнутрішнєСпоживанняТоварів_Select внутрішнєСпоживанняТоварів_Select = new Документи.ВнутрішнєСпоживанняТоварів_Select();
@@ -119,17 +124,14 @@ namespace StorageAndTrade
 					Коментар = cur.Fields[Документи.ВнутрішнєСпоживанняТоварів_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
-
-				if (DocumentPointerItem != null) 
-					if (cur.UnigueID.ToString() == DocumentPointerItem.UnigueID.ToString())
-						selectRow = RecordsBindingList.Count - 1;
 			}
 
-			if (selectRow != 0 && selectRow < dataGridViewRecords.Rows.Count)
+			if ((DocumentPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
-				dataGridViewRecords.Rows[0].Selected = false;
-				dataGridViewRecords.Rows[selectRow].Selected = true;
-				dataGridViewRecords.FirstDisplayedScrollingRowIndex = selectRow;
+				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DocumentPointerItem.UnigueID.ToString();
+
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляДовідниківТаДокументів.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 		}
 
@@ -216,6 +218,8 @@ namespace StorageAndTrade
 						внутрішнєСпоживанняТоварів_Objest_Новий.Товари_TablePart.Records = внутрішнєСпоживанняТоварів_Objest.Товари_TablePart.Copy();
 						внутрішнєСпоживанняТоварів_Objest_Новий.Товари_TablePart.Save(true);
 						внутрішнєСпоживанняТоварів_Objest_Новий.Save();
+
+						SelectPointerItem = внутрішнєСпоживанняТоварів_Objest_Новий.GetDocumentPointer();
 					}
                     else
                     {

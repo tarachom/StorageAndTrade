@@ -211,7 +211,10 @@ namespace StorageAndTrade
 					поверненняТоварівВідКлієнта_Objest.ClearSpendTheDocument();
 
 				if (OwnerForm != null)
+				{
+					OwnerForm.SelectPointerItem = поверненняТоварівВідКлієнта_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
+				}
 
 				if (closeForm)
 					this.Close();
