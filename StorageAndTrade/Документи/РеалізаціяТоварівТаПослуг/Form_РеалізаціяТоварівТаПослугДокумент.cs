@@ -297,6 +297,13 @@ namespace StorageAndTrade
 				Звіти.РухДокументівПоРегістрах.PrintRecords(реалізаціяТоварівТаПослуг_Objest.GetDocumentPointer());
 		}
 
+		private void toolStripButton_Друк_Click(object sender, EventArgs e)
+		{
+
+		}
+
 		#endregion
+
+
 	}
 }

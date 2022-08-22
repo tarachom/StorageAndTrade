@@ -157,12 +157,12 @@ namespace StorageAndTrade
 								comboBox_ГосподарськаОперація.SelectedItem = операція;
 								break;
 							}
+
+						ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
 				}
-
-				ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.Focus();
 			}
 		}
 
