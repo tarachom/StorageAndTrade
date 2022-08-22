@@ -169,7 +169,7 @@ namespace StorageAndTrade
 				else
 					переміщенняТоварів_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = переміщенняТоварів_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();

@@ -226,7 +226,7 @@ namespace StorageAndTrade
 				else
 					розхіднийКасовийОрдер_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = розхіднийКасовийОрдер_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();

@@ -212,7 +212,7 @@ namespace StorageAndTrade
 				else
 					введенняЗалишків_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = введенняЗалишків_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();

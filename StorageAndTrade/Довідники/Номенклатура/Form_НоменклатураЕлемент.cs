@@ -140,7 +140,7 @@ namespace StorageAndTrade
 					return;
 				}
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = номенклатура_Objest.GetDirectoryPointer();
 					OwnerForm.LoadRecords();

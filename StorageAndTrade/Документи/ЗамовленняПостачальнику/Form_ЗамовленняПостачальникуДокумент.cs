@@ -224,7 +224,7 @@ namespace StorageAndTrade
 				else
 					замовленняПостачальнику_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = замовленняПостачальнику_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();

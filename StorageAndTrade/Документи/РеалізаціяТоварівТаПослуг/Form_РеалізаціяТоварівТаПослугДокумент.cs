@@ -34,6 +34,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using Звіти = StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
@@ -231,7 +232,7 @@ namespace StorageAndTrade
 				else
 					реалізаціяТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = реалізаціяТоварівТаПослуг_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
@@ -266,5 +267,36 @@ namespace StorageAndTrade
         {
 			labelCalculationSumaDoc.Text = РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.ОбчислитиСумуДокументу().ToString();
 		}
-    }
+
+		#region MENU
+
+		private void toolStripButton_FindToJournal_Click(object sender, EventArgs e)
+		{
+			if (реалізаціяТоварівТаПослуг_Objest.IsSave)
+			{
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
+				{
+					OwnerForm.SelectPointerItem = реалізаціяТоварівТаПослуг_Objest.GetDocumentPointer();
+					OwnerForm.LoadRecords();
+
+					OwnerForm.Focus();
+				}
+				else
+				{
+					Form_РеалізаціяТоварівТаПослугЖурнал form_Журнал = new Form_РеалізаціяТоварівТаПослугЖурнал();
+					form_Журнал.MdiParent = this.MdiParent;
+					form_Журнал.SelectPointerItem = реалізаціяТоварівТаПослуг_Objest.GetDocumentPointer();
+					form_Журнал.Show();
+				}
+			}
+		}
+
+		private void toolStripButtonДрукПроводок_Click(object sender, EventArgs e)
+		{
+			if (реалізаціяТоварівТаПослуг_Objest.IsSave)
+				Звіти.РухДокументівПоРегістрах.PrintRecords(реалізаціяТоварівТаПослуг_Objest.GetDocumentPointer());
+		}
+
+		#endregion
+	}
 }

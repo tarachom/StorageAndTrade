@@ -115,7 +115,7 @@ namespace StorageAndTrade
 					return;
 				}
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = фізичніОсоби_Objest.GetDirectoryPointer();
 					OwnerForm.LoadRecords();

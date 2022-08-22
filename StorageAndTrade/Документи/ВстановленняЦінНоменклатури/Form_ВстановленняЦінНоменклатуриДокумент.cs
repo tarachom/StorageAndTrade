@@ -153,7 +153,7 @@ namespace StorageAndTrade
 				else
 					встановленняЦінНоменклатури_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = встановленняЦінНоменклатури_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();

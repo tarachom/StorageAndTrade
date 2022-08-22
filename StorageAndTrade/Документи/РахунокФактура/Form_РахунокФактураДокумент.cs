@@ -228,7 +228,7 @@ namespace StorageAndTrade
 				else
 					рахунокФактура_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = рахунокФактура_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();

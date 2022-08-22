@@ -34,7 +34,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
-using StorageAndTrade.Service;
+using Звіти = StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
@@ -157,12 +157,12 @@ namespace StorageAndTrade
 								comboBox_ГосподарськаОперація.SelectedItem = операція;
 								break;
 							}
-
-						ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
 					}
 					else
 						MessageBox.Show("Error read");
 				}
+
+				ПоступленняТоварівТаПослуг_ТабличнаЧастина_Товари.Focus();
 			}
 		}
 
@@ -217,7 +217,7 @@ namespace StorageAndTrade
 				else
 					поступленняТоварівТаПослуг_Objest.ClearSpendTheDocument();
 
-				if (OwnerForm != null)
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
 					OwnerForm.SelectPointerItem = поступленняТоварівТаПослуг_Objest.GetDocumentPointer();
 					OwnerForm.LoadRecords();
@@ -287,5 +287,38 @@ namespace StorageAndTrade
 			if (a != null)
 				a.Dispose();
         }
-    }
+
+        #region MENU
+
+        private void toolStripButton_FindToJournal_Click(object sender, EventArgs e)
+        {
+			if (поступленняТоварівТаПослуг_Objest.IsSave)
+			{
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
+				{
+					OwnerForm.SelectPointerItem = поступленняТоварівТаПослуг_Objest.GetDocumentPointer();
+					OwnerForm.LoadRecords();
+
+					OwnerForm.Focus();
+				}
+				else
+				{
+					Form_ПоступленняТоварівТаПослугЖурнал form_Журнал = new Form_ПоступленняТоварівТаПослугЖурнал();
+					form_Журнал.MdiParent = this.MdiParent;
+					form_Журнал.SelectPointerItem = поступленняТоварівТаПослуг_Objest.GetDocumentPointer();
+					form_Журнал.Show();
+				}
+			}
+		}
+
+		private void toolStripButtonДрукПроводок_Click(object sender, EventArgs e)
+		{
+			if (поступленняТоварівТаПослуг_Objest.IsSave)
+				Звіти.РухДокументівПоРегістрах.PrintRecords(поступленняТоварівТаПослуг_Objest.GetDocumentPointer());
+		}
+
+		#endregion
+
+
+	}
 }

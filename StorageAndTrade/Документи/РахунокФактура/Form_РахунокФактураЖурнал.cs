@@ -563,7 +563,6 @@ namespace StorageAndTrade
 
         private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
         {
-			SelectPointerItem = null;
 			dataGridViewRecords.Focus();
 
 			LoadRecords();
