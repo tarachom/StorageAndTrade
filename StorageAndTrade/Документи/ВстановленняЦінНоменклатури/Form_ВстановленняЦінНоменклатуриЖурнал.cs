@@ -148,16 +148,15 @@ namespace StorageAndTrade
 				});
             }
 
-			if (SelectPointerItem == null && RecordsBindingList.Count > 0)
-				SelectPointerItem = new Документи.ВстановленняЦінНоменклатури_Pointer(new UnigueID(RecordsBindingList[RecordsBindingList.Count - 1].ID));
-
-			if ((DocumentPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
+			iif(DocumentPointerItem != null || SelectPointerItem != null)
 			{
 				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DocumentPointerItem.UnigueID.ToString();
 
 				if (UidSelect != Guid.Empty.ToString())
 					ФункціїДляДовідниківТаДокументів.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
+			else
+				ФункціїДляДовідниківТаДокументів.ВиділитиОстаннійЕлементСписку(dataGridViewRecords);
 		}
 
 		private class Записи

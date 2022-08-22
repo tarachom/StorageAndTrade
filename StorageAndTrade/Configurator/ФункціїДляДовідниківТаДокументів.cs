@@ -62,16 +62,32 @@ namespace StorageAndTrade
     {
         public static void ВиділитиЕлементСписку(DataGridView gridView, string columnName, string columnValue)
         {
-            gridView.Rows[0].Selected = false;
-
-            foreach (DataGridViewRow row in gridView.Rows)
+            if (gridView.Rows.Count > 0)
             {
-                if (row.Cells[columnName].Value.ToString() == columnValue)
+                gridView.Rows[0].Selected = false;
+
+                foreach (DataGridViewRow row in gridView.Rows)
                 {
-                    row.Selected = true;
-                    gridView.FirstDisplayedScrollingRowIndex = row.Index;
-                    break;
+                    if (row.Cells[columnName].Value.ToString() == columnValue)
+                    {
+                        row.Selected = true;
+                        gridView.FirstDisplayedScrollingRowIndex = row.Index;
+                        break;
+                    }
                 }
+            }
+        }
+
+        public static void ВиділитиОстаннійЕлементСписку(DataGridView gridView)
+        {
+            if (gridView.Rows.Count > 0)
+            {
+                gridView.Rows[0].Selected = false;
+
+                DataGridViewRow row = gridView.Rows[gridView.Rows.Count - 1];
+
+                row.Selected = true;
+                gridView.FirstDisplayedScrollingRowIndex = row.Index;
             }
         }
     }
