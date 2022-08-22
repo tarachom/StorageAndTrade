@@ -142,8 +142,8 @@ namespace StorageAndTrade
                     {
 						поступленняТоварівТаПослуг_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
 						break;
-					}					
-            }			
+					}
+            }
 
 			поступленняТоварівТаПослуг_Select.Select();
 			while (поступленняТоварівТаПослуг_Select.MoveNext())
@@ -362,9 +362,26 @@ namespace StorageAndTrade
 			SpendDocuments(false, "Відмінити проведення?");
 		}
 
-        #region Ввести на основі
+		private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-        private void розхіднийКасовийОрдерToolStripMenuItem_Click(object sender, EventArgs e)
+				SelectPointerItem = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+			}
+		}
+
+		private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			LoadRecords();
+
+			dataGridViewRecords.Focus();
+		}
+
+		#region Ввести на основі
+
+		private void розхіднийКасовийОрдерToolStripMenuItem_Click(object sender, EventArgs e)
         {
 			if (dataGridViewRecords.SelectedRows.Count > 0)
 			{
@@ -432,21 +449,5 @@ namespace StorageAndTrade
 
 		#endregion
 
-		private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
-		{
-			if (dataGridViewRecords.SelectedRows.Count > 0)
-			{
-				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
-
-				SelectPointerItem = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
-			}
-		}
-
-        private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
-        {
-			LoadRecords();
-
-			dataGridViewRecords.Focus();
-		}
     }
 }
