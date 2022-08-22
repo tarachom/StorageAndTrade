@@ -134,6 +134,9 @@ namespace StorageAndTrade
 				});
             }
 
+			if (SelectPointerItem == null && RecordsBindingList.Count > 0)
+				SelectPointerItem = new Документи.ЗамовленняПостачальнику_Pointer(new UnigueID(RecordsBindingList[RecordsBindingList.Count - 1].ID));
+
 			if ((DocumentPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
 				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DocumentPointerItem.UnigueID.ToString();
@@ -411,5 +414,15 @@ namespace StorageAndTrade
 		}
 
         #endregion
+
+        private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+
+				SelectPointerItem = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+			}
+		}
     }
 }

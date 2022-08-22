@@ -190,6 +190,7 @@ namespace StorageAndTrade
             this.dataGridViewRecords.RowHeadersVisible = false;
             this.dataGridViewRecords.Size = new System.Drawing.Size(1084, 632);
             this.dataGridViewRecords.TabIndex = 0;
+            this.dataGridViewRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellClick);
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
             // Form_РеалізаціяТоварівТаПослугЖурнал

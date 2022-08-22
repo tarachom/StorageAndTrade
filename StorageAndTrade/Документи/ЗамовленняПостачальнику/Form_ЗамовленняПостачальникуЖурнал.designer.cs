@@ -40,10 +40,10 @@ namespace StorageAndTrade
             this.toolStripButtonДрукПроводок = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonClearSpend = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.toolStripDropDownButton_ВвестиНаОснові = new System.Windows.Forms.ToolStripDropDownButton();
             this.ПоступленняТоварівТаПослугToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -149,6 +149,24 @@ namespace StorageAndTrade
             this.toolStripButtonSpend.Text = "Провести";
             this.toolStripButtonSpend.Click += new System.EventHandler(this.toolStripButtonSpend_Click);
             // 
+            // toolStripDropDownButton_ВвестиНаОснові
+            // 
+            this.toolStripDropDownButton_ВвестиНаОснові.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ПоступленняТоварівТаПослугToolStripMenuItem});
+            this.toolStripDropDownButton_ВвестиНаОснові.Image = global::StorageAndTrade.Properties.Resources.down;
+            this.toolStripDropDownButton_ВвестиНаОснові.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton_ВвестиНаОснові.Name = "toolStripDropDownButton_ВвестиНаОснові";
+            this.toolStripDropDownButton_ВвестиНаОснові.Size = new System.Drawing.Size(128, 22);
+            this.toolStripDropDownButton_ВвестиНаОснові.Text = "Ввести на основі";
+            // 
+            // ПоступленняТоварівТаПослугToolStripMenuItem
+            // 
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Name = "ПоступленняТоварівТаПослугToolStripMenuItem";
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Text = "Поступлення товарів та послуг";
+            this.ПоступленняТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.ПоступленняТоварівТаПослугToolStripMenuItem_Click);
+            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.dataGridViewRecords);
@@ -172,25 +190,8 @@ namespace StorageAndTrade
             this.dataGridViewRecords.RowHeadersVisible = false;
             this.dataGridViewRecords.Size = new System.Drawing.Size(1084, 632);
             this.dataGridViewRecords.TabIndex = 0;
+            this.dataGridViewRecords.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellClick);
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
-            // 
-            // toolStripDropDownButton_ВвестиНаОснові
-            // 
-            this.toolStripDropDownButton_ВвестиНаОснові.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ПоступленняТоварівТаПослугToolStripMenuItem});
-            this.toolStripDropDownButton_ВвестиНаОснові.Image = global::StorageAndTrade.Properties.Resources.down;
-            this.toolStripDropDownButton_ВвестиНаОснові.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton_ВвестиНаОснові.Name = "toolStripDropDownButton_ВвестиНаОснові";
-            this.toolStripDropDownButton_ВвестиНаОснові.Size = new System.Drawing.Size(128, 22);
-            this.toolStripDropDownButton_ВвестиНаОснові.Text = "Ввести на основі";
-            // 
-            // ПоступленняТоварівТаПослугToolStripMenuItem
-            // 
-            this.ПоступленняТоварівТаПослугToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.ПоступленняТоварівТаПослугToolStripMenuItem.Name = "ПоступленняТоварівТаПослугToolStripMenuItem";
-            this.ПоступленняТоварівТаПослугToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
-            this.ПоступленняТоварівТаПослугToolStripMenuItem.Text = "Поступлення товарів та послуг";
-            this.ПоступленняТоварівТаПослугToolStripMenuItem.Click += new System.EventHandler(this.ПоступленняТоварівТаПослугToolStripMenuItem_Click);
             // 
             // Form_ЗамовленняПостачальникуЖурнал
             // 

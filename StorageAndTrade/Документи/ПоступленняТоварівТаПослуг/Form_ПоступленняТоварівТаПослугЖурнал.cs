@@ -94,7 +94,7 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			//RecordsBindingList.Clear();
+			RecordsBindingList.Clear();
 
 			Документи.ПоступленняТоварівТаПослуг_Select поступленняТоварівТаПослуг_Select = new Документи.ПоступленняТоварівТаПослуг_Select();
 			поступленняТоварівТаПослуг_Select.QuerySelect.Field.AddRange(new string[] {
@@ -133,6 +133,9 @@ namespace StorageAndTrade
 					Проведений = (bool)cur.Fields["spend"]
 				});
             }
+
+			if (SelectPointerItem == null && RecordsBindingList.Count > 0)
+				SelectPointerItem = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(RecordsBindingList[RecordsBindingList.Count - 1].ID));
 
 			if ((DocumentPointerItem != null || SelectPointerItem != null) && dataGridViewRecords.Rows.Count > 0)
 			{
@@ -397,8 +400,17 @@ namespace StorageAndTrade
 			}
 		}
 
-        #endregion
 
-        
+		#endregion
+
+		private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
+
+				SelectPointerItem = new Документи.ПоступленняТоварівТаПослуг_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+			}
+		}
     }
 }
