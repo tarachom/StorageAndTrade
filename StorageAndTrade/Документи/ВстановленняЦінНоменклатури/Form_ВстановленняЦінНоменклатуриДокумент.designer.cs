@@ -37,6 +37,7 @@ namespace StorageAndTrade
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker_ДатаДок = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.dateTimePicker_ЧасДок = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.directoryControl_ВидЦіни = new StorageAndTrade.DirectoryControl();
@@ -54,7 +55,6 @@ namespace StorageAndTrade
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonSaveAndSpend = new System.Windows.Forms.Button();
             this.buttonSpend = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton_FindToJournal = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonДрукПроводок = new System.Windows.Forms.ToolStripButton();
@@ -142,6 +142,16 @@ namespace StorageAndTrade
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(856, 142);
             this.panel1.TabIndex = 23;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(2, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(337, 25);
+            this.label6.TabIndex = 71;
+            this.label6.Text = "Встановлення цін номенклатури";
             // 
             // dateTimePicker_ЧасДок
             // 
@@ -285,7 +295,7 @@ namespace StorageAndTrade
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(848, 409);
+            this.tabPage2.Size = new System.Drawing.Size(848, 349);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Додаток";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -323,16 +333,6 @@ namespace StorageAndTrade
             this.buttonSpend.UseVisualStyleBackColor = true;
             this.buttonSpend.Click += new System.EventHandler(this.buttonSpend_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.Location = new System.Drawing.Point(2, 7);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(337, 25);
-            this.label6.TabIndex = 71;
-            this.label6.Text = "Встановлення цін номенклатури";
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -351,6 +351,7 @@ namespace StorageAndTrade
             this.toolStripButton_FindToJournal.Name = "toolStripButton_FindToJournal";
             this.toolStripButton_FindToJournal.Size = new System.Drawing.Size(123, 22);
             this.toolStripButton_FindToJournal.Text = "Знайти в журналі";
+            this.toolStripButton_FindToJournal.Click += new System.EventHandler(this.toolStripButton_FindToJournal_Click);
             // 
             // toolStripButtonДрукПроводок
             // 
@@ -359,6 +360,7 @@ namespace StorageAndTrade
             this.toolStripButtonДрукПроводок.Name = "toolStripButtonДрукПроводок";
             this.toolStripButtonДрукПроводок.Size = new System.Drawing.Size(82, 22);
             this.toolStripButtonДрукПроводок.Text = "Проводки";
+            this.toolStripButtonДрукПроводок.Click += new System.EventHandler(this.toolStripButtonДрукПроводок_Click);
             // 
             // Form_ВстановленняЦінНоменклатуриДокумент
             // 

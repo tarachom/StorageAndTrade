@@ -481,6 +481,7 @@ namespace StorageAndTrade
             this.toolStripButton_FindToJournal.Name = "toolStripButton_FindToJournal";
             this.toolStripButton_FindToJournal.Size = new System.Drawing.Size(123, 22);
             this.toolStripButton_FindToJournal.Text = "Знайти в журналі";
+            this.toolStripButton_FindToJournal.Click += new System.EventHandler(this.toolStripButton_FindToJournal_Click);
             // 
             // toolStripButtonДрукПроводок
             // 
@@ -489,6 +490,7 @@ namespace StorageAndTrade
             this.toolStripButtonДрукПроводок.Name = "toolStripButtonДрукПроводок";
             this.toolStripButtonДрукПроводок.Size = new System.Drawing.Size(82, 22);
             this.toolStripButtonДрукПроводок.Text = "Проводки";
+            this.toolStripButtonДрукПроводок.Click += new System.EventHandler(this.toolStripButtonДрукПроводок_Click);
             // 
             // Form_ПоверненняТоварівПостачальникуДокумент
             // 

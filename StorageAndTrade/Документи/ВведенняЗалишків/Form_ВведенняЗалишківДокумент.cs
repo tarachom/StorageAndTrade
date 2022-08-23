@@ -34,6 +34,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
+using Звіти = StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
@@ -242,5 +243,36 @@ namespace StorageAndTrade
 		{
 			SaveDoc(true, true);
 		}
+
+		#region Панель меню
+
+		private void toolStripButton_FindToJournal_Click(object sender, EventArgs e)
+		{
+			if (введенняЗалишків_Objest.IsSave)
+			{
+				if (OwnerForm != null && !OwnerForm.IsDisposed)
+				{
+					OwnerForm.SelectPointerItem = введенняЗалишків_Objest.GetDocumentPointer();
+					OwnerForm.LoadRecords();
+
+					OwnerForm.Focus();
+				}
+				else
+				{
+					Form_ВведенняЗалишківЖурнал form_Журнал = new Form_ВведенняЗалишківЖурнал();
+					form_Журнал.MdiParent = this.MdiParent;
+					form_Журнал.SelectPointerItem = введенняЗалишків_Objest.GetDocumentPointer();
+					form_Журнал.Show();
+				}
+			}
+		}
+
+		private void toolStripButtonДрукПроводок_Click(object sender, EventArgs e)
+		{
+			if (введенняЗалишків_Objest.IsSave)
+				Звіти.РухДокументівПоРегістрах.PrintRecords(введенняЗалишків_Objest.GetDocumentPointer());
+		}
+
+		#endregion
 	}
 }
