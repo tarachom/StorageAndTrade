@@ -38,6 +38,17 @@ namespace StorageAndTrade
             this.MdiChildActivate += FormStorageAndTrade_MdiChildActivate;
 
             //
+            // Робочий стіл
+            //
+
+            FormDesktop formDesktop = new FormDesktop();
+            formDesktop.MdiParent = this;
+            formDesktop.ControlBox = false;
+            formDesktop.Show();
+
+            FormStorageAndTrade_Resize(this, new EventArgs());
+
+            //
             // Обробка фонових задач розрахунку віртуальних залишків
             //
 
@@ -47,6 +58,19 @@ namespace StorageAndTrade
 
             ThreadBackgroundTask = new Thread(new ThreadStart(CalculationVirtualBalances));
             ThreadBackgroundTask.Start();
+        }
+
+        private void FormStorageAndTrade_Resize(object sender, EventArgs e)
+        {
+            Form FormDesktop = Application.OpenForms["FormDesktop"];
+
+            if (FormDesktop != null)
+            {
+                FormDesktop.Top = 0;
+                FormDesktop.Left = 0;
+                FormDesktop.Width = this.Width-20;
+                FormDesktop.Height = this.Height-142;
+            }
         }
 
         private void FormStorageAndTrade_FormClosing(object sender, FormClosingEventArgs e)
@@ -643,6 +667,6 @@ namespace StorageAndTrade
 
         }
 
-        
+       
     }
 }

@@ -643,21 +643,21 @@ namespace StorageAndTrade
             // 
             this.константиToolStripMenuItem.Image = global::StorageAndTrade.Properties.Resources.doc_text_image;
             this.константиToolStripMenuItem.Name = "константиToolStripMenuItem";
-            this.константиToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.константиToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.константиToolStripMenuItem.Text = "Константи";
             this.константиToolStripMenuItem.Click += new System.EventHandler(this.константиToolStripMenuItem_Click);
             // 
             // сервіснаОбробкаToolStripMenuItem
             // 
             this.сервіснаОбробкаToolStripMenuItem.Name = "сервіснаОбробкаToolStripMenuItem";
-            this.сервіснаОбробкаToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.сервіснаОбробкаToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.сервіснаОбробкаToolStripMenuItem.Text = "Сервісна обробка";
             this.сервіснаОбробкаToolStripMenuItem.Click += new System.EventHandler(this.сервіснаОбробкаToolStripMenuItem_Click);
             // 
             // testToolStripMenuItem
             // 
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
-            this.testToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.testToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.testToolStripMenuItem.Text = "Test";
             this.testToolStripMenuItem.Click += new System.EventHandler(this.testToolStripMenuItem_Click);
             // 
@@ -915,6 +915,7 @@ namespace StorageAndTrade
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStorageAndTrade_FormClosing);
             this.Load += new System.EventHandler(this.FormStorageAndTrade_Load);
+            this.Resize += new System.EventHandler(this.FormStorageAndTrade_Resize);
             this.menuStrip_ГоловнеМеню.ResumeLayout(false);
             this.menuStrip_ГоловнеМеню.PerformLayout();
             this.toolStrip_Довідники.ResumeLayout(false);

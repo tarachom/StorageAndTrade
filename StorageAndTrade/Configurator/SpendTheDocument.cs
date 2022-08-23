@@ -188,6 +188,8 @@ FROM
 			return listNameRow;
 		}
 
+		//... товари в резерві
+
 		public static void ПеревіритиДатуПроведенняДокументу(DocumentObject ДокументОбєкт, DateTime ПоточнаДатаДокументу)
 		{
 			if (ДокументОбєкт.Spend)

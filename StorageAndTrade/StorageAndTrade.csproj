@@ -165,6 +165,12 @@
     <Compile Include="FormConstants.Designer.cs">
       <DependentUpon>FormConstants.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDesktop.Designer.cs">
+      <DependentUpon>FormDesktop.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormService.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -908,6 +914,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormConstants.resx">
       <DependentUpon>FormConstants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDesktop.resx">
+      <DependentUpon>FormDesktop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormService.resx">
       <DependentUpon>FormService.cs</DependentUpon>
