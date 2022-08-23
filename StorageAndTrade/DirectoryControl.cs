@@ -53,6 +53,11 @@ namespace StorageAndTrade
 		public Func<bool> AfterSelectFunc { get; set; }
 
 		/// <summary>
+		/// Функція яка викликається перед пошуком
+		/// </summary>
+		public Action BeforeFindFunc { get; set; }
+
+		/// <summary>
 		/// Процедура яка викликається при встановленні значення DirectoryPointerItem
 		/// </summary>
 		public Action<DirectoryPointer> Bind { get; set; }
@@ -157,6 +162,9 @@ namespace StorageAndTrade
 
 		private void buttonFind_Click(object sender, EventArgs e)
 		{
+			if (BeforeFindFunc != null)
+				BeforeFindFunc.Invoke();
+
 			if (String.IsNullOrEmpty(QueryFind))
 				return;
 
