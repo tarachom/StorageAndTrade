@@ -288,7 +288,7 @@ namespace StorageAndTrade
 				a.Dispose();
         }
 
-        #region MENU
+        #region Панель меню
 
         private void toolStripButton_FindToJournal_Click(object sender, EventArgs e)
         {
