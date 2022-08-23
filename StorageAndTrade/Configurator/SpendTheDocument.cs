@@ -36,178 +36,26 @@ using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade_1_0.Документи
 {
-	class ЗамовленняКлієнта_SpendTheDocument
-	{
-		public static bool Spend(ЗамовленняКлієнта_Objest ДокументОбєкт)
-		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
-
-			#region Рух по регістрах
-
-			//
-			//ЗамовленняКлієнтів
-			//
-
-			РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
-
-			ДокументОбєкт.Товари_TablePart.Read();
-
-			foreach (ЗамовленняКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
-			{
-				РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet.Record();
-				замовленняКлієнтів_RecordsSet.Records.Add(record);
-
-				record.Income = true; // +
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
-
-				record.ЗамовленняКлієнта = ДокументОбєкт.GetDocumentPointer();
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.Замовлено = Товари_Record.Кількість;
-				record.Сума = Товари_Record.Сума;
-			}
-
-			замовленняКлієнтів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
-
-			//
-			//ВільніЗалишки
-			//
-
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
-
-			foreach (ЗамовленняКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
-			{
-				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
-				вільніЗалишки_RecordsSet.Records.Add(record);
-
-				record.Income = true; // +    | Документ добавляє резерв
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
-
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.ВРезервіПідЗамовлення = Товари_Record.Кількість;
-			}
-
-			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
-
-			//
-			//РозрахункиЗКлієнтами
-			//
-
-			//РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
-
-			//РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
-			//розрахункиЗКлієнтами_RecordsSet.Records.Add(розрахункиЗКлієнтами_Record);
-
-			//розрахункиЗКлієнтами_Record.Income = true; // +
-			//розрахункиЗКлієнтами_Record.Owner = ДокументОбєкт.UnigueID.UGuid;
-
-			//розрахункиЗКлієнтами_Record.Контрагент = ДокументОбєкт.Контрагент;
-			//розрахункиЗКлієнтами_Record.Валюта = ДокументОбєкт.Валюта;
-			//розрахункиЗКлієнтами_Record.Сума = ДокументОбєкт.СумаДокументу;
-
-			//розрахункиЗКлієнтами_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
-
-			#endregion
-
-			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
-
-			return true;
-		}
-
-		public static void ClearSpend(ЗамовленняКлієнта_Objest ДокументОбєкт)
-		{
-			РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new РегістриНакопичення.ЗамовленняКлієнтів_RecordsSet();
-			замовленняКлієнтів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
-
-			//РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
-			//розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
-
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
-			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
-
-			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
-		}
-	}
-
-	class РахунокФактура_SpendTheDocument
-	{
-		public static bool Spend(РахунокФактура_Objest ДокументОбєкт)
-		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
-
-			#region ВільніЗалишки
-
-			//
-			//ВільніЗалишки
-			//
-
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
-
-			foreach (РахунокФактура_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
-			{
-				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
-				вільніЗалишки_RecordsSet.Records.Add(record);
-
-				record.Income = true; // +    | Документ добавляє резерв
-				record.Owner = ДокументОбєкт.UnigueID.UGuid;
-
-				record.Номенклатура = Товари_Record.Номенклатура;
-				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
-				record.Склад = ДокументОбєкт.Склад;
-				record.ВРезервіЗіСкладу = Товари_Record.Кількість;
-			}
-
-			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
-
-			#endregion
-
-			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
-
-			return true;
-		}
-
-		public static void ClearSpend(РахунокФактура_Objest ДокументОбєкт)
-		{
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
-			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
-
-			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
-		}
-	}
-
-	class РеалізаціяТоварівТаПослуг_SpendTheDocument
-	{
+	class СпільніФункції
+    {
 		/// <summary>
-		/// Повертає список партій на дату та час документу.
-		/// Відбір відбувається по Організації, Номенклатурі, Характеристиці, Серії.
-		/// Якщо документ уже був проведений, його записи в регістр не враховуються.
-		/// Сортування (на даний момент) по даті документу поступлення. LIFO
+		/// Список наявних партій на дату документу не враховуючи сам документ
 		/// </summary>
-		/// <param name="ДокументОбєкт">Документ</param>
-		/// <param name="ТовариРядок">Рядок з таб частини</param>
-		/// <returns>Список з іменованим словником даних</returns>
-		private static List<Dictionary<string, object>> ОтриматиСписокПартій(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт,
-			РеалізаціяТоварівТаПослуг_Товари_TablePart.Record ТовариРядок)
+		/// <param name="Організація">Організація</param>
+		/// <param name="Номенклатура">Номенклатура</param>
+		/// <param name="ХарактеристикаНоменклатури">ХарактеристикаНоменклатури</param>
+		/// <param name="Серія">Серія</param>
+		/// <param name="Склад">Склад</param>
+		/// <param name="Owner">UID Документу який проводиться</param>
+		/// <param name="OwnerDateDoc">Дата документу який проводиться</param>
+		/// <param name="Кількість">Кількість яку потрібно списати</param>
+		/// <returns>Іменований список</returns>
+		public static List<Dictionary<string, object>> ОтриматиСписокНаявнихПартій(
+			Організації_Pointer Організація, Номенклатура_Pointer Номенклатура, ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури,
+			СеріїНоменклатури_Pointer Серія, Склади_Pointer Склад,
+			UnigueID Owner, DateTime OwnerDateDoc,
+			decimal Кількість)
 		{
-			//
-			//Вибірка даних з регістру, так як Віртуальні залишки розраховуються із запізненням
-			//і в основному віртуальні залишки потрібні для звітів.
-			//Також віртуальні залишки можуть не розраховуватися при масовому проведенні документів
-			//
-
 			string query = $@"
 WITH register AS
 (
@@ -223,12 +71,12 @@ WITH register AS
 		{ПартіїТоварів_Const.TABLE} AS ПартіїТоварів
 	WHERE
 		ПартіїТоварів.period <= @period_end
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{ДокументОбєкт.Організація.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
-        AND ПартіїТоварів.{ПартіїТоварів_Const.Склад} = '{ДокументОбєкт.Склад.UnigueID}'
-        AND ПартіїТоварів.owner != '{ДокументОбєкт.UnigueID}'
+		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{Організація.UnigueID}'
+		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{Номенклатура.UnigueID}'
+		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ХарактеристикаНоменклатури.UnigueID}'
+		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{Серія.UnigueID}'
+        AND ПартіїТоварів.{ПартіїТоварів_Const.Склад} = '{Склад.UnigueID}'
+        AND ПартіїТоварів.owner != '{Owner}'
 
 	GROUP BY ПартіяТоварівКомпозит
 
@@ -261,8 +109,8 @@ WITH register AS
 
 			//
 			//Вибираються дві групи
-			//a. Партії які мають кількість меншу потрібній кількості
-			//b. Одну партію яка закриває потрібну кількість
+			//1. Партії які мають кількість меншу потрібній кількості
+			//2. Одну партію яка закриває потрібну кількість
 			//
 
 			query += $@"
@@ -285,11 +133,9 @@ UNION ALL
 	LIMIT 1
 )
 ";
-
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-			//Console.WriteLine(ДокументОбєкт.ДатаДок);
-			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
-			paramQuery.Add("Кількість", ТовариРядок.Кількість);
+			paramQuery.Add("period_end", OwnerDateDoc);
+			paramQuery.Add("Кількість", Кількість);
 
 			string[] columnsName;
 			List<Dictionary<string, object>> listNameRow;
@@ -298,6 +144,318 @@ UNION ALL
 
 			return listNameRow;
 		}
+
+		public static List<Dictionary<string, object>> ОтриматиЗалишкиТоваруНаСкладі(
+			Номенклатура_Pointer Номенклатура, ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури,
+			СеріїНоменклатури_Pointer Серія, Склади_Pointer Склад,
+			UnigueID Owner, DateTime OwnerDateDoc)
+		{
+			string query = $@"
+WITH register AS
+(
+	SELECT 
+		'Залишок' AS Група,
+		SUM(CASE WHEN ТовариНаСкладах.income = true THEN 
+			ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+			-ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) AS ВНаявності
+	FROM
+		{ТовариНаСкладах_Const.TABLE} AS ТовариНаСкладах
+	WHERE
+		ТовариНаСкладах.period <= @period_end
+		AND ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} = '{Номенклатура.UnigueID}'
+		AND ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} = '{ХарактеристикаНоменклатури.UnigueID}'
+		AND ТовариНаСкладах.{ТовариНаСкладах_Const.Серія} = '{Серія.UnigueID}'
+        AND ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} = '{Склад.UnigueID}'
+        AND ТовариНаСкладах.owner != '{Owner}'
+
+	GROUP BY Група
+)
+SELECT
+    ВНаявності
+FROM
+    register
+";
+
+			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+
+			paramQuery.Add("period_end", OwnerDateDoc);
+
+			string[] columnsName;
+			List<Dictionary<string, object>> listNameRow;
+
+			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
+
+			return listNameRow;
+		}
+
+		public static void ПеревіритиДатуПроведенняДокументу(DocumentObject ДокументОбєкт, DateTime ПоточнаДатаДокументу)
+		{
+			if (ДокументОбєкт.Spend)
+			{
+				//Якщо дата проведення відрізняється від дати документу
+				if (ПоточнаДатаДокументу.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
+					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
+			}
+		}
+	}
+
+	class ЗамовленняКлієнта_SpendTheDocument
+	{
+		public static bool Spend(ЗамовленняКлієнта_Objest ДокументОбєкт)
+		{
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
+
+            #region Підготовка
+
+            Dictionary<int, Номенклатура_Objest> СписокНоменклатури = new Dictionary<int, Номенклатура_Objest>();
+
+			foreach (ЗамовленняКлієнта_Товари_TablePart.Record ТовариРядок in ДокументОбєкт.Товари_TablePart.Records)
+				СписокНоменклатури.Add(ТовариРядок.НомерРядка, ТовариРядок.Номенклатура.GetDirectoryObject());
+
+            #endregion
+
+            #region Рух по регістрах
+
+            //
+            //ЗамовленняКлієнтів
+            //
+
+            ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new ЗамовленняКлієнтів_RecordsSet();
+
+			ДокументОбєкт.Товари_TablePart.Read();
+
+			foreach (ЗамовленняКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				ЗамовленняКлієнтів_RecordsSet.Record record = new ЗамовленняКлієнтів_RecordsSet.Record();
+				замовленняКлієнтів_RecordsSet.Records.Add(record);
+
+				record.Income = true;
+				record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+				record.ЗамовленняКлієнта = ДокументОбєкт.GetDocumentPointer();
+				record.Номенклатура = Товари_Record.Номенклатура;
+				record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+				record.Склад = ДокументОбєкт.Склад;
+				record.Замовлено = Товари_Record.Кількість;
+				record.Сума = Товари_Record.Сума;
+			}
+
+			замовленняКлієнтів_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			//
+			//ВільніЗалишки
+			//
+
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
+
+			foreach (ЗамовленняКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				//Товар
+				if (СписокНоменклатури[Товари_Record.НомерРядка].ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					ВільніЗалишки_RecordsSet.Record record = new ВільніЗалишки_RecordsSet.Record();
+					вільніЗалишки_RecordsSet.Records.Add(record);
+
+					record.Income = true;
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Склад = ДокументОбєкт.Склад;
+					record.ВРезервіПідЗамовлення = Товари_Record.Кількість;
+				}
+			}
+
+			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			#endregion
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+
+			return true;
+		}
+
+		public static void ClearSpend(ЗамовленняКлієнта_Objest ДокументОбєкт)
+		{
+			ЗамовленняКлієнтів_RecordsSet замовленняКлієнтів_RecordsSet = new ЗамовленняКлієнтів_RecordsSet();
+			замовленняКлієнтів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
+			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+		}
+	}
+
+	class РахунокФактура_SpendTheDocument
+	{
+		public static bool Spend(РахунокФактура_Objest ДокументОбєкт)
+		{
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
+
+			#region Підготовка
+
+			Dictionary<int, Номенклатура_Objest> СписокНоменклатури = new Dictionary<int, Номенклатура_Objest>();
+
+			foreach (РахунокФактура_Товари_TablePart.Record ТовариРядок in ДокументОбєкт.Товари_TablePart.Records)
+				СписокНоменклатури.Add(ТовариРядок.НомерРядка, ТовариРядок.Номенклатура.GetDirectoryObject());
+
+			#endregion
+
+			#region ВільніЗалишки
+
+			//
+			//ВільніЗалишки
+			//
+
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
+
+			foreach (РахунокФактура_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
+			{
+				//Товар
+				if (СписокНоменклатури[Товари_Record.НомерРядка].ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
+				{
+					ВільніЗалишки_RecordsSet.Record record = new ВільніЗалишки_RecordsSet.Record();
+					вільніЗалишки_RecordsSet.Records.Add(record);
+
+					record.Income = true;
+					record.Owner = ДокументОбєкт.UnigueID.UGuid;
+
+					record.Номенклатура = Товари_Record.Номенклатура;
+					record.ХарактеристикаНоменклатури = Товари_Record.ХарактеристикаНоменклатури;
+					record.Склад = ДокументОбєкт.Склад;
+					record.ВРезервіЗіСкладу = Товари_Record.Кількість;
+				}
+			}
+
+			вільніЗалишки_RecordsSet.Save(ДокументОбєкт.ДатаДок, ДокументОбєкт.UnigueID.UGuid);
+
+			#endregion
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Add", ДокументОбєкт.ДатаДок, "");
+
+			return true;
+		}
+
+		public static void ClearSpend(РахунокФактура_Objest ДокументОбєкт)
+		{
+			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
+
+			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
+		}
+	}
+
+	class РеалізаціяТоварівТаПослуг_SpendTheDocument
+	{
+		/// <summary>
+		/// Повертає список партій на дату та час документу.
+		/// Відбір відбувається по Організації, Номенклатурі, Характеристиці, Серії.
+		/// Якщо документ уже був проведений, його записи в регістр не враховуються.
+		/// Сортування (на даний момент) по даті документу поступлення. LIFO
+		/// </summary>
+		/// <param name="ДокументОбєкт">Документ</param>
+		/// <param name="ТовариРядок">Рядок з таб частини</param>
+		/// <returns>Список з іменованим словником даних</returns>
+//		private static List<Dictionary<string, object>> ОтриматиСписокПартій(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт,
+//			РеалізаціяТоварівТаПослуг_Товари_TablePart.Record ТовариРядок)
+//		{
+//			//
+//			//Вибірка даних з регістру, так як Віртуальні залишки розраховуються із запізненням
+//			//і в основному віртуальні залишки потрібні для звітів.
+//			//Також віртуальні залишки можуть не розраховуватися при масовому проведенні документів
+//			//
+
+//			string query = $@"
+//WITH register AS
+//(
+//	SELECT 
+//		ПартіїТоварів.{ПартіїТоварів_Const.ПартіяТоварівКомпозит} AS ПартіяТоварівКомпозит,
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) AS Кількість,
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} END) AS Собівартість
+//	FROM
+//		{ПартіїТоварів_Const.TABLE} AS ПартіїТоварів
+//	WHERE
+//		ПартіїТоварів.period <= @period_end
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{ДокументОбєкт.Організація.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
+//        AND ПартіїТоварів.{ПартіїТоварів_Const.Склад} = '{ДокументОбєкт.Склад.UnigueID}'
+//        AND ПартіїТоварів.owner != '{ДокументОбєкт.UnigueID}'
+
+//	GROUP BY ПартіяТоварівКомпозит
+
+//	HAVING
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) > 0
+//)";
+
+//			//
+//			//ДостатняКількість обчислюється для того щоб вибирати тільки потрібні партії, а не всі наявні партії.
+//			//ДостатняКількість = Накопичена кількість >= Потрібній кількості
+//			//
+
+//			query += $@"
+//, Обчислення AS
+//(
+//	SELECT
+//	   Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата} AS ДатаПоступлення,
+//	   register.ПартіяТоварівКомпозит,
+//	   register.Кількість,
+//	   register.Собівартість,
+//	   SUM(register.Кількість) OVER(ORDER BY Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата}) >= @Кількість AS ДостатняКількість
+//	FROM
+//	   register
+//            LEFT JOIN {ПартіяТоварівКомпозит_Const.TABLE} AS Довідник_ПартіяТоварівКомпозит ON Довідник_ПартіяТоварівКомпозит.uid = 
+//                register.ПартіяТоварівКомпозит
+//	ORDER BY ДатаПоступлення
+//)";
+
+//			//
+//			//Вибираються дві групи
+//			//a. Партії які мають кількість меншу потрібній кількості
+//			//b. Одну партію яка закриває потрібну кількість
+//			//
+
+//			query += $@"
+//(
+//	SELECT 
+//		ПартіяТоварівКомпозит,
+//		Кількість,
+//		Собівартість
+//	FROM Обчислення
+//	WHERE ДостатняКількість = false
+//)
+//UNION ALL
+//(
+//	SELECT 
+//		ПартіяТоварівКомпозит,
+//		Кількість,
+//		Собівартість
+//	FROM Обчислення
+//	WHERE ДостатняКількість = true
+//	LIMIT 1
+//)
+//";
+
+//			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+//			//Console.WriteLine(ДокументОбєкт.ДатаДок);
+//			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
+//			paramQuery.Add("Кількість", ТовариРядок.Кількість);
+
+//			string[] columnsName;
+//			List<Dictionary<string, object>> listNameRow;
+
+//			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
+
+//			return listNameRow;
+//		}
 
 		private static void ПеревіркаЗаповненняТабличноїЧастини(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
 		{
@@ -313,47 +471,47 @@ UNION ALL
 				throw new Exception(string.Join("\n", СписокПомилок.ToArray()));
 		}
 
-		private static List<Dictionary<string, object>> ОтриматиЗалишкиТоварівНаСкладах(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт,
-			РеалізаціяТоварівТаПослуг_Товари_TablePart.Record ТовариРядок)
-        {
-			string query = $@"
-WITH register AS
-(
-	SELECT 
-		'Залишок' AS Група,
-		SUM(CASE WHEN ТовариНаСкладах.income = true THEN 
-			ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
-			-ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) AS ВНаявності
-	FROM
-		{ТовариНаСкладах_Const.TABLE} AS ТовариНаСкладах
-	WHERE
-		ТовариНаСкладах.period <= @period_end
-		AND ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
-		AND ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
-		AND ТовариНаСкладах.{ТовариНаСкладах_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
-        AND ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} = @Склад
-        AND ТовариНаСкладах.owner != '{ДокументОбєкт.UnigueID}'
+//		private static List<Dictionary<string, object>> ОтриматиЗалишкиТоварівНаСкладах(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт,
+//			РеалізаціяТоварівТаПослуг_Товари_TablePart.Record ТовариРядок)
+//        {
+//			string query = $@"
+//WITH register AS
+//(
+//	SELECT 
+//		'Залишок' AS Група,
+//		SUM(CASE WHEN ТовариНаСкладах.income = true THEN 
+//			ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} ELSE 
+//			-ТовариНаСкладах.{ТовариНаСкладах_Const.ВНаявності} END) AS ВНаявності
+//	FROM
+//		{ТовариНаСкладах_Const.TABLE} AS ТовариНаСкладах
+//	WHERE
+//		ТовариНаСкладах.period <= @period_end
+//		AND ТовариНаСкладах.{ТовариНаСкладах_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
+//		AND ТовариНаСкладах.{ТовариНаСкладах_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
+//		AND ТовариНаСкладах.{ТовариНаСкладах_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
+//        AND ТовариНаСкладах.{ТовариНаСкладах_Const.Склад} = @Склад
+//        AND ТовариНаСкладах.owner != '{ДокументОбєкт.UnigueID}'
 
-	GROUP BY Група
-)
-SELECT
-    ВНаявності
-FROM
-    register
-";
+//	GROUP BY Група
+//)
+//SELECT
+//    ВНаявності
+//FROM
+//    register
+//";
 
-			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-			Console.WriteLine(ДокументОбєкт.ДатаДок);
-			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
-			paramQuery.Add("Склад", !ТовариРядок.Склад.IsEmpty() ? ТовариРядок.Склад.UnigueID.UGuid : ДокументОбєкт.Склад.UnigueID.UGuid);
+//			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+//			Console.WriteLine(ДокументОбєкт.ДатаДок);
+//			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
+//			paramQuery.Add("Склад", !ТовариРядок.Склад.IsEmpty() ? ТовариРядок.Склад.UnigueID.UGuid : ДокументОбєкт.Склад.UnigueID.UGuid);
 
-			string[] columnsName;
-			List<Dictionary<string, object>> listNameRow;
+//			string[] columnsName;
+//			List<Dictionary<string, object>> listNameRow;
 
-			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
+//			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
 
-			return listNameRow;
-		}
+//			return listNameRow;
+//		}
 
 		public static bool Spend(РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт)
 		{
@@ -365,19 +523,21 @@ FROM
 
 			Dictionary<int, Номенклатура_Objest> СписокНоменклатури = new Dictionary<int, Номенклатура_Objest>();
 			Dictionary<int, decimal> ЗалишокНоменклатури = new Dictionary<int, decimal>();
-			
+			Dictionary<int, decimal> РезервНоменклатури = new Dictionary<int, decimal>();
+
 			foreach (РеалізаціяТоварівТаПослуг_Товари_TablePart.Record ТовариРядок in ДокументОбєкт.Товари_TablePart.Records)
 			{
 				СписокНоменклатури.Add(ТовариРядок.НомерРядка, ТовариРядок.Номенклатура.GetDirectoryObject());
-				ЗалишокНоменклатури.Add(ТовариРядок.НомерРядка, 0);
-
+				
 				//Для товарів отримуємо залишки
 				if (СписокНоменклатури[ТовариРядок.НомерРядка].ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					List<Dictionary<string, object>> listNameRow = ОтриматиЗалишкиТоварівНаСкладах(ДокументОбєкт, ТовариРядок);
+					List<Dictionary<string, object>> listNameRow = СпільніФункції.ОтриматиЗалишкиТоваруНаСкладі(
+						ТовариРядок.Номенклатура, ТовариРядок.ХарактеристикаНоменклатури, ТовариРядок.Серія, 
+						!ТовариРядок.Склад.IsEmpty() ? ТовариРядок.Склад : ДокументОбєкт.Склад,
+						ДокументОбєкт.UnigueID, ДокументОбєкт.ДатаДок);
 
-					if (listNameRow.Count > 0)
-						ЗалишокНоменклатури[ТовариРядок.НомерРядка] = (decimal)listNameRow[0]["ВНаявності"];
+					ЗалишокНоменклатури.Add(ТовариРядок.НомерРядка, listNameRow.Count > 0 ? (decimal)listNameRow[0]["ВНаявності"] : 0);
 
 					if (ЗалишокНоменклатури[ТовариРядок.НомерРядка] < ТовариРядок.Кількість)
 						СписокПомилок.Add($"Недостатньо товару {СписокНоменклатури[ТовариРядок.НомерРядка].Назва}." +
@@ -390,12 +550,7 @@ FROM
 
 			#endregion
 
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region ЗамовленняКлієнтів
 
@@ -504,7 +659,9 @@ FROM
 				//Товар
 				if (СписокНоменклатури[Товари_Record.НомерРядка].ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					List<Dictionary<string, object>> listNameRow = ОтриматиСписокПартій(ДокументОбєкт, Товари_Record);
+					List<Dictionary<string, object>> listNameRow = СпільніФункції.ОтриматиСписокНаявнихПартій(
+						ДокументОбєкт.Організація, Товари_Record.Номенклатура, Товари_Record.ХарактеристикаНоменклатури,
+						Товари_Record.Серія, ДокументОбєкт.Склад, ДокументОбєкт.UnigueID, ДокументОбєкт.ДатаДок, Товари_Record.Кількість);
 
 					if (listNameRow.Count == 0)
 					{
@@ -1619,105 +1776,105 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 	class ПереміщенняТоварів_SpendTheDocument
 	{
-		private static List<Dictionary<string, object>> ОтриматиСписокПартій(ПереміщенняТоварів_Objest ДокументОбєкт,
-			ПереміщенняТоварів_Товари_TablePart.Record ТовариРядок)
-		{
+		//private static List<Dictionary<string, object>> ОтриматиСписокПартій(ПереміщенняТоварів_Objest ДокументОбєкт,
+		//	ПереміщенняТоварів_Товари_TablePart.Record ТовариРядок)
+		//{
 			//
 			//Вибірка даних з регістру, так як Віртуальні залишки розраховуються із запізненням
 			//і в основному віртуальні залишки потрібні для звітів.
 			//Також віртуальні залишки можуть не розраховуватися при масовому проведенні документів
 			//
 
-			string query = $@"
-WITH register AS
-(
-	SELECT 
-		ПартіїТоварів.{ПартіїТоварів_Const.ПартіяТоварівКомпозит} AS ПартіяТоварівКомпозит,
-		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
-			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
-			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) AS Кількість,
-		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
-			ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} ELSE 
-			-ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} END) AS Собівартість
-	FROM
-		{ПартіїТоварів_Const.TABLE} AS ПартіїТоварів
-	WHERE
-		ПартіїТоварів.period <= @period_end
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{ДокументОбєкт.Організація.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
-        AND ПартіїТоварів.{ПартіїТоварів_Const.Склад} = '{ДокументОбєкт.СкладВідправник.UnigueID}'
-        AND ПартіїТоварів.owner != '{ДокументОбєкт.UnigueID}'
+//			string query = $@"
+//WITH register AS
+//(
+//	SELECT 
+//		ПартіїТоварів.{ПартіїТоварів_Const.ПартіяТоварівКомпозит} AS ПартіяТоварівКомпозит,
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) AS Кількість,
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} END) AS Собівартість
+//	FROM
+//		{ПартіїТоварів_Const.TABLE} AS ПартіїТоварів
+//	WHERE
+//		ПартіїТоварів.period <= @period_end
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{ДокументОбєкт.Організація.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
+//        AND ПартіїТоварів.{ПартіїТоварів_Const.Склад} = '{ДокументОбєкт.СкладВідправник.UnigueID}'
+//        AND ПартіїТоварів.owner != '{ДокументОбєкт.UnigueID}'
 
-	GROUP BY ПартіяТоварівКомпозит
+//	GROUP BY ПартіяТоварівКомпозит
 
-	HAVING
-		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
-			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
-			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) > 0
-)";
+//	HAVING
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) > 0
+//)";
 
-			//
-			//ДостатняКількість обчислюється для того щоб вибирати тільки потрібні партії, а не всі наявні партії.
-			//ДостатняКількість = Накопичена кількість >= Потрібній кількості
-			//
+//			//
+//			//ДостатняКількість обчислюється для того щоб вибирати тільки потрібні партії, а не всі наявні партії.
+//			//ДостатняКількість = Накопичена кількість >= Потрібній кількості
+//			//
 
-			query += $@"
-, Обчислення AS
-(
-	SELECT
-	   Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата} AS ДатаПоступлення,
-	   register.ПартіяТоварівКомпозит,
-	   register.Кількість,
-	   register.Собівартість,
-	   SUM(register.Кількість) OVER(ORDER BY Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата}) >= @Кількість AS ДостатняКількість
-	FROM
-	   register
-            LEFT JOIN {ПартіяТоварівКомпозит_Const.TABLE} AS Довідник_ПартіяТоварівКомпозит ON Довідник_ПартіяТоварівКомпозит.uid = 
-                register.ПартіяТоварівКомпозит
-	ORDER BY ДатаПоступлення
-)";
+//			query += $@"
+//, Обчислення AS
+//(
+//	SELECT
+//	   Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата} AS ДатаПоступлення,
+//	   register.ПартіяТоварівКомпозит,
+//	   register.Кількість,
+//	   register.Собівартість,
+//	   SUM(register.Кількість) OVER(ORDER BY Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата}) >= @Кількість AS ДостатняКількість
+//	FROM
+//	   register
+//            LEFT JOIN {ПартіяТоварівКомпозит_Const.TABLE} AS Довідник_ПартіяТоварівКомпозит ON Довідник_ПартіяТоварівКомпозит.uid = 
+//                register.ПартіяТоварівКомпозит
+//	ORDER BY ДатаПоступлення
+//)";
 
-			//
-			//Вибираються дві групи
-			//a. Партії які мають кількість меншу потрібній кількості
-			//b. Одну партію яка закриває потрібну кількість
-			//
+//			//
+//			//Вибираються дві групи
+//			//a. Партії які мають кількість меншу потрібній кількості
+//			//b. Одну партію яка закриває потрібну кількість
+//			//
 
-			query += $@"
-(
-	SELECT 
-		ПартіяТоварівКомпозит,
-		Кількість,
-		Собівартість
-	FROM Обчислення
-	WHERE ДостатняКількість = false
-)
-UNION ALL
-(
-	SELECT 
-		ПартіяТоварівКомпозит,
-		Кількість,
-		Собівартість
-	FROM Обчислення
-	WHERE ДостатняКількість = true
-	LIMIT 1
-)
-";
+//			query += $@"
+//(
+//	SELECT 
+//		ПартіяТоварівКомпозит,
+//		Кількість,
+//		Собівартість
+//	FROM Обчислення
+//	WHERE ДостатняКількість = false
+//)
+//UNION ALL
+//(
+//	SELECT 
+//		ПартіяТоварівКомпозит,
+//		Кількість,
+//		Собівартість
+//	FROM Обчислення
+//	WHERE ДостатняКількість = true
+//	LIMIT 1
+//)
+//";
 
-			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-			//Console.WriteLine(ДокументОбєкт.ДатаДок);
-			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
-			paramQuery.Add("Кількість", ТовариРядок.Кількість);
+//			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+//			//Console.WriteLine(ДокументОбєкт.ДатаДок);
+//			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
+//			paramQuery.Add("Кількість", ТовариРядок.Кількість);
 
-			string[] columnsName;
-			List<Dictionary<string, object>> listNameRow;
+//			string[] columnsName;
+//			List<Dictionary<string, object>> listNameRow;
 
-			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
+//			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
 
-			return listNameRow;
-		}
+//			return listNameRow;
+//		}
 
 		private static List<Dictionary<string, object>> ОтриматиЗалишкиТоварівНаСкладах(ПереміщенняТоварів_Objest ДокументОбєкт,
 			ПереміщенняТоварів_Товари_TablePart.Record ТовариРядок)
@@ -1920,7 +2077,9 @@ FROM
 				//Товар
 				if (СписокНоменклатури[Товари_Record.НомерРядка].ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					List<Dictionary<string, object>> listNameRow = ОтриматиСписокПартій(ДокументОбєкт, Товари_Record);
+					List<Dictionary<string, object>> listNameRow = СпільніФункції.ОтриматиСписокНаявнихПартій(
+						ДокументОбєкт.Організація, Товари_Record.Номенклатура, Товари_Record.ХарактеристикаНоменклатури,
+						Товари_Record.Серія, ДокументОбєкт.СкладВідправник, ДокументОбєкт.UnigueID, ДокументОбєкт.ДатаДок, Товари_Record.Кількість);
 
 					if (listNameRow.Count == 0)
 					{
@@ -2206,105 +2365,105 @@ FROM
 		/// <param name="ДокументОбєкт">Документ</param>
 		/// <param name="ТовариРядок">Рядок з таб частини</param>
 		/// <returns>Список з іменованим словником даних</returns>
-		private static List<Dictionary<string, object>> ОтриматиСписокПартій(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт,
-			ВнутрішнєСпоживанняТоварів_Товари_TablePart.Record ТовариРядок)
-		{
-			//
-			//Вибірка даних з регістру, так як Віртуальні залишки розраховуються із запізненням
-			//і в основному віртуальні залишки потрібні для звітів.
-			//Також віртуальні залишки можуть не розраховуватися при масовому проведенні документів
-			//
+//		private static List<Dictionary<string, object>> ОтриматиСписокПартій(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт,
+//			ВнутрішнєСпоживанняТоварів_Товари_TablePart.Record ТовариРядок)
+//		{
+//			//
+//			//Вибірка даних з регістру, так як Віртуальні залишки розраховуються із запізненням
+//			//і в основному віртуальні залишки потрібні для звітів.
+//			//Також віртуальні залишки можуть не розраховуватися при масовому проведенні документів
+//			//
 
-			string query = $@"
-WITH register AS
-(
-	SELECT 
-		ПартіїТоварів.{ПартіїТоварів_Const.ПартіяТоварівКомпозит} AS ПартіяТоварівКомпозит,
-		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
-			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
-			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) AS Кількість,
-		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
-			ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} ELSE 
-			-ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} END) AS Собівартість
-	FROM
-		{ПартіїТоварів_Const.TABLE} AS ПартіїТоварів
-	WHERE
-		ПартіїТоварів.period <= @period_end
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{ДокументОбєкт.Організація.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
-		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
-        AND ПартіїТоварів.{ПартіїТоварів_Const.Склад} = '{ДокументОбєкт.Склад.UnigueID}'
-        AND ПартіїТоварів.owner != '{ДокументОбєкт.UnigueID}'
+//			string query = $@"
+//WITH register AS
+//(
+//	SELECT 
+//		ПартіїТоварів.{ПартіїТоварів_Const.ПартіяТоварівКомпозит} AS ПартіяТоварівКомпозит,
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) AS Кількість,
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Собівартість} END) AS Собівартість
+//	FROM
+//		{ПартіїТоварів_Const.TABLE} AS ПартіїТоварів
+//	WHERE
+//		ПартіїТоварів.period <= @period_end
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Організація} = '{ДокументОбєкт.Організація.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Номенклатура} = '{ТовариРядок.Номенклатура.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.ХарактеристикаНоменклатури} = '{ТовариРядок.ХарактеристикаНоменклатури.UnigueID}'
+//		AND ПартіїТоварів.{ПартіїТоварів_Const.Серія} = '{ТовариРядок.Серія.UnigueID}'
+//        AND ПартіїТоварів.{ПартіїТоварів_Const.Склад} = '{ДокументОбєкт.Склад.UnigueID}'
+//        AND ПартіїТоварів.owner != '{ДокументОбєкт.UnigueID}'
 
-	GROUP BY ПартіяТоварівКомпозит
+//	GROUP BY ПартіяТоварівКомпозит
 
-	HAVING
-		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
-			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
-			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) > 0
-)";
+//	HAVING
+//		SUM(CASE WHEN ПартіїТоварів.income = true THEN 
+//			ПартіїТоварів.{ПартіїТоварів_Const.Кількість} ELSE 
+//			-ПартіїТоварів.{ПартіїТоварів_Const.Кількість} END) > 0
+//)";
 
-			//
-			//ДостатняКількість обчислюється для того щоб вибирати тільки потрібні партії, а не всі наявні партії.
-			//ДостатняКількість = Накопичена кількість >= Потрібній кількості
-			//
+//			//
+//			//ДостатняКількість обчислюється для того щоб вибирати тільки потрібні партії, а не всі наявні партії.
+//			//ДостатняКількість = Накопичена кількість >= Потрібній кількості
+//			//
 
-			query += $@"
-, Обчислення AS
-(
-	SELECT
-	   Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата} AS ДатаПоступлення,
-	   register.ПартіяТоварівКомпозит,
-	   register.Кількість,
-	   register.Собівартість,
-	   SUM(register.Кількість) OVER(ORDER BY Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата}) >= @Кількість AS ДостатняКількість
-	FROM
-	   register
-            LEFT JOIN {ПартіяТоварівКомпозит_Const.TABLE} AS Довідник_ПартіяТоварівКомпозит ON Довідник_ПартіяТоварівКомпозит.uid = 
-                register.ПартіяТоварівКомпозит
-	ORDER BY ДатаПоступлення
-)";
+//			query += $@"
+//, Обчислення AS
+//(
+//	SELECT
+//	   Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата} AS ДатаПоступлення,
+//	   register.ПартіяТоварівКомпозит,
+//	   register.Кількість,
+//	   register.Собівартість,
+//	   SUM(register.Кількість) OVER(ORDER BY Довідник_ПартіяТоварівКомпозит.{ПартіяТоварівКомпозит_Const.Дата}) >= @Кількість AS ДостатняКількість
+//	FROM
+//	   register
+//            LEFT JOIN {ПартіяТоварівКомпозит_Const.TABLE} AS Довідник_ПартіяТоварівКомпозит ON Довідник_ПартіяТоварівКомпозит.uid = 
+//                register.ПартіяТоварівКомпозит
+//	ORDER BY ДатаПоступлення
+//)";
 
-			//
-			//Вибираються дві групи
-			//a. Партії які мають кількість меншу потрібній кількості
-			//b. Одну партію яка закриває потрібну кількість
-			//
+//			//
+//			//Вибираються дві групи
+//			//a. Партії які мають кількість меншу потрібній кількості
+//			//b. Одну партію яка закриває потрібну кількість
+//			//
 
-			query += $@"
-(
-	SELECT 
-		ПартіяТоварівКомпозит,
-		Кількість,
-		Собівартість
-	FROM Обчислення
-	WHERE ДостатняКількість = false
-)
-UNION ALL
-(
-	SELECT 
-		ПартіяТоварівКомпозит,
-		Кількість,
-		Собівартість
-	FROM Обчислення
-	WHERE ДостатняКількість = true
-	LIMIT 1
-)
-";
+//			query += $@"
+//(
+//	SELECT 
+//		ПартіяТоварівКомпозит,
+//		Кількість,
+//		Собівартість
+//	FROM Обчислення
+//	WHERE ДостатняКількість = false
+//)
+//UNION ALL
+//(
+//	SELECT 
+//		ПартіяТоварівКомпозит,
+//		Кількість,
+//		Собівартість
+//	FROM Обчислення
+//	WHERE ДостатняКількість = true
+//	LIMIT 1
+//)
+//";
 
-			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-			//Console.WriteLine(ДокументОбєкт.ДатаДок);
-			paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
-			paramQuery.Add("Кількість", ТовариРядок.Кількість);
+		//	Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+		//	//Console.WriteLine(ДокументОбєкт.ДатаДок);
+		//	paramQuery.Add("period_end", ДокументОбєкт.ДатаДок);
+		//	paramQuery.Add("Кількість", ТовариРядок.Кількість);
 
-			string[] columnsName;
-			List<Dictionary<string, object>> listNameRow;
+		//	string[] columnsName;
+		//	List<Dictionary<string, object>> listNameRow;
 
-			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
+		//	Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listNameRow);
 
-			return listNameRow;
-		}
+		//	return listNameRow;
+		//}
 
 		private static List<Dictionary<string, object>> ОтриматиЗалишкиТоварівНаСкладах(ВнутрішнєСпоживанняТоварів_Objest ДокументОбєкт,
 			ВнутрішнєСпоживанняТоварів_Товари_TablePart.Record ТовариРядок)
@@ -2456,7 +2615,9 @@ FROM
 				//Товар
 				if (СписокНоменклатури[Товари_Record.НомерРядка].ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					List<Dictionary<string, object>> listNameRow = ОтриматиСписокПартій(ДокументОбєкт, Товари_Record);
+					List<Dictionary<string, object>> listNameRow = СпільніФункції.ОтриматиСписокНаявнихПартій(
+						ДокументОбєкт.Організація, Товари_Record.Номенклатура, Товари_Record.ХарактеристикаНоменклатури,
+						Товари_Record.Серія, ДокументОбєкт.Склад, ДокументОбєкт.UnigueID, ДокументОбєкт.ДатаДок, Товари_Record.Кількість);
 
 					if (listNameRow.Count == 0)
 					{

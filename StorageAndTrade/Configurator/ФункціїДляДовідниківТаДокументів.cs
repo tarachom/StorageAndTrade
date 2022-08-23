@@ -60,6 +60,8 @@ namespace StorageAndTrade
 
     class ФункціїДляДовідниківТаДокументів
     {
+        #region DataGridView
+
         public static void ВиділитиЕлементСписку(DataGridView gridView, string columnName, string rowValue)
         {
             if (gridView.Rows.Count > 0)
@@ -90,6 +92,8 @@ namespace StorageAndTrade
                 gridView.FirstDisplayedScrollingRowIndex = row.Index;
             }
         }
+
+        #endregion
     }
 }
 
