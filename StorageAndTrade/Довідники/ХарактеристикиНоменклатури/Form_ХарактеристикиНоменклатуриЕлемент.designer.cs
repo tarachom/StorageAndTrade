@@ -36,11 +36,13 @@ namespace StorageAndTrade
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_Код = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
             this.SuspendLayout();
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(385, 54);
+            this.buttonClose.Location = new System.Drawing.Point(431, 97);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(164, 27);
             this.buttonClose.TabIndex = 16;
@@ -50,7 +52,7 @@ namespace StorageAndTrade
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(60, 54);
+            this.buttonSave.Location = new System.Drawing.Point(106, 97);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(164, 27);
             this.buttonSave.TabIndex = 15;
@@ -60,9 +62,11 @@ namespace StorageAndTrade
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(60, 12);
+            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxName.Location = new System.Drawing.Point(106, 12);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(489, 20);
+            this.textBoxName.Size = new System.Drawing.Size(529, 20);
             this.textBoxName.TabIndex = 20;
             // 
             // label2
@@ -76,25 +80,51 @@ namespace StorageAndTrade
             // 
             // textBox_Код
             // 
-            this.textBox_Код.Location = new System.Drawing.Point(588, 12);
+            this.textBox_Код.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_Код.Location = new System.Drawing.Point(676, 12);
             this.textBox_Код.Name = "textBox_Код";
             this.textBox_Код.Size = new System.Drawing.Size(128, 20);
             this.textBox_Код.TabIndex = 22;
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(553, 15);
+            this.label1.Location = new System.Drawing.Point(641, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 21;
             this.label1.Text = "Код:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 13);
+            this.label5.TabIndex = 48;
+            this.label5.Text = "Номенклатура:";
+            // 
+            // directoryControl_Номенклатура
+            // 
+            this.directoryControl_Номенклатура.AfterSelectFunc = null;
+            this.directoryControl_Номенклатура.BeforeClickOpenFunc = null;
+            this.directoryControl_Номенклатура.Bind = null;
+            this.directoryControl_Номенклатура.DirectoryPointerItem = null;
+            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(106, 38);
+            this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
+            this.directoryControl_Номенклатура.QueryFind = null;
+            this.directoryControl_Номенклатура.SelectForm = null;
+            this.directoryControl_Номенклатура.Size = new System.Drawing.Size(529, 27);
+            this.directoryControl_Номенклатура.TabIndex = 47;
+            // 
             // Form_ХарактеристикиНоменклатуриЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(741, 96);
+            this.ClientSize = new System.Drawing.Size(818, 139);
+            this.Controls.Add(this.directoryControl_Номенклатура);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.textBox_Код);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxName);
@@ -119,5 +149,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox_Код;
         private System.Windows.Forms.Label label1;
+        private DirectoryControl directoryControl_Номенклатура;
+        private System.Windows.Forms.Label label5;
     }
 }

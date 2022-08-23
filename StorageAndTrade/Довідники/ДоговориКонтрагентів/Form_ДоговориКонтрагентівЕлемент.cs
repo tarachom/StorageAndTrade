@@ -70,9 +70,6 @@ namespace StorageAndTrade
 
 		private void Form_ДоговориКонтрагентівЕлемент_Load(object sender, EventArgs e)
         {
-			directoryControl_Номенклатура.SelectForm = new Form_Номенклатура();
-			directoryControl_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer();
-
 			//Статус
 			foreach (ConfigurationEnumField field in Конфа.Config.Kernel.Conf.Enums["СтатусиДоговорівКонтрагентів"].Fields.Values)
 				comboBox_Статус.Items.Add(

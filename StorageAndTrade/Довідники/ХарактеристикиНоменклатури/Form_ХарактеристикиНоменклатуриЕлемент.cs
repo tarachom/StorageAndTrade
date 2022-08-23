@@ -63,8 +63,15 @@ namespace StorageAndTrade
 		/// </summary>
         private Довідники.ХарактеристикиНоменклатури_Objest характеристикиНоменклатури_Objest { get; set; }
 
+		/// <summary>
+		/// Номенклатура власник
+		/// </summary>
+		public Довідники.Номенклатура_Pointer НоменклатураВласник { get; set; }
+
 		private void Form_ХарактеристикиНоменклатуриЕлемент_Load(object sender, EventArgs e)
         {
+			directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Довідники.Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
+
 			if (IsNew.HasValue)
 			{
 				характеристикиНоменклатури_Objest = new Довідники.ХарактеристикиНоменклатури_Objest();
@@ -73,6 +80,9 @@ namespace StorageAndTrade
 				{
 					this.Text += " - Новий";
 					textBox_Код.Text = характеристикиНоменклатури_Objest.Код = (++Константи.НумераціяДовідників.ХарактеристикиНоменклатури_Const).ToString("D6");
+
+					if (НоменклатураВласник != null)
+						directoryControl_Номенклатура.DirectoryPointerItem = НоменклатураВласник;
 				}
 				else
 				{
@@ -82,6 +92,8 @@ namespace StorageAndTrade
 
 						textBoxName.Text = характеристикиНоменклатури_Objest.Назва;
 						textBox_Код.Text = характеристикиНоменклатури_Objest.Код;
+
+						directoryControl_Номенклатура.DirectoryPointerItem = new Довідники.Номенклатура_Pointer(характеристикиНоменклатури_Objest.Номенклатура.UnigueID);
 					}
 					else
 						MessageBox.Show("Error read");
@@ -100,6 +112,7 @@ namespace StorageAndTrade
 				{
 					характеристикиНоменклатури_Objest.Назва = textBoxName.Text;
 					характеристикиНоменклатури_Objest.Код = textBox_Код.Text;
+					характеристикиНоменклатури_Objest.Номенклатура = (Довідники.Номенклатура_Pointer)directoryControl_Номенклатура.DirectoryPointerItem;
 					характеристикиНоменклатури_Objest.Save();
 				}
 				catch (Exception exp)

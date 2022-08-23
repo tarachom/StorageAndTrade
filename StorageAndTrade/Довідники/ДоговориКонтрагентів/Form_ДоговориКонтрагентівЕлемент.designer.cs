@@ -48,8 +48,6 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунок = new StorageAndTrade.DirectoryControl();
             this.comboBox_ТипДоговору = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
             this.textBox_Код = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -168,9 +166,11 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Контрагент.AfterSelectFunc = null;
             this.directoryControl_Контрагент.BeforeClickOpenFunc = null;
+            this.directoryControl_Контрагент.Bind = null;
             this.directoryControl_Контрагент.DirectoryPointerItem = null;
             this.directoryControl_Контрагент.Location = new System.Drawing.Point(109, 38);
             this.directoryControl_Контрагент.Name = "directoryControl_Контрагент";
+            this.directoryControl_Контрагент.QueryFind = null;
             this.directoryControl_Контрагент.SelectForm = null;
             this.directoryControl_Контрагент.Size = new System.Drawing.Size(438, 27);
             this.directoryControl_Контрагент.TabIndex = 41;
@@ -179,9 +179,11 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Підрозділ.AfterSelectFunc = null;
             this.directoryControl_Підрозділ.BeforeClickOpenFunc = null;
+            this.directoryControl_Підрозділ.Bind = null;
             this.directoryControl_Підрозділ.DirectoryPointerItem = null;
             this.directoryControl_Підрозділ.Location = new System.Drawing.Point(620, 137);
             this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
+            this.directoryControl_Підрозділ.QueryFind = null;
             this.directoryControl_Підрозділ.SelectForm = null;
             this.directoryControl_Підрозділ.Size = new System.Drawing.Size(292, 27);
             this.directoryControl_Підрозділ.TabIndex = 39;
@@ -190,9 +192,11 @@ namespace StorageAndTrade
             // 
             this.directoryControl_БанківськийРахунокКонтрагента.AfterSelectFunc = null;
             this.directoryControl_БанківськийРахунокКонтрагента.BeforeClickOpenFunc = null;
+            this.directoryControl_БанківськийРахунокКонтрагента.Bind = null;
             this.directoryControl_БанківськийРахунокКонтрагента.DirectoryPointerItem = null;
             this.directoryControl_БанківськийРахунокКонтрагента.Location = new System.Drawing.Point(620, 102);
             this.directoryControl_БанківськийРахунокКонтрагента.Name = "directoryControl_БанківськийРахунокКонтрагента";
+            this.directoryControl_БанківськийРахунокКонтрагента.QueryFind = null;
             this.directoryControl_БанківськийРахунокКонтрагента.SelectForm = null;
             this.directoryControl_БанківськийРахунокКонтрагента.Size = new System.Drawing.Size(288, 27);
             this.directoryControl_БанківськийРахунокКонтрагента.TabIndex = 37;
@@ -202,9 +206,11 @@ namespace StorageAndTrade
             // 
             this.directoryControl_БанківськийРахунок.AfterSelectFunc = null;
             this.directoryControl_БанківськийРахунок.BeforeClickOpenFunc = null;
+            this.directoryControl_БанківськийРахунок.Bind = null;
             this.directoryControl_БанківськийРахунок.DirectoryPointerItem = null;
             this.directoryControl_БанківськийРахунок.Location = new System.Drawing.Point(141, 102);
             this.directoryControl_БанківськийРахунок.Name = "directoryControl_БанківськийРахунок";
+            this.directoryControl_БанківськийРахунок.QueryFind = null;
             this.directoryControl_БанківськийРахунок.SelectForm = null;
             this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(282, 27);
             this.directoryControl_БанківськийРахунок.TabIndex = 35;
@@ -225,26 +231,6 @@ namespace StorageAndTrade
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 47;
             this.label8.Text = "Тип договору:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 143);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 13);
-            this.label9.TabIndex = 50;
-            this.label9.Text = "Номенклатура:";
-            // 
-            // directoryControl_Номенклатура
-            // 
-            this.directoryControl_Номенклатура.AfterSelectFunc = null;
-            this.directoryControl_Номенклатура.BeforeClickOpenFunc = null;
-            this.directoryControl_Номенклатура.DirectoryPointerItem = null;
-            this.directoryControl_Номенклатура.Location = new System.Drawing.Point(109, 137);
-            this.directoryControl_Номенклатура.Name = "directoryControl_Номенклатура";
-            this.directoryControl_Номенклатура.SelectForm = null;
-            this.directoryControl_Номенклатура.Size = new System.Drawing.Size(314, 27);
-            this.directoryControl_Номенклатура.TabIndex = 49;
             // 
             // textBox_Код
             // 
@@ -269,8 +255,6 @@ namespace StorageAndTrade
             this.ClientSize = new System.Drawing.Size(924, 242);
             this.Controls.Add(this.textBox_Код);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.directoryControl_Номенклатура);
             this.Controls.Add(this.comboBox_ТипДоговору);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.comboBox_ГосподарськаОперація);
@@ -319,8 +303,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBox_ТипДоговору;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private DirectoryControl directoryControl_Номенклатура;
         private System.Windows.Forms.TextBox textBox_Код;
         private System.Windows.Forms.Label label10;
     }

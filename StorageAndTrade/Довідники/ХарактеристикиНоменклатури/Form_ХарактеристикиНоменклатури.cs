@@ -51,8 +51,9 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Image"].HeaderText = "";
 
 			dataGridViewRecords.Columns["ID"].Visible = false;
-			dataGridViewRecords.Columns["Назва"].Width = 300;
+			dataGridViewRecords.Columns["Назва"].Width = 500;
 			dataGridViewRecords.Columns["Код"].Width = 50;
+			dataGridViewRecords.Columns["Номенклатура"].Width = 300;
 		}
 
 		/// <summary>
@@ -65,8 +66,26 @@ namespace StorageAndTrade
 		/// </summary>
 		public DirectoryPointer SelectPointerItem { get; set; }
 
+		/// <summary>
+		/// Номенклатура власник
+		/// </summary>
+		public Довідники.Номенклатура_Pointer НоменклатураВласник { get; set; }
+
 		private void Form_ХарактеристикиНоменклатури_Load(object sender, EventArgs e)
         {
+			directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Довідники.Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
+
+			if (НоменклатураВласник != null)
+				directoryControl_Номенклатура.DirectoryPointerItem = НоменклатураВласник;
+
+			directoryControl_Номенклатура.AfterSelectFunc = () =>
+			{
+				НоменклатураВласник = (Довідники.Номенклатура_Pointer)directoryControl_Номенклатура.DirectoryPointerItem;
+				LoadRecords();
+
+				return true;
+			};
+
 			LoadRecords();
 		}
 
@@ -80,6 +99,17 @@ namespace StorageAndTrade
 			характеристикиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ХарактеристикиНоменклатури_Const.Назва);
 			характеристикиНоменклатури_Select.QuerySelect.Field.Add(Довідники.ХарактеристикиНоменклатури_Const.Код);
 
+			//Номенклатура
+			характеристикиНоменклатури_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.Номенклатура_Const.TABLE + "." + Довідники.Номенклатура_Const.Назва, "nomenclatura"));
+			характеристикиНоменклатури_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Номенклатура_Const.TABLE, Довідники.ХарактеристикиНоменклатури_Const.Номенклатура, характеристикиНоменклатури_Select.QuerySelect.Table));
+
+			//Відбір по номенклатурі
+			if (НоменклатураВласник != null && !НоменклатураВласник.IsEmpty())
+				характеристикиНоменклатури_Select.QuerySelect.Where.Add(
+					new Where(Довідники.ХарактеристикиНоменклатури_Const.Номенклатура, Comparison.EQ, НоменклатураВласник.UnigueID.UGuid));
+
 			//ORDER
 			характеристикиНоменклатури_Select.QuerySelect.Order.Add(Довідники.ХарактеристикиНоменклатури_Const.Назва, SelectOrder.ASC);
 
@@ -92,7 +122,8 @@ namespace StorageAndTrade
 				{
 					ID = cur.UnigueID.ToString(),
 					Назва = cur.Fields[Довідники.ХарактеристикиНоменклатури_Const.Назва].ToString(),
-					Код = cur.Fields[Довідники.ХарактеристикиНоменклатури_Const.Код].ToString()
+					Код = cur.Fields[Довідники.ХарактеристикиНоменклатури_Const.Код].ToString(),
+					Номенклатура = cur.Fields["nomenclatura"].ToString()
 				});
 			}
 
@@ -112,6 +143,7 @@ namespace StorageAndTrade
 			public string ID { get; set; }
 			public string Назва { get; set; }
 			public string Код { get; set; }
+			public string Номенклатура { get; set; }
 		}
 
         private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -139,6 +171,7 @@ namespace StorageAndTrade
 			form_ХарактеристикиНоменклатуриЕлемент.MdiParent = this.MdiParent;
 			form_ХарактеристикиНоменклатуриЕлемент.IsNew = true;
 			form_ХарактеристикиНоменклатуриЕлемент.OwnerForm = this;
+			form_ХарактеристикиНоменклатуриЕлемент.НоменклатураВласник = НоменклатураВласник;
 			if (DirectoryPointerItem != null && this.MdiParent == null)
 				form_ХарактеристикиНоменклатуриЕлемент.ShowDialog();
 			else
