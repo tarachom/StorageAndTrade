@@ -33,6 +33,7 @@ using AccountingSoftware;
 using StorageAndTrade.Service;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.РегістриНакопичення;
+using StorageAndTrade_1_0.РегістриВідомостей;
 
 namespace StorageAndTrade_1_0.Документи
 {
@@ -1017,22 +1018,19 @@ FROM
 	{
 		public static bool Spend(АктВиконанихРобіт_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+            #region Підготовка
+
+
+
+            #endregion
+
+            СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
-			//
-			//РозрахункиЗКлієнтами
-			//
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
-
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
+			РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РозрахункиЗКлієнтами_RecordsSet.Record();
 			розрахункиЗКлієнтами_RecordsSet.Records.Add(розрахункиЗКлієнтами_Record);
 
 			розрахункиЗКлієнтами_Record.Income = true;
@@ -1053,7 +1051,7 @@ FROM
 
 		public static void ClearSpend(АктВиконанихРобіт_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -1064,12 +1062,13 @@ FROM
 	{
 		public static bool Spend(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			#region Підготовка
+
+
+
+			#endregion
+
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
@@ -1077,14 +1076,14 @@ FROM
 			//Замовлення постачальникам
 			//
 
-			РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet();
+			ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new ЗамовленняПостачальникам_RecordsSet();
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
 				//Якщо заданий документ замовлення
 				if (!Товари_Record.ЗамовленняПостачальнику.IsEmpty())
 				{
-					РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record();
+					ЗамовленняПостачальникам_RecordsSet.Record record = new ЗамовленняПостачальникам_RecordsSet.Record();
 					замовленняПостачальникам_RecordsSet.Records.Add(record);
 
 					record.Income = false; // -
@@ -1104,16 +1103,16 @@ FROM
 			//Товари на складах
 			//
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
+				Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
 
 				//Товар
 				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+					ТовариНаСкладах_RecordsSet.Record record = new ТовариНаСкладах_RecordsSet.Record();
 					товариНаСкладах_RecordsSet.Records.Add(record);
 
 					record.Income = true; // + 
@@ -1139,16 +1138,16 @@ FROM
 				 ДокументОбєкт, null
 			);
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
+				Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
 
 				//Товар
 				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					РегістриНакопичення.ПартіїТоварів_RecordsSet.Record record = new РегістриНакопичення.ПартіїТоварів_RecordsSet.Record();
+					ПартіїТоварів_RecordsSet.Record record = new ПартіїТоварів_RecordsSet.Record();
 					партіїТоварів_RecordsSet.Records.Add(record);
 
 					record.Income = true; // + 
@@ -1171,16 +1170,16 @@ FROM
 			//ВільніЗалишки
 			//
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 
 			foreach (ПоступленняТоварівТаПослуг_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
+				Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject();
 
 				//Товар
 				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
 				{
-					РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+					ВільніЗалишки_RecordsSet.Record record = new ВільніЗалишки_RecordsSet.Record();
 					вільніЗалишки_RecordsSet.Records.Add(record);
 
 					record.Income = true; // +
@@ -1231,11 +1230,11 @@ FROM
             //РозрахункиЗПостачальниками
             //
 
-            РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+            РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 
 			if (ДокументОбєкт.ГосподарськаОперація == Перелічення.ГосподарськіОперації.ЗакупівляВПостачальника)
 			{
-				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record recordContragent = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
+				РозрахункиЗПостачальниками_RecordsSet.Record recordContragent = new РозрахункиЗПостачальниками_RecordsSet.Record();
 				розрахункиЗПостачальниками_RecordsSet.Records.Add(recordContragent);
 
 				recordContragent.Income = false;
@@ -1257,22 +1256,22 @@ FROM
 
 		public static void ClearSpend(ПоступленняТоварівТаПослуг_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet();
+			ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new ЗамовленняПостачальникам_RecordsSet();
 			замовленняПостачальникам_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ТовариДоПоступлення_RecordsSet товариДоПоступлення_RecordsSet = new РегістриНакопичення.ТовариДоПоступлення_RecordsSet();
+			ТовариДоПоступлення_RecordsSet товариДоПоступлення_RecordsSet = new ТовариДоПоступлення_RecordsSet();
 			товариДоПоступлення_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 			розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -1283,12 +1282,13 @@ FROM
 	{
 		public static bool Spend(ЗамовленняПостачальнику_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			#region Підготовка
+
+
+
+			#endregion
+
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
@@ -1296,11 +1296,11 @@ FROM
 			//Замовлення постачальникам
 			//
 
-			РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet();
+			ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new ЗамовленняПостачальникам_RecordsSet();
 
 			foreach (ЗамовленняПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record record = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet.Record();
+				ЗамовленняПостачальникам_RecordsSet.Record record = new ЗамовленняПостачальникам_RecordsSet.Record();
 				замовленняПостачальникам_RecordsSet.Records.Add(record);
 
 				record.Income = true; // +    | Документ збільшує
@@ -1364,7 +1364,7 @@ FROM
 
 		public static void ClearSpend(ЗамовленняПостачальнику_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new РегістриНакопичення.ЗамовленняПостачальникам_RecordsSet();
+			ЗамовленняПостачальникам_RecordsSet замовленняПостачальникам_RecordsSet = new ЗамовленняПостачальникам_RecordsSet();
 			замовленняПостачальникам_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			//РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
@@ -1424,12 +1424,13 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 		public static bool Spend(ПоверненняТоварівВідКлієнта_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			#region Підготовка
+
+
+
+			#endregion
+
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
@@ -1437,11 +1438,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//ВільніЗалишки
 			//
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 
 			foreach (ПоверненняТоварівВідКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+				ВільніЗалишки_RecordsSet.Record record = new ВільніЗалишки_RecordsSet.Record();
 				вільніЗалишки_RecordsSet.Records.Add(record);
 
 				record.Income = true; // +
@@ -1459,11 +1460,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//Товари на складах
 			//
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 
 			foreach (ПоверненняТоварівВідКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+				ТовариНаСкладах_RecordsSet.Record record = new ТовариНаСкладах_RecordsSet.Record();
 				товариНаСкладах_RecordsSet.Records.Add(record);
 
 				record.Income = true; // +
@@ -1482,7 +1483,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//Партії товарів
 			//
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 
 			foreach (ПоверненняТоварівВідКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
@@ -1542,7 +1543,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РозрахункиЗКлієнтами
 			//
 
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 
 			foreach (ПоверненняТоварівВідКлієнта_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
@@ -1550,7 +1551,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 				//Товари_Record.ДокументРеалізації.GetDocumentObject().Товари_TablePart.
 
-				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
+				РозрахункиЗКлієнтами_RecordsSet.Record розрахункиЗКлієнтами_Record = new РозрахункиЗКлієнтами_RecordsSet.Record();
 				розрахункиЗКлієнтами_RecordsSet.Records.Add(розрахункиЗКлієнтами_Record);
 
 				розрахункиЗКлієнтами_Record.Income = false;
@@ -1572,16 +1573,16 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 		public static void ClearSpend(ПоверненняТоварівВідКлієнта_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -1634,12 +1635,13 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 		public static bool Spend(ПоверненняТоварівПостачальнику_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			#region Підготовка
+
+
+
+			#endregion
+
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
@@ -1647,11 +1649,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//Товари на складах
 			//
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 
 			foreach (ПоверненняТоварівПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+				ТовариНаСкладах_RecordsSet.Record record = new ТовариНаСкладах_RecordsSet.Record();
 				товариНаСкладах_RecordsSet.Records.Add(record);
 
 				record.Income = false; 
@@ -1670,7 +1672,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//Партії товарів
 			//
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 
 			foreach (ПоверненняТоварівПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
@@ -1717,11 +1719,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//ВільніЗалишки
 			//
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 
 			foreach (ПоверненняТоварівПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+				ВільніЗалишки_RecordsSet.Record record = new ВільніЗалишки_RecordsSet.Record();
 				вільніЗалишки_RecordsSet.Records.Add(record);
 
 				record.Income = false;
@@ -1739,10 +1741,10 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РозрахункиЗПостачальниками
 			//
 
-			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 			foreach (ПоверненняТоварівПостачальнику_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record розрахункиЗПостачальниками_Record = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
+				РозрахункиЗПостачальниками_RecordsSet.Record розрахункиЗПостачальниками_Record = new РозрахункиЗПостачальниками_RecordsSet.Record();
 				розрахункиЗПостачальниками_RecordsSet.Records.Add(розрахункиЗПостачальниками_Record);
 
 				розрахункиЗПостачальниками_Record.Income = false;
@@ -1764,16 +1766,16 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 		public static void ClearSpend(ПоверненняТоварівПостачальнику_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 			розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -1784,12 +1786,13 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 	{
 		public static bool Spend(ПрихіднийКасовийОрдер_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			#region Підготовка
+
+
+
+			#endregion
+
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
@@ -1797,11 +1800,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РозрахункиЗКлієнтами
 			//
 
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 
 			if (ДокументОбєкт.ГосподарськаОперація == Перелічення.ГосподарськіОперації.ПоступленняОплатиВідКлієнта)
 			{
-				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record record_Клієнт = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
+				РозрахункиЗКлієнтами_RecordsSet.Record record_Клієнт = new РозрахункиЗКлієнтами_RecordsSet.Record();
 				розрахункиЗКлієнтами_RecordsSet.Records.Add(record_Клієнт);
 
 				record_Клієнт.Income = false;
@@ -1818,11 +1821,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РозрахункиЗПостачальниками
 			//
 
-			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 
 			if (ДокументОбєкт.ГосподарськаОперація == Перелічення.ГосподарськіОперації.ПоверненняКоштівПостачальнику)
 			{
-				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record record_Постачальник = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
+				РозрахункиЗПостачальниками_RecordsSet.Record record_Постачальник = new РозрахункиЗПостачальниками_RecordsSet.Record();
 				розрахункиЗПостачальниками_RecordsSet.Records.Add(record_Постачальник);
 
 				record_Постачальник.Income = false;
@@ -1839,12 +1842,12 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РухКоштів
 			//
 
-			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			РухКоштів_RecordsSet рухКоштів_RecordsSet = new РухКоштів_RecordsSet();
 
 			//Списання коштів з КасаВідправник
 			if (ДокументОбєкт.ГосподарськаОперація == Перелічення.ГосподарськіОперації.ПоступленняКоштівЗІншоїКаси)
 			{
-				РегістриНакопичення.РухКоштів_RecordsSet.Record record_ІншаКаса = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+				РухКоштів_RecordsSet.Record record_ІншаКаса = new РухКоштів_RecordsSet.Record();
 				рухКоштів_RecordsSet.Records.Add(record_ІншаКаса);
 
 				record_ІншаКаса.Income = false;
@@ -1863,7 +1866,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			}
 
 			//Поступлення коштів в касу
-			РегістриНакопичення.РухКоштів_RecordsSet.Record record_РухКоштів = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+			РухКоштів_RecordsSet.Record record_РухКоштів = new РухКоштів_RecordsSet.Record();
 			рухКоштів_RecordsSet.Records.Add(record_РухКоштів);
 
 			record_РухКоштів.Income = true;
@@ -1885,13 +1888,13 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 		public static void ClearSpend(ПрихіднийКасовийОрдер_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 			розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			РухКоштів_RecordsSet рухКоштів_RecordsSet = new РухКоштів_RecordsSet();
 			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -1902,12 +1905,13 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 	{
 		public static bool Spend(РозхіднийКасовийОрдер_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			#region Підготовка
+
+
+
+			#endregion
+
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
@@ -1915,11 +1919,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РозрахункиЗКлієнтами
 			//
 
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 
 			if (ДокументОбєкт.ГосподарськаОперація == Перелічення.ГосподарськіОперації.ПоверненняОплатиКлієнту)
 			{
-				РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record record_Клієнт = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet.Record();
+				РозрахункиЗКлієнтами_RecordsSet.Record record_Клієнт = new РозрахункиЗКлієнтами_RecordsSet.Record();
 				розрахункиЗКлієнтами_RecordsSet.Records.Add(record_Клієнт);
 
 				record_Клієнт.Income = false;
@@ -1936,11 +1940,11 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РозрахункиЗПостачальниками
 			//
 
-			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 
 			if (ДокументОбєкт.ГосподарськаОперація == Перелічення.ГосподарськіОперації.ОплатаПостачальнику)
 			{
-				РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record record_Постачальник = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet.Record();
+				РозрахункиЗПостачальниками_RecordsSet.Record record_Постачальник = new РозрахункиЗПостачальниками_RecordsSet.Record();
 				розрахункиЗПостачальниками_RecordsSet.Records.Add(record_Постачальник);
 
 				record_Постачальник.Income = true;
@@ -1957,12 +1961,12 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			//РухКоштів
 			//
 
-			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			РухКоштів_RecordsSet рухКоштів_RecordsSet = new РухКоштів_RecordsSet();
 
 			//Поступлення коштів в КасаОтримувач
 			if (ДокументОбєкт.ГосподарськаОперація == Перелічення.ГосподарськіОперації.ВидачаКоштівВІншуКасу)
 			{
-				РегістриНакопичення.РухКоштів_RecordsSet.Record record_ІншаКаса = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+				РухКоштів_RecordsSet.Record record_ІншаКаса = new РухКоштів_RecordsSet.Record();
 				рухКоштів_RecordsSet.Records.Add(record_ІншаКаса);
 
 				record_ІншаКаса.Income = true;
@@ -1981,7 +1985,7 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 			}
 
 			//Списання коштів з каси
-			РегістриНакопичення.РухКоштів_RecordsSet.Record record_РухКоштів = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+			РухКоштів_RecordsSet.Record record_РухКоштів = new РухКоштів_RecordsSet.Record();
 			рухКоштів_RecordsSet.Records.Add(record_РухКоштів);
 
 			record_РухКоштів.Income = false;
@@ -2003,13 +2007,13 @@ ORDER BY ПартіяТоварівКомпозит_Дата ASC
 
 		public static void ClearSpend(РозхіднийКасовийОрдер_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РегістриНакопичення.РозрахункиЗПостачальниками_RecordsSet();
+			РозрахункиЗПостачальниками_RecordsSet розрахункиЗПостачальниками_RecordsSet = new РозрахункиЗПостачальниками_RecordsSet();
 			розрахункиЗПостачальниками_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РегістриНакопичення.РозрахункиЗКлієнтами_RecordsSet();
+			РозрахункиЗКлієнтами_RecordsSet розрахункиЗКлієнтами_RecordsSet = new РозрахункиЗКлієнтами_RecordsSet();
 			розрахункиЗКлієнтами_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			РухКоштів_RecordsSet рухКоштів_RecordsSet = new РухКоштів_RecordsSet();
 			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -2195,12 +2199,7 @@ FROM
 
 			#endregion
 
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Товари на складах
 
@@ -2208,11 +2207,11 @@ FROM
 			//Товари на складах
 			//
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 
 			foreach (ПереміщенняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject(); //!!
+				Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject(); //!!
 
 				//Товар
 				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
@@ -2261,11 +2260,11 @@ FROM
 			//ВільніЗалишки
 			//
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 
 			foreach (ПереміщенняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				Довідники.Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject(); //!!
+				Номенклатура_Objest номенклатура_Objest = Товари_Record.Номенклатура.GetDirectoryObject(); //!!
 
 				//Товар
 				if (номенклатура_Objest.ТипНоменклатури == Перелічення.ТипиНоменклатури.Товар)
@@ -2312,7 +2311,7 @@ FROM
 			//Партії товарів
 			//
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 
 			foreach (ПереміщенняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
@@ -2404,13 +2403,13 @@ FROM
 
 		public static void ClearSpend(ПереміщенняТоварів_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -2423,13 +2422,13 @@ FROM
 		{
 			#region Рух по регістрах
 
-			РегістриВідомостей.ЦіниНоменклатури_RecordsSet ціниНоменклатури_RecordsSet = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet();
+			ЦіниНоменклатури_RecordsSet ціниНоменклатури_RecordsSet = new ЦіниНоменклатури_RecordsSet();
 
             foreach (ВстановленняЦінНоменклатури_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
             {
 				if (Товари_Record.Ціна > 0)
 				{
-					РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record record = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet.Record();
+					ЦіниНоменклатури_RecordsSet.Record record = new ЦіниНоменклатури_RecordsSet.Record();
 					ціниНоменклатури_RecordsSet.Records.Add(record);
 
 					record.Номенклатура = Товари_Record.Номенклатура;
@@ -2451,7 +2450,7 @@ FROM
 
 		public static void ClearSpend(ВстановленняЦінНоменклатури_Objest ДокументОбєкт)
 		{
-			РегістриВідомостей.ЦіниНоменклатури_RecordsSet ціниНоменклатури_RecordsSet = new РегістриВідомостей.ЦіниНоменклатури_RecordsSet();
+			ЦіниНоменклатури_RecordsSet ціниНоменклатури_RecordsSet = new ЦіниНоменклатури_RecordsSet();
 			ціниНоменклатури_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 		}
 	}
@@ -2460,12 +2459,13 @@ FROM
 	{
 		public static bool Spend(ВведенняЗалишків_Objest ДокументОбєкт)
 		{
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			#region Підготовка
+
+
+
+			#endregion
+
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region Рух по регістрах
 
@@ -2473,11 +2473,11 @@ FROM
 			//Товари на складах
 			//
 
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 
 			foreach (ВведенняЗалишків_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record record = new РегістриНакопичення.ТовариНаСкладах_RecordsSet.Record();
+				ТовариНаСкладах_RecordsSet.Record record = new ТовариНаСкладах_RecordsSet.Record();
 				товариНаСкладах_RecordsSet.Records.Add(record);
 
 				record.Income = true; //
@@ -2496,11 +2496,11 @@ FROM
 			//ВільніЗалишки
 			//
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 
 			foreach (ВведенняЗалишків_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+				ВільніЗалишки_RecordsSet.Record record = new ВільніЗалишки_RecordsSet.Record();
 				вільніЗалишки_RecordsSet.Records.Add(record);
 
 				record.Income = true; // + 
@@ -2550,15 +2550,15 @@ FROM
 			//РухКоштів
 			//
 
-			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			РухКоштів_RecordsSet рухКоштів_RecordsSet = new РухКоштів_RecordsSet();
 
 			foreach (ВведенняЗалишків_Каси_TablePart.Record Каси_Record in ДокументОбєкт.Каси_TablePart.Records)
 			{
-				РегістриНакопичення.РухКоштів_RecordsSet.Record record_Каса = new РегістриНакопичення.РухКоштів_RecordsSet.Record();
+				РухКоштів_RecordsSet.Record record_Каса = new РухКоштів_RecordsSet.Record();
 				рухКоштів_RecordsSet.Records.Add(record_Каса);
 
-				Довідники.Валюти_Pointer валютаКаси =
-					(!Каси_Record.Каса.IsEmpty() ? Каси_Record.Каса.GetDirectoryObject().Валюта : ДокументОбєкт.Валюта);
+				Валюти_Pointer валютаКаси =
+					!Каси_Record.Каса.IsEmpty() ? Каси_Record.Каса.GetDirectoryObject().Валюта : ДокументОбєкт.Валюта;
 
 				record_Каса.Income = true;
 				record_Каса.Owner = ДокументОбєкт.UnigueID.UGuid;
@@ -2580,16 +2580,16 @@ FROM
 
 		public static void ClearSpend(ВведенняЗалишків_Objest ДокументОбєкт)
 		{
-			РегістриНакопичення.ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new РегістриНакопичення.ТовариНаСкладах_RecordsSet();
+			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.РухКоштів_RecordsSet рухКоштів_RecordsSet = new РегістриНакопичення.РухКоштів_RecordsSet();
+			РухКоштів_RecordsSet рухКоштів_RecordsSet = new РухКоштів_RecordsSet();
 			рухКоштів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");
@@ -2784,12 +2784,7 @@ FROM
 
 			#endregion
 
-			if (ДокументОбєкт.Spend)
-			{
-				//Якщо дата проведення відрізняється від дати документу
-				if (ДокументОбєкт.ДатаДок.ToString("dd.MM.yyyy") != ДокументОбєкт.SpendDate.ToString("dd.MM.yyyy"))
-					CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.SpendDate, "");
-			}
+			СпільніФункції.ПеревіритиДатуПроведенняДокументу(ДокументОбєкт, ДокументОбєкт.ДатаДок);
 
 			#region ТовариНаСкладах
 
@@ -2824,11 +2819,11 @@ FROM
 			//ВільніЗалишки
 			//
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 
 			foreach (ВнутрішнєСпоживанняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
-				РегістриНакопичення.ВільніЗалишки_RecordsSet.Record record = new РегістриНакопичення.ВільніЗалишки_RecordsSet.Record();
+				ВільніЗалишки_RecordsSet.Record record = new ВільніЗалишки_RecordsSet.Record();
 				вільніЗалишки_RecordsSet.Records.Add(record);
 
 				record.Income = false;
@@ -2850,7 +2845,7 @@ FROM
 			//Партії товарів
 			//
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 
 			foreach (ВнутрішнєСпоживанняТоварів_Товари_TablePart.Record Товари_Record in ДокументОбєкт.Товари_TablePart.Records)
 			{
@@ -2929,10 +2924,10 @@ FROM
 			ТовариНаСкладах_RecordsSet товариНаСкладах_RecordsSet = new ТовариНаСкладах_RecordsSet();
 			товариНаСкладах_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new РегістриНакопичення.ВільніЗалишки_RecordsSet();
+			ВільніЗалишки_RecordsSet вільніЗалишки_RecordsSet = new ВільніЗалишки_RecordsSet();
 			вільніЗалишки_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
-			РегістриНакопичення.ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new РегістриНакопичення.ПартіїТоварів_RecordsSet();
+			ПартіїТоварів_RecordsSet партіїТоварів_RecordsSet = new ПартіїТоварів_RecordsSet();
 			партіїТоварів_RecordsSet.Delete(ДокументОбєкт.UnigueID.UGuid);
 
 			CalculationBalances.AddTask(ДокументОбєкт.UnigueID.ToString(), ДокументОбєкт.TypeDocument, "Delete", ДокументОбєкт.ДатаДок, "");

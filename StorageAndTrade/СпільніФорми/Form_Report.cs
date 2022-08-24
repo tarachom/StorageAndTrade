@@ -54,15 +54,15 @@ namespace StorageAndTrade
             geckoWebBrowser.Navigate(HtmlDocumentPath);
             geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
 
-            geckoWebBrowser.Navigating += GeckoWebBrowser_Navigating;
+            //geckoWebBrowser.Navigating += GeckoWebBrowser_Navigating;
 
-            geckoWebBrowser.Navigated += GeckoWebBrowser_Navigated;
+            //geckoWebBrowser.Navigated += GeckoWebBrowser_Navigated;
 
-            geckoWebBrowser.ReadyStateChange += GeckoWebBrowser_ReadyStateChange;
+            //geckoWebBrowser.ReadyStateChange += GeckoWebBrowser_ReadyStateChange;
 
-            geckoWebBrowser.RequestProgressChanged += GeckoWebBrowser_RequestProgressChanged;
+            //geckoWebBrowser.RequestProgressChanged += GeckoWebBrowser_RequestProgressChanged;
 
-            geckoWebBrowser.DocumentCompleted += GeckoWebBrowser_DocumentCompleted;
+            //geckoWebBrowser.DocumentCompleted += GeckoWebBrowser_DocumentCompleted;
         }
 
         private void GeckoWebBrowser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)

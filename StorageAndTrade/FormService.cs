@@ -159,6 +159,10 @@ namespace StorageAndTrade
 					if (CancelThread)
 						break;
 
+					// !!!
+					// треба додати перехват помилки
+					//
+
 					if (doc.GetType().GetMember("SpendTheDocument").Length == 1)
 						doc.GetType().InvokeMember("SpendTheDocument", BindingFlags.InvokeMethod, null, doc, 
 							new object[] { journalSelect.Current.SpendDate });
