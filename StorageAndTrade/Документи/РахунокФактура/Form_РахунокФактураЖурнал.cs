@@ -423,7 +423,7 @@ namespace StorageAndTrade
 						record_реалізація.Ціна = record_замовлення.Ціна;
 						record_реалізація.Сума = record_замовлення.Сума;
 						record_реалізація.Скидка = record_замовлення.Скидка;
-						//record_реалізація.ЗамовленняКлієнта = РахунокФактура_Objest.GetDocumentPointer();
+						record_реалізація.РахунокФактура = РахунокФактура_Objest.GetDocumentPointer();
 						record_реалізація.Склад = РахунокФактура_Objest.Склад;
 						record_реалізація.ВидЦіни = record_замовлення.ВидЦіни;
 					}

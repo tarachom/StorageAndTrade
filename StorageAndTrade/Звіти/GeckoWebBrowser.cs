@@ -241,6 +241,13 @@ namespace StorageAndTrade
 
                             break;
                         }
+                    case "ПереміщенняТоварів":
+                        {
+                            Form_ПереміщенняТоварівДокумент form = new Form_ПереміщенняТоварівДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     default:
                         break;
                 }
