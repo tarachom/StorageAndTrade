@@ -41,12 +41,12 @@ namespace StorageAndTrade
             // Робочий стіл
             //
 
-            FormDesktop formDesktop = new FormDesktop();
-            formDesktop.MdiParent = this;
-            formDesktop.ControlBox = false;
-            formDesktop.Show();
+            //FormDesktop formDesktop = new FormDesktop();
+            //formDesktop.MdiParent = this;
+            //formDesktop.ControlBox = false;
+            //formDesktop.Show();
 
-            FormStorageAndTrade_Resize(this, new EventArgs());
+            //FormStorageAndTrade_Resize(this, new EventArgs());
 
             //
             // Обробка фонових задач розрахунку віртуальних залишків
@@ -66,10 +66,15 @@ namespace StorageAndTrade
 
             if (FormDesktop != null)
             {
-                FormDesktop.Top = 0;
-                FormDesktop.Left = 0;
-                FormDesktop.Width = this.Width-20;
-                FormDesktop.Height = this.Height-142;
+                //FormDesktop.Top = 0;
+                //FormDesktop.Left = 0;
+                //FormDesktop.Width = this.Width-20;
+                //FormDesktop.Height = this.Height-142;
+
+                //FormDesktop.Top = 500;
+                //FormDesktop.Left = 0;
+                //FormDesktop.Width = this.Width - 20;
+                //FormDesktop.Height = this.Height - 142 - 550;
             }
         }
 
