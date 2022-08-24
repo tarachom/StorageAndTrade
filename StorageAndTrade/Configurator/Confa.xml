@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>22.08.2022 17:48:45</DateTimeSave>
+  <DateTimeSave>24.08.2022 13:35:13</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -3155,7 +3155,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
         </Field>
       </Fields>
       <TabularParts />
@@ -3562,7 +3562,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>Дата</Name>
@@ -6528,6 +6528,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
               <IsIndex>0</IsIndex>
             </Field>
             <Field>
+              <Name>РахунокФактура</Name>
+              <NameInTable>col_a3</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Документи.РахунокФактура</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
               <Name>Скидка</Name>
               <NameInTable>col_e3</NameInTable>
               <Type>numeric</Type>
@@ -9193,7 +9202,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>0</IsPresentation>
+          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
@@ -9414,7 +9423,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Type>string</Type>
           <Desc>
           </Desc>
-          <IsPresentation>0</IsPresentation>
+          <IsPresentation>1</IsPresentation>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>

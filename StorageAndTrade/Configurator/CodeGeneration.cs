@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 22.08.2022 17:48:45
+ * Дата конфігурації: 24.08.2022 13:35:13
  *
  */
 
@@ -11159,7 +11159,7 @@ namespace StorageAndTrade_1_0.Документи
     public class РеалізаціяТоварівТаПослуг_Товари_TablePart : DocumentTablePart
     {
         public РеалізаціяТоварівТаПослуг_Товари_TablePart(РеалізаціяТоварівТаПослуг_Objest owner) : base(Config.Kernel, "tab_a37",
-             new string[] { "col_a1", "col_d2", "col_d3", "col_a2", "col_d4", "col_d5", "col_d6", "col_d7", "col_d8", "col_d9", "col_e1", "col_e2", "col_e3" }) 
+             new string[] { "col_a1", "col_d2", "col_d3", "col_a2", "col_d4", "col_d5", "col_d6", "col_d7", "col_d8", "col_d9", "col_e1", "col_e2", "col_a3", "col_e3" }) 
         {
             if (owner == null) throw new Exception("owner null");
             
@@ -11179,6 +11179,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Сума = "col_d9";
         public const string Склад = "col_e1";
         public const string ЗамовленняКлієнта = "col_e2";
+        public const string РахунокФактура = "col_a3";
         public const string Скидка = "col_e3";
 
         public РеалізаціяТоварівТаПослуг_Objest Owner { get; private set; }
@@ -11207,6 +11208,7 @@ namespace StorageAndTrade_1_0.Документи
                 record.Сума = (fieldValue["col_d9"] != DBNull.Value) ? (decimal)fieldValue["col_d9"] : 0;
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_e1"]);
                 record.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(fieldValue["col_e2"]);
+                record.РахунокФактура = new Документи.РахунокФактура_Pointer(fieldValue["col_a3"]);
                 record.Скидка = (fieldValue["col_e3"] != DBNull.Value) ? (decimal)fieldValue["col_e3"] : 0;
                 
                 Records.Add(record);
@@ -11238,6 +11240,7 @@ namespace StorageAndTrade_1_0.Документи
                 fieldValue.Add("col_d9", record.Сума);
                 fieldValue.Add("col_e1", record.Склад.UnigueID.UGuid);
                 fieldValue.Add("col_e2", record.ЗамовленняКлієнта.UnigueID.UGuid);
+                fieldValue.Add("col_a3", record.РахунокФактура.UnigueID.UGuid);
                 fieldValue.Add("col_e3", record.Скидка);
                 
                 base.BaseSave(record.UID, Owner.UnigueID, fieldValue);
@@ -11280,6 +11283,7 @@ namespace StorageAndTrade_1_0.Документи
                 Сума = 0;
                 Склад = new Довідники.Склади_Pointer();
                 ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer();
+                РахунокФактура = new Документи.РахунокФактура_Pointer();
                 Скидка = 0;
                 
             }
@@ -11295,6 +11299,7 @@ namespace StorageAndTrade_1_0.Документи
             public decimal Сума { get; set; }
             public Довідники.Склади_Pointer Склад { get; set; }
             public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
+            public Документи.РахунокФактура_Pointer РахунокФактура { get; set; }
             public decimal Скидка { get; set; }
             
         }
@@ -15632,7 +15637,7 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
-				new string[] {  }
+				new string[] { "docname" }
 			);
         }
 		
@@ -16004,7 +16009,7 @@ namespace StorageAndTrade_1_0.Документи
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
-				new string[] {  }
+				new string[] { "docname" }
 			);
         }
 		

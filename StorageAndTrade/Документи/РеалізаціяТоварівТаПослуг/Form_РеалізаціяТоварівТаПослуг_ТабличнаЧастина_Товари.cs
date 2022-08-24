@@ -102,6 +102,11 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ЗамовленняКлієнтаНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ЗамовленняКлієнтаНазва"].HeaderText = "Замовлення";
 
+			dataGridViewRecords.Columns["РахунокФактура"].Visible = false;
+			dataGridViewRecords.Columns["РахунокФактураНазва"].Width = 350;
+			dataGridViewRecords.Columns["РахунокФактураНазва"].ReadOnly = true;
+			dataGridViewRecords.Columns["РахунокФактураНазва"].HeaderText = "Рахунок";
+
 			dataGridViewRecords.Columns["Склад"].Visible = false;
 			dataGridViewRecords.Columns["СкладНазва"].Width = 200;
 			dataGridViewRecords.Columns["СкладНазва"].ReadOnly = true;
@@ -158,6 +163,12 @@ namespace StorageAndTrade
 
 			//JOIN 7
 			querySelect.FieldAndAlias.Add(
+				new NameValue<string>(Документи.РахунокФактура_Const.TABLE + "." + Документи.РахунокФактура_Const.Назва, "rahunok_name"));
+			querySelect.Joins.Add(
+				new Join(Документи.РахунокФактура_Const.TABLE, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.РахунокФактура, querySelect.Table));
+
+			//JOIN 8
+			querySelect.FieldAndAlias.Add(
 				new NameValue<string>(Довідники.Склади_Const.TABLE + "." + Довідники.Склади_Const.Назва, "sklad_name"));
 			querySelect.Joins.Add(
 				new Join(Довідники.Склади_Const.TABLE, Документи.РеалізаціяТоварівТаПослуг_Товари_TablePart.Склад, querySelect.Table));
@@ -191,6 +202,8 @@ namespace StorageAndTrade
 					Сума = Math.Round(record.Сума, 2),
 					ЗамовленняКлієнта = record.ЗамовленняКлієнта,
 					ЗамовленняКлієнтаНазва = JoinValue[record.UID.ToString()]["doc_name"],
+					РахунокФактура = record.РахунокФактура,
+					РахунокФактураНазва = JoinValue[record.UID.ToString()]["rahunok_name"],
 					Склад = record.Склад,
 					СкладНазва = JoinValue[record.UID.ToString()]["sklad_name"]
 				}); 
@@ -237,6 +250,7 @@ namespace StorageAndTrade
 				record.Ціна = запис.Ціна;
 				record.Сума = запис.Сума;
 				record.ЗамовленняКлієнта = запис.ЗамовленняКлієнта;
+				record.РахунокФактура = запис.РахунокФактура;
 				record.Склад = запис.Склад;
 
 				ДокументОбєкт.Товари_TablePart.Records.Add(record);
@@ -265,6 +279,8 @@ namespace StorageAndTrade
 			public decimal Сума { get; set; }
 			public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
 			public string ЗамовленняКлієнтаНазва { get; set; }
+			public Документи.РахунокФактура_Pointer РахунокФактура { get; set; }
+			public string РахунокФактураНазва { get; set; }
 			public Довідники.Склади_Pointer Склад { get; set; }
 			public string СкладНазва { get; set; }
 
@@ -281,6 +297,7 @@ namespace StorageAndTrade
 					Кількість = 1,
 					ВидЦіни = new Довідники.ВидиЦін_Pointer(),
 					ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(),
+					РахунокФактура = new Документи.РахунокФактура_Pointer(),
 					Склад = new Довідники.Склади_Pointer()
 				};
 			}
@@ -305,6 +322,8 @@ namespace StorageAndTrade
 					Сума = запис.Сума,
 					ЗамовленняКлієнта = запис.ЗамовленняКлієнта,
 					ЗамовленняКлієнтаНазва = запис.ЗамовленняКлієнтаНазва,
+					РахунокФактура = запис.РахунокФактура,
+					РахунокФактураНазва = запис.РахунокФактураНазва,
 					Склад = запис.Склад,
 					СкладНазва = запис.СкладНазва
 				};
@@ -366,6 +385,10 @@ namespace StorageAndTrade
 			public static void ПісляЗміни_ЗамовленняКлієнта(Записи запис)
 			{
 				запис.ЗамовленняКлієнтаНазва = запис.ЗамовленняКлієнта.GetPresentation();
+			}
+			public static void ПісляЗміни_РахункуФактури(Записи запис)
+			{
+				запис.РахунокФактураНазва = запис.РахунокФактура.GetPresentation();
 			}
 			public static void ПісляЗміни_Склад(Записи запис)
 			{
@@ -490,6 +513,12 @@ LIMIT 1
 							Записи.ПісляЗміни_ЗамовленняКлієнта(запис);
 							break;
 						}
+					case "РахунокФактураНазва":
+						{
+							запис.РахунокФактура = new Документи.РахунокФактура_Pointer();
+							Записи.ПісляЗміни_РахункуФактури(запис);
+							break;
+						}
 					case "СкладНазва":
 						{
 							запис.Склад = new Довідники.Склади_Pointer();
@@ -513,7 +542,7 @@ LIMIT 1
 					new string[] {
 					"НоменклатураНазва", "ХарактеристикаНазва",
 					"СеріяНазва", "ПакуванняНазва", "ВидЦіниНазва",
-					"ЗамовленняКлієнтаНазва", "СкладНазва"
+					"ЗамовленняКлієнтаНазва", "РахунокФактураНазва", "СкладНазва"
 					}, SelectClick, FindTextChanged);
 		}
 
@@ -598,6 +627,17 @@ LIMIT 1
 
 						запис.ЗамовленняКлієнта = (Документи.ЗамовленняКлієнта_Pointer)form_ЗамовленняКлієнтаЖурнал.DocumentPointerItem;
 						Записи.ПісляЗміни_ЗамовленняКлієнта(запис);
+
+						break;
+					}
+				case "РахунокФактураНазва":
+					{
+						Form_РахунокФактураЖурнал form_РахунокФактураЖурнал = new Form_РахунокФактураЖурнал();
+						form_РахунокФактураЖурнал.DocumentPointerItem = запис.РахунокФактура;
+						form_РахунокФактураЖурнал.ShowDialog();
+
+						запис.РахунокФактура = (Документи.РахунокФактура_Pointer)form_РахунокФактураЖурнал.DocumentPointerItem;
+						Записи.ПісляЗміни_РахункуФактури(запис);
 
 						break;
 					}
@@ -735,6 +775,21 @@ LIMIT 10
 ";
 						break;
 					}
+				case "РахунокФактураНазва":
+					{
+						query = $@"
+SELECT 
+    РахунокФактура.uid,
+    РахунокФактура.{Документи.РахунокФактура_Const.Назва} AS Назва
+FROM
+    {Документи.РахунокФактура_Const.TABLE} AS РахунокФактура
+WHERE
+    LOWER(РахунокФактура.{Документи.РахунокФактура_Const.Назва}) LIKE @like_param
+ORDER BY Назва
+LIMIT 10
+";
+						break;
+					}
 				case "СкладНазва":
 					{
 						query = $@"
@@ -811,6 +866,12 @@ LIMIT 10
 					{
 						запис.ЗамовленняКлієнта = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
 						Записи.ПісляЗміни_ЗамовленняКлієнта(запис);
+						break;
+					}
+				case "РахунокФактураНазва":
+					{
+						запис.РахунокФактура = new Документи.РахунокФактура_Pointer(new UnigueID(uid));
+						Записи.ПісляЗміни_РахункуФактури(запис);
 						break;
 					}
 				case "СкладНазва":
