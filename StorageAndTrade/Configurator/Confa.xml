@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>24.08.2022 15:45:40</DateTimeSave>
+  <DateTimeSave>24.08.2022 15:52:25</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -10078,16 +10078,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         </Fields>
       </ResourcesFields>
       <PropertyFields>
-        <Fields>
-          <Field>
-            <Name>Документ</Name>
-            <NameInTable>col_a8</NameInTable>
-            <Type>any_pointer</Type>
-            <Desc>
-            </Desc>
-            <IsIndex>0</IsIndex>
-          </Field>
-        </Fields>
+        <Fields />
       </PropertyFields>
       <AllowDocumentSpend>
         <Name>ЗамовленняКлієнта</Name>
@@ -10290,7 +10281,16 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         </Fields>
       </ResourcesFields>
       <PropertyFields>
-        <Fields />
+        <Fields>
+          <Field>
+            <Name>Документ</Name>
+            <NameInTable>col_a1</NameInTable>
+            <Type>any_pointer</Type>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+        </Fields>
       </PropertyFields>
       <AllowDocumentSpend>
         <Name>ПоступленняТоварівТаПослуг</Name>

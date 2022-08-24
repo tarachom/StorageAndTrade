@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 24.08.2022 15:45:40
+ * Дата конфігурації: 24.08.2022 15:52:25
  *
  */
 
@@ -16743,7 +16743,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string Склад = "col_a4";
         public const string Замовлено = "col_a5";
         public const string Сума = "col_a6";
-        public const string Документ = "col_a8";
     }
 	
     ///<summary>
@@ -16752,7 +16751,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     public class ЗамовленняКлієнтів_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ЗамовленняКлієнтів_RecordsSet() : base(Config.Kernel, "tab_a55",
-             new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6", "col_a8" }) 
+             new string[] { "col_a1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
         {
             Records = new List<Record>();
         }
@@ -16778,7 +16777,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                 record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
                 record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
-                record.Документ = (fieldValue["col_a8"] != DBNull.Value) ? Guid.Parse(fieldValue["col_a8"].ToString()) : Guid.Empty;
                 
                 Records.Add(record);
             }
@@ -16801,7 +16799,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                 fieldValue.Add("col_a5", record.Замовлено);
                 fieldValue.Add("col_a6", record.Сума);
-                fieldValue.Add("col_a8", record.Документ);
                 
                 base.BaseSave(record.UID, period, record.Income, owner, fieldValue);
             }
@@ -16828,7 +16825,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 Склад = new Довідники.Склади_Pointer();
                 Замовлено = 0;
                 Сума = 0;
-                Документ = new Guid();
                 
             }
             public Документи.ЗамовленняКлієнта_Pointer ЗамовленняКлієнта { get; set; }
@@ -16837,7 +16833,6 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public Довідники.Склади_Pointer Склад { get; set; }
             public decimal Замовлено { get; set; }
             public decimal Сума { get; set; }
-            public Guid Документ { get; set; }
             
         }
     }
@@ -17060,13 +17055,14 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string ВНаявності = "col_a8";
         public const string ВРезервіЗіСкладу = "col_b1";
         public const string ВРезервіПідЗамовлення = "col_b2";
+        public const string Документ = "col_a1";
     }
 	
     
     public class ВільніЗалишки_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ВільніЗалишки_RecordsSet() : base(Config.Kernel, "tab_a58",
-             new string[] { "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_b2" }) 
+             new string[] { "col_a5", "col_a6", "col_a7", "col_a8", "col_b1", "col_b2", "col_a1" }) 
         {
             Records = new List<Record>();
         }
@@ -17092,6 +17088,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.ВНаявності = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
                 record.ВРезервіЗіСкладу = (fieldValue["col_b1"] != DBNull.Value) ? (decimal)fieldValue["col_b1"] : 0;
                 record.ВРезервіПідЗамовлення = (fieldValue["col_b2"] != DBNull.Value) ? (decimal)fieldValue["col_b2"] : 0;
+                record.Документ = (fieldValue["col_a1"] != DBNull.Value) ? Guid.Parse(fieldValue["col_a1"].ToString()) : Guid.Empty;
                 
                 Records.Add(record);
             }
@@ -17114,6 +17111,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 fieldValue.Add("col_a8", record.ВНаявності);
                 fieldValue.Add("col_b1", record.ВРезервіЗіСкладу);
                 fieldValue.Add("col_b2", record.ВРезервіПідЗамовлення);
+                fieldValue.Add("col_a1", record.Документ);
                 
                 base.BaseSave(record.UID, period, record.Income, owner, fieldValue);
             }
@@ -17138,6 +17136,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 ВНаявності = 0;
                 ВРезервіЗіСкладу = 0;
                 ВРезервіПідЗамовлення = 0;
+                Документ = new Guid();
                 
             }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
@@ -17146,6 +17145,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal ВНаявності { get; set; }
             public decimal ВРезервіЗіСкладу { get; set; }
             public decimal ВРезервіПідЗамовлення { get; set; }
+            public Guid Документ { get; set; }
             
         }
     }
