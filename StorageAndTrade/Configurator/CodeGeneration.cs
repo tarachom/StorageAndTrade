@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 25.08.2022 17:44:26
+ * Дата конфігурації: 25.08.2022 19:45:50
  *
  */
 
@@ -3180,9 +3180,7 @@ namespace StorageAndTrade_1_0.Довідники
 {
     
     #region DIRECTORY "Організації"
-    ///<summary>
-    ///Юридичні особи та підприємці нашої організації.
-    ///</summary>
+    
     public static class Організації_Const
     {
         public const string TABLE = "tab_a01";
@@ -3197,9 +3195,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string СвідоцтвоДатаВидачі = "col_a8";
     }
 	
-    ///<summary>
-    ///Юридичні особи та підприємці нашої організації.
-    ///</summary>
+    
     public class Організації_Objest : DirectoryObject
     {
         public Організації_Objest() : base(Config.Kernel, "tab_a01",
@@ -3312,9 +3308,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Юридичні особи та підприємці нашої організації.
-    ///</summary>
+    
     public class Організації_Pointer : DirectoryPointer
     {
         public Організації_Pointer(object uid = null) : base(Config.Kernel, "tab_a01")
@@ -3352,9 +3346,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Юридичні особи та підприємці нашої організації.
-    ///</summary>
+    
     public class Організації_Select : DirectorySelect
     {
         public Організації_Select() : base(Config.Kernel, "tab_a01") { }        
@@ -3484,9 +3476,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Номенклатура"
-    ///<summary>
-    ///Товари та послуги.
-    ///</summary>
+    
     public static class Номенклатура_Const
     {
         public const string TABLE = "tab_a03";
@@ -3503,9 +3493,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Папка = "col_a5";
     }
 	
-    ///<summary>
-    ///Товари та послуги.
-    ///</summary>
+    
     public class Номенклатура_Objest : DirectoryObject
     {
         public Номенклатура_Objest() : base(Config.Kernel, "tab_a03",
@@ -3624,9 +3612,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Товари та послуги.
-    ///</summary>
+    
     public class Номенклатура_Pointer : DirectoryPointer
     {
         public Номенклатура_Pointer(object uid = null) : base(Config.Kernel, "tab_a03")
@@ -3664,9 +3650,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Товари та послуги.
-    ///</summary>
+    
     public class Номенклатура_Select : DirectorySelect
     {
         public Номенклатура_Select() : base(Config.Kernel, "tab_a03") { }        
@@ -3700,9 +3684,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Виробники"
-    ///<summary>
-    ///Виробники.
-    ///</summary>
+    
     public static class Виробники_Const
     {
         public const string TABLE = "tab_a04";
@@ -3711,9 +3693,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Код = "col_b7";
     }
 	
-    ///<summary>
-    ///Виробники.
-    ///</summary>
+    
     public class Виробники_Objest : DirectoryObject
     {
         public Виробники_Objest() : base(Config.Kernel, "tab_a04",
@@ -3784,9 +3764,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Виробники.
-    ///</summary>
+    
     public class Виробники_Pointer : DirectoryPointer
     {
         public Виробники_Pointer(object uid = null) : base(Config.Kernel, "tab_a04")
@@ -3824,9 +3802,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Виробники.
-    ///</summary>
+    
     public class Виробники_Select : DirectorySelect
     {
         public Виробники_Select() : base(Config.Kernel, "tab_a04") { }        
@@ -3860,9 +3836,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ВидиНоменклатури"
-    ///<summary>
-    ///Види номенклатури.
-    ///</summary>
+    
     public static class ВидиНоменклатури_Const
     {
         public const string TABLE = "tab_a05";
@@ -3874,9 +3848,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string ОдиницяВиміру = "col_a4";
     }
 	
-    ///<summary>
-    ///Види номенклатури.
-    ///</summary>
+    
     public class ВидиНоменклатури_Objest : DirectoryObject
     {
         public ВидиНоменклатури_Objest() : base(Config.Kernel, "tab_a05",
@@ -3965,9 +3937,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Види номенклатури.
-    ///</summary>
+    
     public class ВидиНоменклатури_Pointer : DirectoryPointer
     {
         public ВидиНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a05")
@@ -4005,9 +3975,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Види номенклатури.
-    ///</summary>
+    
     public class ВидиНоменклатури_Select : DirectorySelect
     {
         public ВидиНоменклатури_Select() : base(Config.Kernel, "tab_a05") { }        
@@ -4041,9 +4009,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ПакуванняОдиниціВиміру"
-    ///<summary>
-    ///Одиниці виміру.
-    ///</summary>
+    
     public static class ПакуванняОдиниціВиміру_Const
     {
         public const string TABLE = "tab_a06";
@@ -4054,9 +4020,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string КількістьУпаковок = "col_c4";
     }
 	
-    ///<summary>
-    ///Одиниці виміру.
-    ///</summary>
+    
     public class ПакуванняОдиниціВиміру_Objest : DirectoryObject
     {
         public ПакуванняОдиниціВиміру_Objest() : base(Config.Kernel, "tab_a06",
@@ -4139,9 +4103,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Одиниці виміру.
-    ///</summary>
+    
     public class ПакуванняОдиниціВиміру_Pointer : DirectoryPointer
     {
         public ПакуванняОдиниціВиміру_Pointer(object uid = null) : base(Config.Kernel, "tab_a06")
@@ -4179,9 +4141,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Одиниці виміру.
-    ///</summary>
+    
     public class ПакуванняОдиниціВиміру_Select : DirectorySelect
     {
         public ПакуванняОдиниціВиміру_Select() : base(Config.Kernel, "tab_a06") { }        
@@ -4215,9 +4175,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Валюти"
-    ///<summary>
-    ///Валюти.
-    ///</summary>
+    
     public static class Валюти_Const
     {
         public const string TABLE = "tab_a07";
@@ -4226,9 +4184,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Код = "col_c6";
     }
 	
-    ///<summary>
-    ///Валюти.
-    ///</summary>
+    
     public class Валюти_Objest : DirectoryObject
     {
         public Валюти_Objest() : base(Config.Kernel, "tab_a07",
@@ -4299,9 +4255,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Валюти.
-    ///</summary>
+    
     public class Валюти_Pointer : DirectoryPointer
     {
         public Валюти_Pointer(object uid = null) : base(Config.Kernel, "tab_a07")
@@ -4339,9 +4293,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Валюти.
-    ///</summary>
+    
     public class Валюти_Select : DirectorySelect
     {
         public Валюти_Select() : base(Config.Kernel, "tab_a07") { }        
@@ -4375,9 +4327,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Контрагенти"
-    ///<summary>
-    ///Контрагенти.
-    ///</summary>
+    
     public static class Контрагенти_Const
     {
         public const string TABLE = "tab_a08";
@@ -4390,9 +4340,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Опис = "col_a2";
     }
 	
-    ///<summary>
-    ///Контрагенти.
-    ///</summary>
+    
     public class Контрагенти_Objest : DirectoryObject
     {
         public Контрагенти_Objest() : base(Config.Kernel, "tab_a08",
@@ -4493,9 +4441,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Контрагенти.
-    ///</summary>
+    
     public class Контрагенти_Pointer : DirectoryPointer
     {
         public Контрагенти_Pointer(object uid = null) : base(Config.Kernel, "tab_a08")
@@ -4533,9 +4479,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Контрагенти.
-    ///</summary>
+    
     public class Контрагенти_Select : DirectorySelect
     {
         public Контрагенти_Select() : base(Config.Kernel, "tab_a08") { }        
@@ -4665,9 +4609,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Склади"
-    ///<summary>
-    ///Склади.
-    ///</summary>
+    
     public static class Склади_Const
     {
         public const string TABLE = "tab_a10";
@@ -4681,9 +4623,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Папка = "col_a5";
     }
 	
-    ///<summary>
-    ///Склади.
-    ///</summary>
+    
     public class Склади_Objest : DirectoryObject
     {
         public Склади_Objest() : base(Config.Kernel, "tab_a10",
@@ -4790,9 +4730,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Склади.
-    ///</summary>
+    
     public class Склади_Pointer : DirectoryPointer
     {
         public Склади_Pointer(object uid = null) : base(Config.Kernel, "tab_a10")
@@ -4830,9 +4768,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Склади.
-    ///</summary>
+    
     public class Склади_Select : DirectorySelect
     {
         public Склади_Select() : base(Config.Kernel, "tab_a10") { }        
@@ -4962,9 +4898,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ВидиЦін"
-    ///<summary>
-    ///Види цін.
-    ///</summary>
+    
     public static class ВидиЦін_Const
     {
         public const string TABLE = "tab_a12";
@@ -4974,9 +4908,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Валюта = "col_f2";
     }
 	
-    ///<summary>
-    ///Види цін.
-    ///</summary>
+    
     public class ВидиЦін_Objest : DirectoryObject
     {
         public ВидиЦін_Objest() : base(Config.Kernel, "tab_a12",
@@ -5053,9 +4985,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Види цін.
-    ///</summary>
+    
     public class ВидиЦін_Pointer : DirectoryPointer
     {
         public ВидиЦін_Pointer(object uid = null) : base(Config.Kernel, "tab_a12")
@@ -5093,9 +5023,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Види цін.
-    ///</summary>
+    
     public class ВидиЦін_Select : DirectorySelect
     {
         public ВидиЦін_Select() : base(Config.Kernel, "tab_a12") { }        
@@ -5129,9 +5057,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ВидиЦінПостачальників"
-    ///<summary>
-    ///Види цін постачальників.
-    ///</summary>
+    
     public static class ВидиЦінПостачальників_Const
     {
         public const string TABLE = "tab_a13";
@@ -5141,9 +5067,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Валюта = "col_f5";
     }
 	
-    ///<summary>
-    ///Види цін постачальників.
-    ///</summary>
+    
     public class ВидиЦінПостачальників_Objest : DirectoryObject
     {
         public ВидиЦінПостачальників_Objest() : base(Config.Kernel, "tab_a13",
@@ -5220,9 +5144,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Види цін постачальників.
-    ///</summary>
+    
     public class ВидиЦінПостачальників_Pointer : DirectoryPointer
     {
         public ВидиЦінПостачальників_Pointer(object uid = null) : base(Config.Kernel, "tab_a13")
@@ -5260,9 +5182,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Види цін постачальників.
-    ///</summary>
+    
     public class ВидиЦінПостачальників_Select : DirectorySelect
     {
         public ВидиЦінПостачальників_Select() : base(Config.Kernel, "tab_a13") { }        
@@ -5296,9 +5216,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Користувачі"
-    ///<summary>
-    ///Користувачі.
-    ///</summary>
+    
     public static class Користувачі_Const
     {
         public const string TABLE = "tab_a14";
@@ -5309,9 +5227,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Коментар = "col_g6";
     }
 	
-    ///<summary>
-    ///Користувачі.
-    ///</summary>
+    
     public class Користувачі_Objest : DirectoryObject
     {
         public Користувачі_Objest() : base(Config.Kernel, "tab_a14",
@@ -5400,9 +5316,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Користувачі.
-    ///</summary>
+    
     public class Користувачі_Pointer : DirectoryPointer
     {
         public Користувачі_Pointer(object uid = null) : base(Config.Kernel, "tab_a14")
@@ -5440,9 +5354,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Користувачі.
-    ///</summary>
+    
     public class Користувачі_Select : DirectorySelect
     {
         public Користувачі_Select() : base(Config.Kernel, "tab_a14") { }        
@@ -5572,9 +5484,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ФізичніОсоби"
-    ///<summary>
-    ///Фізичні особи.
-    ///</summary>
+    
     public static class ФізичніОсоби_Const
     {
         public const string TABLE = "tab_a16";
@@ -5586,9 +5496,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string ІПН = "col_a2";
     }
 	
-    ///<summary>
-    ///Фізичні особи.
-    ///</summary>
+    
     public class ФізичніОсоби_Objest : DirectoryObject
     {
         public ФізичніОсоби_Objest() : base(Config.Kernel, "tab_a16",
@@ -5683,9 +5591,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Фізичні особи.
-    ///</summary>
+    
     public class ФізичніОсоби_Pointer : DirectoryPointer
     {
         public ФізичніОсоби_Pointer(object uid = null) : base(Config.Kernel, "tab_a16")
@@ -5723,9 +5629,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Фізичні особи.
-    ///</summary>
+    
     public class ФізичніОсоби_Select : DirectorySelect
     {
         public ФізичніОсоби_Select() : base(Config.Kernel, "tab_a16") { }        
@@ -5855,9 +5759,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "СтруктураПідприємства"
-    ///<summary>
-    ///Структура підприємства.
-    ///</summary>
+    
     public static class СтруктураПідприємства_Const
     {
         public const string TABLE = "tab_a18";
@@ -5867,9 +5769,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Керівник = "col_i1";
     }
 	
-    ///<summary>
-    ///Структура підприємства.
-    ///</summary>
+    
     public class СтруктураПідприємства_Objest : DirectoryObject
     {
         public СтруктураПідприємства_Objest() : base(Config.Kernel, "tab_a18",
@@ -5946,9 +5846,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Структура підприємства.
-    ///</summary>
+    
     public class СтруктураПідприємства_Pointer : DirectoryPointer
     {
         public СтруктураПідприємства_Pointer(object uid = null) : base(Config.Kernel, "tab_a18")
@@ -5986,9 +5884,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Структура підприємства.
-    ///</summary>
+    
     public class СтруктураПідприємства_Select : DirectorySelect
     {
         public СтруктураПідприємства_Select() : base(Config.Kernel, "tab_a18") { }        
@@ -6022,9 +5918,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "КраїниСвіту"
-    ///<summary>
-    ///Країни світу.
-    ///</summary>
+    
     public static class КраїниСвіту_Const
     {
         public const string TABLE = "tab_a19";
@@ -6034,9 +5928,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string НазваПовна = "col_i4";
     }
 	
-    ///<summary>
-    ///Країни світу.
-    ///</summary>
+    
     public class КраїниСвіту_Objest : DirectoryObject
     {
         public КраїниСвіту_Objest() : base(Config.Kernel, "tab_a19",
@@ -6113,9 +6005,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Країни світу.
-    ///</summary>
+    
     public class КраїниСвіту_Pointer : DirectoryPointer
     {
         public КраїниСвіту_Pointer(object uid = null) : base(Config.Kernel, "tab_a19")
@@ -6153,9 +6043,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Країни світу.
-    ///</summary>
+    
     public class КраїниСвіту_Select : DirectorySelect
     {
         public КраїниСвіту_Select() : base(Config.Kernel, "tab_a19") { }        
@@ -6189,9 +6077,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Файли"
-    ///<summary>
-    ///Файли.
-    ///</summary>
+    
     public static class Файли_Const
     {
         public const string TABLE = "tab_a20";
@@ -6200,9 +6086,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Код = "col_i6";
     }
 	
-    ///<summary>
-    ///Файли.
-    ///</summary>
+    
     public class Файли_Objest : DirectoryObject
     {
         public Файли_Objest() : base(Config.Kernel, "tab_a20",
@@ -6273,9 +6157,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Файли.
-    ///</summary>
+    
     public class Файли_Pointer : DirectoryPointer
     {
         public Файли_Pointer(object uid = null) : base(Config.Kernel, "tab_a20")
@@ -6313,9 +6195,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Файли.
-    ///</summary>
+    
     public class Файли_Select : DirectorySelect
     {
         public Файли_Select() : base(Config.Kernel, "tab_a20") { }        
@@ -6349,9 +6229,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ХарактеристикиНоменклатури"
-    ///<summary>
-    ///Характеристики номенклатури.
-    ///</summary>
+    
     public static class ХарактеристикиНоменклатури_Const
     {
         public const string TABLE = "tab_a21";
@@ -6362,9 +6240,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Номенклатура = "col_a1";
     }
 	
-    ///<summary>
-    ///Характеристики номенклатури.
-    ///</summary>
+    
     public class ХарактеристикиНоменклатури_Objest : DirectoryObject
     {
         public ХарактеристикиНоменклатури_Objest() : base(Config.Kernel, "tab_a21",
@@ -6447,9 +6323,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Характеристики номенклатури.
-    ///</summary>
+    
     public class ХарактеристикиНоменклатури_Pointer : DirectoryPointer
     {
         public ХарактеристикиНоменклатури_Pointer(object uid = null) : base(Config.Kernel, "tab_a21")
@@ -6487,9 +6361,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Характеристики номенклатури.
-    ///</summary>
+    
     public class ХарактеристикиНоменклатури_Select : DirectorySelect
     {
         public ХарактеристикиНоменклатури_Select() : base(Config.Kernel, "tab_a21") { }        
@@ -6523,9 +6395,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Номенклатура_Папки"
-    ///<summary>
-    ///Номенклатура папки.
-    ///</summary>
+    
     public static class Номенклатура_Папки_Const
     {
         public const string TABLE = "tab_a22";
@@ -6535,9 +6405,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Родич = "col_j3";
     }
 	
-    ///<summary>
-    ///Номенклатура папки.
-    ///</summary>
+    
     public class Номенклатура_Папки_Objest : DirectoryObject
     {
         public Номенклатура_Папки_Objest() : base(Config.Kernel, "tab_a22",
@@ -6614,9 +6482,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Номенклатура папки.
-    ///</summary>
+    
     public class Номенклатура_Папки_Pointer : DirectoryPointer
     {
         public Номенклатура_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a22")
@@ -6654,9 +6520,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Номенклатура папки.
-    ///</summary>
+    
     public class Номенклатура_Папки_Select : DirectorySelect
     {
         public Номенклатура_Папки_Select() : base(Config.Kernel, "tab_a22") { }        
@@ -6690,9 +6554,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Контрагенти_Папки"
-    ///<summary>
-    ///Контрагенти папки.
-    ///</summary>
+    
     public static class Контрагенти_Папки_Const
     {
         public const string TABLE = "tab_a23";
@@ -6702,9 +6564,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Родич = "col_j6";
     }
 	
-    ///<summary>
-    ///Контрагенти папки.
-    ///</summary>
+    
     public class Контрагенти_Папки_Objest : DirectoryObject
     {
         public Контрагенти_Папки_Objest() : base(Config.Kernel, "tab_a23",
@@ -6781,9 +6641,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Контрагенти папки.
-    ///</summary>
+    
     public class Контрагенти_Папки_Pointer : DirectoryPointer
     {
         public Контрагенти_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a23")
@@ -6821,9 +6679,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Контрагенти папки.
-    ///</summary>
+    
     public class Контрагенти_Папки_Select : DirectorySelect
     {
         public Контрагенти_Папки_Select() : base(Config.Kernel, "tab_a23") { }        
@@ -6857,9 +6713,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Склади_Папки"
-    ///<summary>
-    ///Склади папки.
-    ///</summary>
+    
     public static class Склади_Папки_Const
     {
         public const string TABLE = "tab_a24";
@@ -6869,9 +6723,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Родич = "col_a1";
     }
 	
-    ///<summary>
-    ///Склади папки.
-    ///</summary>
+    
     public class Склади_Папки_Objest : DirectoryObject
     {
         public Склади_Папки_Objest() : base(Config.Kernel, "tab_a24",
@@ -6948,9 +6800,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Склади папки.
-    ///</summary>
+    
     public class Склади_Папки_Pointer : DirectoryPointer
     {
         public Склади_Папки_Pointer(object uid = null) : base(Config.Kernel, "tab_a24")
@@ -6988,9 +6838,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Склади папки.
-    ///</summary>
+    
     public class Склади_Папки_Select : DirectorySelect
     {
         public Склади_Папки_Select() : base(Config.Kernel, "tab_a24") { }        
@@ -7024,9 +6872,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "Каси"
-    ///<summary>
-    ///Каси.
-    ///</summary>
+    
     public static class Каси_Const
     {
         public const string TABLE = "tab_a26";
@@ -7037,9 +6883,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Підрозділ = "col_a1";
     }
 	
-    ///<summary>
-    ///Каси.
-    ///</summary>
+    
     public class Каси_Objest : DirectoryObject
     {
         public Каси_Objest() : base(Config.Kernel, "tab_a26",
@@ -7122,9 +6966,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Каси.
-    ///</summary>
+    
     public class Каси_Pointer : DirectoryPointer
     {
         public Каси_Pointer(object uid = null) : base(Config.Kernel, "tab_a26")
@@ -7162,9 +7004,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Каси.
-    ///</summary>
+    
     public class Каси_Select : DirectorySelect
     {
         public Каси_Select() : base(Config.Kernel, "tab_a26") { }        
@@ -7198,9 +7038,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "БанківськіРахункиОрганізацій"
-    ///<summary>
-    ///Банківські рахунки організацій.
-    ///</summary>
+    
     public static class БанківськіРахункиОрганізацій_Const
     {
         public const string TABLE = "tab_a27";
@@ -7220,9 +7058,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Організація = "col_a1";
     }
 	
-    ///<summary>
-    ///Банківські рахунки організацій.
-    ///</summary>
+    
     public class БанківськіРахункиОрганізацій_Objest : DirectoryObject
     {
         public БанківськіРахункиОрганізацій_Objest() : base(Config.Kernel, "tab_a27",
@@ -7359,9 +7195,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Банківські рахунки організацій.
-    ///</summary>
+    
     public class БанківськіРахункиОрганізацій_Pointer : DirectoryPointer
     {
         public БанківськіРахункиОрганізацій_Pointer(object uid = null) : base(Config.Kernel, "tab_a27")
@@ -7399,9 +7233,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Банківські рахунки організацій.
-    ///</summary>
+    
     public class БанківськіРахункиОрганізацій_Select : DirectorySelect
     {
         public БанківськіРахункиОрганізацій_Select() : base(Config.Kernel, "tab_a27") { }        
@@ -7435,9 +7267,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ДоговориКонтрагентів"
-    ///<summary>
-    ///Договори контрагентів. Договори підпорядковані контрагенту.
-    ///</summary>
+    
     public static class ДоговориКонтрагентів_Const
     {
         public const string TABLE = "tab_a28";
@@ -7464,9 +7294,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Коментар = "col_a3";
     }
 	
-    ///<summary>
-    ///Договори контрагентів. Договори підпорядковані контрагенту.
-    ///</summary>
+    
     public class ДоговориКонтрагентів_Objest : DirectoryObject
     {
         public ДоговориКонтрагентів_Objest() : base(Config.Kernel, "tab_a28",
@@ -7646,9 +7474,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Договори контрагентів. Договори підпорядковані контрагенту.
-    ///</summary>
+    
     public class ДоговориКонтрагентів_Pointer : DirectoryPointer
     {
         public ДоговориКонтрагентів_Pointer(object uid = null) : base(Config.Kernel, "tab_a28")
@@ -7686,9 +7512,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Договори контрагентів. Договори підпорядковані контрагенту.
-    ///</summary>
+    
     public class ДоговориКонтрагентів_Select : DirectorySelect
     {
         public ДоговориКонтрагентів_Select() : base(Config.Kernel, "tab_a28") { }        
@@ -7722,9 +7546,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "БанківськіРахункиКонтрагентів"
-    ///<summary>
-    ///Банківські рахунки контрагентів.
-    ///</summary>
+    
     public static class БанківськіРахункиКонтрагентів_Const
     {
         public const string TABLE = "tab_a29";
@@ -7746,9 +7568,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Контрагент = "col_o3";
     }
 	
-    ///<summary>
-    ///Банківські рахунки контрагентів.
-    ///</summary>
+    
     public class БанківськіРахункиКонтрагентів_Objest : DirectoryObject
     {
         public БанківськіРахункиКонтрагентів_Objest() : base(Config.Kernel, "tab_a29",
@@ -7897,9 +7717,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Банківські рахунки контрагентів.
-    ///</summary>
+    
     public class БанківськіРахункиКонтрагентів_Pointer : DirectoryPointer
     {
         public БанківськіРахункиКонтрагентів_Pointer(object uid = null) : base(Config.Kernel, "tab_a29")
@@ -7937,9 +7755,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Банківські рахунки контрагентів.
-    ///</summary>
+    
     public class БанківськіРахункиКонтрагентів_Select : DirectorySelect
     {
         public БанківськіРахункиКонтрагентів_Select() : base(Config.Kernel, "tab_a29") { }        
@@ -7973,9 +7789,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "СтаттяРухуКоштів"
-    ///<summary>
-    ///Стаття руху коштів.
-    ///</summary>
+    
     public static class СтаттяРухуКоштів_Const
     {
         public const string TABLE = "tab_a45";
@@ -7987,9 +7801,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Опис = "col_j1";
     }
 	
-    ///<summary>
-    ///Стаття руху коштів.
-    ///</summary>
+    
     public class СтаттяРухуКоштів_Objest : DirectoryObject
     {
         public СтаттяРухуКоштів_Objest() : base(Config.Kernel, "tab_a45",
@@ -8084,9 +7896,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Стаття руху коштів.
-    ///</summary>
+    
     public class СтаттяРухуКоштів_Pointer : DirectoryPointer
     {
         public СтаттяРухуКоштів_Pointer(object uid = null) : base(Config.Kernel, "tab_a45")
@@ -8124,9 +7934,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Стаття руху коштів.
-    ///</summary>
+    
     public class СтаттяРухуКоштів_Select : DirectorySelect
     {
         public СтаттяРухуКоштів_Select() : base(Config.Kernel, "tab_a45") { }        
@@ -8385,9 +8193,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ПартіяТоварівКомпозит"
-    ///<summary>
-    ///Композитний тип для регістру ПартіїТоварів.
-    ///</summary>
+    
     public static class ПартіяТоварівКомпозит_Const
     {
         public const string TABLE = "tab_b06";
@@ -8400,9 +8206,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string ВведенняЗалишків = "col_a5";
     }
 	
-    ///<summary>
-    ///Композитний тип для регістру ПартіїТоварів.
-    ///</summary>
+    
     public class ПартіяТоварівКомпозит_Objest : DirectoryObject
     {
         public ПартіяТоварівКомпозит_Objest() : base(Config.Kernel, "tab_b06",
@@ -8497,9 +8301,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ПартіїТоварів.
-    ///</summary>
+    
     public class ПартіяТоварівКомпозит_Pointer : DirectoryPointer
     {
         public ПартіяТоварівКомпозит_Pointer(object uid = null) : base(Config.Kernel, "tab_b06")
@@ -8537,9 +8339,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ПартіїТоварів.
-    ///</summary>
+    
     public class ПартіяТоварівКомпозит_Select : DirectorySelect
     {
         public ПартіяТоварівКомпозит_Select() : base(Config.Kernel, "tab_b06") { }        
@@ -8753,9 +8553,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "ПродажіДокументКомпозит"
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public static class ПродажіДокументКомпозит_Const
     {
         public const string TABLE = "tab_b14";
@@ -8768,9 +8566,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string РеалізаціяТоварівТаПослуг = "col_c1";
     }
 	
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class ПродажіДокументКомпозит_Objest : DirectoryObject
     {
         public ПродажіДокументКомпозит_Objest() : base(Config.Kernel, "tab_b14",
@@ -8865,9 +8661,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class ПродажіДокументКомпозит_Pointer : DirectoryPointer
     {
         public ПродажіДокументКомпозит_Pointer(object uid = null) : base(Config.Kernel, "tab_b14")
@@ -8905,9 +8699,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class ПродажіДокументКомпозит_Select : DirectorySelect
     {
         public ПродажіДокументКомпозит_Select() : base(Config.Kernel, "tab_b14") { }        
@@ -8941,9 +8733,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "АналітикаНоменклатуриКомпозит"
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public static class АналітикаНоменклатуриКомпозит_Const
     {
         public const string TABLE = "tab_b15";
@@ -8955,9 +8745,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Склад = "col_a7";
     }
 	
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class АналітикаНоменклатуриКомпозит_Objest : DirectoryObject
     {
         public АналітикаНоменклатуриКомпозит_Objest() : base(Config.Kernel, "tab_b15",
@@ -9046,9 +8834,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class АналітикаНоменклатуриКомпозит_Pointer : DirectoryPointer
     {
         public АналітикаНоменклатуриКомпозит_Pointer(object uid = null) : base(Config.Kernel, "tab_b15")
@@ -9086,9 +8872,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class АналітикаНоменклатуриКомпозит_Select : DirectorySelect
     {
         public АналітикаНоменклатуриКомпозит_Select() : base(Config.Kernel, "tab_b15") { }        
@@ -9122,9 +8906,7 @@ namespace StorageAndTrade_1_0.Довідники
     #endregion
     
     #region DIRECTORY "АналітикаКонтрагентівКомпозит"
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public static class АналітикаКонтрагентівКомпозит_Const
     {
         public const string TABLE = "tab_b16";
@@ -9135,9 +8917,7 @@ namespace StorageAndTrade_1_0.Довідники
         public const string Договір = "col_b2";
     }
 	
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class АналітикаКонтрагентівКомпозит_Objest : DirectoryObject
     {
         public АналітикаКонтрагентівКомпозит_Objest() : base(Config.Kernel, "tab_b16",
@@ -9220,9 +9000,7 @@ namespace StorageAndTrade_1_0.Довідники
         
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class АналітикаКонтрагентівКомпозит_Pointer : DirectoryPointer
     {
         public АналітикаКонтрагентівКомпозит_Pointer(object uid = null) : base(Config.Kernel, "tab_b16")
@@ -9260,9 +9038,7 @@ namespace StorageAndTrade_1_0.Довідники
         }
     }
     
-    ///<summary>
-    ///Композитний тип для регістру ДоходиТаСобівартістьПродажів.
-    ///</summary>
+    
     public class АналітикаКонтрагентівКомпозит_Select : DirectorySelect
     {
         public АналітикаКонтрагентівКомпозит_Select() : base(Config.Kernel, "tab_b16") { }        
@@ -12426,9 +12202,7 @@ namespace StorageAndTrade_1_0.Документи
     #endregion
     
     #region DOCUMENT "ПереміщенняТоварів"
-    ///<summary>
-    ///Переміщення товарів між складами.
-    ///</summary>
+    
     public static class ПереміщенняТоварів_Const
     {
         public const string TABLE = "tab_a31";
@@ -12453,9 +12227,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Коментар = "col_a6";
     }
 	
-    ///<summary>
-    ///Переміщення товарів між складами.
-    ///</summary>
+    
     public class ПереміщенняТоварів_Objest : DocumentObject
     {
         public ПереміщенняТоварів_Objest() : base(Config.Kernel, "tab_a31", "ПереміщенняТоварів",
@@ -12614,9 +12386,7 @@ namespace StorageAndTrade_1_0.Документи
         
     }
     
-    ///<summary>
-    ///Переміщення товарів між складами.
-    ///</summary>
+    
     public class ПереміщенняТоварів_Pointer : DocumentPointer
     {
         public ПереміщенняТоварів_Pointer(object uid = null) : base(Config.Kernel, "tab_a31", "ПереміщенняТоварів")
@@ -12655,9 +12425,7 @@ namespace StorageAndTrade_1_0.Документи
         }
     }
     
-    ///<summary>
-    ///Переміщення товарів між складами.
-    ///</summary>
+    
     public class ПереміщенняТоварів_Select : DocumentSelect
     {		
         public ПереміщенняТоварів_Select() : base(Config.Kernel, "tab_a31") { }
@@ -15958,9 +15726,7 @@ namespace StorageAndTrade_1_0.Документи
     #endregion
     
     #region DOCUMENT "РахунокФактура"
-    ///<summary>
-    ///Рахунок фактура.
-    ///</summary>
+    
     public static class РахунокФактура_Const
     {
         public const string TABLE = "tab_b10";
@@ -15985,9 +15751,7 @@ namespace StorageAndTrade_1_0.Документи
         public const string Коментар = "col_c1";
     }
 	
-    ///<summary>
-    ///Рахунок фактура.
-    ///</summary>
+    
     public class РахунокФактура_Objest : DocumentObject
     {
         public РахунокФактура_Objest() : base(Config.Kernel, "tab_b10", "РахунокФактура",
@@ -16146,9 +15910,7 @@ namespace StorageAndTrade_1_0.Документи
         
     }
     
-    ///<summary>
-    ///Рахунок фактура.
-    ///</summary>
+    
     public class РахунокФактура_Pointer : DocumentPointer
     {
         public РахунокФактура_Pointer(object uid = null) : base(Config.Kernel, "tab_b10", "РахунокФактура")
@@ -16187,9 +15949,7 @@ namespace StorageAndTrade_1_0.Документи
         }
     }
     
-    ///<summary>
-    ///Рахунок фактура.
-    ///</summary>
+    
     public class РахунокФактура_Select : DocumentSelect
     {		
         public РахунокФактура_Select() : base(Config.Kernel, "tab_b10") { }
@@ -16883,9 +16643,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     #endregion
   
     #region REGISTER "ЗамовленняКлієнтів"
-    ///<summary>
-    ///Замовлення клієнтів.
-    ///</summary>
+    
     public static class ЗамовленняКлієнтів_Const
     {
         public const string TABLE = "tab_a55";
@@ -16900,9 +16658,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string Сума = "col_a6";
     }
 	
-    ///<summary>
-    ///Замовлення клієнтів.
-    ///</summary>
+    
     public class ЗамовленняКлієнтів_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ЗамовленняКлієнтів_RecordsSet() : base(Config.Kernel, "tab_a55",
@@ -16967,9 +16723,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseCommitTransaction();
         }
         
-        ///<summary>
-    ///Замовлення клієнтів.
-    ///</summary>
+        
         public class Record : RegisterAccumulationRecord
         {
             public Record()
@@ -17914,9 +17668,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
     #endregion
   
     #region REGISTER "ДоходиТаСобівартістьПродажів"
-    ///<summary>
-    ///Доходи та собівартість продажів.
-    ///</summary>
+    
     public static class ДоходиТаСобівартістьПродажів_Const
     {
         public const string TABLE = "tab_b12";
@@ -17938,9 +17690,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string ВалютаДокументу = "col_b5";
     }
 	
-    ///<summary>
-    ///Доходи та собівартість продажів.
-    ///</summary>
+    
     public class ДоходиТаСобівартістьПродажів_RecordsSet : RegisterAccumulationRecordsSet
     {
         public ДоходиТаСобівартістьПродажів_RecordsSet() : base(Config.Kernel, "tab_b12",
@@ -18019,9 +17769,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             base.BaseCommitTransaction();
         }
         
-        ///<summary>
-    ///Доходи та собівартість продажів.
-    ///</summary>
+        
         public class Record : RegisterAccumulationRecord
         {
             public Record()
