@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 25.08.2022 13:06:05
+ * Дата конфігурації: 25.08.2022 17:44:26
  *
  */
 
@@ -3334,6 +3334,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ОрганізаціїObjestItem.Read(base.UnigueID) ? ОрганізаціїObjestItem : null;
         }
 		
+        public Організації_Pointer GetNewDirectoryPointer()
+        {
+            return new Організації_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -3641,6 +3646,11 @@ namespace StorageAndTrade_1_0.Довідники
             return НоменклатураObjestItem.Read(base.UnigueID) ? НоменклатураObjestItem : null;
         }
 		
+        public Номенклатура_Pointer GetNewDirectoryPointer()
+        {
+            return new Номенклатура_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -3794,6 +3804,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Виробники_Objest ВиробникиObjestItem = new Виробники_Objest();
             return ВиробникиObjestItem.Read(base.UnigueID) ? ВиробникиObjestItem : null;
+        }
+		
+        public Виробники_Pointer GetNewDirectoryPointer()
+        {
+            return new Виробники_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -3972,6 +3987,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ВидиНоменклатуриObjestItem.Read(base.UnigueID) ? ВидиНоменклатуриObjestItem : null;
         }
 		
+        public ВидиНоменклатури_Pointer GetNewDirectoryPointer()
+        {
+            return new ВидиНоменклатури_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -4141,6 +4161,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ПакуванняОдиниціВиміруObjestItem.Read(base.UnigueID) ? ПакуванняОдиниціВиміруObjestItem : null;
         }
 		
+        public ПакуванняОдиниціВиміру_Pointer GetNewDirectoryPointer()
+        {
+            return new ПакуванняОдиниціВиміру_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -4294,6 +4319,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Валюти_Objest ВалютиObjestItem = new Валюти_Objest();
             return ВалютиObjestItem.Read(base.UnigueID) ? ВалютиObjestItem : null;
+        }
+		
+        public Валюти_Pointer GetNewDirectoryPointer()
+        {
+            return new Валюти_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -4483,6 +4513,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Контрагенти_Objest КонтрагентиObjestItem = new Контрагенти_Objest();
             return КонтрагентиObjestItem.Read(base.UnigueID) ? КонтрагентиObjestItem : null;
+        }
+		
+        public Контрагенти_Pointer GetNewDirectoryPointer()
+        {
+            return new Контрагенти_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -4777,6 +4812,11 @@ namespace StorageAndTrade_1_0.Довідники
             return СкладиObjestItem.Read(base.UnigueID) ? СкладиObjestItem : null;
         }
 		
+        public Склади_Pointer GetNewDirectoryPointer()
+        {
+            return new Склади_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -5035,6 +5075,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ВидиЦінObjestItem.Read(base.UnigueID) ? ВидиЦінObjestItem : null;
         }
 		
+        public ВидиЦін_Pointer GetNewDirectoryPointer()
+        {
+            return new ВидиЦін_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -5195,6 +5240,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             ВидиЦінПостачальників_Objest ВидиЦінПостачальниківObjestItem = new ВидиЦінПостачальників_Objest();
             return ВидиЦінПостачальниківObjestItem.Read(base.UnigueID) ? ВидиЦінПостачальниківObjestItem : null;
+        }
+		
+        public ВидиЦінПостачальників_Pointer GetNewDirectoryPointer()
+        {
+            return new ВидиЦінПостачальників_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -5370,6 +5420,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Користувачі_Objest КористувачіObjestItem = new Користувачі_Objest();
             return КористувачіObjestItem.Read(base.UnigueID) ? КористувачіObjestItem : null;
+        }
+		
+        public Користувачі_Pointer GetNewDirectoryPointer()
+        {
+            return new Користувачі_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -5650,6 +5705,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ФізичніОсобиObjestItem.Read(base.UnigueID) ? ФізичніОсобиObjestItem : null;
         }
 		
+        public ФізичніОсоби_Pointer GetNewDirectoryPointer()
+        {
+            return new ФізичніОсоби_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -5908,6 +5968,11 @@ namespace StorageAndTrade_1_0.Довідники
             return СтруктураПідприємстваObjestItem.Read(base.UnigueID) ? СтруктураПідприємстваObjestItem : null;
         }
 		
+        public СтруктураПідприємства_Pointer GetNewDirectoryPointer()
+        {
+            return new СтруктураПідприємства_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -6070,6 +6135,11 @@ namespace StorageAndTrade_1_0.Довідники
             return КраїниСвітуObjestItem.Read(base.UnigueID) ? КраїниСвітуObjestItem : null;
         }
 		
+        public КраїниСвіту_Pointer GetNewDirectoryPointer()
+        {
+            return new КраїниСвіту_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -6223,6 +6293,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Файли_Objest ФайлиObjestItem = new Файли_Objest();
             return ФайлиObjestItem.Read(base.UnigueID) ? ФайлиObjestItem : null;
+        }
+		
+        public Файли_Pointer GetNewDirectoryPointer()
+        {
+            return new Файли_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6394,6 +6469,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ХарактеристикиНоменклатуриObjestItem.Read(base.UnigueID) ? ХарактеристикиНоменклатуриObjestItem : null;
         }
 		
+        public ХарактеристикиНоменклатури_Pointer GetNewDirectoryPointer()
+        {
+            return new ХарактеристикиНоменклатури_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -6554,6 +6634,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Номенклатура_Папки_Objest Номенклатура_ПапкиObjestItem = new Номенклатура_Папки_Objest();
             return Номенклатура_ПапкиObjestItem.Read(base.UnigueID) ? Номенклатура_ПапкиObjestItem : null;
+        }
+		
+        public Номенклатура_Папки_Pointer GetNewDirectoryPointer()
+        {
+            return new Номенклатура_Папки_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6718,6 +6803,11 @@ namespace StorageAndTrade_1_0.Довідники
             return Контрагенти_ПапкиObjestItem.Read(base.UnigueID) ? Контрагенти_ПапкиObjestItem : null;
         }
 		
+        public Контрагенти_Папки_Pointer GetNewDirectoryPointer()
+        {
+            return new Контрагенти_Папки_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -6878,6 +6968,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Склади_Папки_Objest Склади_ПапкиObjestItem = new Склади_Папки_Objest();
             return Склади_ПапкиObjestItem.Read(base.UnigueID) ? Склади_ПапкиObjestItem : null;
+        }
+		
+        public Склади_Папки_Pointer GetNewDirectoryPointer()
+        {
+            return new Склади_Папки_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -7047,6 +7142,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             Каси_Objest КасиObjestItem = new Каси_Objest();
             return КасиObjestItem.Read(base.UnigueID) ? КасиObjestItem : null;
+        }
+		
+        public Каси_Pointer GetNewDirectoryPointer()
+        {
+            return new Каси_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -7279,6 +7379,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             БанківськіРахункиОрганізацій_Objest БанківськіРахункиОрганізаційObjestItem = new БанківськіРахункиОрганізацій_Objest();
             return БанківськіРахункиОрганізаційObjestItem.Read(base.UnigueID) ? БанківськіРахункиОрганізаційObjestItem : null;
+        }
+		
+        public БанківськіРахункиОрганізацій_Pointer GetNewDirectoryPointer()
+        {
+            return new БанківськіРахункиОрганізацій_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -7563,6 +7668,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ДоговориКонтрагентівObjestItem.Read(base.UnigueID) ? ДоговориКонтрагентівObjestItem : null;
         }
 		
+        public ДоговориКонтрагентів_Pointer GetNewDirectoryPointer()
+        {
+            return new ДоговориКонтрагентів_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -7809,6 +7919,11 @@ namespace StorageAndTrade_1_0.Довідники
             return БанківськіРахункиКонтрагентівObjestItem.Read(base.UnigueID) ? БанківськіРахункиКонтрагентівObjestItem : null;
         }
 		
+        public БанківськіРахункиКонтрагентів_Pointer GetNewDirectoryPointer()
+        {
+            return new БанківськіРахункиКонтрагентів_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -7989,6 +8104,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             СтаттяРухуКоштів_Objest СтаттяРухуКоштівObjestItem = new СтаттяРухуКоштів_Objest();
             return СтаттяРухуКоштівObjestItem.Read(base.UnigueID) ? СтаттяРухуКоштівObjestItem : null;
+        }
+		
+        public СтаттяРухуКоштів_Pointer GetNewDirectoryPointer()
+        {
+            return new СтаттяРухуКоштів_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8213,6 +8333,11 @@ namespace StorageAndTrade_1_0.Довідники
             return СеріїНоменклатуриObjestItem.Read(base.UnigueID) ? СеріїНоменклатуриObjestItem : null;
         }
 		
+        public СеріїНоменклатури_Pointer GetNewDirectoryPointer()
+        {
+            return new СеріїНоменклатури_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -8394,6 +8519,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ПартіяТоварівКомпозитObjestItem.Read(base.UnigueID) ? ПартіяТоварівКомпозитObjestItem : null;
         }
 		
+        public ПартіяТоварівКомпозит_Pointer GetNewDirectoryPointer()
+        {
+            return new ПартіяТоварівКомпозит_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -8569,6 +8699,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             ВидиЗапасів_Objest ВидиЗапасівObjestItem = new ВидиЗапасів_Objest();
             return ВидиЗапасівObjestItem.Read(base.UnigueID) ? ВидиЗапасівObjestItem : null;
+        }
+		
+        public ВидиЗапасів_Pointer GetNewDirectoryPointer()
+        {
+            return new ВидиЗапасів_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8752,6 +8887,11 @@ namespace StorageAndTrade_1_0.Довідники
             return ПродажіДокументКомпозитObjestItem.Read(base.UnigueID) ? ПродажіДокументКомпозитObjestItem : null;
         }
 		
+        public ПродажіДокументКомпозит_Pointer GetNewDirectoryPointer()
+        {
+            return new ПродажіДокументКомпозит_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -8928,6 +9068,11 @@ namespace StorageAndTrade_1_0.Довідники
             return АналітикаНоменклатуриКомпозитObjestItem.Read(base.UnigueID) ? АналітикаНоменклатуриКомпозитObjestItem : null;
         }
 		
+        public АналітикаНоменклатуриКомпозит_Pointer GetNewDirectoryPointer()
+        {
+            return new АналітикаНоменклатуриКомпозит_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -9097,6 +9242,11 @@ namespace StorageAndTrade_1_0.Довідники
             return АналітикаКонтрагентівКомпозитObjestItem.Read(base.UnigueID) ? АналітикаКонтрагентівКомпозитObjestItem : null;
         }
 		
+        public АналітикаКонтрагентівКомпозит_Pointer GetNewDirectoryPointer()
+        {
+            return new АналітикаКонтрагентівКомпозит_Pointer(UnigueID);
+        }
+		
 		public string GetPresentation()
         {
 		    return base.BasePresentation(
@@ -9244,6 +9394,11 @@ namespace StorageAndTrade_1_0.Довідники
             if (this.IsEmpty()) return null;
             АналітикаПартійКомпозит_Objest АналітикаПартійКомпозитObjestItem = new АналітикаПартійКомпозит_Objest();
             return АналітикаПартійКомпозитObjestItem.Read(base.UnigueID) ? АналітикаПартійКомпозитObjestItem : null;
+        }
+		
+        public АналітикаПартійКомпозит_Pointer GetNewDirectoryPointer()
+        {
+            return new АналітикаПартійКомпозит_Pointer(UnigueID);
         }
 		
 		public string GetPresentation()
