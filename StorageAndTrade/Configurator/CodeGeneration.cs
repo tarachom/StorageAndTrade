@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 24.08.2022 15:52:25
+ * Дата конфігурації: 25.08.2022 13:06:05
  *
  */
 
@@ -17055,7 +17055,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
         public const string ВНаявності = "col_a8";
         public const string ВРезервіЗіСкладу = "col_b1";
         public const string ВРезервіПідЗамовлення = "col_b2";
-        public const string Документ = "col_a1";
+        public const string ДокументРезерву = "col_a1";
     }
 	
     
@@ -17088,7 +17088,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 record.ВНаявності = (fieldValue["col_a8"] != DBNull.Value) ? (decimal)fieldValue["col_a8"] : 0;
                 record.ВРезервіЗіСкладу = (fieldValue["col_b1"] != DBNull.Value) ? (decimal)fieldValue["col_b1"] : 0;
                 record.ВРезервіПідЗамовлення = (fieldValue["col_b2"] != DBNull.Value) ? (decimal)fieldValue["col_b2"] : 0;
-                record.Документ = (fieldValue["col_a1"] != DBNull.Value) ? Guid.Parse(fieldValue["col_a1"].ToString()) : Guid.Empty;
+                record.ДокументРезерву = (fieldValue["col_a1"] != DBNull.Value) ? Guid.Parse(fieldValue["col_a1"].ToString()) : Guid.Empty;
                 
                 Records.Add(record);
             }
@@ -17111,7 +17111,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 fieldValue.Add("col_a8", record.ВНаявності);
                 fieldValue.Add("col_b1", record.ВРезервіЗіСкладу);
                 fieldValue.Add("col_b2", record.ВРезервіПідЗамовлення);
-                fieldValue.Add("col_a1", record.Документ);
+                fieldValue.Add("col_a1", record.ДокументРезерву);
                 
                 base.BaseSave(record.UID, period, record.Income, owner, fieldValue);
             }
@@ -17136,7 +17136,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
                 ВНаявності = 0;
                 ВРезервіЗіСкладу = 0;
                 ВРезервіПідЗамовлення = 0;
-                Документ = new Guid();
+                ДокументРезерву = new Guid();
                 
             }
             public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
@@ -17145,7 +17145,7 @@ namespace StorageAndTrade_1_0.РегістриНакопичення
             public decimal ВНаявності { get; set; }
             public decimal ВРезервіЗіСкладу { get; set; }
             public decimal ВРезервіПідЗамовлення { get; set; }
-            public Guid Документ { get; set; }
+            public Guid ДокументРезерву { get; set; }
             
         }
     }
