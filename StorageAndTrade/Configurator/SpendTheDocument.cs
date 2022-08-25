@@ -433,6 +433,10 @@ FROM
 			}
 		}
 
+		/// <summary>
+		/// Перевати проведення документу
+		/// </summary>
+		/// <param name="СписокПомилок">Список помилок</param>
 		public static void ДокументНеПроводиться(List<string> СписокПомилок)
         {
 			throw new Exception(string.Join("\n", СписокПомилок.ToArray()));
