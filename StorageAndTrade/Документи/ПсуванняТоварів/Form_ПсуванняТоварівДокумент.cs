@@ -125,6 +125,7 @@ namespace StorageAndTrade
 				псуванняТоварів_Objest.ДатаДок = ФункціїДляДокументів.ОбєднатиДатуТаЧас(dateTimePicker_ДатаДок.Value, dateTimePicker_ЧасДок.Value);
 				псуванняТоварів_Objest.Організація = (Довідники.Організації_Pointer)directoryControl_Організація.DirectoryPointerItem;
 				псуванняТоварів_Objest.Склад = (Довідники.Склади_Pointer)directoryControl_Склад.DirectoryPointerItem;
+				псуванняТоварів_Objest.ВидЦіни = (Довідники.ВидиЦін_Pointer)directoryControl_ВидиЦін.DirectoryPointerItem;
 				псуванняТоварів_Objest.Підрозділ = (Довідники.СтруктураПідприємства_Pointer)directoryControl_Підрозділ.DirectoryPointerItem;
 				псуванняТоварів_Objest.Назва = $"Псування товару №{псуванняТоварів_Objest.НомерДок} від {псуванняТоварів_Objest.ДатаДок.ToShortDateString()}";
 
