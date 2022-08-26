@@ -195,7 +195,7 @@ namespace StorageAndTrade
 				parent.Items.RemoveAt(counterMenu);
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-			paramQuery.Add("like_param", "%" + findMenu.Text.Trim().ToLower() + "%");
+			paramQuery.Add("like_param", "%" + findMenu.Text.ToLower() + "%");
 
 			string[] columnsName;
 			List<Dictionary<string, object>> listRow;

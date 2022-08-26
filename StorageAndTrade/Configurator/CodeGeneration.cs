@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 25.08.2022 19:45:50
+ * Дата конфігурації: 26.08.2022 13:10:39
  *
  */
 
@@ -89,7 +89,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.Організації_Pointer m_ОсновнаОрганізація_Const = new Довідники.Організації_Pointer();
         public static Довідники.Організації_Pointer ОсновнаОрганізація_Const
         {
-            get { return m_ОсновнаОрганізація_Const; }
+            get 
+            {
+                return m_ОсновнаОрганізація_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнаОрганізація_Const = value;
@@ -100,7 +103,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.Склади_Pointer m_ОснонийСклад_Const = new Довідники.Склади_Pointer();
         public static Довідники.Склади_Pointer ОснонийСклад_Const
         {
-            get { return m_ОснонийСклад_Const; }
+            get 
+            {
+                return m_ОснонийСклад_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОснонийСклад_Const = value;
@@ -111,7 +117,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.Валюти_Pointer m_ОсновнаВалюта_Const = new Довідники.Валюти_Pointer();
         public static Довідники.Валюти_Pointer ОсновнаВалюта_Const
         {
-            get { return m_ОсновнаВалюта_Const; }
+            get 
+            {
+                return m_ОсновнаВалюта_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнаВалюта_Const = value;
@@ -122,7 +131,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.Контрагенти_Pointer m_ОсновнийПостачальник_Const = new Довідники.Контрагенти_Pointer();
         public static Довідники.Контрагенти_Pointer ОсновнийПостачальник_Const
         {
-            get { return m_ОсновнийПостачальник_Const; }
+            get 
+            {
+                return m_ОсновнийПостачальник_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнийПостачальник_Const = value;
@@ -133,7 +145,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.Контрагенти_Pointer m_ОсновнийПокупець_Const = new Довідники.Контрагенти_Pointer();
         public static Довідники.Контрагенти_Pointer ОсновнийПокупець_Const
         {
-            get { return m_ОсновнийПокупець_Const; }
+            get 
+            {
+                return m_ОсновнийПокупець_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнийПокупець_Const = value;
@@ -144,7 +159,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.Каси_Pointer m_ОсновнаКаса_Const = new Довідники.Каси_Pointer();
         public static Довідники.Каси_Pointer ОсновнаКаса_Const
         {
-            get { return m_ОсновнаКаса_Const; }
+            get 
+            {
+                return m_ОсновнаКаса_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнаКаса_Const = value;
@@ -155,7 +173,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.ПакуванняОдиниціВиміру_Pointer m_ОсновнаОдиницяПакування_Const = new Довідники.ПакуванняОдиниціВиміру_Pointer();
         public static Довідники.ПакуванняОдиниціВиміру_Pointer ОсновнаОдиницяПакування_Const
         {
-            get { return m_ОсновнаОдиницяПакування_Const; }
+            get 
+            {
+                return m_ОсновнаОдиницяПакування_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнаОдиницяПакування_Const = value;
@@ -166,7 +187,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.СтруктураПідприємства_Pointer m_ОсновнийПідрозділ_Const = new Довідники.СтруктураПідприємства_Pointer();
         public static Довідники.СтруктураПідприємства_Pointer ОсновнийПідрозділ_Const
         {
-            get { return m_ОсновнийПідрозділ_Const; }
+            get 
+            {
+                return m_ОсновнийПідрозділ_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнийПідрозділ_Const = value;
@@ -177,7 +201,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.БанківськіРахункиОрганізацій_Pointer m_ОсновнийБанківськийРахунок_Const = new Довідники.БанківськіРахункиОрганізацій_Pointer();
         public static Довідники.БанківськіРахункиОрганізацій_Pointer ОсновнийБанківськийРахунок_Const
         {
-            get { return m_ОсновнийБанківськийРахунок_Const; }
+            get 
+            {
+                return m_ОсновнийБанківськийРахунок_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнийБанківськийРахунок_Const = value;
@@ -188,7 +215,10 @@ namespace StorageAndTrade_1_0.Константи
         static Довідники.ВидиЦін_Pointer m_ОсновнийВидЦіни_Const = new Довідники.ВидиЦін_Pointer();
         public static Довідники.ВидиЦін_Pointer ОсновнийВидЦіни_Const
         {
-            get { return m_ОсновнийВидЦіни_Const; }
+            get 
+            {
+                return m_ОсновнийВидЦіни_Const.GetNewDirectoryPointer();
+            }
             set
             {
                 m_ОсновнийВидЦіни_Const = value;
@@ -224,7 +254,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ЖурналРеєстрації_Const = "";
         public static string ЖурналРеєстрації_Const
         {
-            get { return m_ЖурналРеєстрації_Const; }
+            get 
+            {
+                return m_ЖурналРеєстрації_Const;
+            }
             set
             {
                 m_ЖурналРеєстрації_Const = value;
@@ -235,7 +268,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ФоновіЗадачі_Const = "";
         public static string ФоновіЗадачі_Const
         {
-            get { return m_ФоновіЗадачі_Const; }
+            get 
+            {
+                return m_ФоновіЗадачі_Const;
+            }
             set
             {
                 m_ФоновіЗадачі_Const = value;
@@ -246,7 +282,10 @@ namespace StorageAndTrade_1_0.Константи
         static bool m_ВвімкнутиФоновіЗадачі_Const = false;
         public static bool ВвімкнутиФоновіЗадачі_Const
         {
-            get { return m_ВвімкнутиФоновіЗадачі_Const; }
+            get 
+            {
+                return m_ВвімкнутиФоновіЗадачі_Const;
+            }
             set
             {
                 m_ВвімкнутиФоновіЗадачі_Const = value;
@@ -257,7 +296,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ЗаблокованіОбєкти_Const = "";
         public static string ЗаблокованіОбєкти_Const
         {
-            get { return m_ЗаблокованіОбєкти_Const; }
+            get 
+            {
+                return m_ЗаблокованіОбєкти_Const;
+            }
             set
             {
                 m_ЗаблокованіОбєкти_Const = value;
@@ -738,7 +780,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ЗамовленняКлієнтів_Const = "";
         public static string ЗамовленняКлієнтів_Const
         {
-            get { return m_ЗамовленняКлієнтів_Const; }
+            get 
+            {
+                return m_ЗамовленняКлієнтів_Const;
+            }
             set
             {
                 m_ЗамовленняКлієнтів_Const = value;
@@ -749,7 +794,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ТовариНаСкладах_Const = "";
         public static string ТовариНаСкладах_Const
         {
-            get { return m_ТовариНаСкладах_Const; }
+            get 
+            {
+                return m_ТовариНаСкладах_Const;
+            }
             set
             {
                 m_ТовариНаСкладах_Const = value;
@@ -760,7 +808,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_РозрахункиЗКлієнтами_Const = "";
         public static string РозрахункиЗКлієнтами_Const
         {
-            get { return m_РозрахункиЗКлієнтами_Const; }
+            get 
+            {
+                return m_РозрахункиЗКлієнтами_Const;
+            }
             set
             {
                 m_РозрахункиЗКлієнтами_Const = value;
@@ -771,7 +822,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_РозрахункиЗПостачальниками_Const = "";
         public static string РозрахункиЗПостачальниками_Const
         {
-            get { return m_РозрахункиЗПостачальниками_Const; }
+            get 
+            {
+                return m_РозрахункиЗПостачальниками_Const;
+            }
             set
             {
                 m_РозрахункиЗПостачальниками_Const = value;
@@ -782,7 +836,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ЗамовленняПостачальникам_Const = "";
         public static string ЗамовленняПостачальникам_Const
         {
-            get { return m_ЗамовленняПостачальникам_Const; }
+            get 
+            {
+                return m_ЗамовленняПостачальникам_Const;
+            }
             set
             {
                 m_ЗамовленняПостачальникам_Const = value;
@@ -793,7 +850,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ВільніЗалишки_Const = "";
         public static string ВільніЗалишки_Const
         {
-            get { return m_ВільніЗалишки_Const; }
+            get 
+            {
+                return m_ВільніЗалишки_Const;
+            }
             set
             {
                 m_ВільніЗалишки_Const = value;
@@ -804,7 +864,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_РухКоштів_Const = "";
         public static string РухКоштів_Const
         {
-            get { return m_РухКоштів_Const; }
+            get 
+            {
+                return m_РухКоштів_Const;
+            }
             set
             {
                 m_РухКоштів_Const = value;
@@ -815,7 +878,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_Закупівлі_Const = "";
         public static string Закупівлі_Const
         {
-            get { return m_Закупівлі_Const; }
+            get 
+            {
+                return m_Закупівлі_Const;
+            }
             set
             {
                 m_Закупівлі_Const = value;
@@ -826,7 +892,10 @@ namespace StorageAndTrade_1_0.Константи
         static string m_ПартіїТоварів_Const = "";
         public static string ПартіїТоварів_Const
         {
-            get { return m_ПартіїТоварів_Const; }
+            get 
+            {
+                return m_ПартіїТоварів_Const;
+            }
             set
             {
                 m_ПартіїТоварів_Const = value;
@@ -2634,7 +2703,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПоступленняТоварівТаПослуг_Const = 0;
         public static int ПоступленняТоварівТаПослуг_Const
         {
-            get { return m_ПоступленняТоварівТаПослуг_Const; }
+            get 
+            {
+                return m_ПоступленняТоварівТаПослуг_Const;
+            }
             set
             {
                 m_ПоступленняТоварівТаПослуг_Const = value;
@@ -2645,7 +2717,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ЗамовленняПостачальнику_Const = 0;
         public static int ЗамовленняПостачальнику_Const
         {
-            get { return m_ЗамовленняПостачальнику_Const; }
+            get 
+            {
+                return m_ЗамовленняПостачальнику_Const;
+            }
             set
             {
                 m_ЗамовленняПостачальнику_Const = value;
@@ -2656,7 +2731,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ЗамовленняКлієнта_Const = 0;
         public static int ЗамовленняКлієнта_Const
         {
-            get { return m_ЗамовленняКлієнта_Const; }
+            get 
+            {
+                return m_ЗамовленняКлієнта_Const;
+            }
             set
             {
                 m_ЗамовленняКлієнта_Const = value;
@@ -2667,7 +2745,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_РеалізаціяТоварівТаПослуг_Const = 0;
         public static int РеалізаціяТоварівТаПослуг_Const
         {
-            get { return m_РеалізаціяТоварівТаПослуг_Const; }
+            get 
+            {
+                return m_РеалізаціяТоварівТаПослуг_Const;
+            }
             set
             {
                 m_РеалізаціяТоварівТаПослуг_Const = value;
@@ -2678,7 +2759,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ВстановленняЦінНоменклатури_Const = 0;
         public static int ВстановленняЦінНоменклатури_Const
         {
-            get { return m_ВстановленняЦінНоменклатури_Const; }
+            get 
+            {
+                return m_ВстановленняЦінНоменклатури_Const;
+            }
             set
             {
                 m_ВстановленняЦінНоменклатури_Const = value;
@@ -2689,7 +2773,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПрихіднийКасовийОрдер_Const = 0;
         public static int ПрихіднийКасовийОрдер_Const
         {
-            get { return m_ПрихіднийКасовийОрдер_Const; }
+            get 
+            {
+                return m_ПрихіднийКасовийОрдер_Const;
+            }
             set
             {
                 m_ПрихіднийКасовийОрдер_Const = value;
@@ -2700,7 +2787,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_РозхіднийКасовийОрдер_Const = 0;
         public static int РозхіднийКасовийОрдер_Const
         {
-            get { return m_РозхіднийКасовийОрдер_Const; }
+            get 
+            {
+                return m_РозхіднийКасовийОрдер_Const;
+            }
             set
             {
                 m_РозхіднийКасовийОрдер_Const = value;
@@ -2711,7 +2801,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПереміщенняТоварів_Const = 0;
         public static int ПереміщенняТоварів_Const
         {
-            get { return m_ПереміщенняТоварів_Const; }
+            get 
+            {
+                return m_ПереміщенняТоварів_Const;
+            }
             set
             {
                 m_ПереміщенняТоварів_Const = value;
@@ -2722,7 +2815,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПоверненняТоварівПостачальнику_Const = 0;
         public static int ПоверненняТоварівПостачальнику_Const
         {
-            get { return m_ПоверненняТоварівПостачальнику_Const; }
+            get 
+            {
+                return m_ПоверненняТоварівПостачальнику_Const;
+            }
             set
             {
                 m_ПоверненняТоварівПостачальнику_Const = value;
@@ -2733,7 +2829,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПоверненняТоварівВідКлієнта_Const = 0;
         public static int ПоверненняТоварівВідКлієнта_Const
         {
-            get { return m_ПоверненняТоварівВідКлієнта_Const; }
+            get 
+            {
+                return m_ПоверненняТоварівВідКлієнта_Const;
+            }
             set
             {
                 m_ПоверненняТоварівВідКлієнта_Const = value;
@@ -2744,7 +2843,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_АктВиконанихРобіт_Const = 0;
         public static int АктВиконанихРобіт_Const
         {
-            get { return m_АктВиконанихРобіт_Const; }
+            get 
+            {
+                return m_АктВиконанихРобіт_Const;
+            }
             set
             {
                 m_АктВиконанихРобіт_Const = value;
@@ -2755,7 +2857,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ВведенняЗалишків_Const = 0;
         public static int ВведенняЗалишків_Const
         {
-            get { return m_ВведенняЗалишків_Const; }
+            get 
+            {
+                return m_ВведенняЗалишків_Const;
+            }
             set
             {
                 m_ВведенняЗалишків_Const = value;
@@ -2766,7 +2871,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_НадлишкиТоварів_Const = 0;
         public static int НадлишкиТоварів_Const
         {
-            get { return m_НадлишкиТоварів_Const; }
+            get 
+            {
+                return m_НадлишкиТоварів_Const;
+            }
             set
             {
                 m_НадлишкиТоварів_Const = value;
@@ -2777,7 +2885,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПересортицяТоварів_Const = 0;
         public static int ПересортицяТоварів_Const
         {
-            get { return m_ПересортицяТоварів_Const; }
+            get 
+            {
+                return m_ПересортицяТоварів_Const;
+            }
             set
             {
                 m_ПересортицяТоварів_Const = value;
@@ -2788,7 +2899,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПерерахунокТоварів_Const = 0;
         public static int ПерерахунокТоварів_Const
         {
-            get { return m_ПерерахунокТоварів_Const; }
+            get 
+            {
+                return m_ПерерахунокТоварів_Const;
+            }
             set
             {
                 m_ПерерахунокТоварів_Const = value;
@@ -2799,7 +2913,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПсуванняТоварів_Const = 0;
         public static int ПсуванняТоварів_Const
         {
-            get { return m_ПсуванняТоварів_Const; }
+            get 
+            {
+                return m_ПсуванняТоварів_Const;
+            }
             set
             {
                 m_ПсуванняТоварів_Const = value;
@@ -2810,7 +2927,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ВнутрішнєСпоживанняТоварів_Const = 0;
         public static int ВнутрішнєСпоживанняТоварів_Const
         {
-            get { return m_ВнутрішнєСпоживанняТоварів_Const; }
+            get 
+            {
+                return m_ВнутрішнєСпоживанняТоварів_Const;
+            }
             set
             {
                 m_ВнутрішнєСпоживанняТоварів_Const = value;
@@ -2821,7 +2941,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_РахунокФактура_Const = 0;
         public static int РахунокФактура_Const
         {
-            get { return m_РахунокФактура_Const; }
+            get 
+            {
+                return m_РахунокФактура_Const;
+            }
             set
             {
                 m_РахунокФактура_Const = value;
@@ -2877,7 +3000,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Номенклатура_Const = 0;
         public static int Номенклатура_Const
         {
-            get { return m_Номенклатура_Const; }
+            get 
+            {
+                return m_Номенклатура_Const;
+            }
             set
             {
                 m_Номенклатура_Const = value;
@@ -2888,7 +3014,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Номенклатура_Папки_Const = 0;
         public static int Номенклатура_Папки_Const
         {
-            get { return m_Номенклатура_Папки_Const; }
+            get 
+            {
+                return m_Номенклатура_Папки_Const;
+            }
             set
             {
                 m_Номенклатура_Папки_Const = value;
@@ -2899,7 +3028,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Склади_Const = 0;
         public static int Склади_Const
         {
-            get { return m_Склади_Const; }
+            get 
+            {
+                return m_Склади_Const;
+            }
             set
             {
                 m_Склади_Const = value;
@@ -2910,7 +3042,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Склади_Папки_Const = 0;
         public static int Склади_Папки_Const
         {
-            get { return m_Склади_Папки_Const; }
+            get 
+            {
+                return m_Склади_Папки_Const;
+            }
             set
             {
                 m_Склади_Папки_Const = value;
@@ -2921,7 +3056,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Контрагенти_Const = 0;
         public static int Контрагенти_Const
         {
-            get { return m_Контрагенти_Const; }
+            get 
+            {
+                return m_Контрагенти_Const;
+            }
             set
             {
                 m_Контрагенти_Const = value;
@@ -2932,7 +3070,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Контрагенти_Папки_Const = 0;
         public static int Контрагенти_Папки_Const
         {
-            get { return m_Контрагенти_Папки_Const; }
+            get 
+            {
+                return m_Контрагенти_Папки_Const;
+            }
             set
             {
                 m_Контрагенти_Папки_Const = value;
@@ -2943,7 +3084,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ХарактеристикиНоменклатури_Const = 0;
         public static int ХарактеристикиНоменклатури_Const
         {
-            get { return m_ХарактеристикиНоменклатури_Const; }
+            get 
+            {
+                return m_ХарактеристикиНоменклатури_Const;
+            }
             set
             {
                 m_ХарактеристикиНоменклатури_Const = value;
@@ -2954,7 +3098,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Валюти_Const = 0;
         public static int Валюти_Const
         {
-            get { return m_Валюти_Const; }
+            get 
+            {
+                return m_Валюти_Const;
+            }
             set
             {
                 m_Валюти_Const = value;
@@ -2965,7 +3112,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Організації_Const = 0;
         public static int Організації_Const
         {
-            get { return m_Організації_Const; }
+            get 
+            {
+                return m_Організації_Const;
+            }
             set
             {
                 m_Організації_Const = value;
@@ -2976,7 +3126,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Виробники_Const = 0;
         public static int Виробники_Const
         {
-            get { return m_Виробники_Const; }
+            get 
+            {
+                return m_Виробники_Const;
+            }
             set
             {
                 m_Виробники_Const = value;
@@ -2987,7 +3140,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ВидиНоменклатури_Const = 0;
         public static int ВидиНоменклатури_Const
         {
-            get { return m_ВидиНоменклатури_Const; }
+            get 
+            {
+                return m_ВидиНоменклатури_Const;
+            }
             set
             {
                 m_ВидиНоменклатури_Const = value;
@@ -2998,7 +3154,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ПакуванняОдиниціВиміру_Const = 0;
         public static int ПакуванняОдиниціВиміру_Const
         {
-            get { return m_ПакуванняОдиниціВиміру_Const; }
+            get 
+            {
+                return m_ПакуванняОдиниціВиміру_Const;
+            }
             set
             {
                 m_ПакуванняОдиниціВиміру_Const = value;
@@ -3009,7 +3168,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ВидиЦін_Const = 0;
         public static int ВидиЦін_Const
         {
-            get { return m_ВидиЦін_Const; }
+            get 
+            {
+                return m_ВидиЦін_Const;
+            }
             set
             {
                 m_ВидиЦін_Const = value;
@@ -3020,7 +3182,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ВидиЦінПостачальників_Const = 0;
         public static int ВидиЦінПостачальників_Const
         {
-            get { return m_ВидиЦінПостачальників_Const; }
+            get 
+            {
+                return m_ВидиЦінПостачальників_Const;
+            }
             set
             {
                 m_ВидиЦінПостачальників_Const = value;
@@ -3031,7 +3196,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Користувачі_Const = 0;
         public static int Користувачі_Const
         {
-            get { return m_Користувачі_Const; }
+            get 
+            {
+                return m_Користувачі_Const;
+            }
             set
             {
                 m_Користувачі_Const = value;
@@ -3042,7 +3210,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ФізичніОсоби_Const = 0;
         public static int ФізичніОсоби_Const
         {
-            get { return m_ФізичніОсоби_Const; }
+            get 
+            {
+                return m_ФізичніОсоби_Const;
+            }
             set
             {
                 m_ФізичніОсоби_Const = value;
@@ -3053,7 +3224,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_СтруктураПідприємства_Const = 0;
         public static int СтруктураПідприємства_Const
         {
-            get { return m_СтруктураПідприємства_Const; }
+            get 
+            {
+                return m_СтруктураПідприємства_Const;
+            }
             set
             {
                 m_СтруктураПідприємства_Const = value;
@@ -3064,7 +3238,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_КраїниСвіту_Const = 0;
         public static int КраїниСвіту_Const
         {
-            get { return m_КраїниСвіту_Const; }
+            get 
+            {
+                return m_КраїниСвіту_Const;
+            }
             set
             {
                 m_КраїниСвіту_Const = value;
@@ -3075,7 +3252,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Файли_Const = 0;
         public static int Файли_Const
         {
-            get { return m_Файли_Const; }
+            get 
+            {
+                return m_Файли_Const;
+            }
             set
             {
                 m_Файли_Const = value;
@@ -3086,7 +3266,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_Каси_Const = 0;
         public static int Каси_Const
         {
-            get { return m_Каси_Const; }
+            get 
+            {
+                return m_Каси_Const;
+            }
             set
             {
                 m_Каси_Const = value;
@@ -3097,7 +3280,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_БанківськіРахункиОрганізацій_Const = 0;
         public static int БанківськіРахункиОрганізацій_Const
         {
-            get { return m_БанківськіРахункиОрганізацій_Const; }
+            get 
+            {
+                return m_БанківськіРахункиОрганізацій_Const;
+            }
             set
             {
                 m_БанківськіРахункиОрганізацій_Const = value;
@@ -3108,7 +3294,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_ДоговориКонтрагентів_Const = 0;
         public static int ДоговориКонтрагентів_Const
         {
-            get { return m_ДоговориКонтрагентів_Const; }
+            get 
+            {
+                return m_ДоговориКонтрагентів_Const;
+            }
             set
             {
                 m_ДоговориКонтрагентів_Const = value;
@@ -3119,7 +3308,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_БанківськіРахункиКонтрагентів_Const = 0;
         public static int БанківськіРахункиКонтрагентів_Const
         {
-            get { return m_БанківськіРахункиКонтрагентів_Const; }
+            get 
+            {
+                return m_БанківськіРахункиКонтрагентів_Const;
+            }
             set
             {
                 m_БанківськіРахункиКонтрагентів_Const = value;
@@ -3130,7 +3322,10 @@ namespace StorageAndTrade_1_0.Константи
         static int m_СтаттяРухуКоштів_Const = 0;
         public static int СтаттяРухуКоштів_Const
         {
-            get { return m_СтаттяРухуКоштів_Const; }
+            get 
+            {
+                return m_СтаттяРухуКоштів_Const;
+            }
             set
             {
                 m_СтаттяРухуКоштів_Const = value;
@@ -3163,7 +3358,10 @@ namespace StorageAndTrade_1_0.Константи
         static Перелічення.ТипПеріодуДляЖурналівДокументів m_ОсновнийТипПеріоду_Const = 0;
         public static Перелічення.ТипПеріодуДляЖурналівДокументів ОсновнийТипПеріоду_Const
         {
-            get { return m_ОсновнийТипПеріоду_Const; }
+            get 
+            {
+                return m_ОсновнийТипПеріоду_Const;
+            }
             set
             {
                 m_ОсновнийТипПеріоду_Const = value;
@@ -3249,23 +3447,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Організації")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
-               "<НазваСкорочена>" + "<![CDATA[" + НазваСкорочена + "]]>" + "</НазваСкорочена>"  +
-               "<ДатаРеєстрації>" + ДатаРеєстрації.ToString() + "</ДатаРеєстрації>"  +
-               "<КраїнаРеєстрації>" + "<![CDATA[" + КраїнаРеєстрації + "]]>" + "</КраїнаРеєстрації>"  +
-               "<СвідоцтвоСеріяНомер>" + "<![CDATA[" + СвідоцтвоСеріяНомер + "]]>" + "</СвідоцтвоСеріяНомер>"  +
-               "<СвідоцтвоДатаВидачі>" + "<![CDATA[" + СвідоцтвоДатаВидачі + "]]>" + "</СвідоцтвоДатаВидачі>"  +
-               "</" + root + ">";
-        }
-
+		
         public Організації_Objest Copy()
         {
             Організації_Objest copy = new Організації_Objest();
@@ -3330,7 +3512,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Організації_Pointer GetNewDirectoryPointer()
         {
-            return new Організації_Pointer(UnigueID);
+            return new Організації_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -3550,25 +3732,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Номенклатура")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
-               "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
-               "<Артикул>" + "<![CDATA[" + Артикул + "]]>" + "</Артикул>"  +
-               "<ТипНоменклатури>" + ((int)ТипНоменклатури).ToString() + "</ТипНоменклатури>"  +
-               "<Виробник>" + Виробник.ToString() + "</Виробник>"  +
-               "<ВидНоменклатури>" + ВидНоменклатури.ToString() + "</ВидНоменклатури>"  +
-               "<ОдиницяВиміру>" + ОдиницяВиміру.ToString() + "</ОдиницяВиміру>"  +
-               "<Папка>" + Папка.ToString() + "</Папка>"  +
-               "</" + root + ">";
-        }
-
+		
         public Номенклатура_Objest Copy()
         {
             Номенклатура_Objest copy = new Номенклатура_Objest();
@@ -3634,7 +3798,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Номенклатура_Pointer GetNewDirectoryPointer()
         {
-            return new Номенклатура_Pointer(UnigueID);
+            return new Номенклатура_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -3726,17 +3890,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Виробники")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "</" + root + ">";
-        }
-
+		
         public Виробники_Objest Copy()
         {
             Виробники_Objest copy = new Виробники_Objest();
@@ -3786,7 +3940,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Виробники_Pointer GetNewDirectoryPointer()
         {
-            return new Виробники_Pointer(UnigueID);
+            return new Виробники_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -3890,20 +4044,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ВидиНоменклатури")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
-               "<ТипНоменклатури>" + ((int)ТипНоменклатури).ToString() + "</ТипНоменклатури>"  +
-               "<ОдиницяВиміру>" + ОдиницяВиміру.ToString() + "</ОдиницяВиміру>"  +
-               "</" + root + ">";
-        }
-
+		
         public ВидиНоменклатури_Objest Copy()
         {
             ВидиНоменклатури_Objest copy = new ВидиНоменклатури_Objest();
@@ -3959,7 +4100,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ВидиНоменклатури_Pointer GetNewDirectoryPointer()
         {
-            return new ВидиНоменклатури_Pointer(UnigueID);
+            return new ВидиНоменклатури_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -4059,19 +4200,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ПакуванняОдиниціВиміру")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
-               "<КількістьУпаковок>" + КількістьУпаковок.ToString() + "</КількістьУпаковок>"  +
-               "</" + root + ">";
-        }
-
+		
         public ПакуванняОдиниціВиміру_Objest Copy()
         {
             ПакуванняОдиниціВиміру_Objest copy = new ПакуванняОдиниціВиміру_Objest();
@@ -4125,7 +4254,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ПакуванняОдиниціВиміру_Pointer GetNewDirectoryPointer()
         {
-            return new ПакуванняОдиниціВиміру_Pointer(UnigueID);
+            return new ПакуванняОдиниціВиміру_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -4217,17 +4346,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Валюти")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "</" + root + ">";
-        }
-
+		
         public Валюти_Objest Copy()
         {
             Валюти_Objest copy = new Валюти_Objest();
@@ -4277,7 +4396,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Валюти_Pointer GetNewDirectoryPointer()
         {
-            return new Валюти_Pointer(UnigueID);
+            return new Валюти_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -4388,21 +4507,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Контрагенти")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
-               "<РеєстраційнийНомер>" + "<![CDATA[" + РеєстраційнийНомер + "]]>" + "</РеєстраційнийНомер>"  +
-               "<Папка>" + Папка.ToString() + "</Папка>"  +
-               "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
-               "</" + root + ">";
-        }
-
+		
         public Контрагенти_Objest Copy()
         {
             Контрагенти_Objest copy = new Контрагенти_Objest();
@@ -4463,7 +4568,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Контрагенти_Pointer GetNewDirectoryPointer()
         {
-            return new Контрагенти_Pointer(UnigueID);
+            return new Контрагенти_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -4674,22 +4779,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Склади")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<ТипСкладу>" + ((int)ТипСкладу).ToString() + "</ТипСкладу>"  +
-               "<Відповідальний>" + Відповідальний.ToString() + "</Відповідальний>"  +
-               "<ВидЦін>" + ВидЦін.ToString() + "</ВидЦін>"  +
-               "<Підрозділ>" + Підрозділ.ToString() + "</Підрозділ>"  +
-               "<Папка>" + Папка.ToString() + "</Папка>"  +
-               "</" + root + ">";
-        }
-
+		
         public Склади_Objest Copy()
         {
             Склади_Objest copy = new Склади_Objest();
@@ -4752,7 +4842,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Склади_Pointer GetNewDirectoryPointer()
         {
-            return new Склади_Pointer(UnigueID);
+            return new Склади_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -4944,18 +5034,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ВидиЦін")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
-               "</" + root + ">";
-        }
-
+		
         public ВидиЦін_Objest Copy()
         {
             ВидиЦін_Objest copy = new ВидиЦін_Objest();
@@ -5007,7 +5086,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ВидиЦін_Pointer GetNewDirectoryPointer()
         {
-            return new ВидиЦін_Pointer(UnigueID);
+            return new ВидиЦін_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -5103,18 +5182,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ВидиЦінПостачальників")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
-               "</" + root + ">";
-        }
-
+		
         public ВидиЦінПостачальників_Objest Copy()
         {
             ВидиЦінПостачальників_Objest copy = new ВидиЦінПостачальників_Objest();
@@ -5166,7 +5234,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ВидиЦінПостачальників_Pointer GetNewDirectoryPointer()
         {
-            return new ВидиЦінПостачальників_Pointer(UnigueID);
+            return new ВидиЦінПостачальників_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -5269,19 +5337,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Користувачі")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<ФізичнаОсоба>" + ФізичнаОсоба.ToString() + "</ФізичнаОсоба>"  +
-               "<Коментар>" + "<![CDATA[" + Коментар + "]]>" + "</Коментар>"  +
-               "</" + root + ">";
-        }
-
+		
         public Користувачі_Objest Copy()
         {
             Користувачі_Objest copy = new Користувачі_Objest();
@@ -5338,7 +5394,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Користувачі_Pointer GetNewDirectoryPointer()
         {
-            return new Користувачі_Pointer(UnigueID);
+            return new Користувачі_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -5541,20 +5597,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ФізичніОсоби")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<ДатаНародження>" + ДатаНародження.ToString() + "</ДатаНародження>"  +
-               "<Стать>" + ((int)Стать).ToString() + "</Стать>"  +
-               "<ІПН>" + "<![CDATA[" + ІПН + "]]>" + "</ІПН>"  +
-               "</" + root + ">";
-        }
-
+		
         public ФізичніОсоби_Objest Copy()
         {
             ФізичніОсоби_Objest copy = new ФізичніОсоби_Objest();
@@ -5613,7 +5656,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ФізичніОсоби_Pointer GetNewDirectoryPointer()
         {
-            return new ФізичніОсоби_Pointer(UnigueID);
+            return new ФізичніОсоби_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -5805,18 +5848,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "СтруктураПідприємства")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Керівник>" + Керівник.ToString() + "</Керівник>"  +
-               "</" + root + ">";
-        }
-
+		
         public СтруктураПідприємства_Objest Copy()
         {
             СтруктураПідприємства_Objest copy = new СтруктураПідприємства_Objest();
@@ -5868,7 +5900,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public СтруктураПідприємства_Pointer GetNewDirectoryPointer()
         {
-            return new СтруктураПідприємства_Pointer(UnigueID);
+            return new СтруктураПідприємства_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -5964,18 +5996,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "КраїниСвіту")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
-               "</" + root + ">";
-        }
-
+		
         public КраїниСвіту_Objest Copy()
         {
             КраїниСвіту_Objest copy = new КраїниСвіту_Objest();
@@ -6027,7 +6048,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public КраїниСвіту_Pointer GetNewDirectoryPointer()
         {
-            return new КраїниСвіту_Pointer(UnigueID);
+            return new КраїниСвіту_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6119,17 +6140,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Файли")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "</" + root + ">";
-        }
-
+		
         public Файли_Objest Copy()
         {
             Файли_Objest copy = new Файли_Objest();
@@ -6179,7 +6190,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Файли_Pointer GetNewDirectoryPointer()
         {
-            return new Файли_Pointer(UnigueID);
+            return new Файли_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6279,19 +6290,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ХарактеристикиНоменклатури")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<НазваПовна>" + "<![CDATA[" + НазваПовна + "]]>" + "</НазваПовна>"  +
-               "<Номенклатура>" + Номенклатура.ToString() + "</Номенклатура>"  +
-               "</" + root + ">";
-        }
-
+		
         public ХарактеристикиНоменклатури_Objest Copy()
         {
             ХарактеристикиНоменклатури_Objest copy = new ХарактеристикиНоменклатури_Objest();
@@ -6345,7 +6344,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ХарактеристикиНоменклатури_Pointer GetNewDirectoryPointer()
         {
-            return new ХарактеристикиНоменклатури_Pointer(UnigueID);
+            return new ХарактеристикиНоменклатури_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6441,18 +6440,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			Номенклатура_Папки_Triggers.AfterRecording(this);
         }
-
-        public string Serialize(string root = "Номенклатура_Папки")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Родич>" + Родич.ToString() + "</Родич>"  +
-               "</" + root + ">";
-        }
-
+		
         public Номенклатура_Папки_Objest Copy()
         {
             Номенклатура_Папки_Objest copy = new Номенклатура_Папки_Objest();
@@ -6504,7 +6492,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Номенклатура_Папки_Pointer GetNewDirectoryPointer()
         {
-            return new Номенклатура_Папки_Pointer(UnigueID);
+            return new Номенклатура_Папки_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6600,18 +6588,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			Контрагенти_Папки_Triggers.AfterRecording(this);
         }
-
-        public string Serialize(string root = "Контрагенти_Папки")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Родич>" + Родич.ToString() + "</Родич>"  +
-               "</" + root + ">";
-        }
-
+		
         public Контрагенти_Папки_Objest Copy()
         {
             Контрагенти_Папки_Objest copy = new Контрагенти_Папки_Objest();
@@ -6663,7 +6640,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Контрагенти_Папки_Pointer GetNewDirectoryPointer()
         {
-            return new Контрагенти_Папки_Pointer(UnigueID);
+            return new Контрагенти_Папки_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6759,18 +6736,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Склади_Папки")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Родич>" + Родич.ToString() + "</Родич>"  +
-               "</" + root + ">";
-        }
-
+		
         public Склади_Папки_Objest Copy()
         {
             Склади_Папки_Objest copy = new Склади_Папки_Objest();
@@ -6822,7 +6788,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Склади_Папки_Pointer GetNewDirectoryPointer()
         {
-            return new Склади_Папки_Pointer(UnigueID);
+            return new Склади_Папки_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -6922,19 +6888,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "Каси")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
-               "<Підрозділ>" + Підрозділ.ToString() + "</Підрозділ>"  +
-               "</" + root + ">";
-        }
-
+		
         public Каси_Objest Copy()
         {
             Каси_Objest copy = new Каси_Objest();
@@ -6988,7 +6942,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public Каси_Pointer GetNewDirectoryPointer()
         {
-            return new Каси_Pointer(UnigueID);
+            return new Каси_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -7124,28 +7078,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "БанківськіРахункиОрганізацій")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
-               "<Банк>" + "<![CDATA[" + Банк + "]]>" + "</Банк>"  +
-               "<Підрозділ>" + Підрозділ.ToString() + "</Підрозділ>"  +
-               "<НазваБанку>" + "<![CDATA[" + НазваБанку + "]]>" + "</НазваБанку>"  +
-               "<НомерРахунку>" + "<![CDATA[" + НомерРахунку + "]]>" + "</НомерРахунку>"  +
-               "<АдресаБанку>" + "<![CDATA[" + АдресаБанку + "]]>" + "</АдресаБанку>"  +
-               "<МістоБанку>" + "<![CDATA[" + МістоБанку + "]]>" + "</МістоБанку>"  +
-               "<КореспонденськийРахунокБанку>" + "<![CDATA[" + КореспонденськийРахунокБанку + "]]>" + "</КореспонденськийРахунокБанку>"  +
-               "<ТелефониБанку>" + "<![CDATA[" + ТелефониБанку + "]]>" + "</ТелефониБанку>"  +
-               "<Закритий>" + (Закритий == true ? "1" : "0") + "</Закритий>"  +
-               "<Організація>" + Організація.ToString() + "</Організація>"  +
-               "</" + root + ">";
-        }
-
+		
         public БанківськіРахункиОрганізацій_Objest Copy()
         {
             БанківськіРахункиОрганізацій_Objest copy = new БанківськіРахункиОрганізацій_Objest();
@@ -7217,7 +7150,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public БанківськіРахункиОрганізацій_Pointer GetNewDirectoryPointer()
         {
-            return new БанківськіРахункиОрганізацій_Pointer(UnigueID);
+            return new БанківськіРахункиОрганізацій_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -7382,35 +7315,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			ДоговориКонтрагентів_Triggers.AfterRecording(this);
         }
-
-        public string Serialize(string root = "ДоговориКонтрагентів")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<БанківськийРахунок>" + БанківськийРахунок.ToString() + "</БанківськийРахунок>"  +
-               "<БанківськийРахунокКонтрагента>" + БанківськийРахунокКонтрагента.ToString() + "</БанківськийРахунокКонтрагента>"  +
-               "<ВалютаВзаєморозрахунків>" + ВалютаВзаєморозрахунків.ToString() + "</ВалютаВзаєморозрахунків>"  +
-               "<ДатаПочаткуДії>" + ДатаПочаткуДії.ToString() + "</ДатаПочаткуДії>"  +
-               "<ДатаЗакінченняДії>" + ДатаЗакінченняДії.ToString() + "</ДатаЗакінченняДії>"  +
-               "<Організація>" + Організація.ToString() + "</Організація>"  +
-               "<Контрагент>" + Контрагент.ToString() + "</Контрагент>"  +
-               "<Дата>" + Дата.ToString() + "</Дата>"  +
-               "<Номер>" + "<![CDATA[" + Номер + "]]>" + "</Номер>"  +
-               "<Підрозділ>" + Підрозділ.ToString() + "</Підрозділ>"  +
-               "<Узгоджений>" + (Узгоджений == true ? "1" : "0") + "</Узгоджений>"  +
-               "<Статус>" + ((int)Статус).ToString() + "</Статус>"  +
-               "<ГосподарськаОперація>" + ((int)ГосподарськаОперація).ToString() + "</ГосподарськаОперація>"  +
-               "<ТипДоговору>" + ((int)ТипДоговору).ToString() + "</ТипДоговору>"  +
-               "<ТипДоговоруПредставлення>" + "<![CDATA[" + ТипДоговоруПредставлення + "]]>" + "</ТипДоговоруПредставлення>"  +
-               "<ДопустимаСумаЗаборгованості>" + ДопустимаСумаЗаборгованості.ToString() + "</ДопустимаСумаЗаборгованості>"  +
-               "<Сума>" + Сума.ToString() + "</Сума>"  +
-               "<Коментар>" + "<![CDATA[" + Коментар + "]]>" + "</Коментар>"  +
-               "</" + root + ">";
-        }
-
+		
         public ДоговориКонтрагентів_Objest Copy()
         {
             ДоговориКонтрагентів_Objest copy = new ДоговориКонтрагентів_Objest();
@@ -7496,7 +7401,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ДоговориКонтрагентів_Pointer GetNewDirectoryPointer()
         {
-            return new ДоговориКонтрагентів_Pointer(UnigueID);
+            return new ДоговориКонтрагентів_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -7640,30 +7545,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "БанківськіРахункиКонтрагентів")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<НомерРахунку>" + "<![CDATA[" + НомерРахунку + "]]>" + "</НомерРахунку>"  +
-               "<Банк>" + "<![CDATA[" + Банк + "]]>" + "</Банк>"  +
-               "<БанкДляРозрахунків>" + "<![CDATA[" + БанкДляРозрахунків + "]]>" + "</БанкДляРозрахунків>"  +
-               "<ТекстКореспондента>" + "<![CDATA[" + ТекстКореспондента + "]]>" + "</ТекстКореспондента>"  +
-               "<ТекстПризначення>" + "<![CDATA[" + ТекстПризначення + "]]>" + "</ТекстПризначення>"  +
-               "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
-               "<НазваБанку>" + "<![CDATA[" + НазваБанку + "]]>" + "</НазваБанку>"  +
-               "<КорРахунокБанку>" + "<![CDATA[" + КорРахунокБанку + "]]>" + "</КорРахунокБанку>"  +
-               "<МістоБанку>" + "<![CDATA[" + МістоБанку + "]]>" + "</МістоБанку>"  +
-               "<АдресаБанку>" + "<![CDATA[" + АдресаБанку + "]]>" + "</АдресаБанку>"  +
-               "<ТелефониБанку>" + "<![CDATA[" + ТелефониБанку + "]]>" + "</ТелефониБанку>"  +
-               "<Закрито>" + (Закрито == true ? "1" : "0") + "</Закрито>"  +
-               "<Контрагент>" + Контрагент.ToString() + "</Контрагент>"  +
-               "</" + root + ">";
-        }
-
+		
         public БанківськіРахункиКонтрагентів_Objest Copy()
         {
             БанківськіРахункиКонтрагентів_Objest copy = new БанківськіРахункиКонтрагентів_Objest();
@@ -7739,7 +7621,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public БанківськіРахункиКонтрагентів_Pointer GetNewDirectoryPointer()
         {
-            return new БанківськіРахункиКонтрагентів_Pointer(UnigueID);
+            return new БанківськіРахункиКонтрагентів_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -7846,20 +7728,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "СтаттяРухуКоштів")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Код>" + "<![CDATA[" + Код + "]]>" + "</Код>"  +
-               "<КореспондуючийРахунок>" + "<![CDATA[" + КореспондуючийРахунок + "]]>" + "</КореспондуючийРахунок>"  +
-               "<ВидРухуКоштів>" + ((int)ВидРухуКоштів).ToString() + "</ВидРухуКоштів>"  +
-               "<Опис>" + "<![CDATA[" + Опис + "]]>" + "</Опис>"  +
-               "</" + root + ">";
-        }
-
+		
         public СтаттяРухуКоштів_Objest Copy()
         {
             СтаттяРухуКоштів_Objest copy = new СтаттяРухуКоштів_Objest();
@@ -7918,7 +7787,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public СтаттяРухуКоштів_Pointer GetNewDirectoryPointer()
         {
-            return new СтаттяРухуКоштів_Pointer(UnigueID);
+            return new СтаттяРухуКоштів_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8083,17 +7952,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			СеріїНоменклатури_Triggers.AfterRecording(this);
         }
-
-        public string Serialize(string root = "СеріїНоменклатури")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Номер>" + "<![CDATA[" + Номер + "]]>" + "</Номер>"  +
-               "<Коментар>" + "<![CDATA[" + Коментар + "]]>" + "</Коментар>"  +
-               "</" + root + ">";
-        }
-
+		
         public СеріїНоменклатури_Objest Copy()
         {
             СеріїНоменклатури_Objest copy = new СеріїНоменклатури_Objest();
@@ -8143,7 +8002,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public СеріїНоменклатури_Pointer GetNewDirectoryPointer()
         {
-            return new СеріїНоменклатури_Pointer(UnigueID);
+            return new СеріїНоменклатури_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8251,21 +8110,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ПартіяТоварівКомпозит")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Дата>" + Дата.ToString() + "</Дата>"  +
-               "<ТипДокументу>" + ((int)ТипДокументу).ToString() + "</ТипДокументу>"  +
-               "<ДокументКлюч>" + ДокументКлюч.ToString() + "</ДокументКлюч>"  +
-               "<ПоступленняТоварівТаПослуг>" + ПоступленняТоварівТаПослуг.ToString() + "</ПоступленняТоварівТаПослуг>"  +
-               "<ВведенняЗалишків>" + ВведенняЗалишків.ToString() + "</ВведенняЗалишків>"  +
-               "</" + root + ">";
-        }
-
+		
         public ПартіяТоварівКомпозит_Objest Copy()
         {
             ПартіяТоварівКомпозит_Objest copy = new ПартіяТоварівКомпозит_Objest();
@@ -8323,7 +8168,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ПартіяТоварівКомпозит_Pointer GetNewDirectoryPointer()
         {
-            return new ПартіяТоварівКомпозит_Pointer(UnigueID);
+            return new ПартіяТоварівКомпозит_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8431,21 +8276,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ВидиЗапасів")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Організація>" + Організація.ToString() + "</Організація>"  +
-               "<ТипЗапасів>" + ((int)ТипЗапасів).ToString() + "</ТипЗапасів>"  +
-               "<Валюта>" + Валюта.ToString() + "</Валюта>"  +
-               "<Контрагент>" + Контрагент.ToString() + "</Контрагент>"  +
-               "<Договір>" + Договір.ToString() + "</Договір>"  +
-               "</" + root + ">";
-        }
-
+		
         public ВидиЗапасів_Objest Copy()
         {
             ВидиЗапасів_Objest copy = new ВидиЗапасів_Objest();
@@ -8503,7 +8334,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ВидиЗапасів_Pointer GetNewDirectoryPointer()
         {
-            return new ВидиЗапасів_Pointer(UnigueID);
+            return new ВидиЗапасів_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8611,21 +8442,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "ПродажіДокументКомпозит")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<ТипДокументу>" + ((int)ТипДокументу).ToString() + "</ТипДокументу>"  +
-               "<ДокументКлюч>" + ДокументКлюч.ToString() + "</ДокументКлюч>"  +
-               "<ЗамовленняКлієнта>" + ЗамовленняКлієнта.ToString() + "</ЗамовленняКлієнта>"  +
-               "<АктВиконанихРобіт>" + АктВиконанихРобіт.ToString() + "</АктВиконанихРобіт>"  +
-               "<РеалізаціяТоварівТаПослуг>" + РеалізаціяТоварівТаПослуг.ToString() + "</РеалізаціяТоварівТаПослуг>"  +
-               "</" + root + ">";
-        }
-
+		
         public ПродажіДокументКомпозит_Objest Copy()
         {
             ПродажіДокументКомпозит_Objest copy = new ПродажіДокументКомпозит_Objest();
@@ -8683,7 +8500,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public ПродажіДокументКомпозит_Pointer GetNewDirectoryPointer()
         {
-            return new ПродажіДокументКомпозит_Pointer(UnigueID);
+            return new ПродажіДокументКомпозит_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8787,20 +8604,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "АналітикаНоменклатуриКомпозит")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Номенклатура>" + Номенклатура.ToString() + "</Номенклатура>"  +
-               "<ХарактеристикаНоменклатури>" + ХарактеристикаНоменклатури.ToString() + "</ХарактеристикаНоменклатури>"  +
-               "<Серія>" + Серія.ToString() + "</Серія>"  +
-               "<Склад>" + Склад.ToString() + "</Склад>"  +
-               "</" + root + ">";
-        }
-
+		
         public АналітикаНоменклатуриКомпозит_Objest Copy()
         {
             АналітикаНоменклатуриКомпозит_Objest copy = new АналітикаНоменклатуриКомпозит_Objest();
@@ -8856,7 +8660,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public АналітикаНоменклатуриКомпозит_Pointer GetNewDirectoryPointer()
         {
-            return new АналітикаНоменклатуриКомпозит_Pointer(UnigueID);
+            return new АналітикаНоменклатуриКомпозит_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -8956,19 +8760,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "АналітикаКонтрагентівКомпозит")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Організація>" + Організація.ToString() + "</Організація>"  +
-               "<Контрагент>" + Контрагент.ToString() + "</Контрагент>"  +
-               "<Договір>" + Договір.ToString() + "</Договір>"  +
-               "</" + root + ">";
-        }
-
+		
         public АналітикаКонтрагентівКомпозит_Objest Copy()
         {
             АналітикаКонтрагентівКомпозит_Objest copy = new АналітикаКонтрагентівКомпозит_Objest();
@@ -9022,7 +8814,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public АналітикаКонтрагентівКомпозит_Pointer GetNewDirectoryPointer()
         {
-            return new АналітикаКонтрагентівКомпозит_Pointer(UnigueID);
+            return new АналітикаКонтрагентівКомпозит_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -9114,17 +8906,7 @@ namespace StorageAndTrade_1_0.Довідники
             BaseSave();
 			
         }
-
-        public string Serialize(string root = "АналітикаПартійКомпозит")
-        {
-            return 
-            "<" + root + ">" +
-               "<uid>" + base.UnigueID.ToString() + "</uid>" +
-               "<Назва>" + "<![CDATA[" + Назва + "]]>" + "</Назва>"  +
-               "<Контрагент>" + Контрагент.ToString() + "</Контрагент>"  +
-               "</" + root + ">";
-        }
-
+		
         public АналітикаПартійКомпозит_Objest Copy()
         {
             АналітикаПартійКомпозит_Objest copy = new АналітикаПартійКомпозит_Objest();
@@ -9174,7 +8956,7 @@ namespace StorageAndTrade_1_0.Довідники
 		
         public АналітикаПартійКомпозит_Pointer GetNewDirectoryPointer()
         {
-            return new АналітикаПартійКомпозит_Pointer(UnigueID);
+            return new АналітикаПартійКомпозит_Pointer(base.UnigueID);
         }
 		
 		public string GetPresentation()
@@ -9694,6 +9476,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public ЗамовленняПостачальнику_Pointer GetNewDocumentPointer()
+        {
+            return new ЗамовленняПостачальнику_Pointer(base.UnigueID);
+        }
+		
         public ЗамовленняПостачальнику_Pointer GetEmptyPointer()
         {
             return new ЗамовленняПостачальнику_Pointer();
@@ -10159,6 +9946,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public ПоступленняТоварівТаПослуг_Pointer GetNewDocumentPointer()
+        {
+            return new ПоступленняТоварівТаПослуг_Pointer(base.UnigueID);
+        }
+		
         public ПоступленняТоварівТаПослуг_Pointer GetEmptyPointer()
         {
             return new ПоступленняТоварівТаПослуг_Pointer();
@@ -10603,6 +10395,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ЗамовленняКлієнта_Pointer GetNewDocumentPointer()
+        {
+            return new ЗамовленняКлієнта_Pointer(base.UnigueID);
         }
 		
         public ЗамовленняКлієнта_Pointer GetEmptyPointer()
@@ -11053,6 +10850,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public РеалізаціяТоварівТаПослуг_Pointer GetNewDocumentPointer()
+        {
+            return new РеалізаціяТоварівТаПослуг_Pointer(base.UnigueID);
+        }
+		
         public РеалізаціяТоварівТаПослуг_Pointer GetEmptyPointer()
         {
             return new РеалізаціяТоварівТаПослуг_Pointer();
@@ -11376,6 +11178,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ВстановленняЦінНоменклатури_Pointer GetNewDocumentPointer()
+        {
+            return new ВстановленняЦінНоменклатури_Pointer(base.UnigueID);
         }
 		
         public ВстановленняЦінНоменклатури_Pointer GetEmptyPointer()
@@ -11709,6 +11516,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ПрихіднийКасовийОрдер_Pointer GetNewDocumentPointer()
+        {
+            return new ПрихіднийКасовийОрдер_Pointer(base.UnigueID);
         }
 		
         public ПрихіднийКасовийОрдер_Pointer GetEmptyPointer()
@@ -12048,6 +11860,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public РозхіднийКасовийОрдер_Pointer GetNewDocumentPointer()
+        {
+            return new РозхіднийКасовийОрдер_Pointer(base.UnigueID);
         }
 		
         public РозхіднийКасовийОрдер_Pointer GetEmptyPointer()
@@ -12404,6 +12221,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ПереміщенняТоварів_Pointer GetNewDocumentPointer()
+        {
+            return new ПереміщенняТоварів_Pointer(base.UnigueID);
         }
 		
         public ПереміщенняТоварів_Pointer GetEmptyPointer()
@@ -12774,6 +12596,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public ПоверненняТоварівПостачальнику_Pointer GetNewDocumentPointer()
+        {
+            return new ПоверненняТоварівПостачальнику_Pointer(base.UnigueID);
+        }
+		
         public ПоверненняТоварівПостачальнику_Pointer GetEmptyPointer()
         {
             return new ПоверненняТоварівПостачальнику_Pointer();
@@ -13139,6 +12966,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public ПоверненняТоварівВідКлієнта_Pointer GetNewDocumentPointer()
+        {
+            return new ПоверненняТоварівВідКлієнта_Pointer(base.UnigueID);
+        }
+		
         public ПоверненняТоварівВідКлієнта_Pointer GetEmptyPointer()
         {
             return new ПоверненняТоварівВідКлієнта_Pointer();
@@ -13491,6 +13323,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public АктВиконанихРобіт_Pointer GetNewDocumentPointer()
+        {
+            return new АктВиконанихРобіт_Pointer(base.UnigueID);
+        }
+		
         public АктВиконанихРобіт_Pointer GetEmptyPointer()
         {
             return new АктВиконанихРобіт_Pointer();
@@ -13810,6 +13647,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ВведенняЗалишків_Pointer GetNewDocumentPointer()
+        {
+            return new ВведенняЗалишків_Pointer(base.UnigueID);
         }
 		
         public ВведенняЗалишків_Pointer GetEmptyPointer()
@@ -14403,6 +14245,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public НадлишкиТоварів_Pointer GetNewDocumentPointer()
+        {
+            return new НадлишкиТоварів_Pointer(base.UnigueID);
+        }
+		
         public НадлишкиТоварів_Pointer GetEmptyPointer()
         {
             return new НадлишкиТоварів_Pointer();
@@ -14687,6 +14534,11 @@ namespace StorageAndTrade_1_0.Документи
 			);
         }
 		
+        public ПересортицяТоварів_Pointer GetNewDocumentPointer()
+        {
+            return new ПересортицяТоварів_Pointer(base.UnigueID);
+        }
+		
         public ПересортицяТоварів_Pointer GetEmptyPointer()
         {
             return new ПересортицяТоварів_Pointer();
@@ -14957,6 +14809,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ПерерахунокТоварів_Pointer GetNewDocumentPointer()
+        {
+            return new ПерерахунокТоварів_Pointer(base.UnigueID);
         }
 		
         public ПерерахунокТоварів_Pointer GetEmptyPointer()
@@ -15257,6 +15114,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ПсуванняТоварів_Pointer GetNewDocumentPointer()
+        {
+            return new ПсуванняТоварів_Pointer(base.UnigueID);
         }
 		
         public ПсуванняТоварів_Pointer GetEmptyPointer()
@@ -15562,6 +15424,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public ВнутрішнєСпоживанняТоварів_Pointer GetNewDocumentPointer()
+        {
+            return new ВнутрішнєСпоживанняТоварів_Pointer(base.UnigueID);
         }
 		
         public ВнутрішнєСпоживанняТоварів_Pointer GetEmptyPointer()
@@ -15928,6 +15795,11 @@ namespace StorageAndTrade_1_0.Документи
 		    return base.BasePresentation(
 				new string[] { "docname" }
 			);
+        }
+		
+        public РахунокФактура_Pointer GetNewDocumentPointer()
+        {
+            return new РахунокФактура_Pointer(base.UnigueID);
         }
 		
         public РахунокФактура_Pointer GetEmptyPointer()

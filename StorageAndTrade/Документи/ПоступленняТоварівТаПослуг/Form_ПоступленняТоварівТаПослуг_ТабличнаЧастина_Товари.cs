@@ -519,8 +519,8 @@ namespace StorageAndTrade
 
 			ФункціїДляДокументів.ОчиститиМенюПошуку(parent);
 
-			if (String.IsNullOrWhiteSpace(findMenu.Text))
-				return;
+			//if (String.IsNullOrWhiteSpace(findMenu.Text))
+			//	return;
 
 			string query = "";
 
