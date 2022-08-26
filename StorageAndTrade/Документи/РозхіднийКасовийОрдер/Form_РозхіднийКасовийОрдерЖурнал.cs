@@ -144,29 +144,29 @@ namespace StorageAndTrade
 
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
 					{
-						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.РозхіднийКасовийОрдер_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.Квартал:
 					{
 						DateTime ДатаТриМісцяНазад = DateTime.Now.AddMonths(-3);
-						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
+						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.РозхіднийКасовийОрдер_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
 					{
-						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
+						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.РозхіднийКасовийОрдер_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуТижня:
 					{
 						DateTime СімДнівНазад = DateTime.Now.AddDays(-7);
-						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
+						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.РозхіднийКасовийОрдер_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ПоточнийДень:
 					{
-						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+						розхіднийКасовийОрдер_Select.QuerySelect.Where.Add(new Where(Документи.РозхіднийКасовийОрдер_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
 						break;
 					}
 			}

@@ -308,6 +308,24 @@ namespace StorageAndTrade_1_0.Звіти
                         break;
                     }
 
+                case "ПсуванняТоварів":
+                    {
+                        ПсуванняТоварів_Objest псуванняТоварів_Objest = new ПсуванняТоварів_Objest();
+                        псуванняТоварів_Objest.Read(ДокументВказівник.UnigueID);
+
+                        object[] fieldValue = new object[]
+                        {
+                                ДокументВказівник.UnigueID.ToString(),
+                                псуванняТоварів_Objest.Назва,
+                                псуванняТоварів_Objest.ДатаДок,
+                                псуванняТоварів_Objest.НомерДок
+                        };
+
+                        listRow.Add(fieldValue);
+
+                        break;
+                    }
+
                 default:
                     {
                         object[] fieldValue = new object[] { ДокументВказівник.UnigueID.ToString(), "<Не оприділений тип документу>", "", "" };

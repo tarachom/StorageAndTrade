@@ -129,29 +129,29 @@ namespace StorageAndTrade
 
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
 					{
-						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.Квартал:
 					{
 						DateTime ДатаТриМісцяНазад = DateTime.Now.AddMonths(-3);
-						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
+						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
 					{
-						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
+						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуТижня:
 					{
 						DateTime СімДнівНазад = DateTime.Now.AddDays(-7);
-						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
+						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ПоточнийДень:
 					{
-						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПоступленняТоварівТаПослуг_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
 						break;
 					}
 			}

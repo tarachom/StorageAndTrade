@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>26.08.2022 13:10:39</DateTimeSave>
+  <DateTimeSave>26.08.2022 19:02:45</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -9121,6 +9121,15 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <IsIndex>0</IsIndex>
         </Field>
         <Field>
+          <Name>СумаДокументу</Name>
+          <NameInTable>col_a1</NameInTable>
+          <Type>numeric</Type>
+          <Desc>
+          </Desc>
+          <IsPresentation>0</IsPresentation>
+          <IsIndex>0</IsIndex>
+        </Field>
+        <Field>
           <Name>Коментар</Name>
           <NameInTable>col_a5</NameInTable>
           <Type>string</Type>
@@ -9138,6 +9147,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           </Desc>
           <Fields>
             <Field>
+              <Name>НомерРядка</Name>
+              <NameInTable>col_a3</NameInTable>
+              <Type>integer</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
               <Name>Номенклатура</Name>
               <NameInTable>col_b2</NameInTable>
               <Type>pointer</Type>
@@ -9151,6 +9168,32 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
               <NameInTable>col_b3</NameInTable>
               <Type>pointer</Type>
               <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Серія</Name>
+              <NameInTable>col_a1</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.СеріїНоменклатури</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>Пакування</Name>
+              <NameInTable>col_a4</NameInTable>
+              <Type>pointer</Type>
+              <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
+            <Field>
+              <Name>КількістьУпаковок</Name>
+              <NameInTable>col_a5</NameInTable>
+              <Type>integer</Type>
               <Desc>
               </Desc>
               <IsIndex>0</IsIndex>
@@ -9171,23 +9214,30 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
               </Desc>
               <IsIndex>0</IsIndex>
             </Field>
+            <Field>
+              <Name>Сума</Name>
+              <NameInTable>col_a2</NameInTable>
+              <Type>numeric</Type>
+              <Desc>
+              </Desc>
+              <IsIndex>0</IsIndex>
+            </Field>
           </Fields>
         </TablePart>
       </TabularParts>
-      <AllowRegisterAccumulation />
+      <AllowRegisterAccumulation>
+        <Name>ТовариНаСкладах</Name>
+        <Name>ВільніЗалишки</Name>
+        <Name>ПартіїТоварів</Name>
+      </AllowRegisterAccumulation>
       <TriggerFunctions>
-        <BeforeSave>
-        </BeforeSave>
-        <AfterSave>
-        </AfterSave>
-        <BeforeDelete>
-        </BeforeDelete>
+        <BeforeSave>ПсуванняТоварів_Triggers.BeforeRecording</BeforeSave>
+        <AfterSave>ПсуванняТоварів_Triggers.AfterRecording</AfterSave>
+        <BeforeDelete>ПсуванняТоварів_Triggers.BeforeDelete</BeforeDelete>
       </TriggerFunctions>
       <SpendFunctions>
-        <Spend>
-        </Spend>
-        <ClearSpend>
-        </ClearSpend>
+        <Spend>ПсуванняТоварів_SpendTheDocument.Spend</Spend>
+        <ClearSpend>ПсуванняТоварів_SpendTheDocument.ClearSpend</ClearSpend>
       </SpendFunctions>
     </Document>
     <Document>
@@ -9901,6 +9951,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Name>ПоверненняТоварівПостачальнику</Name>
         <Name>ПоверненняТоварівВідКлієнта</Name>
         <Name>ВведенняЗалишків</Name>
+        <Name>ПсуванняТоварів</Name>
         <Name>ВнутрішнєСпоживанняТоварів</Name>
       </AllowDocumentSpend>
     </RegisterAccumulation>
@@ -10299,6 +10350,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Name>ПоверненняТоварівПостачальнику</Name>
         <Name>ПоверненняТоварівВідКлієнта</Name>
         <Name>ВведенняЗалишків</Name>
+        <Name>ПсуванняТоварів</Name>
         <Name>ВнутрішнєСпоживанняТоварів</Name>
         <Name>РахунокФактура</Name>
       </AllowDocumentSpend>
@@ -10633,6 +10685,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
         <Name>ПоверненняТоварівПостачальнику</Name>
         <Name>ПоверненняТоварівВідКлієнта</Name>
         <Name>ВведенняЗалишків</Name>
+        <Name>ПсуванняТоварів</Name>
         <Name>ВнутрішнєСпоживанняТоварів</Name>
       </AllowDocumentSpend>
     </RegisterAccumulation>

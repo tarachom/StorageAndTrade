@@ -38,9 +38,9 @@ using Звіти = StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {
-    public partial class Form_ПоверненняТоварівПостачальникуЖурнал : Form
+    public partial class Form_ПсуванняТоварівЖурнал : Form
     {
-        public Form_ПоверненняТоварівПостачальникуЖурнал()
+        public Form_ПсуванняТоварівЖурнал()
         {
             InitializeComponent();
 
@@ -63,7 +63,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ДатаДок"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
 			dataGridViewRecords.Columns["Назва"].Width = 350;
-			dataGridViewRecords.Columns["Контрагент"].Width = 300;
+			dataGridViewRecords.Columns["Склад"].Width = 300;
 
 			dataGridViewRecords.Columns["Сума"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
@@ -72,7 +72,7 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["Коментар"].Width = 350;
 
 			dataGridViewRecords.Columns["Проведений"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-			dataGridViewRecords.Columns["Проведений"].Width = 80;
+			dataGridViewRecords.Columns["Проведений"].Width = 80; 
 		}
 
 		/// <summary>
@@ -85,7 +85,7 @@ namespace StorageAndTrade
 		/// </summary>
 		public DocumentPointer SelectPointerItem { get; set; }
 
-		private void Form_ПоверненняТоварівПостачальникуЖурнал_Load(object sender, EventArgs e)
+		private void Form_ПсуванняТоварівЖурнал_Load(object sender, EventArgs e)
         {
 			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Конфа.Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
 
@@ -108,25 +108,25 @@ namespace StorageAndTrade
 		{
 			RecordsBindingList.Clear();
 
-			Документи.ПоверненняТоварівПостачальнику_Select поверненняТоварівПостачальнику_Select = new Документи.ПоверненняТоварівПостачальнику_Select();
-			поверненняТоварівПостачальнику_Select.QuerySelect.Field.AddRange(new string[] {
+			Документи.ПсуванняТоварів_Select псуванняТоварів_Select = new Документи.ПсуванняТоварів_Select();
+			псуванняТоварів_Select.QuerySelect.Field.AddRange(new string[] {
 				"spend",
-				Документи.ПоверненняТоварівПостачальнику_Const.Назва,
-				Документи.ПоверненняТоварівПостачальнику_Const.НомерДок,
-				Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок,
-				Документи.ПоверненняТоварівПостачальнику_Const.СумаДокументу,
-				Документи.ПоверненняТоварівПостачальнику_Const.Коментар
+				Документи.ПсуванняТоварів_Const.Назва,
+				Документи.ПсуванняТоварів_Const.НомерДок,
+				Документи.ПсуванняТоварів_Const.ДатаДок,
+				Документи.ПсуванняТоварів_Const.СумаДокументу,
+				Документи.ПсуванняТоварів_Const.Коментар
 			});
 
 			//Контрагент
-			поверненняТоварівПостачальнику_Select.QuerySelect.FieldAndAlias.Add(
-				new NameValue<string>(Довідники.Контрагенти_Const.TABLE + "." + Довідники.Контрагенти_Const.Назва, "joinContragent"));
-			поверненняТоварівПостачальнику_Select.QuerySelect.Joins.Add(
-				new Join(Довідники.Контрагенти_Const.TABLE, Документи.ПоверненняТоварівПостачальнику_Const.Контрагент, Документи.ПоверненняТоварівПостачальнику_Const.TABLE));
+			псуванняТоварів_Select.QuerySelect.FieldAndAlias.Add(
+				new NameValue<string>(Довідники.Склади_Const.TABLE + "." + Довідники.Склади_Const.Назва, "sklad"));
+			псуванняТоварів_Select.QuerySelect.Joins.Add(
+				new Join(Довідники.Склади_Const.TABLE, Документи.ПсуванняТоварів_Const.Склад, Документи.ПсуванняТоварів_Const.TABLE));
 
 			//ORDER
-			поверненняТоварівПостачальнику_Select.QuerySelect.Order.Add(Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок, SelectOrder.ASC);
-			поверненняТоварівПостачальнику_Select.QuerySelect.Order.Add(Документи.ПоверненняТоварівПостачальнику_Const.НомерДок, SelectOrder.ASC);
+			псуванняТоварів_Select.QuerySelect.Order.Add(Документи.ПсуванняТоварів_Const.ДатаДок, SelectOrder.ASC);
+			псуванняТоварів_Select.QuerySelect.Order.Add(Документи.ПсуванняТоварів_Const.НомерДок, SelectOrder.ASC);
 
 			Перелічення.ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
 				((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
@@ -136,50 +136,50 @@ namespace StorageAndTrade
 
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
 					{
-						поверненняТоварівПостачальнику_Select.QuerySelect.Where.Add(new Where(Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
+						псуванняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПсуванняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, 1, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.Квартал:
 					{
 						DateTime ДатаТриМісцяНазад = DateTime.Now.AddMonths(-3);
-						поверненняТоварівПостачальнику_Select.QuerySelect.Where.Add(new Where(Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
+						псуванняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПсуванняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
 					{
-						поверненняТоварівПостачальнику_Select.QuerySelect.Where.Add(new Where(Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
+						псуванняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПсуванняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуТижня:
 					{
 						DateTime СімДнівНазад = DateTime.Now.AddDays(-7);
-						поверненняТоварівПостачальнику_Select.QuerySelect.Where.Add(new Where(Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
+						псуванняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПсуванняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day)));
 						break;
 					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ПоточнийДень:
 					{
-						поверненняТоварівПостачальнику_Select.QuerySelect.Where.Add(new Where(Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
+						псуванняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ПсуванняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)));
 						break;
 					}
 			}
 
-			поверненняТоварівПостачальнику_Select.Select();
-			while (поверненняТоварівПостачальнику_Select.MoveNext())
+			псуванняТоварів_Select.Select();
+			while (псуванняТоварів_Select.MoveNext())
 			{
-				Документи.ПоверненняТоварівПостачальнику_Pointer cur = поверненняТоварівПостачальнику_Select.Current;
+				Документи.ПсуванняТоварів_Pointer cur = псуванняТоварів_Select.Current;
 
 				RecordsBindingList.Add(new Записи
 				{
 					ID = cur.UnigueID.ToString(),
-					Назва = cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.Назва].ToString(),
-					НомерДок = cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.НомерДок].ToString(),
-					ДатаДок = cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.ДатаДок].ToString(),
-					Контрагент = cur.Fields["joinContragent"].ToString(),
-					Сума = Math.Round((decimal)cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.СумаДокументу], 2),
-					Коментар = cur.Fields[Документи.ПоверненняТоварівПостачальнику_Const.Коментар].ToString(),
+					Назва = cur.Fields[Документи.ПсуванняТоварів_Const.Назва].ToString(),
+					НомерДок = cur.Fields[Документи.ПсуванняТоварів_Const.НомерДок].ToString(),
+					ДатаДок = cur.Fields[Документи.ПсуванняТоварів_Const.ДатаДок].ToString(),
+					Склад = cur.Fields["sklad"].ToString(),
+					Сума = Math.Round((decimal)cur.Fields[Документи.ПсуванняТоварів_Const.СумаДокументу], 2),
+					Коментар = cur.Fields[Документи.ПсуванняТоварів_Const.Коментар].ToString(),
 					Проведений = (bool)cur.Fields["spend"]
 				});
-            }
+			}
 
 			if (DocumentPointerItem != null || SelectPointerItem != null)
 			{
@@ -200,7 +200,7 @@ namespace StorageAndTrade
 			public string Назва { get; set; }
 			public string НомерДок { get; set; }
 			public string ДатаДок { get; set; }
-			public string Контрагент { get; set; }
+			public string Склад { get; set; }
 			public decimal Сума { get; set; }
 			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
@@ -214,8 +214,8 @@ namespace StorageAndTrade
 
                 if (DocumentPointerItem != null)
                 {
-					DocumentPointerItem = new Документи.ПоверненняТоварівПостачальнику_Pointer(new UnigueID(Uid));
-                    this.Close();
+					DocumentPointerItem = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(Uid));
+					this.Close();
                 }
                 else
                 {
@@ -226,11 +226,11 @@ namespace StorageAndTrade
 
         private void toolStripButtonAdd_Click(object sender, EventArgs e)
         {
-			Form_ПоверненняТоварівПостачальникуДокумент form_ПоверненняТоварівПостачальникуДокумент = new Form_ПоверненняТоварівПостачальникуДокумент();
-			form_ПоверненняТоварівПостачальникуДокумент.MdiParent = this.MdiParent;
-			form_ПоверненняТоварівПостачальникуДокумент.IsNew = true;
-			form_ПоверненняТоварівПостачальникуДокумент.OwnerForm = this;
-			form_ПоверненняТоварівПостачальникуДокумент.Show();
+			Form_ПсуванняТоварівДокумент form_ПсуванняТоварівДокумент = new Form_ПсуванняТоварівДокумент();
+			form_ПсуванняТоварівДокумент.MdiParent = this.MdiParent;
+			form_ПсуванняТоварівДокумент.IsNew = true;
+			form_ПсуванняТоварівДокумент.OwnerForm = this;
+			form_ПсуванняТоварівДокумент.Show();
         }
 
         private void toolStripButtonEdit_Click(object sender, EventArgs e)
@@ -239,13 +239,13 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				Form_ПоверненняТоварівПостачальникуДокумент form_ПоверненняТоварівПостачальникуДокумент = new Form_ПоверненняТоварівПостачальникуДокумент();
-				form_ПоверненняТоварівПостачальникуДокумент.MdiParent = this.MdiParent;
-				form_ПоверненняТоварівПостачальникуДокумент.IsNew = false;
-				form_ПоверненняТоварівПостачальникуДокумент.OwnerForm = this;
-				form_ПоверненняТоварівПостачальникуДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
-				form_ПоверненняТоварівПостачальникуДокумент.Show();
-			}			
+				Form_ПсуванняТоварівДокумент form_ПсуванняТоварівДокумент = new Form_ПсуванняТоварівДокумент();
+				form_ПсуванняТоварівДокумент.MdiParent = this.MdiParent;
+				form_ПсуванняТоварівДокумент.IsNew = false;
+				form_ПсуванняТоварівДокумент.OwnerForm = this;
+				form_ПсуванняТоварівДокумент.Uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
+				form_ПсуванняТоварівДокумент.Show();
+			}
 		}
 
         private void toolStripButtonRefresh_Click(object sender, EventArgs e)
@@ -263,21 +263,21 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells["ID"].Value.ToString();
 
-                    Документи.ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = new Документи.ПоверненняТоварівПостачальнику_Objest();
-                    if (поверненняТоварівПостачальнику_Objest.Read(new UnigueID(uid)))
+                    Документи.ПсуванняТоварів_Objest псуванняТоварів_Objest = new Документи.ПсуванняТоварів_Objest();
+                    if (псуванняТоварів_Objest.Read(new UnigueID(uid)))
                     {
-						Документи.ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest_Новий = поверненняТоварівПостачальнику_Objest.Copy();
-						поверненняТоварівПостачальнику_Objest_Новий.Назва += " *";
-						поверненняТоварівПостачальнику_Objest_Новий.ДатаДок = DateTime.Now;
-						поверненняТоварівПостачальнику_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ПоверненняТоварівПостачальнику_Const).ToString("D8");
+						Документи.ПсуванняТоварів_Objest псуванняТоварів_Objest_Новий = псуванняТоварів_Objest.Copy();
+						псуванняТоварів_Objest_Новий.Назва += " *";
+						псуванняТоварів_Objest_Новий.ДатаДок = DateTime.Now;
+						псуванняТоварів_Objest_Новий.НомерДок = (++Константи.НумераціяДокументів.ПсуванняТоварів_Const).ToString("D8");
 
 						//Зчитати та скопіювати табличну частину Товари
-						поверненняТоварівПостачальнику_Objest.Товари_TablePart.Read();
-						поверненняТоварівПостачальнику_Objest_Новий.Товари_TablePart.Records = поверненняТоварівПостачальнику_Objest.Товари_TablePart.Copy();
-						поверненняТоварівПостачальнику_Objest_Новий.Товари_TablePart.Save(true);
-						поверненняТоварівПостачальнику_Objest_Новий.Save();
+						псуванняТоварів_Objest.Товари_TablePart.Read();
+						псуванняТоварів_Objest_Новий.Товари_TablePart.Records = псуванняТоварів_Objest.Товари_TablePart.Copy();
+						псуванняТоварів_Objest_Новий.Товари_TablePart.Save(true);
+						псуванняТоварів_Objest_Новий.Save();
 
-						SelectPointerItem = поверненняТоварівПостачальнику_Objest_Новий.GetDocumentPointer();
+						SelectPointerItem = псуванняТоварів_Objest_Новий.GetDocumentPointer();
 					}
                     else
                     {
@@ -300,10 +300,10 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells["ID"].Value.ToString();
 
-                    Документи.ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = new Документи.ПоверненняТоварівПостачальнику_Objest();
-                    if (поверненняТоварівПостачальнику_Objest.Read(new UnigueID(uid)))
+                    Документи.ПсуванняТоварів_Objest ПсуванняТоварів_Objest = new Документи.ПсуванняТоварів_Objest();
+                    if (ПсуванняТоварів_Objest.Read(new UnigueID(uid)))
                     {
-						поверненняТоварівПостачальнику_Objest.Delete();
+						ПсуванняТоварів_Objest.Delete();
                     }
                     else
                     {
@@ -323,7 +323,7 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 
-				Звіти.РухДокументівПоРегістрах.PrintRecords(new Документи.ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid)));
+				Звіти.РухДокументівПоРегістрах.PrintRecords(new Документи.ПсуванняТоварів_Pointer(new UnigueID(uid)));
 			}
 		}
 
@@ -337,37 +337,64 @@ namespace StorageAndTrade
 					DataGridViewRow row = dataGridViewRecords.SelectedRows[i];
 					string uid = row.Cells["ID"].Value.ToString();
 
-					Документи.ПоверненняТоварівПостачальнику_Pointer поверненняТоварівПостачальнику_Pointer = new Документи.ПоверненняТоварівПостачальнику_Pointer(new UnigueID(uid));
-					Документи.ПоверненняТоварівПостачальнику_Objest поверненняТоварівПостачальнику_Objest = поверненняТоварівПостачальнику_Pointer.GetDocumentObject(true);
+					Документи.ПсуванняТоварів_Pointer псуванняТоварів_Pointer = new Документи.ПсуванняТоварів_Pointer(new UnigueID(uid));
+					Документи.ПсуванняТоварів_Objest псуванняТоварів_Objest = псуванняТоварів_Pointer.GetDocumentObject(true);
 
 					if (spend)
 						try
 						{
 							//Проведення
-							поверненняТоварівПостачальнику_Objest.SpendTheDocument(поверненняТоварівПостачальнику_Objest.ДатаДок);
+							псуванняТоварів_Objest.SpendTheDocument(псуванняТоварів_Objest.ДатаДок);
 						}
 						catch (Exception exp)
 						{
-							поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
+							псуванняТоварів_Objest.ClearSpendTheDocument();
 							MessageBox.Show(exp.Message);
 							return;
 						}
 					else
-						поверненняТоварівПостачальнику_Objest.ClearSpendTheDocument();
+						псуванняТоварів_Objest.ClearSpendTheDocument();
 				}
 
 				LoadRecords();
 			}
 		}
 
+
 		private void toolStripButtonSpend_Click(object sender, EventArgs e)
-		{
+        {
 			SpendDocuments(true, "Провести?");
 		}
 
-		private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
-		{
+        private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
+        {
 			SpendDocuments(false, "Відмінити проведення?");
+		}
+
+        private void dataGridViewRecords_MouseClick(object sender, MouseEventArgs e)
+        {
+			//if (dataGridViewRecords.SelectedCells.Count > 0 && e.Button == MouseButtons.Right)
+			//{
+			//	DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+			//	string uid = row.Cells["ID"].Value.ToString();
+
+			//	//Документи.ЗамовленняКлієнта_Pointer замовленняКлієнта_Pointer = new Документи.ЗамовленняКлієнта_Pointer(new UnigueID(uid));
+			//	//Документи.ЗамовленняКлієнта_Objest замовленняКлієнта_Objest = замовленняКлієнта_Pointer.GetDocumentObject(true);
+
+			//	Rectangle rectangle = dataGridViewRecords.GetCellDisplayRectangle(dataGridViewRecords.CurrentCell.ColumnIndex, dataGridViewRecords.CurrentCell.RowIndex, true);
+			//	rectangle.Offset(0, 0);
+			//	Point point = dataGridViewRecords.PointToScreen(rectangle.Location);
+
+			//	ContextMenuStrip contextMenu = new ContextMenuStrip();
+
+			//	ToolStripMenuItem select = new ToolStripMenuItem("Відкрити список");
+			//	select.Image = Properties.Resources.data;
+			//	select.Name = "";
+			//	//select.Tag = tag;
+			//	contextMenu.Items.Add(select);
+
+			//	contextMenu.Show(point);
+			//}
 		}
 
         private void dataGridViewRecords_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -376,7 +403,7 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				SelectPointerItem = new Документи.ПоверненняТоварівПостачальнику_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+				SelectPointerItem = new Документи.ПсуванняТоварів_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
 			}
 		}
 

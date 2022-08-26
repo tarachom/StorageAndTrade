@@ -248,6 +248,13 @@ namespace StorageAndTrade
 
                             break;
                         }
+                    case "ПсуванняТоварів":
+                        {
+                            Form_ПсуванняТоварівДокумент form = new Form_ПсуванняТоварівДокумент() { MdiParent = MdiParent, IsNew = false, Uid = uid };
+                            form.Show();
+
+                            break;
+                        }
                     default:
                         break;
                 }

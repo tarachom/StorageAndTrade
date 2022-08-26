@@ -345,6 +345,13 @@ namespace StorageAndTrade
             form_РахунокФактураЖурнал.Show();
         }
 
+        private void псуванняТоварівToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_ПсуванняТоварівЖурнал form_ПсуванняТоварівЖурнал = new Form_ПсуванняТоварівЖурнал();
+            form_ПсуванняТоварівЖурнал.MdiParent = this;
+            form_ПсуванняТоварівЖурнал.Show();
+        }
+
         #endregion
 
         #region Звіти Меню
@@ -672,6 +679,6 @@ namespace StorageAndTrade
 
         }
 
-       
+        
     }
 }
