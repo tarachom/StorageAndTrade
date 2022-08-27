@@ -49,6 +49,8 @@ namespace StorageAndTrade
         public Form_ТовариНаСкладах_Звіт()
         {
             InitializeComponent();
+
+            geckoWebBrowser.LoadHtml("");
         }
 
         private void Form_ЗамовленняКлієнтів_Звіт_Load(object sender, EventArgs e)

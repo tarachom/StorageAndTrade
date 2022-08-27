@@ -11,6 +11,8 @@ namespace StorageAndTrade
         [STAThread]
         static void Main()
         {
+            Gecko.Xpcom.Initialize("Firefox");
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new ConfigurationSelectionForm());
