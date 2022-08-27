@@ -55,6 +55,8 @@ namespace StorageAndTrade
 
         private void Form_РухКоштів_Звіт_Load(object sender, EventArgs e)
         {
+            geckoWebBrowser.Reload();
+
             directoryControl_Організація.Init(new Form_Організації(), new Організації_Pointer(), ПошуковіЗапити.Організації);
             directoryControl_Каса.Init(new Form_Каси(), new Каси_Pointer(), ПошуковіЗапити.Каси);
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer(), ПошуковіЗапити.Валюти);

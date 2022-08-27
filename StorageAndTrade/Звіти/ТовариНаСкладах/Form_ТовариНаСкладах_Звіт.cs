@@ -49,12 +49,12 @@ namespace StorageAndTrade
         public Form_ТовариНаСкладах_Звіт()
         {
             InitializeComponent();
-
-            geckoWebBrowser.LoadHtml("");
         }
 
         private void Form_ЗамовленняКлієнтів_Звіт_Load(object sender, EventArgs e)
         {
+            geckoWebBrowser.Reload();
+
             directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Номенклатура_Папки_Pointer(), ПошуковіЗапити.Номенклатура_Папки);
             directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
             directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new ХарактеристикиНоменклатури_Pointer(), ПошуковіЗапити.ХарактеристикаНоменклатуриЗВідбором());

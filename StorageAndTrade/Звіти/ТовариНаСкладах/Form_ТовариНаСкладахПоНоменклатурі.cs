@@ -83,7 +83,7 @@ namespace StorageAndTrade
 
         private void Form_ТовариНаСкладахПоНоменклатурі_Load(object sender, EventArgs e)
         {
-            
+            //geckoWebBrowser.Reload();
         }
 
         public void CreateReport()

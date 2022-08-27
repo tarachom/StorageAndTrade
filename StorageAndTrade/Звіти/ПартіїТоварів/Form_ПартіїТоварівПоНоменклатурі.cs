@@ -69,6 +69,11 @@ namespace StorageAndTrade
             geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
         }
 
+        private void Form_ПартіїТоварівПоНоменклатурі_Load(object sender, EventArgs e)
+        {
+            //geckoWebBrowser.Reload();
+        }
+
         public Номенклатура_Pointer Номенклатура 
         {
             get

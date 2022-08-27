@@ -41,10 +41,10 @@ namespace StorageAndTrade
             this.label7 = new System.Windows.Forms.Label();
             this.directoryControl_ХарактеристикаНоменклатури = new StorageAndTrade.DirectoryControl();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
-            this.label4 = new System.Windows.Forms.Label();
             this.directoryControl_Склад = new StorageAndTrade.DirectoryControl();
             this.label1 = new System.Windows.Forms.Label();
+            this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -83,6 +83,7 @@ namespace StorageAndTrade
             this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.geckoWebBrowser.FrameEventsPropagateToMainWindow = false;
             this.geckoWebBrowser.Location = new System.Drawing.Point(1, 168);
             this.geckoWebBrowser.Name = "geckoWebBrowser";
             this.geckoWebBrowser.Size = new System.Drawing.Size(939, 300);
@@ -108,6 +109,7 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Номенклатура.AfterSelectFunc = null;
             this.directoryControl_Номенклатура.BeforeClickOpenFunc = null;
+            this.directoryControl_Номенклатура.BeforeFindFunc = null;
             this.directoryControl_Номенклатура.Bind = null;
             this.directoryControl_Номенклатура.DirectoryPointerItem = null;
             this.directoryControl_Номенклатура.Location = new System.Drawing.Point(110, 19);
@@ -130,6 +132,7 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Серія.AfterSelectFunc = null;
             this.directoryControl_Серія.BeforeClickOpenFunc = null;
+            this.directoryControl_Серія.BeforeFindFunc = null;
             this.directoryControl_Серія.Bind = null;
             this.directoryControl_Серія.DirectoryPointerItem = null;
             this.directoryControl_Серія.Location = new System.Drawing.Point(110, 85);
@@ -152,6 +155,7 @@ namespace StorageAndTrade
             // 
             this.directoryControl_ХарактеристикаНоменклатури.AfterSelectFunc = null;
             this.directoryControl_ХарактеристикаНоменклатури.BeforeClickOpenFunc = null;
+            this.directoryControl_ХарактеристикаНоменклатури.BeforeFindFunc = null;
             this.directoryControl_ХарактеристикаНоменклатури.Bind = null;
             this.directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem = null;
             this.directoryControl_ХарактеристикаНоменклатури.Location = new System.Drawing.Point(110, 52);
@@ -173,32 +177,11 @@ namespace StorageAndTrade
             this.groupBox2.TabIndex = 65;
             this.groupBox2.TabStop = false;
             // 
-            // directoryControl_Організація
-            // 
-            this.directoryControl_Організація.AfterSelectFunc = null;
-            this.directoryControl_Організація.BeforeClickOpenFunc = null;
-            this.directoryControl_Організація.Bind = null;
-            this.directoryControl_Організація.DirectoryPointerItem = null;
-            this.directoryControl_Організація.Location = new System.Drawing.Point(114, 19);
-            this.directoryControl_Організація.Name = "directoryControl_Організація";
-            this.directoryControl_Організація.QueryFind = null;
-            this.directoryControl_Організація.SelectForm = null;
-            this.directoryControl_Організація.Size = new System.Drawing.Size(286, 27);
-            this.directoryControl_Організація.TabIndex = 67;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 13);
-            this.label4.TabIndex = 68;
-            this.label4.Text = "Організація:";
-            // 
             // directoryControl_Склад
             // 
             this.directoryControl_Склад.AfterSelectFunc = null;
             this.directoryControl_Склад.BeforeClickOpenFunc = null;
+            this.directoryControl_Склад.BeforeFindFunc = null;
             this.directoryControl_Склад.Bind = null;
             this.directoryControl_Склад.DirectoryPointerItem = null;
             this.directoryControl_Склад.Location = new System.Drawing.Point(114, 52);
@@ -217,6 +200,29 @@ namespace StorageAndTrade
             this.label1.TabIndex = 70;
             this.label1.Text = "Склад:";
             // 
+            // directoryControl_Організація
+            // 
+            this.directoryControl_Організація.AfterSelectFunc = null;
+            this.directoryControl_Організація.BeforeClickOpenFunc = null;
+            this.directoryControl_Організація.BeforeFindFunc = null;
+            this.directoryControl_Організація.Bind = null;
+            this.directoryControl_Організація.DirectoryPointerItem = null;
+            this.directoryControl_Організація.Location = new System.Drawing.Point(114, 19);
+            this.directoryControl_Організація.Name = "directoryControl_Організація";
+            this.directoryControl_Організація.QueryFind = null;
+            this.directoryControl_Організація.SelectForm = null;
+            this.directoryControl_Організація.Size = new System.Drawing.Size(286, 27);
+            this.directoryControl_Організація.TabIndex = 67;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 26);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 68;
+            this.label4.Text = "Організація:";
+            // 
             // Form_ПартіїТоварівПоНоменклатурі
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +236,7 @@ namespace StorageAndTrade
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_ПартіїТоварівПоНоменклатурі";
             this.Text = "Партії номенклатури";
+            this.Load += new System.EventHandler(this.Form_ПартіїТоварівПоНоменклатурі_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

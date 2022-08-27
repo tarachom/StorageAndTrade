@@ -164,8 +164,17 @@ namespace StorageAndTrade
 					//
 
 					if (doc.GetType().GetMember("SpendTheDocument").Length == 1)
-						doc.GetType().InvokeMember("SpendTheDocument", BindingFlags.InvokeMethod, null, doc, 
-							new object[] { journalSelect.Current.SpendDate });
+					{
+						try
+						{
+							doc.GetType().InvokeMember("SpendTheDocument", BindingFlags.InvokeMethod, null , doc,
+								new object[] { journalSelect.Current.SpendDate });
+						}
+                        catch 
+                        {
+                            ApendLine("Помилка: ");
+                        }
+                    }
 				}
 			}
 

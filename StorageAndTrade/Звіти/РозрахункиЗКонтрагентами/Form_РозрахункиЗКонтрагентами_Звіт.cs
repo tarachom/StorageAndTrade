@@ -55,6 +55,8 @@ namespace StorageAndTrade
 
         private void Form_РозрахункиЗКонтрагентами_Звіт_Load(object sender, EventArgs e)
         {
+            geckoWebBrowser.Reload();
+
             directoryControl_КонтрагентиПапка.Init(new Form_КонтрагентиПапкиВибір(), new Контрагенти_Папки_Pointer(), ПошуковіЗапити.Контрагенти_Папки);
             directoryControl_Контрагенти.Init(new Form_Контрагенти(), new Контрагенти_Pointer(), ПошуковіЗапити.Контрагенти);
             directoryControl_Валюти.Init(new Form_Валюти(), new Валюти_Pointer(), ПошуковіЗапити.Валюти);

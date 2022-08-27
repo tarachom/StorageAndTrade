@@ -1,5 +1,5 @@
 ﻿
-namespace HomeFinances
+namespace StorageAndTrade
 {
     partial class NumericControl
     {
@@ -35,8 +35,8 @@ namespace HomeFinances
             // 
             // textBoxNumeric
             // 
-            this.textBoxNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.textBoxNumeric.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxNumeric.Location = new System.Drawing.Point(0, 0);
             this.textBoxNumeric.Name = "textBoxNumeric";

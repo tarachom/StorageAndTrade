@@ -53,6 +53,8 @@ namespace StorageAndTrade
 
         private void Form_ПартіїТоварів_Звіт_Load(object sender, EventArgs e)
         {
+            geckoWebBrowser.Reload();
+
             directoryControl_Організація.Init(new Form_Організації(), new Організації_Pointer(), ПошуковіЗапити.Організації);
             directoryControl_НоменклатураПапка.Init(new Form_НоменклатураПапкиВибір(), new Номенклатура_Папки_Pointer(), ПошуковіЗапити.Номенклатура_Папки);
             directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
