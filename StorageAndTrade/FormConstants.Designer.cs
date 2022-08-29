@@ -30,8 +30,6 @@ namespace StorageAndTrade
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBox_ТипПеріодуДляЖурналівДокументів = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.directoryControl_ВидЦіни = new StorageAndTrade.DirectoryControl();
             this.label9 = new System.Windows.Forms.Label();
@@ -52,27 +50,26 @@ namespace StorageAndTrade
             this.directoryControl_Склад = new StorageAndTrade.DirectoryControl();
             this.label4 = new System.Windows.Forms.Label();
             this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
+            this.label11 = new System.Windows.Forms.Label();
+            this.comboBox_ТипПеріодуДляЖурналівДокументів = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox_МетодиСписанняПартій = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonSaveAndClose = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox_МетодиСписанняПартій = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.directoryControl_ВидЦіни);
             this.groupBox1.Controls.Add(this.label9);
@@ -95,28 +92,10 @@ namespace StorageAndTrade
             this.groupBox1.Controls.Add(this.directoryControl_Організація);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(549, 359);
+            this.groupBox1.Size = new System.Drawing.Size(424, 359);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Значення за замовчуванням";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(15, 26);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(69, 13);
-            this.label11.TabIndex = 94;
-            this.label11.Text = "Тип періоду:";
-            // 
-            // comboBox_ТипПеріодуДляЖурналівДокументів
-            // 
-            this.comboBox_ТипПеріодуДляЖурналівДокументів.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_ТипПеріодуДляЖурналівДокументів.FormattingEnabled = true;
-            this.comboBox_ТипПеріодуДляЖурналівДокументів.Location = new System.Drawing.Point(176, 23);
-            this.comboBox_ТипПеріодуДляЖурналівДокументів.Name = "comboBox_ТипПеріодуДляЖурналівДокументів";
-            this.comboBox_ТипПеріодуДляЖурналівДокументів.Size = new System.Drawing.Size(245, 21);
-            this.comboBox_ТипПеріодуДляЖурналівДокументів.TabIndex = 3;
             // 
             // label10
             // 
@@ -138,7 +117,7 @@ namespace StorageAndTrade
             this.directoryControl_ВидЦіни.Name = "directoryControl_ВидЦіни";
             this.directoryControl_ВидЦіни.QueryFind = null;
             this.directoryControl_ВидЦіни.SelectForm = null;
-            this.directoryControl_ВидЦіни.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_ВидЦіни.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_ВидЦіни.TabIndex = 92;
             // 
             // label9
@@ -161,7 +140,7 @@ namespace StorageAndTrade
             this.directoryControl_БанківськийРахунок.Name = "directoryControl_БанківськийРахунок";
             this.directoryControl_БанківськийРахунок.QueryFind = null;
             this.directoryControl_БанківськийРахунок.SelectForm = null;
-            this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_БанківськийРахунок.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_БанківськийРахунок.TabIndex = 90;
             // 
             // label8
@@ -184,7 +163,7 @@ namespace StorageAndTrade
             this.directoryControl_Підрозділ.Name = "directoryControl_Підрозділ";
             this.directoryControl_Підрозділ.QueryFind = null;
             this.directoryControl_Підрозділ.SelectForm = null;
-            this.directoryControl_Підрозділ.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Підрозділ.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_Підрозділ.TabIndex = 88;
             // 
             // label7
@@ -207,7 +186,7 @@ namespace StorageAndTrade
             this.directoryControl_ОдиницяПакування.Name = "directoryControl_ОдиницяПакування";
             this.directoryControl_ОдиницяПакування.QueryFind = null;
             this.directoryControl_ОдиницяПакування.SelectForm = null;
-            this.directoryControl_ОдиницяПакування.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_ОдиницяПакування.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_ОдиницяПакування.TabIndex = 86;
             // 
             // label6
@@ -230,7 +209,7 @@ namespace StorageAndTrade
             this.directoryControl_Каса.Name = "directoryControl_Каса";
             this.directoryControl_Каса.QueryFind = null;
             this.directoryControl_Каса.SelectForm = null;
-            this.directoryControl_Каса.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Каса.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_Каса.TabIndex = 84;
             // 
             // label5
@@ -253,7 +232,7 @@ namespace StorageAndTrade
             this.directoryControl_Покупець.Name = "directoryControl_Покупець";
             this.directoryControl_Покупець.QueryFind = null;
             this.directoryControl_Покупець.SelectForm = null;
-            this.directoryControl_Покупець.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Покупець.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_Покупець.TabIndex = 82;
             // 
             // label3
@@ -276,7 +255,7 @@ namespace StorageAndTrade
             this.directoryControl_Постачальник.Name = "directoryControl_Постачальник";
             this.directoryControl_Постачальник.QueryFind = null;
             this.directoryControl_Постачальник.SelectForm = null;
-            this.directoryControl_Постачальник.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Постачальник.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_Постачальник.TabIndex = 80;
             // 
             // label2
@@ -299,7 +278,7 @@ namespace StorageAndTrade
             this.directoryControl_Валюта.Name = "directoryControl_Валюта";
             this.directoryControl_Валюта.QueryFind = null;
             this.directoryControl_Валюта.SelectForm = null;
-            this.directoryControl_Валюта.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Валюта.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_Валюта.TabIndex = 78;
             // 
             // label1
@@ -322,7 +301,7 @@ namespace StorageAndTrade
             this.directoryControl_Склад.Name = "directoryControl_Склад";
             this.directoryControl_Склад.QueryFind = null;
             this.directoryControl_Склад.SelectForm = null;
-            this.directoryControl_Склад.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Склад.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_Склад.TabIndex = 76;
             // 
             // label4
@@ -345,8 +324,26 @@ namespace StorageAndTrade
             this.directoryControl_Організація.Name = "directoryControl_Організація";
             this.directoryControl_Організація.QueryFind = null;
             this.directoryControl_Організація.SelectForm = null;
-            this.directoryControl_Організація.Size = new System.Drawing.Size(402, 27);
+            this.directoryControl_Організація.Size = new System.Drawing.Size(277, 27);
             this.directoryControl_Організація.TabIndex = 74;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(15, 26);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(69, 13);
+            this.label11.TabIndex = 94;
+            this.label11.Text = "Тип періоду:";
+            // 
+            // comboBox_ТипПеріодуДляЖурналівДокументів
+            // 
+            this.comboBox_ТипПеріодуДляЖурналівДокументів.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ТипПеріодуДляЖурналівДокументів.FormattingEnabled = true;
+            this.comboBox_ТипПеріодуДляЖурналівДокументів.Location = new System.Drawing.Point(90, 23);
+            this.comboBox_ТипПеріодуДляЖурналівДокументів.Name = "comboBox_ТипПеріодуДляЖурналівДокументів";
+            this.comboBox_ТипПеріодуДляЖурналівДокументів.Size = new System.Drawing.Size(242, 21);
+            this.comboBox_ТипПеріодуДляЖурналівДокументів.TabIndex = 3;
             // 
             // panel1
             // 
@@ -358,8 +355,48 @@ namespace StorageAndTrade
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1024, 384);
+            this.panel1.Size = new System.Drawing.Size(807, 384);
             this.panel1.TabIndex = 1;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.comboBox_МетодиСписанняПартій);
+            this.groupBox3.Location = new System.Drawing.Point(442, 104);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(350, 95);
+            this.groupBox3.TabIndex = 96;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Партії товарів";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(6, 26);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(133, 13);
+            this.label12.TabIndex = 96;
+            this.label12.Text = "Методи списання партій:";
+            // 
+            // comboBox_МетодиСписанняПартій
+            // 
+            this.comboBox_МетодиСписанняПартій.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_МетодиСписанняПартій.FormattingEnabled = true;
+            this.comboBox_МетодиСписанняПартій.Location = new System.Drawing.Point(9, 42);
+            this.comboBox_МетодиСписанняПартій.Name = "comboBox_МетодиСписанняПартій";
+            this.comboBox_МетодиСписанняПартій.Size = new System.Drawing.Size(323, 21);
+            this.comboBox_МетодиСписанняПартій.TabIndex = 95;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label11);
+            this.groupBox2.Controls.Add(this.comboBox_ТипПеріодуДляЖурналівДокументів);
+            this.groupBox2.Location = new System.Drawing.Point(442, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(350, 79);
+            this.groupBox2.TabIndex = 95;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Журнали документів";
             // 
             // panel2
             // 
@@ -370,7 +407,7 @@ namespace StorageAndTrade
             this.panel2.Controls.Add(this.buttonSave);
             this.panel2.Location = new System.Drawing.Point(0, 387);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1024, 34);
+            this.panel2.Size = new System.Drawing.Size(807, 34);
             this.panel2.TabIndex = 2;
             // 
             // buttonSaveAndClose
@@ -403,52 +440,12 @@ namespace StorageAndTrade
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.comboBox_ТипПеріодуДляЖурналівДокументів);
-            this.groupBox2.Location = new System.Drawing.Point(567, 12);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(436, 79);
-            this.groupBox2.TabIndex = 95;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Журнали документів";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.comboBox_МетодиСписанняПартій);
-            this.groupBox3.Location = new System.Drawing.Point(567, 104);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(436, 95);
-            this.groupBox3.TabIndex = 96;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Партії товарів";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 40);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(133, 13);
-            this.label12.TabIndex = 96;
-            this.label12.Text = "Методи списання партій:";
-            // 
-            // comboBox_МетодиСписанняПартій
-            // 
-            this.comboBox_МетодиСписанняПартій.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_МетодиСписанняПартій.FormattingEnabled = true;
-            this.comboBox_МетодиСписанняПартій.Location = new System.Drawing.Point(176, 37);
-            this.comboBox_МетодиСписанняПартій.Name = "comboBox_МетодиСписанняПартій";
-            this.comboBox_МетодиСписанняПартій.Size = new System.Drawing.Size(245, 21);
-            this.comboBox_МетодиСписанняПартій.TabIndex = 95;
-            // 
             // FormConstants
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1026, 424);
+            this.ClientSize = new System.Drawing.Size(809, 424);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -459,11 +456,11 @@ namespace StorageAndTrade
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
