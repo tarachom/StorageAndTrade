@@ -45,15 +45,7 @@ namespace StorageAndTrade
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
-		}
 
-		/// <summary>
-		/// Власне документ якому належить таблична частина
-		/// </summary>
-		public Документи.ВведенняЗалишків_Objest ДокументОбєкт { get; set; }
-
-		private void Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки_Load(object sender, EventArgs e)
-		{
 			dataGridViewRecords.Columns["ID"].Visible = false;
 
 			dataGridViewRecords.Columns["НомерРядка"].Width = 30;
@@ -66,6 +58,16 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["БанківськийРахунокНазва"].HeaderText = "Банківський рахунок";
 
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+		}
+
+		/// <summary>
+		/// Власне документ якому належить таблична частина
+		/// </summary>
+		public Документи.ВведенняЗалишків_Objest ДокументОбєкт { get; set; }
+
+		private void Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки_Load(object sender, EventArgs e)
+		{
+			
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -245,8 +247,10 @@ namespace StorageAndTrade
 
 			ФункціїДляДокументів.ОчиститиМенюПошуку(parent);
 
-			//if (String.IsNullOrWhiteSpace(findMenu.Text))
-			//	return;
+			string findText = findMenu.Text.TrimStart();
+
+			if (String.IsNullOrWhiteSpace(findMenu.Text))
+				findText = "%";
 
 			string query = "";
 
@@ -254,24 +258,14 @@ namespace StorageAndTrade
 			{
 				case "БанківськийРахунокНазва":
 					{
-						query = $@"
-SELECT 
-    БанківськіРахункиОрганізацій.uid,
-    БанківськіРахункиОрганізацій.{Довідники.БанківськіРахункиОрганізацій_Const.Назва} AS Назва
-FROM
-    {Довідники.БанківськіРахункиОрганізацій_Const.TABLE} AS БанківськіРахункиОрганізацій
-WHERE
-    LOWER(БанківськіРахункиОрганізацій.{Довідники.БанківськіРахункиОрганізацій_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.БанківськіРахункиОрганізацій;
 						break;
 					}
 				default:
 					return;
 			}
 
-			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findMenu.Text, findMenu.Name, запис, FindClick);
+			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findText, findMenu.Name, запис, FindClick);
 		}
 
 		private void FindClick(object sender, EventArgs e)

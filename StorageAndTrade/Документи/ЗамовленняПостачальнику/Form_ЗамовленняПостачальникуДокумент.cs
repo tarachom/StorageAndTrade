@@ -210,6 +210,9 @@ namespace StorageAndTrade
 					return;
 				}
 
+				if (!closeForm)
+					ЗамовленняПостачальнику_ТабличнаЧастина_Товари.LoadRecords();
+
 				if (spendDoc)
 					try
 					{

@@ -43,20 +43,7 @@ namespace StorageAndTrade
         public Form_ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари()
         {
             InitializeComponent();
-        }
 
-		/// <summary>
-		/// Власне документ якому належить таблична частина
-		/// </summary>
-		public Документи.ВстановленняЦінНоменклатури_Objest ДокументОбєкт { get; set; }
-
-		/// <summary>
-		/// Процедура яка обновлює значення ДокументОбєкт значеннями з форми
-		/// </summary>
-		public Action ОбновитиЗначенняЗФормиДокумента { get; set; }
-
-		private void ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари(object sender, EventArgs e)
-        {
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
@@ -85,6 +72,21 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ВидиЦінНазва"].Width = 200;
 			dataGridViewRecords.Columns["ВидиЦінНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["ВидиЦінНазва"].HeaderText = "Види цін";
+		}
+
+		/// <summary>
+		/// Власне документ якому належить таблична частина
+		/// </summary>
+		public Документи.ВстановленняЦінНоменклатури_Objest ДокументОбєкт { get; set; }
+
+		/// <summary>
+		/// Процедура яка обновлює значення ДокументОбєкт значеннями з форми
+		/// </summary>
+		public Action ОбновитиЗначенняЗФормиДокумента { get; set; }
+
+		private void ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари(object sender, EventArgs e)
+        {
+			
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -396,8 +398,10 @@ namespace StorageAndTrade
 
 			ФункціїДляДокументів.ОчиститиМенюПошуку(parent);
 
-			//if (String.IsNullOrWhiteSpace(findMenu.Text))
-			//	return;
+			string findText = findMenu.Text.TrimStart();
+
+			if (String.IsNullOrWhiteSpace(findMenu.Text))
+				findText = "%";
 
 			string query = "";
 
@@ -405,79 +409,29 @@ namespace StorageAndTrade
 			{
 				case "НоменклатураНазва":
 					{
-						query = $@"
-SELECT 
-    Номенклатура.uid,
-    Номенклатура.{Довідники.Номенклатура_Const.Назва} AS Назва
-FROM
-    {Довідники.Номенклатура_Const.TABLE} AS Номенклатура
-WHERE
-    LOWER(Номенклатура.{Довідники.Номенклатура_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.Номенклатура;
 						break;
 					}
 				case "ХарактеристикаНазва":
 					{
-						query = $@"
-SELECT 
-    ХарактеристикиНоменклатури.uid,
-    ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва} AS Назва
-FROM
-    {Довідники.ХарактеристикиНоменклатури_Const.TABLE} AS ХарактеристикиНоменклатури
-WHERE
-    LOWER(ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва}) LIKE @like_param
-";
-
-						if (!запис.Номенклатура.IsEmpty())
-						{
-							query += $@"
-AND ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Номенклатура} = '{запис.Номенклатура.UnigueID}'
-";
-						}
-
-						query += $@"
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ХарактеристикаНоменклатуриЗВідбором(запис.Номенклатура);
 						break;
 					}
 				case "ПакуванняНазва":
 					{
-						query = $@"
-SELECT 
-    ПакуванняОдиниціВиміру.uid,
-    ПакуванняОдиниціВиміру.{Довідники.ПакуванняОдиниціВиміру_Const.Назва} AS Назва
-FROM
-    {Довідники.ПакуванняОдиниціВиміру_Const.TABLE} AS ПакуванняОдиниціВиміру
-WHERE
-    LOWER(ПакуванняОдиниціВиміру.{Довідники.ПакуванняОдиниціВиміру_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ПакуванняОдиниціВиміру;
 						break;
 					}
 				case "ВидиЦінНазва":
 					{
-						query = $@"
-SELECT 
-    ВидиЦін.uid,
-    ВидиЦін.{Довідники.ВидиЦін_Const.Назва} AS Назва
-FROM
-    {Довідники.ВидиЦін_Const.TABLE} AS ВидиЦін
-WHERE
-    LOWER(ВидиЦін.{Довідники.ВидиЦін_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ВидиЦін;
 						break;
 					}
 				default:
 					return;
 			}
 
-			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findMenu.Text, findMenu.Name, запис, FindClick);
+			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findText, findMenu.Name, запис, FindClick);
 		}
 
 		private void FindClick(object sender, EventArgs e)

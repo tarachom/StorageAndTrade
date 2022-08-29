@@ -42,15 +42,7 @@ namespace StorageAndTrade
         public Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги()
         {
             InitializeComponent();
-        }
 
-		/// <summary>
-		/// Власне документ якому належить таблична частина
-		/// </summary>
-		public Документи.АктВиконанихРобіт_Objest ДокументОбєкт { get; set; }
-
-        private void Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги_Load(object sender, EventArgs e)
-        {
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
@@ -72,6 +64,16 @@ namespace StorageAndTrade
 
 			dataGridViewRecords.Columns["Ціна"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+		}
+
+		/// <summary>
+		/// Власне документ якому належить таблична частина
+		/// </summary>
+		public Документи.АктВиконанихРобіт_Objest ДокументОбєкт { get; set; }
+
+        private void Form_АктВиконанихРобіт_ТабличнаЧастина_Послуги_Load(object sender, EventArgs e)
+        {
+			
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -316,8 +318,10 @@ namespace StorageAndTrade
 
 			ФункціїДляДокументів.ОчиститиМенюПошуку(parent);
 
-			//if (String.IsNullOrWhiteSpace(findMenu.Text))
-			//	return;
+			string findText = findMenu.Text.TrimStart();
+
+			if (String.IsNullOrWhiteSpace(findMenu.Text))
+				findText = "%";
 
 			string query = "";
 
@@ -325,49 +329,19 @@ namespace StorageAndTrade
 			{
 				case "НоменклатураНазва":
 					{
-						query = $@"
-SELECT 
-    Номенклатура.uid,
-    Номенклатура.{Довідники.Номенклатура_Const.Назва} AS Назва
-FROM
-    {Довідники.Номенклатура_Const.TABLE} AS Номенклатура
-WHERE
-    LOWER(Номенклатура.{Довідники.Номенклатура_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.Номенклатура;
 						break;
 					}
 				case "ХарактеристикаНазва":
 					{
-						query = $@"
-SELECT 
-    ХарактеристикиНоменклатури.uid,
-    ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва} AS Назва
-FROM
-    {Довідники.ХарактеристикиНоменклатури_Const.TABLE} AS ХарактеристикиНоменклатури
-WHERE
-    LOWER(ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва}) LIKE @like_param
-";
-
-						if (!запис.Номенклатура.IsEmpty())
-						{
-							query += $@"
-AND ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Номенклатура} = '{запис.Номенклатура.UnigueID}'
-";
-						}
-
-						query += $@"
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ХарактеристикаНоменклатуриЗВідбором(запис.Номенклатура);
 						break;
 					}
 				default:
 					return;
 			}
 
-			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findMenu.Text, findMenu.Name, запис, FindClick);
+			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findText, findMenu.Name, запис, FindClick);
 		}
 
 		private void FindClick(object sender, EventArgs e)

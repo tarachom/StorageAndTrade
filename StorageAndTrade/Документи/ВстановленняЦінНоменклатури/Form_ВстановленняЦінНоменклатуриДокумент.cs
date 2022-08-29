@@ -139,6 +139,9 @@ namespace StorageAndTrade
 					return;
 				}
 
+				if (!closeForm)
+					ВстановленняЦінНоменклатури_ТабличнаЧастина_Товари.LoadRecords();
+
 				if (spendDoc)
 					try
 					{

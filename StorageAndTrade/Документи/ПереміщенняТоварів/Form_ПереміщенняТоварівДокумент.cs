@@ -155,6 +155,9 @@ namespace StorageAndTrade
 					return;
 				}
 
+				if (!closeForm)
+					ПереміщенняТоварів_ТабличнаЧастина_Товари.LoadRecords();
+
 				if (spendDoc)
 					try
 					{

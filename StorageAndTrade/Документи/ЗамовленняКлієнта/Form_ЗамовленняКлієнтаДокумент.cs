@@ -214,6 +214,9 @@ namespace StorageAndTrade
 					return;
 				}
 
+				if (!closeForm)
+					ЗамовленняКлієнта_ТабличнаЧастина_Товари.LoadRecords();
+
 				if (spendDoc)
 					try
 					{

@@ -214,6 +214,9 @@ namespace StorageAndTrade
 					return;
 				}
 
+				if (!closeForm)
+					РахунокФактура_ТабличнаЧастина_Товари.LoadRecords();
+
 				if (spendDoc)
 					try
 					{

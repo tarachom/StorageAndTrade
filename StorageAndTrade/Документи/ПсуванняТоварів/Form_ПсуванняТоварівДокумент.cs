@@ -145,6 +145,9 @@ namespace StorageAndTrade
 					return;
 				}
 
+				if (!closeForm)
+					ПсуванняТоварів_ТабличнаЧастина_Товари.LoadRecords();
+
 				if (spendDoc)
 					try
 					{

@@ -43,20 +43,7 @@ namespace StorageAndTrade
         public Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари()
         {
             InitializeComponent();
-        }
 
-		/// <summary>
-		/// Власне документ якому належить таблична частина
-		/// </summary>
-		public Документи.РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт { get; set; }
-
-		/// <summary>
-		/// Процедура яка обновлює значення ДокументОбєкт значеннями з форми
-		/// </summary>
-		public Action ОбновитиЗначенняЗФормиДокумента { get; set; }
-
-		private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
-        {
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
 
@@ -111,6 +98,21 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["СкладНазва"].Width = 200;
 			dataGridViewRecords.Columns["СкладНазва"].ReadOnly = true;
 			dataGridViewRecords.Columns["СкладНазва"].HeaderText = "Склад";
+		}
+
+		/// <summary>
+		/// Власне документ якому належить таблична частина
+		/// </summary>
+		public Документи.РеалізаціяТоварівТаПослуг_Objest ДокументОбєкт { get; set; }
+
+		/// <summary>
+		/// Процедура яка обновлює значення ДокументОбєкт значеннями з форми
+		/// </summary>
+		public Action ОбновитиЗначенняЗФормиДокумента { get; set; }
+
+		private void ЗамовленняКлієнта_ТабличнаЧастина_Товари_Load(object sender, EventArgs e)
+        {
+			
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -668,8 +670,10 @@ LIMIT 1
 
 			ФункціїДляДокументів.ОчиститиМенюПошуку(parent);
 
-			//if (String.IsNullOrWhiteSpace(findMenu.Text))
-			//	return;
+			string findText = findMenu.Text.TrimStart();
+
+			if (String.IsNullOrWhiteSpace(findMenu.Text))
+				findText = "%";
 
 			string query = "";
 
@@ -677,139 +681,49 @@ LIMIT 1
 			{
 				case "НоменклатураНазва":
 					{
-						query = $@"
-SELECT 
-    Номенклатура.uid,
-    Номенклатура.{Довідники.Номенклатура_Const.Назва} AS Назва
-FROM
-    {Довідники.Номенклатура_Const.TABLE} AS Номенклатура
-WHERE
-    LOWER(Номенклатура.{Довідники.Номенклатура_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.Номенклатура;
 						break;
 					}
 				case "ХарактеристикаНазва":
 					{
-						query = $@"
-SELECT 
-    ХарактеристикиНоменклатури.uid,
-    ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва} AS Назва
-FROM
-    {Довідники.ХарактеристикиНоменклатури_Const.TABLE} AS ХарактеристикиНоменклатури
-WHERE
-    LOWER(ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Назва}) LIKE @like_param
-";
-
-						if (!запис.Номенклатура.IsEmpty())
-						{
-							query += $@"
-AND ХарактеристикиНоменклатури.{Довідники.ХарактеристикиНоменклатури_Const.Номенклатура} = '{запис.Номенклатура.UnigueID}'
-";
-						}
-
-						query += $@"
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ХарактеристикаНоменклатуриЗВідбором(запис.Номенклатура);
 						break;
 					}
 				case "СеріяНазва":
 					{
-						query = $@"
-SELECT 
-    СеріїНоменклатури.uid,
-    СеріїНоменклатури.{Довідники.СеріїНоменклатури_Const.Номер} AS Назва
-FROM
-    {Довідники.СеріїНоменклатури_Const.TABLE} AS СеріїНоменклатури
-WHERE
-    LOWER(СеріїНоменклатури.{Довідники.СеріїНоменклатури_Const.Номер}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.СеріїНоменклатури;
 						break;
 					}
 				case "ПакуванняНазва":
 					{
-						query = $@"
-SELECT 
-    ПакуванняОдиниціВиміру.uid,
-    ПакуванняОдиниціВиміру.{Довідники.ПакуванняОдиниціВиміру_Const.Назва} AS Назва
-FROM
-    {Довідники.ПакуванняОдиниціВиміру_Const.TABLE} AS ПакуванняОдиниціВиміру
-WHERE
-    LOWER(ПакуванняОдиниціВиміру.{Довідники.ПакуванняОдиниціВиміру_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ПакуванняОдиниціВиміру;
 						break;
 					}
 				case "ВидЦіниНазва":
 					{
-						query = $@"
-SELECT 
-    ВидиЦін.uid,
-    ВидиЦін.{Довідники.ВидиЦін_Const.Назва} AS Назва
-FROM
-    {Довідники.ВидиЦін_Const.TABLE} AS ВидиЦін
-WHERE
-    LOWER(ВидиЦін.{Довідники.ВидиЦін_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ВидиЦін;
 						break;
 					}
 				case "ЗамовленняКлієнтаНазва":
 					{
-						query = $@"
-SELECT 
-    ЗамовленняКлієнта.uid,
-    ЗамовленняКлієнта.{Документи.ЗамовленняКлієнта_Const.Назва} AS Назва
-FROM
-    {Документи.ЗамовленняКлієнта_Const.TABLE} AS ЗамовленняКлієнта
-WHERE
-    LOWER(ЗамовленняКлієнта.{Документи.ЗамовленняКлієнта_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.ЗамовленняКлієнта;
 						break;
 					}
 				case "РахунокФактураНазва":
 					{
-						query = $@"
-SELECT 
-    РахунокФактура.uid,
-    РахунокФактура.{Документи.РахунокФактура_Const.Назва} AS Назва
-FROM
-    {Документи.РахунокФактура_Const.TABLE} AS РахунокФактура
-WHERE
-    LOWER(РахунокФактура.{Документи.РахунокФактура_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.РахунокФактура;
 						break;
 					}
 				case "СкладНазва":
 					{
-						query = $@"
-SELECT 
-    Склади.uid,
-    Склади.{Довідники.Склади_Const.Назва} AS Назва
-FROM
-    {Довідники.Склади_Const.TABLE} AS Склади
-WHERE
-    LOWER(Склади.{Довідники.Склади_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.Склади;
 						break;
 					}
 				default:
 					return;
 			}
 
-			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findMenu.Text, findMenu.Name, запис, FindClick);
+			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findText, findMenu.Name, запис, FindClick);
 		}
 
 		private void FindClick(object sender, EventArgs e)

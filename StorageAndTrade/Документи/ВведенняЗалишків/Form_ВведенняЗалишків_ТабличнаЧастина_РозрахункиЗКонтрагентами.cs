@@ -45,15 +45,7 @@ namespace StorageAndTrade
 
 			RecordsBindingList = new BindingList<Записи>();
 			dataGridViewRecords.DataSource = RecordsBindingList;
-		}
 
-		/// <summary>
-		/// Власне документ якому належить таблична частина
-		/// </summary>
-		public Документи.ВведенняЗалишків_Objest ДокументОбєкт { get; set; }
-
-        private void Form_ВведенняЗалишків_ТабличнаЧастина_РозрахункиЗКонтрагентами_Load(object sender, EventArgs e)
-        {
 			dataGridViewRecords.Columns["ID"].Visible = false;
 
 			dataGridViewRecords.Columns["НомерРядка"].Width = 30;
@@ -71,6 +63,16 @@ namespace StorageAndTrade
 			dataGridViewRecords.Columns["ВалютаНазва"].HeaderText = "Валюта";
 
 			dataGridViewRecords.Columns["Сума"].CellTemplate.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+		}
+
+		/// <summary>
+		/// Власне документ якому належить таблична частина
+		/// </summary>
+		public Документи.ВведенняЗалишків_Objest ДокументОбєкт { get; set; }
+
+        private void Form_ВведенняЗалишків_ТабличнаЧастина_РозрахункиЗКонтрагентами_Load(object sender, EventArgs e)
+        {
+			
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -285,8 +287,10 @@ namespace StorageAndTrade
 
 			ФункціїДляДокументів.ОчиститиМенюПошуку(parent);
 
-			//if (String.IsNullOrWhiteSpace(findMenu.Text))
-			//	return;
+			string findText = findMenu.Text.TrimStart();
+
+			if (String.IsNullOrWhiteSpace(findMenu.Text))
+				findText = "%";
 
 			string query = "";
 
@@ -294,39 +298,19 @@ namespace StorageAndTrade
 			{
 				case "КонтрагентНазва":
 					{
-						query = $@"
-SELECT 
-    Контрагенти.uid,
-    Контрагенти.{Довідники.Контрагенти_Const.Назва} AS Назва
-FROM
-    {Довідники.Контрагенти_Const.TABLE} AS Контрагенти
-WHERE
-    LOWER(Контрагенти.{Довідники.Контрагенти_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.Контрагенти;
 						break;
 					}
 				case "ВалютаНазва":
 					{
-						query = $@"
-SELECT 
-    Валюти.uid,
-    Валюти.{Довідники.Валюти_Const.Назва} AS Назва
-FROM
-    {Довідники.Валюти_Const.TABLE} AS Валюти
-WHERE
-    LOWER(Валюти.{Довідники.Валюти_Const.Назва}) LIKE @like_param
-ORDER BY Назва
-LIMIT 10
-";
+						query = ПошуковіЗапити.Валюти;
 						break;
 					}
 				default:
 					return;
 			}
 
-			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findMenu.Text, findMenu.Name, запис, FindClick);
+			ФункціїДляДокументів.ЗаповнитиМенюПошуку(parent, query, findText, findMenu.Name, запис, FindClick);
 		}
 
 		private void FindClick(object sender, EventArgs e)

@@ -199,6 +199,9 @@ namespace StorageAndTrade
 					return;
 				}
 
+				if (!closeForm)
+					АктВиконанихРобіт_ТабличнаЧастина_Послуги.LoadRecords();
+
 				if (spendDoc)
 					try
 					{
