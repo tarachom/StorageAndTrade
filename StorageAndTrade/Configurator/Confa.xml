@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>26.08.2022 19:02:45</DateTimeSave>
+  <DateTimeSave>29.08.2022 11:59:26</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -1951,6 +1951,22 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>Тип періоду журналів</Desc>
           <Type>enum</Type>
           <Pointer>Перелічення.ТипПеріодуДляЖурналівДокументів</Pointer>
+          <TabularParts />
+        </Constant>
+      </Constants>
+    </ConstantsBlock>
+    <ConstantsBlock>
+      <Name>ПартіїТоварів</Name>
+      <Desc>
+      </Desc>
+      <Constants>
+        <Constant>
+          <Name>МетодСписанняПартій</Name>
+          <NameInTable>col_h4</NameInTable>
+          <Desc>
+          </Desc>
+          <Type>enum</Type>
+          <Pointer>Перелічення.МетодиСписанняПартій</Pointer>
           <TabularParts />
         </Constant>
       </Constants>
@@ -4905,6 +4921,24 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Name>ПоточнийДень</Name>
           <Value>5</Value>
           <Desc>Поточний день</Desc>
+        </Field>
+      </Fields>
+    </Enum>
+    <Enum>
+      <Name>МетодиСписанняПартій</Name>
+      <Desc>
+      </Desc>
+      <SerialNumber>2</SerialNumber>
+      <Fields>
+        <Field>
+          <Name>FIFO</Name>
+          <Value>1</Value>
+          <Desc>FIFO</Desc>
+        </Field>
+        <Field>
+          <Name>LIFO</Name>
+          <Value>2</Value>
+          <Desc>LIFO</Desc>
         </Field>
       </Fields>
     </Enum>

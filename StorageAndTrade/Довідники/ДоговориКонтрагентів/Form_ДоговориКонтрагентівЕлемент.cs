@@ -119,26 +119,9 @@ namespace StorageAndTrade
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(договориКонтрагентів_Objest.Підрозділ.UnigueID);
 						directoryControl_Контрагент.DirectoryPointerItem = new Довідники.Контрагенти_Pointer(договориКонтрагентів_Objest.Контрагент.UnigueID);
 
-						foreach (NameValue<Перелічення.СтатусиДоговорівКонтрагентів> статус in comboBox_Статус.Items)
-							if (статус.Value == договориКонтрагентів_Objest.Статус)
-							{
-								comboBox_Статус.SelectedItem = статус;
-								break;
-							}
-
-						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
-							if (операція.Value == договориКонтрагентів_Objest.ГосподарськаОперація)
-							{
-								comboBox_ГосподарськаОперація.SelectedItem = операція;
-								break;
-							}
-
-						foreach (NameValue<Перелічення.ТипДоговорів> типДоговору in comboBox_ТипДоговору.Items)
-							if (типДоговору.Value == договориКонтрагентів_Objest.ТипДоговору)
-							{
-								comboBox_ТипДоговору.SelectedItem = типДоговору;
-								break;
-							}
+						ComboBoxNameValue<Перелічення.СтатусиДоговорівКонтрагентів>.SelectItem(comboBox_Статус, договориКонтрагентів_Objest.Статус);
+						ComboBoxNameValue<Перелічення.ГосподарськіОперації>.SelectItem(comboBox_ГосподарськаОперація, договориКонтрагентів_Objest.ГосподарськаОперація);
+						ComboBoxNameValue<Перелічення.ТипДоговорів>.SelectItem(comboBox_ТипДоговору, договориКонтрагентів_Objest.ТипДоговору);
 					}
 					else
 						MessageBox.Show("Error read");

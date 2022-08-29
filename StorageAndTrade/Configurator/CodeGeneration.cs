@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 26.08.2022 19:02:45
+ * Дата конфігурації: 29.08.2022 11:59:26
  *
  */
 
@@ -50,6 +50,7 @@ namespace StorageAndTrade_1_0
             Константи.НумераціяДокументів.ReadAll();
             Константи.НумераціяДовідників.ReadAll();
             Константи.ЖурналиДокументів.ReadAll();
+            Константи.ПартіїТоварів.ReadAll();
             
         }
     }
@@ -3366,6 +3367,42 @@ namespace StorageAndTrade_1_0.Константи
             {
                 m_ОсновнийТипПеріоду_Const = value;
                 Config.Kernel.DataBase.SaveConstants("tab_constants", "col_h3", (int)m_ОсновнийТипПеріоду_Const);
+            }
+        }
+             
+    }
+    #endregion
+    
+	#region CONSTANTS BLOCK "ПартіїТоварів"
+    public static class ПартіїТоварів
+    {
+        public static void ReadAll()
+        {
+            
+            Dictionary<string, object> fieldValue = new Dictionary<string, object>();
+            bool IsSelect = Config.Kernel.DataBase.SelectAllConstants("tab_constants",
+                 new string[] { "col_h4" }, fieldValue);
+            
+            if (IsSelect)
+            {
+                m_МетодСписанняПартій_Const = (fieldValue["col_h4"] != DBNull.Value) ? (Перелічення.МетодиСписанняПартій)fieldValue["col_h4"] : 0;
+                
+            }
+			
+        }
+        
+        
+        static Перелічення.МетодиСписанняПартій m_МетодСписанняПартій_Const = 0;
+        public static Перелічення.МетодиСписанняПартій МетодСписанняПартій_Const
+        {
+            get 
+            {
+                return m_МетодСписанняПартій_Const;
+            }
+            set
+            {
+                m_МетодСписанняПартій_Const = value;
+                Config.Kernel.DataBase.SaveConstants("tab_constants", "col_h4", (int)m_МетодСписанняПартій_Const);
             }
         }
              
@@ -9215,6 +9252,15 @@ namespace StorageAndTrade_1_0.Перелічення
          ЗПочаткуМісяця = 3,
          ЗПочаткуТижня = 4,
          ПоточнийДень = 5
+    }
+    #endregion
+    
+    #region ENUM "МетодиСписанняПартій"
+    
+    public enum МетодиСписанняПартій
+    {
+         FIFO = 1,
+         LIFO = 2
     }
     #endregion
     

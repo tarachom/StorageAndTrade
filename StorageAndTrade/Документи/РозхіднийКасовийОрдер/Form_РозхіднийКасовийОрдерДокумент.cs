@@ -166,12 +166,7 @@ namespace StorageAndTrade
 						textBox_СумаДокументу.Text = розхіднийКасовийОрдер_Objest.СумаДокументу.ToString();
 						textBox_Коментар.Text = розхіднийКасовийОрдер_Objest.Коментар;
 
-						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
-							if (операція.Value == розхіднийКасовийОрдер_Objest.ГосподарськаОперація)
-							{
-								comboBox_ГосподарськаОперація.SelectedItem = операція;
-								break;
-							}
+						ComboBoxNameValue<Перелічення.ГосподарськіОперації>.SelectItem(comboBox_ГосподарськаОперація, розхіднийКасовийОрдер_Objest.ГосподарськаОперація);
 					}
 					else
 						MessageBox.Show("Error read");

@@ -162,12 +162,7 @@ namespace StorageAndTrade
 						directoryControl_Підрозділ.DirectoryPointerItem = new Довідники.СтруктураПідприємства_Pointer(реалізаціяТоварівТаПослуг_Objest.Підрозділ.UnigueID);
 						textBox_Коментар.Text = реалізаціяТоварівТаПослуг_Objest.Коментар;
 
-						foreach (NameValue<Перелічення.ГосподарськіОперації> операція in comboBox_ГосподарськаОперація.Items)
-							if (операція.Value == реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація)
-							{
-								comboBox_ГосподарськаОперація.SelectedItem = операція;
-								break;
-							}
+						ComboBoxNameValue<Перелічення.ГосподарськіОперації>.SelectItem(comboBox_ГосподарськаОперація, реалізаціяТоварівТаПослуг_Objest.ГосподарськаОперація);
 
 						РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари.LoadRecords();
 					}

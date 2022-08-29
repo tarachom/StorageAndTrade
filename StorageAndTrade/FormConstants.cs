@@ -51,6 +51,13 @@ namespace StorageAndTrade
                 comboBox_ТипПеріодуДляЖурналівДокументів.Items.Add(
                     new NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>(field.Desc, (Перелічення.ТипПеріодуДляЖурналівДокументів)field.Value));
 
+            ConfigurationEnums МетодиСписанняПартій = Конфа.Config.Kernel.Conf.Enums["МетодиСписанняПартій"];
+
+            foreach (ConfigurationEnumField field in МетодиСписанняПартій.Fields.Values)
+                comboBox_МетодиСписанняПартій.Items.Add(
+                    new NameValue<Перелічення.МетодиСписанняПартій>(field.Desc, (Перелічення.МетодиСписанняПартій)field.Value));
+
+
             //
             //
             //
@@ -81,12 +88,8 @@ namespace StorageAndTrade
             directoryControl_БанківськийРахунок.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийБанківськийРахунок_Const;
             directoryControl_ВидЦіни.DirectoryPointerItem = Константи.ЗначенняЗаЗамовчуванням.ОсновнийВидЦіни_Const;
 
-            foreach (NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів> ТипПеріоду in comboBox_ТипПеріодуДляЖурналівДокументів.Items)
-                if (ТипПеріоду.Value == Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const)
-                {
-                    comboBox_ТипПеріодуДляЖурналівДокументів.SelectedItem = ТипПеріоду;
-                    break;
-                }
+            ComboBoxNameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>.SelectItem(comboBox_ТипПеріодуДляЖурналівДокументів, Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const);
+            ComboBoxNameValue<Перелічення.МетодиСписанняПартій>.SelectItem(comboBox_МетодиСписанняПартій, Константи.ПартіїТоварів.МетодСписанняПартій_Const);
         }
 
         void Save()
@@ -104,6 +107,9 @@ namespace StorageAndTrade
 
             if (comboBox_ТипПеріодуДляЖурналівДокументів.SelectedIndex >= 0)
                 Константи.ЖурналиДокументів.ОсновнийТипПеріоду_Const = ((NameValue<Перелічення.ТипПеріодуДляЖурналівДокументів>)comboBox_ТипПеріодуДляЖурналівДокументів.SelectedItem).Value;
+
+            if (comboBox_МетодиСписанняПартій.SelectedIndex >= 0)
+                Константи.ПартіїТоварів.МетодСписанняПартій_Const = ((NameValue<Перелічення.МетодиСписанняПартій>)comboBox_МетодиСписанняПартій.SelectedItem).Value;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

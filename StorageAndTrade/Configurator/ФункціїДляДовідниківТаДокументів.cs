@@ -58,8 +58,29 @@ namespace StorageAndTrade
         public int LastCountRow;
     }
 
+    /// <summary>
+    /// Виділити елемент в списку ComboBox який складається з елементів NameValue<T> 
+    /// В основному використовується для виводу перелічення
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public static class ComboBoxNameValue<T>
+    {
+        public static void SelectItem(ComboBox comboBox, T value)
+        {
+            foreach (NameValue<T> Item in comboBox.Items)
+            {
+                if (Item.Equals(value))
+                {
+                    comboBox.SelectedItem = Item;
+                    break;
+                }
+            }
+        }
+    }
+
     class ФункціїДляДовідниківТаДокументів
     {
+
         #region DataGridView
 
         public static void ВиділитиЕлементСписку(DataGridView gridView, string columnName, string rowValue)
