@@ -95,6 +95,7 @@ namespace StorageAndTrade
 			RecordsBindingList.Clear();
 
 			Query querySelect = ДокументОбєкт.Товари_TablePart.QuerySelect;
+			querySelect.Clear();
 
 			//JOIN 1
 			querySelect.FieldAndAlias.Add(
