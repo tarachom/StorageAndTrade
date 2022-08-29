@@ -45,6 +45,7 @@ namespace StorageAndTrade
             this.directoryControl_Організація = new StorageAndTrade.DirectoryControl();
             this.directoryControl_Валюти = new StorageAndTrade.DirectoryControl();
             this.button_Documents = new System.Windows.Forms.Button();
+            this.directoryAnyControl1 = new StorageAndTrade.DirectoryAnyControl();
             this.SuspendLayout();
             // 
             // dateTimeStart
@@ -113,6 +114,7 @@ namespace StorageAndTrade
             this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.geckoWebBrowser.FrameEventsPropagateToMainWindow = false;
             this.geckoWebBrowser.Location = new System.Drawing.Point(1, 217);
             this.geckoWebBrowser.Name = "geckoWebBrowser";
             this.geckoWebBrowser.Size = new System.Drawing.Size(797, 357);
@@ -151,9 +153,12 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Каса.AfterSelectFunc = null;
             this.directoryControl_Каса.BeforeClickOpenFunc = null;
+            this.directoryControl_Каса.BeforeFindFunc = null;
+            this.directoryControl_Каса.Bind = null;
             this.directoryControl_Каса.DirectoryPointerItem = null;
             this.directoryControl_Каса.Location = new System.Drawing.Point(115, 88);
             this.directoryControl_Каса.Name = "directoryControl_Каса";
+            this.directoryControl_Каса.QueryFind = null;
             this.directoryControl_Каса.SelectForm = null;
             this.directoryControl_Каса.Size = new System.Drawing.Size(402, 27);
             this.directoryControl_Каса.TabIndex = 74;
@@ -162,9 +167,12 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Організація.AfterSelectFunc = null;
             this.directoryControl_Організація.BeforeClickOpenFunc = null;
+            this.directoryControl_Організація.BeforeFindFunc = null;
+            this.directoryControl_Організація.Bind = null;
             this.directoryControl_Організація.DirectoryPointerItem = null;
             this.directoryControl_Організація.Location = new System.Drawing.Point(115, 55);
             this.directoryControl_Організація.Name = "directoryControl_Організація";
+            this.directoryControl_Організація.QueryFind = null;
             this.directoryControl_Організація.SelectForm = null;
             this.directoryControl_Організація.Size = new System.Drawing.Size(402, 27);
             this.directoryControl_Організація.TabIndex = 72;
@@ -173,9 +181,12 @@ namespace StorageAndTrade
             // 
             this.directoryControl_Валюти.AfterSelectFunc = null;
             this.directoryControl_Валюти.BeforeClickOpenFunc = null;
+            this.directoryControl_Валюти.BeforeFindFunc = null;
+            this.directoryControl_Валюти.Bind = null;
             this.directoryControl_Валюти.DirectoryPointerItem = null;
             this.directoryControl_Валюти.Location = new System.Drawing.Point(115, 121);
             this.directoryControl_Валюти.Name = "directoryControl_Валюти";
+            this.directoryControl_Валюти.QueryFind = null;
             this.directoryControl_Валюти.SelectForm = null;
             this.directoryControl_Валюти.Size = new System.Drawing.Size(402, 27);
             this.directoryControl_Валюти.TabIndex = 61;
@@ -190,11 +201,21 @@ namespace StorageAndTrade
             this.button_Documents.UseVisualStyleBackColor = true;
             this.button_Documents.Click += new System.EventHandler(this.button_Documents_Click);
             // 
+            // directoryAnyControl1
+            // 
+            this.directoryAnyControl1.Location = new System.Drawing.Point(544, 24);
+            this.directoryAnyControl1.Name = "directoryAnyControl1";
+            this.directoryAnyControl1.QueryFind = null;
+            this.directoryAnyControl1.SelectForm = null;
+            this.directoryAnyControl1.Size = new System.Drawing.Size(242, 124);
+            this.directoryAnyControl1.TabIndex = 78;
+            // 
             // Form_РухКоштів_Звіт
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(799, 575);
+            this.Controls.Add(this.directoryAnyControl1);
             this.Controls.Add(this.button_Documents);
             this.Controls.Add(this.button_Report);
             this.Controls.Add(this.label6);
@@ -236,5 +257,6 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_Каса;
         private System.Windows.Forms.Button button_Report;
         private System.Windows.Forms.Button button_Documents;
+        private DirectoryAnyControl directoryAnyControl1;
     }
 }

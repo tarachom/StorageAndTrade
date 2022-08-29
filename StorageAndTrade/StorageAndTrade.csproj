@@ -160,6 +160,12 @@
     <Compile Include="Configurator\Service.cs" />
     <Compile Include="Configurator\SpendTheDocument.cs" />
     <Compile Include="Configurator\ФункціїДляДовідниківТаДокументів.cs" />
+    <Compile Include="DirectoryAnyControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DirectoryAnyControl.designer.cs">
+      <DependentUpon>DirectoryAnyControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -927,6 +933,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigurationSelectionParam.resx">
       <DependentUpon>ConfigurationSelectionParam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DirectoryAnyControl.resx">
+      <DependentUpon>DirectoryAnyControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DocumentControl.resx">
       <DependentUpon>DocumentControl.cs</DependentUpon>
