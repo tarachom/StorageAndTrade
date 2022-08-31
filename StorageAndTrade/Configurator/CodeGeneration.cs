@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 29.08.2022 15:16:52
+ * Дата конфігурації: 30.08.2022 14:44:50
  *
  */
 
@@ -1787,7 +1787,7 @@ namespace StorageAndTrade_1_0.Константи
         public class ЗамовленняПостачальникам_День_TablePart : ConstantsTablePart
         {
             public ЗамовленняПостачальникам_День_TablePart() : base(Config.Kernel, "tab_a66",
-                 new string[] { "col_b1", "col_a2", "col_a3", "col_a4", "col_a5", "col_a6" }) 
+                 new string[] { "col_b1", "col_a2", "col_a3", "col_a4", "col_a5" }) 
             {
                 Records = new List<Record>();
             }
@@ -1799,7 +1799,6 @@ namespace StorageAndTrade_1_0.Константи
             public const string ХарактеристикаНоменклатури = "col_a3";
             public const string Склад = "col_a4";
             public const string Замовлено = "col_a5";
-            public const string Сума = "col_a6";
             public List<Record> Records { get; set; }
         
             public void Read()
@@ -1817,7 +1816,6 @@ namespace StorageAndTrade_1_0.Константи
                     record.ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(fieldValue["col_a3"]);
                     record.Склад = new Довідники.Склади_Pointer(fieldValue["col_a4"]);
                     record.Замовлено = (fieldValue["col_a5"] != DBNull.Value) ? (decimal)fieldValue["col_a5"] : 0;
-                    record.Сума = (fieldValue["col_a6"] != DBNull.Value) ? (decimal)fieldValue["col_a6"] : 0;
                     
                     Records.Add(record);
                 }
@@ -1841,7 +1839,6 @@ namespace StorageAndTrade_1_0.Константи
                     fieldValue.Add("col_a3", record.ХарактеристикаНоменклатури.UnigueID.UGuid);
                     fieldValue.Add("col_a4", record.Склад.UnigueID.UGuid);
                     fieldValue.Add("col_a5", record.Замовлено);
-                    fieldValue.Add("col_a6", record.Сума);
                     
                     base.BaseSave(record.UID, fieldValue);
                 }
@@ -1863,7 +1860,6 @@ namespace StorageAndTrade_1_0.Константи
                     ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
                     Склад = new Довідники.Склади_Pointer();
                     Замовлено = 0;
-                    Сума = 0;
                     
                 }
                 public DateTime Період { get; set; }
@@ -1871,7 +1867,6 @@ namespace StorageAndTrade_1_0.Константи
                 public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
                 public Довідники.Склади_Pointer Склад { get; set; }
                 public decimal Замовлено { get; set; }
-                public decimal Сума { get; set; }
                 
             }            
         }

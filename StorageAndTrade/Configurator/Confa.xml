@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>29.08.2022 15:16:52</DateTimeSave>
+  <DateTimeSave>30.08.2022 14:44:50</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -290,7 +290,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <NameInTable>col_a1</NameInTable>
                   <Type>string</Type>
                   <Desc>Регістр</Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Місяць</Name>
@@ -298,14 +298,14 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Type>date</Type>
                   <Desc>Дата типу 01.05.2022
 Використовується місяць та рік</Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Актуально</Name>
                   <NameInTable>col_a3</NameInTable>
                   <Type>boolean</Type>
                   <Desc>Залишки обчислені та актуальні</Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ДатаОстанньогоОбчислення</Name>
@@ -407,7 +407,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -416,7 +416,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -425,7 +425,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Замовлено</Name>
@@ -465,7 +465,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -474,7 +474,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -483,7 +483,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Замовлено</Name>
@@ -532,7 +532,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -541,7 +541,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -550,7 +550,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Серія</Name>
@@ -559,7 +559,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.СеріїНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ВНаявності</Name>
@@ -599,7 +599,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -608,7 +608,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -617,7 +617,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Серія</Name>
@@ -626,7 +626,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.СеріїНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ВНаявності</Name>
@@ -725,7 +725,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Контрагент</Name>
@@ -734,7 +734,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Сума</Name>
@@ -766,7 +766,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Контрагент</Name>
@@ -775,7 +775,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Сума</Name>
@@ -815,7 +815,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Контрагент</Name>
@@ -824,7 +824,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Сума</Name>
@@ -856,7 +856,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Контрагент</Name>
@@ -865,7 +865,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Сума</Name>
@@ -905,7 +905,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -914,7 +914,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -923,7 +923,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Замовлено</Name>
@@ -955,7 +955,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -964,7 +964,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -973,19 +973,11 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Замовлено</Name>
                   <NameInTable>col_a5</NameInTable>
-                  <Type>numeric</Type>
-                  <Desc>
-                  </Desc>
-                  <IsIndex>0</IsIndex>
-                </Field>
-                <Field>
-                  <Name>Сума</Name>
-                  <NameInTable>col_a6</NameInTable>
                   <Type>numeric</Type>
                   <Desc>
                   </Desc>
@@ -1021,7 +1013,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -1030,7 +1022,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -1039,7 +1031,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ВНаявності</Name>
@@ -1087,7 +1079,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -1096,7 +1088,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -1105,7 +1097,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ВНаявності</Name>
@@ -1154,7 +1146,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Організація</Name>
@@ -1163,7 +1155,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Організації</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Каса</Name>
@@ -1172,7 +1164,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Каси</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Валюта</Name>
@@ -1181,7 +1173,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Сума</Name>
@@ -1205,7 +1197,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Організація</Name>
@@ -1214,7 +1206,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Організації</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Каса</Name>
@@ -1223,7 +1215,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Каси</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Валюта</Name>
@@ -1232,7 +1224,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Валюти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Сума</Name>
@@ -1265,7 +1257,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Організація</Name>
@@ -1274,7 +1266,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Організації</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -1283,7 +1275,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Контрагент</Name>
@@ -1292,7 +1284,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Договір</Name>
@@ -1301,7 +1293,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Кількість</Name>
@@ -1341,7 +1333,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Type>date</Type>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Організація</Name>
@@ -1350,7 +1342,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Організації</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -1359,7 +1351,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Контрагент</Name>
@@ -1368,7 +1360,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Контрагенти</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Договір</Name>
@@ -1377,7 +1369,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Кількість</Name>
@@ -1435,7 +1427,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Організації</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ПартіяТоварівКомпозит</Name>
@@ -1444,7 +1436,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Номенклатура</Name>
@@ -1453,7 +1445,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -1462,7 +1454,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Серія</Name>
@@ -1471,7 +1463,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.СеріїНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -1480,7 +1472,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Кількість</Name>
@@ -1521,7 +1513,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Організації</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ПартіяТоварівКомпозит</Name>
@@ -1530,7 +1522,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Номенклатура</Name>
@@ -1539,7 +1531,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Номенклатура</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>ХарактеристикаНоменклатури</Name>
@@ -1548,7 +1540,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Серія</Name>
@@ -1557,7 +1549,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.СеріїНоменклатури</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Склад</Name>
@@ -1566,7 +1558,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
                   <Pointer>Довідники.Склади</Pointer>
                   <Desc>
                   </Desc>
-                  <IsIndex>0</IsIndex>
+                  <IsIndex>1</IsIndex>
                 </Field>
                 <Field>
                   <Name>Кількість</Name>
@@ -9296,7 +9288,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -9305,7 +9297,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>Організація</Name>
@@ -9517,7 +9509,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>ДатаДок</Name>
@@ -9526,7 +9518,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Desc>
           </Desc>
           <IsPresentation>0</IsPresentation>
-          <IsIndex>0</IsIndex>
+          <IsIndex>1</IsIndex>
         </Field>
         <Field>
           <Name>Контрагент</Name>
@@ -9879,7 +9871,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -9924,7 +9916,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -9933,7 +9925,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -9942,7 +9934,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Серія</Name>
@@ -9951,7 +9943,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.СеріїНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10004,7 +9996,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Організації</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Номенклатура</Name>
@@ -10013,7 +10005,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -10022,7 +10014,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10058,7 +10050,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -10067,7 +10059,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10076,7 +10068,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10111,7 +10103,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Документи.ЗамовленняКлієнта</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Номенклатура</Name>
@@ -10120,7 +10112,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -10129,7 +10121,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10138,7 +10130,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10185,7 +10177,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Контрагент</Name>
@@ -10194,7 +10186,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Контрагенти</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10236,7 +10228,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Організації</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10245,7 +10237,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Контрагент</Name>
@@ -10254,7 +10246,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Контрагенти</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Договір</Name>
@@ -10263,7 +10255,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10315,7 +10307,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -10324,7 +10316,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10333,7 +10325,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10404,7 +10396,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Документи.ЗамовленняПостачальнику</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Номенклатура</Name>
@@ -10413,7 +10405,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -10422,7 +10414,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10431,7 +10423,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10470,7 +10462,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Контрагенти</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Валюта</Name>
@@ -10479,7 +10471,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10520,7 +10512,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -10529,7 +10521,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10538,7 +10530,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10574,7 +10566,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Організації</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Каса</Name>
@@ -10583,7 +10575,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Каси</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Валюта</Name>
@@ -10592,7 +10584,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Валюти</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10641,7 +10633,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ПартіяТоварівКомпозит</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Номенклатура</Name>
@@ -10677,7 +10669,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10738,7 +10730,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Номенклатура</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ХарактеристикаНоменклатури</Name>
@@ -10747,7 +10739,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10756,7 +10748,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>
@@ -10799,7 +10791,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ПродажіДокументКомпозит</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ТипЗапасів</Name>
@@ -10808,7 +10800,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Перелічення.ТипЗапасів</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ВидЗапасів</Name>
@@ -10817,7 +10809,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ВидиЗапасів</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Склад</Name>
@@ -10826,7 +10818,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.Склади</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Договір</Name>
@@ -10835,7 +10827,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.ДоговориКонтрагентів</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>ГосподарськаОперація</Name>
@@ -10844,7 +10836,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Перелічення.ГосподарськіОперації</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>АналітикаНоменклатуриКомпозит</Name>
@@ -10853,7 +10845,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.АналітикаНоменклатуриКомпозит</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>АналітикаКонтрагентівКомпозит</Name>
@@ -10862,7 +10854,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.АналітикаКонтрагентівКомпозит</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
           <Field>
             <Name>Підрозділ</Name>
@@ -10871,7 +10863,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Pointer>Довідники.СтруктураПідприємства</Pointer>
             <Desc>
             </Desc>
-            <IsIndex>0</IsIndex>
+            <IsIndex>1</IsIndex>
           </Field>
         </Fields>
       </DimensionFields>

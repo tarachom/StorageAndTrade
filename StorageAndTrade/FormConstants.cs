@@ -45,6 +45,9 @@ namespace StorageAndTrade
 
         private void FormConstants_Load(object sender, EventArgs e)
         {
+            //Перечитати всі константи
+            Конфа.Config.ReadAllConstants();
+
             ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Конфа.Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
 
             foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
