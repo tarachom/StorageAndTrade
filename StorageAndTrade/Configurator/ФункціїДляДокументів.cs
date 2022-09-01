@@ -28,7 +28,6 @@ limitations under the License.
 Функції для шапки
 Контекстне меню для табличної частини
 
-
 */
 
 using System;

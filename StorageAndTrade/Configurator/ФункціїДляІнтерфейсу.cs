@@ -33,7 +33,6 @@ using System.Windows.Forms;
 
 using AccountingSoftware;
 using StorageAndTrade_1_0;
-using StorageAndTrade_1_0.Константи;
 
 namespace StorageAndTrade
 {

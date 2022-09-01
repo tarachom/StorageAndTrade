@@ -30,14 +30,10 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using AccountingSoftware;
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Константи;
-using StorageAndTrade_1_0.РегістриВідомостей;
 using StorageAndTrade_1_0.РегістриНакопичення;
 
 namespace StorageAndTrade.Service

@@ -28,14 +28,6 @@ limitations under the License.
 
 using System;
 using System.Windows.Forms;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AccountingSoftware;
-using Довідники = StorageAndTrade_1_0.Довідники;
-using Документи = StorageAndTrade_1_0.Документи;
-using Перелічення = StorageAndTrade_1_0.Перелічення;
 
 namespace StorageAndTrade
 {

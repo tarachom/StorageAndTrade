@@ -35,6 +35,10 @@ namespace StorageAndTrade
 {
     class ПошуковіЗапити
     {
+        //
+        // ДОВІДНИКИ
+        //
+
         public static readonly string ФізичніОсоби = $@"
 SELECT 
     uid,

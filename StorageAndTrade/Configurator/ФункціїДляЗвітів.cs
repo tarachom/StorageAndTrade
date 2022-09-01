@@ -22,7 +22,7 @@ limitations under the License.
 */
 
 /*
- 
+
 Модуль функцій для звітів
 
 */
