@@ -138,6 +138,12 @@ namespace StorageAndTrade
 						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1)));
 						break;
 					}
+				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗМинулогоМісяця:
+					{
+						DateTime ДатаМісцьНазад = DateTime.Now.AddMonths(-1);
+						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(ДатаМісцьНазад.Year, ДатаМісцьНазад.Month, 1)));
+						break;
+					}
 				case Перелічення.ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
 					{
 						внутрішнєСпоживанняТоварів_Select.QuerySelect.Where.Add(new Where(Документи.ВнутрішнєСпоживанняТоварів_Const.ДатаДок, Comparison.QT_EQ, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1)));

@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>30.08.2022 14:44:50</DateTimeSave>
+  <DateTimeSave>01.09.2022 16:29:02</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -4882,7 +4882,7 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
       <Name>ТипПеріодуДляЖурналівДокументів</Name>
       <Desc>
       </Desc>
-      <SerialNumber>6</SerialNumber>
+      <SerialNumber>7</SerialNumber>
       <Fields>
         <Field>
           <Name>ВесьПеріод</Name>
@@ -4898,6 +4898,11 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
           <Name>Квартал</Name>
           <Value>6</Value>
           <Desc>Квартал</Desc>
+        </Field>
+        <Field>
+          <Name>ЗМинулогоМісяця</Name>
+          <Value>7</Value>
+          <Desc>З минулого місяця</Desc>
         </Field>
         <Field>
           <Name>ЗПочаткуМісяця</Name>
