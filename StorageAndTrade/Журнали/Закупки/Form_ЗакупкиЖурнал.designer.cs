@@ -32,6 +32,10 @@ namespace StorageAndTrade
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ЗакупкиЖурнал));
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
+            this.ToolStripMenuItem_ЗамовленняПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripButtonEdit = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
@@ -41,10 +45,8 @@ namespace StorageAndTrade
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
-            this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
-            this.ToolStripMenuItem_ЗамовленняПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику = new System.Windows.Forms.ToolStripMenuItem();
+            this.сomboBox_ТипПеріоду = new System.Windows.Forms.ToolStripComboBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -70,12 +72,47 @@ namespace StorageAndTrade
             this.toolStripButtonDelete,
             this.toolStripButtonДрукПроводок,
             this.toolStripButtonClearSpend,
-            this.toolStripButtonSpend});
+            this.toolStripButtonSpend,
+            this.toolStripSeparator1,
+            this.сomboBox_ТипПеріоду});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripDropDownButtonAdd
+            // 
+            this.toolStripDropDownButtonAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItem_ЗамовленняПостачальнику,
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг,
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику});
+            this.toolStripDropDownButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
+            this.toolStripDropDownButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButtonAdd.Name = "toolStripDropDownButtonAdd";
+            this.toolStripDropDownButtonAdd.Size = new System.Drawing.Size(75, 22);
+            this.toolStripDropDownButtonAdd.Text = "Додати";
+            // 
+            // ToolStripMenuItem_ЗамовленняПостачальнику
+            // 
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Name = "ToolStripMenuItem_ЗамовленняПостачальнику";
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Text = "Замовлення постачальнику";
+            this.ToolStripMenuItem_ЗамовленняПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняПостачальнику_Click);
+            // 
+            // ToolStripMenuItem_ПоступленняТоварівТаПослуг
+            // 
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Name = "ToolStripMenuItem_ПоступленняТоварівТаПослуг";
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Text = "Поступлення товарів та послуг";
+            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_ПоступленняТоварівТаПослуг_Click);
+            // 
+            // ToolStripMenuItem_ПоверненняТоварівПостачальнику
+            // 
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Name = "ToolStripMenuItem_ПоверненняТоварівПостачальнику";
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Size = new System.Drawing.Size(271, 22);
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Text = "Повернення товарів постачальнику";
+            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ПоверненняТоварівПостачальнику_Click);
             // 
             // toolStripButtonEdit
             // 
@@ -165,38 +202,17 @@ namespace StorageAndTrade
             this.dataGridViewRecords.TabIndex = 0;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             // 
-            // toolStripDropDownButtonAdd
+            // сomboBox_ТипПеріоду
             // 
-            this.toolStripDropDownButtonAdd.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItem_ЗамовленняПостачальнику,
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг,
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику});
-            this.toolStripDropDownButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
-            this.toolStripDropDownButtonAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButtonAdd.Name = "toolStripDropDownButtonAdd";
-            this.toolStripDropDownButtonAdd.Size = new System.Drawing.Size(75, 22);
-            this.toolStripDropDownButtonAdd.Text = "Додати";
+            this.сomboBox_ТипПеріоду.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.сomboBox_ТипПеріоду.Name = "сomboBox_ТипПеріоду";
+            this.сomboBox_ТипПеріоду.Size = new System.Drawing.Size(121, 25);
+            this.сomboBox_ТипПеріоду.SelectedIndexChanged += new System.EventHandler(this.сomboBox_ТипПеріоду_SelectedIndexChanged);
             // 
-            // ToolStripMenuItem_ЗамовленняПостачальнику
+            // toolStripSeparator1
             // 
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Name = "ToolStripMenuItem_ЗамовленняПостачальнику";
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Text = "Замовлення постачальнику";
-            this.ToolStripMenuItem_ЗамовленняПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняПостачальнику_Click);
-            // 
-            // ToolStripMenuItem_ПоступленняТоварівТаПослуг
-            // 
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Name = "ToolStripMenuItem_ПоступленняТоварівТаПослуг";
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Text = "Поступлення товарів та послуг";
-            this.ToolStripMenuItem_ПоступленняТоварівТаПослуг.Click += new System.EventHandler(this.ToolStripMenuItem_ПоступленняТоварівТаПослуг_Click);
-            // 
-            // ToolStripMenuItem_ПоверненняТоварівПостачальнику
-            // 
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Name = "ToolStripMenuItem_ПоверненняТоварівПостачальнику";
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Size = new System.Drawing.Size(271, 22);
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Text = "Повернення товарів постачальнику";
-            this.ToolStripMenuItem_ПоверненняТоварівПостачальнику.Click += new System.EventHandler(this.ToolStripMenuItem_ПоверненняТоварівПостачальнику_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // Form_ЗакупкиЖурнал
             // 
@@ -237,5 +253,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ЗамовленняПостачальнику;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ПоступленняТоварівТаПослуг;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ПоверненняТоварівПостачальнику;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripComboBox сomboBox_ТипПеріоду;
     }
 }

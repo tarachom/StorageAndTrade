@@ -78,7 +78,19 @@ namespace StorageAndTrade
 
         private void Form_ЗакупкиЖурнал_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+			foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+			{
+				int index = сomboBox_ТипПеріоду.Items.Add(
+					new NameValue<ТипПеріодуДляЖурналівДокументів>(field.Desc, (ТипПеріодуДляЖурналівДокументів)field.Value));
+
+				if ((ТипПеріодуДляЖурналівДокументів)field.Value == ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+					сomboBox_ТипПеріоду.SelectedIndex = index;
+			}
+
+			if (сomboBox_ТипПеріоду.SelectedIndex == -1)
+				сomboBox_ТипПеріоду.SelectedIndex = 0;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -90,6 +102,48 @@ namespace StorageAndTrade
 				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
 
 			RecordsBindingList.Clear();
+
+			ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
+
+			DateTime whereDateTime = DateTime.MinValue;
+
+			switch (ПеріодЖурналу)
+			{
+				case ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
+					{
+						whereDateTime = new DateTime(DateTime.Now.Year, 1, 1);
+						break;
+					}
+				case ТипПеріодуДляЖурналівДокументів.Квартал:
+					{
+						DateTime ДатаТриМісцяНазад = DateTime.Now.AddMonths(-3);
+						whereDateTime = new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1);
+						break;
+					}
+				case ТипПеріодуДляЖурналівДокументів.ЗМинулогоМісяця:
+					{
+						DateTime ДатаМісцьНазад = DateTime.Now.AddMonths(-1);
+						whereDateTime = new DateTime(ДатаМісцьНазад.Year, ДатаМісцьНазад.Month, 1);
+						break;
+					}
+				case ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
+					{
+						whereDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+						break;
+					}
+				case ТипПеріодуДляЖурналівДокументів.ЗПочаткуТижня:
+					{
+						DateTime СімДнівНазад = DateTime.Now.AddDays(-7);
+						whereDateTime = new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day);
+						break;
+					}
+				case ТипПеріодуДляЖурналівДокументів.ПоточнийДень:
+					{
+						whereDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+						break;
+					}
+			}
 
 			string query = $@"
 SELECT
@@ -107,6 +161,8 @@ FROM
 
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
         Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Контрагент}
+
+WHERE Док_ЗамовленняПостачальнику.docdate >= @docdate
 
 UNION
 
@@ -126,6 +182,8 @@ FROM
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
         Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.Контрагент}
 
+WHERE Док_ПоступленняТоварівТаПослуг.docdate >= @docdate
+
 UNION
 
 SELECT
@@ -144,12 +202,15 @@ FROM
     LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
         Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Контрагент}
 
+WHERE Док_ПоверненняТоварівПостачальнику.docdate >= @docdate
+
 ORDER BY ДатаДок
 LIMIT {loadRecordsLimit.Limit}
 OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("docdate", whereDateTime);
 
 			string[] columnsName;
 			List<object[]> listRow;
@@ -558,5 +619,11 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			SpendDocuments(false, "Відмінити проведення?");
 		}
 
+        private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			dataGridViewRecords.Focus();
+
+			LoadRecords();
+		}
     }
 }
