@@ -29,9 +29,9 @@
 							<th width="40%" style="vertical-align:middle">Номенклатура</th>
 							<th width="30%" style="vertical-align:middle">Характеристика</th>
 							<th width="15%" style="vertical-align:middle">Склад</th>
-							<th width="5%" style="text-align:center;vertical-align:middle">В наявності</th>
-							<th width="5%" style="text-align:center;vertical-align:middle">В резерві</th>
-							<th width="5%" style="text-align:center;vertical-align:middle">Під замовлення</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Наявність</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Резерв</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Замовлення</th>
 						</tr>
 
 						<xsl:for-each select="ВільніЗалишки/row">
