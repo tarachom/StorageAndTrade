@@ -19,17 +19,17 @@
 
 				<div class="container-fluid">
 
-					<h4>Залишки коштів</h4>
+					<h4>Рух коштів: залишки</h4>
 					<p>
 						На дату <xsl:value-of select="head/row/КінецьПеріоду"/>
 					</p>
-					
+
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Організація</th>
-							<th>Каса</th>
-							<th>Валюта</th>
-							<th style="text-align:center">Сума</th>
+							<th width="30%" style="vertical-align:middle">Організація</th>
+							<th width="30%" style="vertical-align:middle">Каса</th>
+							<th width="30%" style="vertical-align:middle">Валюта</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">Сума</th>
 						</tr>
 
 						<xsl:for-each select="РухКоштів/row">

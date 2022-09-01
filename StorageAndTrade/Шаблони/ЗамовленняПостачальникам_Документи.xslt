@@ -19,20 +19,20 @@
 
 				<div class="container-fluid">
 
-					<h4>Документи</h4>
+					<h4>Замовлення постачальникам: документи</h4>
 					<p>
 						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
 					</p>
 
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Документ</th>
-							<th>Замовлення</th>
-							<th>Номенклатура</th>
-							<th>Характеристика</th>
-							<th>Склад</th>
-							<th></th>
-							<th style="text-align:center">Замовлено</th>
+							<th width="30%" style="vertical-align:middle">Документ</th>
+							<th width="25%" style="vertical-align:middle">Замовлення</th>
+							<th width="15%" style="vertical-align:middle">Номенклатура</th>
+							<th width="15%" style="vertical-align:middle">Характеристика</th>
+							<th width="9%" style="vertical-align:middle">Склад</th>
+							<th width="1%" style="vertical-align:middle">...</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Замовлено</th>
 						</tr>
 
 						<xsl:for-each select="Документи/row">

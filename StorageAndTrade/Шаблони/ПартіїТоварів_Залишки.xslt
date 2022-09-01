@@ -26,14 +26,14 @@
 					
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Організація</th>
-							<th>ПартіяТоварівКомпозит</th>
-							<th>Номенклатура</th>
-							<th>Характеристика</th>
-							<th>Серія</th>
-							<th>Склад</th>
-							<th style="text-align:center">Кількість</th>
-							<th style="text-align:center">Собівартість</th>
+							<th width="10%" style="vertical-align:middle">Організація</th>
+							<th width="25%" style="vertical-align:middle">Партія товарів</th>
+							<th width="15%" style="vertical-align:middle">Номенклатура</th>
+							<th width="15%" style="vertical-align:middle">Характеристика</th>
+							<th width="10%" style="vertical-align:middle">Серія</th>
+							<th width="15%" style="vertical-align:middle">Склад</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Кількість</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Собівартість</th>
 						</tr>
 
 						<xsl:for-each select="ПартіїТоварів/row">

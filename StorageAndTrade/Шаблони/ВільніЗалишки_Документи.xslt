@@ -19,21 +19,21 @@
 
 				<div class="container-fluid">
 
-					<h4>Документи</h4>
+					<h4>Вільні залишки: документи</h4>
 					<p>
 						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
 					</p>
 
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Документ</th>
-							<th>Номенклатура</th>
-							<th>Характеристика</th>
-							<th>Склад</th>
-							<th></th>
-							<th style="text-align:center">ВНаявності</th>
-							<th style="text-align:center">ВРезервіЗіСкладу</th>
-							<th style="text-align:center">ВРезервіПідЗамовлення</th>
+							<th width="25%" style="vertical-align:middle">Документ</th>
+							<th width="24%" style="vertical-align:middle">Номенклатура</th>
+							<th width="20%" style="vertical-align:middle">Характеристика</th>
+							<th width="15%" style="vertical-align:middle">Склад</th>
+							<th width="1%" style="vertical-align:middle">...</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">В наявності</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">В резерві</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Під замовлення</th>
 						</tr>
 
 						<xsl:for-each select="Документи/row">

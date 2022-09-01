@@ -26,11 +26,11 @@
 
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Номенклатура</th>
-							<th>Характеристика</th>
-							<th>Склад</th>
-							<th style="text-align:center">Замовлено</th>
-							<th style="text-align:center">Сума</th>
+							<th width="40%" style="vertical-align:middle">Номенклатура</th>
+							<th width="30%" style="vertical-align:middle">Характеристика</th>
+							<th width="20%" style="vertical-align:middle">Склад</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Замовлено</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Сума</th>
 						</tr>
 
 						<xsl:for-each select="ЗамовленняКлієнтів/row">

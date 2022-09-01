@@ -27,10 +27,10 @@
 					
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Характеристика</th>
-							<th>Склад</th>
-							<th>Серія</th>
-							<th style="text-align:center">В наявності</th>
+							<th width="40%" style="vertical-align:middle">Характеристика</th>
+							<th width="30%" style="vertical-align:middle">Склад</th>
+							<th width="20%" style="vertical-align:middle">Серія</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">В наявності</th>
 						</tr>
 
 						<xsl:for-each select="ТовариНаСкладах/row">

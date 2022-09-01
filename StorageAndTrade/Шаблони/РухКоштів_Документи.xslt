@@ -23,15 +23,15 @@
 					<p>
 						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
 					</p>
-					
+
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Документ</th>
-							<th>Організація</th>
-							<th>Каса</th>
-							<th>Валюта</th>
-							<th></th>
-							<th style="text-align:center">Сума</th>
+							<th width="30%" style="vertical-align:middle">Документ</th>
+							<th width="20%" style="vertical-align:middle">Організація</th>
+							<th width="20%" style="vertical-align:middle">Каса</th>
+							<th width="19%" style="vertical-align:middle">Валюта</th>
+							<th width="1%" style="vertical-align:middle">...</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">Сума</th>
 						</tr>
 
 						<xsl:for-each select="Документи/row">

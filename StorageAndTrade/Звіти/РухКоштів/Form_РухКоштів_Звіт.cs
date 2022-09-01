@@ -62,8 +62,6 @@ namespace StorageAndTrade
             dateTimeStart.Value = DateTime.Parse($"01.{DateTime.Now.Month}.{DateTime.Now.Year}");
 
             geckoWebBrowser.DomClick += GeckoWebBrowser.DomClick;
-
-            directoryAnyControl1.Init(new Form_Номенклатура(), new Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
         }
 
         private void buttonCreate_Click(object sender, EventArgs e)

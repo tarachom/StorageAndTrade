@@ -19,19 +19,19 @@
 
 				<div class="container-fluid">
 
-					<h4>Залишки та обороти</h4>
+					<h4>Розрахунки з клієнтами: залишки та обороти</h4>
 					<p>
 						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
 					</p>
 
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Контрагент</th>
-							<th>Валюта</th>
-							<th style="text-align:center">На початок</th>
-							<th style="text-align:center">Прихід</th>
-							<th style="text-align:center">Розхід</th>
-							<th style="text-align:center">На кінець</th>
+							<th width="40%" style="vertical-align:middle">Контрагент</th>
+							<th width="20%" style="vertical-align:middle">Валюта</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">На початок</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">Прихід</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">Розхід</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">На кінець</th>
 						</tr>
 
 						<xsl:for-each select="ЗалишкиТаОбороти/row">

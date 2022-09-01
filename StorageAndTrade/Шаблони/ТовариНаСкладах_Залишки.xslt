@@ -19,19 +19,18 @@
 
 				<div class="container-fluid">
 
-					<h4>Залишки товарів на складах</h4>
+					<h4>Товари на складах: залишки</h4>
 					<p>
 						На дату <xsl:value-of select="head/row/КінецьПеріоду"/>
 					</p>
-					
+
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Номенклатура</th>
-							<th>Характеристика</th>
-							<th>Склад</th>
-							<th>Серія</th>
-							<th style="text-align:center">В наявності</th>
-							<th style="text-align:center">До відвантаження</th>
+							<th width="30%" style="vertical-align:middle">Номенклатура</th>
+							<th width="20%" style="vertical-align:middle">Характеристика</th>
+							<th width="20%" style="vertical-align:middle">Склад</th>
+							<th width="10%" style="vertical-align:middle">Серія</th>
+							<th width="10%" style="text-align:center;vertical-align:middle">В наявності</th>
 						</tr>
 
 						<xsl:for-each select="ТовариНаСкладах/row">
@@ -58,9 +57,6 @@
 								</td>
 								<td align="right">
 									<xsl:value-of select="ВНаявності"/>
-								</td>
-								<td align="right">
-									<xsl:value-of select="ДоВідвантаження"/>
 								</td>
 							</tr>
 						</xsl:for-each>

@@ -19,23 +19,23 @@
 
 				<div class="container-fluid">
 
-					<h4>Документи</h4>
+					<h4>Партії товарів: документи</h4>
 					<p>
 						Період з <xsl:value-of select="head/row/ПочатокПеріоду"/> по <xsl:value-of select="head/row/КінецьПеріоду"/>
 					</p>
 
 					<table class="table table-bordered table-sm table-hover">
 						<tr class="table-success">
-							<th>Документ</th>
-							<th>Організація</th>
-							<th>ПартіяТоварівКомпозит</th>
-							<th>Номенклатура</th>
-							<th>Характеристика</th>
-							<th>Серія</th>
-							<th>Склад</th>
-							<th></th>
-							<th style="text-align:center">Кількість</th>
-							<th style="text-align:center">Собівартість</th>
+							<th width="20%" style="vertical-align:middle">Документ</th>
+							<th width="10%" style="vertical-align:middle">Організація</th>
+							<th width="20%" style="vertical-align:middle">Партія товарів</th>
+							<th width="10%" style="vertical-align:middle">Номенклатура</th>
+							<th width="10%" style="vertical-align:middle">Характеристика</th>
+							<th width="10%" style="vertical-align:middle">Серія</th>
+							<th width="9%" style="vertical-align:middle">Склад</th>
+							<th width="1%" style="vertical-align:middle">...</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Кількість</th>
+							<th width="5%" style="text-align:center;vertical-align:middle">Собівартість</th>
 						</tr>
 
 						<xsl:for-each select="Документи/row">

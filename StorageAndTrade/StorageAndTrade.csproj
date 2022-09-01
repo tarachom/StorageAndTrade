@@ -69,7 +69,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>form.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\form.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -1422,10 +1422,10 @@
     <None Include="Resources\Icojam-Blue-Bits-Document-photo.ico" />
     <None Include="Resources\Document-checkbox.ico" />
     <None Include="Resources\Document-photo.ico" />
-    <Content Include="form.ico" />
+    <Content Include="Resources\form.ico" />
     <Content Include="Style\bootstrap.min.css" />
     <Content Include="Trash\Service.txt" />
-    <Content Include="Шаблони\ВідомістьПоТоварахНаСкладах.xslt" />
+    <Content Include="Звіти\old\ВідомістьПоТоварахНаСкладах\ВідомістьПоТоварахНаСкладах.xslt" />
     <Content Include="Шаблони\ВільніЗалишки_Залишки.xslt" />
     <Content Include="Шаблони\ВільніЗалишки_Документи.xslt">
       <SubType>Designer</SubType>
