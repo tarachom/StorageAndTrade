@@ -37,7 +37,7 @@ using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриВідомостей;
 using StorageAndTrade_1_0.РегістриНакопичення;
 
-namespace StorageAndTrade_1_0.Звіти
+namespace StorageAndTrade
 {
     /// <summary>
     /// Рух документу по регістрах
@@ -335,7 +335,7 @@ namespace StorageAndTrade_1_0.Звіти
                     }
             }
 
-            Функції.DataToXML(xmlDoc, "Заголовок", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "Заголовок", columnsName, listRow);
         }
 
         /// <summary>
@@ -344,7 +344,7 @@ namespace StorageAndTrade_1_0.Звіти
         /// <param name="ДокументВказівник">Документ для якого формується звіт</param>
         public static void PrintRecords(DocumentPointer ДокументВказівник)
         {
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+            XmlDocument xmlDoc = ФункціїДляЗвітів.CreateXmlDocument();
 
             //Заголовок
             AddCaptionInfo(xmlDoc, ДокументВказівник);
@@ -387,11 +387,11 @@ namespace StorageAndTrade_1_0.Звіти
                     Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
                     if (listRow.Count > 0)
-                        Функції.DataToXML(xmlDoc, func.Key, columnsName, listRow);
+                        ФункціїДляЗвітів.DataToXML(xmlDoc, func.Key, columnsName, listRow);
                 }
             }
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухДокументівПоРегістрах.xslt", true, "Рух документу по регістрах");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухДокументівПоРегістрах.xslt", true, "Рух документу по регістрах");
         }
 
         #region Запити по регістрах інформації

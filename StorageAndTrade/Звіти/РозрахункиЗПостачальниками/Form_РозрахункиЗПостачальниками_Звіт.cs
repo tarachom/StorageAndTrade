@@ -39,9 +39,7 @@ using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Звіти;
 using StorageAndTrade_1_0.Константи;
-using StorageAndTrade_1_0.Журнали;
 
 namespace StorageAndTrade
 {
@@ -146,9 +144,9 @@ HAVING
 ORDER BY Контрагент_Назва
 ";
             
-            XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+            XmlDocument xmlDoc =  ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy"))
@@ -162,9 +160,9 @@ ORDER BY Контрагент_Назва
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            Функції.DataToXML(xmlDoc, "РозрахункиЗПостачальниками", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "РозрахункиЗПостачальниками", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_Залишки.xslt", false, "Розрахунки з постачальниками");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_Залишки.xslt", false, "Розрахунки з постачальниками");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -174,9 +172,9 @@ ORDER BY Контрагент_Назва
         {
             bool isExistParent = false;
 
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+            XmlDocument xmlDoc = ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
@@ -313,9 +311,9 @@ ORDER BY period ASC
             List<object[]> listRow;
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_Документи.xslt", false, "Розрахунки з постачальниками");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_Документи.xslt", false, "Розрахунки з постачальниками");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -538,14 +536,14 @@ ORDER BY Контрагент_Назва, Валюта_Назва
             List<object[]> listRow;
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-            Функції.DataToXML(xmlDoc, "ЗалишкиТаОбороти", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "ЗалишкиТаОбороти", columnsName, listRow);
         }
 
         private void buttonOstatokAndOborot_Click(object sender, EventArgs e)
         {
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+            XmlDocument xmlDoc = ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
@@ -555,7 +553,7 @@ ORDER BY Контрагент_Назва, Валюта_Назва
 
             ЗалишкиТаОбороти(xmlDoc);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_ЗалишкиТаОбороти.xslt", false, "Розрахунки з постачальниками");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗПостачальниками_ЗалишкиТаОбороти.xslt", false, "Розрахунки з постачальниками");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

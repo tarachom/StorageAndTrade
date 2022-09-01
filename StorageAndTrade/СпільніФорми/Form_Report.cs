@@ -36,7 +36,7 @@ using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Звіти;
+
 
 namespace StorageAndTrade
 {

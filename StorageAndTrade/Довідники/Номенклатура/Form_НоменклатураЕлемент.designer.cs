@@ -140,27 +140,42 @@ namespace StorageAndTrade
             // 
             // directoryControl_ОдиницяВиміру
             // 
+            this.directoryControl_ОдиницяВиміру.AfterSelectFunc = null;
+            this.directoryControl_ОдиницяВиміру.BeforeClickOpenFunc = null;
+            this.directoryControl_ОдиницяВиміру.BeforeFindFunc = null;
+            this.directoryControl_ОдиницяВиміру.Bind = null;
             this.directoryControl_ОдиницяВиміру.DirectoryPointerItem = null;
             this.directoryControl_ОдиницяВиміру.Location = new System.Drawing.Point(129, 188);
             this.directoryControl_ОдиницяВиміру.Name = "directoryControl_ОдиницяВиміру";
+            this.directoryControl_ОдиницяВиміру.QueryFind = null;
             this.directoryControl_ОдиницяВиміру.SelectForm = null;
             this.directoryControl_ОдиницяВиміру.Size = new System.Drawing.Size(258, 27);
             this.directoryControl_ОдиницяВиміру.TabIndex = 27;
             // 
             // directoryControl_ВидНоменклатури
             // 
+            this.directoryControl_ВидНоменклатури.AfterSelectFunc = null;
+            this.directoryControl_ВидНоменклатури.BeforeClickOpenFunc = null;
+            this.directoryControl_ВидНоменклатури.BeforeFindFunc = null;
+            this.directoryControl_ВидНоменклатури.Bind = null;
             this.directoryControl_ВидНоменклатури.DirectoryPointerItem = null;
             this.directoryControl_ВидНоменклатури.Location = new System.Drawing.Point(129, 125);
             this.directoryControl_ВидНоменклатури.Name = "directoryControl_ВидНоменклатури";
+            this.directoryControl_ВидНоменклатури.QueryFind = null;
             this.directoryControl_ВидНоменклатури.SelectForm = null;
             this.directoryControl_ВидНоменклатури.Size = new System.Drawing.Size(401, 27);
             this.directoryControl_ВидНоменклатури.TabIndex = 25;
             // 
             // directoryControl_Виробник
             // 
+            this.directoryControl_Виробник.AfterSelectFunc = null;
+            this.directoryControl_Виробник.BeforeClickOpenFunc = null;
+            this.directoryControl_Виробник.BeforeFindFunc = null;
+            this.directoryControl_Виробник.Bind = null;
             this.directoryControl_Виробник.DirectoryPointerItem = null;
             this.directoryControl_Виробник.Location = new System.Drawing.Point(129, 221);
             this.directoryControl_Виробник.Name = "directoryControl_Виробник";
+            this.directoryControl_Виробник.QueryFind = null;
             this.directoryControl_Виробник.SelectForm = null;
             this.directoryControl_Виробник.Size = new System.Drawing.Size(258, 27);
             this.directoryControl_Виробник.TabIndex = 23;
@@ -225,9 +240,14 @@ namespace StorageAndTrade
             // 
             // directoryControl_НоменклатураПапка
             // 
+            this.directoryControl_НоменклатураПапка.AfterSelectFunc = null;
+            this.directoryControl_НоменклатураПапка.BeforeClickOpenFunc = null;
+            this.directoryControl_НоменклатураПапка.BeforeFindFunc = null;
+            this.directoryControl_НоменклатураПапка.Bind = null;
             this.directoryControl_НоменклатураПапка.DirectoryPointerItem = null;
             this.directoryControl_НоменклатураПапка.Location = new System.Drawing.Point(129, 155);
             this.directoryControl_НоменклатураПапка.Name = "directoryControl_НоменклатураПапка";
+            this.directoryControl_НоменклатураПапка.QueryFind = null;
             this.directoryControl_НоменклатураПапка.SelectForm = null;
             this.directoryControl_НоменклатураПапка.Size = new System.Drawing.Size(401, 27);
             this.directoryControl_НоменклатураПапка.TabIndex = 53;

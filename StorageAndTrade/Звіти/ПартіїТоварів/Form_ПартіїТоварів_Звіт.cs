@@ -39,8 +39,7 @@ using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Звіти;
-using StorageAndTrade_1_0.Журнали;
+
 
 namespace StorageAndTrade
 {
@@ -219,9 +218,9 @@ HAVING
 ORDER BY Організація_Назва, ПартіяТоварівКомпозит_Дата ASC, Номенклатура_Назва, ХарактеристикаНоменклатури_Назва
 ";
 
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+            XmlDocument xmlDoc = ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy"))
@@ -233,11 +232,11 @@ ORDER BY Організація_Назва, ПартіяТоварівКомпо
             string[] columnsName;
             List<object[]> listRow;
 
-            Config.KernelParalelWork.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            Функції.DataToXML(xmlDoc, "ПартіїТоварів", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "ПартіїТоварів", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Залишки.xslt", false, "Партії товарів");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Залишки.xslt", false, "Партії товарів");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -247,9 +246,9 @@ ORDER BY Організація_Назва, ПартіяТоварівКомпо
         {
             bool isExistParent = false;
 
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+            XmlDocument xmlDoc = ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
@@ -449,10 +448,10 @@ ORDER BY period ASC, Організація_Назва,
             string[] columnsName;
             List<object[]> listRow;
 
-            Config.KernelParalelWork.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+            Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Документи.xslt", false, "Партії товарів");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Документи.xslt", false, "Партії товарів");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

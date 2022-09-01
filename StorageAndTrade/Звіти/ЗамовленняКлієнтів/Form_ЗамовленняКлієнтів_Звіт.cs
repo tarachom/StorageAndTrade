@@ -40,7 +40,7 @@ using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Звіти;
+
 
 namespace StorageAndTrade
 {
@@ -215,9 +215,9 @@ OR
 ORDER BY Номенклатура_Назва
 ";
             
-            XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+            XmlDocument xmlDoc =  ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy"))
@@ -231,9 +231,9 @@ ORDER BY Номенклатура_Назва
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            Функції.DataToXML(xmlDoc, "ЗамовленняКлієнтів", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "ЗамовленняКлієнтів", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта_Залишки.xslt", false, "Замовлення клієнта");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта_Залишки.xslt", false, "Замовлення клієнта");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -248,9 +248,9 @@ ORDER BY Номенклатура_Назва
         {
             bool isExistParent = false;
 
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+            XmlDocument xmlDoc = ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("ПочатокПеріоду", dateTimeStart.Value.ToString("dd.MM.yyyy")),
@@ -449,9 +449,9 @@ ORDER BY period ASC
             List<object[]> listRow;
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
-            Функції.DataToXML(xmlDoc, "Документи", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта_Документи.xslt", false, "Замовлення клієнта");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняКлієнта_Документи.xslt", false, "Замовлення клієнта");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

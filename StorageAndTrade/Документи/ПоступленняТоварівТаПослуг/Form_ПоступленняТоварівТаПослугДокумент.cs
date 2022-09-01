@@ -34,7 +34,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
-using Звіти = StorageAndTrade_1_0.Звіти;
+
 
 namespace StorageAndTrade
 {
@@ -312,7 +312,7 @@ namespace StorageAndTrade
 		private void toolStripButtonДрукПроводок_Click(object sender, EventArgs e)
 		{
 			if (поступленняТоварівТаПослуг_Objest.IsSave)
-				Звіти.РухДокументівПоРегістрах.PrintRecords(поступленняТоварівТаПослуг_Objest.GetDocumentPointer());
+				РухДокументівПоРегістрах.PrintRecords(поступленняТоварівТаПослуг_Objest.GetDocumentPointer());
 		}
 
 		#endregion

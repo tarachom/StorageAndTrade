@@ -34,7 +34,7 @@ using Константи = StorageAndTrade_1_0.Константи;
 using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
-using Звіти = StorageAndTrade_1_0.Звіти;
+
 
 namespace StorageAndTrade
 {
@@ -171,10 +171,10 @@ namespace StorageAndTrade
 				string UidSelect = SelectPointerItem != null ? SelectPointerItem.UnigueID.ToString() : DocumentPointerItem.UnigueID.ToString();
 
 				if (UidSelect != Guid.Empty.ToString())
-					ФункціїДляДовідниківТаДокументів.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
+					ФункціїДляІнтерфейсу.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
 			}
 			else
-				ФункціїДляДовідниківТаДокументів.ВиділитиОстаннійЕлементСписку(dataGridViewRecords);
+				ФункціїДляІнтерфейсу.ВиділитиОстаннійЕлементСписку(dataGridViewRecords);
 		}
 
 		private class Записи
@@ -306,7 +306,7 @@ namespace StorageAndTrade
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 				string uid = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 
-				Звіти.РухДокументівПоРегістрах.PrintRecords(new Документи.ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid)));
+				РухДокументівПоРегістрах.PrintRecords(new Документи.ВстановленняЦінНоменклатури_Pointer(new UnigueID(uid)));
 			}
 		}
 

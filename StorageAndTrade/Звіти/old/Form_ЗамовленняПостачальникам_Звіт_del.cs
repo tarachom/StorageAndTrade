@@ -38,7 +38,7 @@ using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Звіти;
+
 
 namespace StorageAndTrade
 {
@@ -201,7 +201,7 @@ ORDER BY Номенклатура_Назва
 
             //Console.WriteLine(query);
             
-            XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+            XmlDocument xmlDoc =  ФункціїДляЗвітів.CreateXmlDocument();
 
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 
@@ -210,9 +210,9 @@ ORDER BY Номенклатура_Назва
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            Функції.DataToXML(xmlDoc, "ЗамовленняПостачальникам", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "ЗамовленняПостачальникам", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняПостачальникам.xslt", true, "Замовлення постачальникам");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ЗамовленняПостачальникам.xslt", true, "Замовлення постачальникам");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

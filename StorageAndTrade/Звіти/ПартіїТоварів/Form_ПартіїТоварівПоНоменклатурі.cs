@@ -39,8 +39,6 @@ using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Звіти;
-using StorageAndTrade_1_0.Журнали;
 
 namespace StorageAndTrade
 {
@@ -203,9 +201,9 @@ HAVING
 ORDER BY Організація_Назва, ПартіяТоварівКомпозит_Дата, Номенклатура_Назва, ХарактеристикаНоменклатури_Назва
 ";
 
-            XmlDocument xmlDoc = Функції.CreateXmlDocument();
+            XmlDocument xmlDoc = ФункціїДляЗвітів.CreateXmlDocument();
 
-            Функції.DataHeadToXML(xmlDoc, "head",
+            ФункціїДляЗвітів.DataHeadToXML(xmlDoc, "head",
                 new List<NameValue<string>>()
                 {
                     new NameValue<string>("КінецьПеріоду", DateTime.Now.ToString("dd.MM.yyyy")),
@@ -220,12 +218,12 @@ ORDER BY Організація_Назва, ПартіяТоварівКомпо
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            Функції.DataToXML(xmlDoc, "ПартіїТоварів", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "ПартіїТоварів", columnsName, listRow);
 
             if (!Номенклатура.IsEmpty())
-                Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_ЗалишкиПоНоменклатурі.xslt", false, "Партії товарів");
+                ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_ЗалишкиПоНоменклатурі.xslt", false, "Партії товарів");
             else
-                Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Залишки.xslt", false, "Партії товарів");
+                ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Залишки.xslt", false, "Партії товарів");
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

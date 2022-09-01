@@ -36,12 +36,12 @@ using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
 
-namespace StorageAndTrade_1_0.Звіти
+namespace StorageAndTrade_1_0
 {
     /// <summary>
     /// Функції для звітів
     /// </summary>
-    public class Функції
+    public class ФункціїДляЗвітів
     {
         /// <summary>
         /// Створює хмл документ та корінну вітку root

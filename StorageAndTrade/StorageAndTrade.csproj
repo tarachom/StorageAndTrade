@@ -159,7 +159,8 @@
     </Compile>
     <Compile Include="Configurator\Service.cs" />
     <Compile Include="Configurator\SpendTheDocument.cs" />
-    <Compile Include="Configurator\ФункціїДляДовідниківТаДокументів.cs" />
+    <Compile Include="Configurator\ФункціїДляІнтерфейсу.cs" />
+    <Compile Include="Configurator\ПошуковіЗапити.cs" />
     <Compile Include="DirectoryAnyControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -220,7 +221,7 @@
     <Compile Include="Довідники\СеріїНоменклатури\Form_СеріїНоменклатуриЕлемент.designer.cs">
       <DependentUpon>Form_СеріїНоменклатуриЕлемент.cs</DependentUpon>
     </Compile>
-    <Compile Include="Довідники\ФункціїДляДовідників.cs" />
+    <Compile Include="Configurator\ФункціїДляДовідників.cs" />
     <Compile Include="Документи\ВнутрішнєСпоживанняТоварів\Form_ВнутрішнєСпоживанняТоварів_ТабличнаЧастина_Товари.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -275,7 +276,7 @@
     <Compile Include="Документи\РахунокФактура\Form_РахунокФактураЖурнал.designer.cs">
       <DependentUpon>Form_РахунокФактураЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Документи\ФункціїДляДокументів.cs" />
+    <Compile Include="Configurator\ФункціїДляДокументів.cs" />
     <Compile Include="Документи\ВведенняЗалишків\Form_ВведенняЗалишків_ТабличнаЧастина_БанківськіРахунки.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -330,7 +331,7 @@
     <Compile Include="Документи\АктВиконанихРобіт\Form_АктВиконанихРобітЖурнал.designer.cs">
       <DependentUpon>Form_АктВиконанихРобітЖурнал.cs</DependentUpon>
     </Compile>
-    <Compile Include="Журнали\ФункціїДляЖурналів.cs" />
+    <Compile Include="Configurator\ФункціїДляЖурналів.cs" />
     <Compile Include="Звіти\ВільніЗалишки\Form_ВільніЗалишки_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -367,7 +368,7 @@
     <Compile Include="Звіти\РухКоштів\Form_РухКоштів_Звіт.Designer.cs">
       <DependentUpon>Form_РухКоштів_Звіт.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\GeckoWebBrowser.cs" />
+    <Compile Include="Configurator\GeckoWebBrowser.cs" />
     <Compile Include="Звіти\ПартіїТоварів\Form_ПартіїТоварів_Звіт.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -927,7 +928,7 @@
     <Compile Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.Designer.cs">
       <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
     </Compile>
-    <Compile Include="Звіти\Функції.cs" />
+    <Compile Include="Configurator\ФункціїДляЗвітів.cs" />
     <EmbeddedResource Include="ConfigurationSelectionForm.resx">
       <DependentUpon>ConfigurationSelectionForm.cs</DependentUpon>
     </EmbeddedResource>

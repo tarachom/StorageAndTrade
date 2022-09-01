@@ -23,7 +23,7 @@ limitations under the License.
 
 /*
  
-Модуль ...
+Функції для інтерфейсу
 
 */
 
@@ -37,26 +37,6 @@ using StorageAndTrade_1_0.Константи;
 
 namespace StorageAndTrade
 {
-    /// <summary>
-    /// Структура для обмеження кількості завантажених даних для табличних частин і автоматичної підгрузки при прокрутці
-    /// </summary>
-    public struct LoadRecordsLimit
-    {
-        /// <summary>
-        /// Індекс сторінки
-        /// </summary>
-        public int PageIndex;
-
-        /// <summary>
-        /// Обмеження для запиту
-        /// </summary>
-        public int Limit;
-
-        /// <summary>
-        /// Кількість даних завантажених останній раз
-        /// </summary>
-        public int LastCountRow;
-    }
 
     /// <summary>
     /// Виділити елемент в списку ComboBox який складається з елементів NameValue<T> 
@@ -78,7 +58,7 @@ namespace StorageAndTrade
         }
     }
 
-    class ФункціїДляДовідниківТаДокументів
+    class ФункціїДляІнтерфейсу
     {
 
         #region DataGridView

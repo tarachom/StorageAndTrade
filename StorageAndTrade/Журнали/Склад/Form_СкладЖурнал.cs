@@ -34,7 +34,6 @@ using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.Перелічення;
-using StorageAndTrade_1_0.Звіти;
 
 namespace StorageAndTrade
 {

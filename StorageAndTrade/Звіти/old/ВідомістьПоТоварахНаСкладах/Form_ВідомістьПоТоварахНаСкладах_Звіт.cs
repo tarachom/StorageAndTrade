@@ -39,7 +39,7 @@ using StorageAndTrade_1_0.Константи;
 using StorageAndTrade_1_0.Довідники;
 using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
-using StorageAndTrade_1_0.Звіти;
+
 
 namespace StorageAndTrade
 {
@@ -158,7 +158,7 @@ ORDER BY Номенклатура_Назва
 
             //Console.WriteLine(query);
 
-            XmlDocument xmlDoc =  Функції.CreateXmlDocument();
+            XmlDocument xmlDoc =  ФункціїДляЗвітів.CreateXmlDocument();
 
             DateTime dateStart = new DateTime(dateTimeStart.Value.Year, dateTimeStart.Value.Month, dateTimeStart.Value.Day, 0, 0, 0);
             //Console.WriteLine("dateStart " + dateStart);
@@ -187,9 +187,9 @@ ORDER BY Номенклатура_Назва
 
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-            Функції.DataToXML(xmlDoc, "ВідомістьПоТоварахНаСкладах", columnsName, listRow);
+            ФункціїДляЗвітів.DataToXML(xmlDoc, "ВідомістьПоТоварахНаСкладах", columnsName, listRow);
 
-            Функції.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВідомістьПоТоварахНаСкладах.xslt", true, "Відомість по товарах на складах");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВідомістьПоТоварахНаСкладах.xslt", true, "Відомість по товарах на складах");
         }
 
         private void buttonClose_Click(object sender, EventArgs e)

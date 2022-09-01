@@ -11,6 +11,27 @@ using Перелічення = StorageAndTrade_1_0.Перелічення;
 namespace StorageAndTrade
 {
     /// <summary>
+    /// Структура для обмеження кількості завантажених даних для табличних частин і автоматичної підгрузки при прокрутці
+    /// </summary>
+    public struct LoadRecordsLimit
+    {
+        /// <summary>
+        /// Індекс сторінки
+        /// </summary>
+        public int PageIndex;
+
+        /// <summary>
+        /// Обмеження для запиту
+        /// </summary>
+        public int Limit;
+
+        /// <summary>
+        /// Кількість даних завантажених останній раз
+        /// </summary>
+        public int LastCountRow;
+    }
+
+    /// <summary>
     /// Спільні функції для журналів
     /// </summary>
     class ФункціїДляЖурналів
