@@ -345,7 +345,21 @@ ELSE 0 END)", "ostatok"));
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				SelectPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
+				SelectPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString()));
+			}
+		}
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+			if (dataGridViewRecords.SelectedRows.Count > 0)
+			{
+				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+				string uid = row.Cells["ID"].Value.ToString();
+
+				Form_ШтрихкодиНоменклатури form_ШтрихкодиНоменклатури = new Form_ШтрихкодиНоменклатури();
+				form_ШтрихкодиНоменклатури.MdiParent = this.MdiParent;
+				form_ШтрихкодиНоменклатури.НоменклатураВласник = new Довідники.Номенклатура_Pointer(new UnigueID(uid));
+				form_ШтрихкодиНоменклатури.Show();
 			}
 		}
     }

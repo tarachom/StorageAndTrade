@@ -38,6 +38,8 @@ namespace StorageAndTrade
             this.label7 = new System.Windows.Forms.Label();
             this.directoryControl_Номенклатура = new StorageAndTrade.DirectoryControl();
             this.label3 = new System.Windows.Forms.Label();
+            this.directoryControl_Пакування = new StorageAndTrade.DirectoryControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonClose
@@ -122,11 +124,36 @@ namespace StorageAndTrade
             this.label3.TabIndex = 69;
             this.label3.Text = "Номенклатура:";
             // 
+            // directoryControl_Пакування
+            // 
+            this.directoryControl_Пакування.AfterSelectFunc = null;
+            this.directoryControl_Пакування.BeforeClickOpenFunc = null;
+            this.directoryControl_Пакування.BeforeFindFunc = null;
+            this.directoryControl_Пакування.Bind = null;
+            this.directoryControl_Пакування.DirectoryPointerItem = null;
+            this.directoryControl_Пакування.Location = new System.Drawing.Point(108, 104);
+            this.directoryControl_Пакування.Name = "directoryControl_Пакування";
+            this.directoryControl_Пакування.QueryFind = null;
+            this.directoryControl_Пакування.SelectForm = null;
+            this.directoryControl_Пакування.Size = new System.Drawing.Size(366, 27);
+            this.directoryControl_Пакування.TabIndex = 72;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 111);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 73;
+            this.label1.Text = "Пакування:";
+            // 
             // Form_ШтрихкодиНоменклатуриЕлемент
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(506, 199);
+            this.Controls.Add(this.directoryControl_Пакування);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.directoryControl_ХарактеристикаНоменклатури);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.directoryControl_Номенклатура);
@@ -155,5 +182,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label7;
         private DirectoryControl directoryControl_Номенклатура;
         private System.Windows.Forms.Label label3;
+        private DirectoryControl directoryControl_Пакування;
+        private System.Windows.Forms.Label label1;
     }
 }

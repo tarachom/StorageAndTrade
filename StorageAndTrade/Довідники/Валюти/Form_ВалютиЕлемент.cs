@@ -96,10 +96,11 @@ namespace StorageAndTrade
 				if (IsNew.Value)
 					валюти_Objest.New();
 
+				валюти_Objest.Назва = textBoxName.Text;
+				валюти_Objest.Код = textBox_Код.Text;
+
 				try
 				{
-					валюти_Objest.Назва = textBoxName.Text;
-					валюти_Objest.Код = textBox_Код.Text;
 					валюти_Objest.Save();
 				}
 				catch (Exception exp)

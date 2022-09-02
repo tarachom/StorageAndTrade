@@ -59,9 +59,34 @@ namespace StorageAndTrade
 		/// </summary>
         public string Uid { get; set; }
 
+		/// <summary>
+		/// Номенклатура власник
+		/// </summary>
+		public Довідники.Номенклатура_Pointer НоменклатураВласник { get; set; }
+
+		/// <summary>
+		/// Обєкт запису
+		/// </summary>
+		private РегістриВідомостей.ШтрихкодиНоменклатури_Objest штрихкодиНоменклатури_Objest { get; set; }
+
 		private void Form_ШтрихкодиНоменклатуриЕлемент_Load(object sender, EventArgs e)
         {
+			штрихкодиНоменклатури_Objest = new РегістриВідомостей.ШтрихкодиНоменклатури_Objest();
+
 			directoryControl_Номенклатура.Init(new Form_Номенклатура(), new Довідники.Номенклатура_Pointer(), ПошуковіЗапити.Номенклатура);
+			directoryControl_Номенклатура.AfterSelectFunc = () =>
+			{
+				if (directoryControl_Номенклатура.DirectoryPointerItem != null && !directoryControl_Номенклатура.DirectoryPointerItem.IsEmpty())
+				{
+					Довідники.Номенклатура_Objest номенклатура_Objest = new Довідники.Номенклатура_Objest();
+					if (номенклатура_Objest.Read(directoryControl_Номенклатура.DirectoryPointerItem.UnigueID))
+					{
+						directoryControl_Пакування.DirectoryPointerItem = номенклатура_Objest.ОдиницяВиміру;
+					}
+				}
+
+				return true;
+			};
 			directoryControl_ХарактеристикаНоменклатури.Init(new Form_ХарактеристикиНоменклатури(), new Довідники.ХарактеристикиНоменклатури_Pointer(), ПошуковіЗапити.ХарактеристикаНоменклатуриЗВідбором());
 			directoryControl_ХарактеристикаНоменклатури.BeforeClickOpenFunc = () =>
 			{
@@ -73,16 +98,31 @@ namespace StorageAndTrade
 				directoryControl_ХарактеристикаНоменклатури.QueryFind =
 				   ПошуковіЗапити.ХарактеристикаНоменклатуриЗВідбором((Довідники.Номенклатура_Pointer)directoryControl_Номенклатура.DirectoryPointerItem);
 			};
+			directoryControl_Пакування.Init(new Form_ПакуванняОдиниціВиміру(), new Довідники.ПакуванняОдиниціВиміру_Pointer(), ПошуковіЗапити.ПакуванняОдиниціВиміру);
 
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
 				{
 					this.Text += " - Новий";
+					directoryControl_Номенклатура.DirectoryPointerItem = НоменклатураВласник;
+
+					if (directoryControl_Номенклатура.AfterSelectFunc != null)
+						directoryControl_Номенклатура.AfterSelectFunc.Invoke();
 				}
 				else
 				{
+					if (штрихкодиНоменклатури_Objest.Read(new UnigueID(Uid)))
+                    {
+						this.Text += " - Редагування";
 
+						textBox_Штрихкод.Text = штрихкодиНоменклатури_Objest.Штрихкод;
+						directoryControl_Номенклатура.DirectoryPointerItem = штрихкодиНоменклатури_Objest.Номенклатура;
+						directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem = штрихкодиНоменклатури_Objest.ХарактеристикаНоменклатури;
+						directoryControl_Пакування.DirectoryPointerItem = штрихкодиНоменклатури_Objest.Пакування;
+					}
+					else
+						MessageBox.Show("Error read");
 				}
 			}
 		}
@@ -92,11 +132,16 @@ namespace StorageAndTrade
 			if (IsNew.HasValue)
 			{
 				if (IsNew.Value)
-					//валюти_Objest.New();
+					штрихкодиНоменклатури_Objest.New();
+
+				штрихкодиНоменклатури_Objest.Штрихкод = textBox_Штрихкод.Text;
+				штрихкодиНоменклатури_Objest.Номенклатура = (Довідники.Номенклатура_Pointer)directoryControl_Номенклатура.DirectoryPointerItem;
+				штрихкодиНоменклатури_Objest.ХарактеристикаНоменклатури = (Довідники.ХарактеристикиНоменклатури_Pointer)directoryControl_ХарактеристикаНоменклатури.DirectoryPointerItem;
+				штрихкодиНоменклатури_Objest.Пакування = (Довідники.ПакуванняОдиниціВиміру_Pointer)directoryControl_Пакування.DirectoryPointerItem;
 
 				try
 				{
-					
+					штрихкодиНоменклатури_Objest.Save();
 				}
 				catch (Exception exp)
 				{

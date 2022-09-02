@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 02.09.2022 14:48:09
+ * Дата конфігурації: 02.09.2022 15:55:04
  *
  */
 
@@ -16199,7 +16199,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
 	
     
     public class ЦіниНоменклатури_Objest : RegisterInformationObject
-		{
+    {
 		public ЦіниНоменклатури_Objest() : base(Config.Kernel, "tab_a40",
              new string[] { "col_f5", "col_f6", "col_f7", "col_f8", "col_f9", "col_g2" }) 
         {
@@ -16359,7 +16359,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
 	
     
     public class КурсиВалют_Objest : RegisterInformationObject
-		{
+    {
 		public КурсиВалют_Objest() : base(Config.Kernel, "tab_a59",
              new string[] { "col_a1", "col_a2", "col_a3" }) 
         {
@@ -16509,7 +16509,7 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
 	
     
     public class ШтрихкодиНоменклатури_Objest : RegisterInformationObject
-		{
+    {
 		public ШтрихкодиНоменклатури_Objest() : base(Config.Kernel, "tab_b17",
              new string[] { "col_a1", "col_a2", "col_a3", "col_a4" }) 
         {
