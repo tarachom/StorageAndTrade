@@ -26,7 +26,7 @@ limitations under the License.
  *
  * Конфігурації "Зберігання та Торгівля"
  * Автор Тарахомин Юрій Іванович, accounting.org.ua
- * Дата конфігурації: 02.09.2022 12:14:53
+ * Дата конфігурації: 02.09.2022 14:48:09
  *
  */
 
@@ -16196,7 +16196,80 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             
         }
     }
+	
     
+    public class ЦіниНоменклатури_Objest : RegisterInformationObject
+		{
+		public ЦіниНоменклатури_Objest() : base(Config.Kernel, "tab_a40",
+             new string[] { "col_f5", "col_f6", "col_f7", "col_f8", "col_f9", "col_g2" }) 
+        {
+            Номенклатура = new Довідники.Номенклатура_Pointer();
+            ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+            ВидЦіни = new Довідники.ВидиЦін_Pointer();
+            Ціна = 0;
+            Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+            Валюта = new Довідники.Валюти_Pointer();
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                Номенклатура = new Довідники.Номенклатура_Pointer(base.FieldValue["col_f5"]);
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(base.FieldValue["col_f6"]);
+                ВидЦіни = new Довідники.ВидиЦін_Pointer(base.FieldValue["col_f7"]);
+                Ціна = (base.FieldValue["col_f8"] != DBNull.Value) ? (decimal)base.FieldValue["col_f8"] : 0;
+                Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(base.FieldValue["col_f9"]);
+                Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_g2"]);
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_f5"] = Номенклатура.UnigueID.UGuid;
+            base.FieldValue["col_f6"] = ХарактеристикаНоменклатури.UnigueID.UGuid;
+            base.FieldValue["col_f7"] = ВидЦіни.UnigueID.UGuid;
+            base.FieldValue["col_f8"] = Ціна;
+            base.FieldValue["col_f9"] = Пакування.UnigueID.UGuid;
+            base.FieldValue["col_g2"] = Валюта.UnigueID.UGuid;
+            
+            BaseSave();
+        }
+
+        public ЦіниНоменклатури_Objest Copy()
+        {
+            ЦіниНоменклатури_Objest copy = new ЦіниНоменклатури_Objest();
+			copy.New();
+            copy.Номенклатура = Номенклатура;
+			copy.ХарактеристикаНоменклатури = ХарактеристикаНоменклатури;
+			copy.ВидЦіни = ВидЦіни;
+			copy.Ціна = Ціна;
+			copy.Пакування = Пакування;
+			copy.Валюта = Валюта;
+			
+			return copy;
+        }
+
+        public void Delete()
+        {
+			base.BaseDelete();
+        }
+                
+        public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+        public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+        public Довідники.ВидиЦін_Pointer ВидЦіни { get; set; }
+        public decimal Ціна { get; set; }
+        public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
+        public Довідники.Валюти_Pointer Валюта { get; set; }
+        
+    }
+	
     #endregion
   
     #region REGISTER "КурсиВалют"
@@ -16283,7 +16356,65 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             
         }
     }
+	
     
+    public class КурсиВалют_Objest : RegisterInformationObject
+		{
+		public КурсиВалют_Objest() : base(Config.Kernel, "tab_a59",
+             new string[] { "col_a1", "col_a2", "col_a3" }) 
+        {
+            Валюта = new Довідники.Валюти_Pointer();
+            Курс = 0;
+            Кратність = 0;
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                Валюта = new Довідники.Валюти_Pointer(base.FieldValue["col_a1"]);
+                Курс = (base.FieldValue["col_a2"] != DBNull.Value) ? (decimal)base.FieldValue["col_a2"] : 0;
+                Кратність = (base.FieldValue["col_a3"] != DBNull.Value) ? (int)base.FieldValue["col_a3"] : 0;
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_a1"] = Валюта.UnigueID.UGuid;
+            base.FieldValue["col_a2"] = Курс;
+            base.FieldValue["col_a3"] = Кратність;
+            
+            BaseSave();
+        }
+
+        public КурсиВалют_Objest Copy()
+        {
+            КурсиВалют_Objest copy = new КурсиВалют_Objest();
+			copy.New();
+            copy.Валюта = Валюта;
+			copy.Курс = Курс;
+			copy.Кратність = Кратність;
+			
+			return copy;
+        }
+
+        public void Delete()
+        {
+			base.BaseDelete();
+        }
+                
+        public Довідники.Валюти_Pointer Валюта { get; set; }
+        public decimal Курс { get; set; }
+        public int Кратність { get; set; }
+        
+    }
+	
     #endregion
   
     #region REGISTER "ШтрихкодиНоменклатури"
@@ -16375,7 +16506,70 @@ namespace StorageAndTrade_1_0.РегістриВідомостей
             
         }
     }
+	
     
+    public class ШтрихкодиНоменклатури_Objest : RegisterInformationObject
+		{
+		public ШтрихкодиНоменклатури_Objest() : base(Config.Kernel, "tab_b17",
+             new string[] { "col_a1", "col_a2", "col_a3", "col_a4" }) 
+        {
+            Штрихкод = "";
+            Номенклатура = new Довідники.Номенклатура_Pointer();
+            ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer();
+            Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer();
+            
+        }
+        
+        public bool Read(UnigueID uid)
+        {
+            if (BaseRead(uid))
+            {
+                Штрихкод = base.FieldValue["col_a1"].ToString();
+                Номенклатура = new Довідники.Номенклатура_Pointer(base.FieldValue["col_a2"]);
+                ХарактеристикаНоменклатури = new Довідники.ХарактеристикиНоменклатури_Pointer(base.FieldValue["col_a3"]);
+                Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(base.FieldValue["col_a4"]);
+                
+                BaseClear();
+                return true;
+            }
+            else
+                return false;
+        }
+        
+        public void Save()
+        {
+            base.FieldValue["col_a1"] = Штрихкод;
+            base.FieldValue["col_a2"] = Номенклатура.UnigueID.UGuid;
+            base.FieldValue["col_a3"] = ХарактеристикаНоменклатури.UnigueID.UGuid;
+            base.FieldValue["col_a4"] = Пакування.UnigueID.UGuid;
+            
+            BaseSave();
+        }
+
+        public ШтрихкодиНоменклатури_Objest Copy()
+        {
+            ШтрихкодиНоменклатури_Objest copy = new ШтрихкодиНоменклатури_Objest();
+			copy.New();
+            copy.Штрихкод = Штрихкод;
+			copy.Номенклатура = Номенклатура;
+			copy.ХарактеристикаНоменклатури = ХарактеристикаНоменклатури;
+			copy.Пакування = Пакування;
+			
+			return copy;
+        }
+
+        public void Delete()
+        {
+			base.BaseDelete();
+        }
+                
+        public string Штрихкод { get; set; }
+        public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+        public Довідники.ХарактеристикиНоменклатури_Pointer ХарактеристикаНоменклатури { get; set; }
+        public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
+        
+    }
+	
     #endregion
   
 }
