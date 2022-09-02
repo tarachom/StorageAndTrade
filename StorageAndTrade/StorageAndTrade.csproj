@@ -381,6 +381,12 @@
     <Compile Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладахПоНоменклатурі.Designer.cs">
       <DependentUpon>Form_ТовариНаСкладахПоНоменклатурі.cs</DependentUpon>
     </Compile>
+    <Compile Include="РегістриІнформації\Штрихкоди\Form_ШтрихкодиНоменклатури.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="РегістриІнформації\Штрихкоди\Form_ШтрихкодиНоменклатури.designer.cs">
+      <DependentUpon>Form_ШтрихкодиНоменклатури.cs</DependentUpon>
+    </Compile>
     <Compile Include="СпільніФорми\Form_Report.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1048,6 +1054,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ТовариНаСкладах\Form_ТовариНаСкладахПоНоменклатурі.resx">
       <DependentUpon>Form_ТовариНаСкладахПоНоменклатурі.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="РегістриІнформації\Штрихкоди\Form_ШтрихкодиНоменклатури.resx">
+      <DependentUpon>Form_ШтрихкодиНоменклатури.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="СпільніФорми\Form_Report.resx">
       <DependentUpon>Form_Report.cs</DependentUpon>

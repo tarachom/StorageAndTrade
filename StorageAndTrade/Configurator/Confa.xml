@@ -5,7 +5,7 @@
   <Author>Тарахомин Юрій Іванович, accounting.org.ua</Author>
   <Desc>Конфігурація "Зберігання та Торгівля"
 https://accounting.org.ua/storage_and_trade.html</Desc>
-  <DateTimeSave>02.09.2022 10:31:32</DateTimeSave>
+  <DateTimeSave>02.09.2022 12:14:53</DateTimeSave>
   <ConstantsBlocks>
     <ConstantsBlock>
       <Name>ЗначенняЗаЗамовчуванням</Name>
@@ -9894,6 +9894,58 @@ https://accounting.org.ua/storage_and_trade.html</Desc>
             <Name>Кратність</Name>
             <NameInTable>col_a3</NameInTable>
             <Type>integer</Type>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+        </Fields>
+      </ResourcesFields>
+      <PropertyFields>
+        <Fields />
+      </PropertyFields>
+    </RegisterInformation>
+    <RegisterInformation>
+      <Name>ШтрихкодиНоменклатури</Name>
+      <Table>tab_b17</Table>
+      <Desc>
+      </Desc>
+      <DimensionFields>
+        <Fields>
+          <Field>
+            <Name>Штрихкод</Name>
+            <NameInTable>col_a1</NameInTable>
+            <Type>string</Type>
+            <Desc>
+            </Desc>
+            <IsIndex>1</IsIndex>
+          </Field>
+        </Fields>
+      </DimensionFields>
+      <ResourcesFields>
+        <Fields>
+          <Field>
+            <Name>Номенклатура</Name>
+            <NameInTable>col_a2</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.Номенклатура</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>ХарактеристикаНоменклатури</Name>
+            <NameInTable>col_a3</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ХарактеристикиНоменклатури</Pointer>
+            <Desc>
+            </Desc>
+            <IsIndex>0</IsIndex>
+          </Field>
+          <Field>
+            <Name>Пакування</Name>
+            <NameInTable>col_a4</NameInTable>
+            <Type>pointer</Type>
+            <Pointer>Довідники.ПакуванняОдиниціВиміру</Pointer>
             <Desc>
             </Desc>
             <IsIndex>0</IsIndex>
