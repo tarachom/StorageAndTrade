@@ -78,7 +78,19 @@ namespace StorageAndTrade
 
         private void Form_ПовнийЖурнал_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+			foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+			{
+				int index = сomboBox_ТипПеріоду.Items.Add(
+					new NameValue<ТипПеріодуДляЖурналівДокументів>(field.Desc, (ТипПеріодуДляЖурналівДокументів)field.Value));
+
+				if ((ТипПеріодуДляЖурналівДокументів)field.Value == ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+					сomboBox_ТипПеріоду.SelectedIndex = index;
+			}
+
+			if (сomboBox_ТипПеріоду.SelectedIndex == -1)
+				сomboBox_ТипПеріоду.SelectedIndex = 0;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -89,14 +101,19 @@ namespace StorageAndTrade
 			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
 				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
 
-			string query = ФункціїДляЖурналів.ЗапитВибіркаВсіхДокументів() + 
-				$@"
-ORDER BY ДатаДок DESC
+			ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
+
+			string query = $@"
+{ФункціїДляЖурналів.ЗапитВибіркаВсіхДокументів()}
+
+ORDER BY ДатаДок
 LIMIT {loadRecordsLimit.Limit}
 OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("docdate", ФункціїДляЖурналів.ОтриматиДатуПочаткуПеріоду(ПеріодЖурналу));
 
 			string[] columnsName;
 			List<object[]> listRow;
@@ -1553,6 +1570,14 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			SpendDocuments(false, "Відмінити проведення?");
 		}
 
-        
+        private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			RecordsBindingList.Clear();
+			loadRecordsLimit.PageIndex = 0;
+
+			dataGridViewRecords.Focus();
+
+			LoadRecords();
+		}
     }
 }

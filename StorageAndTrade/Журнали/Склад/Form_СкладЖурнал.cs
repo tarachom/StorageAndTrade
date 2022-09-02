@@ -77,7 +77,19 @@ namespace StorageAndTrade
 
         private void Form_СкладЖурнал_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+			foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+			{
+				int index = сomboBox_ТипПеріоду.Items.Add(
+					new NameValue<ТипПеріодуДляЖурналівДокументів>(field.Desc, (ТипПеріодуДляЖурналівДокументів)field.Value));
+
+				if ((ТипПеріодуДляЖурналівДокументів)field.Value == ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+					сomboBox_ТипПеріоду.SelectedIndex = index;
+			}
+
+			if (сomboBox_ТипПеріоду.SelectedIndex == -1)
+				сomboBox_ТипПеріоду.SelectedIndex = 0;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -90,22 +102,11 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
-			string query = $@"
-SELECT
-    'ПереміщенняТоварів',
-    Док_ПереміщенняТоварів.uid,
-    Док_ПереміщенняТоварів.spend,
-    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.Назва} AS Назва,
-    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.НомерДок} AS НомерДок,
-    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.ДатаДок} AS ДатаДок,
-    Довідник_Склади.{Склади_Const.Назва} AS СкладНазва,
-    0 AS Сума,
-    Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.Коментар} AS Коментар
-FROM
-	{ПереміщенняТоварів_Const.TABLE} AS Док_ПереміщенняТоварів
+			ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
 
-	LEFT JOIN {Склади_Const.TABLE} AS Довідник_Склади ON Довідник_Склади.uid = 
-        Док_ПереміщенняТоварів.{ПереміщенняТоварів_Const.СкладВідправник}
+			string query = $@"
+{ФункціїДляЖурналів.ЗапитВибіркаСклад()}
 
 ORDER BY ДатаДок
 LIMIT {loadRecordsLimit.Limit}
@@ -113,6 +114,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("docdate", ФункціїДляЖурналів.ОтриматиДатуПочаткуПеріоду(ПеріодЖурналу));
 
 			string[] columnsName;
 			List<object[]> listRow;
@@ -368,6 +370,16 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
         private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
         {
 			SpendDocuments(false, "Відмінити проведення?");
+		}
+
+        private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			RecordsBindingList.Clear();
+			loadRecordsLimit.PageIndex = 0;
+
+			dataGridViewRecords.Focus();
+
+			LoadRecords();
 		}
     }
 }

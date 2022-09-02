@@ -77,7 +77,19 @@ namespace StorageAndTrade
 
         private void Form_ФінансиЖурнал_Load(object sender, EventArgs e)
         {
-			LoadRecords();
+			ConfigurationEnums ТипПеріодуДляЖурналівДокументів = Config.Kernel.Conf.Enums["ТипПеріодуДляЖурналівДокументів"];
+
+			foreach (ConfigurationEnumField field in ТипПеріодуДляЖурналівДокументів.Fields.Values)
+			{
+				int index = сomboBox_ТипПеріоду.Items.Add(
+					new NameValue<ТипПеріодуДляЖурналівДокументів>(field.Desc, (ТипПеріодуДляЖурналівДокументів)field.Value));
+
+				if ((ТипПеріодуДляЖурналівДокументів)field.Value == ЖурналиДокументів.ОсновнийТипПеріоду_Const)
+					сomboBox_ТипПеріоду.SelectedIndex = index;
+			}
+
+			if (сomboBox_ТипПеріоду.SelectedIndex == -1)
+				сomboBox_ТипПеріоду.SelectedIndex = 0;
 		}
 
 		private BindingList<Записи> RecordsBindingList { get; set; }
@@ -90,40 +102,11 @@ namespace StorageAndTrade
 
 			RecordsBindingList.Clear();
 
+			ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
+				((NameValue<ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
+
 			string query = $@"
-SELECT
-    'ПрихіднийКасовийОрдер',
-    Док_ПрихіднийКасовийОрдер.uid,
-    Док_ПрихіднийКасовийОрдер.spend,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Назва} AS Назва,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.НомерДок} AS НомерДок,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.ДатаДок} AS ДатаДок,
-    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.СумаДокументу} AS Сума,
-    Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Коментар} AS Коментар
-FROM
-	{ПрихіднийКасовийОрдер_Const.TABLE} AS Док_ПрихіднийКасовийОрдер
-
-    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ПрихіднийКасовийОрдер.{ПрихіднийКасовийОрдер_Const.Контрагент}
-
-UNION
-
-SELECT
-    'РозхіднийКасовийОрдер',
-    Док_РозхіднийКасовийОрдер.uid,
-    Док_РозхіднийКасовийОрдер.spend,
-    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Назва} AS Назва,
-    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.НомерДок} AS НомерДок,
-    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.ДатаДок} AS ДатаДок,
-    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.СумаДокументу} AS Сума,
-    Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Коментар} AS Коментар
-FROM
-	{РозхіднийКасовийОрдер_Const.TABLE} AS Док_РозхіднийКасовийОрдер
-
-    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_РозхіднийКасовийОрдер.{РозхіднийКасовийОрдер_Const.Контрагент}
+{ФункціїДляЖурналів.ЗапитВибіркаФінанси()}
 
 ORDER BY ДатаДок
 LIMIT {loadRecordsLimit.Limit}
@@ -131,6 +114,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+			paramQuery.Add("docdate", ФункціїДляЖурналів.ОтриматиДатуПочаткуПеріоду(ПеріодЖурналу));
 
 			string[] columnsName;
 			List<object[]> listRow;
@@ -466,6 +450,16 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
         private void toolStripButtonClearSpend_Click(object sender, EventArgs e)
         {
 			SpendDocuments(false, "Відмінити проведення?");
+		}
+
+        private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
+        {
+			RecordsBindingList.Clear();
+			loadRecordsLimit.PageIndex = 0;
+
+			dataGridViewRecords.Focus();
+
+			LoadRecords();
 		}
     }
 }

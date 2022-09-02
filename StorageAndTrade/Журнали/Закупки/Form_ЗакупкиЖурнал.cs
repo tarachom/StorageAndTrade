@@ -101,108 +101,11 @@ namespace StorageAndTrade
 			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
 				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
 
-			RecordsBindingList.Clear();
-
 			ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
 				((NameValue<ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
 
-			DateTime whereDateTime = DateTime.MinValue;
-
-			switch (ПеріодЖурналу)
-			{
-				case ТипПеріодуДляЖурналівДокументів.ЗПочаткуРоку:
-					{
-						whereDateTime = new DateTime(DateTime.Now.Year, 1, 1);
-						break;
-					}
-				case ТипПеріодуДляЖурналівДокументів.Квартал:
-					{
-						DateTime ДатаТриМісцяНазад = DateTime.Now.AddMonths(-3);
-						whereDateTime = new DateTime(ДатаТриМісцяНазад.Year, ДатаТриМісцяНазад.Month, 1);
-						break;
-					}
-				case ТипПеріодуДляЖурналівДокументів.ЗМинулогоМісяця:
-					{
-						DateTime ДатаМісцьНазад = DateTime.Now.AddMonths(-1);
-						whereDateTime = new DateTime(ДатаМісцьНазад.Year, ДатаМісцьНазад.Month, 1);
-						break;
-					}
-				case ТипПеріодуДляЖурналівДокументів.ЗПочаткуМісяця:
-					{
-						whereDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
-						break;
-					}
-				case ТипПеріодуДляЖурналівДокументів.ЗПочаткуТижня:
-					{
-						DateTime СімДнівНазад = DateTime.Now.AddDays(-7);
-						whereDateTime = new DateTime(СімДнівНазад.Year, СімДнівНазад.Month, СімДнівНазад.Day);
-						break;
-					}
-				case ТипПеріодуДляЖурналівДокументів.ПоточнийДень:
-					{
-						whereDateTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
-						break;
-					}
-			}
-
 			string query = $@"
-SELECT
-    'ЗамовленняПостачальнику',
-    Док_ЗамовленняПостачальнику.uid,
-    Док_ЗамовленняПостачальнику.spend,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Назва} AS Назва,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.НомерДок} AS НомерДок,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.ДатаДок} AS ДатаДок,
-    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.СумаДокументу} AS Сума,
-    Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Коментар} AS Коментар
-FROM
-	{ЗамовленняПостачальнику_Const.TABLE} AS Док_ЗамовленняПостачальнику
-
-    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ЗамовленняПостачальнику.{ЗамовленняПостачальнику_Const.Контрагент}
-
-WHERE Док_ЗамовленняПостачальнику.docdate >= @docdate
-
-UNION
-
-SELECT
-    'ПоступленняТоварівТаПослуг',
-    Док_ПоступленняТоварівТаПослуг.uid,
-    Док_ПоступленняТоварівТаПослуг.spend,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.Назва} AS Назва,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.НомерДок} AS НомерДок,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.ДатаДок} AS ДатаДок,
-    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.СумаДокументу} AS Сума,
-    Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.Коментар} AS Коментар
-FROM
-	{ПоступленняТоварівТаПослуг_Const.TABLE} AS Док_ПоступленняТоварівТаПослуг
-
-    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ПоступленняТоварівТаПослуг.{ПоступленняТоварівТаПослуг_Const.Контрагент}
-
-WHERE Док_ПоступленняТоварівТаПослуг.docdate >= @docdate
-
-UNION
-
-SELECT
-    'ПоверненняТоварівПостачальнику',
-    Док_ПоверненняТоварівПостачальнику.uid,
-    Док_ПоверненняТоварівПостачальнику.spend,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Назва} AS Назва,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.НомерДок} AS НомерДок,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.ДатаДок} AS ДатаДок,
-    Довідник_Контрагенти.{Контрагенти_Const.Назва} AS КонтрагентНазва,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.СумаДокументу} AS Сума,
-    Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Коментар} AS Коментар
-FROM
-	{ПоверненняТоварівПостачальнику_Const.TABLE} AS Док_ПоверненняТоварівПостачальнику
-
-    LEFT JOIN {Контрагенти_Const.TABLE} AS Довідник_Контрагенти ON Довідник_Контрагенти.uid = 
-        Док_ПоверненняТоварівПостачальнику.{ПоверненняТоварівПостачальнику_Const.Контрагент}
-
-WHERE Док_ПоверненняТоварівПостачальнику.docdate >= @docdate
+{ФункціїДляЖурналів.ЗапитВибіркаЗакупки()}
 
 ORDER BY ДатаДок
 LIMIT {loadRecordsLimit.Limit}
@@ -210,7 +113,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 ";
 
 			Dictionary<string, object> paramQuery = new Dictionary<string, object>();
-			paramQuery.Add("docdate", whereDateTime);
+			paramQuery.Add("docdate", ФункціїДляЖурналів.ОтриматиДатуПочаткуПеріоду(ПеріодЖурналу));
 
 			string[] columnsName;
 			List<object[]> listRow;
@@ -621,6 +524,9 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 
         private void сomboBox_ТипПеріоду_SelectedIndexChanged(object sender, EventArgs e)
         {
+			RecordsBindingList.Clear();
+			loadRecordsLimit.PageIndex = 0;
+
 			dataGridViewRecords.Focus();
 
 			LoadRecords();

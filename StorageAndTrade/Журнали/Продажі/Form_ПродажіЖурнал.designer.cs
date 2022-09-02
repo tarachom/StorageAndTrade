@@ -34,6 +34,7 @@ namespace StorageAndTrade
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripDropDownButtonAdd = new System.Windows.Forms.ToolStripDropDownButton();
             this.ToolStripMenuItem_ЗамовленняКлієнта = new System.Windows.Forms.ToolStripMenuItem();
+            this.рахунокФактураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_РеалізаціяТоварівТаПослуг = new System.Windows.Forms.ToolStripMenuItem();
             this.актВиконанихРобітToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItem_ПоверненняТоварівВідКлієнта = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,8 @@ namespace StorageAndTrade
             this.toolStripButtonSpend = new System.Windows.Forms.ToolStripButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
-            this.рахунокФактураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.сomboBox_ТипПеріоду = new System.Windows.Forms.ToolStripComboBox();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -72,7 +74,9 @@ namespace StorageAndTrade
             this.toolStripButtonDelete,
             this.toolStripButtonДрукПроводок,
             this.toolStripButtonClearSpend,
-            this.toolStripButtonSpend});
+            this.toolStripButtonSpend,
+            this.toolStripSeparator1,
+            this.сomboBox_ТипПеріоду});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1084, 25);
@@ -99,6 +103,13 @@ namespace StorageAndTrade
             this.ToolStripMenuItem_ЗамовленняКлієнта.Size = new System.Drawing.Size(246, 22);
             this.ToolStripMenuItem_ЗамовленняКлієнта.Text = "Замовлення клієнта";
             this.ToolStripMenuItem_ЗамовленняКлієнта.Click += new System.EventHandler(this.ToolStripMenuItem_ЗамовленняКлієнта_Click);
+            // 
+            // рахунокФактураToolStripMenuItem
+            // 
+            this.рахунокФактураToolStripMenuItem.Name = "рахунокФактураToolStripMenuItem";
+            this.рахунокФактураToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
+            this.рахунокФактураToolStripMenuItem.Text = "Рахунок фактура";
+            this.рахунокФактураToolStripMenuItem.Click += new System.EventHandler(this.рахунокФактураToolStripMenuItem_Click);
             // 
             // ToolStripMenuItem_РеалізаціяТоварівТаПослуг
             // 
@@ -210,12 +221,17 @@ namespace StorageAndTrade
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.Scroll += new System.Windows.Forms.ScrollEventHandler(this.dataGridViewRecords_Scroll);
             // 
-            // рахунокФактураToolStripMenuItem
+            // toolStripSeparator1
             // 
-            this.рахунокФактураToolStripMenuItem.Name = "рахунокФактураToolStripMenuItem";
-            this.рахунокФактураToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.рахунокФактураToolStripMenuItem.Text = "Рахунок фактура";
-            this.рахунокФактураToolStripMenuItem.Click += new System.EventHandler(this.рахунокФактураToolStripMenuItem_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // сomboBox_ТипПеріоду
+            // 
+            this.сomboBox_ТипПеріоду.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.сomboBox_ТипПеріоду.Name = "сomboBox_ТипПеріоду";
+            this.сomboBox_ТипПеріоду.Size = new System.Drawing.Size(121, 25);
+            this.сomboBox_ТипПеріоду.SelectedIndexChanged += new System.EventHandler(this.сomboBox_ТипПеріоду_SelectedIndexChanged);
             // 
             // Form_ПродажіЖурнал
             // 
@@ -258,5 +274,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItem_ПоверненняТоварівВідКлієнта;
         private System.Windows.Forms.ToolStripMenuItem актВиконанихРобітToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem рахунокФактураToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripComboBox сomboBox_ТипПеріоду;
     }
 }
