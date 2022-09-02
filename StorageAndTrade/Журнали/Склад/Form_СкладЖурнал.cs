@@ -97,11 +97,6 @@ namespace StorageAndTrade
 
 		public void LoadRecords()
 		{
-			int selectRow = dataGridViewRecords.SelectedRows.Count > 0 ?
-				dataGridViewRecords.SelectedRows[dataGridViewRecords.SelectedRows.Count - 1].Index : 0;
-
-			RecordsBindingList.Clear();
-
 			ТипПеріодуДляЖурналівДокументів ПеріодЖурналу =
 				((NameValue<ТипПеріодуДляЖурналівДокументів>)сomboBox_ТипПеріоду.Items[сomboBox_ТипПеріоду.SelectedIndex]).Value;
 
@@ -117,27 +112,27 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			paramQuery.Add("docdate", ФункціїДляЖурналів.ОтриматиДатуПочаткуПеріоду(ПеріодЖурналу));
 
 			string[] columnsName;
-			List<object[]> listRow;
+			List<Dictionary<string, object>> listRow;
 
 			Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
 			loadRecordsLimit.LastCountRow = listRow.Count;
 
-			foreach (object[] row in listRow)
+			foreach (Dictionary<string, object> row in listRow)
 			{
-				RecordsBindingList.Add(new Записи
-				{
-					DocName = row[0].ToString(),
-					ID = row[1].ToString(),
-					Проведений = (bool)row[2],
-					Назва = row[3].ToString(),
-					НомерДок = row[4].ToString(),
-					ДатаДок = row[5].ToString(),
-					Склад = row[6].ToString(),
-					Сума = decimal.Parse(row[7].ToString()),
-					Коментар = row[8].ToString()
-				});
-			}
+                RecordsBindingList.Add(new Записи
+                {
+                    DocName = row["ТипДокументу"].ToString(),
+                    ID = row["uid"].ToString(),
+                    Проведений = (bool)row["spend"],
+                    Назва = row["Назва"].ToString(),
+                    НомерДок = row["НомерДок"].ToString(),
+                    ДатаДок = row["ДатаДок"].ToString(),
+					Склад = row["КонтрагентНазва"].ToString(),
+                    Сума = decimal.Parse(row["Сума"].ToString()),
+                    Коментар = row["Коментар"].ToString()
+                });
+            }
 		}
 
 		private class Записи
@@ -154,6 +149,7 @@ OFFSET {loadRecordsLimit.Limit * loadRecordsLimit.PageIndex}
 			public string Коментар { get; set; }
 			public bool Проведений { get; set; }
 		}
+
 
 		private void dataGridViewRecords_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
