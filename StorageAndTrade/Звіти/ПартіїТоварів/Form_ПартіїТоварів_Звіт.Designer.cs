@@ -139,7 +139,6 @@ namespace StorageAndTrade
             this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser.FrameEventsPropagateToMainWindow = false;
             this.geckoWebBrowser.Location = new System.Drawing.Point(1, 226);
             this.geckoWebBrowser.Name = "geckoWebBrowser";
             this.geckoWebBrowser.Size = new System.Drawing.Size(910, 429);
