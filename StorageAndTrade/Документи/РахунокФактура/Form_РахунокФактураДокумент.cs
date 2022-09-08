@@ -98,8 +98,28 @@ namespace StorageAndTrade
 					if (договірКонтрагента != null)
 						directoryControl_Договір.DirectoryPointerItem = договірКонтрагента;
 				}
+                else
+                {
+                    if (directoryControl_Контрагент.DirectoryPointerItem.IsEmpty())
+                        directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer();
+                    else
+                    {
+                        //
+                        //Перевірити чи змінився контрагент
+                        //
 
-				return true;
+                        Довідники.ДоговориКонтрагентів_Objest договориКонтрагентів_Objest =
+                            ((Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem).GetDirectoryObject();
+
+                        if (договориКонтрагентів_Objest.Контрагент != (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem)
+                        {
+                            directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer();
+                            directoryControl_Контрагент.AfterSelectFunc.Invoke();
+                        }
+                    }
+                }
+
+                return true;
 			};
 			directoryControl_Організація.Init(new Form_Організації(), new Довідники.Організації_Pointer(), ПошуковіЗапити.Організації);
 			directoryControl_Валюта.Init(new Form_Валюти(), new Довідники.Валюти_Pointer(), ПошуковіЗапити.Валюти);
