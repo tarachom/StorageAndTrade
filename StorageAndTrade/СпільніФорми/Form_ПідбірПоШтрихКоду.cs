@@ -350,6 +350,7 @@ FROM
         Регістр_ШтрихкодиНоменклатури.{ШтрихкодиНоменклатури_Const.Пакування}
 WHERE
     Регістр_ШтрихкодиНоменклатури.{ШтрихкодиНоменклатури_Const.Штрихкод} = @Штрихкод
+LIMIT 1
 ";
             Dictionary<string, object> paramQuery = new Dictionary<string, object>();
             paramQuery.Add("Штрихкод", записНовий.Штрихкод);

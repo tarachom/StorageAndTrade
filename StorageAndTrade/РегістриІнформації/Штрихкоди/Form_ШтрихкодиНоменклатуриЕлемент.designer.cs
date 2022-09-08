@@ -67,7 +67,7 @@ namespace StorageAndTrade
             this.textBox_Штрихкод.Location = new System.Drawing.Point(108, 12);
             this.textBox_Штрихкод.Name = "textBox_Штрихкод";
             this.textBox_Штрихкод.Size = new System.Drawing.Size(366, 20);
-            this.textBox_Штрихкод.TabIndex = 20;
+            this.textBox_Штрихкод.TabIndex = 0;
             // 
             // label2
             // 
