@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox_ШтрихКод = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox_ШтрихКод = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonSave = new System.Windows.Forms.Button();
@@ -50,28 +50,8 @@
             this.panel3.Controls.Add(this.textBox_ШтрихКод);
             this.panel3.Location = new System.Drawing.Point(5, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(939, 34);
+            this.panel3.Size = new System.Drawing.Size(982, 34);
             this.panel3.TabIndex = 50;
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.dataGridViewRecords);
-            this.panel1.Location = new System.Drawing.Point(5, 43);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(939, 267);
-            this.panel1.TabIndex = 51;
-            // 
-            // textBox_ШтрихКод
-            // 
-            this.textBox_ШтрихКод.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox_ШтрихКод.Location = new System.Drawing.Point(109, 3);
-            this.textBox_ШтрихКод.Name = "textBox_ШтрихКод";
-            this.textBox_ШтрихКод.Size = new System.Drawing.Size(563, 26);
-            this.textBox_ШтрихКод.TabIndex = 0;
-            this.textBox_ШтрихКод.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_ШтрихКод_KeyDown);
             // 
             // label1
             // 
@@ -82,6 +62,26 @@
             this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Штрих-код:";
+            // 
+            // textBox_ШтрихКод
+            // 
+            this.textBox_ШтрихКод.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_ШтрихКод.Location = new System.Drawing.Point(109, 3);
+            this.textBox_ШтрихКод.Name = "textBox_ШтрихКод";
+            this.textBox_ШтрихКод.Size = new System.Drawing.Size(563, 26);
+            this.textBox_ШтрихКод.TabIndex = 0;
+            this.textBox_ШтрихКод.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_ШтрихКод_KeyDown);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.dataGridViewRecords);
+            this.panel1.Location = new System.Drawing.Point(5, 43);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(982, 267);
+            this.panel1.TabIndex = 51;
             // 
             // dataGridViewRecords
             // 
@@ -95,7 +95,7 @@
             this.dataGridViewRecords.Name = "dataGridViewRecords";
             this.dataGridViewRecords.ReadOnly = true;
             this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(939, 267);
+            this.dataGridViewRecords.Size = new System.Drawing.Size(982, 267);
             this.dataGridViewRecords.TabIndex = 1;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewRecords_KeyDown);
@@ -108,7 +108,7 @@
             this.panel2.Controls.Add(this.buttonClose);
             this.panel2.Location = new System.Drawing.Point(5, 316);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(939, 34);
+            this.panel2.Size = new System.Drawing.Size(982, 34);
             this.panel2.TabIndex = 52;
             // 
             // buttonSave
@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 354);
+            this.ClientSize = new System.Drawing.Size(991, 354);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
@@ -144,6 +144,7 @@
             this.Padding = new System.Windows.Forms.Padding(3);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Підбір по штрих-кодах";
+            this.Load += new System.EventHandler(this.Form_ПідбірПоШтрихКоду_Load);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);

@@ -67,8 +67,11 @@ namespace StorageAndTrade.СпільніФорми
             dataGridViewRecords.Columns["ПакуванняНазва"].Width = 100;
             dataGridViewRecords.Columns["ПакуванняНазва"].HeaderText = "Пакування";
 
-            dataGridViewRecords.Columns["Кількість"].Width = 50;
+            dataGridViewRecords.Columns["Кількість"].Width = 80;
+            dataGridViewRecords.Columns["Кількість"].ReadOnly = false;
         }
+
+        public Action<List<СписокНоменклатури>> ДодатиТовариВДокумент_CallBack;
 
         private BindingList<Записи> RecordsBindingList { get; set; }
 
@@ -77,11 +80,11 @@ namespace StorageAndTrade.СпільніФорми
             public Записи() { Image = Properties.Resources.doc_text_image; }
             public Bitmap Image { get; set; }
             public string Штрихкод { get; set; }
-            public Довідники.Номенклатура_Pointer Номенклатура { get; set; }
+            public Номенклатура_Pointer Номенклатура { get; set; }
             public string НоменклатураНазва { get; set; }
-            public Довідники.ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+            public ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
             public string ХарактеристикаНазва { get; set; }
-            public Довідники.ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
+            public ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
             public string ПакуванняНазва { get; set; }
             public decimal Кількість { get; set; }
 
@@ -90,11 +93,11 @@ namespace StorageAndTrade.СпільніФорми
                 return new Записи
                 {
                     Штрихкод = "",
-                    Номенклатура = new Довідники.Номенклатура_Pointer(),
+                    Номенклатура = new Номенклатура_Pointer(),
                     НоменклатураНазва = "",
-                    Характеристика = new Довідники.ХарактеристикиНоменклатури_Pointer(),
+                    Характеристика = new ХарактеристикиНоменклатури_Pointer(),
                     ХарактеристикаНазва = "",
-                    Пакування = new Довідники.ПакуванняОдиниціВиміру_Pointer(),
+                    Пакування = new ПакуванняОдиниціВиміру_Pointer(),
                     ПакуванняНазва = "",
                     Кількість = 1
                 };
@@ -393,7 +396,8 @@ FROM
 WHERE
     Регістр_ШтрихкодиНоменклатури.{ШтрихкодиНоменклатури_Const.Штрихкод} = @Штрихкод
 LIMIT 1
-"; 
+";
+            List<СписокНоменклатури> СписокНоменклатуриЗПідбору = new List<СписокНоменклатури>();
 
             foreach (Записи запис in RecordsBindingList)
             {
@@ -405,7 +409,7 @@ LIMIT 1
 
                 Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-                РегістриВідомостей.ШтрихкодиНоменклатури_Objest штрихкодиНоменклатури_Objest = new РегістриВідомостей.ШтрихкодиНоменклатури_Objest();
+                ШтрихкодиНоменклатури_Objest штрихкодиНоменклатури_Objest = new ШтрихкодиНоменклатури_Objest();
 
                 if (listRow.Count == 1)
                 {
@@ -431,7 +435,37 @@ LIMIT 1
 
                     штрихкодиНоменклатури_Objest.Save();
                 }
+
+                СписокНоменклатури СписокНоменклатуриЗапис = new СписокНоменклатури();
+                СписокНоменклатуриЗапис.Номенклатура = запис.Номенклатура;
+                СписокНоменклатуриЗапис.Характеристика = запис.Характеристика;
+                СписокНоменклатуриЗапис.Пакування = запис.Пакування;
+                СписокНоменклатуриЗапис.Кількість = запис.Кількість;
+
+                СписокНоменклатуриЗПідбору.Add(СписокНоменклатуриЗапис);
+            }
+
+            if (ДодатиТовариВДокумент_CallBack != null)
+            {
+                ДодатиТовариВДокумент_CallBack.Invoke(СписокНоменклатуриЗПідбору);
+                this.Close();
             }
         }
+
+        private void Form_ПідбірПоШтрихКоду_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+
+    /// <summary>
+    /// Клас для передачі даних з підбору
+    /// </summary>
+    public class СписокНоменклатури
+    {
+        public Номенклатура_Pointer Номенклатура { get; set; }
+        public ХарактеристикиНоменклатури_Pointer Характеристика { get; set; }
+        public ПакуванняОдиниціВиміру_Pointer Пакування { get; set; }
+        public decimal Кількість { get; set; }
     }
 }
