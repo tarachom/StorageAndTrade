@@ -23,22 +23,15 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
 using System.IO;
 using System.Xml;
-using System.Xml.Xsl;
 
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Довідники;
-using StorageAndTrade_1_0.Документи;
 using StorageAndTrade_1_0.РегістриНакопичення;
 using StorageAndTrade_1_0.Константи;
 
@@ -49,7 +42,11 @@ namespace StorageAndTrade
         public Form_РозрахункиЗКлієнтами_Звіт()
         {
             InitializeComponent();
+
+            geckoWebBrowser = GeckoWebBrowser.AddGeckoWebBrowserControl(this, new Point(2, 185));
         }
+
+        Gecko.GeckoWebBrowser geckoWebBrowser { get; set; }
 
         private void Form_РозрахункиЗКлієнтами_Звіт_Load(object sender, EventArgs e)
         {
@@ -163,7 +160,7 @@ ORDER BY Контрагент_Назва
 
             ФункціїДляЗвітів.DataToXML(xmlDoc, "РозрахункиЗКлієнтами", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Залишки.xslt", false, "Розрахунки з клієнтами");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Залишки.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -314,7 +311,7 @@ ORDER BY period ASC
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             ФункціїДляЗвітів.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Документи.xslt", false, "Розрахунки з постачальниками");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_Документи.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -551,7 +548,7 @@ ORDER BY Контрагент_Назва, Валюта_Назва
 
             ЗалишкиТаОбороти(xmlDoc);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_ЗалишкиТаОбороти.xslt", false, "Розрахунки з клієнтами");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РозрахункиЗКлієнтами_ЗалишкиТаОбороти.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

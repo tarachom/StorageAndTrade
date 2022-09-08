@@ -41,7 +41,6 @@ namespace StorageAndTrade
             this.label6 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonOstatok = new System.Windows.Forms.Button();
-            this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
             this.directoryControl_ХарактеристикаНоменклатури = new StorageAndTrade.DirectoryControl();
             this.directoryControl_Склади = new StorageAndTrade.DirectoryControl();
             this.directoryControl_СкладиПапки = new StorageAndTrade.DirectoryControl();
@@ -154,17 +153,6 @@ namespace StorageAndTrade
             this.buttonOstatok.Text = "Залишки";
             this.buttonOstatok.UseVisualStyleBackColor = true;
             this.buttonOstatok.Click += new System.EventHandler(this.buttonOstatok_Click);
-            // 
-            // geckoWebBrowser
-            // 
-            this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser.Location = new System.Drawing.Point(1, 227);
-            this.geckoWebBrowser.Name = "geckoWebBrowser";
-            this.geckoWebBrowser.Size = new System.Drawing.Size(939, 428);
-            this.geckoWebBrowser.TabIndex = 74;
-            this.geckoWebBrowser.UseHttpActivityObserver = false;
             // 
             // directoryControl_ХарактеристикаНоменклатури
             // 
@@ -329,7 +317,6 @@ namespace StorageAndTrade
             this.Controls.Add(this.buttonOstatokAndOborot);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.geckoWebBrowser);
             this.Controls.Add(this.buttonOstatok);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.dateTimeStop);
@@ -367,7 +354,6 @@ namespace StorageAndTrade
         private DirectoryControl directoryControl_ХарактеристикаНоменклатури;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonOstatok;
-        private Gecko.GeckoWebBrowser geckoWebBrowser;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button buttonOstatokAndOborot;

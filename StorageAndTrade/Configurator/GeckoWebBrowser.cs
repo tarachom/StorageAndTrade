@@ -26,13 +26,29 @@ limitations under the License.
 
 */
 
+using Gecko;
 using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace StorageAndTrade
 {
     class GeckoWebBrowser
     {
+        public static Gecko.GeckoWebBrowser AddGeckoWebBrowserControl(Form form, Point geckoWebBrowserPoint)
+        {
+            Gecko.GeckoWebBrowser geckoWebBrowser = new Gecko.GeckoWebBrowser();
+            form.Controls.Add(geckoWebBrowser);
+
+            geckoWebBrowser.Anchor = ((AnchorStyles)((((AnchorStyles.Top | AnchorStyles.Bottom) | AnchorStyles.Left) | AnchorStyles.Right)));
+            geckoWebBrowser.Location = geckoWebBrowserPoint;
+            geckoWebBrowser.Name = "geckoWebBrowser";
+            geckoWebBrowser.Size = new Size(form.Width - geckoWebBrowserPoint.X - 18, form.Height - geckoWebBrowserPoint.Y - 40);
+            geckoWebBrowser.UseHttpActivityObserver = false;
+
+            return geckoWebBrowser;
+        }
+
         public static void DomClick(object sender, Gecko.DomMouseEventArgs e)
         {
             Gecko.GeckoElement geckoElement = e.Target.CastToGeckoElement();

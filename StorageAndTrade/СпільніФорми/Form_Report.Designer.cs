@@ -29,26 +29,14 @@ namespace StorageAndTrade
         /// </summary>
         private void InitializeComponent()
         {
-            this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
-            this.SuspendLayout();
-            // 
-            // geckoWebBrowser
-            // 
-            this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser.Location = new System.Drawing.Point(12, 12);
-            this.geckoWebBrowser.Name = "geckoWebBrowser";
-            this.geckoWebBrowser.Size = new System.Drawing.Size(776, 426);
-            this.geckoWebBrowser.TabIndex = 0;
-            this.geckoWebBrowser.UseHttpActivityObserver = false;
+            
             // 
             // Form_Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.geckoWebBrowser);
+            
             this.Name = "Form_Report";
             this.Text = "Звіт";
             this.Load += new System.EventHandler(this.Form_Report_Load);
@@ -58,6 +46,5 @@ namespace StorageAndTrade
 
         #endregion
 
-        private Gecko.GeckoWebBrowser geckoWebBrowser;
     }
 }

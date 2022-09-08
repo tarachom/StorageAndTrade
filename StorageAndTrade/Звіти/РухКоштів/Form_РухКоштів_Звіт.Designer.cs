@@ -37,7 +37,6 @@ namespace StorageAndTrade
             this.buttonCreate = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
-            this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button_Report = new System.Windows.Forms.Button();
@@ -108,17 +107,6 @@ namespace StorageAndTrade
             this.buttonClose.Text = "Закрити";
             this.buttonClose.UseVisualStyleBackColor = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
-            // 
-            // geckoWebBrowser
-            // 
-            this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser.Location = new System.Drawing.Point(1, 193);
-            this.geckoWebBrowser.Name = "geckoWebBrowser";
-            this.geckoWebBrowser.Size = new System.Drawing.Size(797, 381);
-            this.geckoWebBrowser.TabIndex = 71;
-            this.geckoWebBrowser.UseHttpActivityObserver = false;
             // 
             // label4
             // 
@@ -222,7 +210,6 @@ namespace StorageAndTrade
             this.Controls.Add(this.directoryControl_Каса);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.directoryControl_Організація);
-            this.Controls.Add(this.geckoWebBrowser);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.directoryControl_Валюти);
@@ -250,7 +237,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Label label5;
         private DirectoryControl directoryControl_Валюти;
         private System.Windows.Forms.Button buttonClose;
-        private Gecko.GeckoWebBrowser geckoWebBrowser;
         private System.Windows.Forms.Label label4;
         private DirectoryControl directoryControl_Організація;
         private System.Windows.Forms.Label label6;

@@ -22,18 +22,12 @@ limitations under the License.
 */
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
 using System.IO;
 using System.Xml;
-using System.Xml.Xsl;
 
 using StorageAndTrade_1_0;
 using StorageAndTrade_1_0.Константи;
@@ -49,7 +43,11 @@ namespace StorageAndTrade
         public Form_ВільніЗалишки_Звіт()
         {
             InitializeComponent();
+
+            geckoWebBrowser = GeckoWebBrowser.AddGeckoWebBrowserControl(this, new Point(2, 210));
         }
+
+        Gecko.GeckoWebBrowser geckoWebBrowser { get; set; }
 
         private void Form_ВільніЗалишки_Звіт_Load(object sender, EventArgs e)
         {
@@ -235,7 +233,7 @@ ORDER BY Номенклатура_Назва
 
             ФункціїДляЗвітів.DataToXML(xmlDoc, "ВільніЗалишки", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВільніЗалишки_Залишки.xslt", false, "Вільні залишки");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВільніЗалишки_Залишки.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -450,7 +448,7 @@ ORDER BY period ASC
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             ФункціїДляЗвітів.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВільніЗалишки_Документи.xslt", false, "Вільні залишки");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ВільніЗалишки_Документи.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

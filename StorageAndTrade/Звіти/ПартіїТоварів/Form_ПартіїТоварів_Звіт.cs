@@ -22,12 +22,7 @@ limitations under the License.
 */
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using System.Xml;
@@ -48,7 +43,11 @@ namespace StorageAndTrade
         public Form_ПартіїТоварів_Звіт()
         {
             InitializeComponent();
+
+            geckoWebBrowser = GeckoWebBrowser.AddGeckoWebBrowserControl(this, new Point(2, 220));
         }
+
+        Gecko.GeckoWebBrowser geckoWebBrowser { get; set; }
 
         private void Form_ПартіїТоварів_Звіт_Load(object sender, EventArgs e)
         {
@@ -236,7 +235,7 @@ ORDER BY Організація_Назва, ПартіяТоварівКомпо
 
             ФункціїДляЗвітів.DataToXML(xmlDoc, "ПартіїТоварів", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Залишки.xslt", false, "Партії товарів");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Залишки.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -451,7 +450,7 @@ ORDER BY period ASC, Організація_Назва,
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             ФункціїДляЗвітів.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Документи.xslt", false, "Партії товарів");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\ПартіїТоварів_Документи.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

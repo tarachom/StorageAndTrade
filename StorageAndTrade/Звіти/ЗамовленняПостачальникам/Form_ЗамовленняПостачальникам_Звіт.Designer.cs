@@ -49,7 +49,6 @@ namespace StorageAndTrade
             this.buttonClose = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.geckoWebBrowser = new Gecko.GeckoWebBrowser();
             this.buttonDocuments = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -261,17 +260,6 @@ namespace StorageAndTrade
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Склад";
             // 
-            // geckoWebBrowser
-            // 
-            this.geckoWebBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser.Location = new System.Drawing.Point(1, 217);
-            this.geckoWebBrowser.Name = "geckoWebBrowser";
-            this.geckoWebBrowser.Size = new System.Drawing.Size(955, 422);
-            this.geckoWebBrowser.TabIndex = 75;
-            this.geckoWebBrowser.UseHttpActivityObserver = false;
-            // 
             // buttonDocuments
             // 
             this.buttonDocuments.Location = new System.Drawing.Point(108, 173);
@@ -309,7 +297,6 @@ namespace StorageAndTrade
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonDocuments);
-            this.Controls.Add(this.geckoWebBrowser);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonClose);
@@ -353,7 +340,6 @@ namespace StorageAndTrade
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private Gecko.GeckoWebBrowser geckoWebBrowser;
         private System.Windows.Forms.Button buttonDocuments;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;

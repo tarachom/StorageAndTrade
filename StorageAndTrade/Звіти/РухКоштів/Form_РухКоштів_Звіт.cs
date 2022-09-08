@@ -23,17 +23,11 @@ limitations under the License.
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using AccountingSoftware;
 using System.Xml;
-using System.Xml.Xsl;
 using System.IO;
 
 using StorageAndTrade_1_0;
@@ -49,7 +43,11 @@ namespace StorageAndTrade
         public Form_РухКоштів_Звіт()
         {
             InitializeComponent();
+
+            geckoWebBrowser = GeckoWebBrowser.AddGeckoWebBrowserControl(this, new Point(2, 190));
         }
+
+        Gecko.GeckoWebBrowser geckoWebBrowser { get; set; }
 
         private void Form_РухКоштів_Звіт_Load(object sender, EventArgs e)
         {
@@ -159,7 +157,7 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             ФункціїДляЗвітів.DataToXML(xmlDoc, "РухКоштів", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_Залишки.xslt", false, "Рух коштів");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_Залишки.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -403,7 +401,7 @@ ORDER BY Організація_Назва, Каса_Назва, Валюта_Н
 
             ЗалишкиТаОбороти(xmlDoc);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_ЗалишкиТаОбороти.xslt", false, "Рух коштів");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_ЗалишкиТаОбороти.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);
@@ -541,7 +539,7 @@ ORDER BY period ASC
             Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
             ФункціїДляЗвітів.DataToXML(xmlDoc, "Документи", columnsName, listRow);
 
-            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_Документи.xslt", false, "Рух коштів");
+            ФункціїДляЗвітів.XmlDocumentSaveAndTransform(xmlDoc, @"Шаблони\РухКоштів_Документи.xslt", false);
 
             string pathToHtmlFile = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Report.html");
             geckoWebBrowser.Navigate(pathToHtmlFile);

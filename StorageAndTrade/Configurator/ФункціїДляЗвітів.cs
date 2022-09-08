@@ -131,7 +131,7 @@ namespace StorageAndTrade_1_0
 
             xsltTransform.Transform(pathToXmlFile, pathToHtmlFile);
 
-            //System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile); //"iexplore.exe"
+            //System.Diagnostics.Process.Start("firefox.exe", pathToHtmlFile);
 
             if (openFormReport)
                 OpenFormReport(formReportName, pathToHtmlFile);
