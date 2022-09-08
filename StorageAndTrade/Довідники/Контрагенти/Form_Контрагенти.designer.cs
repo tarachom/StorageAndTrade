@@ -41,6 +41,8 @@ namespace StorageAndTrade
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.Контрагенти_Папки_Дерево = new StorageAndTrade.Form_Контрагенти_Папки_Дерево();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonДоговори = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,7 +69,9 @@ namespace StorageAndTrade
             this.toolStripButtonEdit,
             this.toolStripButtonRefresh,
             this.toolStripButtonCopy,
-            this.toolStripButtonDelete});
+            this.toolStripButtonDelete,
+            this.toolStripSeparator1,
+            this.toolStripButtonДоговори});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1052, 25);
@@ -173,6 +177,20 @@ namespace StorageAndTrade
             this.Контрагенти_Папки_Дерево.TabIndex = 0;
             this.Контрагенти_Папки_Дерево.UidOpenFolder = null;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButtonДоговори
+            // 
+            this.toolStripButtonДоговори.Image = global::StorageAndTrade.Properties.Resources.page_copy;
+            this.toolStripButtonДоговори.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonДоговори.Name = "toolStripButtonДоговори";
+            this.toolStripButtonДоговори.Size = new System.Drawing.Size(81, 22);
+            this.toolStripButtonДоговори.Text = "Договори";
+            this.toolStripButtonДоговори.Click += new System.EventHandler(this.toolStripButtonДоговори_Click);
+            // 
             // Form_Контрагенти
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,5 +230,7 @@ namespace StorageAndTrade
         private System.Windows.Forms.ToolStripButton toolStripButtonDelete;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private Form_Контрагенти_Папки_Дерево Контрагенти_Папки_Дерево;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton toolStripButtonДоговори;
     }
 }

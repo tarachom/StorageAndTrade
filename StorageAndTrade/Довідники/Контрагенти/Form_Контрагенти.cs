@@ -253,5 +253,24 @@ namespace StorageAndTrade
 				SelectPointerItem = new Довідники.Контрагенти_Pointer(new UnigueID(dataGridViewRecords.Rows[e.RowIndex].Cells["ID"].Value.ToString()));
 			}
 		}
+
+        #region Договори
+
+        private void toolStripButtonДоговори_Click(object sender, EventArgs e)
+		{
+            if (dataGridViewRecords.SelectedRows.Count > 0)
+            {
+                DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
+                string uid = row.Cells["ID"].Value.ToString();
+
+                Form_ДоговориКонтрагентів form_ДоговориКонтрагентів = new Form_ДоговориКонтрагентів();
+                form_ДоговориКонтрагентів.MdiParent = this.MdiParent;
+                form_ДоговориКонтрагентів.КонтрагентВласник = new Довідники.Контрагенти_Pointer(new UnigueID(uid));
+                form_ДоговориКонтрагентів.Show();
+
+            }
+        }
+
+        #endregion
     }
 }

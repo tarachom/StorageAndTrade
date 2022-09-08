@@ -98,6 +98,26 @@ namespace StorageAndTrade
 					if (договірКонтрагента != null)
 						directoryControl_Договір.DirectoryPointerItem = договірКонтрагента;
 				}
+				else
+				{
+					if (directoryControl_Контрагент.DirectoryPointerItem.IsEmpty())
+						directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer();
+					else
+					{
+						//
+						//Перевірити чи змінився контрагент
+						//
+
+						Довідники.ДоговориКонтрагентів_Objest договориКонтрагентів_Objest =
+						    ((Довідники.ДоговориКонтрагентів_Pointer)directoryControl_Договір.DirectoryPointerItem).GetDirectoryObject();
+
+						if (договориКонтрагентів_Objest.Контрагент != (Довідники.Контрагенти_Pointer)directoryControl_Контрагент.DirectoryPointerItem)
+						{
+                            directoryControl_Договір.DirectoryPointerItem = new Довідники.ДоговориКонтрагентів_Pointer();
+                            directoryControl_Контрагент.AfterSelectFunc.Invoke();
+                        }
+                    }
+                }
 
 				return true;
 			};

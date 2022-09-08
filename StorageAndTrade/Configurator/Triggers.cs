@@ -36,6 +36,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using AccountingSoftware;
+using StorageAndTrade;
 using Конфа = StorageAndTrade_1_0;
 
 namespace StorageAndTrade_1_0.Константи
@@ -45,6 +46,24 @@ namespace StorageAndTrade_1_0.Константи
 
 namespace StorageAndTrade_1_0.Довідники
 {
+	class Контрагенти_Triggers
+	{
+		public static void BeforeRecording(Контрагенти_Objest ДовідникОбєкт)
+		{
+
+		}
+
+		public static void AfterRecording(Контрагенти_Objest ДовідникОбєкт)
+		{
+			ФункціїДляДовідників.СтворитиДоговориКонтрагентаЗаЗамовчуванням(ДовідникОбєкт.GetDirectoryPointer());
+		}
+
+		public static void BeforeDelete(Контрагенти_Objest ДовідникОбєкт)
+		{
+
+		}
+	}
+
 	class Номенклатура_Папки_Triggers
 	{
 		public static void BeforeRecording(Номенклатура_Папки_Objest ДовідникОбєкт)
@@ -66,8 +85,8 @@ namespace StorageAndTrade_1_0.Довідники
 			номенклатура_Select.QuerySelect.Where.Add(new Where(Номенклатура_Const.Папка, Comparison.EQ, ДовідникОбєкт.UnigueID.UGuid));
 			номенклатура_Select.Select();
 
-			while(номенклатура_Select.MoveNext())
-            {
+			while (номенклатура_Select.MoveNext())
+			{
 				Номенклатура_Objest номенклатура_Objest = номенклатура_Select.Current.GetDirectoryObject();
 				номенклатура_Objest.Папка = new Номенклатура_Папки_Pointer();
 				номенклатура_Objest.Save();
@@ -82,7 +101,7 @@ namespace StorageAndTrade_1_0.Довідники
 			номенклатура_Папки_Select.Select();
 
 			while (номенклатура_Папки_Select.MoveNext())
-            {
+			{
 				Номенклатура_Папки_Objest номенклатура_Папки_Objest = номенклатура_Папки_Select.Current.GetDirectoryObject();
 				if (номенклатура_Папки_Objest != null)
 					номенклатура_Папки_Objest.Delete();
@@ -90,7 +109,7 @@ namespace StorageAndTrade_1_0.Довідники
 			}
 		}
 	}
-	
+
 	class Контрагенти_Папки_Triggers
 	{
 		public static void BeforeRecording(Контрагенти_Папки_Objest ДовідникОбєкт)
@@ -138,10 +157,10 @@ namespace StorageAndTrade_1_0.Довідники
 	}
 
 	class ДоговориКонтрагентів_Triggers
-    {
+	{
 		public static void BeforeRecording(ДоговориКонтрагентів_Objest ДовідникОбєкт)
 		{
-			string НазваПереліченняЗКонфігурації = 
+			string НазваПереліченняЗКонфігурації =
 				Конфа.Config.Kernel.Conf.Enums["ТипДоговорів"].Fields[ДовідникОбєкт.ТипДоговору.ToString()].Desc;
 
 			ДовідникОбєкт.ТипДоговоруПредставлення = НазваПереліченняЗКонфігурації;
@@ -152,9 +171,9 @@ namespace StorageAndTrade_1_0.Довідники
 		}
 
 		public static void BeforeDelete(ДоговориКонтрагентів_Objest ДовідникОбєкт)
-        {
+		{
 
-        }
+		}
 	}
 
 	class Склади_Папки_Triggers
@@ -212,7 +231,7 @@ namespace StorageAndTrade_1_0.Довідники
 			серіїНоменклатури_Select.QuerySelect.Where.Add(new Where(Comparison.AND, "uid", Comparison.NOT, ДовідникОбєкт.UnigueID.UGuid));
 
 			if (серіїНоменклатури_Select.SelectSingle())
-            {
+			{
 				MessageBox.Show($"Помилка: Серійний номер [ {ДовідникОбєкт.Номер} ] вже існує в базі даних.");
 
 				ДовідникОбєкт.Коментар = $"Помилка: Серійний номер [ {ДовідникОбєкт.Номер} ] вже існує в базі даних. " + ДовідникОбєкт.Коментар;
