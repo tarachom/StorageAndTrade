@@ -679,42 +679,42 @@ namespace StorageAndTrade
             //Console.WriteLine((UuidAndText)listRow[0][1]);
 
 
-            bool f = true;
+//            bool f = true;
 
-            if (f)
-            {
-                string query = $@"
-SELECT id, name, img
-FROM test
-WHERE id = 1
-";
+//            if (f)
+//            {
+//                string query = $@"
+//SELECT id, name, img
+//FROM test
+//WHERE id = 1
+//";
 
 
-                Dictionary<string, object> paramQuery = new Dictionary<string, object>();
+//                Dictionary<string, object> paramQuery = new Dictionary<string, object>();
 
-                string[] columnsName;
-                List<Dictionary<string, object>> listRow;
+//                string[] columnsName;
+//                List<Dictionary<string, object>> listRow;
 
-                Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
+//                Конфа.Config.Kernel.DataBase.SelectRequest(query, paramQuery, out columnsName, out listRow);
 
-                if (listRow.Count > 0)
-                {
-                    Console.WriteLine(listRow[0]["id"].ToString() + " " + listRow[0]["name"].ToString());
-                    File.WriteAllBytes(@"E:\2.bmp", (byte[])listRow[0]["img"]);
-                }
-            }
-            else
-            {
-                string query = $@"
-INSERT INTO test(name, img)
-VALUES(@name, @img)
-";
-                Dictionary<string, object> param = new Dictionary<string, object>();
-                param.Add("name", "name 1");
-                param.Add("img", File.ReadAllBytes(@"E:\1.bmp"));
+//                if (listRow.Count > 0)
+//                {
+//                    Console.WriteLine(listRow[0]["id"].ToString() + " " + listRow[0]["name"].ToString());
+//                    File.WriteAllBytes(@"E:\2.bmp", (byte[])listRow[0]["img"]);
+//                }
+//            }
+//            else
+//            {
+//                string query = $@"
+//INSERT INTO test(name, img)
+//VALUES(@name, @img)
+//";
+//                Dictionary<string, object> param = new Dictionary<string, object>();
+//                param.Add("name", "name 1");
+//                param.Add("img", File.ReadAllBytes(@"E:\1.bmp"));
 
-                Конфа.Config.Kernel.DataBase.ExecuteSQL(query, param);
-            }
+//                Конфа.Config.Kernel.DataBase.ExecuteSQL(query, param);
+//            }
 
             
 
