@@ -34,12 +34,12 @@ namespace StorageAndTrade
             this.dataGridViewRecords = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonCopy = new System.Windows.Forms.ToolStripButton();
             this.toolStripButtonDelete = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton_ШтрихКоди = new System.Windows.Forms.ToolStripButton();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecords)).BeginInit();
             this.panel1.SuspendLayout();
@@ -95,16 +95,6 @@ namespace StorageAndTrade
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // toolStripButtonAdd
             // 
             this.toolStripButtonAdd.Image = global::StorageAndTrade.Properties.Resources.add_document;
@@ -132,6 +122,11 @@ namespace StorageAndTrade
             this.toolStripButtonDelete.Text = "Видалити";
             this.toolStripButtonDelete.Click += new System.EventHandler(this.toolStripButtonDelete_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // toolStripButton_ШтрихКоди
             // 
             this.toolStripButton_ШтрихКоди.Image = global::StorageAndTrade.Properties.Resources.layers;
@@ -140,6 +135,11 @@ namespace StorageAndTrade
             this.toolStripButton_ШтрихКоди.Size = new System.Drawing.Size(94, 22);
             this.toolStripButton_ШтрихКоди.Text = "Штрих-коди";
             this.toolStripButton_ШтрихКоди.Click += new System.EventHandler(this.toolStripButton_ШтрихКоди_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Form_РеалізаціяТоварівТаПослуг_ТабличнаЧастина_Товари
             // 

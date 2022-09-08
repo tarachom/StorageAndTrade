@@ -50,7 +50,7 @@
             this.panel3.Controls.Add(this.textBox_ШтрихКод);
             this.panel3.Location = new System.Drawing.Point(5, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(982, 34);
+            this.panel3.Size = new System.Drawing.Size(969, 34);
             this.panel3.TabIndex = 50;
             // 
             // label1
@@ -80,7 +80,7 @@
             this.panel1.Controls.Add(this.dataGridViewRecords);
             this.panel1.Location = new System.Drawing.Point(5, 43);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(982, 267);
+            this.panel1.Size = new System.Drawing.Size(969, 267);
             this.panel1.TabIndex = 51;
             // 
             // dataGridViewRecords
@@ -95,7 +95,7 @@
             this.dataGridViewRecords.Name = "dataGridViewRecords";
             this.dataGridViewRecords.ReadOnly = true;
             this.dataGridViewRecords.RowHeadersVisible = false;
-            this.dataGridViewRecords.Size = new System.Drawing.Size(982, 267);
+            this.dataGridViewRecords.Size = new System.Drawing.Size(969, 267);
             this.dataGridViewRecords.TabIndex = 1;
             this.dataGridViewRecords.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecords_CellDoubleClick);
             this.dataGridViewRecords.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewRecords_KeyDown);
@@ -108,7 +108,7 @@
             this.panel2.Controls.Add(this.buttonClose);
             this.panel2.Location = new System.Drawing.Point(5, 316);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(982, 34);
+            this.panel2.Size = new System.Drawing.Size(969, 34);
             this.panel2.TabIndex = 52;
             // 
             // buttonSave
@@ -135,7 +135,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 354);
+            this.ClientSize = new System.Drawing.Size(978, 354);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
