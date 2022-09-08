@@ -151,7 +151,7 @@ namespace StorageAndTrade
 
 				if (OwnerForm != null && !OwnerForm.IsDisposed)
 				{
-					//OwnerForm.SelectPointerItem = валюти_Objest.GetDirectoryPointer();
+					OwnerForm.SelectPointerItem = штрихкодиНоменклатури_Objest.UnigueID.ToString();
 					OwnerForm.LoadRecords();
 				}
 

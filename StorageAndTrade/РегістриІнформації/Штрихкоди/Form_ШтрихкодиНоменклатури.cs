@@ -75,7 +75,7 @@ namespace StorageAndTrade
 		/// <summary>
 		/// Вказівник для виділення в списку
 		/// </summary>
-		//public DirectoryPointer SelectPointerItem { get; set; }
+		public string SelectPointerItem { get; set; }
 
 		private void Form_ШтрихкодиНоменклатури_Load(object sender, EventArgs e)
         {
@@ -145,14 +145,14 @@ namespace StorageAndTrade
 				});
 			}
 
-            //if (SelectPointerItem != null && dataGridViewRecords.Rows.Count > 0)
-            //{
-            //    string UidSelect = SelectPointerItem.UnigueID.ToString();
+			if (!String.IsNullOrEmpty(SelectPointerItem) && dataGridViewRecords.Rows.Count > 0)
+			{
+				string UidSelect = SelectPointerItem;
 
-            //    if (UidSelect != Guid.Empty.ToString())
-            //        ФункціїДляІнтерфейсу.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
-            //}
-        }
+				if (UidSelect != Guid.Empty.ToString())
+					ФункціїДляІнтерфейсу.ВиділитиЕлементСписку(dataGridViewRecords, "ID", UidSelect);
+			}
+		}
 
 		private class Записи
 		{
@@ -282,7 +282,7 @@ namespace StorageAndTrade
 			{
 				int RowIndex = dataGridViewRecords.SelectedRows[0].Index;
 
-				//SelectPointerItem = new Довідники.Номенклатура_Pointer(new UnigueID(dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString()));
+				SelectPointerItem = dataGridViewRecords.Rows[RowIndex].Cells["ID"].Value.ToString();
 			}
 		}
 
