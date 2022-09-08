@@ -73,7 +73,7 @@ namespace StorageAndTrade
 		public Довідники.Номенклатура_Pointer НоменклатураВласник { get; set; }
 
 		/// <summary>
-		/// Вказівник для виділення в списку
+		/// UID для виділення в списку
 		/// </summary>
 		public string SelectPointerItem { get; set; }
 
