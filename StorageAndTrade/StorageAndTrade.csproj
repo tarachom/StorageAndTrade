@@ -941,6 +941,12 @@
       <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
     </Compile>
     <Compile Include="Configurator\ФункціїДляЗвітів.cs" />
+    <Compile Include="СпільніФорми\Form_ПідбірПоШтрихКоду.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="СпільніФорми\Form_ПідбірПоШтрихКоду.Designer.cs">
+      <DependentUpon>Form_ПідбірПоШтрихКоду.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConfigurationSelectionForm.resx">
       <DependentUpon>ConfigurationSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1338,6 +1344,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Звіти\ЗамовленняКлієнтів\Form_ЗамовленняКлієнтів_Звіт.resx">
       <DependentUpon>Form_ЗамовленняКлієнтів_Звіт.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="СпільніФорми\Form_ПідбірПоШтрихКоду.resx">
+      <DependentUpon>Form_ПідбірПоШтрихКоду.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

@@ -35,6 +35,7 @@ using Довідники = StorageAndTrade_1_0.Довідники;
 using Документи = StorageAndTrade_1_0.Документи;
 using Перелічення = StorageAndTrade_1_0.Перелічення;
 using РегістриВідомостей = StorageAndTrade_1_0.РегістриВідомостей;
+using StorageAndTrade.СпільніФорми;
 
 namespace StorageAndTrade
 {
@@ -850,6 +851,16 @@ LIMIT 1
 			}
 		}
 
-		#endregion
-	}
+        #endregion
+
+        #region ШтрихКоди
+
+        private void toolStripButton_ШтрихКоди_Click(object sender, EventArgs e)
+        {
+            Form_ПідбірПоШтрихКоду form_ПідбірПоШтрихКоду = new Form_ПідбірПоШтрихКоду();
+			form_ПідбірПоШтрихКоду.ShowDialog();
+        }
+
+        #endregion
+    }
 }
