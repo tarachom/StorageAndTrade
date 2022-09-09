@@ -356,7 +356,7 @@ ELSE 0 END)", "ostatok"));
 				DataGridViewRow row = dataGridViewRecords.SelectedRows[0];
 				string uid = row.Cells["ID"].Value.ToString();
 
-				Form_ШтрихкодиНоменклатури form_ШтрихкодиНоменклатури = new Form_ШтрихкодиНоменклатури();
+                Form_ШтрихкодиНоменклатури form_ШтрихкодиНоменклатури = new Form_ШтрихкодиНоменклатури();
 				form_ШтрихкодиНоменклатури.MdiParent = this.MdiParent;
 				form_ШтрихкодиНоменклатури.НоменклатураВласник = new Довідники.Номенклатура_Pointer(new UnigueID(uid));
 				form_ШтрихкодиНоменклатури.Show();
