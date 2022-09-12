@@ -315,6 +315,9 @@ namespace StorageAndTrade.СпільніФорми
         {
             string Штрихкод = textBox_ШтрихКод.Text.Trim();
 
+            if (String.IsNullOrEmpty(Штрихкод))
+                return;
+
             foreach (Записи запис in RecordsBindingList)
             {
                 if (запис.Штрихкод == Штрихкод)
